@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Aspose.Pdf for Cloud API Reference
+    Aspose.PDF for Cloud API Reference
 
 
    Copyright (c) 2018 Aspose.Pdf for Cloud
@@ -34,6 +34,9 @@ from __future__ import absolute_import
 # import models into model package
 from .append_document import AppendDocument
 from .color import Color
+from .color_depth import ColorDepth
+from .compression_type import CompressionType
+from .doc_format import DocFormat
 from .field_type import FieldType
 from .font_styles import FontStyles
 from .horizontal_alignment import HorizontalAlignment
@@ -48,10 +51,13 @@ from .merge_documents import MergeDocuments
 from .optimize_options import OptimizeOptions
 from .page_word_count import PageWordCount
 from .paragraph import Paragraph
+from .pdf_a_type import PdfAType
+from .recognition_mode import RecognitionMode
 from .rectangle import Rectangle
 from .rotation import Rotation
 from .saa_spose_response import SaaSposeResponse
 from .segment import Segment
+from .shape_type import ShapeType
 from .signature import Signature
 from .signature_type import SignatureType
 from .split_result import SplitResult
@@ -76,8 +82,6 @@ from .attachment import Attachment
 from .attachment_response import AttachmentResponse
 from .attachments import Attachments
 from .attachments_response import AttachmentsResponse
-from .bookmarks import Bookmarks
-from .bookmarks_response import BookmarksResponse
 from .document import Document
 from .document_pages_response import DocumentPagesResponse
 from .document_properties import DocumentProperties

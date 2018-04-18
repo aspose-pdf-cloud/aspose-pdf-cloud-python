@@ -1,6 +1,6 @@
 # coding: utf-8
 """
-    Aspose.Pdf for Cloud API Reference
+    Aspose.PDF for Cloud API Reference
 
 
    Copyright (c) 2018 Aspose.Pdf for Cloud
@@ -93,7 +93,7 @@ class ApiClient(object):
             self.host = host
         
         # Set default User-Agent.
-        self.user_agent = 'Swagger-Codegen/18.2.0/python'
+        self.user_agent = 'Swagger-Codegen/18.3.0/python'
 
     @property
     def user_agent(self):

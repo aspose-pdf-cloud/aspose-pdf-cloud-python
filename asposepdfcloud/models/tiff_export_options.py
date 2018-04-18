@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Aspose.Pdf for Cloud API Reference
+    Aspose.PDF for Cloud API Reference
 
 
    Copyright (c) 2018 Aspose.Pdf for Cloud
@@ -50,13 +50,13 @@ class TiffExportOptions(object):
     """
     swagger_types = {
         'brightness': 'float',
-        'compression': 'str',
-        'color_depth': 'str',
+        'compression': 'CompressionType',
+        'color_depth': 'ColorDepth',
         'left_margin': 'int',
         'right_margin': 'int',
         'top_margin': 'int',
         'bottom_margin': 'int',
-        'orientation': 'str',
+        'orientation': 'ShapeType',
         'skip_blank_pages': 'bool',
         'width': 'int',
         'height': 'int',
@@ -171,7 +171,7 @@ class TiffExportOptions(object):
         Tiff compression. Possible values are: LZW, CCITT4, CCITT3, RLE, None.
 
         :return: The compression of this TiffExportOptions.
-        :rtype: str
+        :rtype: CompressionType
         """
         return self._compression
 
@@ -182,7 +182,7 @@ class TiffExportOptions(object):
         Tiff compression. Possible values are: LZW, CCITT4, CCITT3, RLE, None.
 
         :param compression: The compression of this TiffExportOptions.
-        :type: str
+        :type: CompressionType
         """
 
         self._compression = compression
@@ -194,7 +194,7 @@ class TiffExportOptions(object):
         Image color depth. Possible valuse are: Default, Format8bpp, Format4bpp, Format1bpp.
 
         :return: The color_depth of this TiffExportOptions.
-        :rtype: str
+        :rtype: ColorDepth
         """
         return self._color_depth
 
@@ -205,7 +205,7 @@ class TiffExportOptions(object):
         Image color depth. Possible valuse are: Default, Format8bpp, Format4bpp, Format1bpp.
 
         :param color_depth: The color_depth of this TiffExportOptions.
-        :type: str
+        :type: ColorDepth
         """
 
         self._color_depth = color_depth
@@ -309,7 +309,7 @@ class TiffExportOptions(object):
         Image orientation. Possible values are: None, Landscape, Portait.
 
         :return: The orientation of this TiffExportOptions.
-        :rtype: str
+        :rtype: ShapeType
         """
         return self._orientation
 
@@ -320,7 +320,7 @@ class TiffExportOptions(object):
         Image orientation. Possible values are: None, Landscape, Portait.
 
         :param orientation: The orientation of this TiffExportOptions.
-        :type: str
+        :type: ShapeType
         """
 
         self._orientation = orientation

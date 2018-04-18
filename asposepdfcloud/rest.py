@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Aspose.Pdf for Cloud API Reference
+    Aspose.PDF for Cloud API Reference
 
 
    Copyright (c) 2018 Aspose.Pdf for Cloud

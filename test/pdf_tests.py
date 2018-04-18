@@ -68,12 +68,13 @@ class PdfTests(unittest.TestCase):
 
             self.output_path = str(data['output_location'])
 
-            self.temp_folder = 'TempPdf'
+            self.temp_folder = 'TempPdfCloud'
+            self.test_data_path = 'test_data/'
 
 
     def uploadFile(self, name):
-        self.storage_api.PutCreate(self.temp_folder + '/' + name, 'test_data/' + name)
-
+        self.storage_api.PutCreate(self.temp_folder + '/' + name, self.test_data_path + name)
+        # self.pdf_api.put_create(self.temp_folder + '/' + name, self.test_data_path + name)
 
     def tearDown(self):
         pass
@@ -101,7 +102,7 @@ class PdfTests(unittest.TestCase):
         self.uploadFile(append_file_name)
 
         opts = {
-          "append_file" : append_file_name,
+          "append_file" : self.temp_folder + '/' + append_file_name,
           "start_page" : 2,
           "end_page" : 4,
           "folder" : self.temp_folder
@@ -118,7 +119,7 @@ class PdfTests(unittest.TestCase):
         self.uploadFile(file_name)
         self.uploadFile(append_file_name)
 
-        append_document = asposepdfcloud.models.AppendDocument(document=append_file_name, start_page=2, end_page=4)
+        append_document = asposepdfcloud.models.AppendDocument(self.temp_folder + '/' + append_file_name, start_page=2, end_page=4)
 
 
         opts = {
@@ -183,7 +184,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.get_document_bookmarks(file_name, **opts)
-        self.assertEqual(response.code, HttpStatusCode.OK)
+        self.assertIsInstance(response, str)
     
     # Document Save As Tiff Tests
 
@@ -194,13 +195,13 @@ class PdfTests(unittest.TestCase):
         opts = {
               "result_file" : '4pages.tiff',
               "brightness" : 0.6,
-              "compression" : 'Ccitt4',
-              "color_depth" : 'format1bpp',
+              "compression" : asposepdfcloud.models.CompressionType.CCITT4,
+              "color_depth" : asposepdfcloud.models.ColorDepth.FORMAT1BPP,
               "left_margin" : 0,
               "right_margin" : 0,
               "top_margin" : 0,
               "bottom_margin" : 0,
-              "orientation" : 'portait', # Yes, we know 'portrait'. It will be fixed in the next version.
+              "orientation" : asposepdfcloud.models.ShapeType.PORTRAIT, 
               "skip_blank_pages" : True,
               "width" : 1200,
               "height" : 1600,
@@ -222,13 +223,13 @@ class PdfTests(unittest.TestCase):
         export_options = asposepdfcloud.models.TiffExportOptions()
         export_options.result_file = '4pages.tiff'
         export_options.brightness = 0.6
-        export_options.compression = 'Ccitt4'
-        export_options.color_depth = 'format1bpp'
+        export_options.compression = asposepdfcloud.models.CompressionType.CCITT4
+        export_options.color_depth = asposepdfcloud.models.ColorDepth.FORMAT1BPP
         export_options.left_margin = 0
         export_options.right_margin = 0
         export_options.top_margin = 0
         export_options.bottom_margin = 0
-        export_options.orientation = 'portait' # Yes, we know 'portrait'. It will be fixed in the next version.
+        export_options.orientation = asposepdfcloud.models.ShapeType.PORTRAIT
         export_options.skip_blank_pages = True
         export_options.width = 1200
         export_options.height = 1600
@@ -534,6 +535,21 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.get_image(file_name, page_number, image_number, **opts)
         self.assertIsInstance(response, str)
 
+    def testGetImageWithFormat(self):
+        file_name = 'PdfWithImages2.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 1
+        image_number = 1
+        opts = {
+              "format" : "jpeg", 
+              "height" : 100,
+              "width" : 100,
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_image(file_name, page_number, image_number, **opts)
+        self.assertIsInstance(response, str)
 
     def testGetImages(self):
         file_name = 'PdfWithImages2.pdf'
@@ -565,6 +581,21 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.post_replace_image(file_name, page_number, image_number, **opts)
         self.assertEqual(response.code, HttpStatusCode.OK)
 
+    def testPostReplaceImageFromRequest(self):
+        file_name = 'PdfWithImages2.pdf'
+        self.uploadFile(file_name)
+
+        image_file_name = 'Koala.jpg'
+
+        page_number = 1
+        image_number = 1
+        opts = {
+              "image" : self.test_data_path + image_file_name,
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.post_replace_image(file_name, page_number, image_number, **opts)
+        self.assertEqual(response.code, HttpStatusCode.OK)
     
     # Links Tests
 
@@ -605,7 +636,14 @@ class PdfTests(unittest.TestCase):
         result_name = 'MergingResult.pdf'
 
         merge_documents = asposepdfcloud.models.MergeDocuments()
+        
+        i = 0
+        for el in file_name_list:
+            file_name_list[i] = self.temp_folder + '/' + el
+            i += 1
+
         merge_documents.list = file_name_list
+
 
         opts = {
               "merge_documents" : merge_documents,
@@ -643,6 +681,20 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.get_page(file_name, page_number, **opts)
         self.assertIsInstance(response, str)
 
+    def testGetPageWithFormat(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 3
+        opts = {
+              "format" : "jpeg", 
+              "width" : 100,
+              "height" : 100,
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_page(file_name, page_number, **opts)
+        self.assertIsInstance(response, str)
 
     def testGetPages(self):
         file_name = '4pages.pdf'
@@ -1201,6 +1253,46 @@ class PdfTests(unittest.TestCase):
 
         response = self.pdf_api.post_page_text_replace(file_name, page_number, text_replace_list, **opts)
         self.assertEqual(response.code, HttpStatusCode.OK)
+
+
+    # Convert Tests
+
+    def testGetPdfInStorageToDoc(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_pdf_in_storage_to_doc(file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfInStorageToDoc(self):
+        file_name = '4pages.pdf'
+        # self.uploadFile(file_name)
+        result_file_name = "result.doc"
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_pdf_in_storage_to_doc(file_name, self.temp_folder + '/' + result_file_name, **opts)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
+
+
+    def testPutPdfInRequestToDoc(self):
+        file_name = '4pages.pdf'
+        result_file_name = "result.doc"
+
+        opts = {
+              "file" : self.test_data_path + file_name
+        }
+
+        response = self.pdf_api.put_pdf_in_request_to_doc(self.temp_folder + '/' + result_file_name, **opts)
+        self.assertIsInstance(response, str)
+
 
 if __name__ == '__main__':
     unittest.main()
