@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Aspose.Pdf for Cloud API Reference
+    Aspose.PDF for Cloud API Reference
 
 
    Copyright (c) 2018 Aspose.Pdf for Cloud
@@ -206,5 +206,5 @@ class Configuration(object):
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 1.1\n"\
-               "SDK Package Version: 18.2.0".\
+               "SDK Package Version: 18.3.0".\
                format(env=sys.platform, pyversion=sys.version)

@@ -1,6 +1,6 @@
 # coding: utf-8
 """
-    Aspose.Pdf for Cloud API Reference
+    Aspose.PDF for Cloud API Reference
 
 
    Copyright (c) 2018 Aspose.Pdf for Cloud
@@ -93,7 +93,7 @@ class ApiClient(object):
             self.host = host
         
         # Set default User-Agent.
-        self.user_agent = 'Swagger-Codegen/18.2.0/python'
+        self.user_agent = 'aspose pdf cloud python sdk'
 
     @property
     def user_agent(self):
@@ -147,11 +147,26 @@ class ApiClient(object):
                                                      collection_formats)
 
         # post parameters
-        if post_params or files:
-            post_params = self.prepare_post_parameters(post_params, files)
+        if post_params:
+            # post_params = self.prepare_post_parameters(post_params, files)
             post_params = self.sanitize_for_serialization(post_params)
             post_params = self.parameters_to_tuples(post_params,
                                                     collection_formats)
+        # ASPOSE HEADER ISSUE
+        # body
+        if files:
+            for k, v in iteritems(files):
+                if not v:
+                    continue
+                file_names = v if type(v) is list else [v]
+                for n in file_names:
+                    with open(n, 'rb') as f:
+                        filename = os.path.basename(f.name)
+                        body = f.read()
+                        mimetype = mimetypes.\
+                            guess_type(filename)[0] or 'application/octet-stream'
+                        header_params['Content-Type'] = mimetype
+
 
         # auth setting
         self.update_params_for_auth(header_params, query_params, auth_settings)
@@ -605,7 +620,7 @@ class ApiClient(object):
         #TEMPLATE CHANGE
         content_type = response.urllib3_response.getheader('Content-Type')
         open_file_keys = 'wb'
-        if 'application/json' in content_type:
+        if content_type and 'application/json' in content_type:
             open_file_keys = 'w'
 
         with open(path, open_file_keys) as f:
