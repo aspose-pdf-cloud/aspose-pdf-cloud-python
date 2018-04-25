@@ -206,6 +206,16 @@ class RESTClientObject(object):
                                                   preload_content=_preload_content,
                                                   timeout=timeout,
                                                   headers=headers)
+                # TEMPLATE CHANGED
+                elif PY3 and isinstance(body, bytes):
+                    request_body = body
+                    r = self.pool_manager.request(method, url,
+                                                  body=request_body,
+                                                  preload_content=_preload_content,
+                                                  timeout=timeout,
+                                                  headers=headers)
+                # TEMPLATE CHANGED
+
                 else:
                     # Cannot generate the request from given parameters
                     msg = """Cannot prepare a request message for provided arguments.
@@ -224,7 +234,9 @@ class RESTClientObject(object):
 
         #TEMPLATE CHANGE
         if _preload_content:
-            content_type = r.headers['Content-Type']
+            content_type = ''
+            if 'Content-Type' in r.headers.keys(): 
+                content_type = r.headers['Content-Type']
             r = RESTResponse(r)
 
             # In the python 3, the response.data is bytes.

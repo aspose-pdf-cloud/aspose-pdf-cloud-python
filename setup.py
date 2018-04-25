@@ -33,7 +33,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = "asposepdfcloud"
-VERSION = "18.2.0"
+VERSION = "18.3.0"
 # To install the library, run the following
 #
 # python setup.py install
@@ -60,11 +60,10 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 3',
     ],
-    keywords=["swagger", "aspose", "aspose cloud", "pdf", "sdk"],
+    keywords=["swagger", "aspose", "aspose cloud", "pdf", "sdk", "xls", "pdf/a", "xps", "tiff", "svg", "html", "doc"],
     install_requires=REQUIRES,
     extras_require={ 
-        'test': ["asposestoragecloud == 1.0.1",
-                "requests >= 2.18.4",
+        'test': ["requests >= 2.18.4",
                 "coverage >= 4.0.3",
                 "nose >= 1.3.7",
                 "pluggy >= 0.3.1",

@@ -42,22 +42,12 @@ from asposepdfcloud.rest import ApiException
 from asposepdfcloud.models.annotation_response import AnnotationResponse
 from asposepdfcloud.models.http_status_code import HttpStatusCode
 
-import asposestoragecloud
-from asposestoragecloud.StorageApi import StorageApi
-
 
 class PdfTests(unittest.TestCase):
 
     def setUp(self):
         with open('test/setup.json') as json_file:
             data = json.load(json_file)
-            
-            self.storage_api_client = asposestoragecloud.ApiClient.ApiClient(
-                                apiKey=str(data['app_key']),
-                                appSid=str(data['app_sid']),
-                                debug=True,
-                                apiServer=str(data['product_uri']))
-            self.storage_api = StorageApi(self.storage_api_client)
             
             self.pdf_api_client = asposepdfcloud.api_client.ApiClient(
                                 app_key=str(data['app_key']),
@@ -73,8 +63,7 @@ class PdfTests(unittest.TestCase):
 
 
     def uploadFile(self, name):
-        self.storage_api.PutCreate(self.temp_folder + '/' + name, self.test_data_path + name)
-        # self.pdf_api.put_create(self.temp_folder + '/' + name, self.test_data_path + name)
+        self.pdf_api.put_create(self.temp_folder + '/' + name, self.test_data_path + name)
 
     def tearDown(self):
         pass
@@ -1256,7 +1245,7 @@ class PdfTests(unittest.TestCase):
 
 
     # Convert Tests
-
+    # To Doc
     def testGetPdfInStorageToDoc(self):
         file_name = '4pages.pdf'
         self.uploadFile(file_name)
@@ -1271,7 +1260,7 @@ class PdfTests(unittest.TestCase):
 
     def testPutPdfInStorageToDoc(self):
         file_name = '4pages.pdf'
-        # self.uploadFile(file_name)
+        self.uploadFile(file_name)
         result_file_name = "result.doc"
 
         opts = {
@@ -1279,7 +1268,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_doc(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, HttpStatusCode.CREATED)
+        self.assertIsInstance(response, str)
 
 
     def testPutPdfInRequestToDoc(self):
@@ -1293,6 +1282,215 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.put_pdf_in_request_to_doc(self.temp_folder + '/' + result_file_name, **opts)
         self.assertIsInstance(response, str)
 
+
+    # To PDFA
+
+    def testGetPdfInStorageToPdfA(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_pdf_in_storage_to_pdf_a(file_name, asposepdfcloud.models.PdfAType.PDFA1A, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfInStorageToPdfA(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        result_file_name = "result.pdf"
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_pdf_in_storage_to_pdf_a(
+                file_name, 
+                self.temp_folder + '/' + result_file_name, 
+                asposepdfcloud.models.PdfAType.PDFA1A,
+                **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfInRequestToPdfA(self):
+        file_name = '4pages.pdf'
+        result_file_name = "result.pdf"
+
+        opts = {
+              "file" : self.test_data_path + file_name
+        }
+
+        response = self.pdf_api.put_pdf_in_request_to_pdf_a(
+                self.temp_folder + '/' + result_file_name, 
+                asposepdfcloud.models.PdfAType.PDFA1A, 
+                **opts)
+        self.assertIsInstance(response, str)
+
+    # To Tiff
+    def testGetPdfInStorageToTiff(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_pdf_in_storage_to_tiff(file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfInStorageToTiff(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        result_file_name = "result.tiff"
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_pdf_in_storage_to_tiff(file_name, self.temp_folder + '/' + result_file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfInRequestToTiff(self):
+        file_name = '4pages.pdf'
+        result_file_name = "result.tiff"
+
+        opts = {
+              "file" : self.test_data_path + file_name
+        }
+
+        response = self.pdf_api.put_pdf_in_request_to_tiff(self.temp_folder + '/' + result_file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    # To SVG
+
+    def testGetPdfInStorageToSvg(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_pdf_in_storage_to_svg(file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfInStorageToSvg(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        result_file_name = "result.svg"
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_pdf_in_storage_to_svg(file_name, self.temp_folder + '/' + result_file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfInRequestToSvg(self):
+        file_name = '4pages.pdf'
+        result_file_name = "result.svg"
+
+        opts = {
+              "file" : self.test_data_path + file_name
+        }
+
+        response = self.pdf_api.put_pdf_in_request_to_svg(self.temp_folder + '/' + result_file_name, **opts)
+        self.assertIsInstance(response, str)
+     
+    # To XPS
+
+    def testGetPdfInStorageToXps(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_pdf_in_storage_to_xps(file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfInStorageToXps(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        result_file_name = "result.xps"
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_pdf_in_storage_to_xps(file_name, self.temp_folder + '/' + result_file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfInRequestToXps(self):
+        file_name = '4pages.pdf'
+        result_file_name = "result.xps"
+
+        opts = {
+              "file" : self.test_data_path + file_name
+        }
+
+        response = self.pdf_api.put_pdf_in_request_to_xps(self.temp_folder + '/' + result_file_name, **opts)
+        self.assertIsInstance(response, str)
+
+    # To XLS
+    def testGetPdfInStorageToXls(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_pdf_in_storage_to_xls(file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfInStorageToXls(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        result_file_name = "result.xls"
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_pdf_in_storage_to_xls(file_name, self.temp_folder + '/' + result_file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfInRequestToXls(self):
+        file_name = '4pages.pdf'
+        result_file_name = "result.xls"
+
+        opts = {
+              "file" : self.test_data_path + file_name
+        }
+
+        response = self.pdf_api.put_pdf_in_request_to_xls(self.temp_folder + '/' + result_file_name, **opts)
+        self.assertIsInstance(response, str)
+
+    # Upload / Download Tests
+    
+    def testPutCreate(self):
+        file_name = '4pages.pdf'
+        response = self.pdf_api.put_create(self.temp_folder + '/' + file_name, self.test_data_path + file_name)
+        self.assertEqual(response.code, HttpStatusCode.OK)
+    
+    def testGetDownload(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        response = self.pdf_api.get_download(self.temp_folder + '/' + file_name)
+        self.assertIsInstance(response, str)
 
 if __name__ == '__main__':
     unittest.main()
