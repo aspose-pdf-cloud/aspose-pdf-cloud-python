@@ -32,16 +32,23 @@
 from __future__ import absolute_import
 
 # import models into model package
+from .antialiasing_processing_type import AntialiasingProcessingType
 from .append_document import AppendDocument
 from .color import Color
 from .color_depth import ColorDepth
 from .compression_type import CompressionType
 from .doc_format import DocFormat
+from .document_privilege import DocumentPrivilege
 from .field_type import FieldType
+from .font_encoding_rules import FontEncodingRules
+from .font_saving_modes import FontSavingModes
 from .font_styles import FontStyles
 from .horizontal_alignment import HorizontalAlignment
+from .html_document_type import HtmlDocumentType
+from .html_markup_generation_modes import HtmlMarkupGenerationModes
 from .http_status_code import HttpStatusCode
 from .images_list_request import ImagesListRequest
+from .letters_positioning_methods import LettersPositioningMethods
 from .line_spacing import LineSpacing
 from .link import Link
 from .link_action_type import LinkActionType
@@ -51,8 +58,11 @@ from .merge_documents import MergeDocuments
 from .optimize_options import OptimizeOptions
 from .page_word_count import PageWordCount
 from .paragraph import Paragraph
+from .parts_embedding_modes import PartsEmbeddingModes
 from .pdf_a_type import PdfAType
+from .raster_images_saving_modes import RasterImagesSavingModes
 from .recognition_mode import RecognitionMode
+from .recognition_mode2 import RecognitionMode2
 from .rectangle import Rectangle
 from .rotation import Rotation
 from .saa_spose_response import SaaSposeResponse
@@ -103,6 +113,7 @@ from .link_annotations import LinkAnnotations
 from .link_annotations_response import LinkAnnotationsResponse
 from .page import Page
 from .pages import Pages
+from .signature_verify_response import SignatureVerifyResponse
 from .split_result_document import SplitResultDocument
 from .split_result_response import SplitResultResponse
 from .text_format import TextFormat

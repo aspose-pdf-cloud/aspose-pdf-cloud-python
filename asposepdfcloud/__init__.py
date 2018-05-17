@@ -32,16 +32,23 @@
 from __future__ import absolute_import
 
 # import models into sdk package
+from .models.antialiasing_processing_type import AntialiasingProcessingType
 from .models.append_document import AppendDocument
 from .models.color import Color
 from .models.color_depth import ColorDepth
 from .models.compression_type import CompressionType
 from .models.doc_format import DocFormat
+from .models.document_privilege import DocumentPrivilege
 from .models.field_type import FieldType
+from .models.font_encoding_rules import FontEncodingRules
+from .models.font_saving_modes import FontSavingModes
 from .models.font_styles import FontStyles
 from .models.horizontal_alignment import HorizontalAlignment
+from .models.html_document_type import HtmlDocumentType
+from .models.html_markup_generation_modes import HtmlMarkupGenerationModes
 from .models.http_status_code import HttpStatusCode
 from .models.images_list_request import ImagesListRequest
+from .models.letters_positioning_methods import LettersPositioningMethods
 from .models.line_spacing import LineSpacing
 from .models.link import Link
 from .models.link_action_type import LinkActionType
@@ -51,8 +58,11 @@ from .models.merge_documents import MergeDocuments
 from .models.optimize_options import OptimizeOptions
 from .models.page_word_count import PageWordCount
 from .models.paragraph import Paragraph
+from .models.parts_embedding_modes import PartsEmbeddingModes
 from .models.pdf_a_type import PdfAType
+from .models.raster_images_saving_modes import RasterImagesSavingModes
 from .models.recognition_mode import RecognitionMode
+from .models.recognition_mode2 import RecognitionMode2
 from .models.rectangle import Rectangle
 from .models.rotation import Rotation
 from .models.saa_spose_response import SaaSposeResponse
@@ -103,6 +113,7 @@ from .models.link_annotations import LinkAnnotations
 from .models.link_annotations_response import LinkAnnotationsResponse
 from .models.page import Page
 from .models.pages import Pages
+from .models.signature_verify_response import SignatureVerifyResponse
 from .models.split_result_document import SplitResultDocument
 from .models.split_result_response import SplitResultResponse
 from .models.text_format import TextFormat
