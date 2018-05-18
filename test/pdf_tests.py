@@ -417,6 +417,31 @@ class PdfTests(unittest.TestCase):
         self.assertEqual(response.code, HttpStatusCode.OK)
     
 
+    def testDeleteField(self):
+        file_name = 'PdfWithAcroForm.pdf'
+        self.uploadFile(file_name)
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+        field_name = 'textField'
+
+        response = self.pdf_api.delete_field(file_name, field_name, **opts)
+        self.assertEqual(response.code, HttpStatusCode.OK)
+
+
+    def testPutFieldsFlatten(self):
+        file_name = 'PdfWithAcroForm.pdf'
+        self.uploadFile(file_name)
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_fields_flatten(file_name,  **opts)
+        self.assertEqual(response.code, HttpStatusCode.OK)
+
+
     # Fragments And Segments Tests
 
     def testGetFragment(self):
@@ -1008,6 +1033,43 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.post_sign_page(file_name, page_number, **opts)
         self.assertEqual(response.code, HttpStatusCode.OK)
     
+    def testGetVerifySignature(self):
+        file_name = 'BlankWithSignature.pdf'
+        self.uploadFile(file_name)
+
+        signature_file_name = 'test1234.pfx'
+        self.uploadFile(signature_file_name)
+
+        rectangle = asposepdfcloud.models.Rectangle(x=100, y=100, width=400, height=100)
+        
+        signature = asposepdfcloud.models.Signature(
+                signature_path=self.temp_folder + '/' + signature_file_name,
+                signature_type=asposepdfcloud.models.SignatureType.PKCS_7,
+                password='test1234',
+                contact='testself.mail.ru',
+                location='Ukraine',
+                visible=True,
+                rectangle=rectangle,
+                form_field_name='Signature1',
+                authority='Sergey Smal',
+                date='08/01/2012 12:15:00.000 PM',
+                show_properties=False)
+
+        opts = {
+              "signature" : signature,
+              "folder" : self.temp_folder
+        }
+
+        response_sign = self.pdf_api.post_sign_document(file_name, **opts)
+        self.assertEqual(response_sign.code, HttpStatusCode.OK)
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_verify_signature(file_name, signature.form_field_name, **opts)
+        self.assertEqual(response_sign.code, HttpStatusCode.OK)
+
 
     # Text Items Tests
 
@@ -1479,6 +1541,273 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.put_pdf_in_request_to_xls(self.temp_folder + '/' + result_file_name, **opts)
         self.assertIsInstance(response, str)
 
+
+    # To HTML
+    def testGetPdfInStorageToHtml(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_pdf_in_storage_to_html(file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfInStorageToHtml(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        result_file_name = "result.html"
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_pdf_in_storage_to_html(file_name, self.temp_folder + '/' + result_file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfInRequestToHtml(self):
+        file_name = '4pages.pdf'
+        result_file_name = "result.html"
+
+        opts = {
+              "file" : self.test_data_path + file_name
+        }
+
+        response = self.pdf_api.put_pdf_in_request_to_html(self.temp_folder + '/' + result_file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    # To EPUB
+    def testGetPdfInStorageToEpub(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_pdf_in_storage_to_epub(file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfInStorageToEpub(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        result_file_name = "result.epub"
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_pdf_in_storage_to_epub(file_name, self.temp_folder + '/' + result_file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfInRequestToEpub(self):
+        file_name = '4pages.pdf'
+        result_file_name = "result.epub"
+
+        opts = {
+              "file" : self.test_data_path + file_name
+        }
+
+        response = self.pdf_api.put_pdf_in_request_to_epub(self.temp_folder + '/' + result_file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    # To PPTX
+    def testGetPdfInStorageToPptx(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_pdf_in_storage_to_pptx(file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfInStorageToPptx(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        result_file_name = "result.pptx"
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_pdf_in_storage_to_pptx(file_name, self.temp_folder + '/' + result_file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfInRequestToPptx(self):
+        file_name = '4pages.pdf'
+        result_file_name = "result.pptx"
+
+        opts = {
+              "file" : self.test_data_path + file_name
+        }
+
+        response = self.pdf_api.put_pdf_in_request_to_pptx(self.temp_folder + '/' + result_file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    # To LaTeX
+    def testGetPdfInStorageToLaTeX(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_pdf_in_storage_to_la_te_x(file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfInStorageToLaTeX(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        result_file_name = "result.latex"
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_pdf_in_storage_to_la_te_x(file_name, self.temp_folder + '/' + result_file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfInRequestToLaTeX(self):
+        file_name = '4pages.pdf'
+        result_file_name = "result.latex"
+
+        opts = {
+              "file" : self.test_data_path + file_name
+        }
+
+        response = self.pdf_api.put_pdf_in_request_to_la_te_x(self.temp_folder + '/' + result_file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    # To Mobi Xml
+    def testGetPdfInStorageToMobiXml(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_pdf_in_storage_to_mobi_xml(file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfInStorageToMobiXml(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        result_file_name = "result.mobi"
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_pdf_in_storage_to_mobi_xml(file_name, self.temp_folder + '/' + result_file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfInRequestToMobiXml(self):
+        file_name = '4pages.pdf'
+        result_file_name = "result.mobi"
+
+        opts = {
+              "file" : self.test_data_path + file_name
+        }
+
+        response = self.pdf_api.put_pdf_in_request_to_mobi_xml(self.temp_folder + '/' + result_file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    # PDF Xfa To Acro Form
+    def testGetXfaPdfInStorageToAcroForm(self):
+        file_name = 'PdfWithXfaForm.pdf'
+        self.uploadFile(file_name)
+        
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_xfa_pdf_in_storage_to_acro_form(file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutXfaPdfInStorageToAcroForm(self):
+        file_name = 'PdfWithXfaForm.pdf'
+        self.uploadFile(file_name)
+        result_file_name = "result.pdf"
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_xfa_pdf_in_storage_to_acro_form(file_name, self.temp_folder + '/' + result_file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutXfaPdfInRequestToAcroForm(self):
+        file_name = 'PdfWithXfaForm.pdf'
+        result_file_name = "result.pdf"
+
+        opts = {
+              "file" : self.test_data_path + file_name
+        }
+
+        response = self.pdf_api.put_xfa_pdf_in_request_to_acro_form(self.temp_folder + '/' + result_file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    # To Xml
+    def testGetPdfInStorageToXml(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_pdf_in_storage_to_xml(file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfInStorageToXml(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        result_file_name = "result.xml"
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_pdf_in_storage_to_xml(file_name, self.temp_folder + '/' + result_file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfInRequestToXml(self):
+        file_name = '4pages.pdf'
+        result_file_name = "result.xml"
+
+        opts = {
+              "file" : self.test_data_path + file_name
+        }
+
+        response = self.pdf_api.put_pdf_in_request_to_xml(self.temp_folder + '/' + result_file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
     # Upload / Download Tests
     
     def testPutCreate(self):
@@ -1491,6 +1820,25 @@ class PdfTests(unittest.TestCase):
         self.uploadFile(file_name)
         response = self.pdf_api.get_download(self.temp_folder + '/' + file_name)
         self.assertIsInstance(response, str)
+
+
+    # Privileges Tests
+    
+    def testPutPrivileges(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+
+        documentPrivilege = asposepdfcloud.models.DocumentPrivilege()
+        documentPrivilege.allow_copy = False
+        documentPrivilege.allow_print = False
+        
+        opts = {
+            "privileges" : documentPrivilege,
+            "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_privileges(file_name, **opts)
+        self.assertEqual(response.code, HttpStatusCode.OK)
 
 if __name__ == '__main__':
     unittest.main()

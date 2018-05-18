@@ -58,6 +58,125 @@ class PdfApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
+    def delete_field(self, name, field_name, **kwargs):
+        """
+        Delete document field by name.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_field(name, field_name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str field_name: The field name/ (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.delete_field_with_http_info(name, field_name, **kwargs)
+        else:
+            (data) = self.delete_field_with_http_info(name, field_name, **kwargs)
+            return data
+
+    def delete_field_with_http_info(self, name, field_name, **kwargs):
+        """
+        Delete document field by name.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_field_with_http_info(name, field_name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str field_name: The field name/ (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'field_name', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_field" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `delete_field`")
+        # verify the required parameter 'field_name' is set
+        if ('field_name' not in params) or (params['field_name'] is None):
+            raise ValueError("Missing the required parameter `field_name` when calling `delete_field`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'field_name' in params:
+            path_params['fieldName'] = params['field_name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/fields/{fieldName}', 'DELETE',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='SaaSposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def delete_page(self, name, page_number, **kwargs):
         """
         Delete document page by its number.
@@ -3356,6 +3475,559 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def get_pdf_in_storage_to_epub(self, name, **kwargs):
+        """
+        Converts PDF document (located on storage) to EPUB format and returns resulting file in response content
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_pdf_in_storage_to_epub(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str content_recognition_mode: �roperty tunes conversion for this or that desirable method of recognition of content.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_pdf_in_storage_to_epub_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_pdf_in_storage_to_epub_with_http_info(name, **kwargs)
+            return data
+
+    def get_pdf_in_storage_to_epub_with_http_info(self, name, **kwargs):
+        """
+        Converts PDF document (located on storage) to EPUB format and returns resulting file in response content
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_pdf_in_storage_to_epub_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str content_recognition_mode: �roperty tunes conversion for this or that desirable method of recognition of content.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'content_recognition_mode', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_pdf_in_storage_to_epub" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_pdf_in_storage_to_epub`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'content_recognition_mode' in params:
+            query_params.append(('contentRecognitionMode', params['content_recognition_mode']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/convert/epub', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_pdf_in_storage_to_html(self, name, **kwargs):
+        """
+        Converts PDF document (located on storage) to Html format and returns resulting file in response content
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_pdf_in_storage_to_html(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int additional_margin_width_in_points: Defines width of margin that will be forcibly left around that output HTML-areas.
+        :param bool compress_svg_graphics_if_any: The flag that indicates whether found SVG graphics(if any) will be compressed(zipped) into SVGZ format during saving.
+        :param bool convert_marked_content_to_layers: If attribute ConvertMarkedContentToLayers set to true then an all elements inside a PDF marked content (layer) will be put into an HTML div with \"data-pdflayer\" attribute specifying a layer name. This layer name will be extracted from optional properties of PDF marked content. If this attribute is false (by default) then no any layers will be created from PDF marked content.
+        :param str default_font_name: Specifies the name of an installed font which is used to substitute any document font that is not embedded and not installed in the system. If null then default substitution font is used.
+        :param int document_type: Result document type.
+        :param bool fixed_layout: The value indicating whether that HTML is created as fixed layout.
+        :param int image_resolution: Resolution for image rendering.
+        :param int minimal_line_width: This attribute sets minimal width of graphic path line. If thickness of line is less than 1px Adobe Acrobat rounds it to this value. So this attribute can be used to emulate this behavior for HTML browsers.
+        :param bool prevent_glyphs_grouping: This attribute switch on the mode when text glyphs will not be grouped into words and strings This mode allows to keep maximum precision during positioning of glyphs on the page and it can be used for conversion documents with music notes or glyphs that should be placed separately each other. This parameter will be applied to document only when the value of FixedLayout attribute is true.
+        :param bool split_css_into_pages: When multipage-mode selected(i.e 'SplitIntoPages' is 'true'), then this attribute defines whether should be created separate CSS-file for each result HTML page.
+        :param bool split_into_pages: The flag that indicates whether each page of source document will be converted into it's own target HTML document, i.e whether result HTML will be splitted into several HTML-pages.
+        :param bool use_z_order: If attribute UseZORder set to true, graphics and text are added to resultant HTML document accordingly Z-order in original PDF document. If this attribute is false all graphics is put as single layer which may cause some unnecessary effects for overlapped objects.
+        :param str antialiasing_processing: The parameter defines required antialiasing measures during conversion of compound background images from PDF to HTML.
+        :param str css_class_names_prefix: When PDFtoHTML converter generates result CSSs, CSS class names (something like \".stl_01 {}\" ... \".stl_NN {}) are generated and used in result CSS. This property allows forcibly set class name prefix.
+        :param list[int] explicit_list_of_saved_pages: With this property You can explicitely define what pages of document should be converted. Pages in this list must have 1-based numbers. I.e. valid numbers of pages must be taken from range (1...[NumberOfPagesInConvertedDocument]) Order of appearing of pages in this list does not affect their order in result HTML page(s) - in result pages allways will go in order in which they are present in source PDF.
+        :param str font_encoding_strategy: Defines encoding special rule to tune PDF decoding for current document.
+        :param str font_saving_mode: Defines font saving mode that will be used during saving of PDF to desirable format.
+        :param str html_markup_generation_mode: Sometimes specific reqirments to generation of HTML markup are present. This parameter defines HTML preparing modes that can be used during conversion of PDF to HTML to match such specific requirments.
+        :param str letters_positioning_method: The mode of positioning of letters in words in result HTML.
+        :param bool pages_flow_type_depends_on_viewers_screen_size: If attribute 'SplitOnPages=false', than whole HTML representing all input PDF pages will be put into one big result HTML file. This flag defines whether result HTML will be generated in such way that flow of areas that represent PDF pages in result HTML will depend on screen resolution of viewer.
+        :param str parts_embedding_mode: It defines whether referenced files (HTML, Fonts,Images, CSSes) will be embedded into main HTML file or will be generated as apart binary entities.
+        :param str raster_images_saving_mode: Converted PDF can contain raster images This parameter defines how they should be handled during conversion of PDF to HTML.
+        :param bool remove_empty_areas_on_top_and_bottom: Defines whether in created HTML will be removed top and bottom empty area without any content (if any).
+        :param bool save_shadowed_texts_as_transparent_texts: Pdf can contain texts that are shadowed by another elements (f.e. by images) but can be selected to clipboard in Acrobat Reader (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML to mimic behaviour of Acrobat Reader (othervise such texts are usually saved as hidden, not available for copying to clipboard).
+        :param bool save_transparent_texts: Pdf can contain transparent texts that can be selected to clipboard (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML.
+        :param str special_folder_for_all_images: The path to directory to which must be saved any images if they are encountered during saving of document as HTML. If parameter is empty or null then image files(if any) wil be saved together with other files linked to HTML It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
+        :param str special_folder_for_svg_images: The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
+        :param bool try_save_text_underlining_and_strikeouting_in_css: PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_pdf_in_storage_to_html_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_pdf_in_storage_to_html_with_http_info(name, **kwargs)
+            return data
+
+    def get_pdf_in_storage_to_html_with_http_info(self, name, **kwargs):
+        """
+        Converts PDF document (located on storage) to Html format and returns resulting file in response content
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_pdf_in_storage_to_html_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int additional_margin_width_in_points: Defines width of margin that will be forcibly left around that output HTML-areas.
+        :param bool compress_svg_graphics_if_any: The flag that indicates whether found SVG graphics(if any) will be compressed(zipped) into SVGZ format during saving.
+        :param bool convert_marked_content_to_layers: If attribute ConvertMarkedContentToLayers set to true then an all elements inside a PDF marked content (layer) will be put into an HTML div with \"data-pdflayer\" attribute specifying a layer name. This layer name will be extracted from optional properties of PDF marked content. If this attribute is false (by default) then no any layers will be created from PDF marked content.
+        :param str default_font_name: Specifies the name of an installed font which is used to substitute any document font that is not embedded and not installed in the system. If null then default substitution font is used.
+        :param int document_type: Result document type.
+        :param bool fixed_layout: The value indicating whether that HTML is created as fixed layout.
+        :param int image_resolution: Resolution for image rendering.
+        :param int minimal_line_width: This attribute sets minimal width of graphic path line. If thickness of line is less than 1px Adobe Acrobat rounds it to this value. So this attribute can be used to emulate this behavior for HTML browsers.
+        :param bool prevent_glyphs_grouping: This attribute switch on the mode when text glyphs will not be grouped into words and strings This mode allows to keep maximum precision during positioning of glyphs on the page and it can be used for conversion documents with music notes or glyphs that should be placed separately each other. This parameter will be applied to document only when the value of FixedLayout attribute is true.
+        :param bool split_css_into_pages: When multipage-mode selected(i.e 'SplitIntoPages' is 'true'), then this attribute defines whether should be created separate CSS-file for each result HTML page.
+        :param bool split_into_pages: The flag that indicates whether each page of source document will be converted into it's own target HTML document, i.e whether result HTML will be splitted into several HTML-pages.
+        :param bool use_z_order: If attribute UseZORder set to true, graphics and text are added to resultant HTML document accordingly Z-order in original PDF document. If this attribute is false all graphics is put as single layer which may cause some unnecessary effects for overlapped objects.
+        :param str antialiasing_processing: The parameter defines required antialiasing measures during conversion of compound background images from PDF to HTML.
+        :param str css_class_names_prefix: When PDFtoHTML converter generates result CSSs, CSS class names (something like \".stl_01 {}\" ... \".stl_NN {}) are generated and used in result CSS. This property allows forcibly set class name prefix.
+        :param list[int] explicit_list_of_saved_pages: With this property You can explicitely define what pages of document should be converted. Pages in this list must have 1-based numbers. I.e. valid numbers of pages must be taken from range (1...[NumberOfPagesInConvertedDocument]) Order of appearing of pages in this list does not affect their order in result HTML page(s) - in result pages allways will go in order in which they are present in source PDF.
+        :param str font_encoding_strategy: Defines encoding special rule to tune PDF decoding for current document.
+        :param str font_saving_mode: Defines font saving mode that will be used during saving of PDF to desirable format.
+        :param str html_markup_generation_mode: Sometimes specific reqirments to generation of HTML markup are present. This parameter defines HTML preparing modes that can be used during conversion of PDF to HTML to match such specific requirments.
+        :param str letters_positioning_method: The mode of positioning of letters in words in result HTML.
+        :param bool pages_flow_type_depends_on_viewers_screen_size: If attribute 'SplitOnPages=false', than whole HTML representing all input PDF pages will be put into one big result HTML file. This flag defines whether result HTML will be generated in such way that flow of areas that represent PDF pages in result HTML will depend on screen resolution of viewer.
+        :param str parts_embedding_mode: It defines whether referenced files (HTML, Fonts,Images, CSSes) will be embedded into main HTML file or will be generated as apart binary entities.
+        :param str raster_images_saving_mode: Converted PDF can contain raster images This parameter defines how they should be handled during conversion of PDF to HTML.
+        :param bool remove_empty_areas_on_top_and_bottom: Defines whether in created HTML will be removed top and bottom empty area without any content (if any).
+        :param bool save_shadowed_texts_as_transparent_texts: Pdf can contain texts that are shadowed by another elements (f.e. by images) but can be selected to clipboard in Acrobat Reader (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML to mimic behaviour of Acrobat Reader (othervise such texts are usually saved as hidden, not available for copying to clipboard).
+        :param bool save_transparent_texts: Pdf can contain transparent texts that can be selected to clipboard (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML.
+        :param str special_folder_for_all_images: The path to directory to which must be saved any images if they are encountered during saving of document as HTML. If parameter is empty or null then image files(if any) wil be saved together with other files linked to HTML It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
+        :param str special_folder_for_svg_images: The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
+        :param bool try_save_text_underlining_and_strikeouting_in_css: PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'additional_margin_width_in_points', 'compress_svg_graphics_if_any', 'convert_marked_content_to_layers', 'default_font_name', 'document_type', 'fixed_layout', 'image_resolution', 'minimal_line_width', 'prevent_glyphs_grouping', 'split_css_into_pages', 'split_into_pages', 'use_z_order', 'antialiasing_processing', 'css_class_names_prefix', 'explicit_list_of_saved_pages', 'font_encoding_strategy', 'font_saving_mode', 'html_markup_generation_mode', 'letters_positioning_method', 'pages_flow_type_depends_on_viewers_screen_size', 'parts_embedding_mode', 'raster_images_saving_mode', 'remove_empty_areas_on_top_and_bottom', 'save_shadowed_texts_as_transparent_texts', 'save_transparent_texts', 'special_folder_for_all_images', 'special_folder_for_svg_images', 'try_save_text_underlining_and_strikeouting_in_css', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_pdf_in_storage_to_html" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_pdf_in_storage_to_html`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'additional_margin_width_in_points' in params:
+            query_params.append(('additionalMarginWidthInPoints', params['additional_margin_width_in_points']))
+        if 'compress_svg_graphics_if_any' in params:
+            query_params.append(('compressSvgGraphicsIfAny', params['compress_svg_graphics_if_any']))
+        if 'convert_marked_content_to_layers' in params:
+            query_params.append(('convertMarkedContentToLayers', params['convert_marked_content_to_layers']))
+        if 'default_font_name' in params:
+            query_params.append(('defaultFontName', params['default_font_name']))
+        if 'document_type' in params:
+            query_params.append(('documentType', params['document_type']))
+        if 'fixed_layout' in params:
+            query_params.append(('fixedLayout', params['fixed_layout']))
+        if 'image_resolution' in params:
+            query_params.append(('imageResolution', params['image_resolution']))
+        if 'minimal_line_width' in params:
+            query_params.append(('minimalLineWidth', params['minimal_line_width']))
+        if 'prevent_glyphs_grouping' in params:
+            query_params.append(('preventGlyphsGrouping', params['prevent_glyphs_grouping']))
+        if 'split_css_into_pages' in params:
+            query_params.append(('splitCssIntoPages', params['split_css_into_pages']))
+        if 'split_into_pages' in params:
+            query_params.append(('splitIntoPages', params['split_into_pages']))
+        if 'use_z_order' in params:
+            query_params.append(('useZOrder', params['use_z_order']))
+        if 'antialiasing_processing' in params:
+            query_params.append(('antialiasingProcessing', params['antialiasing_processing']))
+        if 'css_class_names_prefix' in params:
+            query_params.append(('cssClassNamesPrefix', params['css_class_names_prefix']))
+        if 'explicit_list_of_saved_pages' in params:
+            query_params.append(('explicitListOfSavedPages', params['explicit_list_of_saved_pages']))
+            collection_formats['explicitListOfSavedPages'] = 'multi'
+        if 'font_encoding_strategy' in params:
+            query_params.append(('fontEncodingStrategy', params['font_encoding_strategy']))
+        if 'font_saving_mode' in params:
+            query_params.append(('fontSavingMode', params['font_saving_mode']))
+        if 'html_markup_generation_mode' in params:
+            query_params.append(('htmlMarkupGenerationMode', params['html_markup_generation_mode']))
+        if 'letters_positioning_method' in params:
+            query_params.append(('lettersPositioningMethod', params['letters_positioning_method']))
+        if 'pages_flow_type_depends_on_viewers_screen_size' in params:
+            query_params.append(('pagesFlowTypeDependsOnViewersScreenSize', params['pages_flow_type_depends_on_viewers_screen_size']))
+        if 'parts_embedding_mode' in params:
+            query_params.append(('partsEmbeddingMode', params['parts_embedding_mode']))
+        if 'raster_images_saving_mode' in params:
+            query_params.append(('rasterImagesSavingMode', params['raster_images_saving_mode']))
+        if 'remove_empty_areas_on_top_and_bottom' in params:
+            query_params.append(('removeEmptyAreasOnTopAndBottom', params['remove_empty_areas_on_top_and_bottom']))
+        if 'save_shadowed_texts_as_transparent_texts' in params:
+            query_params.append(('saveShadowedTextsAsTransparentTexts', params['save_shadowed_texts_as_transparent_texts']))
+        if 'save_transparent_texts' in params:
+            query_params.append(('saveTransparentTexts', params['save_transparent_texts']))
+        if 'special_folder_for_all_images' in params:
+            query_params.append(('specialFolderForAllImages', params['special_folder_for_all_images']))
+        if 'special_folder_for_svg_images' in params:
+            query_params.append(('specialFolderForSvgImages', params['special_folder_for_svg_images']))
+        if 'try_save_text_underlining_and_strikeouting_in_css' in params:
+            query_params.append(('trySaveTextUnderliningAndStrikeoutingInCss', params['try_save_text_underlining_and_strikeouting_in_css']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/convert/html', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_pdf_in_storage_to_la_te_x(self, name, **kwargs):
+        """
+        Converts PDF document (located on storage) to LaTeX format and returns resulting file in response content
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_pdf_in_storage_to_la_te_x(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int pages_count: Pages count.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_pdf_in_storage_to_la_te_x_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_pdf_in_storage_to_la_te_x_with_http_info(name, **kwargs)
+            return data
+
+    def get_pdf_in_storage_to_la_te_x_with_http_info(self, name, **kwargs):
+        """
+        Converts PDF document (located on storage) to LaTeX format and returns resulting file in response content
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_pdf_in_storage_to_la_te_x_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int pages_count: Pages count.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'pages_count', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_pdf_in_storage_to_la_te_x" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_pdf_in_storage_to_la_te_x`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'pages_count' in params:
+            query_params.append(('pagesCount', params['pages_count']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/convert/latex', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_pdf_in_storage_to_mobi_xml(self, name, **kwargs):
+        """
+        Converts PDF document (located on storage) to MOBIXML format and returns resulting file in response content
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_pdf_in_storage_to_mobi_xml(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_pdf_in_storage_to_mobi_xml_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_pdf_in_storage_to_mobi_xml_with_http_info(name, **kwargs)
+            return data
+
+    def get_pdf_in_storage_to_mobi_xml_with_http_info(self, name, **kwargs):
+        """
+        Converts PDF document (located on storage) to MOBIXML format and returns resulting file in response content
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_pdf_in_storage_to_mobi_xml_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_pdf_in_storage_to_mobi_xml" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_pdf_in_storage_to_mobi_xml`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/convert/mobixml', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def get_pdf_in_storage_to_pdf_a(self, name, type, **kwargs):
         """
         Converts PDF document (located on storage) to PdfA format and returns resulting file in response content
@@ -3457,6 +4129,122 @@ class PdfApi(object):
         auth_settings = []
 
         return self.api_client.call_api('/pdf/{name}/convert/pdfa', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_pdf_in_storage_to_pptx(self, name, **kwargs):
+        """
+        Converts PDF document (located on storage) to PPTX format and returns resulting file in response content
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_pdf_in_storage_to_pptx(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param bool separate_images: Separate images.
+        :param bool slides_as_images: Slides as images.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_pdf_in_storage_to_pptx_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_pdf_in_storage_to_pptx_with_http_info(name, **kwargs)
+            return data
+
+    def get_pdf_in_storage_to_pptx_with_http_info(self, name, **kwargs):
+        """
+        Converts PDF document (located on storage) to PPTX format and returns resulting file in response content
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_pdf_in_storage_to_pptx_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param bool separate_images: Separate images.
+        :param bool slides_as_images: Slides as images.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'separate_images', 'slides_as_images', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_pdf_in_storage_to_pptx" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_pdf_in_storage_to_pptx`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'separate_images' in params:
+            query_params.append(('separateImages', params['separate_images']))
+        if 'slides_as_images' in params:
+            query_params.append(('slidesAsImages', params['slides_as_images']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/convert/pptx', 'GET',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -3861,6 +4649,114 @@ class PdfApi(object):
         auth_settings = []
 
         return self.api_client.call_api('/pdf/{name}/convert/xls', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_pdf_in_storage_to_xml(self, name, **kwargs):
+        """
+        Converts PDF document (located on storage) to XML format and returns resulting file in response content
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_pdf_in_storage_to_xml(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_pdf_in_storage_to_xml_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_pdf_in_storage_to_xml_with_http_info(name, **kwargs)
+            return data
+
+    def get_pdf_in_storage_to_xml_with_http_info(self, name, **kwargs):
+        """
+        Converts PDF document (located on storage) to XML format and returns resulting file in response content
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_pdf_in_storage_to_xml_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_pdf_in_storage_to_xml" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_pdf_in_storage_to_xml`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/convert/xml', 'GET',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -4644,6 +5540,121 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def get_verify_signature(self, name, sign_name, **kwargs):
+        """
+        Verify signature document.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_verify_signature(name, sign_name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str sign_name: Sign name. (required)
+        :param str folder: The document folder.
+        :return: SignatureVerifyResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_verify_signature_with_http_info(name, sign_name, **kwargs)
+        else:
+            (data) = self.get_verify_signature_with_http_info(name, sign_name, **kwargs)
+            return data
+
+    def get_verify_signature_with_http_info(self, name, sign_name, **kwargs):
+        """
+        Verify signature document.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_verify_signature_with_http_info(name, sign_name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str sign_name: Sign name. (required)
+        :param str folder: The document folder.
+        :return: SignatureVerifyResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'sign_name', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_verify_signature" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_verify_signature`")
+        # verify the required parameter 'sign_name' is set
+        if ('sign_name' not in params) or (params['sign_name'] is None):
+            raise ValueError("Missing the required parameter `sign_name` when calling `get_verify_signature`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'sign_name' in params:
+            query_params.append(('signName', params['sign_name']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/verifySignature', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='SignatureVerifyResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def get_words_per_page(self, name, **kwargs):
         """
         Get number of words per document page.
@@ -4749,6 +5760,114 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='WordCountResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_xfa_pdf_in_storage_to_acro_form(self, name, **kwargs):
+        """
+        Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_xfa_pdf_in_storage_to_acro_form(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_xfa_pdf_in_storage_to_acro_form_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_xfa_pdf_in_storage_to_acro_form_with_http_info(name, **kwargs)
+            return data
+
+    def get_xfa_pdf_in_storage_to_acro_form_with_http_info(self, name, **kwargs):
+        """
+        Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_xfa_pdf_in_storage_to_acro_form_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_xfa_pdf_in_storage_to_acro_form" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_xfa_pdf_in_storage_to_acro_form`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/convert/xfatoacroform', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -7503,6 +8622,118 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def put_fields_flatten(self, name, **kwargs):
+        """
+        Flatten form fields in document.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_fields_flatten(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_fields_flatten_with_http_info(name, **kwargs)
+        else:
+            (data) = self.put_fields_flatten_with_http_info(name, **kwargs)
+            return data
+
+    def put_fields_flatten_with_http_info(self, name, **kwargs):
+        """
+        Flatten form fields in document.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_fields_flatten_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_fields_flatten" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_fields_flatten`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/fields/flatten', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='SaaSposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def put_merge_documents(self, name, **kwargs):
         """
         Merge a list of documents.
@@ -7885,6 +9116,559 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def put_pdf_in_request_to_epub(self, out_path, **kwargs):
+        """
+        Converts PDF document (in request content) to EPUB format and uploads resulting file to storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pdf_in_request_to_epub(out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.epub) (required)
+        :param str content_recognition_mode: �roperty tunes conversion for this or that desirable method of recognition of content.
+        :param file file: A file to be converted.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_pdf_in_request_to_epub_with_http_info(out_path, **kwargs)
+        else:
+            (data) = self.put_pdf_in_request_to_epub_with_http_info(out_path, **kwargs)
+            return data
+
+    def put_pdf_in_request_to_epub_with_http_info(self, out_path, **kwargs):
+        """
+        Converts PDF document (in request content) to EPUB format and uploads resulting file to storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pdf_in_request_to_epub_with_http_info(out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.epub) (required)
+        :param str content_recognition_mode: �roperty tunes conversion for this or that desirable method of recognition of content.
+        :param file file: A file to be converted.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['out_path', 'content_recognition_mode', 'file']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_pdf_in_request_to_epub" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'out_path' is set
+        if ('out_path' not in params) or (params['out_path'] is None):
+            raise ValueError("Missing the required parameter `out_path` when calling `put_pdf_in_request_to_epub`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'out_path' in params:
+            query_params.append(('outPath', params['out_path']))
+        if 'content_recognition_mode' in params:
+            query_params.append(('contentRecognitionMode', params['content_recognition_mode']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'file' in params:
+            local_var_files['file'] = params['file']
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['multipart/form-data'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/convert/epub', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_pdf_in_request_to_html(self, out_path, **kwargs):
+        """
+        Converts PDF document (in request content) to Html format and uploads resulting file to storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pdf_in_request_to_html(out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.html) (required)
+        :param int additional_margin_width_in_points: Defines width of margin that will be forcibly left around that output HTML-areas.
+        :param bool compress_svg_graphics_if_any: The flag that indicates whether found SVG graphics(if any) will be compressed(zipped) into SVGZ format during saving.
+        :param bool convert_marked_content_to_layers: If attribute ConvertMarkedContentToLayers set to true then an all elements inside a PDF marked content (layer) will be put into an HTML div with \"data-pdflayer\" attribute specifying a layer name. This layer name will be extracted from optional properties of PDF marked content. If this attribute is false (by default) then no any layers will be created from PDF marked content.
+        :param str default_font_name: Specifies the name of an installed font which is used to substitute any document font that is not embedded and not installed in the system. If null then default substitution font is used.
+        :param int document_type: Result document type.
+        :param bool fixed_layout: The value indicating whether that HTML is created as fixed layout.
+        :param int image_resolution: Resolution for image rendering.
+        :param int minimal_line_width: This attribute sets minimal width of graphic path line. If thickness of line is less than 1px Adobe Acrobat rounds it to this value. So this attribute can be used to emulate this behavior for HTML browsers.
+        :param bool prevent_glyphs_grouping: This attribute switch on the mode when text glyphs will not be grouped into words and strings This mode allows to keep maximum precision during positioning of glyphs on the page and it can be used for conversion documents with music notes or glyphs that should be placed separately each other. This parameter will be applied to document only when the value of FixedLayout attribute is true.
+        :param bool split_css_into_pages: When multipage-mode selected(i.e 'SplitIntoPages' is 'true'), then this attribute defines whether should be created separate CSS-file for each result HTML page.
+        :param bool split_into_pages: The flag that indicates whether each page of source document will be converted into it's own target HTML document, i.e whether result HTML will be splitted into several HTML-pages.
+        :param bool use_z_order: If attribute UseZORder set to true, graphics and text are added to resultant HTML document accordingly Z-order in original PDF document. If this attribute is false all graphics is put as single layer which may cause some unnecessary effects for overlapped objects.
+        :param str antialiasing_processing: The parameter defines required antialiasing measures during conversion of compound background images from PDF to HTML.
+        :param str css_class_names_prefix: When PDFtoHTML converter generates result CSSs, CSS class names (something like \".stl_01 {}\" ... \".stl_NN {}) are generated and used in result CSS. This property allows forcibly set class name prefix.
+        :param list[int] explicit_list_of_saved_pages: With this property You can explicitely define what pages of document should be converted. Pages in this list must have 1-based numbers. I.e. valid numbers of pages must be taken from range (1...[NumberOfPagesInConvertedDocument]) Order of appearing of pages in this list does not affect their order in result HTML page(s) - in result pages allways will go in order in which they are present in source PDF.
+        :param str font_encoding_strategy: Defines encoding special rule to tune PDF decoding for current document.
+        :param str font_saving_mode: Defines font saving mode that will be used during saving of PDF to desirable format.
+        :param str html_markup_generation_mode: Sometimes specific reqirments to generation of HTML markup are present. This parameter defines HTML preparing modes that can be used during conversion of PDF to HTML to match such specific requirments.
+        :param str letters_positioning_method: The mode of positioning of letters in words in result HTML.
+        :param bool pages_flow_type_depends_on_viewers_screen_size: If attribute 'SplitOnPages=false', than whole HTML representing all input PDF pages will be put into one big result HTML file. This flag defines whether result HTML will be generated in such way that flow of areas that represent PDF pages in result HTML will depend on screen resolution of viewer.
+        :param str parts_embedding_mode: It defines whether referenced files (HTML, Fonts,Images, CSSes) will be embedded into main HTML file or will be generated as apart binary entities.
+        :param str raster_images_saving_mode: Converted PDF can contain raster images This parameter defines how they should be handled during conversion of PDF to HTML.
+        :param bool remove_empty_areas_on_top_and_bottom: Defines whether in created HTML will be removed top and bottom empty area without any content (if any).
+        :param bool save_shadowed_texts_as_transparent_texts: Pdf can contain texts that are shadowed by another elements (f.e. by images) but can be selected to clipboard in Acrobat Reader (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML to mimic behaviour of Acrobat Reader (othervise such texts are usually saved as hidden, not available for copying to clipboard).
+        :param bool save_transparent_texts: Pdf can contain transparent texts that can be selected to clipboard (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML.
+        :param str special_folder_for_all_images: The path to directory to which must be saved any images if they are encountered during saving of document as HTML. If parameter is empty or null then image files(if any) wil be saved together with other files linked to HTML It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
+        :param str special_folder_for_svg_images: The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
+        :param bool try_save_text_underlining_and_strikeouting_in_css: PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
+        :param file file: A file to be converted.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_pdf_in_request_to_html_with_http_info(out_path, **kwargs)
+        else:
+            (data) = self.put_pdf_in_request_to_html_with_http_info(out_path, **kwargs)
+            return data
+
+    def put_pdf_in_request_to_html_with_http_info(self, out_path, **kwargs):
+        """
+        Converts PDF document (in request content) to Html format and uploads resulting file to storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pdf_in_request_to_html_with_http_info(out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.html) (required)
+        :param int additional_margin_width_in_points: Defines width of margin that will be forcibly left around that output HTML-areas.
+        :param bool compress_svg_graphics_if_any: The flag that indicates whether found SVG graphics(if any) will be compressed(zipped) into SVGZ format during saving.
+        :param bool convert_marked_content_to_layers: If attribute ConvertMarkedContentToLayers set to true then an all elements inside a PDF marked content (layer) will be put into an HTML div with \"data-pdflayer\" attribute specifying a layer name. This layer name will be extracted from optional properties of PDF marked content. If this attribute is false (by default) then no any layers will be created from PDF marked content.
+        :param str default_font_name: Specifies the name of an installed font which is used to substitute any document font that is not embedded and not installed in the system. If null then default substitution font is used.
+        :param int document_type: Result document type.
+        :param bool fixed_layout: The value indicating whether that HTML is created as fixed layout.
+        :param int image_resolution: Resolution for image rendering.
+        :param int minimal_line_width: This attribute sets minimal width of graphic path line. If thickness of line is less than 1px Adobe Acrobat rounds it to this value. So this attribute can be used to emulate this behavior for HTML browsers.
+        :param bool prevent_glyphs_grouping: This attribute switch on the mode when text glyphs will not be grouped into words and strings This mode allows to keep maximum precision during positioning of glyphs on the page and it can be used for conversion documents with music notes or glyphs that should be placed separately each other. This parameter will be applied to document only when the value of FixedLayout attribute is true.
+        :param bool split_css_into_pages: When multipage-mode selected(i.e 'SplitIntoPages' is 'true'), then this attribute defines whether should be created separate CSS-file for each result HTML page.
+        :param bool split_into_pages: The flag that indicates whether each page of source document will be converted into it's own target HTML document, i.e whether result HTML will be splitted into several HTML-pages.
+        :param bool use_z_order: If attribute UseZORder set to true, graphics and text are added to resultant HTML document accordingly Z-order in original PDF document. If this attribute is false all graphics is put as single layer which may cause some unnecessary effects for overlapped objects.
+        :param str antialiasing_processing: The parameter defines required antialiasing measures during conversion of compound background images from PDF to HTML.
+        :param str css_class_names_prefix: When PDFtoHTML converter generates result CSSs, CSS class names (something like \".stl_01 {}\" ... \".stl_NN {}) are generated and used in result CSS. This property allows forcibly set class name prefix.
+        :param list[int] explicit_list_of_saved_pages: With this property You can explicitely define what pages of document should be converted. Pages in this list must have 1-based numbers. I.e. valid numbers of pages must be taken from range (1...[NumberOfPagesInConvertedDocument]) Order of appearing of pages in this list does not affect their order in result HTML page(s) - in result pages allways will go in order in which they are present in source PDF.
+        :param str font_encoding_strategy: Defines encoding special rule to tune PDF decoding for current document.
+        :param str font_saving_mode: Defines font saving mode that will be used during saving of PDF to desirable format.
+        :param str html_markup_generation_mode: Sometimes specific reqirments to generation of HTML markup are present. This parameter defines HTML preparing modes that can be used during conversion of PDF to HTML to match such specific requirments.
+        :param str letters_positioning_method: The mode of positioning of letters in words in result HTML.
+        :param bool pages_flow_type_depends_on_viewers_screen_size: If attribute 'SplitOnPages=false', than whole HTML representing all input PDF pages will be put into one big result HTML file. This flag defines whether result HTML will be generated in such way that flow of areas that represent PDF pages in result HTML will depend on screen resolution of viewer.
+        :param str parts_embedding_mode: It defines whether referenced files (HTML, Fonts,Images, CSSes) will be embedded into main HTML file or will be generated as apart binary entities.
+        :param str raster_images_saving_mode: Converted PDF can contain raster images This parameter defines how they should be handled during conversion of PDF to HTML.
+        :param bool remove_empty_areas_on_top_and_bottom: Defines whether in created HTML will be removed top and bottom empty area without any content (if any).
+        :param bool save_shadowed_texts_as_transparent_texts: Pdf can contain texts that are shadowed by another elements (f.e. by images) but can be selected to clipboard in Acrobat Reader (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML to mimic behaviour of Acrobat Reader (othervise such texts are usually saved as hidden, not available for copying to clipboard).
+        :param bool save_transparent_texts: Pdf can contain transparent texts that can be selected to clipboard (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML.
+        :param str special_folder_for_all_images: The path to directory to which must be saved any images if they are encountered during saving of document as HTML. If parameter is empty or null then image files(if any) wil be saved together with other files linked to HTML It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
+        :param str special_folder_for_svg_images: The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
+        :param bool try_save_text_underlining_and_strikeouting_in_css: PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
+        :param file file: A file to be converted.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['out_path', 'additional_margin_width_in_points', 'compress_svg_graphics_if_any', 'convert_marked_content_to_layers', 'default_font_name', 'document_type', 'fixed_layout', 'image_resolution', 'minimal_line_width', 'prevent_glyphs_grouping', 'split_css_into_pages', 'split_into_pages', 'use_z_order', 'antialiasing_processing', 'css_class_names_prefix', 'explicit_list_of_saved_pages', 'font_encoding_strategy', 'font_saving_mode', 'html_markup_generation_mode', 'letters_positioning_method', 'pages_flow_type_depends_on_viewers_screen_size', 'parts_embedding_mode', 'raster_images_saving_mode', 'remove_empty_areas_on_top_and_bottom', 'save_shadowed_texts_as_transparent_texts', 'save_transparent_texts', 'special_folder_for_all_images', 'special_folder_for_svg_images', 'try_save_text_underlining_and_strikeouting_in_css', 'file']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_pdf_in_request_to_html" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'out_path' is set
+        if ('out_path' not in params) or (params['out_path'] is None):
+            raise ValueError("Missing the required parameter `out_path` when calling `put_pdf_in_request_to_html`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'out_path' in params:
+            query_params.append(('outPath', params['out_path']))
+        if 'additional_margin_width_in_points' in params:
+            query_params.append(('additionalMarginWidthInPoints', params['additional_margin_width_in_points']))
+        if 'compress_svg_graphics_if_any' in params:
+            query_params.append(('compressSvgGraphicsIfAny', params['compress_svg_graphics_if_any']))
+        if 'convert_marked_content_to_layers' in params:
+            query_params.append(('convertMarkedContentToLayers', params['convert_marked_content_to_layers']))
+        if 'default_font_name' in params:
+            query_params.append(('defaultFontName', params['default_font_name']))
+        if 'document_type' in params:
+            query_params.append(('documentType', params['document_type']))
+        if 'fixed_layout' in params:
+            query_params.append(('fixedLayout', params['fixed_layout']))
+        if 'image_resolution' in params:
+            query_params.append(('imageResolution', params['image_resolution']))
+        if 'minimal_line_width' in params:
+            query_params.append(('minimalLineWidth', params['minimal_line_width']))
+        if 'prevent_glyphs_grouping' in params:
+            query_params.append(('preventGlyphsGrouping', params['prevent_glyphs_grouping']))
+        if 'split_css_into_pages' in params:
+            query_params.append(('splitCssIntoPages', params['split_css_into_pages']))
+        if 'split_into_pages' in params:
+            query_params.append(('splitIntoPages', params['split_into_pages']))
+        if 'use_z_order' in params:
+            query_params.append(('useZOrder', params['use_z_order']))
+        if 'antialiasing_processing' in params:
+            query_params.append(('antialiasingProcessing', params['antialiasing_processing']))
+        if 'css_class_names_prefix' in params:
+            query_params.append(('cssClassNamesPrefix', params['css_class_names_prefix']))
+        if 'explicit_list_of_saved_pages' in params:
+            query_params.append(('explicitListOfSavedPages', params['explicit_list_of_saved_pages']))
+            collection_formats['explicitListOfSavedPages'] = 'multi'
+        if 'font_encoding_strategy' in params:
+            query_params.append(('fontEncodingStrategy', params['font_encoding_strategy']))
+        if 'font_saving_mode' in params:
+            query_params.append(('fontSavingMode', params['font_saving_mode']))
+        if 'html_markup_generation_mode' in params:
+            query_params.append(('htmlMarkupGenerationMode', params['html_markup_generation_mode']))
+        if 'letters_positioning_method' in params:
+            query_params.append(('lettersPositioningMethod', params['letters_positioning_method']))
+        if 'pages_flow_type_depends_on_viewers_screen_size' in params:
+            query_params.append(('pagesFlowTypeDependsOnViewersScreenSize', params['pages_flow_type_depends_on_viewers_screen_size']))
+        if 'parts_embedding_mode' in params:
+            query_params.append(('partsEmbeddingMode', params['parts_embedding_mode']))
+        if 'raster_images_saving_mode' in params:
+            query_params.append(('rasterImagesSavingMode', params['raster_images_saving_mode']))
+        if 'remove_empty_areas_on_top_and_bottom' in params:
+            query_params.append(('removeEmptyAreasOnTopAndBottom', params['remove_empty_areas_on_top_and_bottom']))
+        if 'save_shadowed_texts_as_transparent_texts' in params:
+            query_params.append(('saveShadowedTextsAsTransparentTexts', params['save_shadowed_texts_as_transparent_texts']))
+        if 'save_transparent_texts' in params:
+            query_params.append(('saveTransparentTexts', params['save_transparent_texts']))
+        if 'special_folder_for_all_images' in params:
+            query_params.append(('specialFolderForAllImages', params['special_folder_for_all_images']))
+        if 'special_folder_for_svg_images' in params:
+            query_params.append(('specialFolderForSvgImages', params['special_folder_for_svg_images']))
+        if 'try_save_text_underlining_and_strikeouting_in_css' in params:
+            query_params.append(('trySaveTextUnderliningAndStrikeoutingInCss', params['try_save_text_underlining_and_strikeouting_in_css']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'file' in params:
+            local_var_files['file'] = params['file']
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['multipart/form-data'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/convert/html', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_pdf_in_request_to_la_te_x(self, out_path, **kwargs):
+        """
+        Converts PDF document (in request content) to LaTeX format and uploads resulting file to storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pdf_in_request_to_la_te_x(out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.tex) (required)
+        :param int pages_count: Pages count.
+        :param file file: A file to be converted.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_pdf_in_request_to_la_te_x_with_http_info(out_path, **kwargs)
+        else:
+            (data) = self.put_pdf_in_request_to_la_te_x_with_http_info(out_path, **kwargs)
+            return data
+
+    def put_pdf_in_request_to_la_te_x_with_http_info(self, out_path, **kwargs):
+        """
+        Converts PDF document (in request content) to LaTeX format and uploads resulting file to storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pdf_in_request_to_la_te_x_with_http_info(out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.tex) (required)
+        :param int pages_count: Pages count.
+        :param file file: A file to be converted.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['out_path', 'pages_count', 'file']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_pdf_in_request_to_la_te_x" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'out_path' is set
+        if ('out_path' not in params) or (params['out_path'] is None):
+            raise ValueError("Missing the required parameter `out_path` when calling `put_pdf_in_request_to_la_te_x`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'out_path' in params:
+            query_params.append(('outPath', params['out_path']))
+        if 'pages_count' in params:
+            query_params.append(('pagesCount', params['pages_count']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'file' in params:
+            local_var_files['file'] = params['file']
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['multipart/form-data'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/convert/latex', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_pdf_in_request_to_mobi_xml(self, out_path, **kwargs):
+        """
+        Converts PDF document (in request content) to MOBIXML format and uploads resulting file to storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pdf_in_request_to_mobi_xml(out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.mobixml) (required)
+        :param file file: A file to be converted.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_pdf_in_request_to_mobi_xml_with_http_info(out_path, **kwargs)
+        else:
+            (data) = self.put_pdf_in_request_to_mobi_xml_with_http_info(out_path, **kwargs)
+            return data
+
+    def put_pdf_in_request_to_mobi_xml_with_http_info(self, out_path, **kwargs):
+        """
+        Converts PDF document (in request content) to MOBIXML format and uploads resulting file to storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pdf_in_request_to_mobi_xml_with_http_info(out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.mobixml) (required)
+        :param file file: A file to be converted.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['out_path', 'file']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_pdf_in_request_to_mobi_xml" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'out_path' is set
+        if ('out_path' not in params) or (params['out_path'] is None):
+            raise ValueError("Missing the required parameter `out_path` when calling `put_pdf_in_request_to_mobi_xml`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'out_path' in params:
+            query_params.append(('outPath', params['out_path']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'file' in params:
+            local_var_files['file'] = params['file']
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['multipart/form-data'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/convert/mobixml', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def put_pdf_in_request_to_pdf_a(self, out_path, type, **kwargs):
         """
         Converts PDF document (in request content) to PdfA format and uploads resulting file to storage.
@@ -7986,6 +9770,122 @@ class PdfApi(object):
         auth_settings = []
 
         return self.api_client.call_api('/pdf/convert/pdfa', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_pdf_in_request_to_pptx(self, out_path, **kwargs):
+        """
+        Converts PDF document (in request content) to PPTX format and uploads resulting file to storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pdf_in_request_to_pptx(out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pptx) (required)
+        :param bool separate_images: Separate images.
+        :param bool slides_as_images: Slides as images.
+        :param file file: A file to be converted.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_pdf_in_request_to_pptx_with_http_info(out_path, **kwargs)
+        else:
+            (data) = self.put_pdf_in_request_to_pptx_with_http_info(out_path, **kwargs)
+            return data
+
+    def put_pdf_in_request_to_pptx_with_http_info(self, out_path, **kwargs):
+        """
+        Converts PDF document (in request content) to PPTX format and uploads resulting file to storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pdf_in_request_to_pptx_with_http_info(out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pptx) (required)
+        :param bool separate_images: Separate images.
+        :param bool slides_as_images: Slides as images.
+        :param file file: A file to be converted.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['out_path', 'separate_images', 'slides_as_images', 'file']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_pdf_in_request_to_pptx" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'out_path' is set
+        if ('out_path' not in params) or (params['out_path'] is None):
+            raise ValueError("Missing the required parameter `out_path` when calling `put_pdf_in_request_to_pptx`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'out_path' in params:
+            query_params.append(('outPath', params['out_path']))
+        if 'separate_images' in params:
+            query_params.append(('separateImages', params['separate_images']))
+        if 'slides_as_images' in params:
+            query_params.append(('slidesAsImages', params['slides_as_images']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'file' in params:
+            local_var_files['file'] = params['file']
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['multipart/form-data'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/convert/pptx', 'PUT',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -8404,6 +10304,114 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def put_pdf_in_request_to_xml(self, out_path, **kwargs):
+        """
+        Converts PDF document (in request content) to XML format and uploads resulting file to storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pdf_in_request_to_xml(out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.xml) (required)
+        :param file file: A file to be converted.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_pdf_in_request_to_xml_with_http_info(out_path, **kwargs)
+        else:
+            (data) = self.put_pdf_in_request_to_xml_with_http_info(out_path, **kwargs)
+            return data
+
+    def put_pdf_in_request_to_xml_with_http_info(self, out_path, **kwargs):
+        """
+        Converts PDF document (in request content) to XML format and uploads resulting file to storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pdf_in_request_to_xml_with_http_info(out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.xml) (required)
+        :param file file: A file to be converted.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['out_path', 'file']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_pdf_in_request_to_xml" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'out_path' is set
+        if ('out_path' not in params) or (params['out_path'] is None):
+            raise ValueError("Missing the required parameter `out_path` when calling `put_pdf_in_request_to_xml`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'out_path' in params:
+            query_params.append(('outPath', params['out_path']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'file' in params:
+            local_var_files['file'] = params['file']
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['multipart/form-data'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/convert/xml', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def put_pdf_in_request_to_xps(self, out_path, **kwargs):
         """
         Converts PDF document (in request content) to XPS format and uploads resulting file to storage.
@@ -8659,6 +10667,587 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def put_pdf_in_storage_to_epub(self, name, out_path, **kwargs):
+        """
+        Converts PDF document (located on storage) to EPUB format and uploads resulting file to storage
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pdf_in_storage_to_epub(name, out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.epub) (required)
+        :param str content_recognition_mode: �roperty tunes conversion for this or that desirable method of recognition of content.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_pdf_in_storage_to_epub_with_http_info(name, out_path, **kwargs)
+        else:
+            (data) = self.put_pdf_in_storage_to_epub_with_http_info(name, out_path, **kwargs)
+            return data
+
+    def put_pdf_in_storage_to_epub_with_http_info(self, name, out_path, **kwargs):
+        """
+        Converts PDF document (located on storage) to EPUB format and uploads resulting file to storage
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pdf_in_storage_to_epub_with_http_info(name, out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.epub) (required)
+        :param str content_recognition_mode: �roperty tunes conversion for this or that desirable method of recognition of content.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'out_path', 'content_recognition_mode', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_pdf_in_storage_to_epub" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_pdf_in_storage_to_epub`")
+        # verify the required parameter 'out_path' is set
+        if ('out_path' not in params) or (params['out_path'] is None):
+            raise ValueError("Missing the required parameter `out_path` when calling `put_pdf_in_storage_to_epub`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'out_path' in params:
+            query_params.append(('outPath', params['out_path']))
+        if 'content_recognition_mode' in params:
+            query_params.append(('contentRecognitionMode', params['content_recognition_mode']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/convert/epub', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_pdf_in_storage_to_html(self, name, out_path, **kwargs):
+        """
+        Converts PDF document (located on storage) to Html format and uploads resulting file to storage
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pdf_in_storage_to_html(name, out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.html) (required)
+        :param int additional_margin_width_in_points: Defines width of margin that will be forcibly left around that output HTML-areas.
+        :param bool compress_svg_graphics_if_any: The flag that indicates whether found SVG graphics(if any) will be compressed(zipped) into SVGZ format during saving.
+        :param bool convert_marked_content_to_layers: If attribute ConvertMarkedContentToLayers set to true then an all elements inside a PDF marked content (layer) will be put into an HTML div with \"data-pdflayer\" attribute specifying a layer name. This layer name will be extracted from optional properties of PDF marked content. If this attribute is false (by default) then no any layers will be created from PDF marked content.
+        :param str default_font_name: Specifies the name of an installed font which is used to substitute any document font that is not embedded and not installed in the system. If null then default substitution font is used.
+        :param int document_type: Result document type.
+        :param bool fixed_layout: The value indicating whether that HTML is created as fixed layout.
+        :param int image_resolution: Resolution for image rendering.
+        :param int minimal_line_width: This attribute sets minimal width of graphic path line. If thickness of line is less than 1px Adobe Acrobat rounds it to this value. So this attribute can be used to emulate this behavior for HTML browsers.
+        :param bool prevent_glyphs_grouping: This attribute switch on the mode when text glyphs will not be grouped into words and strings This mode allows to keep maximum precision during positioning of glyphs on the page and it can be used for conversion documents with music notes or glyphs that should be placed separately each other. This parameter will be applied to document only when the value of FixedLayout attribute is true.
+        :param bool split_css_into_pages: When multipage-mode selected(i.e 'SplitIntoPages' is 'true'), then this attribute defines whether should be created separate CSS-file for each result HTML page.
+        :param bool split_into_pages: The flag that indicates whether each page of source document will be converted into it's own target HTML document, i.e whether result HTML will be splitted into several HTML-pages.
+        :param bool use_z_order: If attribute UseZORder set to true, graphics and text are added to resultant HTML document accordingly Z-order in original PDF document. If this attribute is false all graphics is put as single layer which may cause some unnecessary effects for overlapped objects.
+        :param str antialiasing_processing: The parameter defines required antialiasing measures during conversion of compound background images from PDF to HTML.
+        :param str css_class_names_prefix: When PDFtoHTML converter generates result CSSs, CSS class names (something like \".stl_01 {}\" ... \".stl_NN {}) are generated and used in result CSS. This property allows forcibly set class name prefix.
+        :param list[int] explicit_list_of_saved_pages: With this property You can explicitely define what pages of document should be converted. Pages in this list must have 1-based numbers. I.e. valid numbers of pages must be taken from range (1...[NumberOfPagesInConvertedDocument]) Order of appearing of pages in this list does not affect their order in result HTML page(s) - in result pages allways will go in order in which they are present in source PDF.
+        :param str font_encoding_strategy: Defines encoding special rule to tune PDF decoding for current document.
+        :param str font_saving_mode: Defines font saving mode that will be used during saving of PDF to desirable format.
+        :param str html_markup_generation_mode: Sometimes specific reqirments to generation of HTML markup are present. This parameter defines HTML preparing modes that can be used during conversion of PDF to HTML to match such specific requirments.
+        :param str letters_positioning_method: The mode of positioning of letters in words in result HTML.
+        :param bool pages_flow_type_depends_on_viewers_screen_size: If attribute 'SplitOnPages=false', than whole HTML representing all input PDF pages will be put into one big result HTML file. This flag defines whether result HTML will be generated in such way that flow of areas that represent PDF pages in result HTML will depend on screen resolution of viewer.
+        :param str parts_embedding_mode: It defines whether referenced files (HTML, Fonts,Images, CSSes) will be embedded into main HTML file or will be generated as apart binary entities.
+        :param str raster_images_saving_mode: Converted PDF can contain raster images This parameter defines how they should be handled during conversion of PDF to HTML.
+        :param bool remove_empty_areas_on_top_and_bottom: Defines whether in created HTML will be removed top and bottom empty area without any content (if any).
+        :param bool save_shadowed_texts_as_transparent_texts: Pdf can contain texts that are shadowed by another elements (f.e. by images) but can be selected to clipboard in Acrobat Reader (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML to mimic behaviour of Acrobat Reader (othervise such texts are usually saved as hidden, not available for copying to clipboard).
+        :param bool save_transparent_texts: Pdf can contain transparent texts that can be selected to clipboard (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML.
+        :param str special_folder_for_all_images: The path to directory to which must be saved any images if they are encountered during saving of document as HTML. If parameter is empty or null then image files(if any) wil be saved together with other files linked to HTML It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
+        :param str special_folder_for_svg_images: The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
+        :param bool try_save_text_underlining_and_strikeouting_in_css: PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_pdf_in_storage_to_html_with_http_info(name, out_path, **kwargs)
+        else:
+            (data) = self.put_pdf_in_storage_to_html_with_http_info(name, out_path, **kwargs)
+            return data
+
+    def put_pdf_in_storage_to_html_with_http_info(self, name, out_path, **kwargs):
+        """
+        Converts PDF document (located on storage) to Html format and uploads resulting file to storage
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pdf_in_storage_to_html_with_http_info(name, out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.html) (required)
+        :param int additional_margin_width_in_points: Defines width of margin that will be forcibly left around that output HTML-areas.
+        :param bool compress_svg_graphics_if_any: The flag that indicates whether found SVG graphics(if any) will be compressed(zipped) into SVGZ format during saving.
+        :param bool convert_marked_content_to_layers: If attribute ConvertMarkedContentToLayers set to true then an all elements inside a PDF marked content (layer) will be put into an HTML div with \"data-pdflayer\" attribute specifying a layer name. This layer name will be extracted from optional properties of PDF marked content. If this attribute is false (by default) then no any layers will be created from PDF marked content.
+        :param str default_font_name: Specifies the name of an installed font which is used to substitute any document font that is not embedded and not installed in the system. If null then default substitution font is used.
+        :param int document_type: Result document type.
+        :param bool fixed_layout: The value indicating whether that HTML is created as fixed layout.
+        :param int image_resolution: Resolution for image rendering.
+        :param int minimal_line_width: This attribute sets minimal width of graphic path line. If thickness of line is less than 1px Adobe Acrobat rounds it to this value. So this attribute can be used to emulate this behavior for HTML browsers.
+        :param bool prevent_glyphs_grouping: This attribute switch on the mode when text glyphs will not be grouped into words and strings This mode allows to keep maximum precision during positioning of glyphs on the page and it can be used for conversion documents with music notes or glyphs that should be placed separately each other. This parameter will be applied to document only when the value of FixedLayout attribute is true.
+        :param bool split_css_into_pages: When multipage-mode selected(i.e 'SplitIntoPages' is 'true'), then this attribute defines whether should be created separate CSS-file for each result HTML page.
+        :param bool split_into_pages: The flag that indicates whether each page of source document will be converted into it's own target HTML document, i.e whether result HTML will be splitted into several HTML-pages.
+        :param bool use_z_order: If attribute UseZORder set to true, graphics and text are added to resultant HTML document accordingly Z-order in original PDF document. If this attribute is false all graphics is put as single layer which may cause some unnecessary effects for overlapped objects.
+        :param str antialiasing_processing: The parameter defines required antialiasing measures during conversion of compound background images from PDF to HTML.
+        :param str css_class_names_prefix: When PDFtoHTML converter generates result CSSs, CSS class names (something like \".stl_01 {}\" ... \".stl_NN {}) are generated and used in result CSS. This property allows forcibly set class name prefix.
+        :param list[int] explicit_list_of_saved_pages: With this property You can explicitely define what pages of document should be converted. Pages in this list must have 1-based numbers. I.e. valid numbers of pages must be taken from range (1...[NumberOfPagesInConvertedDocument]) Order of appearing of pages in this list does not affect their order in result HTML page(s) - in result pages allways will go in order in which they are present in source PDF.
+        :param str font_encoding_strategy: Defines encoding special rule to tune PDF decoding for current document.
+        :param str font_saving_mode: Defines font saving mode that will be used during saving of PDF to desirable format.
+        :param str html_markup_generation_mode: Sometimes specific reqirments to generation of HTML markup are present. This parameter defines HTML preparing modes that can be used during conversion of PDF to HTML to match such specific requirments.
+        :param str letters_positioning_method: The mode of positioning of letters in words in result HTML.
+        :param bool pages_flow_type_depends_on_viewers_screen_size: If attribute 'SplitOnPages=false', than whole HTML representing all input PDF pages will be put into one big result HTML file. This flag defines whether result HTML will be generated in such way that flow of areas that represent PDF pages in result HTML will depend on screen resolution of viewer.
+        :param str parts_embedding_mode: It defines whether referenced files (HTML, Fonts,Images, CSSes) will be embedded into main HTML file or will be generated as apart binary entities.
+        :param str raster_images_saving_mode: Converted PDF can contain raster images This parameter defines how they should be handled during conversion of PDF to HTML.
+        :param bool remove_empty_areas_on_top_and_bottom: Defines whether in created HTML will be removed top and bottom empty area without any content (if any).
+        :param bool save_shadowed_texts_as_transparent_texts: Pdf can contain texts that are shadowed by another elements (f.e. by images) but can be selected to clipboard in Acrobat Reader (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML to mimic behaviour of Acrobat Reader (othervise such texts are usually saved as hidden, not available for copying to clipboard).
+        :param bool save_transparent_texts: Pdf can contain transparent texts that can be selected to clipboard (usually it happen when document contains images and OCRed texts extracted from it). This settings tells to converter whether we need save such texts as transparent selectable texts in result HTML.
+        :param str special_folder_for_all_images: The path to directory to which must be saved any images if they are encountered during saving of document as HTML. If parameter is empty or null then image files(if any) wil be saved together with other files linked to HTML It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
+        :param str special_folder_for_svg_images: The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
+        :param bool try_save_text_underlining_and_strikeouting_in_css: PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'out_path', 'additional_margin_width_in_points', 'compress_svg_graphics_if_any', 'convert_marked_content_to_layers', 'default_font_name', 'document_type', 'fixed_layout', 'image_resolution', 'minimal_line_width', 'prevent_glyphs_grouping', 'split_css_into_pages', 'split_into_pages', 'use_z_order', 'antialiasing_processing', 'css_class_names_prefix', 'explicit_list_of_saved_pages', 'font_encoding_strategy', 'font_saving_mode', 'html_markup_generation_mode', 'letters_positioning_method', 'pages_flow_type_depends_on_viewers_screen_size', 'parts_embedding_mode', 'raster_images_saving_mode', 'remove_empty_areas_on_top_and_bottom', 'save_shadowed_texts_as_transparent_texts', 'save_transparent_texts', 'special_folder_for_all_images', 'special_folder_for_svg_images', 'try_save_text_underlining_and_strikeouting_in_css', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_pdf_in_storage_to_html" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_pdf_in_storage_to_html`")
+        # verify the required parameter 'out_path' is set
+        if ('out_path' not in params) or (params['out_path'] is None):
+            raise ValueError("Missing the required parameter `out_path` when calling `put_pdf_in_storage_to_html`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'out_path' in params:
+            query_params.append(('outPath', params['out_path']))
+        if 'additional_margin_width_in_points' in params:
+            query_params.append(('additionalMarginWidthInPoints', params['additional_margin_width_in_points']))
+        if 'compress_svg_graphics_if_any' in params:
+            query_params.append(('compressSvgGraphicsIfAny', params['compress_svg_graphics_if_any']))
+        if 'convert_marked_content_to_layers' in params:
+            query_params.append(('convertMarkedContentToLayers', params['convert_marked_content_to_layers']))
+        if 'default_font_name' in params:
+            query_params.append(('defaultFontName', params['default_font_name']))
+        if 'document_type' in params:
+            query_params.append(('documentType', params['document_type']))
+        if 'fixed_layout' in params:
+            query_params.append(('fixedLayout', params['fixed_layout']))
+        if 'image_resolution' in params:
+            query_params.append(('imageResolution', params['image_resolution']))
+        if 'minimal_line_width' in params:
+            query_params.append(('minimalLineWidth', params['minimal_line_width']))
+        if 'prevent_glyphs_grouping' in params:
+            query_params.append(('preventGlyphsGrouping', params['prevent_glyphs_grouping']))
+        if 'split_css_into_pages' in params:
+            query_params.append(('splitCssIntoPages', params['split_css_into_pages']))
+        if 'split_into_pages' in params:
+            query_params.append(('splitIntoPages', params['split_into_pages']))
+        if 'use_z_order' in params:
+            query_params.append(('useZOrder', params['use_z_order']))
+        if 'antialiasing_processing' in params:
+            query_params.append(('antialiasingProcessing', params['antialiasing_processing']))
+        if 'css_class_names_prefix' in params:
+            query_params.append(('cssClassNamesPrefix', params['css_class_names_prefix']))
+        if 'explicit_list_of_saved_pages' in params:
+            query_params.append(('explicitListOfSavedPages', params['explicit_list_of_saved_pages']))
+            collection_formats['explicitListOfSavedPages'] = 'multi'
+        if 'font_encoding_strategy' in params:
+            query_params.append(('fontEncodingStrategy', params['font_encoding_strategy']))
+        if 'font_saving_mode' in params:
+            query_params.append(('fontSavingMode', params['font_saving_mode']))
+        if 'html_markup_generation_mode' in params:
+            query_params.append(('htmlMarkupGenerationMode', params['html_markup_generation_mode']))
+        if 'letters_positioning_method' in params:
+            query_params.append(('lettersPositioningMethod', params['letters_positioning_method']))
+        if 'pages_flow_type_depends_on_viewers_screen_size' in params:
+            query_params.append(('pagesFlowTypeDependsOnViewersScreenSize', params['pages_flow_type_depends_on_viewers_screen_size']))
+        if 'parts_embedding_mode' in params:
+            query_params.append(('partsEmbeddingMode', params['parts_embedding_mode']))
+        if 'raster_images_saving_mode' in params:
+            query_params.append(('rasterImagesSavingMode', params['raster_images_saving_mode']))
+        if 'remove_empty_areas_on_top_and_bottom' in params:
+            query_params.append(('removeEmptyAreasOnTopAndBottom', params['remove_empty_areas_on_top_and_bottom']))
+        if 'save_shadowed_texts_as_transparent_texts' in params:
+            query_params.append(('saveShadowedTextsAsTransparentTexts', params['save_shadowed_texts_as_transparent_texts']))
+        if 'save_transparent_texts' in params:
+            query_params.append(('saveTransparentTexts', params['save_transparent_texts']))
+        if 'special_folder_for_all_images' in params:
+            query_params.append(('specialFolderForAllImages', params['special_folder_for_all_images']))
+        if 'special_folder_for_svg_images' in params:
+            query_params.append(('specialFolderForSvgImages', params['special_folder_for_svg_images']))
+        if 'try_save_text_underlining_and_strikeouting_in_css' in params:
+            query_params.append(('trySaveTextUnderliningAndStrikeoutingInCss', params['try_save_text_underlining_and_strikeouting_in_css']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/convert/html', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_pdf_in_storage_to_la_te_x(self, name, out_path, **kwargs):
+        """
+        Converts PDF document (located on storage) to LaTeX format and uploads resulting file to storage
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pdf_in_storage_to_la_te_x(name, out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.tex) (required)
+        :param int pages_count: Pages count.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_pdf_in_storage_to_la_te_x_with_http_info(name, out_path, **kwargs)
+        else:
+            (data) = self.put_pdf_in_storage_to_la_te_x_with_http_info(name, out_path, **kwargs)
+            return data
+
+    def put_pdf_in_storage_to_la_te_x_with_http_info(self, name, out_path, **kwargs):
+        """
+        Converts PDF document (located on storage) to LaTeX format and uploads resulting file to storage
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pdf_in_storage_to_la_te_x_with_http_info(name, out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.tex) (required)
+        :param int pages_count: Pages count.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'out_path', 'pages_count', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_pdf_in_storage_to_la_te_x" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_pdf_in_storage_to_la_te_x`")
+        # verify the required parameter 'out_path' is set
+        if ('out_path' not in params) or (params['out_path'] is None):
+            raise ValueError("Missing the required parameter `out_path` when calling `put_pdf_in_storage_to_la_te_x`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'out_path' in params:
+            query_params.append(('outPath', params['out_path']))
+        if 'pages_count' in params:
+            query_params.append(('pagesCount', params['pages_count']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/convert/latex', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_pdf_in_storage_to_mobi_xml(self, name, out_path, **kwargs):
+        """
+        Converts PDF document (located on storage) to MOBIXML format and uploads resulting file to storage
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pdf_in_storage_to_mobi_xml(name, out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.mobixml) (required)
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_pdf_in_storage_to_mobi_xml_with_http_info(name, out_path, **kwargs)
+        else:
+            (data) = self.put_pdf_in_storage_to_mobi_xml_with_http_info(name, out_path, **kwargs)
+            return data
+
+    def put_pdf_in_storage_to_mobi_xml_with_http_info(self, name, out_path, **kwargs):
+        """
+        Converts PDF document (located on storage) to MOBIXML format and uploads resulting file to storage
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pdf_in_storage_to_mobi_xml_with_http_info(name, out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.mobixml) (required)
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'out_path', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_pdf_in_storage_to_mobi_xml" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_pdf_in_storage_to_mobi_xml`")
+        # verify the required parameter 'out_path' is set
+        if ('out_path' not in params) or (params['out_path'] is None):
+            raise ValueError("Missing the required parameter `out_path` when calling `put_pdf_in_storage_to_mobi_xml`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'out_path' in params:
+            query_params.append(('outPath', params['out_path']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/convert/mobixml', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def put_pdf_in_storage_to_pdf_a(self, name, out_path, type, **kwargs):
         """
         Converts PDF document (located on storage) to PdfA format and uploads resulting file to storage
@@ -8767,6 +11356,129 @@ class PdfApi(object):
         auth_settings = []
 
         return self.api_client.call_api('/pdf/{name}/convert/pdfa', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_pdf_in_storage_to_pptx(self, name, out_path, **kwargs):
+        """
+        Converts PDF document (located on storage) to PPTX format and uploads resulting file to storage
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pdf_in_storage_to_pptx(name, out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pptx) (required)
+        :param bool separate_images: Separate images.
+        :param bool slides_as_images: Slides as images.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_pdf_in_storage_to_pptx_with_http_info(name, out_path, **kwargs)
+        else:
+            (data) = self.put_pdf_in_storage_to_pptx_with_http_info(name, out_path, **kwargs)
+            return data
+
+    def put_pdf_in_storage_to_pptx_with_http_info(self, name, out_path, **kwargs):
+        """
+        Converts PDF document (located on storage) to PPTX format and uploads resulting file to storage
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pdf_in_storage_to_pptx_with_http_info(name, out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pptx) (required)
+        :param bool separate_images: Separate images.
+        :param bool slides_as_images: Slides as images.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'out_path', 'separate_images', 'slides_as_images', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_pdf_in_storage_to_pptx" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_pdf_in_storage_to_pptx`")
+        # verify the required parameter 'out_path' is set
+        if ('out_path' not in params) or (params['out_path'] is None):
+            raise ValueError("Missing the required parameter `out_path` when calling `put_pdf_in_storage_to_pptx`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'out_path' in params:
+            query_params.append(('outPath', params['out_path']))
+        if 'separate_images' in params:
+            query_params.append(('separateImages', params['separate_images']))
+        if 'slides_as_images' in params:
+            query_params.append(('slidesAsImages', params['slides_as_images']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/convert/pptx', 'PUT',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -9206,6 +11918,121 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def put_pdf_in_storage_to_xml(self, name, out_path, **kwargs):
+        """
+        Converts PDF document (located on storage) to XML format and uploads resulting file to storage
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pdf_in_storage_to_xml(name, out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.xml) (required)
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_pdf_in_storage_to_xml_with_http_info(name, out_path, **kwargs)
+        else:
+            (data) = self.put_pdf_in_storage_to_xml_with_http_info(name, out_path, **kwargs)
+            return data
+
+    def put_pdf_in_storage_to_xml_with_http_info(self, name, out_path, **kwargs):
+        """
+        Converts PDF document (located on storage) to XML format and uploads resulting file to storage
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pdf_in_storage_to_xml_with_http_info(name, out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.xml) (required)
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'out_path', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_pdf_in_storage_to_xml" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_pdf_in_storage_to_xml`")
+        # verify the required parameter 'out_path' is set
+        if ('out_path' not in params) or (params['out_path'] is None):
+            raise ValueError("Missing the required parameter `out_path` when calling `put_pdf_in_storage_to_xml`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'out_path' in params:
+            query_params.append(('outPath', params['out_path']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/convert/xml', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def put_pdf_in_storage_to_xps(self, name, out_path, **kwargs):
         """
         Converts PDF document (located on storage) to XPS format and uploads resulting file to storage
@@ -9314,6 +12141,118 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_privileges(self, name, **kwargs):
+        """
+        Update privilege document.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_privileges(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param DocumentPrivilege privileges: Document privileges. 
+        :param str folder: The document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_privileges_with_http_info(name, **kwargs)
+        else:
+            (data) = self.put_privileges_with_http_info(name, **kwargs)
+            return data
+
+    def put_privileges_with_http_info(self, name, **kwargs):
+        """
+        Update privilege document.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_privileges_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param DocumentPrivilege privileges: Document privileges. 
+        :param str folder: The document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'privileges', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_privileges" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_privileges`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'privileges' in params:
+            body_params = params['privileges']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/privileges', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -9792,6 +12731,229 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='FieldsResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_xfa_pdf_in_request_to_acro_form(self, out_path, **kwargs):
+        """
+        Converts PDF document which contatins XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_xfa_pdf_in_request_to_acro_form(out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
+        :param file file: A file to be converted.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_xfa_pdf_in_request_to_acro_form_with_http_info(out_path, **kwargs)
+        else:
+            (data) = self.put_xfa_pdf_in_request_to_acro_form_with_http_info(out_path, **kwargs)
+            return data
+
+    def put_xfa_pdf_in_request_to_acro_form_with_http_info(self, out_path, **kwargs):
+        """
+        Converts PDF document which contatins XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_xfa_pdf_in_request_to_acro_form_with_http_info(out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
+        :param file file: A file to be converted.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['out_path', 'file']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_xfa_pdf_in_request_to_acro_form" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'out_path' is set
+        if ('out_path' not in params) or (params['out_path'] is None):
+            raise ValueError("Missing the required parameter `out_path` when calling `put_xfa_pdf_in_request_to_acro_form`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'out_path' in params:
+            query_params.append(('outPath', params['out_path']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'file' in params:
+            local_var_files['file'] = params['file']
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['multipart/form-data'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/convert/xfatoacroform', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_xfa_pdf_in_storage_to_acro_form(self, name, out_path, **kwargs):
+        """
+        Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_xfa_pdf_in_storage_to_acro_form(name, out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_xfa_pdf_in_storage_to_acro_form_with_http_info(name, out_path, **kwargs)
+        else:
+            (data) = self.put_xfa_pdf_in_storage_to_acro_form_with_http_info(name, out_path, **kwargs)
+            return data
+
+    def put_xfa_pdf_in_storage_to_acro_form_with_http_info(self, name, out_path, **kwargs):
+        """
+        Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_xfa_pdf_in_storage_to_acro_form_with_http_info(name, out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'out_path', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_xfa_pdf_in_storage_to_acro_form" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_xfa_pdf_in_storage_to_acro_form`")
+        # verify the required parameter 'out_path' is set
+        if ('out_path' not in params) or (params['out_path'] is None):
+            raise ValueError("Missing the required parameter `out_path` when calling `put_xfa_pdf_in_storage_to_acro_form`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'out_path' in params:
+            query_params.append(('outPath', params['out_path']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/convert/xfatoacroform', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
