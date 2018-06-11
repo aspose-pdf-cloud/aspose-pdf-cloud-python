@@ -38,7 +38,9 @@ from .models.color import Color
 from .models.color_depth import ColorDepth
 from .models.compression_type import CompressionType
 from .models.doc_format import DocFormat
+from .models.doc_recognition_mode import DocRecognitionMode
 from .models.document_privilege import DocumentPrivilege
+from .models.epub_recognition_mode import EpubRecognitionMode
 from .models.field_type import FieldType
 from .models.font_encoding_rules import FontEncodingRules
 from .models.font_saving_modes import FontSavingModes
@@ -61,8 +63,6 @@ from .models.paragraph import Paragraph
 from .models.parts_embedding_modes import PartsEmbeddingModes
 from .models.pdf_a_type import PdfAType
 from .models.raster_images_saving_modes import RasterImagesSavingModes
-from .models.recognition_mode import RecognitionMode
-from .models.recognition_mode2 import RecognitionMode2
 from .models.rectangle import Rectangle
 from .models.rotation import Rotation
 from .models.saa_spose_response import SaaSposeResponse

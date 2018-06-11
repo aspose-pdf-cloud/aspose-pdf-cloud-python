@@ -1456,6 +1456,110 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def get_epub_in_storage_to_pdf(self, src_path, **kwargs):
+        """
+        Convert EPUB file (located on storage) to PDF format and return resulting file in response. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_epub_in_storage_to_pdf(src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.epub) (required)
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_epub_in_storage_to_pdf_with_http_info(src_path, **kwargs)
+        else:
+            (data) = self.get_epub_in_storage_to_pdf_with_http_info(src_path, **kwargs)
+            return data
+
+    def get_epub_in_storage_to_pdf_with_http_info(self, src_path, **kwargs):
+        """
+        Convert EPUB file (located on storage) to PDF format and return resulting file in response. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_epub_in_storage_to_pdf_with_http_info(src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.epub) (required)
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['src_path']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_epub_in_storage_to_pdf" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'src_path' is set
+        if ('src_path' not in params) or (params['src_path'] is None):
+            raise ValueError("Missing the required parameter `src_path` when calling `get_epub_in_storage_to_pdf`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'src_path' in params:
+            query_params.append(('srcPath', params['src_path']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/create/epub', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def get_field(self, name, field_name, **kwargs):
         """
         Get document field by name.
@@ -2066,6 +2170,145 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def get_html_in_storage_to_pdf(self, src_path, html_file_name, **kwargs):
+        """
+        Convert HTML file (located on storage) to PDF format and return resulting file in response. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_html_in_storage_to_pdf(src_path, html_file_name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.zip) (required)
+        :param str html_file_name: Name of HTML file in ZIP. (required)
+        :param float height: Page height
+        :param float width: Page width
+        :param bool is_landscape: Is page landscaped
+        :param float margin_left: Page margin left
+        :param float margin_bottom: Page margin bottom
+        :param float margin_right: Page margin right
+        :param float margin_top: Page margin top
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_html_in_storage_to_pdf_with_http_info(src_path, html_file_name, **kwargs)
+        else:
+            (data) = self.get_html_in_storage_to_pdf_with_http_info(src_path, html_file_name, **kwargs)
+            return data
+
+    def get_html_in_storage_to_pdf_with_http_info(self, src_path, html_file_name, **kwargs):
+        """
+        Convert HTML file (located on storage) to PDF format and return resulting file in response. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_html_in_storage_to_pdf_with_http_info(src_path, html_file_name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.zip) (required)
+        :param str html_file_name: Name of HTML file in ZIP. (required)
+        :param float height: Page height
+        :param float width: Page width
+        :param bool is_landscape: Is page landscaped
+        :param float margin_left: Page margin left
+        :param float margin_bottom: Page margin bottom
+        :param float margin_right: Page margin right
+        :param float margin_top: Page margin top
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['src_path', 'html_file_name', 'height', 'width', 'is_landscape', 'margin_left', 'margin_bottom', 'margin_right', 'margin_top']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_html_in_storage_to_pdf" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'src_path' is set
+        if ('src_path' not in params) or (params['src_path'] is None):
+            raise ValueError("Missing the required parameter `src_path` when calling `get_html_in_storage_to_pdf`")
+        # verify the required parameter 'html_file_name' is set
+        if ('html_file_name' not in params) or (params['html_file_name'] is None):
+            raise ValueError("Missing the required parameter `html_file_name` when calling `get_html_in_storage_to_pdf`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'src_path' in params:
+            query_params.append(('srcPath', params['src_path']))
+        if 'html_file_name' in params:
+            query_params.append(('htmlFileName', params['html_file_name']))
+        if 'height' in params:
+            query_params.append(('height', params['height']))
+        if 'width' in params:
+            query_params.append(('width', params['width']))
+        if 'is_landscape' in params:
+            query_params.append(('isLandscape', params['is_landscape']))
+        if 'margin_left' in params:
+            query_params.append(('marginLeft', params['margin_left']))
+        if 'margin_bottom' in params:
+            query_params.append(('marginBottom', params['margin_bottom']))
+        if 'margin_right' in params:
+            query_params.append(('marginRight', params['margin_right']))
+        if 'margin_top' in params:
+            query_params.append(('marginTop', params['margin_top']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/create/html', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def get_image(self, name, page_number, image_number, **kwargs):
         """
         Extract document image in format specified.
@@ -2316,6 +2559,214 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='ImagesResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_la_te_x_in_storage_to_pdf(self, src_path, **kwargs):
+        """
+        Convert LaTeX file (located on storage) to PDF format and return resulting file in response. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_la_te_x_in_storage_to_pdf(src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.tex) (required)
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_la_te_x_in_storage_to_pdf_with_http_info(src_path, **kwargs)
+        else:
+            (data) = self.get_la_te_x_in_storage_to_pdf_with_http_info(src_path, **kwargs)
+            return data
+
+    def get_la_te_x_in_storage_to_pdf_with_http_info(self, src_path, **kwargs):
+        """
+        Convert LaTeX file (located on storage) to PDF format and return resulting file in response. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_la_te_x_in_storage_to_pdf_with_http_info(src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.tex) (required)
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['src_path']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_la_te_x_in_storage_to_pdf" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'src_path' is set
+        if ('src_path' not in params) or (params['src_path'] is None):
+            raise ValueError("Missing the required parameter `src_path` when calling `get_la_te_x_in_storage_to_pdf`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'src_path' in params:
+            query_params.append(('srcPath', params['src_path']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/create/latex', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_mht_in_storage_to_pdf(self, src_path, **kwargs):
+        """
+        Convert MHT file (located on storage) to PDF format and return resulting file in response. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_mht_in_storage_to_pdf(src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.mht) (required)
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_mht_in_storage_to_pdf_with_http_info(src_path, **kwargs)
+        else:
+            (data) = self.get_mht_in_storage_to_pdf_with_http_info(src_path, **kwargs)
+            return data
+
+    def get_mht_in_storage_to_pdf_with_http_info(self, src_path, **kwargs):
+        """
+        Convert MHT file (located on storage) to PDF format and return resulting file in response. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_mht_in_storage_to_pdf_with_http_info(src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.mht) (required)
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['src_path']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_mht_in_storage_to_pdf" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'src_path' is set
+        if ('src_path' not in params) or (params['src_path'] is None):
+            raise ValueError("Missing the required parameter `src_path` when calling `get_mht_in_storage_to_pdf`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'src_path' in params:
+            query_params.append(('srcPath', params['src_path']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/create/mht', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -3335,6 +3786,110 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def get_pcl_in_storage_to_pdf(self, src_path, **kwargs):
+        """
+        Convert PCL file (located on storage) to PDF format and return resulting file in response. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_pcl_in_storage_to_pdf(src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.pcl) (required)
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_pcl_in_storage_to_pdf_with_http_info(src_path, **kwargs)
+        else:
+            (data) = self.get_pcl_in_storage_to_pdf_with_http_info(src_path, **kwargs)
+            return data
+
+    def get_pcl_in_storage_to_pdf_with_http_info(self, src_path, **kwargs):
+        """
+        Convert PCL file (located on storage) to PDF format and return resulting file in response. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_pcl_in_storage_to_pdf_with_http_info(src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.pcl) (required)
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['src_path']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_pcl_in_storage_to_pdf" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'src_path' is set
+        if ('src_path' not in params) or (params['src_path'] is None):
+            raise ValueError("Missing the required parameter `src_path` when calling `get_pcl_in_storage_to_pdf`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'src_path' in params:
+            query_params.append(('srcPath', params['src_path']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/create/pcl', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def get_pdf_in_storage_to_doc(self, name, **kwargs):
         """
         Converts PDF document (located on storage) to DOC format and returns resulting file in response content
@@ -3489,7 +4044,7 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param str content_recognition_mode: �roperty tunes conversion for this or that desirable method of recognition of content.
+        :param str content_recognition_mode: Рroperty tunes conversion for this or that desirable method of recognition of content.
         :param str folder: The document folder.
         :return: file
                  If the method is called asynchronously,
@@ -3516,7 +4071,7 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param str content_recognition_mode: �roperty tunes conversion for this or that desirable method of recognition of content.
+        :param str content_recognition_mode: Рroperty tunes conversion for this or that desirable method of recognition of content.
         :param str folder: The document folder.
         :return: file
                  If the method is called asynchronously,
@@ -3605,7 +4160,7 @@ class PdfApi(object):
         :param bool compress_svg_graphics_if_any: The flag that indicates whether found SVG graphics(if any) will be compressed(zipped) into SVGZ format during saving.
         :param bool convert_marked_content_to_layers: If attribute ConvertMarkedContentToLayers set to true then an all elements inside a PDF marked content (layer) will be put into an HTML div with \"data-pdflayer\" attribute specifying a layer name. This layer name will be extracted from optional properties of PDF marked content. If this attribute is false (by default) then no any layers will be created from PDF marked content.
         :param str default_font_name: Specifies the name of an installed font which is used to substitute any document font that is not embedded and not installed in the system. If null then default substitution font is used.
-        :param int document_type: Result document type.
+        :param str document_type: Result document type.
         :param bool fixed_layout: The value indicating whether that HTML is created as fixed layout.
         :param int image_resolution: Resolution for image rendering.
         :param int minimal_line_width: This attribute sets minimal width of graphic path line. If thickness of line is less than 1px Adobe Acrobat rounds it to this value. So this attribute can be used to emulate this behavior for HTML browsers.
@@ -3659,7 +4214,7 @@ class PdfApi(object):
         :param bool compress_svg_graphics_if_any: The flag that indicates whether found SVG graphics(if any) will be compressed(zipped) into SVGZ format during saving.
         :param bool convert_marked_content_to_layers: If attribute ConvertMarkedContentToLayers set to true then an all elements inside a PDF marked content (layer) will be put into an HTML div with \"data-pdflayer\" attribute specifying a layer name. This layer name will be extracted from optional properties of PDF marked content. If this attribute is false (by default) then no any layers will be created from PDF marked content.
         :param str default_font_name: Specifies the name of an installed font which is used to substitute any document font that is not embedded and not installed in the system. If null then default substitution font is used.
-        :param int document_type: Result document type.
+        :param str document_type: Result document type.
         :param bool fixed_layout: The value indicating whether that HTML is created as fixed layout.
         :param int image_resolution: Resolution for image rendering.
         :param int minimal_line_width: This attribute sets minimal width of graphic path line. If thickness of line is less than 1px Adobe Acrobat rounds it to this value. So this attribute can be used to emulate this behavior for HTML browsers.
@@ -5275,6 +5830,142 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def get_svg_in_storage_to_pdf(self, src_path, **kwargs):
+        """
+        Convert SVG file (located on storage) to PDF format and return resulting file in response. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_svg_in_storage_to_pdf(src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.svg) (required)
+        :param bool adjust_page_size: Adjust page size
+        :param float height: Page height
+        :param float width: Page width
+        :param bool is_landscape: Is page landscaped
+        :param float margin_left: Page margin left
+        :param float margin_bottom: Page margin bottom
+        :param float margin_right: Page margin right
+        :param float margin_top: Page margin top
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_svg_in_storage_to_pdf_with_http_info(src_path, **kwargs)
+        else:
+            (data) = self.get_svg_in_storage_to_pdf_with_http_info(src_path, **kwargs)
+            return data
+
+    def get_svg_in_storage_to_pdf_with_http_info(self, src_path, **kwargs):
+        """
+        Convert SVG file (located on storage) to PDF format and return resulting file in response. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_svg_in_storage_to_pdf_with_http_info(src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.svg) (required)
+        :param bool adjust_page_size: Adjust page size
+        :param float height: Page height
+        :param float width: Page width
+        :param bool is_landscape: Is page landscaped
+        :param float margin_left: Page margin left
+        :param float margin_bottom: Page margin bottom
+        :param float margin_right: Page margin right
+        :param float margin_top: Page margin top
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['src_path', 'adjust_page_size', 'height', 'width', 'is_landscape', 'margin_left', 'margin_bottom', 'margin_right', 'margin_top']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_svg_in_storage_to_pdf" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'src_path' is set
+        if ('src_path' not in params) or (params['src_path'] is None):
+            raise ValueError("Missing the required parameter `src_path` when calling `get_svg_in_storage_to_pdf`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'src_path' in params:
+            query_params.append(('srcPath', params['src_path']))
+        if 'adjust_page_size' in params:
+            query_params.append(('adjustPageSize', params['adjust_page_size']))
+        if 'height' in params:
+            query_params.append(('height', params['height']))
+        if 'width' in params:
+            query_params.append(('width', params['width']))
+        if 'is_landscape' in params:
+            query_params.append(('isLandscape', params['is_landscape']))
+        if 'margin_left' in params:
+            query_params.append(('marginLeft', params['margin_left']))
+        if 'margin_bottom' in params:
+            query_params.append(('marginBottom', params['margin_bottom']))
+        if 'margin_right' in params:
+            query_params.append(('marginRight', params['margin_right']))
+        if 'margin_top' in params:
+            query_params.append(('marginTop', params['margin_top']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/create/svg', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def get_text(self, name, x, y, width, height, **kwargs):
         """
         Read document text.
@@ -5655,6 +6346,138 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def get_web_in_storage_to_pdf(self, url, **kwargs):
+        """
+        Convert web page to PDF format and return resulting file in response. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_web_in_storage_to_pdf(url, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str url: Source url (required)
+        :param float height: Page height
+        :param float width: Page width
+        :param bool is_landscape: Is page landscaped
+        :param float margin_left: Page margin left
+        :param float margin_bottom: Page margin bottom
+        :param float margin_right: Page margin right
+        :param float margin_top: Page margin top
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_web_in_storage_to_pdf_with_http_info(url, **kwargs)
+        else:
+            (data) = self.get_web_in_storage_to_pdf_with_http_info(url, **kwargs)
+            return data
+
+    def get_web_in_storage_to_pdf_with_http_info(self, url, **kwargs):
+        """
+        Convert web page to PDF format and return resulting file in response. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_web_in_storage_to_pdf_with_http_info(url, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str url: Source url (required)
+        :param float height: Page height
+        :param float width: Page width
+        :param bool is_landscape: Is page landscaped
+        :param float margin_left: Page margin left
+        :param float margin_bottom: Page margin bottom
+        :param float margin_right: Page margin right
+        :param float margin_top: Page margin top
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['url', 'height', 'width', 'is_landscape', 'margin_left', 'margin_bottom', 'margin_right', 'margin_top']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_web_in_storage_to_pdf" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'url' is set
+        if ('url' not in params) or (params['url'] is None):
+            raise ValueError("Missing the required parameter `url` when calling `get_web_in_storage_to_pdf`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'url' in params:
+            query_params.append(('url', params['url']))
+        if 'height' in params:
+            query_params.append(('height', params['height']))
+        if 'width' in params:
+            query_params.append(('width', params['width']))
+        if 'is_landscape' in params:
+            query_params.append(('isLandscape', params['is_landscape']))
+        if 'margin_left' in params:
+            query_params.append(('marginLeft', params['margin_left']))
+        if 'margin_bottom' in params:
+            query_params.append(('marginBottom', params['margin_bottom']))
+        if 'margin_right' in params:
+            query_params.append(('marginRight', params['margin_right']))
+        if 'margin_top' in params:
+            query_params.append(('marginTop', params['margin_top']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/create/web', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def get_words_per_page(self, name, **kwargs):
         """
         Get number of words per document page.
@@ -5861,6 +6684,322 @@ class PdfApi(object):
         auth_settings = []
 
         return self.api_client.call_api('/pdf/{name}/convert/xfatoacroform', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_xml_in_storage_to_pdf(self, src_path, **kwargs):
+        """
+        Convert XML file (located on storage) to PDF format and return resulting file in response. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_xml_in_storage_to_pdf(src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.xml) (required)
+        :param str xsl_file_path: Full XSL source filename (ex. /folder1/folder2/template.xsl)
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_xml_in_storage_to_pdf_with_http_info(src_path, **kwargs)
+        else:
+            (data) = self.get_xml_in_storage_to_pdf_with_http_info(src_path, **kwargs)
+            return data
+
+    def get_xml_in_storage_to_pdf_with_http_info(self, src_path, **kwargs):
+        """
+        Convert XML file (located on storage) to PDF format and return resulting file in response. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_xml_in_storage_to_pdf_with_http_info(src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.xml) (required)
+        :param str xsl_file_path: Full XSL source filename (ex. /folder1/folder2/template.xsl)
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['src_path', 'xsl_file_path']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_xml_in_storage_to_pdf" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'src_path' is set
+        if ('src_path' not in params) or (params['src_path'] is None):
+            raise ValueError("Missing the required parameter `src_path` when calling `get_xml_in_storage_to_pdf`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'src_path' in params:
+            query_params.append(('srcPath', params['src_path']))
+        if 'xsl_file_path' in params:
+            query_params.append(('xslFilePath', params['xsl_file_path']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/create/xml', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_xps_in_storage_to_pdf(self, src_path, **kwargs):
+        """
+        Convert XPS file (located on storage) to PDF format and return resulting file in response. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_xps_in_storage_to_pdf(src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.xps) (required)
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_xps_in_storage_to_pdf_with_http_info(src_path, **kwargs)
+        else:
+            (data) = self.get_xps_in_storage_to_pdf_with_http_info(src_path, **kwargs)
+            return data
+
+    def get_xps_in_storage_to_pdf_with_http_info(self, src_path, **kwargs):
+        """
+        Convert XPS file (located on storage) to PDF format and return resulting file in response. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_xps_in_storage_to_pdf_with_http_info(src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.xps) (required)
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['src_path']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_xps_in_storage_to_pdf" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'src_path' is set
+        if ('src_path' not in params) or (params['src_path'] is None):
+            raise ValueError("Missing the required parameter `src_path` when calling `get_xps_in_storage_to_pdf`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'src_path' in params:
+            query_params.append(('srcPath', params['src_path']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/create/xps', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_xsl_fo_in_storage_to_pdf(self, src_path, **kwargs):
+        """
+        Convert XslFo file (located on storage) to PDF format and return resulting file in response. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_xsl_fo_in_storage_to_pdf(src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.xslfo) (required)
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_xsl_fo_in_storage_to_pdf_with_http_info(src_path, **kwargs)
+        else:
+            (data) = self.get_xsl_fo_in_storage_to_pdf_with_http_info(src_path, **kwargs)
+            return data
+
+    def get_xsl_fo_in_storage_to_pdf_with_http_info(self, src_path, **kwargs):
+        """
+        Convert XslFo file (located on storage) to PDF format and return resulting file in response. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_xsl_fo_in_storage_to_pdf_with_http_info(src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.xslfo) (required)
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['src_path']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_xsl_fo_in_storage_to_pdf" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'src_path' is set
+        if ('src_path' not in params) or (params['src_path'] is None):
+            raise ValueError("Missing the required parameter `src_path` when calling `get_xsl_fo_in_storage_to_pdf`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'src_path' in params:
+            query_params.append(('srcPath', params['src_path']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/create/xslfo', 'GET',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -8622,6 +9761,121 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def put_epub_in_storage_to_pdf(self, name, src_path, **kwargs):
+        """
+        Convert EPUB file (located on storage) to PDF format and upload resulting file to storage. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_epub_in_storage_to_pdf(name, src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.epub) (required)
+        :param str dst_folder: The destination document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_epub_in_storage_to_pdf_with_http_info(name, src_path, **kwargs)
+        else:
+            (data) = self.put_epub_in_storage_to_pdf_with_http_info(name, src_path, **kwargs)
+            return data
+
+    def put_epub_in_storage_to_pdf_with_http_info(self, name, src_path, **kwargs):
+        """
+        Convert EPUB file (located on storage) to PDF format and upload resulting file to storage. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_epub_in_storage_to_pdf_with_http_info(name, src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.epub) (required)
+        :param str dst_folder: The destination document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'src_path', 'dst_folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_epub_in_storage_to_pdf" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_epub_in_storage_to_pdf`")
+        # verify the required parameter 'src_path' is set
+        if ('src_path' not in params) or (params['src_path'] is None):
+            raise ValueError("Missing the required parameter `src_path` when calling `put_epub_in_storage_to_pdf`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'src_path' in params:
+            query_params.append(('srcPath', params['src_path']))
+        if 'dst_folder' in params:
+            query_params.append(('dstFolder', params['dst_folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/create/epub', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='SaaSposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def put_fields_flatten(self, name, **kwargs):
         """
         Flatten form fields in document.
@@ -8720,6 +9974,271 @@ class PdfApi(object):
         auth_settings = []
 
         return self.api_client.call_api('/pdf/{name}/fields/flatten', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='SaaSposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_html_in_storage_to_pdf(self, name, src_path, html_file_name, **kwargs):
+        """
+        Convert HTML file (located on storage) to PDF format and upload resulting file to storage. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_html_in_storage_to_pdf(name, src_path, html_file_name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.zip) (required)
+        :param str html_file_name: Name of HTML file in ZIP. (required)
+        :param float height: Page height
+        :param float width: Page width
+        :param bool is_landscape: Is page landscaped
+        :param float margin_left: Page margin left
+        :param float margin_bottom: Page margin bottom
+        :param float margin_right: Page margin right
+        :param float margin_top: Page margin top
+        :param str dst_folder: The destination document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_html_in_storage_to_pdf_with_http_info(name, src_path, html_file_name, **kwargs)
+        else:
+            (data) = self.put_html_in_storage_to_pdf_with_http_info(name, src_path, html_file_name, **kwargs)
+            return data
+
+    def put_html_in_storage_to_pdf_with_http_info(self, name, src_path, html_file_name, **kwargs):
+        """
+        Convert HTML file (located on storage) to PDF format and upload resulting file to storage. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_html_in_storage_to_pdf_with_http_info(name, src_path, html_file_name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.zip) (required)
+        :param str html_file_name: Name of HTML file in ZIP. (required)
+        :param float height: Page height
+        :param float width: Page width
+        :param bool is_landscape: Is page landscaped
+        :param float margin_left: Page margin left
+        :param float margin_bottom: Page margin bottom
+        :param float margin_right: Page margin right
+        :param float margin_top: Page margin top
+        :param str dst_folder: The destination document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'src_path', 'html_file_name', 'height', 'width', 'is_landscape', 'margin_left', 'margin_bottom', 'margin_right', 'margin_top', 'dst_folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_html_in_storage_to_pdf" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_html_in_storage_to_pdf`")
+        # verify the required parameter 'src_path' is set
+        if ('src_path' not in params) or (params['src_path'] is None):
+            raise ValueError("Missing the required parameter `src_path` when calling `put_html_in_storage_to_pdf`")
+        # verify the required parameter 'html_file_name' is set
+        if ('html_file_name' not in params) or (params['html_file_name'] is None):
+            raise ValueError("Missing the required parameter `html_file_name` when calling `put_html_in_storage_to_pdf`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'src_path' in params:
+            query_params.append(('srcPath', params['src_path']))
+        if 'html_file_name' in params:
+            query_params.append(('htmlFileName', params['html_file_name']))
+        if 'height' in params:
+            query_params.append(('height', params['height']))
+        if 'width' in params:
+            query_params.append(('width', params['width']))
+        if 'is_landscape' in params:
+            query_params.append(('isLandscape', params['is_landscape']))
+        if 'margin_left' in params:
+            query_params.append(('marginLeft', params['margin_left']))
+        if 'margin_bottom' in params:
+            query_params.append(('marginBottom', params['margin_bottom']))
+        if 'margin_right' in params:
+            query_params.append(('marginRight', params['margin_right']))
+        if 'margin_top' in params:
+            query_params.append(('marginTop', params['margin_top']))
+        if 'dst_folder' in params:
+            query_params.append(('dstFolder', params['dst_folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/create/html', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='SaaSposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_la_te_x_in_storage_to_pdf(self, name, src_path, **kwargs):
+        """
+        Convert LaTeX file (located on storage) to PDF format and upload resulting file to storage. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_la_te_x_in_storage_to_pdf(name, src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.tex) (required)
+        :param str dst_folder: The destination document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_la_te_x_in_storage_to_pdf_with_http_info(name, src_path, **kwargs)
+        else:
+            (data) = self.put_la_te_x_in_storage_to_pdf_with_http_info(name, src_path, **kwargs)
+            return data
+
+    def put_la_te_x_in_storage_to_pdf_with_http_info(self, name, src_path, **kwargs):
+        """
+        Convert LaTeX file (located on storage) to PDF format and upload resulting file to storage. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_la_te_x_in_storage_to_pdf_with_http_info(name, src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.tex) (required)
+        :param str dst_folder: The destination document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'src_path', 'dst_folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_la_te_x_in_storage_to_pdf" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_la_te_x_in_storage_to_pdf`")
+        # verify the required parameter 'src_path' is set
+        if ('src_path' not in params) or (params['src_path'] is None):
+            raise ValueError("Missing the required parameter `src_path` when calling `put_la_te_x_in_storage_to_pdf`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'src_path' in params:
+            query_params.append(('srcPath', params['src_path']))
+        if 'dst_folder' in params:
+            query_params.append(('dstFolder', params['dst_folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/create/latex', 'PUT',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -8843,6 +10362,121 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='DocumentResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_mht_in_storage_to_pdf(self, name, src_path, **kwargs):
+        """
+        Convert MHT file (located on storage) to PDF format and upload resulting file to storage. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_mht_in_storage_to_pdf(name, src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.mht) (required)
+        :param str dst_folder: The destination document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_mht_in_storage_to_pdf_with_http_info(name, src_path, **kwargs)
+        else:
+            (data) = self.put_mht_in_storage_to_pdf_with_http_info(name, src_path, **kwargs)
+            return data
+
+    def put_mht_in_storage_to_pdf_with_http_info(self, name, src_path, **kwargs):
+        """
+        Convert MHT file (located on storage) to PDF format and upload resulting file to storage. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_mht_in_storage_to_pdf_with_http_info(name, src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.mht) (required)
+        :param str dst_folder: The destination document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'src_path', 'dst_folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_mht_in_storage_to_pdf" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_mht_in_storage_to_pdf`")
+        # verify the required parameter 'src_path' is set
+        if ('src_path' not in params) or (params['src_path'] is None):
+            raise ValueError("Missing the required parameter `src_path` when calling `put_mht_in_storage_to_pdf`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'src_path' in params:
+            query_params.append(('srcPath', params['src_path']))
+        if 'dst_folder' in params:
+            query_params.append(('dstFolder', params['dst_folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/create/mht', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -8976,6 +10610,121 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def put_pcl_in_storage_to_pdf(self, name, src_path, **kwargs):
+        """
+        Convert PCL file (located on storage) to PDF format and upload resulting file to storage. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pcl_in_storage_to_pdf(name, src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.pcl) (required)
+        :param str dst_folder: The destination document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_pcl_in_storage_to_pdf_with_http_info(name, src_path, **kwargs)
+        else:
+            (data) = self.put_pcl_in_storage_to_pdf_with_http_info(name, src_path, **kwargs)
+            return data
+
+    def put_pcl_in_storage_to_pdf_with_http_info(self, name, src_path, **kwargs):
+        """
+        Convert PCL file (located on storage) to PDF format and upload resulting file to storage. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_pcl_in_storage_to_pdf_with_http_info(name, src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.pcl) (required)
+        :param str dst_folder: The destination document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'src_path', 'dst_folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_pcl_in_storage_to_pdf" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_pcl_in_storage_to_pdf`")
+        # verify the required parameter 'src_path' is set
+        if ('src_path' not in params) or (params['src_path'] is None):
+            raise ValueError("Missing the required parameter `src_path` when calling `put_pcl_in_storage_to_pdf`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'src_path' in params:
+            query_params.append(('srcPath', params['src_path']))
+        if 'dst_folder' in params:
+            query_params.append(('dstFolder', params['dst_folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/create/pcl', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='SaaSposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def put_pdf_in_request_to_doc(self, out_path, **kwargs):
         """
         Converts PDF document (in request content) to DOC format and uploads resulting file to storage.
@@ -8999,7 +10748,7 @@ class PdfApi(object):
         :param bool recognize_bullets: Recognize bullets.
         :param float relative_horizontal_proximity: Relative horizontal proximity.
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9033,7 +10782,7 @@ class PdfApi(object):
         :param bool recognize_bullets: Recognize bullets.
         :param float relative_horizontal_proximity: Relative horizontal proximity.
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9108,7 +10857,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -9130,9 +10879,9 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-        :param str content_recognition_mode: �roperty tunes conversion for this or that desirable method of recognition of content.
+        :param str content_recognition_mode: Рroperty tunes conversion for this or that desirable method of recognition of content.
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9157,9 +10906,9 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-        :param str content_recognition_mode: �roperty tunes conversion for this or that desirable method of recognition of content.
+        :param str content_recognition_mode: Рroperty tunes conversion for this or that desirable method of recognition of content.
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9220,7 +10969,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -9246,7 +10995,7 @@ class PdfApi(object):
         :param bool compress_svg_graphics_if_any: The flag that indicates whether found SVG graphics(if any) will be compressed(zipped) into SVGZ format during saving.
         :param bool convert_marked_content_to_layers: If attribute ConvertMarkedContentToLayers set to true then an all elements inside a PDF marked content (layer) will be put into an HTML div with \"data-pdflayer\" attribute specifying a layer name. This layer name will be extracted from optional properties of PDF marked content. If this attribute is false (by default) then no any layers will be created from PDF marked content.
         :param str default_font_name: Specifies the name of an installed font which is used to substitute any document font that is not embedded and not installed in the system. If null then default substitution font is used.
-        :param int document_type: Result document type.
+        :param str document_type: Result document type.
         :param bool fixed_layout: The value indicating whether that HTML is created as fixed layout.
         :param int image_resolution: Resolution for image rendering.
         :param int minimal_line_width: This attribute sets minimal width of graphic path line. If thickness of line is less than 1px Adobe Acrobat rounds it to this value. So this attribute can be used to emulate this behavior for HTML browsers.
@@ -9271,7 +11020,7 @@ class PdfApi(object):
         :param str special_folder_for_svg_images: The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
         :param bool try_save_text_underlining_and_strikeouting_in_css: PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9300,7 +11049,7 @@ class PdfApi(object):
         :param bool compress_svg_graphics_if_any: The flag that indicates whether found SVG graphics(if any) will be compressed(zipped) into SVGZ format during saving.
         :param bool convert_marked_content_to_layers: If attribute ConvertMarkedContentToLayers set to true then an all elements inside a PDF marked content (layer) will be put into an HTML div with \"data-pdflayer\" attribute specifying a layer name. This layer name will be extracted from optional properties of PDF marked content. If this attribute is false (by default) then no any layers will be created from PDF marked content.
         :param str default_font_name: Specifies the name of an installed font which is used to substitute any document font that is not embedded and not installed in the system. If null then default substitution font is used.
-        :param int document_type: Result document type.
+        :param str document_type: Result document type.
         :param bool fixed_layout: The value indicating whether that HTML is created as fixed layout.
         :param int image_resolution: Resolution for image rendering.
         :param int minimal_line_width: This attribute sets minimal width of graphic path line. If thickness of line is less than 1px Adobe Acrobat rounds it to this value. So this attribute can be used to emulate this behavior for HTML browsers.
@@ -9325,7 +11074,7 @@ class PdfApi(object):
         :param str special_folder_for_svg_images: The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
         :param bool try_save_text_underlining_and_strikeouting_in_css: PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9441,7 +11190,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -9465,7 +11214,7 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.tex) (required)
         :param int pages_count: Pages count.
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9492,7 +11241,7 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.tex) (required)
         :param int pages_count: Pages count.
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9553,7 +11302,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -9576,7 +11325,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.mobixml) (required)
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9602,7 +11351,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.mobixml) (required)
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9661,7 +11410,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -9685,7 +11434,7 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
         :param str type: Type of PdfA format. (required)
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9712,7 +11461,7 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
         :param str type: Type of PdfA format. (required)
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9776,7 +11525,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -9801,7 +11550,7 @@ class PdfApi(object):
         :param bool separate_images: Separate images.
         :param bool slides_as_images: Slides as images.
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9829,7 +11578,7 @@ class PdfApi(object):
         :param bool separate_images: Separate images.
         :param bool slides_as_images: Slides as images.
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9892,7 +11641,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -9916,7 +11665,7 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.svg) (required)
         :param bool compress_output_to_zip_archive: Specifies whether output will be created as one zip-archive.
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9943,7 +11692,7 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.svg) (required)
         :param bool compress_output_to_zip_archive: Specifies whether output will be created as one zip-archive.
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -10004,7 +11753,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -10042,7 +11791,7 @@ class PdfApi(object):
         :param int page_index: Start page to export.
         :param int page_count: Number of pages to export.
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -10083,7 +11832,7 @@ class PdfApi(object):
         :param int page_index: Start page to export.
         :param int page_count: Number of pages to export.
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -10172,7 +11921,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -10199,7 +11948,7 @@ class PdfApi(object):
         :param float scale_factor: Scale factor
         :param bool uniform_worksheets: Uniform worksheets
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -10229,7 +11978,7 @@ class PdfApi(object):
         :param float scale_factor: Scale factor
         :param bool uniform_worksheets: Uniform worksheets
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -10296,7 +12045,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -10319,7 +12068,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.xml) (required)
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -10345,7 +12094,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.xml) (required)
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -10404,7 +12153,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -10427,7 +12176,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.xps) (required)
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -10453,7 +12202,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.xps) (required)
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -10512,7 +12261,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -10544,7 +12293,7 @@ class PdfApi(object):
         :param bool recognize_bullets: Recognize bullets.
         :param float relative_horizontal_proximity: Relative horizontal proximity.
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -10579,7 +12328,7 @@ class PdfApi(object):
         :param bool recognize_bullets: Recognize bullets.
         :param float relative_horizontal_proximity: Relative horizontal proximity.
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -10659,7 +12408,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -10682,9 +12431,9 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-        :param str content_recognition_mode: �roperty tunes conversion for this or that desirable method of recognition of content.
+        :param str content_recognition_mode: Рroperty tunes conversion for this or that desirable method of recognition of content.
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -10710,9 +12459,9 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-        :param str content_recognition_mode: �roperty tunes conversion for this or that desirable method of recognition of content.
+        :param str content_recognition_mode: Рroperty tunes conversion for this or that desirable method of recognition of content.
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -10778,7 +12527,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -10805,7 +12554,7 @@ class PdfApi(object):
         :param bool compress_svg_graphics_if_any: The flag that indicates whether found SVG graphics(if any) will be compressed(zipped) into SVGZ format during saving.
         :param bool convert_marked_content_to_layers: If attribute ConvertMarkedContentToLayers set to true then an all elements inside a PDF marked content (layer) will be put into an HTML div with \"data-pdflayer\" attribute specifying a layer name. This layer name will be extracted from optional properties of PDF marked content. If this attribute is false (by default) then no any layers will be created from PDF marked content.
         :param str default_font_name: Specifies the name of an installed font which is used to substitute any document font that is not embedded and not installed in the system. If null then default substitution font is used.
-        :param int document_type: Result document type.
+        :param str document_type: Result document type.
         :param bool fixed_layout: The value indicating whether that HTML is created as fixed layout.
         :param int image_resolution: Resolution for image rendering.
         :param int minimal_line_width: This attribute sets minimal width of graphic path line. If thickness of line is less than 1px Adobe Acrobat rounds it to this value. So this attribute can be used to emulate this behavior for HTML browsers.
@@ -10830,7 +12579,7 @@ class PdfApi(object):
         :param str special_folder_for_svg_images: The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
         :param bool try_save_text_underlining_and_strikeouting_in_css: PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -10860,7 +12609,7 @@ class PdfApi(object):
         :param bool compress_svg_graphics_if_any: The flag that indicates whether found SVG graphics(if any) will be compressed(zipped) into SVGZ format during saving.
         :param bool convert_marked_content_to_layers: If attribute ConvertMarkedContentToLayers set to true then an all elements inside a PDF marked content (layer) will be put into an HTML div with \"data-pdflayer\" attribute specifying a layer name. This layer name will be extracted from optional properties of PDF marked content. If this attribute is false (by default) then no any layers will be created from PDF marked content.
         :param str default_font_name: Specifies the name of an installed font which is used to substitute any document font that is not embedded and not installed in the system. If null then default substitution font is used.
-        :param int document_type: Result document type.
+        :param str document_type: Result document type.
         :param bool fixed_layout: The value indicating whether that HTML is created as fixed layout.
         :param int image_resolution: Resolution for image rendering.
         :param int minimal_line_width: This attribute sets minimal width of graphic path line. If thickness of line is less than 1px Adobe Acrobat rounds it to this value. So this attribute can be used to emulate this behavior for HTML browsers.
@@ -10885,7 +12634,7 @@ class PdfApi(object):
         :param str special_folder_for_svg_images: The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
         :param bool try_save_text_underlining_and_strikeouting_in_css: PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -11006,7 +12755,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -11031,7 +12780,7 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.tex) (required)
         :param int pages_count: Pages count.
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -11059,7 +12808,7 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.tex) (required)
         :param int pages_count: Pages count.
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -11125,7 +12874,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -11149,7 +12898,7 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.mobixml) (required)
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -11176,7 +12925,7 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.mobixml) (required)
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -11240,7 +12989,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -11265,7 +13014,7 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
         :param str type: Type of PdfA format. (required)
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -11293,7 +13042,7 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
         :param str type: Type of PdfA format. (required)
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -11362,7 +13111,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -11388,7 +13137,7 @@ class PdfApi(object):
         :param bool separate_images: Separate images.
         :param bool slides_as_images: Slides as images.
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -11417,7 +13166,7 @@ class PdfApi(object):
         :param bool separate_images: Separate images.
         :param bool slides_as_images: Slides as images.
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -11485,7 +13234,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -11510,7 +13259,7 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.svg) (required)
         :param bool compress_output_to_zip_archive: Specifies whether output will be created as one zip-archive.
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -11538,7 +13287,7 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.svg) (required)
         :param bool compress_output_to_zip_archive: Specifies whether output will be created as one zip-archive.
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -11604,7 +13353,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -11643,7 +13392,7 @@ class PdfApi(object):
         :param int page_index: Start page to export.
         :param int page_count: Number of pages to export.
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -11685,7 +13434,7 @@ class PdfApi(object):
         :param int page_index: Start page to export.
         :param int page_count: Number of pages to export.
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -11779,7 +13528,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -11807,7 +13556,7 @@ class PdfApi(object):
         :param float scale_factor: Scale factor
         :param bool uniform_worksheets: Uniform worksheets
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -11838,7 +13587,7 @@ class PdfApi(object):
         :param float scale_factor: Scale factor
         :param bool uniform_worksheets: Uniform worksheets
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -11910,7 +13659,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -11934,7 +13683,7 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.xml) (required)
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -11961,7 +13710,7 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.xml) (required)
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -12025,7 +13774,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -12049,7 +13798,7 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.xps) (required)
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -12076,7 +13825,7 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.xps) (required)
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -12140,7 +13889,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -12499,6 +14248,153 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def put_svg_in_storage_to_pdf(self, name, src_path, **kwargs):
+        """
+        Convert SVG file (located on storage) to PDF format and upload resulting file to storage. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_svg_in_storage_to_pdf(name, src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.svg) (required)
+        :param bool adjust_page_size: Adjust page size
+        :param float height: Page height
+        :param float width: Page width
+        :param bool is_landscape: Is page landscaped
+        :param float margin_left: Page margin left
+        :param float margin_bottom: Page margin bottom
+        :param float margin_right: Page margin right
+        :param float margin_top: Page margin top
+        :param str dst_folder: The destination document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_svg_in_storage_to_pdf_with_http_info(name, src_path, **kwargs)
+        else:
+            (data) = self.put_svg_in_storage_to_pdf_with_http_info(name, src_path, **kwargs)
+            return data
+
+    def put_svg_in_storage_to_pdf_with_http_info(self, name, src_path, **kwargs):
+        """
+        Convert SVG file (located on storage) to PDF format and upload resulting file to storage. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_svg_in_storage_to_pdf_with_http_info(name, src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.svg) (required)
+        :param bool adjust_page_size: Adjust page size
+        :param float height: Page height
+        :param float width: Page width
+        :param bool is_landscape: Is page landscaped
+        :param float margin_left: Page margin left
+        :param float margin_bottom: Page margin bottom
+        :param float margin_right: Page margin right
+        :param float margin_top: Page margin top
+        :param str dst_folder: The destination document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'src_path', 'adjust_page_size', 'height', 'width', 'is_landscape', 'margin_left', 'margin_bottom', 'margin_right', 'margin_top', 'dst_folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_svg_in_storage_to_pdf" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_svg_in_storage_to_pdf`")
+        # verify the required parameter 'src_path' is set
+        if ('src_path' not in params) or (params['src_path'] is None):
+            raise ValueError("Missing the required parameter `src_path` when calling `put_svg_in_storage_to_pdf`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'src_path' in params:
+            query_params.append(('srcPath', params['src_path']))
+        if 'adjust_page_size' in params:
+            query_params.append(('adjustPageSize', params['adjust_page_size']))
+        if 'height' in params:
+            query_params.append(('height', params['height']))
+        if 'width' in params:
+            query_params.append(('width', params['width']))
+        if 'is_landscape' in params:
+            query_params.append(('isLandscape', params['is_landscape']))
+        if 'margin_left' in params:
+            query_params.append(('marginLeft', params['margin_left']))
+        if 'margin_bottom' in params:
+            query_params.append(('marginBottom', params['margin_bottom']))
+        if 'margin_right' in params:
+            query_params.append(('marginRight', params['margin_right']))
+        if 'margin_top' in params:
+            query_params.append(('marginTop', params['margin_top']))
+        if 'dst_folder' in params:
+            query_params.append(('dstFolder', params['dst_folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/create/svg', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='SaaSposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def put_update_field(self, name, field_name, **kwargs):
         """
         Update field.
@@ -12738,6 +14634,149 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def put_web_in_storage_to_pdf(self, name, url, **kwargs):
+        """
+        Convert web page to PDF format and upload resulting file to storage. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_web_in_storage_to_pdf(name, url, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str url: Source url (required)
+        :param float height: Page height
+        :param float width: Page width
+        :param bool is_landscape: Is page landscaped
+        :param float margin_left: Page margin left
+        :param float margin_bottom: Page margin bottom
+        :param float margin_right: Page margin right
+        :param float margin_top: Page margin top
+        :param str dst_folder: The destination document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_web_in_storage_to_pdf_with_http_info(name, url, **kwargs)
+        else:
+            (data) = self.put_web_in_storage_to_pdf_with_http_info(name, url, **kwargs)
+            return data
+
+    def put_web_in_storage_to_pdf_with_http_info(self, name, url, **kwargs):
+        """
+        Convert web page to PDF format and upload resulting file to storage. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_web_in_storage_to_pdf_with_http_info(name, url, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str url: Source url (required)
+        :param float height: Page height
+        :param float width: Page width
+        :param bool is_landscape: Is page landscaped
+        :param float margin_left: Page margin left
+        :param float margin_bottom: Page margin bottom
+        :param float margin_right: Page margin right
+        :param float margin_top: Page margin top
+        :param str dst_folder: The destination document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'url', 'height', 'width', 'is_landscape', 'margin_left', 'margin_bottom', 'margin_right', 'margin_top', 'dst_folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_web_in_storage_to_pdf" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_web_in_storage_to_pdf`")
+        # verify the required parameter 'url' is set
+        if ('url' not in params) or (params['url'] is None):
+            raise ValueError("Missing the required parameter `url` when calling `put_web_in_storage_to_pdf`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'url' in params:
+            query_params.append(('url', params['url']))
+        if 'height' in params:
+            query_params.append(('height', params['height']))
+        if 'width' in params:
+            query_params.append(('width', params['width']))
+        if 'is_landscape' in params:
+            query_params.append(('isLandscape', params['is_landscape']))
+        if 'margin_left' in params:
+            query_params.append(('marginLeft', params['margin_left']))
+        if 'margin_bottom' in params:
+            query_params.append(('marginBottom', params['margin_bottom']))
+        if 'margin_right' in params:
+            query_params.append(('marginRight', params['margin_right']))
+        if 'margin_top' in params:
+            query_params.append(('marginTop', params['margin_top']))
+        if 'dst_folder' in params:
+            query_params.append(('dstFolder', params['dst_folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/create/web', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='SaaSposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def put_xfa_pdf_in_request_to_acro_form(self, out_path, **kwargs):
         """
         Converts PDF document which contatins XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
@@ -12753,7 +14792,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -12779,7 +14818,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
         :param file file: A file to be converted.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -12838,7 +14877,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -12862,7 +14901,7 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -12889,7 +14928,7 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
         :param str folder: The document folder.
-        :return: file
+        :return: SaaSposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -12953,7 +14992,356 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='SaaSposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_xml_in_storage_to_pdf(self, name, src_path, **kwargs):
+        """
+        Convert XML file (located on storage) to PDF format and upload resulting file to storage. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_xml_in_storage_to_pdf(name, src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.xml) (required)
+        :param str xsl_file_path: Full XSL source filename (ex. /folder1/folder2/template.xsl)
+        :param str dst_folder: The destination document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_xml_in_storage_to_pdf_with_http_info(name, src_path, **kwargs)
+        else:
+            (data) = self.put_xml_in_storage_to_pdf_with_http_info(name, src_path, **kwargs)
+            return data
+
+    def put_xml_in_storage_to_pdf_with_http_info(self, name, src_path, **kwargs):
+        """
+        Convert XML file (located on storage) to PDF format and upload resulting file to storage. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_xml_in_storage_to_pdf_with_http_info(name, src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.xml) (required)
+        :param str xsl_file_path: Full XSL source filename (ex. /folder1/folder2/template.xsl)
+        :param str dst_folder: The destination document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'src_path', 'xsl_file_path', 'dst_folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_xml_in_storage_to_pdf" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_xml_in_storage_to_pdf`")
+        # verify the required parameter 'src_path' is set
+        if ('src_path' not in params) or (params['src_path'] is None):
+            raise ValueError("Missing the required parameter `src_path` when calling `put_xml_in_storage_to_pdf`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'src_path' in params:
+            query_params.append(('srcPath', params['src_path']))
+        if 'xsl_file_path' in params:
+            query_params.append(('xslFilePath', params['xsl_file_path']))
+        if 'dst_folder' in params:
+            query_params.append(('dstFolder', params['dst_folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/create/xml', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='SaaSposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_xps_in_storage_to_pdf(self, name, src_path, **kwargs):
+        """
+        Convert XPS file (located on storage) to PDF format and upload resulting file to storage. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_xps_in_storage_to_pdf(name, src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.xps) (required)
+        :param str dst_folder: The destination document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_xps_in_storage_to_pdf_with_http_info(name, src_path, **kwargs)
+        else:
+            (data) = self.put_xps_in_storage_to_pdf_with_http_info(name, src_path, **kwargs)
+            return data
+
+    def put_xps_in_storage_to_pdf_with_http_info(self, name, src_path, **kwargs):
+        """
+        Convert XPS file (located on storage) to PDF format and upload resulting file to storage. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_xps_in_storage_to_pdf_with_http_info(name, src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.xps) (required)
+        :param str dst_folder: The destination document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'src_path', 'dst_folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_xps_in_storage_to_pdf" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_xps_in_storage_to_pdf`")
+        # verify the required parameter 'src_path' is set
+        if ('src_path' not in params) or (params['src_path'] is None):
+            raise ValueError("Missing the required parameter `src_path` when calling `put_xps_in_storage_to_pdf`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'src_path' in params:
+            query_params.append(('srcPath', params['src_path']))
+        if 'dst_folder' in params:
+            query_params.append(('dstFolder', params['dst_folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/create/xps', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='SaaSposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_xsl_fo_in_storage_to_pdf(self, name, src_path, **kwargs):
+        """
+        Convert XslFo file (located on storage) to PDF format and upload resulting file to storage. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_xsl_fo_in_storage_to_pdf(name, src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.xpsfo) (required)
+        :param str dst_folder: The destination document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_xsl_fo_in_storage_to_pdf_with_http_info(name, src_path, **kwargs)
+        else:
+            (data) = self.put_xsl_fo_in_storage_to_pdf_with_http_info(name, src_path, **kwargs)
+            return data
+
+    def put_xsl_fo_in_storage_to_pdf_with_http_info(self, name, src_path, **kwargs):
+        """
+        Convert XslFo file (located on storage) to PDF format and upload resulting file to storage. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_xsl_fo_in_storage_to_pdf_with_http_info(name, src_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str src_path: Full source filename (ex. /folder1/folder2/template.xpsfo) (required)
+        :param str dst_folder: The destination document folder.
+        :return: SaaSposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'src_path', 'dst_folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_xsl_fo_in_storage_to_pdf" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_xsl_fo_in_storage_to_pdf`")
+        # verify the required parameter 'src_path' is set
+        if ('src_path' not in params) or (params['src_path'] is None):
+            raise ValueError("Missing the required parameter `src_path` when calling `put_xsl_fo_in_storage_to_pdf`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'src_path' in params:
+            query_params.append(('srcPath', params['src_path']))
+        if 'dst_folder' in params:
+            query_params.append(('dstFolder', params['dst_folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/create/xslfo', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='SaaSposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),

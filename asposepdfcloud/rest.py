@@ -155,7 +155,7 @@ class RESTClientObject(object):
         post_params = post_params or {}
         headers = headers or {}
 
-        timeout = None
+        timeout = 5 * 60
         if _request_timeout:
             if isinstance(_request_timeout, (int, ) if PY3 else (int, long)):
                 timeout = urllib3.Timeout(total=_request_timeout)

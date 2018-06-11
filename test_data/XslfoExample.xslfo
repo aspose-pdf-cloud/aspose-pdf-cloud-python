@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <fo:layout-master-set>
+    <fo:simple-page-master master-name="mainPage">
+      <fo:region-body margin-top="5cm" margin-bottom="2.5cm" margin-left="1.25cm" margin-right="1.25cm" />
+      <fo:region-before extent="5cm" />
+      <fo:region-after extent="2cm" />
+      <fo:region-start extent="1.25cm" />
+      <fo:region-end extent="1.25cm" />
+    </fo:simple-page-master>
+    <fo:simple-page-master master-name="NewsPageLayout">
+      <fo:region-body margin-top="2.75cm" margin-bottom="2cm" margin-left="2cm" margin-right="2cm" />
+      <fo:region-before extent="2.75cm" />
+      <fo:region-after extent="2cm" />
+      <fo:region-start extent="2cm" />
+      <fo:region-end extent="2cm" />
+    </fo:simple-page-master>
+  </fo:layout-master-set>
+  <fo:page-sequence id="ArticlePage" master-reference="NewsPageLayout" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+    <!--fo:static-content flow-name="xsl-region-before" /-->
+    <fo:static-content flow-name="xsl-region-after">
+      <fo:block>
+        <fo:table>
+          <fo:table-column column-width="2cm" background-position-horizontal="center" background-position-vertical="center" />
+          <fo:table-column column-width="51cm" background-position-horizontal="left" background-position-vertical="bottom" />
+          <fo:table-body>
+            <fo:table-row>
+              <fo:table-cell number-columns-spanned="2">
+               <fo:block>
+                  <fo:inline > </fo:inline>
+                </fo:block>
+              </fo:table-cell>
+            </fo:table-row>
+            <fo:table-row>
+              <fo:table-cell display-align="center">
+                <fo:block>
+                  <fo:table>
+                    <fo:table-column column-width="2cm" />
+                    <fo:table-body>
+                      <fo:table-row>
+                        <fo:table-cell>
+                          <fo:block />
+                        </fo:table-cell>
+                      </fo:table-row>
+                      <fo:table-row>
+                        <fo:table-cell>
+                          <fo:block>
+                             <fo:inline > </fo:inline>
+                          </fo:block>
+                        </fo:table-cell>
+                      </fo:table-row>
+                    </fo:table-body>
+                  </fo:table>
+                </fo:block>
+              </fo:table-cell>
+              <fo:table-cell>
+                <fo:block>
+                 
+                </fo:block>
+                <fo:block>
+                  <fo:inline text-align="left" font-size="6pt"  color="#000000">Copyright (c) 2010, Alle Rechte vorbehalten. Inhalte dürfen ohne die Genehmigung des Herausgebers nicht kopiert oder weitergegeben werden.                   </fo:inline>
+                </fo:block>
+              </fo:table-cell>
+            </fo:table-row>
+          </fo:table-body>
+        </fo:table>
+      </fo:block>
+      <fo:block text-align="center" padding-top="3pt" font-size="7pt">
+        <fo:page-number />
+      </fo:block>
+    </fo:static-content>
+    <fo:flow flow-name="xsl-region-body">
+      <fo:table>
+        <fo:table-column />
+        <fo:table-body>
+          <fo:table-row>
+            <fo:table-cell>
+              <fo:block />
+            </fo:table-cell>
+          </fo:table-row>
+        </fo:table-body>
+      </fo:table>
+      <fo:block>
+        <fo:block font-size="18pt" font-family="sans-serif" font-weight="bold" padding-before="20pt" border-after-width="0.5pt" />
+      </fo:block>
+      <fo:block>
+        <fo:block>
+          <fo:inline text-align="left" font-size="10pt" font-family="Arial" color="Black" font-weight="bold">Andritz erhält Auftrag für Glüh- und Beizlinie aus Taiwan</fo:inline>
+        </fo:block>
+        <fo:block padding-before="5pt" padding-after="3pt" space-after.optimum="6pt" />
+      </fo:block>
+      <fo:block text-align="left" font-size="9pt" font-family="Arial" font-weight="normal" color="black">Staff Reporters  </fo:block>
+      <fo:block text-align="left" font-size="9pt" font-family="Arial" font-weight="normal" color="black" />
+      <fo:block text-align="left" font-size="9pt" font-family="Arial" font-weight="normal" color="black">09 December 2010</fo:block>
+      <fo:block padding-before="5pt" padding-after="3pt" space-after.optimum="6pt" />
+      <fo:block text-align="left" font-size="9pt" font-family="Arial" font-weight="normal" color="black"> Stahl Monitor</fo:block>
+      <fo:block padding-before="5pt" padding-after="3pt" space-after.optimum="6pt" />
+      <fo:block text-align="left" font-size="9pt" font-family="Arial" font-weight="normal" color="black">Nachrichten</fo:block>
+      <fo:block padding-before="5pt" padding-after="3pt" space-after.optimum="6pt" />
+      <fo:block text-align="left" font-size="9pt" font-family="Arial" font-weight="normal" color="black" />
+      <fo:block>
+        <fo:block font-size="18pt" font-family="sans-serif" font-weight="bold" padding-before="20pt" border-after-width="0.5pt" />
+      </fo:block>
+      <fo:block text-align="left" font-size="9pt" font-family="Arial" font-weight="normal" color="black">GRAZ --Der Grazer Technologiekonzern Andritz hat einen Auftrag für 70 Mio EUR an Land gezogen. An die taiwanische Walsin Lihwa Corporation liefert der Konzern nach Angaben vom Donnerstag eine Glüh- und Beizlinie für Edelstahlwarm- und -kaltband mit einer Jahreskapazität von 350.000 Tonnen. Die Inbetriebnahme sei für Ende 2012 geplant.</fo:block>
+      <fo:block>
+        <fo:block font-size="18pt" font-family="sans-serif" font-weight="bold" padding-before="20pt" border-after-width="0.5pt" />
+      </fo:block>
+      <fo:block text-align="left" font-size="9pt" font-family="Arial" font-weight="normal" color="black" />
+      <fo:block font-size="18pt" font-family="sans-serif" font-weight="bold" padding-before="20pt" border-after-width="0.5pt" />
+      <fo:block text-align="left" font-size="9pt" font-family="Arial" font-weight="normal" color="black" />
+      <fo:block text-align="left" font-size="9pt" font-family="Arial" font-weight="normal" color="black">0020101209e6c900001</fo:block>
+      <fo:block>
+        <fo:block font-size="14pt" font-family="sans-serif" font-weight="bold" line-height="16pt" padding-before="6pt" space-after.optimum="10pt" border-after-color="black" border-after-style="solid" border-after-width="1pt" />
+      </fo:block>
+      <fo:block font-size="18pt" font-family="sans-serif" font-weight="bold" padding-before="20pt" border-after-width="0.5pt" />
+    </fo:flow>
+  </fo:page-sequence>
+  <fo:page-sequence id="InteractiveChart" master-reference="mainPage" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+    <fo:static-content flow-name="xsl-region-before">
+      <fo:block font-size="18pt" font-weight="bold" padding-before="20pt" border-after-width="0.5pt" />
+      <fo:table>
+        <fo:table-column />
+        <fo:table-body>
+          <fo:table-row>
+            <fo:table-cell text-align="left">
+              <fo:block padding-before="15pt">
+                <fo:inline>
+                  
+                </fo:inline>
+              </fo:block>
+            </fo:table-cell>
+          </fo:table-row>
+        </fo:table-body>
+      </fo:table>
+      <fo:block font-size="18pt" font-weight="bold" padding-before="20pt" border-after-width="0.5pt" />
+      <fo:block>
+        <fo:table>
+          <fo:table-column column-width="3.5cm" />
+          <fo:table-column column-width=".35cm" />
+          <fo:table-column column-width="4cm" />
+          <fo:table-body>
+            <fo:table-row>
+              <fo:table-cell>
+                <fo:block text-align="left" font-size="9pt" font-family="Arial" color="#b8860b" line-height="10pt" font-weight="Bold">
+                  <fo:inline color="#b8860b">Materialbezeichnung</fo:inline>
+                </fo:block>
+              </fo:table-cell>
+              <fo:table-cell>
+                <fo:block>
+                  <fo:inline></fo:inline>
+                </fo:block>
+              </fo:table-cell>
+              <fo:table-cell>
+                <fo:block font-size="9pt" text-align="left" color="#333333">
+                  <fo:inline>Platin</fo:inline>
+                </fo:block>
+              </fo:table-cell>
+            </fo:table-row>
+            <fo:table-row>
+              <fo:table-cell>
+                <fo:block text-align="left" font-size="9pt" font-family="Arial" color="#b8860b" line-height="10pt" font-weight="Bold">
+                  <fo:inline color="#b8860b">Art</fo:inline>
+                </fo:block>
+              </fo:table-cell>
+              <fo:table-cell>
+                <fo:block>
+                  <fo:inline></fo:inline>
+                </fo:block>
+              </fo:table-cell>
+              <fo:table-cell>
+                <fo:block font-size="9pt" text-align="left" color="#333333">
+                  <fo:inline>Platin Fortlaufend</fo:inline>
+                </fo:block>
+              </fo:table-cell>
+            </fo:table-row>
+            <fo:table-row>
+              <fo:table-cell text-align="center" number-columns-spanned="3">
+                <fo:block font-size="19pt" font-family="sans-serif" font-weight="bold" line-height="6pt" padding-before="4pt" space-after.optimum="3pt" border-after-color="#666666" border-after-style="solid" border-after-width="0.5pt" />
+                <fo:block line-height="4pt" font-size="7pt" color="#333">
+                  <fo:inline>US-Dollar (USD)</fo:inline>
+                  <fo:inline font-size="7pt" font-family="sans-serif">  |  </fo:inline>
+                  <fo:inline> Feinunze</fo:inline>
+                </fo:block>
+                <fo:block font-size="19pt" font-family="sans-serif" font-weight="bold" line-height="4pt" padding-before="3pt" space-after.optimum="3pt" border-after-color="#666666" border-after-style="solid" border-after-width="0.5pt" />
+              </fo:table-cell>
+            </fo:table-row>
+          </fo:table-body>
+        </fo:table>
+      </fo:block>
+    </fo:static-content>
+    <fo:static-content flow-name="xsl-region-after">
+      <fo:block font-size="8pt" text-align="center" color="#333">
+        Seite <fo:page-number /><fo:inline> | </fo:inline><fo:inline>Exportiert am: </fo:inline><fo:inline>10/12/10</fo:inline>
+      </fo:block>
+      <fo:block font-size="18pt" font-weight="bold" padding-before="5pt" border-after-width="0.5pt" />
+      <fo:block>
+        <fo:table>
+          <fo:table-column column-width="3cm" />
+          <fo:table-column column-width="0.35cm" />
+          <fo:table-column column-width="65cm" />
+          <fo:table-body>
+            <fo:table-row>
+              <fo:table-cell number-columns-spanned="3">
+                <fo:block>
+                  <fo:inline></fo:inline>
+                </fo:block>
+              </fo:table-cell >
+            </fo:table-row>
+            <fo:table-row>
+              <fo:table-cell display-align="top">
+                <fo:block>
+                  
+                </fo:block>
+              </fo:table-cell>
+              <fo:table-cell>
+                <fo:block />
+              </fo:table-cell>
+              <fo:table-cell font-weight="normal">
+                <fo:block line-height="10pt">
+                  <fo:inline text-align="left" font-size="8pt" color="#000000">                     Copyright 2010  Alle Rechte vorbehalten. Inhalte dürfen ohne die Genehmigung des                   </fo:inline>
+                </fo:block>
+                <fo:block line-height="10pt">
+                  <fo:inline text-align="left" font-size="8pt" color="#000000">                     Herausgebers nicht kopiert oder weitergegeben werden.                   </fo:inline>
+                </fo:block>
+              </fo:table-cell>
+            </fo:table-row>
+          </fo:table-body>
+        </fo:table>
+      </fo:block>
+    </fo:static-content>
+    <fo:flow flow-name="xsl-region-body">
+      <fo:block text-align="Left" color="#005596">
+        <fo:block>
+          <fo:inline text-align="left" font-size="10pt" font-family="Arial" font-weight="bold" color="#b8860b">Historische Preise</fo:inline>
+        </fo:block>
+        <fo:block padding-before="5pt" padding-after="3pt" space-after.optimum="6pt" />
+      </fo:block>
+      <fo:block>
+        
+      </fo:block>
+      <fo:block>
+        <fo:block font-size="18pt" font-family="sans-serif" font-weight="bold" padding-before="20pt" border-after-width="0.5pt" />
+      </fo:block>
+    </fo:flow>
+  </fo:page-sequence>
+</fo:root>

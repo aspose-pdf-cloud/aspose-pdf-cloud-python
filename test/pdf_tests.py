@@ -1330,7 +1330,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_doc(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
 
     def testPutPdfInRequestToDoc(self):
@@ -1342,7 +1342,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_request_to_doc(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
 
     # To PDFA
@@ -1373,7 +1373,7 @@ class PdfTests(unittest.TestCase):
                 self.temp_folder + '/' + result_file_name, 
                 asposepdfcloud.models.PdfAType.PDFA1A,
                 **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
 
     def testPutPdfInRequestToPdfA(self):
@@ -1388,7 +1388,7 @@ class PdfTests(unittest.TestCase):
                 self.temp_folder + '/' + result_file_name, 
                 asposepdfcloud.models.PdfAType.PDFA1A, 
                 **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
     # To Tiff
     def testGetPdfInStorageToTiff(self):
@@ -1413,7 +1413,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_tiff(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
 
     def testPutPdfInRequestToTiff(self):
@@ -1425,7 +1425,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_request_to_tiff(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
 
     # To SVG
@@ -1452,7 +1452,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_svg(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
 
     def testPutPdfInRequestToSvg(self):
@@ -1464,7 +1464,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_request_to_svg(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
      
     # To XPS
 
@@ -1490,7 +1490,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_xps(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
 
     def testPutPdfInRequestToXps(self):
@@ -1502,7 +1502,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_request_to_xps(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
     # To XLS
     def testGetPdfInStorageToXls(self):
@@ -1527,7 +1527,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_xls(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
 
     def testPutPdfInRequestToXls(self):
@@ -1539,7 +1539,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_request_to_xls(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
 
     # To HTML
@@ -1565,7 +1565,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_html(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
 
     def testPutPdfInRequestToHtml(self):
@@ -1577,7 +1577,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_request_to_html(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
 
     # To EPUB
@@ -1603,7 +1603,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_epub(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
 
     def testPutPdfInRequestToEpub(self):
@@ -1615,7 +1615,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_request_to_epub(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
 
     # To PPTX
@@ -1641,7 +1641,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_pptx(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
 
     def testPutPdfInRequestToPptx(self):
@@ -1653,7 +1653,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_request_to_pptx(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
 
     # To LaTeX
@@ -1679,7 +1679,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_la_te_x(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
 
     def testPutPdfInRequestToLaTeX(self):
@@ -1691,7 +1691,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_request_to_la_te_x(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
 
     # To Mobi Xml
@@ -1717,7 +1717,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_mobi_xml(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
 
     def testPutPdfInRequestToMobiXml(self):
@@ -1729,7 +1729,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_request_to_mobi_xml(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
 
     # PDF Xfa To Acro Form
@@ -1755,7 +1755,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_xfa_pdf_in_storage_to_acro_form(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
 
     def testPutXfaPdfInRequestToAcroForm(self):
@@ -1767,7 +1767,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_xfa_pdf_in_request_to_acro_form(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
 
     # To Xml
@@ -1793,7 +1793,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_xml(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
 
     def testPutPdfInRequestToXml(self):
@@ -1805,7 +1805,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_request_to_xml(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertIsInstance(response, str)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
 
 
     # Upload / Download Tests
@@ -1839,6 +1839,238 @@ class PdfTests(unittest.TestCase):
 
         response = self.pdf_api.put_privileges(file_name, **opts)
         self.assertEqual(response.code, HttpStatusCode.OK)
+
+    # Convert to PDF Tests
+
+    def testGetEpubInStorageToPdf(self):
+        file_name = '4pages.epub'
+        self.uploadFile(file_name)
+
+        src_path = self.temp_folder + '/' + file_name
+        response = self.pdf_api.get_epub_in_storage_to_pdf(src_path)
+        self.assertIsInstance(response, str)
+
+
+    def testPutEpubInStorageToPdf(self):
+        file_name = '4pages.epub'
+        self.uploadFile(file_name)
+        result_name = 'fromEpub.pdf'
+
+        src_path = self.temp_folder + '/' + file_name
+        opts = {
+            "dst_folder" : self.temp_folder
+        }
+        response = self.pdf_api.put_epub_in_storage_to_pdf(result_name, src_path, **opts)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
+
+
+    def testGetWebInStorageToPdf(self):
+        url = 'http://google.com'
+
+        response = self.pdf_api.get_web_in_storage_to_pdf(url)
+        self.assertIsInstance(response, str)
+
+
+    def testPutWebInStorageToPdf(self):
+        url = 'http://google.com'
+        result_name = 'fromWeb.pdf'
+
+        opts = {
+            "dst_folder" : self.temp_folder
+        }
+        response = self.pdf_api.put_web_in_storage_to_pdf(result_name, url, **opts)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
+
+
+
+    def testGetLaTeXInStorageToPdf(self):
+        file_name = 'TexExample.tex'
+        self.uploadFile(file_name)
+
+        src_path = self.temp_folder + '/' + file_name
+        response = self.pdf_api.get_la_te_x_in_storage_to_pdf(src_path)
+        self.assertIsInstance(response, str)
+
+
+    def testPutLaTeXInStorageToPdf(self):
+        file_name = 'TexExample.tex'
+        self.uploadFile(file_name)
+        result_name = 'fromTex.pdf'
+
+        src_path = self.temp_folder + '/' + file_name
+        opts = {
+            "dst_folder" : self.temp_folder
+        }
+        response = self.pdf_api.put_la_te_x_in_storage_to_pdf(result_name, src_path, **opts)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
+
+
+    def testGetMhtInStorageToPdf(self):
+        file_name = 'MhtExample.mht'
+        self.uploadFile(file_name)
+
+        src_path = self.temp_folder + '/' + file_name
+        response = self.pdf_api.get_mht_in_storage_to_pdf(src_path)
+        self.assertIsInstance(response, str)
+
+
+    def testPutMhtInStorageToPdf(self):
+        file_name = 'MhtExample.mht'
+        self.uploadFile(file_name)
+        result_name = 'fromMht.pdf'
+
+        src_path = self.temp_folder + '/' + file_name
+        opts = {
+            "dst_folder" : self.temp_folder
+        }
+        response = self.pdf_api.put_mht_in_storage_to_pdf(result_name, src_path, **opts)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
+
+
+
+    def testGetHtmlInStorageToPdf(self):
+        file_name = 'HtmlWithImage.zip'
+        self.uploadFile(file_name)
+
+        html_file_name = 'HtmlWithImage.html'
+        opts = {
+            "height" : 650,
+            "width" : 250
+        }
+        src_path = self.temp_folder + '/' + file_name
+        response = self.pdf_api.get_html_in_storage_to_pdf(src_path, html_file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutHtmlInStorageToPdf(self):
+        file_name = 'HtmlWithImage.zip'
+        self.uploadFile(file_name)
+        html_file_name = 'HtmlWithImage.html'
+
+        result_name = 'fromMht.pdf'
+
+        src_path = self.temp_folder + '/' + file_name
+        opts = {
+            "dst_folder" : self.temp_folder,
+            "height" : 650,
+            "width" : 250
+        }
+        response = self.pdf_api.put_html_in_storage_to_pdf(result_name, src_path, html_file_name, **opts)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
+
+
+    def testGetXslFoInStorageToPdf(self):
+        file_name = 'XslfoExample.xslfo'
+        self.uploadFile(file_name)
+
+        src_path = self.temp_folder + '/' + file_name
+        response = self.pdf_api.get_xsl_fo_in_storage_to_pdf(src_path)
+        self.assertIsInstance(response, str)
+
+
+    def testPutXslFoInStorageToPdf(self):
+        file_name = 'XslfoExample.xslfo'
+        self.uploadFile(file_name)
+        result_name = 'fromXslFo.pdf'
+
+        src_path = self.temp_folder + '/' + file_name
+        opts = {
+            "dst_folder" : self.temp_folder
+        }
+        response = self.pdf_api.put_xsl_fo_in_storage_to_pdf(result_name, src_path, **opts)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
+
+
+
+    def testGetXpsInStorageToPdf(self):
+        file_name = 'Simple.xps'
+        self.uploadFile(file_name)
+
+        src_path = self.temp_folder + '/' + file_name
+        response = self.pdf_api.get_xps_in_storage_to_pdf(src_path)
+        self.assertIsInstance(response, str)
+
+
+    def testPutXpsInStorageToPdf(self):
+        file_name = 'Simple.xps'
+        self.uploadFile(file_name)
+        result_name = 'fromXps.pdf'
+
+        src_path = self.temp_folder + '/' + file_name
+        opts = {
+            "dst_folder" : self.temp_folder
+        }
+        response = self.pdf_api.put_xps_in_storage_to_pdf(result_name, src_path, **opts)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
+
+
+
+    def testGetSvgInStorageToPdf(self):
+        file_name = 'Simple.svg'
+        self.uploadFile(file_name)
+
+        src_path = self.temp_folder + '/' + file_name
+        response = self.pdf_api.get_svg_in_storage_to_pdf(src_path)
+        self.assertIsInstance(response, str)
+
+
+    def testPutSvgInStorageToPdf(self):
+        file_name = 'Simple.svg'
+        self.uploadFile(file_name)
+        result_name = 'fromSvg.pdf'
+
+        src_path = self.temp_folder + '/' + file_name
+        opts = {
+            "dst_folder" : self.temp_folder
+        }
+        response = self.pdf_api.put_svg_in_storage_to_pdf(result_name, src_path, **opts)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
+
+
+    def testGetPclInStorageToPdf(self):
+        file_name = 'template.pcl'
+        self.uploadFile(file_name)
+
+        src_path = self.temp_folder + '/' + file_name
+        response = self.pdf_api.get_pcl_in_storage_to_pdf(src_path)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPclInStorageToPdf(self):
+        file_name = 'template.pcl'
+        self.uploadFile(file_name)
+        result_name = 'fromPcl.pdf'
+
+        src_path = self.temp_folder + '/' + file_name
+        opts = {
+            "dst_folder" : self.temp_folder
+        }
+        response = self.pdf_api.put_pcl_in_storage_to_pdf(result_name, src_path, **opts)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
+
+
+
+    def testGetXmlInStorageToPdf(self):
+        file_name = 'template.xml'
+        self.uploadFile(file_name)
+
+        src_path = self.temp_folder + '/' + file_name
+        response = self.pdf_api.get_xml_in_storage_to_pdf(src_path)
+        self.assertIsInstance(response, str)
+
+
+    def testPutXmlInStorageToPdf(self):
+        file_name = 'template.xml'
+        self.uploadFile(file_name)
+        result_name = 'fromXml.pdf'
+
+        src_path = self.temp_folder + '/' + file_name
+        opts = {
+            "dst_folder" : self.temp_folder
+        }
+        response = self.pdf_api.put_xml_in_storage_to_pdf(result_name, src_path, **opts)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
+
 
 if __name__ == '__main__':
     unittest.main()
