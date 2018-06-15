@@ -38,7 +38,9 @@ from .color import Color
 from .color_depth import ColorDepth
 from .compression_type import CompressionType
 from .doc_format import DocFormat
+from .doc_recognition_mode import DocRecognitionMode
 from .document_privilege import DocumentPrivilege
+from .epub_recognition_mode import EpubRecognitionMode
 from .field_type import FieldType
 from .font_encoding_rules import FontEncodingRules
 from .font_saving_modes import FontSavingModes
@@ -61,8 +63,6 @@ from .paragraph import Paragraph
 from .parts_embedding_modes import PartsEmbeddingModes
 from .pdf_a_type import PdfAType
 from .raster_images_saving_modes import RasterImagesSavingModes
-from .recognition_mode import RecognitionMode
-from .recognition_mode2 import RecognitionMode2
 from .rectangle import Rectangle
 from .rotation import Rotation
 from .saa_spose_response import SaaSposeResponse

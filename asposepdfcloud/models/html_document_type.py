@@ -43,8 +43,8 @@ class HtmlDocumentType(object):
     """
     allowed enum values
     """
-    XHTML = 0
-    HTML_5 = 1
+    XHTML = "Xhtml"
+    HTML5 = "Html5"
 
     """
     Attributes:

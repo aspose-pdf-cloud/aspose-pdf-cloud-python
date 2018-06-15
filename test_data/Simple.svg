@@ -1,0 +1,12 @@
+    <svg xmlns="http://www.w3.org/2000/svg" height="400" width="600">
+      <g>
+        <polygon fill="blue" visibility="visible" stroke="green" stroke-width="5" 
+                 points="250, 75 279,161 369,161 297,215
+                         323,301 250,250 177,301 203,215
+                         131,161 221,161" />
+
+        <polygon fill="lime" visibility="hidden"
+                 points="450,75  558,137.5 558,262.5
+                         450,325 342,262.6 342,137.5"/>
+      </g>
+    </svg> 
