@@ -62,7 +62,7 @@ setup(
     ],
     keywords=["swagger", "aspose", "aspose cloud", "pdf", "sdk", "xls", "pdf/a", "xps", "tiff", "svg", "html", "doc"],
     install_requires=REQUIRES,
-    extras_require={
+    extras_require={ 
         'test': ["requests >= 2.18.4",
                 "coverage >= 4.0.3",
                 "nose >= 1.3.7",
@@ -71,7 +71,7 @@ setup(
                 "randomize >= 0.13"],
     },
     packages=find_packages(exclude=['test']),
-    project_urls={
+    project_urls={ 
         'Source With Tests': 'https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-python',
         'Website': 'https://www.aspose.cloud',
         'Product Home': 'https://products.aspose.cloud/pdf/cloud',
