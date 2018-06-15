@@ -32,4 +32,4 @@ test/**
 # Ignore other files and folders
 *requirements.txt
 tox.ini
-setup.py
+#setup.py
