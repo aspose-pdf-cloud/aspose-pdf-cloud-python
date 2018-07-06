@@ -611,6 +611,61 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.post_replace_image(file_name, page_number, image_number, **opts)
         self.assertEqual(response.code, HttpStatusCode.OK)
     
+    def testPutImagesExtractAsJpeg(self):
+        name = "PdfWithImages2.pdf"
+        self.uploadFile(name)
+        page_number = 1
+
+        dest_folder = "extract_jpg"
+        opts = {
+            "dest_folder": self.temp_folder + '/' + dest_folder,
+            "folder": self.temp_folder
+        }
+        response = self.pdf_api.put_images_extract_as_jpeg(name, page_number, **opts)
+        self.assertEqual(response.code, HttpStatusCode.OK)
+
+    def testPutImagesExtractAsTiff(self):
+        name = "PdfWithImages2.pdf"
+        self.uploadFile(name)
+        page_number = 1
+
+        dest_folder = "extract_tiff"
+        opts = {
+            "dest_folder": self.temp_folder + '/' + dest_folder,
+            "folder": self.temp_folder
+        }
+        response = self.pdf_api.put_images_extract_as_tiff(name, page_number, **opts)
+        self.assertEqual(response.code, HttpStatusCode.OK)
+
+
+    def testPutImagesExtractAsGif(self):
+        name = "PdfWithImages2.pdf"
+        self.uploadFile(name)
+        page_number = 1
+
+        dest_folder = "extract_gif"
+        opts = {
+            "dest_folder": self.temp_folder + '/' + dest_folder,
+            "folder": self.temp_folder
+        }
+        response = self.pdf_api.put_images_extract_as_gif(name, page_number, **opts)
+        self.assertEqual(response.code, HttpStatusCode.OK)
+
+
+    def testPutImagesExtractAsPng(self):
+        name = "PdfWithImages2.pdf"
+        self.uploadFile(name)
+        page_number = 1
+
+        dest_folder = "extract_png"
+        opts = {
+            "dest_folder": self.temp_folder + '/' + dest_folder,
+            "folder": self.temp_folder
+        }
+        response = self.pdf_api.put_images_extract_as_png(name, page_number, **opts)
+        self.assertEqual(response.code, HttpStatusCode.OK)
+
+
     # Links Tests
 
     def testGetPageLinkAnnotationByIndex(self):
@@ -1558,7 +1613,7 @@ class PdfTests(unittest.TestCase):
     def testPutPdfInStorageToHtml(self):
         file_name = '4pages.pdf'
         self.uploadFile(file_name)
-        result_file_name = "result.html"
+        result_file_name = "result.zip"
 
         opts = {
               "folder" : self.temp_folder
@@ -1570,7 +1625,7 @@ class PdfTests(unittest.TestCase):
 
     def testPutPdfInRequestToHtml(self):
         file_name = '4pages.pdf'
-        result_file_name = "result.html"
+        result_file_name = "result.zip"
 
         opts = {
               "file" : self.test_data_path + file_name
@@ -2071,6 +2126,207 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.put_xml_in_storage_to_pdf(result_name, src_path, **opts)
         self.assertEqual(response.code, HttpStatusCode.CREATED)
 
+    def testGetPsInStorageToPdf(self):
+        file_name = 'Typography.PS'
+        self.uploadFile(file_name)
+
+        src_path = self.temp_folder + '/' + file_name
+        response = self.pdf_api.get_ps_in_storage_to_pdf(src_path)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPsInStorageToPdf(self):
+        file_name = 'Typography.PS'
+        self.uploadFile(file_name)
+        result_name = 'fromPs.pdf'
+
+        src_path = self.temp_folder + '/' + file_name
+        opts = {
+            "dst_folder" : self.temp_folder
+        }
+        response = self.pdf_api.put_ps_in_storage_to_pdf(result_name, src_path, **opts)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
+
+    def testPutImageInStorageToPdf(self):
+        data_file_1 = "33539.jpg"
+        self.uploadFile(data_file_1)
+
+        data_file_2 = "44781.jpg"
+        self.uploadFile(data_file_2)
+
+        result_name = "result.pdf"
+
+        image_template_1 = asposepdfcloud.models.ImageTemplate(image_path=self.temp_folder + '/' + data_file_1, 
+                                                               image_src_type=asposepdfcloud.models.ImageSrcType.COMMON)
+
+        image_template_2 = asposepdfcloud.models.ImageTemplate(image_path=self.temp_folder + '/' + data_file_2, 
+                                                               image_src_type=asposepdfcloud.models.ImageSrcType.COMMON)
+
+        image_templates_request = asposepdfcloud.models.ImageTemplatesRequest(is_ocr=True, ocr_langs="eng", 
+                                        images_list=[image_template_1, image_template_2])
+
+        opts = {
+            "dst_folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_image_in_storage_to_pdf(result_name, image_templates_request, **opts)
+        self.assertEqual(response.code, HttpStatusCode.CREATED)
+
+    
+    # Page Convert To Images Tests
+
+    def testGetPageConvertToTiff(self):
+        name = "4pages.pdf"
+        self.uploadFile(name)
+
+        page_number = 2
+        opts = {
+            "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_page_convert_to_tiff(name, page_number, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPageConvertToTiff(self):
+        name = "4pages.pdf"
+        self.uploadFile(name) 
+        result_file = "page.tiff"
+        out_path = self.temp_folder + '/' + result_file
+        page_number = 2
+        opts = {
+            "folder" : self.temp_folder
+        }
+        response = self.pdf_api.put_page_convert_to_tiff(name, page_number, out_path, **opts)
+        self.assertEqual(response.code, HttpStatusCode.OK)
+
+
+    def testGetPageConvertToJpeg(self):
+        name = "4pages.pdf"
+        self.uploadFile(name)
+
+        page_number = 2
+        opts = {
+            "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_page_convert_to_jpeg(name, page_number, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPageConvertToJpeg(self):
+        name = "4pages.pdf"
+        self.uploadFile(name) 
+        result_file = "page.jpeg"
+        out_path = self.temp_folder + '/' + result_file
+        page_number = 2
+        opts = {
+            "folder" : self.temp_folder
+        }
+        response = self.pdf_api.put_page_convert_to_jpeg(name, page_number, out_path, **opts)
+        self.assertEqual(response.code, HttpStatusCode.OK)
+
+    def testGetPageConvertToPng(self):
+        name = "4pages.pdf"
+        self.uploadFile(name)
+
+        page_number = 2
+        opts = {
+            "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_page_convert_to_png(name, page_number, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPageConvertToPng(self):
+        name = "4pages.pdf"
+        self.uploadFile(name) 
+        result_file = "page.png"
+        out_path = self.temp_folder + '/' + result_file
+        page_number = 2
+        opts = {
+            "folder" : self.temp_folder
+        }
+        response = self.pdf_api.put_page_convert_to_png(name, page_number, out_path, **opts)
+        self.assertEqual(response.code, HttpStatusCode.OK)
+
+    def testGetPageConvertToEmf(self):
+        name = "4pages.pdf"
+        self.uploadFile(name)
+
+        page_number = 2
+        opts = {
+            "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_page_convert_to_emf(name, page_number, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPageConvertToEmf(self):
+        name = "4pages.pdf"
+        self.uploadFile(name) 
+        result_file = "page.emf"
+        out_path = self.temp_folder + '/' + result_file
+        page_number = 2
+        opts = {
+            "folder" : self.temp_folder
+        }
+        response = self.pdf_api.put_page_convert_to_emf(name, page_number, out_path, **opts)
+        self.assertEqual(response.code, HttpStatusCode.OK)
+
+
+    def testGetPageConvertToBmp(self):
+        name = "4pages.pdf"
+        self.uploadFile(name)
+
+        page_number = 2
+        opts = {
+            "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_page_convert_to_bmp(name, page_number, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPageConvertToBmp(self):
+        name = "4pages.pdf"
+        self.uploadFile(name) 
+        result_file = "page.bmp"
+        out_path = self.temp_folder + '/' + result_file
+        page_number = 2
+        opts = {
+            "folder" : self.temp_folder
+        }
+        response = self.pdf_api.put_page_convert_to_bmp(name, page_number, out_path, **opts)
+        self.assertEqual(response.code, HttpStatusCode.OK)
+
+
+    def testGetPageConvertToGif(self):
+        name = "4pages.pdf"
+        self.uploadFile(name)
+
+        page_number = 2
+        opts = {
+            "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_page_convert_to_gif(name, page_number, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPageConvertToGif(self):
+        name = "4pages.pdf"
+        self.uploadFile(name) 
+        result_file = "page.gif"
+        out_path = self.temp_folder + '/' + result_file
+        page_number = 2
+        opts = {
+            "folder" : self.temp_folder
+        }
+        response = self.pdf_api.put_page_convert_to_gif(name, page_number, out_path, **opts)
+        self.assertEqual(response.code, HttpStatusCode.OK)
 
 if __name__ == '__main__':
     unittest.main()

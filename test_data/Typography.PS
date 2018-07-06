@@ -1,0 +1,29 @@
+/angledText {
+    rotate
+    newpath
+    72 200 moveto
+    300 0 rlineto
+    stroke
+    72 200 moveto  
+    (typography) show
+    ( and some more) show
+} def
+
+
+%/Times-Roman findfont
+%/Helvetica findfont
+/Courier findfont
+25 scalefont
+setfont
+    
+300 0 translate
+30 angledText
+-30 rotate
+60 angledText
+-60 rotate
+89.5 angledText
+-89.5 rotate
+90 angledText
+
+showpage
+

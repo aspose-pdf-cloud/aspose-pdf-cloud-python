@@ -49,6 +49,9 @@ from .models.horizontal_alignment import HorizontalAlignment
 from .models.html_document_type import HtmlDocumentType
 from .models.html_markup_generation_modes import HtmlMarkupGenerationModes
 from .models.http_status_code import HttpStatusCode
+from .models.image_src_type import ImageSrcType
+from .models.image_template import ImageTemplate
+from .models.image_templates_request import ImageTemplatesRequest
 from .models.images_list_request import ImagesListRequest
 from .models.letters_positioning_methods import LettersPositioningMethods
 from .models.line_spacing import LineSpacing
@@ -56,6 +59,7 @@ from .models.link import Link
 from .models.link_action_type import LinkActionType
 from .models.link_element import LinkElement
 from .models.link_highlighting_mode import LinkHighlightingMode
+from .models.margin_info import MarginInfo
 from .models.merge_documents import MergeDocuments
 from .models.optimize_options import OptimizeOptions
 from .models.page_word_count import PageWordCount

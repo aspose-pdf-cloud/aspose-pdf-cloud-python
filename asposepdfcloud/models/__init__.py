@@ -49,6 +49,9 @@ from .horizontal_alignment import HorizontalAlignment
 from .html_document_type import HtmlDocumentType
 from .html_markup_generation_modes import HtmlMarkupGenerationModes
 from .http_status_code import HttpStatusCode
+from .image_src_type import ImageSrcType
+from .image_template import ImageTemplate
+from .image_templates_request import ImageTemplatesRequest
 from .images_list_request import ImagesListRequest
 from .letters_positioning_methods import LettersPositioningMethods
 from .line_spacing import LineSpacing
@@ -56,6 +59,7 @@ from .link import Link
 from .link_action_type import LinkActionType
 from .link_element import LinkElement
 from .link_highlighting_mode import LinkHighlightingMode
+from .margin_info import MarginInfo
 from .merge_documents import MergeDocuments
 from .optimize_options import OptimizeOptions
 from .page_word_count import PageWordCount
