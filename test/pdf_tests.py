@@ -1613,7 +1613,7 @@ class PdfTests(unittest.TestCase):
     def testPutPdfInStorageToHtml(self):
         file_name = '4pages.pdf'
         self.uploadFile(file_name)
-        result_file_name = "result.html"
+        result_file_name = "result.zip"
 
         opts = {
               "folder" : self.temp_folder
@@ -1625,7 +1625,7 @@ class PdfTests(unittest.TestCase):
 
     def testPutPdfInRequestToHtml(self):
         file_name = '4pages.pdf'
-        result_file_name = "result.html"
+        result_file_name = "result.zip"
 
         opts = {
               "file" : self.test_data_path + file_name
