@@ -67,15 +67,12 @@ class Configuration(object):
         self.api_client = None
         # Temp file folder for downloading files
         self.temp_folder_path = None
-
-        # Authentication Settings
-        # App Key
-        self.app_key = ""
-        # App Key
-        self.app_sid = ""
         
         # access token for OAuth
         self.access_token = ""
+
+        # refresh token for OAuth
+        self.refresh_token = ""
 
         # Logging Settings
         self.logger = {}
