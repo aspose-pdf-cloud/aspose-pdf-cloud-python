@@ -1,7 +1,7 @@
-# Aspose.Pdf for Cloud
-[Aspose.Pdf for Cloud](https://products.aspose.cloud/pdf/cloud) is a true REST API that enables you to perform a wide range of document processing operations including creation, manipulation, conversion and rendering of Pdf documents in the cloud.
+# Aspose.PDF Cloud
+[Aspose.PDF Cloud](https://products.aspose.cloud/pdf/cloud) is a true REST API that enables you to perform a wide range of document processing operations including creation, manipulation, conversion and rendering of Pdf documents in the cloud.
 
-Our Cloud SDKs are wrappers around REST API in various programming languages, allowing you to process documents in language of your choice quickly and easily, gaining all benefits of strong types and IDE highlights. This repository contains new generation SDKs for Aspose.Pdf for Cloud and examples.
+Our Cloud SDKs are wrappers around REST API in various programming languages, allowing you to process documents in language of your choice quickly and easily, gaining all benefits of strong types and IDE highlights. This repository contains new generation SDKs for Aspose.PDF Cloud and examples.
 
 These SDKs are now fully supported. If you have any questions, see any bugs or have enhancement request, feel free to reach out to us at [Free Support Forums](https://forum.aspose.cloud/c/pdf).
 
@@ -41,7 +41,7 @@ class SdkUsage(object):
 Aspose PDF SDK includes a suite of unit tests within the "test" subdirectory. These Unit Tests also serves as examples of how to use the Aspose PDF SDK.
 
 ## Licensing
-All Aspose.Pdf for Cloud SDKs are licensed under [MIT License](LICENSE).
+All Aspose.PDF Cloud SDKs are licensed under [MIT License](LICENSE).
 
 ## Resources
 + [**Website**](https://www.aspose.cloud)
