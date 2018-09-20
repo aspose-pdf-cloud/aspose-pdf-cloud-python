@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 1.1
+    OpenAPI spec version: 2.0
     
 """
 
@@ -33,6 +33,7 @@ from __future__ import absolute_import
 # import models into model package
 from .antialiasing_processing_type import AntialiasingProcessingType
 from .append_document import AppendDocument
+from .aspose_response import AsposeResponse
 from .color import Color
 from .color_depth import ColorDepth
 from .compression_type import CompressionType
@@ -47,11 +48,9 @@ from .font_styles import FontStyles
 from .horizontal_alignment import HorizontalAlignment
 from .html_document_type import HtmlDocumentType
 from .html_markup_generation_modes import HtmlMarkupGenerationModes
-from .http_status_code import HttpStatusCode
 from .image_src_type import ImageSrcType
 from .image_template import ImageTemplate
 from .image_templates_request import ImageTemplatesRequest
-from .images_list_request import ImagesListRequest
 from .letters_positioning_methods import LettersPositioningMethods
 from .line_spacing import LineSpacing
 from .link import Link
@@ -66,9 +65,8 @@ from .paragraph import Paragraph
 from .parts_embedding_modes import PartsEmbeddingModes
 from .pdf_a_type import PdfAType
 from .raster_images_saving_modes import RasterImagesSavingModes
-from .rectangle import Rectangle
+from .rectangle_pdf import RectanglePdf
 from .rotation import Rotation
-from .saa_spose_response import SaaSposeResponse
 from .segment import Segment
 from .shape_type import ShapeType
 from .signature import Signature
@@ -83,7 +81,6 @@ from .text_rects import TextRects
 from .text_replace import TextReplace
 from .text_replace_list_request import TextReplaceListRequest
 from .text_state import TextState
-from .tiff_export_options import TiffExportOptions
 from .vertical_alignment import VerticalAlignment
 from .word_count import WordCount
 from .wrap_mode import WrapMode
@@ -96,6 +93,7 @@ from .attachment_response import AttachmentResponse
 from .attachments import Attachments
 from .attachments_response import AttachmentsResponse
 from .document import Document
+from .document_page_response import DocumentPageResponse
 from .document_pages_response import DocumentPagesResponse
 from .document_properties import DocumentProperties
 from .document_properties_response import DocumentPropertiesResponse
@@ -119,15 +117,6 @@ from .pages import Pages
 from .signature_verify_response import SignatureVerifyResponse
 from .split_result_document import SplitResultDocument
 from .split_result_response import SplitResultResponse
-from .text_format import TextFormat
-from .text_format_response import TextFormatResponse
-from .text_item import TextItem
-from .text_item_response import TextItemResponse
-from .text_items import TextItems
-from .text_items_response import TextItemsResponse
 from .text_rects_response import TextRectsResponse
-from .text_replace_request import TextReplaceRequest
 from .text_replace_response import TextReplaceResponse
 from .word_count_response import WordCountResponse
-from .document_text_replace_response import DocumentTextReplaceResponse
-from .page_text_replace_response import PageTextReplaceResponse

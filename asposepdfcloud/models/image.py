@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 1.1
+    OpenAPI spec version: 2.0
     
 """
 
@@ -50,16 +50,22 @@ class Image(object):
     swagger_types = {
         'links': 'list[Link]',
         'width': 'int',
-        'height': 'int'
+        'height': 'int',
+        'id': 'str',
+        'rectangle': 'RectanglePdf',
+        'page_number': 'int'
     }
 
     attribute_map = {
         'links': 'Links',
         'width': 'Width',
-        'height': 'Height'
+        'height': 'Height',
+        'id': 'Id',
+        'rectangle': 'Rectangle',
+        'page_number': 'PageNumber'
     }
 
-    def __init__(self, links=None, width=None, height=None):
+    def __init__(self, links=None, width=None, height=None, id=None, rectangle=None, page_number=None):
         """
         Image - a model defined in Swagger
         """
@@ -67,6 +73,9 @@ class Image(object):
         self._links = None
         self._width = None
         self._height = None
+        self._id = None
+        self._rectangle = None
+        self._page_number = None
 
         if links is not None:
           self.links = links
@@ -74,6 +83,12 @@ class Image(object):
           self.width = width
         if height is not None:
           self.height = height
+        if id is not None:
+          self.id = id
+        if rectangle is not None:
+          self.rectangle = rectangle
+        if page_number is not None:
+          self.page_number = page_number
 
     @property
     def links(self):
@@ -143,6 +158,75 @@ class Image(object):
         """
 
         self._height = height
+
+    @property
+    def id(self):
+        """
+        Gets the id of this Image.
+        Gets ID of the image.
+
+        :return: The id of this Image.
+        :rtype: str
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """
+        Sets the id of this Image.
+        Gets ID of the image.
+
+        :param id: The id of this Image.
+        :type: str
+        """
+
+        self._id = id
+
+    @property
+    def rectangle(self):
+        """
+        Gets the rectangle of this Image.
+        Gets rectangle of the image.
+
+        :return: The rectangle of this Image.
+        :rtype: RectanglePdf
+        """
+        return self._rectangle
+
+    @rectangle.setter
+    def rectangle(self, rectangle):
+        """
+        Sets the rectangle of this Image.
+        Gets rectangle of the image.
+
+        :param rectangle: The rectangle of this Image.
+        :type: RectanglePdf
+        """
+
+        self._rectangle = rectangle
+
+    @property
+    def page_number(self):
+        """
+        Gets the page_number of this Image.
+        Gets page number.
+
+        :return: The page_number of this Image.
+        :rtype: int
+        """
+        return self._page_number
+
+    @page_number.setter
+    def page_number(self, page_number):
+        """
+        Sets the page_number of this Image.
+        Gets page number.
+
+        :param page_number: The page_number of this Image.
+        :type: int
+        """
+
+        self._page_number = page_number
 
     def to_dict(self):
         """

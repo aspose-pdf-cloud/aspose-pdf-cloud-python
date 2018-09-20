@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 1.1
+    OpenAPI spec version: 2.0
     
 """
 
@@ -62,8 +62,7 @@ class MergeDocuments(object):
 
         self._list = None
 
-        if list is not None:
-          self.list = list
+        self.list = list
 
     @property
     def list(self):
@@ -85,6 +84,8 @@ class MergeDocuments(object):
         :param list: The list of this MergeDocuments.
         :type: list[str]
         """
+        if list is None:
+            raise ValueError("Invalid value for `list`, must not be `None`")
 
         self._list = list
 

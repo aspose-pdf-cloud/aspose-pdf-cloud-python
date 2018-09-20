@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 1.1
+    OpenAPI spec version: 2.0
     
 """
 
@@ -32,7 +32,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = "asposepdfcloud"
-VERSION = "18.7.0"
+VERSION = "18.8.0"
 # To install the library, run the following
 #
 # python setup.py install

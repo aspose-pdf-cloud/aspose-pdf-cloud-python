@@ -23,8 +23,8 @@
 
 
 
-    OpenAPI spec version: 1.1
-
+    OpenAPI spec version: 2.0
+    
 """
 
 
@@ -42,11 +42,11 @@ class LinkHighlightingMode(object):
     """
     allowed enum values
     """
-    NONE = 0
-    INVERT = 1
-    OUTLINE = 2
-    PUSH = 3
-    TOGGLE = 4
+    NONE = "None"
+    INVERT = "Invert"
+    OUTLINE = "Outline"
+    PUSH = "Push"
+    TOGGLE = "Toggle"
 
     """
     Attributes:

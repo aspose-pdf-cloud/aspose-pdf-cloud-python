@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 1.1
+    OpenAPI spec version: 2.0
     
 """
 
@@ -33,6 +33,7 @@ from __future__ import absolute_import
 # import models into sdk package
 from .models.antialiasing_processing_type import AntialiasingProcessingType
 from .models.append_document import AppendDocument
+from .models.aspose_response import AsposeResponse
 from .models.color import Color
 from .models.color_depth import ColorDepth
 from .models.compression_type import CompressionType
@@ -47,11 +48,9 @@ from .models.font_styles import FontStyles
 from .models.horizontal_alignment import HorizontalAlignment
 from .models.html_document_type import HtmlDocumentType
 from .models.html_markup_generation_modes import HtmlMarkupGenerationModes
-from .models.http_status_code import HttpStatusCode
 from .models.image_src_type import ImageSrcType
 from .models.image_template import ImageTemplate
 from .models.image_templates_request import ImageTemplatesRequest
-from .models.images_list_request import ImagesListRequest
 from .models.letters_positioning_methods import LettersPositioningMethods
 from .models.line_spacing import LineSpacing
 from .models.link import Link
@@ -66,9 +65,8 @@ from .models.paragraph import Paragraph
 from .models.parts_embedding_modes import PartsEmbeddingModes
 from .models.pdf_a_type import PdfAType
 from .models.raster_images_saving_modes import RasterImagesSavingModes
-from .models.rectangle import Rectangle
+from .models.rectangle_pdf import RectanglePdf
 from .models.rotation import Rotation
-from .models.saa_spose_response import SaaSposeResponse
 from .models.segment import Segment
 from .models.shape_type import ShapeType
 from .models.signature import Signature
@@ -83,7 +81,6 @@ from .models.text_rects import TextRects
 from .models.text_replace import TextReplace
 from .models.text_replace_list_request import TextReplaceListRequest
 from .models.text_state import TextState
-from .models.tiff_export_options import TiffExportOptions
 from .models.vertical_alignment import VerticalAlignment
 from .models.word_count import WordCount
 from .models.wrap_mode import WrapMode
@@ -96,6 +93,7 @@ from .models.attachment_response import AttachmentResponse
 from .models.attachments import Attachments
 from .models.attachments_response import AttachmentsResponse
 from .models.document import Document
+from .models.document_page_response import DocumentPageResponse
 from .models.document_pages_response import DocumentPagesResponse
 from .models.document_properties import DocumentProperties
 from .models.document_properties_response import DocumentPropertiesResponse
@@ -119,18 +117,9 @@ from .models.pages import Pages
 from .models.signature_verify_response import SignatureVerifyResponse
 from .models.split_result_document import SplitResultDocument
 from .models.split_result_response import SplitResultResponse
-from .models.text_format import TextFormat
-from .models.text_format_response import TextFormatResponse
-from .models.text_item import TextItem
-from .models.text_item_response import TextItemResponse
-from .models.text_items import TextItems
-from .models.text_items_response import TextItemsResponse
 from .models.text_rects_response import TextRectsResponse
-from .models.text_replace_request import TextReplaceRequest
 from .models.text_replace_response import TextReplaceResponse
 from .models.word_count_response import WordCountResponse
-from .models.document_text_replace_response import DocumentTextReplaceResponse
-from .models.page_text_replace_response import PageTextReplaceResponse
 
 # import apis into sdk package
 from .apis.pdf_api import PdfApi

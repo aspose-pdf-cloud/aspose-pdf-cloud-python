@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 1.1
+    OpenAPI spec version: 2.0
     
 """
 
@@ -48,7 +48,7 @@ class DocumentPropertyResponse(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'code': 'HttpStatusCode',
+        'code': 'int',
         'status': 'str',
         'document_property': 'DocumentProperty'
     }
@@ -81,7 +81,7 @@ class DocumentPropertyResponse(object):
         Response status code.
 
         :return: The code of this DocumentPropertyResponse.
-        :rtype: HttpStatusCode
+        :rtype: int
         """
         return self._code
 
@@ -92,7 +92,7 @@ class DocumentPropertyResponse(object):
         Response status code.
 
         :param code: The code of this DocumentPropertyResponse.
-        :type: HttpStatusCode
+        :type: int
         """
         if code is None:
             raise ValueError("Invalid value for `code`, must not be `None`")

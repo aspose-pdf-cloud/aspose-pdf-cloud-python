@@ -23,8 +23,8 @@
 
 
 
-    OpenAPI spec version: 1.1
-
+    OpenAPI spec version: 2.0
+    
 """
 
 
@@ -42,10 +42,10 @@ class HorizontalAlignment(object):
     """
     allowed enum values
     """
-    NONE = 0
-    LEFT = 1
-    CENTER = 2
-    RIGHT = 3
+    NONE = "None"
+    LEFT = "Left"
+    CENTER = "Center"
+    RIGHT = "Right"
 
     """
     Attributes:

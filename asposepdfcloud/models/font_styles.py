@@ -23,8 +23,8 @@
 
 
 
-    OpenAPI spec version: 1.1
-
+    OpenAPI spec version: 2.0
+    
 """
 
 
@@ -42,9 +42,10 @@ class FontStyles(object):
     """
     allowed enum values
     """
-    REGULAR = 0
-    BOLD = 1
-    ITALIC = 2
+    REGULAR = "Regular"
+    BOLD = "Bold"
+    ITALIC = "Italic"
+    BOLDITALIC = "BoldItalic"
 
     """
     Attributes:

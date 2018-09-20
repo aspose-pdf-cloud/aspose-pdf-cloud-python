@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 1.1
+    OpenAPI spec version: 2.0
     
 """
 
@@ -51,7 +51,7 @@ class Page(object):
         'links': 'list[Link]',
         'id': 'int',
         'images': 'Images',
-        'rectangle': 'Rectangle'
+        'rectangle': 'RectanglePdf'
     }
 
     attribute_map = {
@@ -153,7 +153,7 @@ class Page(object):
         Gets the rectangle of this Page.
 
         :return: The rectangle of this Page.
-        :rtype: Rectangle
+        :rtype: RectanglePdf
         """
         return self._rectangle
 
@@ -163,7 +163,7 @@ class Page(object):
         Sets the rectangle of this Page.
 
         :param rectangle: The rectangle of this Page.
-        :type: Rectangle
+        :type: RectanglePdf
         """
 
         self._rectangle = rectangle

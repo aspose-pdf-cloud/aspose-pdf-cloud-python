@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 1.1
+    OpenAPI spec version: 2.0
     
 """
 
@@ -53,7 +53,7 @@ class Field(object):
         'type': 'FieldType',
         'values': 'list[str]',
         'selected_items': 'list[int]',
-        'rect': 'Rectangle'
+        'rect': 'RectanglePdf'
     }
 
     attribute_map = {
@@ -212,7 +212,7 @@ class Field(object):
         Field rectangle.
 
         :return: The rect of this Field.
-        :rtype: Rectangle
+        :rtype: RectanglePdf
         """
         return self._rect
 
@@ -223,7 +223,7 @@ class Field(object):
         Field rectangle.
 
         :param rect: The rect of this Field.
-        :type: Rectangle
+        :type: RectanglePdf
         """
 
         self._rect = rect

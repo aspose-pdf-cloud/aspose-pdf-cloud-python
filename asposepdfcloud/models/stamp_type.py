@@ -23,8 +23,8 @@
 
 
 
-    OpenAPI spec version: 1.1
-
+    OpenAPI spec version: 2.0
+    
 """
 
 
@@ -42,10 +42,10 @@ class StampType(object):
     """
     allowed enum values
     """
-    TEXT = 0
-    IMAGE = 1
-    PAGE = 2
-    PAGE_NUMBER = 3
+    TEXT = "Text"
+    IMAGE = "Image"
+    PAGE = "Page"
+    PAGENUMBER = "PageNumber"
 
     """
     Attributes:

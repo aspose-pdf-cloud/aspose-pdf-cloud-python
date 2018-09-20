@@ -22,7 +22,7 @@
 
 
 
-    OpenAPI spec version: 1.1
+    OpenAPI spec version: 2.0
     
 """
 
@@ -36,7 +36,6 @@ import tempfile
 import threading
 
 from datetime import date, datetime
-from asposepdfcloud.models.http_status_code import HttpStatusCode
 
 # python 2 and python 3 compatibility library
 from six import PY3, integer_types, iteritems, text_type
@@ -185,6 +184,7 @@ class ApiClient(object):
 
         self.__add_o_auth_token(header_params)
 
+        response_data = None
 
         try:
             # perform request and return response
@@ -195,7 +195,7 @@ class ApiClient(object):
                                          _preload_content=_preload_content,
                                          _request_timeout=_request_timeout)
         except ApiException as error:
-            if error.status == HttpStatusCode.UNAUTHORIZED:
+            if error.status == 401:
                 self.__refresh_token()
                 self.__add_o_auth_token(header_params)
                 response_data = self.request(method, url,
@@ -204,6 +204,8 @@ class ApiClient(object):
                                          post_params=post_params, body=body,
                                          _preload_content=_preload_content,
                                          _request_timeout=_request_timeout)
+            else:
+                raise error
 
         self.last_response = response_data
 
@@ -245,7 +247,7 @@ class ApiClient(object):
         resource_path = "/oauth2/token"
 
         # request url
-        url = self.host.replace("/v1.1", "") + resource_path
+        url = self.host.replace("/v2.0", "") + resource_path
 
         # perform request and return response
         response_data = self.request(method, url,
@@ -274,7 +276,7 @@ class ApiClient(object):
         resource_path = "/oauth2/token"
 
         # request url
-        url = self.host.replace("/v1.1", "") + resource_path
+        url = self.host.replace("/v2.0", "") + resource_path
 
         # perform request and return response
         response_data = self.request(method, url,

@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 1.1
+    OpenAPI spec version: 2.0
     
 """
 
@@ -50,7 +50,7 @@ class TextRect(object):
     swagger_types = {
         'text': 'str',
         'page': 'int',
-        'rect': 'Rectangle'
+        'rect': 'RectanglePdf'
     }
 
     attribute_map = {
@@ -124,7 +124,7 @@ class TextRect(object):
         Gets the rect of this TextRect.
 
         :return: The rect of this TextRect.
-        :rtype: Rectangle
+        :rtype: RectanglePdf
         """
         return self._rect
 
@@ -134,7 +134,7 @@ class TextRect(object):
         Sets the rect of this TextRect.
 
         :param rect: The rect of this TextRect.
-        :type: Rectangle
+        :type: RectanglePdf
         """
 
         self._rect = rect
