@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 1.1
+    OpenAPI spec version: 2.0
     
 """
 
@@ -56,7 +56,7 @@ class Signature(object):
         'contact': 'str',
         'location': 'str',
         'visible': 'bool',
-        'rectangle': 'Rectangle',
+        'rectangle': 'RectanglePdf',
         'form_field_name': 'str',
         'authority': 'str',
         'date': 'str',
@@ -98,8 +98,7 @@ class Signature(object):
         self._date = None
         self._show_properties = None
 
-        if signature_path is not None:
-          self.signature_path = signature_path
+        self.signature_path = signature_path
         self.signature_type = signature_type
         if password is not None:
           self.password = password
@@ -142,6 +141,8 @@ class Signature(object):
         :param signature_path: The signature_path of this Signature.
         :type: str
         """
+        if signature_path is None:
+            raise ValueError("Invalid value for `signature_path`, must not be `None`")
 
         self._signature_path = signature_path
 
@@ -317,7 +318,7 @@ class Signature(object):
         Gets or sets the visible rectangle of the signature. Supports only when signing particular page.
 
         :return: The rectangle of this Signature.
-        :rtype: Rectangle
+        :rtype: RectanglePdf
         """
         return self._rectangle
 
@@ -328,7 +329,7 @@ class Signature(object):
         Gets or sets the visible rectangle of the signature. Supports only when signing particular page.
 
         :param rectangle: The rectangle of this Signature.
-        :type: Rectangle
+        :type: RectanglePdf
         """
 
         self._rectangle = rectangle

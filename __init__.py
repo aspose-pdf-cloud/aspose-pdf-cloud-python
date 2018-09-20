@@ -39,7 +39,6 @@ from .doc_format import DocFormat
 from .field_type import FieldType
 from .font_styles import FontStyles
 from .horizontal_alignment import HorizontalAlignment
-from .http_status_code import HttpStatusCode
 from .images_list_request import ImagesListRequest
 from .line_spacing import LineSpacing
 from .link import Link

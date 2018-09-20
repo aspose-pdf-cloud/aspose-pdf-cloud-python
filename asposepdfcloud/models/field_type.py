@@ -23,8 +23,8 @@
 
 
 
-    OpenAPI spec version: 1.1
-
+    OpenAPI spec version: 2.0
+    
 """
 
 
@@ -42,10 +42,10 @@ class FieldType(object):
     """
     allowed enum values
     """
-    TEXT = 0
-    INTEGER = 1
-    BOOLEAN = 2
-    LIST = 3
+    TEXT = "Text"
+    INTEGER = "Integer"
+    BOOLEAN = "Boolean"
+    LIST = "List"
 
     """
     Attributes:

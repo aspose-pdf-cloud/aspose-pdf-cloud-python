@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 1.1
+    OpenAPI spec version: 2.0
     
 """
 
@@ -68,8 +68,7 @@ class AppendDocument(object):
         self._start_page = None
         self._end_page = None
 
-        if document is not None:
-          self.document = document
+        self.document = document
         self.start_page = start_page
         self.end_page = end_page
 
@@ -93,6 +92,8 @@ class AppendDocument(object):
         :param document: The document of this AppendDocument.
         :type: str
         """
+        if document is None:
+            raise ValueError("Invalid value for `document`, must not be `None`")
 
         self._document = document
 

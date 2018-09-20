@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 1.1
+    OpenAPI spec version: 2.0
     
 """
 
@@ -52,7 +52,7 @@ class TextReplace(object):
         'new_value': 'str',
         'regex': 'bool',
         'text_state': 'TextState',
-        'rect': 'Rectangle'
+        'rect': 'RectanglePdf'
     }
 
     attribute_map = {
@@ -187,7 +187,7 @@ class TextReplace(object):
         Rectangle area where searched original text.
 
         :return: The rect of this TextReplace.
-        :rtype: Rectangle
+        :rtype: RectanglePdf
         """
         return self._rect
 
@@ -198,7 +198,7 @@ class TextReplace(object):
         Rectangle area where searched original text.
 
         :param rect: The rect of this TextReplace.
-        :type: Rectangle
+        :type: RectanglePdf
         """
 
         self._rect = rect

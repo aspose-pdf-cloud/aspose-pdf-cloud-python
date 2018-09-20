@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 1.1
+    OpenAPI spec version: 2.0
     
 """
 
@@ -52,7 +52,9 @@ class LinkAnnotation(object):
         'action_type': 'LinkActionType',
         'action': 'str',
         'highlighting': 'LinkHighlightingMode',
-        'color': 'Color'
+        'color': 'Color',
+        'rect': 'RectanglePdf',
+        'id': 'str'
     }
 
     attribute_map = {
@@ -60,10 +62,12 @@ class LinkAnnotation(object):
         'action_type': 'ActionType',
         'action': 'Action',
         'highlighting': 'Highlighting',
-        'color': 'Color'
+        'color': 'Color',
+        'rect': 'Rect',
+        'id': 'Id'
     }
 
-    def __init__(self, links=None, action_type=None, action=None, highlighting=None, color=None):
+    def __init__(self, links=None, action_type=None, action=None, highlighting=None, color=None, rect=None, id=None):
         """
         LinkAnnotation - a model defined in Swagger
         """
@@ -73,6 +77,8 @@ class LinkAnnotation(object):
         self._action = None
         self._highlighting = None
         self._color = None
+        self._rect = None
+        self._id = None
 
         if links is not None:
           self.links = links
@@ -84,6 +90,10 @@ class LinkAnnotation(object):
           self.highlighting = highlighting
         if color is not None:
           self.color = color
+        if rect is not None:
+          self.rect = rect
+        if id is not None:
+          self.id = id
 
     @property
     def links(self):
@@ -191,6 +201,48 @@ class LinkAnnotation(object):
         """
 
         self._color = color
+
+    @property
+    def rect(self):
+        """
+        Gets the rect of this LinkAnnotation.
+
+        :return: The rect of this LinkAnnotation.
+        :rtype: RectanglePdf
+        """
+        return self._rect
+
+    @rect.setter
+    def rect(self, rect):
+        """
+        Sets the rect of this LinkAnnotation.
+
+        :param rect: The rect of this LinkAnnotation.
+        :type: RectanglePdf
+        """
+
+        self._rect = rect
+
+    @property
+    def id(self):
+        """
+        Gets the id of this LinkAnnotation.
+
+        :return: The id of this LinkAnnotation.
+        :rtype: str
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """
+        Sets the id of this LinkAnnotation.
+
+        :param id: The id of this LinkAnnotation.
+        :type: str
+        """
+
+        self._id = id
 
     def to_dict(self):
         """

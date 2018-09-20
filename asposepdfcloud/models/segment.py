@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 1.1
+    OpenAPI spec version: 2.0
     
 """
 
@@ -65,8 +65,7 @@ class Segment(object):
         self._value = None
         self._text_state = None
 
-        if value is not None:
-          self.value = value
+        self.value = value
         if text_state is not None:
           self.text_state = text_state
 
@@ -88,6 +87,8 @@ class Segment(object):
         :param value: The value of this Segment.
         :type: str
         """
+        if value is None:
+            raise ValueError("Invalid value for `value`, must not be `None`")
 
         self._value = value
 

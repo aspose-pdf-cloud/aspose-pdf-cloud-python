@@ -23,8 +23,8 @@
 
 
 
-    OpenAPI spec version: 1.1
-
+    OpenAPI spec version: 2.0
+    
 """
 
 
@@ -42,10 +42,10 @@ class Rotation(object):
     """
     allowed enum values
     """
-    NONE = 0
-    ON_90 = 1
-    ON_180 = 2
-    ON_270 = 3
+    NONE = "None"
+    ON90 = "on90"
+    ON180 = "on180"
+    ON270 = "on270"
 
     """
     Attributes:

@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 1.1
+    OpenAPI spec version: 2.0
     
 """
 
@@ -49,7 +49,7 @@ class LinkAnnotations(object):
     """
     swagger_types = {
         'links': 'list[Link]',
-        'list': 'list[LinkElement]'
+        'list': 'list[LinkAnnotation]'
     }
 
     attribute_map = {
@@ -99,7 +99,7 @@ class LinkAnnotations(object):
         Gets the list of this LinkAnnotations.
 
         :return: The list of this LinkAnnotations.
-        :rtype: list[LinkElement]
+        :rtype: list[LinkAnnotation]
         """
         return self._list
 
@@ -109,7 +109,7 @@ class LinkAnnotations(object):
         Sets the list of this LinkAnnotations.
 
         :param list: The list of this LinkAnnotations.
-        :type: list[LinkElement]
+        :type: list[LinkAnnotation]
         """
 
         self._list = list

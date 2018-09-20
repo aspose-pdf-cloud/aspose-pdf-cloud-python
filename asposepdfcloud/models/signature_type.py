@@ -23,8 +23,8 @@
 
 
 
-    OpenAPI spec version: 1.1
-
+    OpenAPI spec version: 2.0
+    
 """
 
 
@@ -42,9 +42,9 @@ class SignatureType(object):
     """
     allowed enum values
     """
-    PKCS_1 = 0
-    PKCS_7 = 1
-    PKCS_7_DETACHED = 2
+    PKCS1 = "PKCS1"
+    PKCS7 = "PKCS7"
+    PKCS7DETACHED = "PKCS7Detached"
 
     """
     Attributes:

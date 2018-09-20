@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 1.1
+    OpenAPI spec version: 2.0
     
 """
 
@@ -57,6 +57,118 @@ class PdfApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
+    def delete_document_link_annotations(self, name, **kwargs):
+        """
+        Delete all link annotations from the document
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_document_link_annotations(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.delete_document_link_annotations_with_http_info(name, **kwargs)
+        else:
+            (data) = self.delete_document_link_annotations_with_http_info(name, **kwargs)
+            return data
+
+    def delete_document_link_annotations_with_http_info(self, name, **kwargs):
+        """
+        Delete all link annotations from the document
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_document_link_annotations_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_document_link_annotations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `delete_document_link_annotations`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/links', 'DELETE',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def delete_field(self, name, field_name, **kwargs):
         """
         Delete document field by name.
@@ -74,7 +186,7 @@ class PdfApi(object):
         :param str field_name: The field name/ (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -102,7 +214,7 @@ class PdfApi(object):
         :param str field_name: The field name/ (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -168,7 +280,245 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def delete_image(self, name, image_id, **kwargs):
+        """
+        Delete image from document page.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_image(name, image_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str image_id: Image ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.delete_image_with_http_info(name, image_id, **kwargs)
+        else:
+            (data) = self.delete_image_with_http_info(name, image_id, **kwargs)
+            return data
+
+    def delete_image_with_http_info(self, name, image_id, **kwargs):
+        """
+        Delete image from document page.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_image_with_http_info(name, image_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str image_id: Image ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'image_id', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_image" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `delete_image`")
+        # verify the required parameter 'image_id' is set
+        if ('image_id' not in params) or (params['image_id'] is None):
+            raise ValueError("Missing the required parameter `image_id` when calling `delete_image`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'image_id' in params:
+            path_params['imageId'] = params['image_id']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/images/{imageId}', 'DELETE',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def delete_link_annotation(self, name, link_id, **kwargs):
+        """
+        Delete document page link annotation by ID
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_link_annotation(name, link_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str link_id: The link ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.delete_link_annotation_with_http_info(name, link_id, **kwargs)
+        else:
+            (data) = self.delete_link_annotation_with_http_info(name, link_id, **kwargs)
+            return data
+
+    def delete_link_annotation_with_http_info(self, name, link_id, **kwargs):
+        """
+        Delete document page link annotation by ID
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_link_annotation_with_http_info(name, link_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str link_id: The link ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'link_id', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_link_annotation" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `delete_link_annotation`")
+        # verify the required parameter 'link_id' is set
+        if ('link_id' not in params) or (params['link_id'] is None):
+            raise ValueError("Missing the required parameter `link_id` when calling `delete_link_annotation`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'link_id' in params:
+            path_params['linkId'] = params['link_id']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/links/{linkId}', 'DELETE',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -193,7 +543,7 @@ class PdfApi(object):
         :param int page_number: The page number. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -221,7 +571,7 @@ class PdfApi(object):
         :param int page_number: The page number. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -287,7 +637,126 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def delete_page_link_annotations(self, name, page_number, **kwargs):
+        """
+        Delete all link annotations from the page
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_page_link_annotations(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.delete_page_link_annotations_with_http_info(name, page_number, **kwargs)
+        else:
+            (data) = self.delete_page_link_annotations_with_http_info(name, page_number, **kwargs)
+            return data
+
+    def delete_page_link_annotations_with_http_info(self, name, page_number, **kwargs):
+        """
+        Delete all link annotations from the page
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_page_link_annotations_with_http_info(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'page_number', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_page_link_annotations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `delete_page_link_annotations`")
+        # verify the required parameter 'page_number' is set
+        if ('page_number' not in params) or (params['page_number'] is None):
+            raise ValueError("Missing the required parameter `page_number` when calling `delete_page_link_annotations`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'page_number' in params:
+            path_params['pageNumber'] = params['page_number']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/links', 'DELETE',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -311,7 +780,7 @@ class PdfApi(object):
         :param str name: (required)
         :param str storage:
         :param str folder:
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -338,7 +807,7 @@ class PdfApi(object):
         :param str name: (required)
         :param str storage:
         :param str folder:
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -399,7 +868,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -424,7 +893,7 @@ class PdfApi(object):
         :param str property_name: (required)
         :param str storage:
         :param str folder:
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -452,7 +921,7 @@ class PdfApi(object):
         :param str property_name: (required)
         :param str storage:
         :param str folder:
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -518,7 +987,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -528,7 +997,7 @@ class PdfApi(object):
 
     def get_document(self, name, **kwargs):
         """
-        Read common document info or convert to some format if the format specified.
+        Read common document info.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -540,11 +1009,9 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param str format: The format to convert.
         :param str storage: The document storage.
         :param str folder: The document folder.
-        :param str out_path: Path to save result
-        :return: file
+        :return: DocumentResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -557,7 +1024,7 @@ class PdfApi(object):
 
     def get_document_with_http_info(self, name, **kwargs):
         """
-        Read common document info or convert to some format if the format specified.
+        Read common document info.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -569,16 +1036,14 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param str format: The format to convert.
         :param str storage: The document storage.
         :param str folder: The document folder.
-        :param str out_path: Path to save result
-        :return: file
+        :return: DocumentResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'format', 'storage', 'folder', 'out_path']
+        all_params = ['name', 'storage', 'folder']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -605,14 +1070,10 @@ class PdfApi(object):
             path_params['name'] = params['name']
 
         query_params = []
-        if 'format' in params:
-            query_params.append(('format', params['format']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
-        if 'out_path' in params:
-            query_params.append(('outPath', params['out_path']))
 
         header_params = {}
 
@@ -638,7 +1099,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='DocumentResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -1469,6 +1930,7 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.epub) (required)
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1494,12 +1956,13 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.epub) (required)
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['src_path']
+        all_params = ['src_path', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1526,6 +1989,8 @@ class PdfApi(object):
         query_params = []
         if 'src_path' in params:
             query_params.append(('srcPath', params['src_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -1790,385 +2255,6 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def get_fragment(self, name, page_number, fragment_number, **kwargs):
-        """
-        Read page fragment.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_fragment(name, page_number, fragment_number, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: (required)
-        :param int page_number: (required)
-        :param int fragment_number: (required)
-        :param str with_empty:
-        :param str storage:
-        :param str folder:
-        :return: TextItemsResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.get_fragment_with_http_info(name, page_number, fragment_number, **kwargs)
-        else:
-            (data) = self.get_fragment_with_http_info(name, page_number, fragment_number, **kwargs)
-            return data
-
-    def get_fragment_with_http_info(self, name, page_number, fragment_number, **kwargs):
-        """
-        Read page fragment.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_fragment_with_http_info(name, page_number, fragment_number, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: (required)
-        :param int page_number: (required)
-        :param int fragment_number: (required)
-        :param str with_empty:
-        :param str storage:
-        :param str folder:
-        :return: TextItemsResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['name', 'page_number', 'fragment_number', 'with_empty', 'storage', 'folder']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_fragment" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `get_fragment`")
-        # verify the required parameter 'page_number' is set
-        if ('page_number' not in params) or (params['page_number'] is None):
-            raise ValueError("Missing the required parameter `page_number` when calling `get_fragment`")
-        # verify the required parameter 'fragment_number' is set
-        if ('fragment_number' not in params) or (params['fragment_number'] is None):
-            raise ValueError("Missing the required parameter `fragment_number` when calling `get_fragment`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'name' in params:
-            path_params['name'] = params['name']
-        if 'page_number' in params:
-            path_params['pageNumber'] = params['page_number']
-        if 'fragment_number' in params:
-            path_params['fragmentNumber'] = params['fragment_number']
-
-        query_params = []
-        if 'with_empty' in params:
-            query_params.append(('withEmpty', params['with_empty']))
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-        if 'folder' in params:
-            query_params.append(('folder', params['folder']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/fragments/{fragmentNumber}', 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='TextItemsResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def get_fragment_text_format(self, name, page_number, fragment_number, **kwargs):
-        """
-        Read page fragment text format.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_fragment_text_format(name, page_number, fragment_number, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: (required)
-        :param int page_number: (required)
-        :param int fragment_number: (required)
-        :param str storage:
-        :param str folder:
-        :return: TextFormatResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.get_fragment_text_format_with_http_info(name, page_number, fragment_number, **kwargs)
-        else:
-            (data) = self.get_fragment_text_format_with_http_info(name, page_number, fragment_number, **kwargs)
-            return data
-
-    def get_fragment_text_format_with_http_info(self, name, page_number, fragment_number, **kwargs):
-        """
-        Read page fragment text format.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_fragment_text_format_with_http_info(name, page_number, fragment_number, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: (required)
-        :param int page_number: (required)
-        :param int fragment_number: (required)
-        :param str storage:
-        :param str folder:
-        :return: TextFormatResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['name', 'page_number', 'fragment_number', 'storage', 'folder']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_fragment_text_format" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `get_fragment_text_format`")
-        # verify the required parameter 'page_number' is set
-        if ('page_number' not in params) or (params['page_number'] is None):
-            raise ValueError("Missing the required parameter `page_number` when calling `get_fragment_text_format`")
-        # verify the required parameter 'fragment_number' is set
-        if ('fragment_number' not in params) or (params['fragment_number'] is None):
-            raise ValueError("Missing the required parameter `fragment_number` when calling `get_fragment_text_format`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'name' in params:
-            path_params['name'] = params['name']
-        if 'page_number' in params:
-            path_params['pageNumber'] = params['page_number']
-        if 'fragment_number' in params:
-            path_params['fragmentNumber'] = params['fragment_number']
-
-        query_params = []
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-        if 'folder' in params:
-            query_params.append(('folder', params['folder']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/fragments/{fragmentNumber}/textFormat', 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='TextFormatResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def get_fragments(self, name, page_number, **kwargs):
-        """
-        Read page fragments.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_fragments(name, page_number, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: (required)
-        :param int page_number: (required)
-        :param str with_empty:
-        :param str storage:
-        :param str folder:
-        :return: TextItemsResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.get_fragments_with_http_info(name, page_number, **kwargs)
-        else:
-            (data) = self.get_fragments_with_http_info(name, page_number, **kwargs)
-            return data
-
-    def get_fragments_with_http_info(self, name, page_number, **kwargs):
-        """
-        Read page fragments.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_fragments_with_http_info(name, page_number, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: (required)
-        :param int page_number: (required)
-        :param str with_empty:
-        :param str storage:
-        :param str folder:
-        :return: TextItemsResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['name', 'page_number', 'with_empty', 'storage', 'folder']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_fragments" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `get_fragments`")
-        # verify the required parameter 'page_number' is set
-        if ('page_number' not in params) or (params['page_number'] is None):
-            raise ValueError("Missing the required parameter `page_number` when calling `get_fragments`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'name' in params:
-            path_params['name'] = params['name']
-        if 'page_number' in params:
-            path_params['pageNumber'] = params['page_number']
-
-        query_params = []
-        if 'with_empty' in params:
-            query_params.append(('withEmpty', params['with_empty']))
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-        if 'folder' in params:
-            query_params.append(('folder', params['folder']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/fragments', 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='TextItemsResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
     def get_html_in_storage_to_pdf(self, src_path, html_file_name, **kwargs):
         """
         Convert HTML file (located on storage) to PDF format and return resulting file in response. 
@@ -2191,6 +2277,7 @@ class PdfApi(object):
         :param float margin_bottom: Page margin bottom
         :param float margin_right: Page margin right
         :param float margin_top: Page margin top
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2224,12 +2311,13 @@ class PdfApi(object):
         :param float margin_bottom: Page margin bottom
         :param float margin_right: Page margin right
         :param float margin_top: Page margin top
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['src_path', 'html_file_name', 'height', 'width', 'is_landscape', 'margin_left', 'margin_bottom', 'margin_right', 'margin_top']
+        all_params = ['src_path', 'html_file_name', 'height', 'width', 'is_landscape', 'margin_left', 'margin_bottom', 'margin_right', 'margin_top', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2275,6 +2363,8 @@ class PdfApi(object):
             query_params.append(('marginRight', params['margin_right']))
         if 'margin_top' in params:
             query_params.append(('marginTop', params['margin_top']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -2308,65 +2398,57 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def get_image(self, name, page_number, image_number, **kwargs):
+    def get_image(self, name, image_id, **kwargs):
         """
-        Extract document image in format specified.
+        Read document image by ID.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get_image(name, page_number, image_number, callback=callback_function)
+        >>> thread = api.get_image(name, image_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param int page_number: The page number. (required)
-        :param int image_number: The image format. (required)
-        :param str format: Image format to convert, if not specified the common image data is read.
-        :param int width: The converted image width.
-        :param int height: The converted image height.
+        :param str image_id: Image ID. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
-        :return: file
+        :return: ImageResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.get_image_with_http_info(name, page_number, image_number, **kwargs)
+            return self.get_image_with_http_info(name, image_id, **kwargs)
         else:
-            (data) = self.get_image_with_http_info(name, page_number, image_number, **kwargs)
+            (data) = self.get_image_with_http_info(name, image_id, **kwargs)
             return data
 
-    def get_image_with_http_info(self, name, page_number, image_number, **kwargs):
+    def get_image_with_http_info(self, name, image_id, **kwargs):
         """
-        Extract document image in format specified.
+        Read document image by ID.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get_image_with_http_info(name, page_number, image_number, callback=callback_function)
+        >>> thread = api.get_image_with_http_info(name, image_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param int page_number: The page number. (required)
-        :param int image_number: The image format. (required)
-        :param str format: Image format to convert, if not specified the common image data is read.
-        :param int width: The converted image width.
-        :param int height: The converted image height.
+        :param str image_id: Image ID. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
-        :return: file
+        :return: ImageResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'image_number', 'format', 'width', 'height', 'storage', 'folder']
+        all_params = ['name', 'image_id', 'storage', 'folder']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2384,12 +2466,9 @@ class PdfApi(object):
         # verify the required parameter 'name' is set
         if ('name' not in params) or (params['name'] is None):
             raise ValueError("Missing the required parameter `name` when calling `get_image`")
-        # verify the required parameter 'page_number' is set
-        if ('page_number' not in params) or (params['page_number'] is None):
-            raise ValueError("Missing the required parameter `page_number` when calling `get_image`")
-        # verify the required parameter 'image_number' is set
-        if ('image_number' not in params) or (params['image_number'] is None):
-            raise ValueError("Missing the required parameter `image_number` when calling `get_image`")
+        # verify the required parameter 'image_id' is set
+        if ('image_id' not in params) or (params['image_id'] is None):
+            raise ValueError("Missing the required parameter `image_id` when calling `get_image`")
 
 
         collection_formats = {}
@@ -2397,14 +2476,133 @@ class PdfApi(object):
         path_params = {}
         if 'name' in params:
             path_params['name'] = params['name']
-        if 'page_number' in params:
-            path_params['pageNumber'] = params['page_number']
-        if 'image_number' in params:
-            path_params['imageNumber'] = params['image_number']
+        if 'image_id' in params:
+            path_params['imageId'] = params['image_id']
 
         query_params = []
-        if 'format' in params:
-            query_params.append(('format', params['format']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/images/{imageId}', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='ImageResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_image_extract_as_gif(self, name, image_id, **kwargs):
+        """
+        Extract document image in GIF format
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_image_extract_as_gif(name, image_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str image_id: Image ID. (required)
+        :param int width: The converted image width.
+        :param int height: The converted image height.
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_image_extract_as_gif_with_http_info(name, image_id, **kwargs)
+        else:
+            (data) = self.get_image_extract_as_gif_with_http_info(name, image_id, **kwargs)
+            return data
+
+    def get_image_extract_as_gif_with_http_info(self, name, image_id, **kwargs):
+        """
+        Extract document image in GIF format
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_image_extract_as_gif_with_http_info(name, image_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str image_id: Image ID. (required)
+        :param int width: The converted image width.
+        :param int height: The converted image height.
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'image_id', 'width', 'height', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_image_extract_as_gif" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_image_extract_as_gif`")
+        # verify the required parameter 'image_id' is set
+        if ('image_id' not in params) or (params['image_id'] is None):
+            raise ValueError("Missing the required parameter `image_id` when calling `get_image_extract_as_gif`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'image_id' in params:
+            path_params['imageId'] = params['image_id']
+
+        query_params = []
         if 'width' in params:
             query_params.append(('width', params['width']))
         if 'height' in params:
@@ -2422,7 +2620,7 @@ class PdfApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
-            select_header_accept(['multipart/form-data'])
+            select_header_accept(['application/json'])
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.\
@@ -2431,7 +2629,388 @@ class PdfApi(object):
         # Authentication setting
         auth_settings = []
 
-        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/images/{imageNumber}', 'GET',
+        return self.api_client.call_api('/pdf/{name}/images/{imageId}/extract/gif', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_image_extract_as_jpeg(self, name, image_id, **kwargs):
+        """
+        Extract document image in JPEG format
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_image_extract_as_jpeg(name, image_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str image_id: Image ID. (required)
+        :param int width: The converted image width.
+        :param int height: The converted image height.
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_image_extract_as_jpeg_with_http_info(name, image_id, **kwargs)
+        else:
+            (data) = self.get_image_extract_as_jpeg_with_http_info(name, image_id, **kwargs)
+            return data
+
+    def get_image_extract_as_jpeg_with_http_info(self, name, image_id, **kwargs):
+        """
+        Extract document image in JPEG format
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_image_extract_as_jpeg_with_http_info(name, image_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str image_id: Image ID. (required)
+        :param int width: The converted image width.
+        :param int height: The converted image height.
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'image_id', 'width', 'height', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_image_extract_as_jpeg" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_image_extract_as_jpeg`")
+        # verify the required parameter 'image_id' is set
+        if ('image_id' not in params) or (params['image_id'] is None):
+            raise ValueError("Missing the required parameter `image_id` when calling `get_image_extract_as_jpeg`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'image_id' in params:
+            path_params['imageId'] = params['image_id']
+
+        query_params = []
+        if 'width' in params:
+            query_params.append(('width', params['width']))
+        if 'height' in params:
+            query_params.append(('height', params['height']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/images/{imageId}/extract/jpeg', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_image_extract_as_png(self, name, image_id, **kwargs):
+        """
+        Extract document image in PNG format
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_image_extract_as_png(name, image_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str image_id: Image ID. (required)
+        :param int width: The converted image width.
+        :param int height: The converted image height.
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_image_extract_as_png_with_http_info(name, image_id, **kwargs)
+        else:
+            (data) = self.get_image_extract_as_png_with_http_info(name, image_id, **kwargs)
+            return data
+
+    def get_image_extract_as_png_with_http_info(self, name, image_id, **kwargs):
+        """
+        Extract document image in PNG format
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_image_extract_as_png_with_http_info(name, image_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str image_id: Image ID. (required)
+        :param int width: The converted image width.
+        :param int height: The converted image height.
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'image_id', 'width', 'height', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_image_extract_as_png" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_image_extract_as_png`")
+        # verify the required parameter 'image_id' is set
+        if ('image_id' not in params) or (params['image_id'] is None):
+            raise ValueError("Missing the required parameter `image_id` when calling `get_image_extract_as_png`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'image_id' in params:
+            path_params['imageId'] = params['image_id']
+
+        query_params = []
+        if 'width' in params:
+            query_params.append(('width', params['width']))
+        if 'height' in params:
+            query_params.append(('height', params['height']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/images/{imageId}/extract/png', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_image_extract_as_tiff(self, name, image_id, **kwargs):
+        """
+        Extract document image in TIFF format
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_image_extract_as_tiff(name, image_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str image_id: Image ID. (required)
+        :param int width: The converted image width.
+        :param int height: The converted image height.
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_image_extract_as_tiff_with_http_info(name, image_id, **kwargs)
+        else:
+            (data) = self.get_image_extract_as_tiff_with_http_info(name, image_id, **kwargs)
+            return data
+
+    def get_image_extract_as_tiff_with_http_info(self, name, image_id, **kwargs):
+        """
+        Extract document image in TIFF format
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_image_extract_as_tiff_with_http_info(name, image_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str image_id: Image ID. (required)
+        :param int width: The converted image width.
+        :param int height: The converted image height.
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'image_id', 'width', 'height', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_image_extract_as_tiff" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_image_extract_as_tiff`")
+        # verify the required parameter 'image_id' is set
+        if ('image_id' not in params) or (params['image_id'] is None):
+            raise ValueError("Missing the required parameter `image_id` when calling `get_image_extract_as_tiff`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'image_id' in params:
+            path_params['imageId'] = params['image_id']
+
+        query_params = []
+        if 'width' in params:
+            query_params.append(('width', params['width']))
+        if 'height' in params:
+            query_params.append(('height', params['height']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/images/{imageId}/extract/tiff', 'GET',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -2579,6 +3158,7 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.tex) (required)
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2604,12 +3184,13 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.tex) (required)
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['src_path']
+        all_params = ['src_path', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2636,6 +3217,8 @@ class PdfApi(object):
         query_params = []
         if 'src_path' in params:
             query_params.append(('srcPath', params['src_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -2683,6 +3266,7 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.mht) (required)
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2708,12 +3292,13 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.mht) (required)
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['src_path']
+        all_params = ['src_path', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2740,6 +3325,8 @@ class PdfApi(object):
         query_params = []
         if 'src_path' in params:
             query_params.append(('srcPath', params['src_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -2775,7 +3362,7 @@ class PdfApi(object):
 
     def get_page(self, name, page_number, **kwargs):
         """
-        Convert document page to format specified.
+        Read document page info.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -2788,12 +3375,9 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param int page_number: The page number. (required)
-        :param str format: The format to convert if specified.
-        :param int width: The converted image width.
-        :param int height: The converted image height.
         :param str storage: The document storage.
         :param str folder: The document folder.
-        :return: file
+        :return: DocumentPageResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -2806,7 +3390,7 @@ class PdfApi(object):
 
     def get_page_with_http_info(self, name, page_number, **kwargs):
         """
-        Convert document page to format specified.
+        Read document page info.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -2819,17 +3403,14 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param int page_number: The page number. (required)
-        :param str format: The format to convert if specified.
-        :param int width: The converted image width.
-        :param int height: The converted image height.
         :param str storage: The document storage.
         :param str folder: The document folder.
-        :return: file
+        :return: DocumentPageResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'format', 'width', 'height', 'storage', 'folder']
+        all_params = ['name', 'page_number', 'storage', 'folder']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2861,12 +3442,6 @@ class PdfApi(object):
             path_params['pageNumber'] = params['page_number']
 
         query_params = []
-        if 'format' in params:
-            query_params.append(('format', params['format']))
-        if 'width' in params:
-            query_params.append(('width', params['width']))
-        if 'height' in params:
-            query_params.append(('height', params['height']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
@@ -2896,7 +3471,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='file',
+                                        response_type='DocumentPageResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -3151,7 +3726,7 @@ class PdfApi(object):
 
     def get_page_convert_to_bmp(self, name, page_number, **kwargs):
         """
-        Convert document page to Bmp image.
+        Convert document page to Bmp image and return resulting file in response.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -3167,6 +3742,7 @@ class PdfApi(object):
         :param int width: The converted image width.
         :param int height: The converted image height.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3180,7 +3756,7 @@ class PdfApi(object):
 
     def get_page_convert_to_bmp_with_http_info(self, name, page_number, **kwargs):
         """
-        Convert document page to Bmp image.
+        Convert document page to Bmp image and return resulting file in response.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -3196,12 +3772,13 @@ class PdfApi(object):
         :param int width: The converted image width.
         :param int height: The converted image height.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'width', 'height', 'folder']
+        all_params = ['name', 'page_number', 'width', 'height', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3239,6 +3816,8 @@ class PdfApi(object):
             query_params.append(('height', params['height']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -3274,7 +3853,7 @@ class PdfApi(object):
 
     def get_page_convert_to_emf(self, name, page_number, **kwargs):
         """
-        Convert document page to Emf image.
+        Convert document page to Emf image and return resulting file in response.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -3290,6 +3869,7 @@ class PdfApi(object):
         :param int width: The converted image width.
         :param int height: The converted image height.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3303,7 +3883,7 @@ class PdfApi(object):
 
     def get_page_convert_to_emf_with_http_info(self, name, page_number, **kwargs):
         """
-        Convert document page to Emf image.
+        Convert document page to Emf image and return resulting file in response.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -3319,12 +3899,13 @@ class PdfApi(object):
         :param int width: The converted image width.
         :param int height: The converted image height.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'width', 'height', 'folder']
+        all_params = ['name', 'page_number', 'width', 'height', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3362,6 +3943,8 @@ class PdfApi(object):
             query_params.append(('height', params['height']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -3397,7 +3980,7 @@ class PdfApi(object):
 
     def get_page_convert_to_gif(self, name, page_number, **kwargs):
         """
-        Convert document page to Gif image.
+        Convert document page to Gif image and return resulting file in response.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -3413,6 +3996,7 @@ class PdfApi(object):
         :param int width: The converted image width.
         :param int height: The converted image height.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3426,7 +4010,7 @@ class PdfApi(object):
 
     def get_page_convert_to_gif_with_http_info(self, name, page_number, **kwargs):
         """
-        Convert document page to Gif image.
+        Convert document page to Gif image and return resulting file in response.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -3442,12 +4026,13 @@ class PdfApi(object):
         :param int width: The converted image width.
         :param int height: The converted image height.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'width', 'height', 'folder']
+        all_params = ['name', 'page_number', 'width', 'height', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3485,6 +4070,8 @@ class PdfApi(object):
             query_params.append(('height', params['height']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -3520,7 +4107,7 @@ class PdfApi(object):
 
     def get_page_convert_to_jpeg(self, name, page_number, **kwargs):
         """
-        Convert document page to Jpeg image.
+        Convert document page to Jpeg image and return resulting file in response.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -3536,6 +4123,7 @@ class PdfApi(object):
         :param int width: The converted image width.
         :param int height: The converted image height.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3549,7 +4137,7 @@ class PdfApi(object):
 
     def get_page_convert_to_jpeg_with_http_info(self, name, page_number, **kwargs):
         """
-        Convert document page to Jpeg image.
+        Convert document page to Jpeg image and return resulting file in response.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -3565,12 +4153,13 @@ class PdfApi(object):
         :param int width: The converted image width.
         :param int height: The converted image height.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'width', 'height', 'folder']
+        all_params = ['name', 'page_number', 'width', 'height', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3608,6 +4197,8 @@ class PdfApi(object):
             query_params.append(('height', params['height']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -3643,7 +4234,7 @@ class PdfApi(object):
 
     def get_page_convert_to_png(self, name, page_number, **kwargs):
         """
-        Convert document page to Png image.
+        Convert document page to Png image and return resulting file in response.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -3659,6 +4250,7 @@ class PdfApi(object):
         :param int width: The converted image width.
         :param int height: The converted image height.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3672,7 +4264,7 @@ class PdfApi(object):
 
     def get_page_convert_to_png_with_http_info(self, name, page_number, **kwargs):
         """
-        Convert document page to Png image.
+        Convert document page to Png image and return resulting file in response.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -3688,12 +4280,13 @@ class PdfApi(object):
         :param int width: The converted image width.
         :param int height: The converted image height.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'width', 'height', 'folder']
+        all_params = ['name', 'page_number', 'width', 'height', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3731,6 +4324,8 @@ class PdfApi(object):
             query_params.append(('height', params['height']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -3766,7 +4361,7 @@ class PdfApi(object):
 
     def get_page_convert_to_tiff(self, name, page_number, **kwargs):
         """
-        Convert document page to Tiff image.
+        Convert document page to Tiff image  and return resulting file in response.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -3782,6 +4377,7 @@ class PdfApi(object):
         :param int width: The converted image width.
         :param int height: The converted image height.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3795,7 +4391,7 @@ class PdfApi(object):
 
     def get_page_convert_to_tiff_with_http_info(self, name, page_number, **kwargs):
         """
-        Convert document page to Tiff image.
+        Convert document page to Tiff image  and return resulting file in response.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -3811,12 +4407,13 @@ class PdfApi(object):
         :param int width: The converted image width.
         :param int height: The converted image height.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'width', 'height', 'folder']
+        all_params = ['name', 'page_number', 'width', 'height', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3854,6 +4451,8 @@ class PdfApi(object):
             query_params.append(('height', params['height']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -3887,22 +4486,22 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def get_page_link_annotation_by_index(self, name, page_number, link_index, **kwargs):
+    def get_page_link_annotation(self, name, page_number, link_id, **kwargs):
         """
-        Read document page link annotation by its index.
+        Read document page link annotation by ID.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get_page_link_annotation_by_index(name, page_number, link_index, callback=callback_function)
+        >>> thread = api.get_page_link_annotation(name, page_number, link_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param int page_number: The page number. (required)
-        :param int link_index: The link index. (required)
+        :param str link_id: The link ID. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
         :return: LinkAnnotationResponse
@@ -3911,27 +4510,27 @@ class PdfApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.get_page_link_annotation_by_index_with_http_info(name, page_number, link_index, **kwargs)
+            return self.get_page_link_annotation_with_http_info(name, page_number, link_id, **kwargs)
         else:
-            (data) = self.get_page_link_annotation_by_index_with_http_info(name, page_number, link_index, **kwargs)
+            (data) = self.get_page_link_annotation_with_http_info(name, page_number, link_id, **kwargs)
             return data
 
-    def get_page_link_annotation_by_index_with_http_info(self, name, page_number, link_index, **kwargs):
+    def get_page_link_annotation_with_http_info(self, name, page_number, link_id, **kwargs):
         """
-        Read document page link annotation by its index.
+        Read document page link annotation by ID.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get_page_link_annotation_by_index_with_http_info(name, page_number, link_index, callback=callback_function)
+        >>> thread = api.get_page_link_annotation_with_http_info(name, page_number, link_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param int page_number: The page number. (required)
-        :param int link_index: The link index. (required)
+        :param str link_id: The link ID. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
         :return: LinkAnnotationResponse
@@ -3939,7 +4538,7 @@ class PdfApi(object):
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'link_index', 'storage', 'folder']
+        all_params = ['name', 'page_number', 'link_id', 'storage', 'folder']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3950,19 +4549,19 @@ class PdfApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_page_link_annotation_by_index" % key
+                    " to method get_page_link_annotation" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'name' is set
         if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `get_page_link_annotation_by_index`")
+            raise ValueError("Missing the required parameter `name` when calling `get_page_link_annotation`")
         # verify the required parameter 'page_number' is set
         if ('page_number' not in params) or (params['page_number'] is None):
-            raise ValueError("Missing the required parameter `page_number` when calling `get_page_link_annotation_by_index`")
-        # verify the required parameter 'link_index' is set
-        if ('link_index' not in params) or (params['link_index'] is None):
-            raise ValueError("Missing the required parameter `link_index` when calling `get_page_link_annotation_by_index`")
+            raise ValueError("Missing the required parameter `page_number` when calling `get_page_link_annotation`")
+        # verify the required parameter 'link_id' is set
+        if ('link_id' not in params) or (params['link_id'] is None):
+            raise ValueError("Missing the required parameter `link_id` when calling `get_page_link_annotation`")
 
 
         collection_formats = {}
@@ -3972,8 +4571,8 @@ class PdfApi(object):
             path_params['name'] = params['name']
         if 'page_number' in params:
             path_params['pageNumber'] = params['page_number']
-        if 'link_index' in params:
-            path_params['linkIndex'] = params['link_index']
+        if 'link_id' in params:
+            path_params['linkId'] = params['link_id']
 
         query_params = []
         if 'storage' in params:
@@ -3998,7 +4597,7 @@ class PdfApi(object):
         # Authentication setting
         auth_settings = []
 
-        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/links/{linkIndex}', 'GET',
+        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/links/{linkId}', 'GET',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -4132,7 +4731,7 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def get_page_text(self, name, page_number, x, y, width, height, **kwargs):
+    def get_page_text(self, name, page_number, llx, lly, urx, ury, **kwargs):
         """
         Read page text items.
         This method makes a synchronous HTTP request by default. To make an
@@ -4141,32 +4740,33 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get_page_text(name, page_number, x, y, width, height, callback=callback_function)
+        >>> thread = api.get_page_text(name, page_number, llx, lly, urx, ury, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param int page_number: Number of page (starting from 1). (required)
-        :param int x: (required)
-        :param int y: (required)
-        :param int width: (required)
-        :param int height: (required)
+        :param float llx: (required)
+        :param float lly: (required)
+        :param float urx: (required)
+        :param float ury: (required)
         :param list[str] format: List of formats for search.
         :param str regex: Formats are specified as a regular expression.
         :param bool split_rects: Split result fragments (default is true).
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: TextRectsResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.get_page_text_with_http_info(name, page_number, x, y, width, height, **kwargs)
+            return self.get_page_text_with_http_info(name, page_number, llx, lly, urx, ury, **kwargs)
         else:
-            (data) = self.get_page_text_with_http_info(name, page_number, x, y, width, height, **kwargs)
+            (data) = self.get_page_text_with_http_info(name, page_number, llx, lly, urx, ury, **kwargs)
             return data
 
-    def get_page_text_with_http_info(self, name, page_number, x, y, width, height, **kwargs):
+    def get_page_text_with_http_info(self, name, page_number, llx, lly, urx, ury, **kwargs):
         """
         Read page text items.
         This method makes a synchronous HTTP request by default. To make an
@@ -4175,26 +4775,27 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get_page_text_with_http_info(name, page_number, x, y, width, height, callback=callback_function)
+        >>> thread = api.get_page_text_with_http_info(name, page_number, llx, lly, urx, ury, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param int page_number: Number of page (starting from 1). (required)
-        :param int x: (required)
-        :param int y: (required)
-        :param int width: (required)
-        :param int height: (required)
+        :param float llx: (required)
+        :param float lly: (required)
+        :param float urx: (required)
+        :param float ury: (required)
         :param list[str] format: List of formats for search.
         :param str regex: Formats are specified as a regular expression.
         :param bool split_rects: Split result fragments (default is true).
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: TextRectsResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'x', 'y', 'width', 'height', 'format', 'regex', 'split_rects', 'folder']
+        all_params = ['name', 'page_number', 'llx', 'lly', 'urx', 'ury', 'format', 'regex', 'split_rects', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4215,18 +4816,18 @@ class PdfApi(object):
         # verify the required parameter 'page_number' is set
         if ('page_number' not in params) or (params['page_number'] is None):
             raise ValueError("Missing the required parameter `page_number` when calling `get_page_text`")
-        # verify the required parameter 'x' is set
-        if ('x' not in params) or (params['x'] is None):
-            raise ValueError("Missing the required parameter `x` when calling `get_page_text`")
-        # verify the required parameter 'y' is set
-        if ('y' not in params) or (params['y'] is None):
-            raise ValueError("Missing the required parameter `y` when calling `get_page_text`")
-        # verify the required parameter 'width' is set
-        if ('width' not in params) or (params['width'] is None):
-            raise ValueError("Missing the required parameter `width` when calling `get_page_text`")
-        # verify the required parameter 'height' is set
-        if ('height' not in params) or (params['height'] is None):
-            raise ValueError("Missing the required parameter `height` when calling `get_page_text`")
+        # verify the required parameter 'llx' is set
+        if ('llx' not in params) or (params['llx'] is None):
+            raise ValueError("Missing the required parameter `llx` when calling `get_page_text`")
+        # verify the required parameter 'lly' is set
+        if ('lly' not in params) or (params['lly'] is None):
+            raise ValueError("Missing the required parameter `lly` when calling `get_page_text`")
+        # verify the required parameter 'urx' is set
+        if ('urx' not in params) or (params['urx'] is None):
+            raise ValueError("Missing the required parameter `urx` when calling `get_page_text`")
+        # verify the required parameter 'ury' is set
+        if ('ury' not in params) or (params['ury'] is None):
+            raise ValueError("Missing the required parameter `ury` when calling `get_page_text`")
 
 
         collection_formats = {}
@@ -4243,18 +4844,20 @@ class PdfApi(object):
             collection_formats['format'] = 'multi'
         if 'regex' in params:
             query_params.append(('regex', params['regex']))
-        if 'x' in params:
-            query_params.append(('X', params['x']))
-        if 'y' in params:
-            query_params.append(('Y', params['y']))
-        if 'width' in params:
-            query_params.append(('Width', params['width']))
-        if 'height' in params:
-            query_params.append(('Height', params['height']))
         if 'split_rects' in params:
             query_params.append(('splitRects', params['split_rects']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'llx' in params:
+            query_params.append(('LLX', params['llx']))
+        if 'lly' in params:
+            query_params.append(('LLY', params['lly']))
+        if 'urx' in params:
+            query_params.append(('URX', params['urx']))
+        if 'ury' in params:
+            query_params.append(('URY', params['ury']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -4281,129 +4884,6 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='TextRectsResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def get_page_text_items(self, name, page_number, **kwargs):
-        """
-        Read page text items.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_page_text_items(name, page_number, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: (required)
-        :param int page_number: (required)
-        :param str with_empty:
-        :param str storage:
-        :param str folder:
-        :return: TextItemsResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.get_page_text_items_with_http_info(name, page_number, **kwargs)
-        else:
-            (data) = self.get_page_text_items_with_http_info(name, page_number, **kwargs)
-            return data
-
-    def get_page_text_items_with_http_info(self, name, page_number, **kwargs):
-        """
-        Read page text items.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_page_text_items_with_http_info(name, page_number, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: (required)
-        :param int page_number: (required)
-        :param str with_empty:
-        :param str storage:
-        :param str folder:
-        :return: TextItemsResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['name', 'page_number', 'with_empty', 'storage', 'folder']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_page_text_items" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `get_page_text_items`")
-        # verify the required parameter 'page_number' is set
-        if ('page_number' not in params) or (params['page_number'] is None):
-            raise ValueError("Missing the required parameter `page_number` when calling `get_page_text_items`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'name' in params:
-            path_params['name'] = params['name']
-        if 'page_number' in params:
-            path_params['pageNumber'] = params['page_number']
-
-        query_params = []
-        if 'with_empty' in params:
-            query_params.append(('withEmpty', params['with_empty']))
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-        if 'folder' in params:
-            query_params.append(('folder', params['folder']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/textItems', 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='TextItemsResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -4537,6 +5017,7 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.pcl) (required)
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4562,12 +5043,13 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.pcl) (required)
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['src_path']
+        all_params = ['src_path', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4594,6 +5076,8 @@ class PdfApi(object):
         query_params = []
         if 'src_path' in params:
             query_params.append(('srcPath', params['src_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -4645,11 +5129,12 @@ class PdfApi(object):
         :param str format: Allows to specify .doc or .docx file format.
         :param int image_resolution_x: Image resolution X.
         :param int image_resolution_y: Image resolution Y.
-        :param int max_distance_between_text_lines: Max distance between text lines.
+        :param float max_distance_between_text_lines: Max distance between text lines.
         :param str mode: Allows to control how a PDF document is converted into a word processing document.
         :param bool recognize_bullets: Recognize bullets.
         :param float relative_horizontal_proximity: Relative horizontal proximity.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4679,17 +5164,18 @@ class PdfApi(object):
         :param str format: Allows to specify .doc or .docx file format.
         :param int image_resolution_x: Image resolution X.
         :param int image_resolution_y: Image resolution Y.
-        :param int max_distance_between_text_lines: Max distance between text lines.
+        :param float max_distance_between_text_lines: Max distance between text lines.
         :param str mode: Allows to control how a PDF document is converted into a word processing document.
         :param bool recognize_bullets: Recognize bullets.
         :param float relative_horizontal_proximity: Relative horizontal proximity.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'add_return_to_line_end', 'format', 'image_resolution_x', 'image_resolution_y', 'max_distance_between_text_lines', 'mode', 'recognize_bullets', 'relative_horizontal_proximity', 'folder']
+        all_params = ['name', 'add_return_to_line_end', 'format', 'image_resolution_x', 'image_resolution_y', 'max_distance_between_text_lines', 'mode', 'recognize_bullets', 'relative_horizontal_proximity', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4734,6 +5220,8 @@ class PdfApi(object):
             query_params.append(('relativeHorizontalProximity', params['relative_horizontal_proximity']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -4781,8 +5269,9 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param str content_recognition_mode: Рroperty tunes conversion for this or that desirable method of recognition of content.
+        :param str content_recognition_mode: ?roperty tunes conversion for this or that desirable method of recognition of content.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4808,14 +5297,15 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param str content_recognition_mode: Рroperty tunes conversion for this or that desirable method of recognition of content.
+        :param str content_recognition_mode: ?roperty tunes conversion for this or that desirable method of recognition of content.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'content_recognition_mode', 'folder']
+        all_params = ['name', 'content_recognition_mode', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4846,6 +5336,8 @@ class PdfApi(object):
             query_params.append(('contentRecognitionMode', params['content_recognition_mode']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -4922,6 +5414,7 @@ class PdfApi(object):
         :param str special_folder_for_svg_images: The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
         :param bool try_save_text_underlining_and_strikeouting_in_css: PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4976,12 +5469,13 @@ class PdfApi(object):
         :param str special_folder_for_svg_images: The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
         :param bool try_save_text_underlining_and_strikeouting_in_css: PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'additional_margin_width_in_points', 'compress_svg_graphics_if_any', 'convert_marked_content_to_layers', 'default_font_name', 'document_type', 'fixed_layout', 'image_resolution', 'minimal_line_width', 'prevent_glyphs_grouping', 'split_css_into_pages', 'split_into_pages', 'use_z_order', 'antialiasing_processing', 'css_class_names_prefix', 'explicit_list_of_saved_pages', 'font_encoding_strategy', 'font_saving_mode', 'html_markup_generation_mode', 'letters_positioning_method', 'pages_flow_type_depends_on_viewers_screen_size', 'parts_embedding_mode', 'raster_images_saving_mode', 'remove_empty_areas_on_top_and_bottom', 'save_shadowed_texts_as_transparent_texts', 'save_transparent_texts', 'special_folder_for_all_images', 'special_folder_for_svg_images', 'try_save_text_underlining_and_strikeouting_in_css', 'folder']
+        all_params = ['name', 'additional_margin_width_in_points', 'compress_svg_graphics_if_any', 'convert_marked_content_to_layers', 'default_font_name', 'document_type', 'fixed_layout', 'image_resolution', 'minimal_line_width', 'prevent_glyphs_grouping', 'split_css_into_pages', 'split_into_pages', 'use_z_order', 'antialiasing_processing', 'css_class_names_prefix', 'explicit_list_of_saved_pages', 'font_encoding_strategy', 'font_saving_mode', 'html_markup_generation_mode', 'letters_positioning_method', 'pages_flow_type_depends_on_viewers_screen_size', 'parts_embedding_mode', 'raster_images_saving_mode', 'remove_empty_areas_on_top_and_bottom', 'save_shadowed_texts_as_transparent_texts', 'save_transparent_texts', 'special_folder_for_all_images', 'special_folder_for_svg_images', 'try_save_text_underlining_and_strikeouting_in_css', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5067,6 +5561,8 @@ class PdfApi(object):
             query_params.append(('trySaveTextUnderliningAndStrikeoutingInCss', params['try_save_text_underlining_and_strikeouting_in_css']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -5116,6 +5612,7 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param int pages_count: Pages count.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -5143,12 +5640,13 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param int pages_count: Pages count.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'pages_count', 'folder']
+        all_params = ['name', 'pages_count', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5179,6 +5677,8 @@ class PdfApi(object):
             query_params.append(('pagesCount', params['pages_count']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -5227,6 +5727,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -5253,12 +5754,13 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'folder']
+        all_params = ['name', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5287,6 +5789,8 @@ class PdfApi(object):
         query_params = []
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -5336,6 +5840,7 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str type: Type of PdfA format. (required)
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -5363,12 +5868,13 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str type: Type of PdfA format. (required)
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'type', 'folder']
+        all_params = ['name', 'type', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5402,6 +5908,8 @@ class PdfApi(object):
             query_params.append(('type', params['type']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -5452,6 +5960,7 @@ class PdfApi(object):
         :param bool separate_images: Separate images.
         :param bool slides_as_images: Slides as images.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -5480,12 +5989,13 @@ class PdfApi(object):
         :param bool separate_images: Separate images.
         :param bool slides_as_images: Slides as images.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'separate_images', 'slides_as_images', 'folder']
+        all_params = ['name', 'separate_images', 'slides_as_images', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5518,6 +6028,8 @@ class PdfApi(object):
             query_params.append(('slidesAsImages', params['slides_as_images']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -5567,6 +6079,7 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param bool compress_output_to_zip_archive: Specifies whether output will be created as one zip-archive.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -5594,12 +6107,13 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param bool compress_output_to_zip_archive: Specifies whether output will be created as one zip-archive.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'compress_output_to_zip_archive', 'folder']
+        all_params = ['name', 'compress_output_to_zip_archive', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5630,6 +6144,8 @@ class PdfApi(object):
             query_params.append(('compressOutputToZipArchive', params['compress_output_to_zip_archive']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -5693,6 +6209,7 @@ class PdfApi(object):
         :param int page_index: Start page to export.
         :param int page_count: Number of pages to export.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -5734,12 +6251,13 @@ class PdfApi(object):
         :param int page_index: Start page to export.
         :param int page_count: Number of pages to export.
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'brightness', 'compression', 'color_depth', 'left_margin', 'right_margin', 'top_margin', 'bottom_margin', 'orientation', 'skip_blank_pages', 'width', 'height', 'x_resolution', 'y_resolution', 'page_index', 'page_count', 'folder']
+        all_params = ['name', 'brightness', 'compression', 'color_depth', 'left_margin', 'right_margin', 'top_margin', 'bottom_margin', 'orientation', 'skip_blank_pages', 'width', 'height', 'x_resolution', 'y_resolution', 'page_index', 'page_count', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5798,6 +6316,8 @@ class PdfApi(object):
             query_params.append(('pageCount', params['page_count']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -5850,6 +6370,7 @@ class PdfApi(object):
         :param float scale_factor: Scale factor
         :param bool uniform_worksheets: Uniform worksheets
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -5880,12 +6401,13 @@ class PdfApi(object):
         :param float scale_factor: Scale factor
         :param bool uniform_worksheets: Uniform worksheets
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'insert_blank_column_at_first', 'minimize_the_number_of_worksheets', 'scale_factor', 'uniform_worksheets', 'folder']
+        all_params = ['name', 'insert_blank_column_at_first', 'minimize_the_number_of_worksheets', 'scale_factor', 'uniform_worksheets', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5922,6 +6444,8 @@ class PdfApi(object):
             query_params.append(('uniformWorksheets', params['uniform_worksheets']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -5970,6 +6494,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -5996,12 +6521,13 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'folder']
+        all_params = ['name', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6030,6 +6556,8 @@ class PdfApi(object):
         query_params = []
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -6078,6 +6606,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -6104,12 +6633,13 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'folder']
+        all_params = ['name', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6138,6 +6668,8 @@ class PdfApi(object):
         query_params = []
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -6185,6 +6717,7 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.ps) (required)
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -6210,12 +6743,13 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.ps) (required)
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['src_path']
+        all_params = ['src_path', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6242,6 +6776,8 @@ class PdfApi(object):
         query_params = []
         if 'src_path' in params:
             query_params.append(('srcPath', params['src_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -6275,402 +6811,6 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def get_segment(self, name, page_number, fragment_number, segment_number, **kwargs):
-        """
-        Read segment.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_segment(name, page_number, fragment_number, segment_number, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: (required)
-        :param int page_number: (required)
-        :param int fragment_number: (required)
-        :param int segment_number: (required)
-        :param str storage:
-        :param str folder:
-        :return: TextItemResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.get_segment_with_http_info(name, page_number, fragment_number, segment_number, **kwargs)
-        else:
-            (data) = self.get_segment_with_http_info(name, page_number, fragment_number, segment_number, **kwargs)
-            return data
-
-    def get_segment_with_http_info(self, name, page_number, fragment_number, segment_number, **kwargs):
-        """
-        Read segment.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_segment_with_http_info(name, page_number, fragment_number, segment_number, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: (required)
-        :param int page_number: (required)
-        :param int fragment_number: (required)
-        :param int segment_number: (required)
-        :param str storage:
-        :param str folder:
-        :return: TextItemResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['name', 'page_number', 'fragment_number', 'segment_number', 'storage', 'folder']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_segment" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `get_segment`")
-        # verify the required parameter 'page_number' is set
-        if ('page_number' not in params) or (params['page_number'] is None):
-            raise ValueError("Missing the required parameter `page_number` when calling `get_segment`")
-        # verify the required parameter 'fragment_number' is set
-        if ('fragment_number' not in params) or (params['fragment_number'] is None):
-            raise ValueError("Missing the required parameter `fragment_number` when calling `get_segment`")
-        # verify the required parameter 'segment_number' is set
-        if ('segment_number' not in params) or (params['segment_number'] is None):
-            raise ValueError("Missing the required parameter `segment_number` when calling `get_segment`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'name' in params:
-            path_params['name'] = params['name']
-        if 'page_number' in params:
-            path_params['pageNumber'] = params['page_number']
-        if 'fragment_number' in params:
-            path_params['fragmentNumber'] = params['fragment_number']
-        if 'segment_number' in params:
-            path_params['segmentNumber'] = params['segment_number']
-
-        query_params = []
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-        if 'folder' in params:
-            query_params.append(('folder', params['folder']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/fragments/{fragmentNumber}/segments/{segmentNumber}', 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='TextItemResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def get_segment_text_format(self, name, page_number, fragment_number, segment_number, **kwargs):
-        """
-        Read segment text format.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_segment_text_format(name, page_number, fragment_number, segment_number, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: (required)
-        :param int page_number: (required)
-        :param int fragment_number: (required)
-        :param int segment_number: (required)
-        :param str storage:
-        :param str folder:
-        :return: TextFormatResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.get_segment_text_format_with_http_info(name, page_number, fragment_number, segment_number, **kwargs)
-        else:
-            (data) = self.get_segment_text_format_with_http_info(name, page_number, fragment_number, segment_number, **kwargs)
-            return data
-
-    def get_segment_text_format_with_http_info(self, name, page_number, fragment_number, segment_number, **kwargs):
-        """
-        Read segment text format.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_segment_text_format_with_http_info(name, page_number, fragment_number, segment_number, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: (required)
-        :param int page_number: (required)
-        :param int fragment_number: (required)
-        :param int segment_number: (required)
-        :param str storage:
-        :param str folder:
-        :return: TextFormatResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['name', 'page_number', 'fragment_number', 'segment_number', 'storage', 'folder']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_segment_text_format" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `get_segment_text_format`")
-        # verify the required parameter 'page_number' is set
-        if ('page_number' not in params) or (params['page_number'] is None):
-            raise ValueError("Missing the required parameter `page_number` when calling `get_segment_text_format`")
-        # verify the required parameter 'fragment_number' is set
-        if ('fragment_number' not in params) or (params['fragment_number'] is None):
-            raise ValueError("Missing the required parameter `fragment_number` when calling `get_segment_text_format`")
-        # verify the required parameter 'segment_number' is set
-        if ('segment_number' not in params) or (params['segment_number'] is None):
-            raise ValueError("Missing the required parameter `segment_number` when calling `get_segment_text_format`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'name' in params:
-            path_params['name'] = params['name']
-        if 'page_number' in params:
-            path_params['pageNumber'] = params['page_number']
-        if 'fragment_number' in params:
-            path_params['fragmentNumber'] = params['fragment_number']
-        if 'segment_number' in params:
-            path_params['segmentNumber'] = params['segment_number']
-
-        query_params = []
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-        if 'folder' in params:
-            query_params.append(('folder', params['folder']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/fragments/{fragmentNumber}/segments/{segmentNumber}/textformat', 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='TextFormatResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def get_segments(self, name, page_number, fragment_number, **kwargs):
-        """
-        Read fragment segments.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_segments(name, page_number, fragment_number, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: (required)
-        :param int page_number: (required)
-        :param int fragment_number: (required)
-        :param str with_empty:
-        :param str storage:
-        :param str folder:
-        :return: TextItemsResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.get_segments_with_http_info(name, page_number, fragment_number, **kwargs)
-        else:
-            (data) = self.get_segments_with_http_info(name, page_number, fragment_number, **kwargs)
-            return data
-
-    def get_segments_with_http_info(self, name, page_number, fragment_number, **kwargs):
-        """
-        Read fragment segments.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_segments_with_http_info(name, page_number, fragment_number, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: (required)
-        :param int page_number: (required)
-        :param int fragment_number: (required)
-        :param str with_empty:
-        :param str storage:
-        :param str folder:
-        :return: TextItemsResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['name', 'page_number', 'fragment_number', 'with_empty', 'storage', 'folder']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_segments" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `get_segments`")
-        # verify the required parameter 'page_number' is set
-        if ('page_number' not in params) or (params['page_number'] is None):
-            raise ValueError("Missing the required parameter `page_number` when calling `get_segments`")
-        # verify the required parameter 'fragment_number' is set
-        if ('fragment_number' not in params) or (params['fragment_number'] is None):
-            raise ValueError("Missing the required parameter `fragment_number` when calling `get_segments`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'name' in params:
-            path_params['name'] = params['name']
-        if 'page_number' in params:
-            path_params['pageNumber'] = params['page_number']
-        if 'fragment_number' in params:
-            path_params['fragmentNumber'] = params['fragment_number']
-
-        query_params = []
-        if 'with_empty' in params:
-            query_params.append(('withEmpty', params['with_empty']))
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-        if 'folder' in params:
-            query_params.append(('folder', params['folder']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/fragments/{fragmentNumber}/segments', 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='TextItemsResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
     def get_svg_in_storage_to_pdf(self, src_path, **kwargs):
         """
         Convert SVG file (located on storage) to PDF format and return resulting file in response. 
@@ -6693,6 +6833,7 @@ class PdfApi(object):
         :param float margin_bottom: Page margin bottom
         :param float margin_right: Page margin right
         :param float margin_top: Page margin top
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -6726,12 +6867,13 @@ class PdfApi(object):
         :param float margin_bottom: Page margin bottom
         :param float margin_right: Page margin right
         :param float margin_top: Page margin top
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['src_path', 'adjust_page_size', 'height', 'width', 'is_landscape', 'margin_left', 'margin_bottom', 'margin_right', 'margin_top']
+        all_params = ['src_path', 'adjust_page_size', 'height', 'width', 'is_landscape', 'margin_left', 'margin_bottom', 'margin_right', 'margin_top', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6774,6 +6916,8 @@ class PdfApi(object):
             query_params.append(('marginRight', params['margin_right']))
         if 'margin_top' in params:
             query_params.append(('marginTop', params['margin_top']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -6807,7 +6951,7 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def get_text(self, name, x, y, width, height, **kwargs):
+    def get_text(self, name, llx, lly, urx, ury, **kwargs):
         """
         Read document text.
         This method makes a synchronous HTTP request by default. To make an
@@ -6816,31 +6960,32 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get_text(name, x, y, width, height, callback=callback_function)
+        >>> thread = api.get_text(name, llx, lly, urx, ury, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param int x: (required)
-        :param int y: (required)
-        :param int width: (required)
-        :param int height: (required)
+        :param float llx: (required)
+        :param float lly: (required)
+        :param float urx: (required)
+        :param float ury: (required)
         :param list[str] format: List of formats for search.
         :param str regex: Formats are specified as a regular expression.
         :param bool split_rects: Split result fragments (default is true).
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: TextRectsResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.get_text_with_http_info(name, x, y, width, height, **kwargs)
+            return self.get_text_with_http_info(name, llx, lly, urx, ury, **kwargs)
         else:
-            (data) = self.get_text_with_http_info(name, x, y, width, height, **kwargs)
+            (data) = self.get_text_with_http_info(name, llx, lly, urx, ury, **kwargs)
             return data
 
-    def get_text_with_http_info(self, name, x, y, width, height, **kwargs):
+    def get_text_with_http_info(self, name, llx, lly, urx, ury, **kwargs):
         """
         Read document text.
         This method makes a synchronous HTTP request by default. To make an
@@ -6849,25 +6994,26 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get_text_with_http_info(name, x, y, width, height, callback=callback_function)
+        >>> thread = api.get_text_with_http_info(name, llx, lly, urx, ury, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param int x: (required)
-        :param int y: (required)
-        :param int width: (required)
-        :param int height: (required)
+        :param float llx: (required)
+        :param float lly: (required)
+        :param float urx: (required)
+        :param float ury: (required)
         :param list[str] format: List of formats for search.
         :param str regex: Formats are specified as a regular expression.
         :param bool split_rects: Split result fragments (default is true).
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: TextRectsResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'x', 'y', 'width', 'height', 'format', 'regex', 'split_rects', 'folder']
+        all_params = ['name', 'llx', 'lly', 'urx', 'ury', 'format', 'regex', 'split_rects', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6885,18 +7031,18 @@ class PdfApi(object):
         # verify the required parameter 'name' is set
         if ('name' not in params) or (params['name'] is None):
             raise ValueError("Missing the required parameter `name` when calling `get_text`")
-        # verify the required parameter 'x' is set
-        if ('x' not in params) or (params['x'] is None):
-            raise ValueError("Missing the required parameter `x` when calling `get_text`")
-        # verify the required parameter 'y' is set
-        if ('y' not in params) or (params['y'] is None):
-            raise ValueError("Missing the required parameter `y` when calling `get_text`")
-        # verify the required parameter 'width' is set
-        if ('width' not in params) or (params['width'] is None):
-            raise ValueError("Missing the required parameter `width` when calling `get_text`")
-        # verify the required parameter 'height' is set
-        if ('height' not in params) or (params['height'] is None):
-            raise ValueError("Missing the required parameter `height` when calling `get_text`")
+        # verify the required parameter 'llx' is set
+        if ('llx' not in params) or (params['llx'] is None):
+            raise ValueError("Missing the required parameter `llx` when calling `get_text`")
+        # verify the required parameter 'lly' is set
+        if ('lly' not in params) or (params['lly'] is None):
+            raise ValueError("Missing the required parameter `lly` when calling `get_text`")
+        # verify the required parameter 'urx' is set
+        if ('urx' not in params) or (params['urx'] is None):
+            raise ValueError("Missing the required parameter `urx` when calling `get_text`")
+        # verify the required parameter 'ury' is set
+        if ('ury' not in params) or (params['ury'] is None):
+            raise ValueError("Missing the required parameter `ury` when calling `get_text`")
 
 
         collection_formats = {}
@@ -6911,18 +7057,20 @@ class PdfApi(object):
             collection_formats['format'] = 'multi'
         if 'regex' in params:
             query_params.append(('regex', params['regex']))
-        if 'x' in params:
-            query_params.append(('X', params['x']))
-        if 'y' in params:
-            query_params.append(('Y', params['y']))
-        if 'width' in params:
-            query_params.append(('Width', params['width']))
-        if 'height' in params:
-            query_params.append(('Height', params['height']))
         if 'split_rects' in params:
             query_params.append(('splitRects', params['split_rects']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'llx' in params:
+            query_params.append(('LLX', params['llx']))
+        if 'lly' in params:
+            query_params.append(('LLY', params['lly']))
+        if 'urx' in params:
+            query_params.append(('URX', params['urx']))
+        if 'ury' in params:
+            query_params.append(('URY', params['ury']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -6956,122 +7104,6 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def get_text_items(self, name, **kwargs):
-        """
-        Read document text items.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_text_items(name, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: (required)
-        :param str with_empty:
-        :param str storage:
-        :param str folder:
-        :return: TextItemsResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.get_text_items_with_http_info(name, **kwargs)
-        else:
-            (data) = self.get_text_items_with_http_info(name, **kwargs)
-            return data
-
-    def get_text_items_with_http_info(self, name, **kwargs):
-        """
-        Read document text items.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_text_items_with_http_info(name, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: (required)
-        :param str with_empty:
-        :param str storage:
-        :param str folder:
-        :return: TextItemsResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['name', 'with_empty', 'storage', 'folder']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_text_items" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `get_text_items`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'name' in params:
-            path_params['name'] = params['name']
-
-        query_params = []
-        if 'with_empty' in params:
-            query_params.append(('withEmpty', params['with_empty']))
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-        if 'folder' in params:
-            query_params.append(('folder', params['folder']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/pdf/{name}/textItems', 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='TextItemsResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
     def get_verify_signature(self, name, sign_name, **kwargs):
         """
         Verify signature document.
@@ -7087,6 +7119,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str sign_name: Sign name. (required)
+        :param str storage: The document storage.
         :param str folder: The document folder.
         :return: SignatureVerifyResponse
                  If the method is called asynchronously,
@@ -7114,13 +7147,14 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str sign_name: Sign name. (required)
+        :param str storage: The document storage.
         :param str folder: The document folder.
         :return: SignatureVerifyResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'sign_name', 'folder']
+        all_params = ['name', 'sign_name', 'storage', 'folder']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -7152,6 +7186,8 @@ class PdfApi(object):
         query_params = []
         if 'sign_name' in params:
             query_params.append(('signName', params['sign_name']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
 
@@ -7208,6 +7244,7 @@ class PdfApi(object):
         :param float margin_bottom: Page margin bottom
         :param float margin_right: Page margin right
         :param float margin_top: Page margin top
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -7240,12 +7277,13 @@ class PdfApi(object):
         :param float margin_bottom: Page margin bottom
         :param float margin_right: Page margin right
         :param float margin_top: Page margin top
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['url', 'height', 'width', 'is_landscape', 'margin_left', 'margin_bottom', 'margin_right', 'margin_top']
+        all_params = ['url', 'height', 'width', 'is_landscape', 'margin_left', 'margin_bottom', 'margin_right', 'margin_top', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -7286,6 +7324,8 @@ class PdfApi(object):
             query_params.append(('marginRight', params['margin_right']))
         if 'margin_top' in params:
             query_params.append(('marginTop', params['margin_top']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -7446,6 +7486,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -7472,12 +7513,13 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str folder: The document folder.
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'folder']
+        all_params = ['name', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -7506,6 +7548,8 @@ class PdfApi(object):
         query_params = []
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -7554,6 +7598,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.xml) (required)
         :param str xsl_file_path: Full XSL source filename (ex. /folder1/folder2/template.xsl)
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -7580,12 +7625,13 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.xml) (required)
         :param str xsl_file_path: Full XSL source filename (ex. /folder1/folder2/template.xsl)
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['src_path', 'xsl_file_path']
+        all_params = ['src_path', 'xsl_file_path', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -7614,6 +7660,8 @@ class PdfApi(object):
             query_params.append(('srcPath', params['src_path']))
         if 'xsl_file_path' in params:
             query_params.append(('xslFilePath', params['xsl_file_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -7661,6 +7709,7 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.xps) (required)
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -7686,12 +7735,13 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.xps) (required)
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['src_path']
+        all_params = ['src_path', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -7718,6 +7768,8 @@ class PdfApi(object):
         query_params = []
         if 'src_path' in params:
             query_params.append(('srcPath', params['src_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -7765,6 +7817,7 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.xslfo) (required)
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -7790,12 +7843,13 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.xslfo) (required)
+        :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['src_path']
+        all_params = ['src_path', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -7822,6 +7876,8 @@ class PdfApi(object):
         query_params = []
         if 'src_path' in params:
             query_params.append(('srcPath', params['src_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -8001,7 +8057,7 @@ class PdfApi(object):
         :param Field field: with the field data.
         :param str storage: The document storage.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -8030,7 +8086,7 @@ class PdfApi(object):
         :param Field field: with the field data.
         :param str storage: The document storage.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -8098,245 +8154,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def post_document_replace_text(self, name, text_replace, **kwargs):
-        """
-        Document's replace text method. Deprecated
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.post_document_replace_text(name, text_replace, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: (required)
-        :param TextReplaceRequest text_replace: (required)
-        :param str storage:
-        :param str folder:
-        :return: DocumentTextReplaceResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.post_document_replace_text_with_http_info(name, text_replace, **kwargs)
-        else:
-            (data) = self.post_document_replace_text_with_http_info(name, text_replace, **kwargs)
-            return data
-
-    def post_document_replace_text_with_http_info(self, name, text_replace, **kwargs):
-        """
-        Document's replace text method. Deprecated
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.post_document_replace_text_with_http_info(name, text_replace, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: (required)
-        :param TextReplaceRequest text_replace: (required)
-        :param str storage:
-        :param str folder:
-        :return: DocumentTextReplaceResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['name', 'text_replace', 'storage', 'folder']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method post_document_replace_text" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `post_document_replace_text`")
-        # verify the required parameter 'text_replace' is set
-        if ('text_replace' not in params) or (params['text_replace'] is None):
-            raise ValueError("Missing the required parameter `text_replace` when calling `post_document_replace_text`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'name' in params:
-            path_params['name'] = params['name']
-
-        query_params = []
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-        if 'folder' in params:
-            query_params.append(('folder', params['folder']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'text_replace' in params:
-            body_params = params['text_replace']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/pdf/{name}/replaceText', 'POST',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='DocumentTextReplaceResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def post_document_replace_text_list(self, name, text_replace_list_request, **kwargs):
-        """
-        Document's replace text method. Deprecated
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.post_document_replace_text_list(name, text_replace_list_request, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: (required)
-        :param TextReplaceListRequest text_replace_list_request: (required)
-        :param str storage:
-        :param str folder:
-        :return: DocumentTextReplaceResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.post_document_replace_text_list_with_http_info(name, text_replace_list_request, **kwargs)
-        else:
-            (data) = self.post_document_replace_text_list_with_http_info(name, text_replace_list_request, **kwargs)
-            return data
-
-    def post_document_replace_text_list_with_http_info(self, name, text_replace_list_request, **kwargs):
-        """
-        Document's replace text method. Deprecated
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.post_document_replace_text_list_with_http_info(name, text_replace_list_request, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: (required)
-        :param TextReplaceListRequest text_replace_list_request: (required)
-        :param str storage:
-        :param str folder:
-        :return: DocumentTextReplaceResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['name', 'text_replace_list_request', 'storage', 'folder']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method post_document_replace_text_list" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `post_document_replace_text_list`")
-        # verify the required parameter 'text_replace_list_request' is set
-        if ('text_replace_list_request' not in params) or (params['text_replace_list_request'] is None):
-            raise ValueError("Missing the required parameter `text_replace_list_request` when calling `post_document_replace_text_list`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'name' in params:
-            path_params['name'] = params['name']
-
-        query_params = []
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-        if 'folder' in params:
-            query_params.append(('folder', params['folder']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'text_replace_list_request' in params:
-            body_params = params['text_replace_list_request']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/pdf/{name}/replaceTextList', 'POST',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='DocumentTextReplaceResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -8463,6 +8281,161 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def post_insert_image(self, name, page_number, llx, lly, urx, ury, **kwargs):
+        """
+        Insert image to document page.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_insert_image(name, page_number, llx, lly, urx, ury, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param float llx: Coordinate lower left X. (required)
+        :param float lly: Coordinate lower left Y. (required)
+        :param float urx: Coordinate upper right X. (required)
+        :param float ury: Coordinate upper right Y. (required)
+        :param str image_file_path: Path to image file if specified. Request content is used otherwise.
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param file image: Image file.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_insert_image_with_http_info(name, page_number, llx, lly, urx, ury, **kwargs)
+        else:
+            (data) = self.post_insert_image_with_http_info(name, page_number, llx, lly, urx, ury, **kwargs)
+            return data
+
+    def post_insert_image_with_http_info(self, name, page_number, llx, lly, urx, ury, **kwargs):
+        """
+        Insert image to document page.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_insert_image_with_http_info(name, page_number, llx, lly, urx, ury, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param float llx: Coordinate lower left X. (required)
+        :param float lly: Coordinate lower left Y. (required)
+        :param float urx: Coordinate upper right X. (required)
+        :param float ury: Coordinate upper right Y. (required)
+        :param str image_file_path: Path to image file if specified. Request content is used otherwise.
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param file image: Image file.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'page_number', 'llx', 'lly', 'urx', 'ury', 'image_file_path', 'storage', 'folder', 'image']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_insert_image" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_insert_image`")
+        # verify the required parameter 'page_number' is set
+        if ('page_number' not in params) or (params['page_number'] is None):
+            raise ValueError("Missing the required parameter `page_number` when calling `post_insert_image`")
+        # verify the required parameter 'llx' is set
+        if ('llx' not in params) or (params['llx'] is None):
+            raise ValueError("Missing the required parameter `llx` when calling `post_insert_image`")
+        # verify the required parameter 'lly' is set
+        if ('lly' not in params) or (params['lly'] is None):
+            raise ValueError("Missing the required parameter `lly` when calling `post_insert_image`")
+        # verify the required parameter 'urx' is set
+        if ('urx' not in params) or (params['urx'] is None):
+            raise ValueError("Missing the required parameter `urx` when calling `post_insert_image`")
+        # verify the required parameter 'ury' is set
+        if ('ury' not in params) or (params['ury'] is None):
+            raise ValueError("Missing the required parameter `ury` when calling `post_insert_image`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'page_number' in params:
+            path_params['pageNumber'] = params['page_number']
+
+        query_params = []
+        if 'llx' in params:
+            query_params.append(('llx', params['llx']))
+        if 'lly' in params:
+            query_params.append(('lly', params['lly']))
+        if 'urx' in params:
+            query_params.append(('urx', params['urx']))
+        if 'ury' in params:
+            query_params.append(('ury', params['ury']))
+        if 'image_file_path' in params:
+            query_params.append(('imageFilePath', params['image_file_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'image' in params:
+            local_var_files['image'] = params['image']
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['multipart/form-data'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/images', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def post_move_page(self, name, page_number, new_index, **kwargs):
         """
         Move page to new position.
@@ -8481,7 +8454,7 @@ class PdfApi(object):
         :param int new_index: The new page position/index. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -8510,7 +8483,7 @@ class PdfApi(object):
         :param int new_index: The new page position/index. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -8581,7 +8554,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -8606,7 +8579,7 @@ class PdfApi(object):
         :param OptimizeOptions options: The optimization options.
         :param str storage: The document storage.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -8634,7 +8607,7 @@ class PdfApi(object):
         :param OptimizeOptions options: The optimization options.
         :param str storage: The document storage.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -8697,7 +8670,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -8705,59 +8678,59 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def post_page_replace_text(self, name, page_number, text_replace, **kwargs):
+    def post_page_link_annotations(self, name, page_number, links, **kwargs):
         """
-        Page's replace text method. Deprecated
+        Add document page link annotations.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.post_page_replace_text(name, page_number, text_replace, callback=callback_function)
+        >>> thread = api.post_page_link_annotations(name, page_number, links, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str name: (required)
-        :param int page_number: (required)
-        :param TextReplaceRequest text_replace: (required)
-        :param str storage:
-        :param str folder:
-        :return: PageTextReplaceResponse
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param list[LinkAnnotation] links: Array of link anotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.post_page_replace_text_with_http_info(name, page_number, text_replace, **kwargs)
+            return self.post_page_link_annotations_with_http_info(name, page_number, links, **kwargs)
         else:
-            (data) = self.post_page_replace_text_with_http_info(name, page_number, text_replace, **kwargs)
+            (data) = self.post_page_link_annotations_with_http_info(name, page_number, links, **kwargs)
             return data
 
-    def post_page_replace_text_with_http_info(self, name, page_number, text_replace, **kwargs):
+    def post_page_link_annotations_with_http_info(self, name, page_number, links, **kwargs):
         """
-        Page's replace text method. Deprecated
+        Add document page link annotations.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.post_page_replace_text_with_http_info(name, page_number, text_replace, callback=callback_function)
+        >>> thread = api.post_page_link_annotations_with_http_info(name, page_number, links, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str name: (required)
-        :param int page_number: (required)
-        :param TextReplaceRequest text_replace: (required)
-        :param str storage:
-        :param str folder:
-        :return: PageTextReplaceResponse
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param list[LinkAnnotation] links: Array of link anotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'text_replace', 'storage', 'folder']
+        all_params = ['name', 'page_number', 'links', 'storage', 'folder']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -8768,19 +8741,19 @@ class PdfApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method post_page_replace_text" % key
+                    " to method post_page_link_annotations" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'name' is set
         if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `post_page_replace_text`")
+            raise ValueError("Missing the required parameter `name` when calling `post_page_link_annotations`")
         # verify the required parameter 'page_number' is set
         if ('page_number' not in params) or (params['page_number'] is None):
-            raise ValueError("Missing the required parameter `page_number` when calling `post_page_replace_text`")
-        # verify the required parameter 'text_replace' is set
-        if ('text_replace' not in params) or (params['text_replace'] is None):
-            raise ValueError("Missing the required parameter `text_replace` when calling `post_page_replace_text`")
+            raise ValueError("Missing the required parameter `page_number` when calling `post_page_link_annotations`")
+        # verify the required parameter 'links' is set
+        if ('links' not in params) or (params['links'] is None):
+            raise ValueError("Missing the required parameter `links` when calling `post_page_link_annotations`")
 
 
         collection_formats = {}
@@ -8803,8 +8776,8 @@ class PdfApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'text_replace' in params:
-            body_params = params['text_replace']
+        if 'links' in params:
+            body_params = params['links']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
             select_header_accept(['application/json'])
@@ -8816,140 +8789,14 @@ class PdfApi(object):
         # Authentication setting
         auth_settings = []
 
-        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/replaceText', 'POST',
+        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/links', 'POST',
                                         path_params,
                                         query_params,
                                         header_params,
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='PageTextReplaceResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def post_page_replace_text_list(self, name, page_number, text_replace_list_request, **kwargs):
-        """
-        Page's replace text method. Deprecated
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.post_page_replace_text_list(name, page_number, text_replace_list_request, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: (required)
-        :param int page_number: (required)
-        :param TextReplaceListRequest text_replace_list_request: (required)
-        :param str storage:
-        :param str folder:
-        :return: PageTextReplaceResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.post_page_replace_text_list_with_http_info(name, page_number, text_replace_list_request, **kwargs)
-        else:
-            (data) = self.post_page_replace_text_list_with_http_info(name, page_number, text_replace_list_request, **kwargs)
-            return data
-
-    def post_page_replace_text_list_with_http_info(self, name, page_number, text_replace_list_request, **kwargs):
-        """
-        Page's replace text method. Deprecated
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.post_page_replace_text_list_with_http_info(name, page_number, text_replace_list_request, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: (required)
-        :param int page_number: (required)
-        :param TextReplaceListRequest text_replace_list_request: (required)
-        :param str storage:
-        :param str folder:
-        :return: PageTextReplaceResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['name', 'page_number', 'text_replace_list_request', 'storage', 'folder']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method post_page_replace_text_list" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `post_page_replace_text_list`")
-        # verify the required parameter 'page_number' is set
-        if ('page_number' not in params) or (params['page_number'] is None):
-            raise ValueError("Missing the required parameter `page_number` when calling `post_page_replace_text_list`")
-        # verify the required parameter 'text_replace_list_request' is set
-        if ('text_replace_list_request' not in params) or (params['text_replace_list_request'] is None):
-            raise ValueError("Missing the required parameter `text_replace_list_request` when calling `post_page_replace_text_list`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'name' in params:
-            path_params['name'] = params['name']
-        if 'page_number' in params:
-            path_params['pageNumber'] = params['page_number']
-
-        query_params = []
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-        if 'folder' in params:
-            query_params.append(('folder', params['folder']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'text_replace_list_request' in params:
-            body_params = params['text_replace_list_request']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/replaceTextList', 'POST',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='PageTextReplaceResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -9083,140 +8930,6 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def post_replace_image(self, name, page_number, image_number, **kwargs):
-        """
-        Replace document image.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.post_replace_image(name, page_number, image_number, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: The document name. (required)
-        :param int page_number: The page number. (required)
-        :param int image_number: The image number. (required)
-        :param str image_file: Path to image file if specified. Request content is used otherwise.
-        :param str storage: The document storage.
-        :param str folder: The document folder.
-        :param file image: Image file.
-        :return: ImageResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.post_replace_image_with_http_info(name, page_number, image_number, **kwargs)
-        else:
-            (data) = self.post_replace_image_with_http_info(name, page_number, image_number, **kwargs)
-            return data
-
-    def post_replace_image_with_http_info(self, name, page_number, image_number, **kwargs):
-        """
-        Replace document image.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.post_replace_image_with_http_info(name, page_number, image_number, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: The document name. (required)
-        :param int page_number: The page number. (required)
-        :param int image_number: The image number. (required)
-        :param str image_file: Path to image file if specified. Request content is used otherwise.
-        :param str storage: The document storage.
-        :param str folder: The document folder.
-        :param file image: Image file.
-        :return: ImageResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['name', 'page_number', 'image_number', 'image_file', 'storage', 'folder', 'image']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method post_replace_image" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `post_replace_image`")
-        # verify the required parameter 'page_number' is set
-        if ('page_number' not in params) or (params['page_number'] is None):
-            raise ValueError("Missing the required parameter `page_number` when calling `post_replace_image`")
-        # verify the required parameter 'image_number' is set
-        if ('image_number' not in params) or (params['image_number'] is None):
-            raise ValueError("Missing the required parameter `image_number` when calling `post_replace_image`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'name' in params:
-            path_params['name'] = params['name']
-        if 'page_number' in params:
-            path_params['pageNumber'] = params['page_number']
-        if 'image_number' in params:
-            path_params['imageNumber'] = params['image_number']
-
-        query_params = []
-        if 'image_file' in params:
-            query_params.append(('imageFile', params['image_file']))
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-        if 'folder' in params:
-            query_params.append(('folder', params['folder']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'image' in params:
-            local_var_files['image'] = params['image']
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['multipart/form-data'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/images/{imageNumber}', 'POST',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='ImageResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
     def post_sign_document(self, name, **kwargs):
         """
         Sign document.
@@ -9234,7 +8947,7 @@ class PdfApi(object):
         :param Signature signature: Signature object containing signature data.
         :param str storage: The document storage.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9262,7 +8975,7 @@ class PdfApi(object):
         :param Signature signature: Signature object containing signature data.
         :param str storage: The document storage.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9325,7 +9038,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -9351,7 +9064,7 @@ class PdfApi(object):
         :param Signature signature: Signature object containing signature data.
         :param str storage: The document storage.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9380,7 +9093,7 @@ class PdfApi(object):
         :param Signature signature: Signature object containing signature data.
         :param str storage: The document storage.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9448,7 +9161,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -9692,129 +9405,6 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def put_add_paragraph(self, name, page_number, **kwargs):
-        """
-        Add text to PDF document page. Deprecated
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.put_add_paragraph(name, page_number, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: Name of the document to which text should be added. (required)
-        :param int page_number: Number of page (starting with 1) to which text should be added. (required)
-        :param Paragraph paragraph: Paragraph data.
-        :param str storage: File storage to be used.
-        :param str folder: Document folder.
-        :return: SaaSposeResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.put_add_paragraph_with_http_info(name, page_number, **kwargs)
-        else:
-            (data) = self.put_add_paragraph_with_http_info(name, page_number, **kwargs)
-            return data
-
-    def put_add_paragraph_with_http_info(self, name, page_number, **kwargs):
-        """
-        Add text to PDF document page. Deprecated
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.put_add_paragraph_with_http_info(name, page_number, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: Name of the document to which text should be added. (required)
-        :param int page_number: Number of page (starting with 1) to which text should be added. (required)
-        :param Paragraph paragraph: Paragraph data.
-        :param str storage: File storage to be used.
-        :param str folder: Document folder.
-        :return: SaaSposeResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['name', 'page_number', 'paragraph', 'storage', 'folder']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method put_add_paragraph" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `put_add_paragraph`")
-        # verify the required parameter 'page_number' is set
-        if ('page_number' not in params) or (params['page_number'] is None):
-            raise ValueError("Missing the required parameter `page_number` when calling `put_add_paragraph`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'name' in params:
-            path_params['name'] = params['name']
-        if 'page_number' in params:
-            path_params['pageNumber'] = params['page_number']
-
-        query_params = []
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-        if 'folder' in params:
-            query_params.append(('folder', params['folder']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'paragraph' in params:
-            body_params = params['paragraph']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/paragraph', 'PUT',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='SaaSposeResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
     def put_add_text(self, name, page_number, **kwargs):
         """
         Add text to PDF document page.
@@ -9832,7 +9422,8 @@ class PdfApi(object):
         :param int page_number: Number of page (starting from 1). (required)
         :param Paragraph paragraph: Paragraph data.
         :param str folder: Document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9860,12 +9451,13 @@ class PdfApi(object):
         :param int page_number: Number of page (starting from 1). (required)
         :param Paragraph paragraph: Paragraph data.
         :param str folder: Document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'paragraph', 'folder']
+        all_params = ['name', 'page_number', 'paragraph', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -9899,6 +9491,8 @@ class PdfApi(object):
         query_params = []
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -9926,120 +9520,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def put_convert_document(self, **kwargs):
-        """
-        Convert document from request content to format specified.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.put_convert_document(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str format: The format to convert.
-        :param str url:
-        :param str out_path: Path to save result
-        :param file file: A file to be converted.
-        :return: file
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.put_convert_document_with_http_info(**kwargs)
-        else:
-            (data) = self.put_convert_document_with_http_info(**kwargs)
-            return data
-
-    def put_convert_document_with_http_info(self, **kwargs):
-        """
-        Convert document from request content to format specified.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.put_convert_document_with_http_info(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str format: The format to convert.
-        :param str url:
-        :param str out_path: Path to save result
-        :param file file: A file to be converted.
-        :return: file
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['format', 'url', 'out_path', 'file']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method put_convert_document" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'format' in params:
-            query_params.append(('format', params['format']))
-        if 'url' in params:
-            query_params.append(('url', params['url']))
-        if 'out_path' in params:
-            query_params.append(('outPath', params['out_path']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'file' in params:
-            local_var_files['file'] = params['file']
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['multipart/form-data'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['multipart/form-data'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/pdf/convert', 'PUT',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='file',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -10064,7 +9545,7 @@ class PdfApi(object):
         :param file file: File to upload (required)
         :param str version_id: Source file's version
         :param str storage: User's storage name
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -10092,7 +9573,7 @@ class PdfApi(object):
         :param file file: File to upload (required)
         :param str version_id: Source file's version
         :param str storage: User's storage name
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -10158,7 +9639,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -10168,7 +9649,7 @@ class PdfApi(object):
 
     def put_create_document(self, name, **kwargs):
         """
-        Create new document.
+        Create empty document.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -10180,13 +9661,8 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The new document name. (required)
-        :param str template_file: The template file server path if defined.
-        :param str data_file: The data file path (for xml template only).
-        :param str template_type: The template type, can be xml, html, bmp, jpg, png, tiff, emf, cgm, tex.
         :param str storage: The document storage.
         :param str folder: The new document folder.
-        :param str url: The url of web page if defined.
-        :param bool fit_size: Draw a margin around content in resulting pdf.
         :return: DocumentResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -10200,7 +9676,7 @@ class PdfApi(object):
 
     def put_create_document_with_http_info(self, name, **kwargs):
         """
-        Create new document.
+        Create empty document.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -10212,19 +9688,14 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The new document name. (required)
-        :param str template_file: The template file server path if defined.
-        :param str data_file: The data file path (for xml template only).
-        :param str template_type: The template type, can be xml, html, bmp, jpg, png, tiff, emf, cgm, tex.
         :param str storage: The document storage.
         :param str folder: The new document folder.
-        :param str url: The url of web page if defined.
-        :param bool fit_size: Draw a margin around content in resulting pdf.
         :return: DocumentResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'template_file', 'data_file', 'template_type', 'storage', 'folder', 'url', 'fit_size']
+        all_params = ['name', 'storage', 'folder']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -10251,20 +9722,10 @@ class PdfApi(object):
             path_params['name'] = params['name']
 
         query_params = []
-        if 'template_file' in params:
-            query_params.append(('templateFile', params['template_file']))
-        if 'data_file' in params:
-            query_params.append(('dataFile', params['data_file']))
-        if 'template_type' in params:
-            query_params.append(('templateType', params['template_type']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
-        if 'url' in params:
-            query_params.append(('url', params['url']))
-        if 'fit_size' in params:
-            query_params.append(('fitSize', params['fit_size']))
 
         header_params = {}
 
@@ -10298,310 +9759,6 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def put_create_document_from_images(self, name, **kwargs):
-        """
-        Create new document from images.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.put_create_document_from_images(name, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: The new document name. (required)
-        :param ImagesListRequest images: The images file paths set.  
-        :param bool ocr: To create OCR layer for image or not.
-        :param str ocr_lang: The language which is defined for OCR engine. Default is eng.
-        :param str storage: The document storage.
-        :param str folder: The new document folder.
-        :return: DocumentResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.put_create_document_from_images_with_http_info(name, **kwargs)
-        else:
-            (data) = self.put_create_document_from_images_with_http_info(name, **kwargs)
-            return data
-
-    def put_create_document_from_images_with_http_info(self, name, **kwargs):
-        """
-        Create new document from images.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.put_create_document_from_images_with_http_info(name, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: The new document name. (required)
-        :param ImagesListRequest images: The images file paths set.  
-        :param bool ocr: To create OCR layer for image or not.
-        :param str ocr_lang: The language which is defined for OCR engine. Default is eng.
-        :param str storage: The document storage.
-        :param str folder: The new document folder.
-        :return: DocumentResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['name', 'images', 'ocr', 'ocr_lang', 'storage', 'folder']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method put_create_document_from_images" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `put_create_document_from_images`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'name' in params:
-            path_params['name'] = params['name']
-
-        query_params = []
-        if 'ocr' in params:
-            query_params.append(('ocr', params['ocr']))
-        if 'ocr_lang' in params:
-            query_params.append(('ocrLang', params['ocr_lang']))
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-        if 'folder' in params:
-            query_params.append(('folder', params['folder']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'images' in params:
-            body_params = params['images']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/pdf/{name}/fromimages', 'PUT',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='DocumentResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def put_document_save_as_tiff(self, name, **kwargs):
-        """
-        Save document as Tiff image.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.put_document_save_as_tiff(name, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: The document name. (required)
-        :param TiffExportOptions export_options: with tiff export options.
-        :param str result_file: The resulting file.
-        :param float brightness: The image brightness.
-        :param str compression: Tiff compression. Possible values are: LZW, CCITT4, CCITT3, RLE, None.
-        :param str color_depth: Image color depth. Possible valuse are: Default, Format8bpp, Format4bpp, Format1bpp.
-        :param int left_margin: Left image margin.
-        :param int right_margin: Right image margin.
-        :param int top_margin: Top image margin.
-        :param int bottom_margin: Bottom image margin.
-        :param str orientation: Image orientation. Possible values are: None, Landscape, Portait.
-        :param bool skip_blank_pages: Skip blank pages flag.
-        :param int width: Image width.
-        :param int height: Image height.
-        :param int x_resolution: Horizontal resolution.
-        :param int y_resolution: Vertical resolution.
-        :param int page_index: Start page to export.
-        :param int page_count: Number of pages to export.
-        :param str storage: The document storage.
-        :param str folder: The document folder.
-        :return: SaaSposeResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.put_document_save_as_tiff_with_http_info(name, **kwargs)
-        else:
-            (data) = self.put_document_save_as_tiff_with_http_info(name, **kwargs)
-            return data
-
-    def put_document_save_as_tiff_with_http_info(self, name, **kwargs):
-        """
-        Save document as Tiff image.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.put_document_save_as_tiff_with_http_info(name, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: The document name. (required)
-        :param TiffExportOptions export_options: with tiff export options.
-        :param str result_file: The resulting file.
-        :param float brightness: The image brightness.
-        :param str compression: Tiff compression. Possible values are: LZW, CCITT4, CCITT3, RLE, None.
-        :param str color_depth: Image color depth. Possible valuse are: Default, Format8bpp, Format4bpp, Format1bpp.
-        :param int left_margin: Left image margin.
-        :param int right_margin: Right image margin.
-        :param int top_margin: Top image margin.
-        :param int bottom_margin: Bottom image margin.
-        :param str orientation: Image orientation. Possible values are: None, Landscape, Portait.
-        :param bool skip_blank_pages: Skip blank pages flag.
-        :param int width: Image width.
-        :param int height: Image height.
-        :param int x_resolution: Horizontal resolution.
-        :param int y_resolution: Vertical resolution.
-        :param int page_index: Start page to export.
-        :param int page_count: Number of pages to export.
-        :param str storage: The document storage.
-        :param str folder: The document folder.
-        :return: SaaSposeResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['name', 'export_options', 'result_file', 'brightness', 'compression', 'color_depth', 'left_margin', 'right_margin', 'top_margin', 'bottom_margin', 'orientation', 'skip_blank_pages', 'width', 'height', 'x_resolution', 'y_resolution', 'page_index', 'page_count', 'storage', 'folder']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method put_document_save_as_tiff" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `put_document_save_as_tiff`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'name' in params:
-            path_params['name'] = params['name']
-
-        query_params = []
-        if 'result_file' in params:
-            query_params.append(('resultFile', params['result_file']))
-        if 'brightness' in params:
-            query_params.append(('brightness', params['brightness']))
-        if 'compression' in params:
-            query_params.append(('compression', params['compression']))
-        if 'color_depth' in params:
-            query_params.append(('colorDepth', params['color_depth']))
-        if 'left_margin' in params:
-            query_params.append(('leftMargin', params['left_margin']))
-        if 'right_margin' in params:
-            query_params.append(('rightMargin', params['right_margin']))
-        if 'top_margin' in params:
-            query_params.append(('topMargin', params['top_margin']))
-        if 'bottom_margin' in params:
-            query_params.append(('bottomMargin', params['bottom_margin']))
-        if 'orientation' in params:
-            query_params.append(('orientation', params['orientation']))
-        if 'skip_blank_pages' in params:
-            query_params.append(('skipBlankPages', params['skip_blank_pages']))
-        if 'width' in params:
-            query_params.append(('width', params['width']))
-        if 'height' in params:
-            query_params.append(('height', params['height']))
-        if 'x_resolution' in params:
-            query_params.append(('xResolution', params['x_resolution']))
-        if 'y_resolution' in params:
-            query_params.append(('yResolution', params['y_resolution']))
-        if 'page_index' in params:
-            query_params.append(('pageIndex', params['page_index']))
-        if 'page_count' in params:
-            query_params.append(('pageCount', params['page_count']))
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-        if 'folder' in params:
-            query_params.append(('folder', params['folder']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'export_options' in params:
-            body_params = params['export_options']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/pdf/{name}/SaveAs/tiff', 'PUT',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='SaaSposeResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
     def put_epub_in_storage_to_pdf(self, name, src_path, **kwargs):
         """
         Convert EPUB file (located on storage) to PDF format and upload resulting file to storage. 
@@ -10617,8 +9774,9 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.epub) (required)
+        :param str storage: The document storage.
         :param str dst_folder: The destination document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -10644,13 +9802,14 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.epub) (required)
+        :param str storage: The document storage.
         :param str dst_folder: The destination document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'src_path', 'dst_folder']
+        all_params = ['name', 'src_path', 'storage', 'dst_folder']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -10682,6 +9841,8 @@ class PdfApi(object):
         query_params = []
         if 'src_path' in params:
             query_params.append(('srcPath', params['src_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
         if 'dst_folder' in params:
             query_params.append(('dstFolder', params['dst_folder']))
 
@@ -10709,7 +9870,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -10733,7 +9894,7 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -10760,7 +9921,7 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -10821,7 +9982,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -10853,7 +10014,8 @@ class PdfApi(object):
         :param float margin_right: Page margin right
         :param float margin_top: Page margin top
         :param str dst_folder: The destination document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -10888,12 +10050,13 @@ class PdfApi(object):
         :param float margin_right: Page margin right
         :param float margin_top: Page margin top
         :param str dst_folder: The destination document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'src_path', 'html_file_name', 'height', 'width', 'is_landscape', 'margin_left', 'margin_bottom', 'margin_right', 'margin_top', 'dst_folder']
+        all_params = ['name', 'src_path', 'html_file_name', 'height', 'width', 'is_landscape', 'margin_left', 'margin_bottom', 'margin_right', 'margin_top', 'dst_folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -10946,6 +10109,8 @@ class PdfApi(object):
             query_params.append(('marginTop', params['margin_top']))
         if 'dst_folder' in params:
             query_params.append(('dstFolder', params['dst_folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -10971,7 +10136,531 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_image_extract_as_gif(self, name, image_id, **kwargs):
+        """
+        Extract document image in GIF format to folder
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_image_extract_as_gif(name, image_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str image_id: Image ID. (required)
+        :param int width: The converted image width.
+        :param int height: The converted image height.
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param str dest_folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_image_extract_as_gif_with_http_info(name, image_id, **kwargs)
+        else:
+            (data) = self.put_image_extract_as_gif_with_http_info(name, image_id, **kwargs)
+            return data
+
+    def put_image_extract_as_gif_with_http_info(self, name, image_id, **kwargs):
+        """
+        Extract document image in GIF format to folder
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_image_extract_as_gif_with_http_info(name, image_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str image_id: Image ID. (required)
+        :param int width: The converted image width.
+        :param int height: The converted image height.
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param str dest_folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'image_id', 'width', 'height', 'storage', 'folder', 'dest_folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_image_extract_as_gif" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_image_extract_as_gif`")
+        # verify the required parameter 'image_id' is set
+        if ('image_id' not in params) or (params['image_id'] is None):
+            raise ValueError("Missing the required parameter `image_id` when calling `put_image_extract_as_gif`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'image_id' in params:
+            path_params['imageId'] = params['image_id']
+
+        query_params = []
+        if 'width' in params:
+            query_params.append(('width', params['width']))
+        if 'height' in params:
+            query_params.append(('height', params['height']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+        if 'dest_folder' in params:
+            query_params.append(('destFolder', params['dest_folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/images/{imageId}/extract/gif', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_image_extract_as_jpeg(self, name, image_id, **kwargs):
+        """
+        Extract document image in JPEG format to folder
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_image_extract_as_jpeg(name, image_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str image_id: Image ID. (required)
+        :param int width: The converted image width.
+        :param int height: The converted image height.
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param str dest_folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_image_extract_as_jpeg_with_http_info(name, image_id, **kwargs)
+        else:
+            (data) = self.put_image_extract_as_jpeg_with_http_info(name, image_id, **kwargs)
+            return data
+
+    def put_image_extract_as_jpeg_with_http_info(self, name, image_id, **kwargs):
+        """
+        Extract document image in JPEG format to folder
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_image_extract_as_jpeg_with_http_info(name, image_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str image_id: Image ID. (required)
+        :param int width: The converted image width.
+        :param int height: The converted image height.
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param str dest_folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'image_id', 'width', 'height', 'storage', 'folder', 'dest_folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_image_extract_as_jpeg" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_image_extract_as_jpeg`")
+        # verify the required parameter 'image_id' is set
+        if ('image_id' not in params) or (params['image_id'] is None):
+            raise ValueError("Missing the required parameter `image_id` when calling `put_image_extract_as_jpeg`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'image_id' in params:
+            path_params['imageId'] = params['image_id']
+
+        query_params = []
+        if 'width' in params:
+            query_params.append(('width', params['width']))
+        if 'height' in params:
+            query_params.append(('height', params['height']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+        if 'dest_folder' in params:
+            query_params.append(('destFolder', params['dest_folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/images/{imageId}/extract/jpeg', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_image_extract_as_png(self, name, image_id, **kwargs):
+        """
+        Extract document image in PNG format to folder
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_image_extract_as_png(name, image_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str image_id: Image ID. (required)
+        :param int width: The converted image width.
+        :param int height: The converted image height.
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param str dest_folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_image_extract_as_png_with_http_info(name, image_id, **kwargs)
+        else:
+            (data) = self.put_image_extract_as_png_with_http_info(name, image_id, **kwargs)
+            return data
+
+    def put_image_extract_as_png_with_http_info(self, name, image_id, **kwargs):
+        """
+        Extract document image in PNG format to folder
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_image_extract_as_png_with_http_info(name, image_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str image_id: Image ID. (required)
+        :param int width: The converted image width.
+        :param int height: The converted image height.
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param str dest_folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'image_id', 'width', 'height', 'storage', 'folder', 'dest_folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_image_extract_as_png" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_image_extract_as_png`")
+        # verify the required parameter 'image_id' is set
+        if ('image_id' not in params) or (params['image_id'] is None):
+            raise ValueError("Missing the required parameter `image_id` when calling `put_image_extract_as_png`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'image_id' in params:
+            path_params['imageId'] = params['image_id']
+
+        query_params = []
+        if 'width' in params:
+            query_params.append(('width', params['width']))
+        if 'height' in params:
+            query_params.append(('height', params['height']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+        if 'dest_folder' in params:
+            query_params.append(('destFolder', params['dest_folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/images/{imageId}/extract/png', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_image_extract_as_tiff(self, name, image_id, **kwargs):
+        """
+        Extract document image in TIFF format to folder
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_image_extract_as_tiff(name, image_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str image_id: Image ID. (required)
+        :param int width: The converted image width.
+        :param int height: The converted image height.
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param str dest_folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_image_extract_as_tiff_with_http_info(name, image_id, **kwargs)
+        else:
+            (data) = self.put_image_extract_as_tiff_with_http_info(name, image_id, **kwargs)
+            return data
+
+    def put_image_extract_as_tiff_with_http_info(self, name, image_id, **kwargs):
+        """
+        Extract document image in TIFF format to folder
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_image_extract_as_tiff_with_http_info(name, image_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str image_id: Image ID. (required)
+        :param int width: The converted image width.
+        :param int height: The converted image height.
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param str dest_folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'image_id', 'width', 'height', 'storage', 'folder', 'dest_folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_image_extract_as_tiff" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_image_extract_as_tiff`")
+        # verify the required parameter 'image_id' is set
+        if ('image_id' not in params) or (params['image_id'] is None):
+            raise ValueError("Missing the required parameter `image_id` when calling `put_image_extract_as_tiff`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'image_id' in params:
+            path_params['imageId'] = params['image_id']
+
+        query_params = []
+        if 'width' in params:
+            query_params.append(('width', params['width']))
+        if 'height' in params:
+            query_params.append(('height', params['height']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+        if 'dest_folder' in params:
+            query_params.append(('destFolder', params['dest_folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/images/{imageId}/extract/tiff', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -10995,7 +10684,8 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param ImageTemplatesRequest image_templates: Image templates (required)
         :param str dst_folder: The destination document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -11022,12 +10712,13 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param ImageTemplatesRequest image_templates: Image templates (required)
         :param str dst_folder: The destination document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'image_templates', 'dst_folder']
+        all_params = ['name', 'image_templates', 'dst_folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -11059,6 +10750,8 @@ class PdfApi(object):
         query_params = []
         if 'dst_folder' in params:
             query_params.append(('dstFolder', params['dst_folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -11086,7 +10779,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -11096,7 +10789,7 @@ class PdfApi(object):
 
     def put_images_extract_as_gif(self, name, page_number, **kwargs):
         """
-        Extract document images in format specified to folder.
+        Extract document images in GIF format to folder.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -11111,9 +10804,10 @@ class PdfApi(object):
         :param int page_number: The page number. (required)
         :param int width: The converted image width.
         :param int height: The converted image height.
+        :param str storage: The document storage.
         :param str folder: The document folder.
         :param str dest_folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -11126,7 +10820,7 @@ class PdfApi(object):
 
     def put_images_extract_as_gif_with_http_info(self, name, page_number, **kwargs):
         """
-        Extract document images in format specified to folder.
+        Extract document images in GIF format to folder.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -11141,14 +10835,15 @@ class PdfApi(object):
         :param int page_number: The page number. (required)
         :param int width: The converted image width.
         :param int height: The converted image height.
+        :param str storage: The document storage.
         :param str folder: The document folder.
         :param str dest_folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'width', 'height', 'folder', 'dest_folder']
+        all_params = ['name', 'page_number', 'width', 'height', 'storage', 'folder', 'dest_folder']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -11184,6 +10879,8 @@ class PdfApi(object):
             query_params.append(('width', params['width']))
         if 'height' in params:
             query_params.append(('height', params['height']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
         if 'dest_folder' in params:
@@ -11213,7 +10910,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -11223,7 +10920,7 @@ class PdfApi(object):
 
     def put_images_extract_as_jpeg(self, name, page_number, **kwargs):
         """
-        Extract document images in format specified to folder.
+        Extract document images in JPEG format to folder.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -11238,9 +10935,10 @@ class PdfApi(object):
         :param int page_number: The page number. (required)
         :param int width: The converted image width.
         :param int height: The converted image height.
+        :param str storage:
         :param str folder: The document folder.
         :param str dest_folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -11253,7 +10951,7 @@ class PdfApi(object):
 
     def put_images_extract_as_jpeg_with_http_info(self, name, page_number, **kwargs):
         """
-        Extract document images in format specified to folder.
+        Extract document images in JPEG format to folder.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -11268,14 +10966,15 @@ class PdfApi(object):
         :param int page_number: The page number. (required)
         :param int width: The converted image width.
         :param int height: The converted image height.
+        :param str storage:
         :param str folder: The document folder.
         :param str dest_folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'width', 'height', 'folder', 'dest_folder']
+        all_params = ['name', 'page_number', 'width', 'height', 'storage', 'folder', 'dest_folder']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -11311,6 +11010,8 @@ class PdfApi(object):
             query_params.append(('width', params['width']))
         if 'height' in params:
             query_params.append(('height', params['height']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
         if 'dest_folder' in params:
@@ -11340,7 +11041,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -11350,7 +11051,7 @@ class PdfApi(object):
 
     def put_images_extract_as_png(self, name, page_number, **kwargs):
         """
-        Extract document images in format specified to folder.
+        Extract document images in PNG format to folder.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -11365,9 +11066,10 @@ class PdfApi(object):
         :param int page_number: The page number. (required)
         :param int width: The converted image width.
         :param int height: The converted image height.
+        :param str storage: The document storage.
         :param str folder: The document folder.
         :param str dest_folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -11380,7 +11082,7 @@ class PdfApi(object):
 
     def put_images_extract_as_png_with_http_info(self, name, page_number, **kwargs):
         """
-        Extract document images in format specified to folder.
+        Extract document images in PNG format to folder.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -11395,14 +11097,15 @@ class PdfApi(object):
         :param int page_number: The page number. (required)
         :param int width: The converted image width.
         :param int height: The converted image height.
+        :param str storage: The document storage.
         :param str folder: The document folder.
         :param str dest_folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'width', 'height', 'folder', 'dest_folder']
+        all_params = ['name', 'page_number', 'width', 'height', 'storage', 'folder', 'dest_folder']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -11438,6 +11141,8 @@ class PdfApi(object):
             query_params.append(('width', params['width']))
         if 'height' in params:
             query_params.append(('height', params['height']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
         if 'dest_folder' in params:
@@ -11467,7 +11172,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -11477,7 +11182,7 @@ class PdfApi(object):
 
     def put_images_extract_as_tiff(self, name, page_number, **kwargs):
         """
-        Extract document images in format specified to folder.
+        Extract document images in TIFF format to folder.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -11492,9 +11197,10 @@ class PdfApi(object):
         :param int page_number: The page number. (required)
         :param int width: The converted image width.
         :param int height: The converted image height.
+        :param str storage: The document storage.
         :param str folder: The document folder.
         :param str dest_folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -11507,7 +11213,7 @@ class PdfApi(object):
 
     def put_images_extract_as_tiff_with_http_info(self, name, page_number, **kwargs):
         """
-        Extract document images in format specified to folder.
+        Extract document images in TIFF format to folder.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -11522,14 +11228,15 @@ class PdfApi(object):
         :param int page_number: The page number. (required)
         :param int width: The converted image width.
         :param int height: The converted image height.
+        :param str storage: The document storage.
         :param str folder: The document folder.
         :param str dest_folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'width', 'height', 'folder', 'dest_folder']
+        all_params = ['name', 'page_number', 'width', 'height', 'storage', 'folder', 'dest_folder']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -11565,6 +11272,8 @@ class PdfApi(object):
             query_params.append(('width', params['width']))
         if 'height' in params:
             query_params.append(('height', params['height']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
         if 'dest_folder' in params:
@@ -11594,7 +11303,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -11618,7 +11327,8 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.tex) (required)
         :param str dst_folder: The destination document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -11645,12 +11355,13 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.tex) (required)
         :param str dst_folder: The destination document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'src_path', 'dst_folder']
+        all_params = ['name', 'src_path', 'dst_folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -11684,6 +11395,8 @@ class PdfApi(object):
             query_params.append(('srcPath', params['src_path']))
         if 'dst_folder' in params:
             query_params.append(('dstFolder', params['dst_folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -11709,7 +11422,133 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_link_annotation(self, name, link_id, link, **kwargs):
+        """
+        Replace document page link annotations
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_link_annotation(name, link_id, link, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str link_id: The link ID. (required)
+        :param LinkAnnotation link: Link anotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: LinkAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_link_annotation_with_http_info(name, link_id, link, **kwargs)
+        else:
+            (data) = self.put_link_annotation_with_http_info(name, link_id, link, **kwargs)
+            return data
+
+    def put_link_annotation_with_http_info(self, name, link_id, link, **kwargs):
+        """
+        Replace document page link annotations
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_link_annotation_with_http_info(name, link_id, link, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str link_id: The link ID. (required)
+        :param LinkAnnotation link: Link anotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: LinkAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'link_id', 'link', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_link_annotation" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_link_annotation`")
+        # verify the required parameter 'link_id' is set
+        if ('link_id' not in params) or (params['link_id'] is None):
+            raise ValueError("Missing the required parameter `link_id` when calling `put_link_annotation`")
+        # verify the required parameter 'link' is set
+        if ('link' not in params) or (params['link'] is None):
+            raise ValueError("Missing the required parameter `link` when calling `put_link_annotation`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'link_id' in params:
+            path_params['linkId'] = params['link_id']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'link' in params:
+            body_params = params['link']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/links/{linkId}', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='LinkAnnotationResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -11849,7 +11688,8 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.mht) (required)
         :param str dst_folder: The destination document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -11876,12 +11716,13 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.mht) (required)
         :param str dst_folder: The destination document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'src_path', 'dst_folder']
+        all_params = ['name', 'src_path', 'dst_folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -11915,6 +11756,8 @@ class PdfApi(object):
             query_params.append(('srcPath', params['src_path']))
         if 'dst_folder' in params:
             query_params.append(('dstFolder', params['dst_folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -11940,7 +11783,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -11966,7 +11809,7 @@ class PdfApi(object):
         :param Stamp stamp: with data. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -11995,7 +11838,7 @@ class PdfApi(object):
         :param Stamp stamp: with data. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -12066,7 +11909,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -12076,7 +11919,7 @@ class PdfApi(object):
 
     def put_page_convert_to_bmp(self, name, page_number, out_path, **kwargs):
         """
-        Convert document page to bmp image and save in storage.
+        Convert document page to bmp image and upload resulting file to storage.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -12093,7 +11936,8 @@ class PdfApi(object):
         :param int width: The converted image width.
         :param int height: The converted image height.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -12106,7 +11950,7 @@ class PdfApi(object):
 
     def put_page_convert_to_bmp_with_http_info(self, name, page_number, out_path, **kwargs):
         """
-        Convert document page to bmp image and save in storage.
+        Convert document page to bmp image and upload resulting file to storage.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -12123,12 +11967,13 @@ class PdfApi(object):
         :param int width: The converted image width.
         :param int height: The converted image height.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'out_path', 'width', 'height', 'folder']
+        all_params = ['name', 'page_number', 'out_path', 'width', 'height', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -12171,6 +12016,8 @@ class PdfApi(object):
             query_params.append(('height', params['height']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -12196,7 +12043,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -12206,7 +12053,7 @@ class PdfApi(object):
 
     def put_page_convert_to_emf(self, name, page_number, out_path, **kwargs):
         """
-        Convert document page to emf image and save in storage.
+        Convert document page to emf image and upload resulting file to storage.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -12223,7 +12070,8 @@ class PdfApi(object):
         :param int width: The converted image width.
         :param int height: The converted image height.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -12236,7 +12084,7 @@ class PdfApi(object):
 
     def put_page_convert_to_emf_with_http_info(self, name, page_number, out_path, **kwargs):
         """
-        Convert document page to emf image and save in storage.
+        Convert document page to emf image and upload resulting file to storage.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -12253,12 +12101,13 @@ class PdfApi(object):
         :param int width: The converted image width.
         :param int height: The converted image height.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'out_path', 'width', 'height', 'folder']
+        all_params = ['name', 'page_number', 'out_path', 'width', 'height', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -12301,6 +12150,8 @@ class PdfApi(object):
             query_params.append(('height', params['height']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -12326,7 +12177,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -12336,7 +12187,7 @@ class PdfApi(object):
 
     def put_page_convert_to_gif(self, name, page_number, out_path, **kwargs):
         """
-        Convert document page to gif image and save in storage.
+        Convert document page to gif image and upload resulting file to storage.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -12353,7 +12204,8 @@ class PdfApi(object):
         :param int width: The converted image width.
         :param int height: The converted image height.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -12366,7 +12218,7 @@ class PdfApi(object):
 
     def put_page_convert_to_gif_with_http_info(self, name, page_number, out_path, **kwargs):
         """
-        Convert document page to gif image and save in storage.
+        Convert document page to gif image and upload resulting file to storage.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -12383,12 +12235,13 @@ class PdfApi(object):
         :param int width: The converted image width.
         :param int height: The converted image height.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'out_path', 'width', 'height', 'folder']
+        all_params = ['name', 'page_number', 'out_path', 'width', 'height', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -12431,6 +12284,8 @@ class PdfApi(object):
             query_params.append(('height', params['height']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -12456,7 +12311,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -12466,7 +12321,7 @@ class PdfApi(object):
 
     def put_page_convert_to_jpeg(self, name, page_number, out_path, **kwargs):
         """
-        Convert document page to Jpeg image and save in storage.
+        Convert document page to Jpeg image and upload resulting file to storage.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -12483,7 +12338,8 @@ class PdfApi(object):
         :param int width: The converted image width.
         :param int height: The converted image height.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -12496,7 +12352,7 @@ class PdfApi(object):
 
     def put_page_convert_to_jpeg_with_http_info(self, name, page_number, out_path, **kwargs):
         """
-        Convert document page to Jpeg image and save in storage.
+        Convert document page to Jpeg image and upload resulting file to storage.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -12513,12 +12369,13 @@ class PdfApi(object):
         :param int width: The converted image width.
         :param int height: The converted image height.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'out_path', 'width', 'height', 'folder']
+        all_params = ['name', 'page_number', 'out_path', 'width', 'height', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -12561,6 +12418,8 @@ class PdfApi(object):
             query_params.append(('height', params['height']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -12586,7 +12445,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -12596,7 +12455,7 @@ class PdfApi(object):
 
     def put_page_convert_to_png(self, name, page_number, out_path, **kwargs):
         """
-        Convert document page to png image and save in storage.
+        Convert document page to png image and upload resulting file to storage.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -12613,7 +12472,8 @@ class PdfApi(object):
         :param int width: The converted image width.
         :param int height: The converted image height.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -12626,7 +12486,7 @@ class PdfApi(object):
 
     def put_page_convert_to_png_with_http_info(self, name, page_number, out_path, **kwargs):
         """
-        Convert document page to png image and save in storage.
+        Convert document page to png image and upload resulting file to storage.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -12643,12 +12503,13 @@ class PdfApi(object):
         :param int width: The converted image width.
         :param int height: The converted image height.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'out_path', 'width', 'height', 'folder']
+        all_params = ['name', 'page_number', 'out_path', 'width', 'height', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -12691,6 +12552,8 @@ class PdfApi(object):
             query_params.append(('height', params['height']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -12716,7 +12579,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -12726,7 +12589,7 @@ class PdfApi(object):
 
     def put_page_convert_to_tiff(self, name, page_number, out_path, **kwargs):
         """
-        Convert document page to Tiff image and save in storage.
+        Convert document page to Tiff image and upload resulting file to storage.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -12743,7 +12606,8 @@ class PdfApi(object):
         :param int width: The converted image width.
         :param int height: The converted image height.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -12756,7 +12620,7 @@ class PdfApi(object):
 
     def put_page_convert_to_tiff_with_http_info(self, name, page_number, out_path, **kwargs):
         """
-        Convert document page to Tiff image and save in storage.
+        Convert document page to Tiff image and upload resulting file to storage.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -12773,12 +12637,13 @@ class PdfApi(object):
         :param int width: The converted image width.
         :param int height: The converted image height.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'out_path', 'width', 'height', 'folder']
+        all_params = ['name', 'page_number', 'out_path', 'width', 'height', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -12821,6 +12686,8 @@ class PdfApi(object):
             query_params.append(('height', params['height']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -12846,7 +12713,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -12870,7 +12737,8 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.pcl) (required)
         :param str dst_folder: The destination document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -12897,12 +12765,13 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.pcl) (required)
         :param str dst_folder: The destination document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'src_path', 'dst_folder']
+        all_params = ['name', 'src_path', 'dst_folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -12936,6 +12805,8 @@ class PdfApi(object):
             query_params.append(('srcPath', params['src_path']))
         if 'dst_folder' in params:
             query_params.append(('dstFolder', params['dst_folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -12961,7 +12832,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -12987,12 +12858,13 @@ class PdfApi(object):
         :param str format: Allows to specify .doc or .docx file format.
         :param int image_resolution_x: Image resolution X.
         :param int image_resolution_y: Image resolution Y.
-        :param int max_distance_between_text_lines: Max distance between text lines.
+        :param float max_distance_between_text_lines: Max distance between text lines.
         :param str mode: Allows to control how a PDF document is converted into a word processing document.
         :param bool recognize_bullets: Recognize bullets.
         :param float relative_horizontal_proximity: Relative horizontal proximity.
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -13021,17 +12893,18 @@ class PdfApi(object):
         :param str format: Allows to specify .doc or .docx file format.
         :param int image_resolution_x: Image resolution X.
         :param int image_resolution_y: Image resolution Y.
-        :param int max_distance_between_text_lines: Max distance between text lines.
+        :param float max_distance_between_text_lines: Max distance between text lines.
         :param str mode: Allows to control how a PDF document is converted into a word processing document.
         :param bool recognize_bullets: Recognize bullets.
         :param float relative_horizontal_proximity: Relative horizontal proximity.
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['out_path', 'add_return_to_line_end', 'format', 'image_resolution_x', 'image_resolution_y', 'max_distance_between_text_lines', 'mode', 'recognize_bullets', 'relative_horizontal_proximity', 'file']
+        all_params = ['out_path', 'add_return_to_line_end', 'format', 'image_resolution_x', 'image_resolution_y', 'max_distance_between_text_lines', 'mode', 'recognize_bullets', 'relative_horizontal_proximity', 'storage', 'file']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -13074,6 +12947,8 @@ class PdfApi(object):
             query_params.append(('recognizeBullets', params['recognize_bullets']))
         if 'relative_horizontal_proximity' in params:
             query_params.append(('relativeHorizontalProximity', params['relative_horizontal_proximity']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -13101,7 +12976,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -13123,9 +12998,10 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-        :param str content_recognition_mode: Рroperty tunes conversion for this or that desirable method of recognition of content.
+        :param str content_recognition_mode: ?roperty tunes conversion for this or that desirable method of recognition of content.
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -13150,14 +13026,15 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-        :param str content_recognition_mode: Рroperty tunes conversion for this or that desirable method of recognition of content.
+        :param str content_recognition_mode: ?roperty tunes conversion for this or that desirable method of recognition of content.
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['out_path', 'content_recognition_mode', 'file']
+        all_params = ['out_path', 'content_recognition_mode', 'storage', 'file']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -13186,6 +13063,8 @@ class PdfApi(object):
             query_params.append(('outPath', params['out_path']))
         if 'content_recognition_mode' in params:
             query_params.append(('contentRecognitionMode', params['content_recognition_mode']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -13213,7 +13092,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -13263,8 +13142,9 @@ class PdfApi(object):
         :param str special_folder_for_all_images: The path to directory to which must be saved any images if they are encountered during saving of document as HTML. If parameter is empty or null then image files(if any) wil be saved together with other files linked to HTML It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
         :param str special_folder_for_svg_images: The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
         :param bool try_save_text_underlining_and_strikeouting_in_css: PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -13317,13 +13197,14 @@ class PdfApi(object):
         :param str special_folder_for_all_images: The path to directory to which must be saved any images if they are encountered during saving of document as HTML. If parameter is empty or null then image files(if any) wil be saved together with other files linked to HTML It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
         :param str special_folder_for_svg_images: The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
         :param bool try_save_text_underlining_and_strikeouting_in_css: PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['out_path', 'additional_margin_width_in_points', 'compress_svg_graphics_if_any', 'convert_marked_content_to_layers', 'default_font_name', 'document_type', 'fixed_layout', 'image_resolution', 'minimal_line_width', 'prevent_glyphs_grouping', 'split_css_into_pages', 'split_into_pages', 'use_z_order', 'antialiasing_processing', 'css_class_names_prefix', 'explicit_list_of_saved_pages', 'font_encoding_strategy', 'font_saving_mode', 'html_markup_generation_mode', 'letters_positioning_method', 'pages_flow_type_depends_on_viewers_screen_size', 'parts_embedding_mode', 'raster_images_saving_mode', 'remove_empty_areas_on_top_and_bottom', 'save_shadowed_texts_as_transparent_texts', 'save_transparent_texts', 'special_folder_for_all_images', 'special_folder_for_svg_images', 'try_save_text_underlining_and_strikeouting_in_css', 'file']
+        all_params = ['out_path', 'additional_margin_width_in_points', 'compress_svg_graphics_if_any', 'convert_marked_content_to_layers', 'default_font_name', 'document_type', 'fixed_layout', 'image_resolution', 'minimal_line_width', 'prevent_glyphs_grouping', 'split_css_into_pages', 'split_into_pages', 'use_z_order', 'antialiasing_processing', 'css_class_names_prefix', 'explicit_list_of_saved_pages', 'font_encoding_strategy', 'font_saving_mode', 'html_markup_generation_mode', 'letters_positioning_method', 'pages_flow_type_depends_on_viewers_screen_size', 'parts_embedding_mode', 'raster_images_saving_mode', 'remove_empty_areas_on_top_and_bottom', 'save_shadowed_texts_as_transparent_texts', 'save_transparent_texts', 'special_folder_for_all_images', 'special_folder_for_svg_images', 'try_save_text_underlining_and_strikeouting_in_css', 'storage', 'file']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -13407,6 +13288,8 @@ class PdfApi(object):
             query_params.append(('specialFolderForSvgImages', params['special_folder_for_svg_images']))
         if 'try_save_text_underlining_and_strikeouting_in_css' in params:
             query_params.append(('trySaveTextUnderliningAndStrikeoutingInCss', params['try_save_text_underlining_and_strikeouting_in_css']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -13434,7 +13317,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -13457,8 +13340,9 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.tex) (required)
         :param int pages_count: Pages count.
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -13484,13 +13368,14 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.tex) (required)
         :param int pages_count: Pages count.
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['out_path', 'pages_count', 'file']
+        all_params = ['out_path', 'pages_count', 'storage', 'file']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -13519,6 +13404,8 @@ class PdfApi(object):
             query_params.append(('outPath', params['out_path']))
         if 'pages_count' in params:
             query_params.append(('pagesCount', params['pages_count']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -13546,7 +13433,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -13568,8 +13455,9 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.mobixml) (required)
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -13594,13 +13482,14 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.mobixml) (required)
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['out_path', 'file']
+        all_params = ['out_path', 'storage', 'file']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -13627,6 +13516,8 @@ class PdfApi(object):
         query_params = []
         if 'out_path' in params:
             query_params.append(('outPath', params['out_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -13654,7 +13545,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -13677,8 +13568,9 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
         :param str type: Type of PdfA format. (required)
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -13704,13 +13596,14 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
         :param str type: Type of PdfA format. (required)
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['out_path', 'type', 'file']
+        all_params = ['out_path', 'type', 'storage', 'file']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -13742,6 +13635,8 @@ class PdfApi(object):
             query_params.append(('outPath', params['out_path']))
         if 'type' in params:
             query_params.append(('type', params['type']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -13769,7 +13664,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -13793,8 +13688,9 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pptx) (required)
         :param bool separate_images: Separate images.
         :param bool slides_as_images: Slides as images.
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -13821,13 +13717,14 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pptx) (required)
         :param bool separate_images: Separate images.
         :param bool slides_as_images: Slides as images.
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['out_path', 'separate_images', 'slides_as_images', 'file']
+        all_params = ['out_path', 'separate_images', 'slides_as_images', 'storage', 'file']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -13858,6 +13755,8 @@ class PdfApi(object):
             query_params.append(('separateImages', params['separate_images']))
         if 'slides_as_images' in params:
             query_params.append(('slidesAsImages', params['slides_as_images']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -13885,7 +13784,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -13907,9 +13806,9 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.svg) (required)
-        :param bool compress_output_to_zip_archive: Specifies whether output will be created as one zip-archive.
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -13934,14 +13833,14 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.svg) (required)
-        :param bool compress_output_to_zip_archive: Specifies whether output will be created as one zip-archive.
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['out_path', 'compress_output_to_zip_archive', 'file']
+        all_params = ['out_path', 'storage', 'file']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -13968,8 +13867,8 @@ class PdfApi(object):
         query_params = []
         if 'out_path' in params:
             query_params.append(('outPath', params['out_path']))
-        if 'compress_output_to_zip_archive' in params:
-            query_params.append(('compressOutputToZipArchive', params['compress_output_to_zip_archive']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -13997,7 +13896,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -14034,8 +13933,9 @@ class PdfApi(object):
         :param int y_resolution: Vertical resolution.
         :param int page_index: Start page to export.
         :param int page_count: Number of pages to export.
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -14075,13 +13975,14 @@ class PdfApi(object):
         :param int y_resolution: Vertical resolution.
         :param int page_index: Start page to export.
         :param int page_count: Number of pages to export.
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['out_path', 'brightness', 'compression', 'color_depth', 'left_margin', 'right_margin', 'top_margin', 'bottom_margin', 'orientation', 'skip_blank_pages', 'width', 'height', 'x_resolution', 'y_resolution', 'page_index', 'page_count', 'file']
+        all_params = ['out_path', 'brightness', 'compression', 'color_depth', 'left_margin', 'right_margin', 'top_margin', 'bottom_margin', 'orientation', 'skip_blank_pages', 'width', 'height', 'x_resolution', 'y_resolution', 'page_index', 'page_count', 'storage', 'file']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -14138,6 +14039,8 @@ class PdfApi(object):
             query_params.append(('pageIndex', params['page_index']))
         if 'page_count' in params:
             query_params.append(('pageCount', params['page_count']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -14165,7 +14068,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -14191,8 +14094,9 @@ class PdfApi(object):
         :param bool minimize_the_number_of_worksheets: Minimize the number of worksheets
         :param float scale_factor: Scale factor
         :param bool uniform_worksheets: Uniform worksheets
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -14221,13 +14125,14 @@ class PdfApi(object):
         :param bool minimize_the_number_of_worksheets: Minimize the number of worksheets
         :param float scale_factor: Scale factor
         :param bool uniform_worksheets: Uniform worksheets
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['out_path', 'insert_blank_column_at_first', 'minimize_the_number_of_worksheets', 'scale_factor', 'uniform_worksheets', 'file']
+        all_params = ['out_path', 'insert_blank_column_at_first', 'minimize_the_number_of_worksheets', 'scale_factor', 'uniform_worksheets', 'storage', 'file']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -14262,6 +14167,8 @@ class PdfApi(object):
             query_params.append(('scaleFactor', params['scale_factor']))
         if 'uniform_worksheets' in params:
             query_params.append(('uniformWorksheets', params['uniform_worksheets']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -14289,7 +14196,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -14311,8 +14218,9 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.xml) (required)
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -14337,13 +14245,14 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.xml) (required)
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['out_path', 'file']
+        all_params = ['out_path', 'storage', 'file']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -14370,6 +14279,8 @@ class PdfApi(object):
         query_params = []
         if 'out_path' in params:
             query_params.append(('outPath', params['out_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -14397,7 +14308,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -14419,8 +14330,9 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.xps) (required)
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -14445,13 +14357,14 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.xps) (required)
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['out_path', 'file']
+        all_params = ['out_path', 'storage', 'file']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -14478,6 +14391,8 @@ class PdfApi(object):
         query_params = []
         if 'out_path' in params:
             query_params.append(('outPath', params['out_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -14505,7 +14420,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -14532,12 +14447,13 @@ class PdfApi(object):
         :param str format: Allows to specify .doc or .docx file format.
         :param int image_resolution_x: Image resolution X.
         :param int image_resolution_y: Image resolution Y.
-        :param int max_distance_between_text_lines: Max distance between text lines.
+        :param float max_distance_between_text_lines: Max distance between text lines.
         :param str mode: Allows to control how a PDF document is converted into a word processing document.
         :param bool recognize_bullets: Recognize bullets.
         :param float relative_horizontal_proximity: Relative horizontal proximity.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -14567,17 +14483,18 @@ class PdfApi(object):
         :param str format: Allows to specify .doc or .docx file format.
         :param int image_resolution_x: Image resolution X.
         :param int image_resolution_y: Image resolution Y.
-        :param int max_distance_between_text_lines: Max distance between text lines.
+        :param float max_distance_between_text_lines: Max distance between text lines.
         :param str mode: Allows to control how a PDF document is converted into a word processing document.
         :param bool recognize_bullets: Recognize bullets.
         :param float relative_horizontal_proximity: Relative horizontal proximity.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'out_path', 'add_return_to_line_end', 'format', 'image_resolution_x', 'image_resolution_y', 'max_distance_between_text_lines', 'mode', 'recognize_bullets', 'relative_horizontal_proximity', 'folder']
+        all_params = ['name', 'out_path', 'add_return_to_line_end', 'format', 'image_resolution_x', 'image_resolution_y', 'max_distance_between_text_lines', 'mode', 'recognize_bullets', 'relative_horizontal_proximity', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -14627,6 +14544,8 @@ class PdfApi(object):
             query_params.append(('relativeHorizontalProximity', params['relative_horizontal_proximity']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -14652,7 +14571,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -14675,9 +14594,10 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-        :param str content_recognition_mode: Рroperty tunes conversion for this or that desirable method of recognition of content.
+        :param str content_recognition_mode: ?roperty tunes conversion for this or that desirable method of recognition of content.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -14703,14 +14623,15 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-        :param str content_recognition_mode: Рroperty tunes conversion for this or that desirable method of recognition of content.
+        :param str content_recognition_mode: ?roperty tunes conversion for this or that desirable method of recognition of content.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'out_path', 'content_recognition_mode', 'folder']
+        all_params = ['name', 'out_path', 'content_recognition_mode', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -14746,6 +14667,8 @@ class PdfApi(object):
             query_params.append(('contentRecognitionMode', params['content_recognition_mode']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -14771,7 +14694,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -14823,7 +14746,8 @@ class PdfApi(object):
         :param str special_folder_for_svg_images: The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
         :param bool try_save_text_underlining_and_strikeouting_in_css: PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -14878,12 +14802,13 @@ class PdfApi(object):
         :param str special_folder_for_svg_images: The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
         :param bool try_save_text_underlining_and_strikeouting_in_css: PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'out_path', 'additional_margin_width_in_points', 'compress_svg_graphics_if_any', 'convert_marked_content_to_layers', 'default_font_name', 'document_type', 'fixed_layout', 'image_resolution', 'minimal_line_width', 'prevent_glyphs_grouping', 'split_css_into_pages', 'split_into_pages', 'use_z_order', 'antialiasing_processing', 'css_class_names_prefix', 'explicit_list_of_saved_pages', 'font_encoding_strategy', 'font_saving_mode', 'html_markup_generation_mode', 'letters_positioning_method', 'pages_flow_type_depends_on_viewers_screen_size', 'parts_embedding_mode', 'raster_images_saving_mode', 'remove_empty_areas_on_top_and_bottom', 'save_shadowed_texts_as_transparent_texts', 'save_transparent_texts', 'special_folder_for_all_images', 'special_folder_for_svg_images', 'try_save_text_underlining_and_strikeouting_in_css', 'folder']
+        all_params = ['name', 'out_path', 'additional_margin_width_in_points', 'compress_svg_graphics_if_any', 'convert_marked_content_to_layers', 'default_font_name', 'document_type', 'fixed_layout', 'image_resolution', 'minimal_line_width', 'prevent_glyphs_grouping', 'split_css_into_pages', 'split_into_pages', 'use_z_order', 'antialiasing_processing', 'css_class_names_prefix', 'explicit_list_of_saved_pages', 'font_encoding_strategy', 'font_saving_mode', 'html_markup_generation_mode', 'letters_positioning_method', 'pages_flow_type_depends_on_viewers_screen_size', 'parts_embedding_mode', 'raster_images_saving_mode', 'remove_empty_areas_on_top_and_bottom', 'save_shadowed_texts_as_transparent_texts', 'save_transparent_texts', 'special_folder_for_all_images', 'special_folder_for_svg_images', 'try_save_text_underlining_and_strikeouting_in_css', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -14974,6 +14899,8 @@ class PdfApi(object):
             query_params.append(('trySaveTextUnderliningAndStrikeoutingInCss', params['try_save_text_underlining_and_strikeouting_in_css']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -14999,7 +14926,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -15024,7 +14951,8 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.tex) (required)
         :param int pages_count: Pages count.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -15052,12 +14980,13 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.tex) (required)
         :param int pages_count: Pages count.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'out_path', 'pages_count', 'folder']
+        all_params = ['name', 'out_path', 'pages_count', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -15093,6 +15022,8 @@ class PdfApi(object):
             query_params.append(('pagesCount', params['pages_count']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -15118,7 +15049,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -15142,7 +15073,8 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.mobixml) (required)
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -15169,12 +15101,13 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.mobixml) (required)
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'out_path', 'folder']
+        all_params = ['name', 'out_path', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -15208,6 +15141,8 @@ class PdfApi(object):
             query_params.append(('outPath', params['out_path']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -15233,7 +15168,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -15258,7 +15193,8 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
         :param str type: Type of PdfA format. (required)
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -15286,12 +15222,13 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
         :param str type: Type of PdfA format. (required)
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'out_path', 'type', 'folder']
+        all_params = ['name', 'out_path', 'type', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -15330,6 +15267,8 @@ class PdfApi(object):
             query_params.append(('type', params['type']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -15355,7 +15294,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -15381,7 +15320,8 @@ class PdfApi(object):
         :param bool separate_images: Separate images.
         :param bool slides_as_images: Slides as images.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -15410,12 +15350,13 @@ class PdfApi(object):
         :param bool separate_images: Separate images.
         :param bool slides_as_images: Slides as images.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'out_path', 'separate_images', 'slides_as_images', 'folder']
+        all_params = ['name', 'out_path', 'separate_images', 'slides_as_images', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -15453,6 +15394,8 @@ class PdfApi(object):
             query_params.append(('slidesAsImages', params['slides_as_images']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -15478,7 +15421,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -15501,9 +15444,9 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.svg) (required)
-        :param bool compress_output_to_zip_archive: Specifies whether output will be created as one zip-archive.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -15529,14 +15472,14 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.svg) (required)
-        :param bool compress_output_to_zip_archive: Specifies whether output will be created as one zip-archive.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'out_path', 'compress_output_to_zip_archive', 'folder']
+        all_params = ['name', 'out_path', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -15568,10 +15511,10 @@ class PdfApi(object):
         query_params = []
         if 'out_path' in params:
             query_params.append(('outPath', params['out_path']))
-        if 'compress_output_to_zip_archive' in params:
-            query_params.append(('compressOutputToZipArchive', params['compress_output_to_zip_archive']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -15597,7 +15540,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -15636,7 +15579,8 @@ class PdfApi(object):
         :param int page_index: Start page to export.
         :param int page_count: Number of pages to export.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -15678,12 +15622,13 @@ class PdfApi(object):
         :param int page_index: Start page to export.
         :param int page_count: Number of pages to export.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'out_path', 'brightness', 'compression', 'color_depth', 'left_margin', 'right_margin', 'top_margin', 'bottom_margin', 'orientation', 'skip_blank_pages', 'width', 'height', 'x_resolution', 'y_resolution', 'page_index', 'page_count', 'folder']
+        all_params = ['name', 'out_path', 'brightness', 'compression', 'color_depth', 'left_margin', 'right_margin', 'top_margin', 'bottom_margin', 'orientation', 'skip_blank_pages', 'width', 'height', 'x_resolution', 'y_resolution', 'page_index', 'page_count', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -15747,6 +15692,8 @@ class PdfApi(object):
             query_params.append(('pageCount', params['page_count']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -15772,7 +15719,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -15800,7 +15747,8 @@ class PdfApi(object):
         :param float scale_factor: Scale factor
         :param bool uniform_worksheets: Uniform worksheets
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -15831,12 +15779,13 @@ class PdfApi(object):
         :param float scale_factor: Scale factor
         :param bool uniform_worksheets: Uniform worksheets
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'out_path', 'insert_blank_column_at_first', 'minimize_the_number_of_worksheets', 'scale_factor', 'uniform_worksheets', 'folder']
+        all_params = ['name', 'out_path', 'insert_blank_column_at_first', 'minimize_the_number_of_worksheets', 'scale_factor', 'uniform_worksheets', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -15878,6 +15827,8 @@ class PdfApi(object):
             query_params.append(('uniformWorksheets', params['uniform_worksheets']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -15903,7 +15854,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -15927,7 +15878,8 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.xml) (required)
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -15954,12 +15906,13 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.xml) (required)
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'out_path', 'folder']
+        all_params = ['name', 'out_path', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -15993,6 +15946,8 @@ class PdfApi(object):
             query_params.append(('outPath', params['out_path']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -16018,7 +15973,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -16042,7 +15997,8 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.xps) (required)
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -16069,12 +16025,13 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.xps) (required)
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'out_path', 'folder']
+        all_params = ['name', 'out_path', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -16108,6 +16065,8 @@ class PdfApi(object):
             query_params.append(('outPath', params['out_path']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -16133,7 +16092,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -16156,8 +16115,9 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param DocumentPrivilege privileges: Document privileges. 
+        :param str storage: The document storage.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -16183,13 +16143,14 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param DocumentPrivilege privileges: Document privileges. 
+        :param str storage: The document storage.
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'privileges', 'folder']
+        all_params = ['name', 'privileges', 'storage', 'folder']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -16216,6 +16177,8 @@ class PdfApi(object):
             path_params['name'] = params['name']
 
         query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
 
@@ -16245,7 +16208,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -16269,7 +16232,8 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.ps) (required)
         :param str dst_folder: The destination document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -16296,12 +16260,13 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.ps) (required)
         :param str dst_folder: The destination document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'src_path', 'dst_folder']
+        all_params = ['name', 'src_path', 'dst_folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -16335,6 +16300,8 @@ class PdfApi(object):
             query_params.append(('srcPath', params['src_path']))
         if 'dst_folder' in params:
             query_params.append(('dstFolder', params['dst_folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -16360,7 +16327,134 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_replace_image(self, name, image_id, **kwargs):
+        """
+        Replace document image.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_replace_image(name, image_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str image_id: The image ID. (required)
+        :param str image_file_path: Path to image file if specified. Request content is used otherwise.
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param file image: Image file.
+        :return: ImageResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_replace_image_with_http_info(name, image_id, **kwargs)
+        else:
+            (data) = self.put_replace_image_with_http_info(name, image_id, **kwargs)
+            return data
+
+    def put_replace_image_with_http_info(self, name, image_id, **kwargs):
+        """
+        Replace document image.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_replace_image_with_http_info(name, image_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str image_id: The image ID. (required)
+        :param str image_file_path: Path to image file if specified. Request content is used otherwise.
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param file image: Image file.
+        :return: ImageResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'image_id', 'image_file_path', 'storage', 'folder', 'image']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_replace_image" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_replace_image`")
+        # verify the required parameter 'image_id' is set
+        if ('image_id' not in params) or (params['image_id'] is None):
+            raise ValueError("Missing the required parameter `image_id` when calling `put_replace_image`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'image_id' in params:
+            path_params['imageId'] = params['image_id']
+
+        query_params = []
+        if 'image_file_path' in params:
+            query_params.append(('imageFilePath', params['image_file_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'image' in params:
+            local_var_files['image'] = params['image']
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['multipart/form-data'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/images/{imageId}', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='ImageResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -16385,7 +16479,7 @@ class PdfApi(object):
         :param str storage: The document storage.
         :param str folder: The document folder.
         :param str lang: language for OCR engine. Possible values: eng, ara, bel, ben, bul, ces, dan, deu, ell, fin, fra, heb, hin, ind, isl, ita, jpn, kor, nld, nor, pol, por, ron, rus, spa, swe, tha, tur, ukr, vie, chi_sim, chi_tra or thier combination e.g. eng,rus 
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -16413,7 +16507,7 @@ class PdfApi(object):
         :param str storage: The document storage.
         :param str folder: The document folder.
         :param str lang: language for OCR engine. Possible values: eng, ara, bel, ben, bul, ces, dan, deu, ell, fin, fra, heb, hin, ind, isl, ita, jpn, kor, nld, nor, pol, por, ron, rus, spa, swe, tha, tur, ukr, vie, chi_sim, chi_tra or thier combination e.g. eng,rus 
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -16476,7 +16570,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -16484,7 +16578,7 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def put_set_property(self, name, property_name, **kwargs):
+    def put_set_property(self, name, property_name, value, **kwargs):
         """
         Add/update document property.
         This method makes a synchronous HTTP request by default. To make an
@@ -16493,13 +16587,13 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.put_set_property(name, property_name, callback=callback_function)
+        >>> thread = api.put_set_property(name, property_name, value, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: (required)
         :param str property_name: (required)
-        :param DocumentProperty _property:
+        :param str value: (required)
         :param str storage:
         :param str folder:
         :return: DocumentPropertyResponse
@@ -16508,12 +16602,12 @@ class PdfApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.put_set_property_with_http_info(name, property_name, **kwargs)
+            return self.put_set_property_with_http_info(name, property_name, value, **kwargs)
         else:
-            (data) = self.put_set_property_with_http_info(name, property_name, **kwargs)
+            (data) = self.put_set_property_with_http_info(name, property_name, value, **kwargs)
             return data
 
-    def put_set_property_with_http_info(self, name, property_name, **kwargs):
+    def put_set_property_with_http_info(self, name, property_name, value, **kwargs):
         """
         Add/update document property.
         This method makes a synchronous HTTP request by default. To make an
@@ -16522,13 +16616,13 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.put_set_property_with_http_info(name, property_name, callback=callback_function)
+        >>> thread = api.put_set_property_with_http_info(name, property_name, value, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: (required)
         :param str property_name: (required)
-        :param DocumentProperty _property:
+        :param str value: (required)
         :param str storage:
         :param str folder:
         :return: DocumentPropertyResponse
@@ -16536,7 +16630,7 @@ class PdfApi(object):
                  returns the request thread.
         """
 
-        all_params = ['name', 'property_name', '_property', 'storage', 'folder']
+        all_params = ['name', 'property_name', 'value', 'storage', 'folder']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -16557,6 +16651,9 @@ class PdfApi(object):
         # verify the required parameter 'property_name' is set
         if ('property_name' not in params) or (params['property_name'] is None):
             raise ValueError("Missing the required parameter `property_name` when calling `put_set_property`")
+        # verify the required parameter 'value' is set
+        if ('value' not in params) or (params['value'] is None):
+            raise ValueError("Missing the required parameter `value` when calling `put_set_property`")
 
 
         collection_formats = {}
@@ -16568,6 +16665,8 @@ class PdfApi(object):
             path_params['propertyName'] = params['property_name']
 
         query_params = []
+        if 'value' in params:
+            query_params.append(('value', params['value']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
@@ -16579,8 +16678,6 @@ class PdfApi(object):
         local_var_files = {}
 
         body_params = None
-        if '_property' in params:
-            body_params = params['_property']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
             select_header_accept(['application/json'])
@@ -16631,7 +16728,8 @@ class PdfApi(object):
         :param float margin_right: Page margin right
         :param float margin_top: Page margin top
         :param str dst_folder: The destination document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -16666,12 +16764,13 @@ class PdfApi(object):
         :param float margin_right: Page margin right
         :param float margin_top: Page margin top
         :param str dst_folder: The destination document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'src_path', 'adjust_page_size', 'height', 'width', 'is_landscape', 'margin_left', 'margin_bottom', 'margin_right', 'margin_top', 'dst_folder']
+        all_params = ['name', 'src_path', 'adjust_page_size', 'height', 'width', 'is_landscape', 'margin_left', 'margin_bottom', 'margin_right', 'margin_top', 'dst_folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -16721,6 +16820,8 @@ class PdfApi(object):
             query_params.append(('marginTop', params['margin_top']))
         if 'dst_folder' in params:
             query_params.append(('dstFolder', params['dst_folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -16746,7 +16847,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -17016,7 +17117,8 @@ class PdfApi(object):
         :param float margin_right: Page margin right
         :param float margin_top: Page margin top
         :param str dst_folder: The destination document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -17050,12 +17152,13 @@ class PdfApi(object):
         :param float margin_right: Page margin right
         :param float margin_top: Page margin top
         :param str dst_folder: The destination document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'url', 'height', 'width', 'is_landscape', 'margin_left', 'margin_bottom', 'margin_right', 'margin_top', 'dst_folder']
+        all_params = ['name', 'url', 'height', 'width', 'is_landscape', 'margin_left', 'margin_bottom', 'margin_right', 'margin_top', 'dst_folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -17103,6 +17206,8 @@ class PdfApi(object):
             query_params.append(('marginTop', params['margin_top']))
         if 'dst_folder' in params:
             query_params.append(('dstFolder', params['dst_folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -17128,7 +17233,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -17150,8 +17255,9 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -17176,13 +17282,14 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
+        :param str storage: The document storage.
         :param file file: A file to be converted.
-        :return: SaaSposeResponse
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['out_path', 'file']
+        all_params = ['out_path', 'storage', 'file']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -17209,6 +17316,8 @@ class PdfApi(object):
         query_params = []
         if 'out_path' in params:
             query_params.append(('outPath', params['out_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -17236,7 +17345,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -17260,7 +17369,8 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -17287,12 +17397,13 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
         :param str folder: The document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'out_path', 'folder']
+        all_params = ['name', 'out_path', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -17326,6 +17437,8 @@ class PdfApi(object):
             query_params.append(('outPath', params['out_path']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -17351,7 +17464,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -17376,7 +17489,8 @@ class PdfApi(object):
         :param str src_path: Full source filename (ex. /folder1/folder2/template.xml) (required)
         :param str xsl_file_path: Full XSL source filename (ex. /folder1/folder2/template.xsl)
         :param str dst_folder: The destination document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -17404,12 +17518,13 @@ class PdfApi(object):
         :param str src_path: Full source filename (ex. /folder1/folder2/template.xml) (required)
         :param str xsl_file_path: Full XSL source filename (ex. /folder1/folder2/template.xsl)
         :param str dst_folder: The destination document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'src_path', 'xsl_file_path', 'dst_folder']
+        all_params = ['name', 'src_path', 'xsl_file_path', 'dst_folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -17445,6 +17560,8 @@ class PdfApi(object):
             query_params.append(('xslFilePath', params['xsl_file_path']))
         if 'dst_folder' in params:
             query_params.append(('dstFolder', params['dst_folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -17470,7 +17587,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -17494,7 +17611,8 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.xps) (required)
         :param str dst_folder: The destination document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -17521,12 +17639,13 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.xps) (required)
         :param str dst_folder: The destination document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'src_path', 'dst_folder']
+        all_params = ['name', 'src_path', 'dst_folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -17560,6 +17679,8 @@ class PdfApi(object):
             query_params.append(('srcPath', params['src_path']))
         if 'dst_folder' in params:
             query_params.append(('dstFolder', params['dst_folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -17585,7 +17706,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -17609,7 +17730,8 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.xpsfo) (required)
         :param str dst_folder: The destination document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -17636,12 +17758,13 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.xpsfo) (required)
         :param str dst_folder: The destination document folder.
-        :return: SaaSposeResponse
+        :param str storage: The document storage.
+        :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'src_path', 'dst_folder']
+        all_params = ['name', 'src_path', 'dst_folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -17675,6 +17798,8 @@ class PdfApi(object):
             query_params.append(('srcPath', params['src_path']))
         if 'dst_folder' in params:
             query_params.append(('dstFolder', params['dst_folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -17700,7 +17825,7 @@ class PdfApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='SaaSposeResponse',
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),

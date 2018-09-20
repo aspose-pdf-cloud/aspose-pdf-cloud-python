@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 1.1
+    OpenAPI spec version: 2.0
     
 """
 
@@ -55,7 +55,7 @@ class Paragraph(object):
         'right_margin': 'float',
         'top_margin': 'float',
         'bottom_margin': 'float',
-        'rectangle': 'Rectangle',
+        'rectangle': 'RectanglePdf',
         'rotation': 'float',
         'subsequent_lines_indent': 'float',
         'vertical_alignment': 'VerticalAlignment',
@@ -272,7 +272,7 @@ class Paragraph(object):
         Gets the rectangle of this Paragraph.
 
         :return: The rectangle of this Paragraph.
-        :rtype: Rectangle
+        :rtype: RectanglePdf
         """
         return self._rectangle
 
@@ -282,7 +282,7 @@ class Paragraph(object):
         Sets the rectangle of this Paragraph.
 
         :param rectangle: The rectangle of this Paragraph.
-        :type: Rectangle
+        :type: RectanglePdf
         """
 
         self._rectangle = rectangle

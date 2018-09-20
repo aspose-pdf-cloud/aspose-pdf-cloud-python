@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 1.1
+    OpenAPI spec version: 2.0
     
 """
 
@@ -67,8 +67,7 @@ class TextLine(object):
 
         if horizontal_alignment is not None:
           self.horizontal_alignment = horizontal_alignment
-        if segments is not None:
-          self.segments = segments
+        self.segments = segments
 
     @property
     def horizontal_alignment(self):
@@ -113,6 +112,8 @@ class TextLine(object):
         :param segments: The segments of this TextLine.
         :type: list[Segment]
         """
+        if segments is None:
+            raise ValueError("Invalid value for `segments`, must not be `None`")
 
         self._segments = segments
 
