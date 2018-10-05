@@ -31,6 +31,9 @@
 from __future__ import absolute_import
 
 # import models into sdk package
+from .models.annotation_flags import AnnotationFlags
+from .models.annotation_state import AnnotationState
+from .models.annotation_type import AnnotationType
 from .models.antialiasing_processing_type import AntialiasingProcessingType
 from .models.append_document import AppendDocument
 from .models.aspose_response import AsposeResponse
@@ -45,12 +48,14 @@ from .models.field_type import FieldType
 from .models.font_encoding_rules import FontEncodingRules
 from .models.font_saving_modes import FontSavingModes
 from .models.font_styles import FontStyles
+from .models.free_text_intent import FreeTextIntent
 from .models.horizontal_alignment import HorizontalAlignment
 from .models.html_document_type import HtmlDocumentType
 from .models.html_markup_generation_modes import HtmlMarkupGenerationModes
 from .models.image_src_type import ImageSrcType
 from .models.image_template import ImageTemplate
 from .models.image_templates_request import ImageTemplatesRequest
+from .models.justification import Justification
 from .models.letters_positioning_methods import LettersPositioningMethods
 from .models.line_spacing import LineSpacing
 from .models.link import Link
@@ -75,19 +80,20 @@ from .models.split_result import SplitResult
 from .models.stamp import Stamp
 from .models.stamp_type import StampType
 from .models.text_horizontal_alignment import TextHorizontalAlignment
+from .models.text_icon import TextIcon
 from .models.text_line import TextLine
 from .models.text_rect import TextRect
 from .models.text_rects import TextRects
 from .models.text_replace import TextReplace
 from .models.text_replace_list_request import TextReplaceListRequest
 from .models.text_state import TextState
+from .models.text_style import TextStyle
 from .models.vertical_alignment import VerticalAlignment
 from .models.word_count import WordCount
 from .models.wrap_mode import WrapMode
 from .models.annotation import Annotation
-from .models.annotation_response import AnnotationResponse
-from .models.annotations import Annotations
-from .models.annotations_response import AnnotationsResponse
+from .models.annotations_info import AnnotationsInfo
+from .models.annotations_info_response import AnnotationsInfoResponse
 from .models.attachment import Attachment
 from .models.attachment_response import AttachmentResponse
 from .models.attachments import Attachments
@@ -104,6 +110,9 @@ from .models.field import Field
 from .models.field_response import FieldResponse
 from .models.fields import Fields
 from .models.fields_response import FieldsResponse
+from .models.free_text_annotation_response import FreeTextAnnotationResponse
+from .models.free_text_annotations import FreeTextAnnotations
+from .models.free_text_annotations_response import FreeTextAnnotationsResponse
 from .models.image import Image
 from .models.image_response import ImageResponse
 from .models.images import Images
@@ -117,9 +126,16 @@ from .models.pages import Pages
 from .models.signature_verify_response import SignatureVerifyResponse
 from .models.split_result_document import SplitResultDocument
 from .models.split_result_response import SplitResultResponse
+from .models.text_annotation_response import TextAnnotationResponse
+from .models.text_annotations import TextAnnotations
+from .models.text_annotations_response import TextAnnotationsResponse
 from .models.text_rects_response import TextRectsResponse
 from .models.text_replace_response import TextReplaceResponse
 from .models.word_count_response import WordCountResponse
+from .models.annotation_info import AnnotationInfo
+from .models.markup_annotation import MarkupAnnotation
+from .models.free_text_annotation import FreeTextAnnotation
+from .models.text_annotation import TextAnnotation
 
 # import apis into sdk package
 from .apis.pdf_api import PdfApi
