@@ -9,9 +9,9 @@ When PDF file (that usually has fixed layout) is being converted,
 ## Enum
 Name | Type | Value
 ------------ | ------------- | -------------
-**FLOW** | **string** | 'Flow'
-**PDFFLOW** | **string** | 'PdfFlow'
-**FIXED** | **string** | 'Fixed'
+**FLOW** | **str** | "Flow"
+**PDFFLOW** | **str** | "PdfFlow"
+**FIXED** | **str** | "Fixed"
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

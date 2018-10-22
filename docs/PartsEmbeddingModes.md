@@ -7,9 +7,9 @@ will be embedded into main HTML file or will be generated as apart binary entiti
 ## Enum
 Name | Type | Value
 ------------ | ------------- | -------------
-**EMBEDALLINTOHTML** | **string** | 'EmbedAllIntoHtml'
-**EMBEDCSSONLY** | **string** | 'EmbedCssOnly'
-**NOEMBEDDING** | **string** | 'NoEmbedding'
+**EMBEDALLINTOHTML** | **str** | "EmbedAllIntoHtml"
+**EMBEDCSSONLY** | **str** | "EmbedCssOnly"
+**NOEMBEDDING** | **str** | "NoEmbedding"
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

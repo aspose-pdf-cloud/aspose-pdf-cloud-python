@@ -7,9 +7,9 @@ during conversion of PDF to HTML
 ## Enum
 Name | Type | Value
 ------------ | ------------- | -------------
-**ASPNGIMAGESEMBEDDEDINTOSVG** | **string** | 'AsPngImagesEmbeddedIntoSvg'
-**ASEXTERNALPNGFILESREFERENCEDVIASVG** | **string** | 'AsExternalPngFilesReferencedViaSvg'
-**ASEMBEDDEDPARTSOFPNGPAGEBACKGROUND** | **string** | 'AsEmbeddedPartsOfPngPageBackground'
+**ASPNGIMAGESEMBEDDEDINTOSVG** | **str** | "AsPngImagesEmbeddedIntoSvg"
+**ASEXTERNALPNGFILESREFERENCEDVIASVG** | **str** | "AsExternalPngFilesReferencedViaSvg"
+**ASEMBEDDEDPARTSOFPNGPAGEBACKGROUND** | **str** | "AsEmbeddedPartsOfPngPageBackground"
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

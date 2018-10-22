@@ -4,11 +4,11 @@ Enumerates the annotation?s highlighting mode, the visual effect to be used when
 ## Enum
 Name | Type | Value
 ------------ | ------------- | -------------
-**NONE** | **string** | 'None'
-**INVERT** | **string** | 'Invert'
-**OUTLINE** | **string** | 'Outline'
-**PUSH** | **string** | 'Push'
-**TOGGLE** | **string** | 'Toggle'
+**NONE** | **str** | "None"
+**INVERT** | **str** | "Invert"
+**OUTLINE** | **str** | "Outline"
+**PUSH** | **str** | "Push"
+**TOGGLE** | **str** | "Toggle"
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

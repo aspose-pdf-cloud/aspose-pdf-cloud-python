@@ -6,10 +6,10 @@ referenced in saved PDF
 ## Enum
 Name | Type | Value
 ------------ | ------------- | -------------
-**ALWAYSSAVEASWOFF** | **string** | 'AlwaysSaveAsWOFF'
-**ALWAYSSAVEASTTF** | **string** | 'AlwaysSaveAsTTF'
-**ALWAYSSAVEASEOT** | **string** | 'AlwaysSaveAsEOT'
-**SAVEINALLFORMATS** | **string** | 'SaveInAllFormats'
+**ALWAYSSAVEASWOFF** | **str** | "AlwaysSaveAsWOFF"
+**ALWAYSSAVEASTTF** | **str** | "AlwaysSaveAsTTF"
+**ALWAYSSAVEASEOT** | **str** | "AlwaysSaveAsEOT"
+**SAVEINALLFORMATS** | **str** | "SaveInAllFormats"
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
