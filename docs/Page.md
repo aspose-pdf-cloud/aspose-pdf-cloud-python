@@ -1,4 +1,5 @@
 # Page
+Provides link to page.
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,5 @@
 # TextStyle
+Represents a text style of a text
 
 ## Properties
 Name | Type | Description | Notes

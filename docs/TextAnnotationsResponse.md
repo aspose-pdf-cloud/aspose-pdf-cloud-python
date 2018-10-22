@@ -1,5 +1,6 @@
 # TextAnnotationsResponse
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

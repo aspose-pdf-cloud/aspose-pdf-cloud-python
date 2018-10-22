@@ -1,4 +1,5 @@
 # Color
+Represents color DTO.
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,5 @@
 # LinkAnnotations
+List of LinkAnnotations.
 
 ## Properties
 Name | Type | Description | Notes

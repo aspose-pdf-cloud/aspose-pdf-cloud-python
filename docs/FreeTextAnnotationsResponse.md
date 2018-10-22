@@ -1,5 +1,6 @@
 # FreeTextAnnotationsResponse
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

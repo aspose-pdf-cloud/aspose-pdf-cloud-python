@@ -1,4 +1,5 @@
 # DocumentPrivilege
+Represents the privileges for accessing Pdf file./>.
 
 ## Properties
 Name | Type | Description | Notes

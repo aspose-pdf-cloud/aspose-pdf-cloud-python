@@ -1,4 +1,5 @@
 # SignatureVerifyResponse
+Returns also a message.
 
 ## Properties
 Name | Type | Description | Notes

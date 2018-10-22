@@ -1,4 +1,5 @@
 # SplitResult
+Represents split result object.
 
 ## Properties
 Name | Type | Description | Notes

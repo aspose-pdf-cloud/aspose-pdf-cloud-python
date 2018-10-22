@@ -1,4 +1,5 @@
 # RectanglePdf
+Represents rectangle DTO.
 
 ## Properties
 Name | Type | Description | Notes

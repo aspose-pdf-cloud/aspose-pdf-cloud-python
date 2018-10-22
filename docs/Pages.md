@@ -1,4 +1,5 @@
 # Pages
+List of pages.
 
 ## Properties
 Name | Type | Description | Notes

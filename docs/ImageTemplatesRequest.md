@@ -1,4 +1,5 @@
 # ImageTemplatesRequest
+Create document from images request.
 
 ## Properties
 Name | Type | Description | Notes

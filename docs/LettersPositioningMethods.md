@@ -1,8 +1,13 @@
 # LettersPositioningMethods
+It enumerates possible modes of positioning of letters in words in result HTML
+            
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
+## Enum
+Name | Type | Value
+------------ | ------------- | -------------
+**USEEMUNITSANDCOMPENSATIONOFROUNDINGERRORSINCSS** | **string** | 'UseEmUnitsAndCompensationOfRoundingErrorsInCss'
+**USEPIXELUNITSINCSSLETTERSPACINGFORIE** | **string** | 'UsePixelUnitsInCssLetterSpacingForIE'
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,4 +1,5 @@
 # TextLine
+A line of text to be inserted into .
 
 ## Properties
 Name | Type | Description | Notes

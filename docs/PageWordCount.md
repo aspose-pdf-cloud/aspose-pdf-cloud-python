@@ -1,4 +1,5 @@
 # PageWordCount
+Page words count.
 
 ## Properties
 Name | Type | Description | Notes

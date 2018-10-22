@@ -1,4 +1,5 @@
 # ImageTemplate
+Template of image.
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,5 @@
 # TextAnnotations
+List of annotations.
 
 ## Properties
 Name | Type | Description | Notes

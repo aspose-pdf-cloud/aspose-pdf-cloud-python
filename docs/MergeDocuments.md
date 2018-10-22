@@ -1,4 +1,5 @@
 # MergeDocuments
+Documents for merging.
 
 ## Properties
 Name | Type | Description | Notes

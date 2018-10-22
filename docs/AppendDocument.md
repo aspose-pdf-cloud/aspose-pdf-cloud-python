@@ -1,4 +1,5 @@
 # AppendDocument
+Class for appendDocument service request building.
 
 ## Properties
 Name | Type | Description | Notes

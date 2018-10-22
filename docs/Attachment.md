@@ -1,4 +1,5 @@
 # Attachment
+Provides link to attachment.
 
 ## Properties
 Name | Type | Description | Notes

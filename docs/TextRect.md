@@ -1,4 +1,5 @@
 # TextRect
+Represents text DTO.
 
 ## Properties
 Name | Type | Description | Notes

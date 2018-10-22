@@ -1,5 +1,6 @@
 # MarginInfo
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

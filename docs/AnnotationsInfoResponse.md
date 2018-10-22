@@ -1,5 +1,6 @@
 # AnnotationsInfoResponse
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,4 +1,5 @@
 # LinkElement
+Represents base DTO object.
 
 ## Properties
 Name | Type | Description | Notes

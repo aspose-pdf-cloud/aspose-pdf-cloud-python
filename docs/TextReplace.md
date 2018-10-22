@@ -1,4 +1,5 @@
 # TextReplace
+Single text replacement setting.
 
 ## Properties
 Name | Type | Description | Notes

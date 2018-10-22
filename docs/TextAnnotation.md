@@ -1,4 +1,5 @@
 # TextAnnotation
+Provides TextAnnotation.
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,5 @@
 # TextReplaceListRequest
+Multiple text replacements request.
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,5 @@
 # AnnotationInfo
+Provides annotation.
 
 ## Properties
 Name | Type | Description | Notes

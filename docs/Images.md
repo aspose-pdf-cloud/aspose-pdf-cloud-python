@@ -1,4 +1,5 @@
 # Images
+List of page images.
 
 ## Properties
 Name | Type | Description | Notes

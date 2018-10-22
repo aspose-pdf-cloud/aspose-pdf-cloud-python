@@ -1,8 +1,14 @@
 # VerticalAlignment
+Enumeration of possible vertical alignment values.
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
+## Enum
+Name | Type | Value
+------------ | ------------- | -------------
+**NONE** | **string** | 'None'
+**TOP** | **string** | 'Top'
+**CENTER** | **string** | 'Center'
+**BOTTOM** | **string** | 'Bottom'
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

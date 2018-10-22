@@ -1,4 +1,5 @@
 # FreeTextAnnotation
+Provides FreeTextAnnotation.
 
 ## Properties
 Name | Type | Description | Notes

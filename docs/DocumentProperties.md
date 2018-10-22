@@ -1,4 +1,5 @@
 # DocumentProperties
+Pdf document properties.
 
 ## Properties
 Name | Type | Description | Notes

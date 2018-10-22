@@ -1,4 +1,5 @@
 # Attachments
+List of attachment.
 
 ## Properties
 Name | Type | Description | Notes

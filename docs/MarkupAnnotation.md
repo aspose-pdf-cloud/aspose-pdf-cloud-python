@@ -1,4 +1,5 @@
 # MarkupAnnotation
+Provides MarkupAnnotation.
 
 ## Properties
 Name | Type | Description | Notes
