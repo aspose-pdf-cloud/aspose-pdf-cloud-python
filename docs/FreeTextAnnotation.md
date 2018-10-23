@@ -1,0 +1,29 @@
+# FreeTextAnnotation
+Provides FreeTextAnnotation.
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**links** | [**list[Link]**](Link.md) | Link to the document. | [optional] 
+**contents** | **str** | Get the annotation content. | [optional] 
+**creation_date** | **str** | The date and time when the annotation was created. | [optional] 
+**subject** | **str** | Get the annotation subject. | [optional] 
+**title** | **str** | Get the annotation title. | [optional] 
+**modified** | **str** | The date and time when the annotation was last modified. | [optional] 
+**id** | **str** | Gets ID of the annotation. | [optional] 
+**flags** | [**list[AnnotationFlags]**](AnnotationFlags.md) | Gets Flags of the annotation. | [optional] 
+**name** | **str** | Gets Name of the annotation. | [optional] 
+**rect** | [**RectanglePdf**](RectanglePdf.md) | Gets Rect of the annotation. | [optional] 
+**page_index** | **int** | Gets PageIndex of the annotation. | [optional] 
+**z_index** | **int** | Gets ZIndex of the annotation. | [optional] 
+**horizontal_alignment** | [**HorizontalAlignment**](HorizontalAlignment.md) | Gets HorizontalAlignment of the annotation. | [optional] 
+**vertical_alignment** | [**VerticalAlignment**](VerticalAlignment.md) | Gets VerticalAlignment of the annotation. | [optional] 
+**rich_text** | **str** | Get the annotation RichText. | [optional] 
+**justification** | [**Justification**](Justification.md) | Gets Justification of the annotation. | [optional] 
+**intent** | [**FreeTextIntent**](FreeTextIntent.md) | Gets or sets the intent of the free text annotation. | [optional] 
+**rotate** | [**Rotation**](Rotation.md) | Angle of annotation rotation. | [optional] 
+**text_style** | [**TextStyle**](TextStyle.md) | Text style of the annotation. | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
