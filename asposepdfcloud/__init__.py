@@ -37,6 +37,7 @@ from .models.annotation_type import AnnotationType
 from .models.antialiasing_processing_type import AntialiasingProcessingType
 from .models.append_document import AppendDocument
 from .models.aspose_response import AsposeResponse
+from .models.caption_position import CaptionPosition
 from .models.color import Color
 from .models.color_depth import ColorDepth
 from .models.compression_type import CompressionType
@@ -57,6 +58,8 @@ from .models.image_template import ImageTemplate
 from .models.image_templates_request import ImageTemplatesRequest
 from .models.justification import Justification
 from .models.letters_positioning_methods import LettersPositioningMethods
+from .models.line_ending import LineEnding
+from .models.line_intent import LineIntent
 from .models.line_spacing import LineSpacing
 from .models.link import Link
 from .models.link_action_type import LinkActionType
@@ -69,6 +72,8 @@ from .models.page_word_count import PageWordCount
 from .models.paragraph import Paragraph
 from .models.parts_embedding_modes import PartsEmbeddingModes
 from .models.pdf_a_type import PdfAType
+from .models.point import Point
+from .models.poly_intent import PolyIntent
 from .models.raster_images_saving_modes import RasterImagesSavingModes
 from .models.rectangle_pdf import RectanglePdf
 from .models.rotation import Rotation
@@ -98,6 +103,9 @@ from .models.attachment import Attachment
 from .models.attachment_response import AttachmentResponse
 from .models.attachments import Attachments
 from .models.attachments_response import AttachmentsResponse
+from .models.circle_annotation_response import CircleAnnotationResponse
+from .models.circle_annotations import CircleAnnotations
+from .models.circle_annotations_response import CircleAnnotationsResponse
 from .models.document import Document
 from .models.document_page_response import DocumentPageResponse
 from .models.document_pages_response import DocumentPagesResponse
@@ -117,15 +125,27 @@ from .models.image import Image
 from .models.image_response import ImageResponse
 from .models.images import Images
 from .models.images_response import ImagesResponse
+from .models.line_annotation_response import LineAnnotationResponse
+from .models.line_annotations import LineAnnotations
+from .models.line_annotations_response import LineAnnotationsResponse
 from .models.link_annotation import LinkAnnotation
 from .models.link_annotation_response import LinkAnnotationResponse
 from .models.link_annotations import LinkAnnotations
 from .models.link_annotations_response import LinkAnnotationsResponse
 from .models.page import Page
 from .models.pages import Pages
+from .models.poly_line_annotation_response import PolyLineAnnotationResponse
+from .models.poly_line_annotations import PolyLineAnnotations
+from .models.poly_line_annotations_response import PolyLineAnnotationsResponse
+from .models.polygon_annotation_response import PolygonAnnotationResponse
+from .models.polygon_annotations import PolygonAnnotations
+from .models.polygon_annotations_response import PolygonAnnotationsResponse
 from .models.signature_verify_response import SignatureVerifyResponse
 from .models.split_result_document import SplitResultDocument
 from .models.split_result_response import SplitResultResponse
+from .models.square_annotation_response import SquareAnnotationResponse
+from .models.square_annotations import SquareAnnotations
+from .models.square_annotations_response import SquareAnnotationsResponse
 from .models.text_annotation_response import TextAnnotationResponse
 from .models.text_annotations import TextAnnotations
 from .models.text_annotations_response import TextAnnotationsResponse
@@ -134,8 +154,15 @@ from .models.text_replace_response import TextReplaceResponse
 from .models.word_count_response import WordCountResponse
 from .models.annotation_info import AnnotationInfo
 from .models.markup_annotation import MarkupAnnotation
+from .models.common_figure_annotation import CommonFigureAnnotation
 from .models.free_text_annotation import FreeTextAnnotation
+from .models.line_annotation import LineAnnotation
+from .models.poly_annotation import PolyAnnotation
 from .models.text_annotation import TextAnnotation
+from .models.circle_annotation import CircleAnnotation
+from .models.poly_line_annotation import PolyLineAnnotation
+from .models.polygon_annotation import PolygonAnnotation
+from .models.square_annotation import SquareAnnotation
 
 # import apis into sdk package
 from .apis.pdf_api import PdfApi
