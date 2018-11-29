@@ -713,27 +713,12 @@ class ApiClient(object):
             )
 
     def __deserialize_datatime(self, string):
-        """
-        Deserializes string to datetime.
-
-        The string should be in iso8601 datetime format.
-
-        :param string: str.
-        :return: datetime.
-        """
-        try:
-            from dateutil.parser import parse
-            return parse(string)
-        except ImportError:
-            return string
-        except ValueError:
-            raise ApiException(
-                status=0,
-                reason=(
-                    "Failed to parse `{0}` into a datetime object"
-                    .format(string)
-                )
-            )
+        match = re.match(r"\/Date\((\d+?)000\+0000\)\/", string)
+        if match:
+            dt = datetime.utcfromtimestamp(int(match[1]))
+            return dt
+        else:
+            return None
 
     def __deserialize_model(self, data, klass):
         """

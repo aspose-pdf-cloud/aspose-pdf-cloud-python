@@ -655,6 +655,598 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.put_text_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
         self.assertEqual(response.code, 201)
 
+
+    # Highlight Annotations Tests
+
+    def testGetDocumentHighlightAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.get_document_highlight_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetPageHighlightAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 2
+
+        response = self.pdf_api.get_page_highlight_annotations(file_name, page_number, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetHighlightAnnotation(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        response_annotations = self.pdf_api.get_document_highlight_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.get_highlight_annotation(file_name, annotation_id, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testPostPageHighlightAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 1
+
+        annotation = asposepdfcloud.models.HighlightAnnotation()
+        annotation.name = 'Name'
+        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
+        annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        annotation.rich_text = 'Rich Text'
+        annotation.subject = 'Subj'
+        annotation.z_index = 1
+        annotation.title = 'Title'
+        annotation.quad_points = [
+                asposepdfcloud.models.Point(10, 10),
+                asposepdfcloud.models.Point(20, 10),
+                asposepdfcloud.models.Point(10, 20),
+                asposepdfcloud.models.Point(10, 10)
+            ]
+        annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+        response = self.pdf_api.post_page_highlight_annotations(file_name, page_number,  [annotation], folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+
+    def testPutHighlightAnnotation(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+
+        annotation = asposepdfcloud.models.HighlightAnnotation()
+        annotation.name = 'Name Updated'
+        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
+        annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        annotation.rich_text = 'Text Updated'
+        annotation.subject = 'Subj Updated'
+        annotation.z_index = 1
+        annotation.title = 'Title Updated'
+        annotation.quad_points = [
+                asposepdfcloud.models.Point(10, 10),
+                asposepdfcloud.models.Point(20, 10),
+                asposepdfcloud.models.Point(10, 20),
+                asposepdfcloud.models.Point(10, 10)
+            ]
+        annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+        response_annotations = self.pdf_api.get_document_highlight_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.put_highlight_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+
+    # Underline Annotations Tests
+
+    def testGetDocumentUnderlineAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.get_document_underline_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetPageUnderlineAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 2
+
+        response = self.pdf_api.get_page_underline_annotations(file_name, page_number, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetUnderlineAnnotation(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        response_annotations = self.pdf_api.get_document_underline_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.get_underline_annotation(file_name, annotation_id, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testPostPageUnderlineAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 1
+
+        annotation = asposepdfcloud.models.UnderlineAnnotation()
+        annotation.name = 'Name'
+        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
+        annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        annotation.rich_text = 'Rich Text'
+        annotation.subject = 'Subj'
+        annotation.z_index = 1
+        annotation.title = 'Title'
+        annotation.quad_points = [
+                asposepdfcloud.models.Point(10, 10),
+                asposepdfcloud.models.Point(20, 10),
+                asposepdfcloud.models.Point(10, 20),
+                asposepdfcloud.models.Point(10, 10)
+            ]
+        annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+        response = self.pdf_api.post_page_underline_annotations(file_name, page_number,  [annotation], folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+
+    def testPutUnderlineAnnotation(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+
+        annotation = asposepdfcloud.models.UnderlineAnnotation()
+        annotation.name = 'Name Updated'
+        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
+        annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        annotation.rich_text = 'Text Updated'
+        annotation.subject = 'Subj Updated'
+        annotation.z_index = 1
+        annotation.title = 'Title Updated'
+        annotation.quad_points = [
+                asposepdfcloud.models.Point(10, 10),
+                asposepdfcloud.models.Point(20, 10),
+                asposepdfcloud.models.Point(10, 20),
+                asposepdfcloud.models.Point(10, 10)
+            ]
+        annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+        response_annotations = self.pdf_api.get_document_underline_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.put_underline_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+    # Squiggly Annotations Tests
+
+    def testGetDocumentSquigglyAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.get_document_squiggly_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetPageSquigglyAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 2
+
+        response = self.pdf_api.get_page_squiggly_annotations(file_name, page_number, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetSquigglyAnnotation(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        response_annotations = self.pdf_api.get_document_squiggly_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.get_squiggly_annotation(file_name, annotation_id, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testPostPageSquigglyAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 1
+
+        annotation = asposepdfcloud.models.SquigglyAnnotation()
+        annotation.name = 'Name'
+        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
+        annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        annotation.rich_text = 'Rich Text'
+        annotation.subject = 'Subj'
+        annotation.z_index = 1
+        annotation.title = 'Title'
+        annotation.quad_points = [
+                asposepdfcloud.models.Point(10, 10),
+                asposepdfcloud.models.Point(20, 10),
+                asposepdfcloud.models.Point(10, 20),
+                asposepdfcloud.models.Point(10, 10)
+            ]
+        annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+        response = self.pdf_api.post_page_squiggly_annotations(file_name, page_number,  [annotation], folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+
+    def testPutSquigglyAnnotation(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+
+        annotation = asposepdfcloud.models.SquigglyAnnotation()
+        annotation.name = 'Name Updated'
+        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
+        annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        annotation.rich_text = 'Text Updated'
+        annotation.subject = 'Subj Updated'
+        annotation.z_index = 1
+        annotation.title = 'Title Updated'
+        annotation.quad_points = [
+                asposepdfcloud.models.Point(10, 10),
+                asposepdfcloud.models.Point(20, 10),
+                asposepdfcloud.models.Point(10, 20),
+                asposepdfcloud.models.Point(10, 10)
+            ]
+        annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+        response_annotations = self.pdf_api.get_document_squiggly_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.put_squiggly_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+
+    # StrikeOut Annotations Tests
+
+    def testGetDocumentStrikeOutAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.get_document_strike_out_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetPageStrikeOutAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 2
+
+        response = self.pdf_api.get_page_strike_out_annotations(file_name, page_number, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetStrikeOutAnnotation(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        response_annotations = self.pdf_api.get_document_strike_out_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.get_strike_out_annotation(file_name, annotation_id, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testPostPageStrikeOutAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 1
+
+        annotation = asposepdfcloud.models.StrikeOutAnnotation()
+        annotation.name = 'Name'
+        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
+        annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        annotation.rich_text = 'Rich Text'
+        annotation.subject = 'Subj'
+        annotation.z_index = 1
+        annotation.title = 'Title'
+        annotation.quad_points = [
+                asposepdfcloud.models.Point(10, 10),
+                asposepdfcloud.models.Point(20, 10),
+                asposepdfcloud.models.Point(10, 20),
+                asposepdfcloud.models.Point(10, 10)
+            ]
+        annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+        response = self.pdf_api.post_page_strike_out_annotations(file_name, page_number,  [annotation], folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+
+    def testPutStrikeOutAnnotation(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+
+        annotation = asposepdfcloud.models.StrikeOutAnnotation()
+        annotation.name = 'Name Updated'
+        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
+        annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        annotation.rich_text = 'Text Updated'
+        annotation.subject = 'Subj Updated'
+        annotation.z_index = 1
+        annotation.title = 'Title Updated'
+        annotation.quad_points = [
+                asposepdfcloud.models.Point(10, 10),
+                asposepdfcloud.models.Point(20, 10),
+                asposepdfcloud.models.Point(10, 20),
+                asposepdfcloud.models.Point(10, 10)
+            ]
+        annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+        response_annotations = self.pdf_api.get_document_strike_out_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.put_strike_out_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+    # Caret Annotations Tests
+
+    def testGetDocumentCaretAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.get_document_caret_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetPageCaretAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 2
+
+        response = self.pdf_api.get_page_caret_annotations(file_name, page_number, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetCaretAnnotation(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        response_annotations = self.pdf_api.get_document_caret_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.get_caret_annotation(file_name, annotation_id, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testPostPageCaretAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 1
+
+        annotation = asposepdfcloud.models.CaretAnnotation()
+        annotation.name = 'Name'
+        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
+        annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        annotation.rich_text = 'Rich Text'
+        annotation.subject = 'Subj'
+        annotation.z_index = 1
+        annotation.title = 'Title'
+        annotation.frame = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+        response = self.pdf_api.post_page_caret_annotations(file_name, page_number,  [annotation], folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+
+    def testPutCaretAnnotation(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+
+        annotation = asposepdfcloud.models.CaretAnnotation()
+        annotation.name = 'Name Updated'
+        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
+        annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        annotation.rich_text = 'Text Updated'
+        annotation.subject = 'Subj Updated'
+        annotation.z_index = 1
+        annotation.title = 'Title Updated'
+        annotation.frame = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+        response_annotations = self.pdf_api.get_document_caret_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.put_caret_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+
+        # Ink Annotations Tests
+
+    def testGetDocumentInkAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.get_document_ink_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetPageInkAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 2
+
+        response = self.pdf_api.get_page_ink_annotations(file_name, page_number, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetInkAnnotation(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        response_annotations = self.pdf_api.get_document_ink_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.get_ink_annotation(file_name, annotation_id, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testPostPageInkAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 1
+
+        annotation = asposepdfcloud.models.InkAnnotation()
+        annotation.name = 'Name'
+        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
+        annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        annotation.rich_text = 'Rich Text'
+        annotation.subject = 'Subj'
+        annotation.z_index = 1
+        annotation.title = 'Title'
+        annotation.ink_list = [
+                [
+                    asposepdfcloud.models.Point(10, 40),
+                    asposepdfcloud.models.Point(30, 40),
+                ],
+                [
+                    asposepdfcloud.models.Point(10, 20),
+                    asposepdfcloud.models.Point(20, 20),
+                    asposepdfcloud.models.Point(30, 20),
+                ]
+            ]
+        annotation.cap_style = asposepdfcloud.models.CapStyle.ROUNDED
+        annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+        response = self.pdf_api.post_page_ink_annotations(file_name, page_number,  [annotation], folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+
+    def testPutInkAnnotation(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+
+        annotation = asposepdfcloud.models.InkAnnotation()
+        annotation.name = 'Name Updated'
+        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
+        annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        annotation.rich_text = 'Text Updated'
+        annotation.subject = 'Subj Updated'
+        annotation.z_index = 1
+        annotation.title = 'Title Updated'
+        annotation.ink_list = [
+                [
+                    asposepdfcloud.models.Point(10, 40),
+                    asposepdfcloud.models.Point(30, 40),
+                ],
+                [
+                    asposepdfcloud.models.Point(10, 20),
+                    asposepdfcloud.models.Point(20, 20),
+                    asposepdfcloud.models.Point(30, 20),
+                ]
+            ]
+        annotation.cap_style = asposepdfcloud.models.CapStyle.ROUNDED
+        annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+        response_annotations = self.pdf_api.get_document_ink_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.put_ink_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+    # Popup Annotations Tests
+
+    def testGetDocumentPopupAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.get_document_popup_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetDocumentPopupAnnotationsByParent(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        parent_id = 'GI5TAOZRGU3CYNZSGEWDCNZWFQ3TGOI'
+
+        response = self.pdf_api.get_document_popup_annotations_by_parent(file_name, parent_id, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetPagePopupAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 2
+
+        response = self.pdf_api.get_page_popup_annotations(file_name, page_number, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetPopupAnnotation(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        response_annotations = self.pdf_api.get_document_popup_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.get_popup_annotation(file_name, annotation_id, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testPostPopupAnnotation(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        parent_id = 'GI5TCMR3GE2TQLBSGM3CYMJYGUWDENRV'
+
+        annotation = asposepdfcloud.models.PopupAnnotation()
+        annotation.name = 'Name'
+        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
+        annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        annotation.z_index = 1
+        annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+        response = self.pdf_api.post_popup_annotation(file_name, parent_id, annotation, folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+
+    def testPutPopupAnnotation(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+
+        annotation = asposepdfcloud.models.PopupAnnotation()
+        annotation.name = 'Name Updated'
+        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
+        annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        annotation.z_index = 1
+        annotation.modified = '02/02/2018 00:00:00.000 AM'
+
+        response_annotations = self.pdf_api.get_document_popup_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.put_popup_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
     # Append Tests
 
     def testPostAppendDocumentUsingQueryParams(self):
@@ -1345,11 +1937,12 @@ class PdfTests(unittest.TestCase):
 
         html_file_name = 'HtmlWithImage.html'
         opts = {
-            "height" : 650,
-            "width" : 250
+            "height": 650,
+            "width": 250,
+            "html_file_name": html_file_name 
         }
         src_path = self.temp_folder + '/' + file_name
-        response = self.pdf_api.get_html_in_storage_to_pdf(src_path, html_file_name, **opts)
+        response = self.pdf_api.get_html_in_storage_to_pdf(src_path, **opts)
         self.assertIsInstance(response, str)
 
 
@@ -1364,9 +1957,10 @@ class PdfTests(unittest.TestCase):
         opts = {
             "dst_folder" : self.temp_folder,
             "height" : 650,
-            "width" : 250
+            "width" : 250,
+            "html_file_name": html_file_name
         }
-        response = self.pdf_api.put_html_in_storage_to_pdf(result_name, src_path, html_file_name, **opts)
+        response = self.pdf_api.put_html_in_storage_to_pdf(result_name, src_path, **opts)
         self.assertEqual(response.code, 201)
 
 
@@ -2794,7 +3388,7 @@ class PdfTests(unittest.TestCase):
         self.assertEqual(response.code, 200)
 
 
-    # Upload / Download Tests
+    # Storage Tests
     
     def testPutCreate(self):
         file_name = '4pages.pdf'
@@ -2806,6 +3400,10 @@ class PdfTests(unittest.TestCase):
         self.uploadFile(file_name)
         response = self.pdf_api.get_download(self.temp_folder + '/' + file_name)
         self.assertIsInstance(response, str)
+
+    def testGetListFiles(self):
+        response = self.pdf_api.get_list_files(path=self.temp_folder)
+        self.assertEqual(response.code, 200)
 
 
 if __name__ == '__main__':

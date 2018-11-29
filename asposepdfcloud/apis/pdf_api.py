@@ -1345,6 +1345,125 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def get_caret_annotation(self, name, annotation_id, **kwargs):
+        """
+        Read document page caret annotation by ID.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_caret_annotation(name, annotation_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: CaretAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_caret_annotation_with_http_info(name, annotation_id, **kwargs)
+        else:
+            (data) = self.get_caret_annotation_with_http_info(name, annotation_id, **kwargs)
+            return data
+
+    def get_caret_annotation_with_http_info(self, name, annotation_id, **kwargs):
+        """
+        Read document page caret annotation by ID.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_caret_annotation_with_http_info(name, annotation_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: CaretAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'annotation_id', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_caret_annotation" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_caret_annotation`")
+        # verify the required parameter 'annotation_id' is set
+        if ('annotation_id' not in params) or (params['annotation_id'] is None):
+            raise ValueError("Missing the required parameter `annotation_id` when calling `get_caret_annotation`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'annotation_id' in params:
+            path_params['annotationId'] = params['annotation_id']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/caret/{annotationId}', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='CaretAnnotationResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def get_circle_annotation(self, name, annotation_id, **kwargs):
         """
         Read document page circle annotation by ID.
@@ -2035,6 +2154,118 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def get_document_caret_annotations(self, name, **kwargs):
+        """
+        Read document caret annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_caret_annotations(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: CaretAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_document_caret_annotations_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_document_caret_annotations_with_http_info(name, **kwargs)
+            return data
+
+    def get_document_caret_annotations_with_http_info(self, name, **kwargs):
+        """
+        Read document caret annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_caret_annotations_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: CaretAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_document_caret_annotations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_document_caret_annotations`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/caret', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='CaretAnnotationsResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def get_document_circle_annotations(self, name, **kwargs):
         """
         Read document circle annotations.
@@ -2252,6 +2483,230 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='FreeTextAnnotationsResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_document_highlight_annotations(self, name, **kwargs):
+        """
+        Read document highlight annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_highlight_annotations(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: HighlightAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_document_highlight_annotations_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_document_highlight_annotations_with_http_info(name, **kwargs)
+            return data
+
+    def get_document_highlight_annotations_with_http_info(self, name, **kwargs):
+        """
+        Read document highlight annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_highlight_annotations_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: HighlightAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_document_highlight_annotations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_document_highlight_annotations`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/highlight', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='HighlightAnnotationsResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_document_ink_annotations(self, name, **kwargs):
+        """
+        Read document ink annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_ink_annotations(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: InkAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_document_ink_annotations_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_document_ink_annotations_with_http_info(name, **kwargs)
+            return data
+
+    def get_document_ink_annotations_with_http_info(self, name, **kwargs):
+        """
+        Read document ink annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_ink_annotations_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: InkAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_document_ink_annotations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_document_ink_annotations`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/ink', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='InkAnnotationsResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -2588,6 +3043,237 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='PolygonAnnotationsResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_document_popup_annotations(self, name, **kwargs):
+        """
+        Read document popup annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_popup_annotations(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: PopupAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_document_popup_annotations_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_document_popup_annotations_with_http_info(name, **kwargs)
+            return data
+
+    def get_document_popup_annotations_with_http_info(self, name, **kwargs):
+        """
+        Read document popup annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_popup_annotations_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: PopupAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_document_popup_annotations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_document_popup_annotations`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/popup', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='PopupAnnotationsResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_document_popup_annotations_by_parent(self, name, annotation_id, **kwargs):
+        """
+        Read document popup annotations by parent id.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_popup_annotations_by_parent(name, annotation_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The parent annotation ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: PopupAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_document_popup_annotations_by_parent_with_http_info(name, annotation_id, **kwargs)
+        else:
+            (data) = self.get_document_popup_annotations_by_parent_with_http_info(name, annotation_id, **kwargs)
+            return data
+
+    def get_document_popup_annotations_by_parent_with_http_info(self, name, annotation_id, **kwargs):
+        """
+        Read document popup annotations by parent id.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_popup_annotations_by_parent_with_http_info(name, annotation_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The parent annotation ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: PopupAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'annotation_id', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_document_popup_annotations_by_parent" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_document_popup_annotations_by_parent`")
+        # verify the required parameter 'annotation_id' is set
+        if ('annotation_id' not in params) or (params['annotation_id'] is None):
+            raise ValueError("Missing the required parameter `annotation_id` when calling `get_document_popup_annotations_by_parent`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'annotation_id' in params:
+            path_params['annotationId'] = params['annotation_id']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/{annotationId}/popup', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='PopupAnnotationsResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -2938,6 +3624,230 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def get_document_squiggly_annotations(self, name, **kwargs):
+        """
+        Read document squiggly annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_squiggly_annotations(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: SquigglyAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_document_squiggly_annotations_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_document_squiggly_annotations_with_http_info(name, **kwargs)
+            return data
+
+    def get_document_squiggly_annotations_with_http_info(self, name, **kwargs):
+        """
+        Read document squiggly annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_squiggly_annotations_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: SquigglyAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_document_squiggly_annotations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_document_squiggly_annotations`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/squiggly', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='SquigglyAnnotationsResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_document_strike_out_annotations(self, name, **kwargs):
+        """
+        Read document StrikeOut annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_strike_out_annotations(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: StrikeOutAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_document_strike_out_annotations_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_document_strike_out_annotations_with_http_info(name, **kwargs)
+            return data
+
+    def get_document_strike_out_annotations_with_http_info(self, name, **kwargs):
+        """
+        Read document StrikeOut annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_strike_out_annotations_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: StrikeOutAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_document_strike_out_annotations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_document_strike_out_annotations`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/strikeout', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='StrikeOutAnnotationsResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def get_document_text_annotations(self, name, **kwargs):
         """
         Read document text annotations.
@@ -3043,6 +3953,118 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='TextAnnotationsResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_document_underline_annotations(self, name, **kwargs):
+        """
+        Read document underline annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_underline_annotations(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: UnderlineAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_document_underline_annotations_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_document_underline_annotations_with_http_info(name, **kwargs)
+            return data
+
+    def get_document_underline_annotations_with_http_info(self, name, **kwargs):
+        """
+        Read document underline annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_underline_annotations_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: UnderlineAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_document_underline_annotations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_document_underline_annotations`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/underline', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='UnderlineAnnotationsResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -3739,7 +4761,126 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def get_html_in_storage_to_pdf(self, src_path, html_file_name, **kwargs):
+    def get_highlight_annotation(self, name, annotation_id, **kwargs):
+        """
+        Read document page highlight annotation by ID.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_highlight_annotation(name, annotation_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: HighlightAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_highlight_annotation_with_http_info(name, annotation_id, **kwargs)
+        else:
+            (data) = self.get_highlight_annotation_with_http_info(name, annotation_id, **kwargs)
+            return data
+
+    def get_highlight_annotation_with_http_info(self, name, annotation_id, **kwargs):
+        """
+        Read document page highlight annotation by ID.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_highlight_annotation_with_http_info(name, annotation_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: HighlightAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'annotation_id', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_highlight_annotation" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_highlight_annotation`")
+        # verify the required parameter 'annotation_id' is set
+        if ('annotation_id' not in params) or (params['annotation_id'] is None):
+            raise ValueError("Missing the required parameter `annotation_id` when calling `get_highlight_annotation`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'annotation_id' in params:
+            path_params['annotationId'] = params['annotation_id']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/highlight/{annotationId}', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='HighlightAnnotationResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_html_in_storage_to_pdf(self, src_path, **kwargs):
         """
         Convert HTML file (located on storage) to PDF format and return resulting file in response. 
         This method makes a synchronous HTTP request by default. To make an
@@ -3748,12 +4889,12 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get_html_in_storage_to_pdf(src_path, html_file_name, callback=callback_function)
+        >>> thread = api.get_html_in_storage_to_pdf(src_path, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.zip) (required)
-        :param str html_file_name: Name of HTML file in ZIP. (required)
+        :param str html_file_name: Name of HTML file in ZIP.
         :param float height: Page height
         :param float width: Page width
         :param bool is_landscape: Is page landscaped
@@ -3768,12 +4909,12 @@ class PdfApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.get_html_in_storage_to_pdf_with_http_info(src_path, html_file_name, **kwargs)
+            return self.get_html_in_storage_to_pdf_with_http_info(src_path, **kwargs)
         else:
-            (data) = self.get_html_in_storage_to_pdf_with_http_info(src_path, html_file_name, **kwargs)
+            (data) = self.get_html_in_storage_to_pdf_with_http_info(src_path, **kwargs)
             return data
 
-    def get_html_in_storage_to_pdf_with_http_info(self, src_path, html_file_name, **kwargs):
+    def get_html_in_storage_to_pdf_with_http_info(self, src_path, **kwargs):
         """
         Convert HTML file (located on storage) to PDF format and return resulting file in response. 
         This method makes a synchronous HTTP request by default. To make an
@@ -3782,12 +4923,12 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get_html_in_storage_to_pdf_with_http_info(src_path, html_file_name, callback=callback_function)
+        >>> thread = api.get_html_in_storage_to_pdf_with_http_info(src_path, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.zip) (required)
-        :param str html_file_name: Name of HTML file in ZIP. (required)
+        :param str html_file_name: Name of HTML file in ZIP.
         :param float height: Page height
         :param float width: Page width
         :param bool is_landscape: Is page landscaped
@@ -3819,9 +4960,6 @@ class PdfApi(object):
         # verify the required parameter 'src_path' is set
         if ('src_path' not in params) or (params['src_path'] is None):
             raise ValueError("Missing the required parameter `src_path` when calling `get_html_in_storage_to_pdf`")
-        # verify the required parameter 'html_file_name' is set
-        if ('html_file_name' not in params) or (params['html_file_name'] is None):
-            raise ValueError("Missing the required parameter `html_file_name` when calling `get_html_in_storage_to_pdf`")
 
 
         collection_formats = {}
@@ -4628,6 +5766,125 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def get_ink_annotation(self, name, annotation_id, **kwargs):
+        """
+        Read document page ink annotation by ID.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_ink_annotation(name, annotation_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: InkAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_ink_annotation_with_http_info(name, annotation_id, **kwargs)
+        else:
+            (data) = self.get_ink_annotation_with_http_info(name, annotation_id, **kwargs)
+            return data
+
+    def get_ink_annotation_with_http_info(self, name, annotation_id, **kwargs):
+        """
+        Read document page ink annotation by ID.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_ink_annotation_with_http_info(name, annotation_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: InkAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'annotation_id', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_ink_annotation" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_ink_annotation`")
+        # verify the required parameter 'annotation_id' is set
+        if ('annotation_id' not in params) or (params['annotation_id'] is None):
+            raise ValueError("Missing the required parameter `annotation_id` when calling `get_ink_annotation`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'annotation_id' in params:
+            path_params['annotationId'] = params['annotation_id']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/ink/{annotationId}', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='InkAnnotationResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def get_la_te_x_in_storage_to_pdf(self, src_path, **kwargs):
         """
         Convert LaTeX file (located on storage) to PDF format and return resulting file in response. 
@@ -4974,6 +6231,111 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def get_list_files(self, **kwargs):
+        """
+        Get the file listing of a specific folder 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_list_files(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str path: Start with name of storage e.g. root folder '/'or some folder '/folder1/..'
+        :param str storage: User's storage name
+        :return: FilesResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_list_files_with_http_info(**kwargs)
+        else:
+            (data) = self.get_list_files_with_http_info(**kwargs)
+            return data
+
+    def get_list_files_with_http_info(self, **kwargs):
+        """
+        Get the file listing of a specific folder 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_list_files_with_http_info(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str path: Start with name of storage e.g. root folder '/'or some folder '/folder1/..'
+        :param str storage: User's storage name
+        :return: FilesResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['path', 'storage']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_list_files" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'path' in params:
+            query_params.append(('path', params['path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/storage/folder', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='FilesResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def get_mht_in_storage_to_pdf(self, src_path, **kwargs):
         """
         Convert MHT file (located on storage) to PDF format and return resulting file in response. 
@@ -5313,6 +6675,125 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='AnnotationsInfoResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_page_caret_annotations(self, name, page_number, **kwargs):
+        """
+        Read document page caret annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_page_caret_annotations(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: CaretAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_page_caret_annotations_with_http_info(name, page_number, **kwargs)
+        else:
+            (data) = self.get_page_caret_annotations_with_http_info(name, page_number, **kwargs)
+            return data
+
+    def get_page_caret_annotations_with_http_info(self, name, page_number, **kwargs):
+        """
+        Read document page caret annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_page_caret_annotations_with_http_info(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: CaretAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'page_number', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_page_caret_annotations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_page_caret_annotations`")
+        # verify the required parameter 'page_number' is set
+        if ('page_number' not in params) or (params['page_number'] is None):
+            raise ValueError("Missing the required parameter `page_number` when calling `get_page_caret_annotations`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'page_number' in params:
+            path_params['pageNumber'] = params['page_number']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/caret', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='CaretAnnotationsResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -6320,6 +7801,244 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def get_page_highlight_annotations(self, name, page_number, **kwargs):
+        """
+        Read document page highlight annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_page_highlight_annotations(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: HighlightAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_page_highlight_annotations_with_http_info(name, page_number, **kwargs)
+        else:
+            (data) = self.get_page_highlight_annotations_with_http_info(name, page_number, **kwargs)
+            return data
+
+    def get_page_highlight_annotations_with_http_info(self, name, page_number, **kwargs):
+        """
+        Read document page highlight annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_page_highlight_annotations_with_http_info(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: HighlightAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'page_number', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_page_highlight_annotations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_page_highlight_annotations`")
+        # verify the required parameter 'page_number' is set
+        if ('page_number' not in params) or (params['page_number'] is None):
+            raise ValueError("Missing the required parameter `page_number` when calling `get_page_highlight_annotations`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'page_number' in params:
+            path_params['pageNumber'] = params['page_number']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/highlight', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='HighlightAnnotationsResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_page_ink_annotations(self, name, page_number, **kwargs):
+        """
+        Read document page ink annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_page_ink_annotations(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: InkAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_page_ink_annotations_with_http_info(name, page_number, **kwargs)
+        else:
+            (data) = self.get_page_ink_annotations_with_http_info(name, page_number, **kwargs)
+            return data
+
+    def get_page_ink_annotations_with_http_info(self, name, page_number, **kwargs):
+        """
+        Read document page ink annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_page_ink_annotations_with_http_info(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: InkAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'page_number', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_page_ink_annotations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_page_ink_annotations`")
+        # verify the required parameter 'page_number' is set
+        if ('page_number' not in params) or (params['page_number'] is None):
+            raise ValueError("Missing the required parameter `page_number` when calling `get_page_ink_annotations`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'page_number' in params:
+            path_params['pageNumber'] = params['page_number']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/ink', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='InkAnnotationsResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def get_page_line_annotations(self, name, page_number, **kwargs):
         """
         Read document page line annotations.
@@ -6922,6 +8641,125 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def get_page_popup_annotations(self, name, page_number, **kwargs):
+        """
+        Read document page popup annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_page_popup_annotations(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: PopupAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_page_popup_annotations_with_http_info(name, page_number, **kwargs)
+        else:
+            (data) = self.get_page_popup_annotations_with_http_info(name, page_number, **kwargs)
+            return data
+
+    def get_page_popup_annotations_with_http_info(self, name, page_number, **kwargs):
+        """
+        Read document page popup annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_page_popup_annotations_with_http_info(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: PopupAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'page_number', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_page_popup_annotations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_page_popup_annotations`")
+        # verify the required parameter 'page_number' is set
+        if ('page_number' not in params) or (params['page_number'] is None):
+            raise ValueError("Missing the required parameter `page_number` when calling `get_page_popup_annotations`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'page_number' in params:
+            path_params['pageNumber'] = params['page_number']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/popup', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='PopupAnnotationsResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def get_page_square_annotations(self, name, page_number, **kwargs):
         """
         Read document page square annotations.
@@ -7034,6 +8872,244 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='SquareAnnotationsResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_page_squiggly_annotations(self, name, page_number, **kwargs):
+        """
+        Read document page squiggly annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_page_squiggly_annotations(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: SquigglyAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_page_squiggly_annotations_with_http_info(name, page_number, **kwargs)
+        else:
+            (data) = self.get_page_squiggly_annotations_with_http_info(name, page_number, **kwargs)
+            return data
+
+    def get_page_squiggly_annotations_with_http_info(self, name, page_number, **kwargs):
+        """
+        Read document page squiggly annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_page_squiggly_annotations_with_http_info(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: SquigglyAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'page_number', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_page_squiggly_annotations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_page_squiggly_annotations`")
+        # verify the required parameter 'page_number' is set
+        if ('page_number' not in params) or (params['page_number'] is None):
+            raise ValueError("Missing the required parameter `page_number` when calling `get_page_squiggly_annotations`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'page_number' in params:
+            path_params['pageNumber'] = params['page_number']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/squiggly', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='SquigglyAnnotationsResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_page_strike_out_annotations(self, name, page_number, **kwargs):
+        """
+        Read document page StrikeOut annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_page_strike_out_annotations(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: StrikeOutAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_page_strike_out_annotations_with_http_info(name, page_number, **kwargs)
+        else:
+            (data) = self.get_page_strike_out_annotations_with_http_info(name, page_number, **kwargs)
+            return data
+
+    def get_page_strike_out_annotations_with_http_info(self, name, page_number, **kwargs):
+        """
+        Read document page StrikeOut annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_page_strike_out_annotations_with_http_info(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: StrikeOutAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'page_number', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_page_strike_out_annotations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_page_strike_out_annotations`")
+        # verify the required parameter 'page_number' is set
+        if ('page_number' not in params) or (params['page_number'] is None):
+            raise ValueError("Missing the required parameter `page_number` when calling `get_page_strike_out_annotations`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'page_number' in params:
+            path_params['pageNumber'] = params['page_number']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/strikeout', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='StrikeOutAnnotationsResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -7313,6 +9389,125 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='TextAnnotationsResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_page_underline_annotations(self, name, page_number, **kwargs):
+        """
+        Read document page underline annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_page_underline_annotations(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: UnderlineAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_page_underline_annotations_with_http_info(name, page_number, **kwargs)
+        else:
+            (data) = self.get_page_underline_annotations_with_http_info(name, page_number, **kwargs)
+            return data
+
+    def get_page_underline_annotations_with_http_info(self, name, page_number, **kwargs):
+        """
+        Read document page underline annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_page_underline_annotations_with_http_info(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: UnderlineAnnotationsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'page_number', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_page_underline_annotations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_page_underline_annotations`")
+        # verify the required parameter 'page_number' is set
+        if ('page_number' not in params) or (params['page_number'] is None):
+            raise ValueError("Missing the required parameter `page_number` when calling `get_page_underline_annotations`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'page_number' in params:
+            path_params['pageNumber'] = params['page_number']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/underline', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='UnderlineAnnotationsResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -9370,6 +11565,125 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def get_popup_annotation(self, name, annotation_id, **kwargs):
+        """
+        Read document page popup annotation by ID.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_popup_annotation(name, annotation_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: PopupAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_popup_annotation_with_http_info(name, annotation_id, **kwargs)
+        else:
+            (data) = self.get_popup_annotation_with_http_info(name, annotation_id, **kwargs)
+            return data
+
+    def get_popup_annotation_with_http_info(self, name, annotation_id, **kwargs):
+        """
+        Read document page popup annotation by ID.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_popup_annotation_with_http_info(name, annotation_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: PopupAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'annotation_id', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_popup_annotation" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_popup_annotation`")
+        # verify the required parameter 'annotation_id' is set
+        if ('annotation_id' not in params) or (params['annotation_id'] is None):
+            raise ValueError("Missing the required parameter `annotation_id` when calling `get_popup_annotation`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'annotation_id' in params:
+            path_params['annotationId'] = params['annotation_id']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/popup/{annotationId}', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='PopupAnnotationResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def get_ps_in_storage_to_pdf(self, src_path, **kwargs):
         """
         Convert PS file (located on storage) to PDF format and return resulting file in response. 
@@ -9590,6 +11904,244 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='SquareAnnotationResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_squiggly_annotation(self, name, annotation_id, **kwargs):
+        """
+        Read document page squiggly annotation by ID.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_squiggly_annotation(name, annotation_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: SquigglyAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_squiggly_annotation_with_http_info(name, annotation_id, **kwargs)
+        else:
+            (data) = self.get_squiggly_annotation_with_http_info(name, annotation_id, **kwargs)
+            return data
+
+    def get_squiggly_annotation_with_http_info(self, name, annotation_id, **kwargs):
+        """
+        Read document page squiggly annotation by ID.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_squiggly_annotation_with_http_info(name, annotation_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: SquigglyAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'annotation_id', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_squiggly_annotation" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_squiggly_annotation`")
+        # verify the required parameter 'annotation_id' is set
+        if ('annotation_id' not in params) or (params['annotation_id'] is None):
+            raise ValueError("Missing the required parameter `annotation_id` when calling `get_squiggly_annotation`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'annotation_id' in params:
+            path_params['annotationId'] = params['annotation_id']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/squiggly/{annotationId}', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='SquigglyAnnotationResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_strike_out_annotation(self, name, annotation_id, **kwargs):
+        """
+        Read document page StrikeOut annotation by ID.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_strike_out_annotation(name, annotation_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: StrikeOutAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_strike_out_annotation_with_http_info(name, annotation_id, **kwargs)
+        else:
+            (data) = self.get_strike_out_annotation_with_http_info(name, annotation_id, **kwargs)
+            return data
+
+    def get_strike_out_annotation_with_http_info(self, name, annotation_id, **kwargs):
+        """
+        Read document page StrikeOut annotation by ID.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_strike_out_annotation_with_http_info(name, annotation_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: StrikeOutAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'annotation_id', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_strike_out_annotation" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_strike_out_annotation`")
+        # verify the required parameter 'annotation_id' is set
+        if ('annotation_id' not in params) or (params['annotation_id'] is None):
+            raise ValueError("Missing the required parameter `annotation_id` when calling `get_strike_out_annotation`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'annotation_id' in params:
+            path_params['annotationId'] = params['annotation_id']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/strikeout/{annotationId}', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='StrikeOutAnnotationResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -10002,6 +12554,125 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='TextAnnotationResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_underline_annotation(self, name, annotation_id, **kwargs):
+        """
+        Read document page underline annotation by ID.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_underline_annotation(name, annotation_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: UnderlineAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_underline_annotation_with_http_info(name, annotation_id, **kwargs)
+        else:
+            (data) = self.get_underline_annotation_with_http_info(name, annotation_id, **kwargs)
+            return data
+
+    def get_underline_annotation_with_http_info(self, name, annotation_id, **kwargs):
+        """
+        Read document page underline annotation by ID.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_underline_annotation_with_http_info(name, annotation_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: UnderlineAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'annotation_id', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_underline_annotation" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_underline_annotation`")
+        # verify the required parameter 'annotation_id' is set
+        if ('annotation_id' not in params) or (params['annotation_id'] is None):
+            raise ValueError("Missing the required parameter `annotation_id` when calling `get_underline_annotation`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'annotation_id' in params:
+            path_params['annotationId'] = params['annotation_id']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/underline/{annotationId}', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='UnderlineAnnotationResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -11583,6 +14254,132 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def post_page_caret_annotations(self, name, page_number, annotations, **kwargs):
+        """
+        Add document page caret annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_page_caret_annotations(name, page_number, annotations, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param list[CaretAnnotation] annotations: The array of annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_page_caret_annotations_with_http_info(name, page_number, annotations, **kwargs)
+        else:
+            (data) = self.post_page_caret_annotations_with_http_info(name, page_number, annotations, **kwargs)
+            return data
+
+    def post_page_caret_annotations_with_http_info(self, name, page_number, annotations, **kwargs):
+        """
+        Add document page caret annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_page_caret_annotations_with_http_info(name, page_number, annotations, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param list[CaretAnnotation] annotations: The array of annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'page_number', 'annotations', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_page_caret_annotations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_page_caret_annotations`")
+        # verify the required parameter 'page_number' is set
+        if ('page_number' not in params) or (params['page_number'] is None):
+            raise ValueError("Missing the required parameter `page_number` when calling `post_page_caret_annotations`")
+        # verify the required parameter 'annotations' is set
+        if ('annotations' not in params) or (params['annotations'] is None):
+            raise ValueError("Missing the required parameter `annotations` when calling `post_page_caret_annotations`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'page_number' in params:
+            path_params['pageNumber'] = params['page_number']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'annotations' in params:
+            body_params = params['annotations']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/caret', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def post_page_circle_annotations(self, name, page_number, annotations, **kwargs):
         """
         Add document page circle annotations.
@@ -11821,6 +14618,258 @@ class PdfApi(object):
         auth_settings = []
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/freetext', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def post_page_highlight_annotations(self, name, page_number, annotations, **kwargs):
+        """
+        Add document page highlight annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_page_highlight_annotations(name, page_number, annotations, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param list[HighlightAnnotation] annotations: The array of annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_page_highlight_annotations_with_http_info(name, page_number, annotations, **kwargs)
+        else:
+            (data) = self.post_page_highlight_annotations_with_http_info(name, page_number, annotations, **kwargs)
+            return data
+
+    def post_page_highlight_annotations_with_http_info(self, name, page_number, annotations, **kwargs):
+        """
+        Add document page highlight annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_page_highlight_annotations_with_http_info(name, page_number, annotations, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param list[HighlightAnnotation] annotations: The array of annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'page_number', 'annotations', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_page_highlight_annotations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_page_highlight_annotations`")
+        # verify the required parameter 'page_number' is set
+        if ('page_number' not in params) or (params['page_number'] is None):
+            raise ValueError("Missing the required parameter `page_number` when calling `post_page_highlight_annotations`")
+        # verify the required parameter 'annotations' is set
+        if ('annotations' not in params) or (params['annotations'] is None):
+            raise ValueError("Missing the required parameter `annotations` when calling `post_page_highlight_annotations`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'page_number' in params:
+            path_params['pageNumber'] = params['page_number']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'annotations' in params:
+            body_params = params['annotations']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/highlight', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def post_page_ink_annotations(self, name, page_number, annotations, **kwargs):
+        """
+        Add document page ink annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_page_ink_annotations(name, page_number, annotations, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param list[InkAnnotation] annotations: The array of annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_page_ink_annotations_with_http_info(name, page_number, annotations, **kwargs)
+        else:
+            (data) = self.post_page_ink_annotations_with_http_info(name, page_number, annotations, **kwargs)
+            return data
+
+    def post_page_ink_annotations_with_http_info(self, name, page_number, annotations, **kwargs):
+        """
+        Add document page ink annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_page_ink_annotations_with_http_info(name, page_number, annotations, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param list[InkAnnotation] annotations: The array of annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'page_number', 'annotations', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_page_ink_annotations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_page_ink_annotations`")
+        # verify the required parameter 'page_number' is set
+        if ('page_number' not in params) or (params['page_number'] is None):
+            raise ValueError("Missing the required parameter `page_number` when calling `post_page_ink_annotations`")
+        # verify the required parameter 'annotations' is set
+        if ('annotations' not in params) or (params['annotations'] is None):
+            raise ValueError("Missing the required parameter `annotations` when calling `post_page_ink_annotations`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'page_number' in params:
+            path_params['pageNumber'] = params['page_number']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'annotations' in params:
+            body_params = params['annotations']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/ink', 'POST',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -12465,6 +15514,258 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def post_page_squiggly_annotations(self, name, page_number, annotations, **kwargs):
+        """
+        Add document page squiggly annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_page_squiggly_annotations(name, page_number, annotations, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param list[SquigglyAnnotation] annotations: The array of annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_page_squiggly_annotations_with_http_info(name, page_number, annotations, **kwargs)
+        else:
+            (data) = self.post_page_squiggly_annotations_with_http_info(name, page_number, annotations, **kwargs)
+            return data
+
+    def post_page_squiggly_annotations_with_http_info(self, name, page_number, annotations, **kwargs):
+        """
+        Add document page squiggly annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_page_squiggly_annotations_with_http_info(name, page_number, annotations, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param list[SquigglyAnnotation] annotations: The array of annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'page_number', 'annotations', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_page_squiggly_annotations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_page_squiggly_annotations`")
+        # verify the required parameter 'page_number' is set
+        if ('page_number' not in params) or (params['page_number'] is None):
+            raise ValueError("Missing the required parameter `page_number` when calling `post_page_squiggly_annotations`")
+        # verify the required parameter 'annotations' is set
+        if ('annotations' not in params) or (params['annotations'] is None):
+            raise ValueError("Missing the required parameter `annotations` when calling `post_page_squiggly_annotations`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'page_number' in params:
+            path_params['pageNumber'] = params['page_number']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'annotations' in params:
+            body_params = params['annotations']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/squiggly', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def post_page_strike_out_annotations(self, name, page_number, annotations, **kwargs):
+        """
+        Add document page StrikeOut annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_page_strike_out_annotations(name, page_number, annotations, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param list[StrikeOutAnnotation] annotations: The array of annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_page_strike_out_annotations_with_http_info(name, page_number, annotations, **kwargs)
+        else:
+            (data) = self.post_page_strike_out_annotations_with_http_info(name, page_number, annotations, **kwargs)
+            return data
+
+    def post_page_strike_out_annotations_with_http_info(self, name, page_number, annotations, **kwargs):
+        """
+        Add document page StrikeOut annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_page_strike_out_annotations_with_http_info(name, page_number, annotations, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param list[StrikeOutAnnotation] annotations: The array of annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'page_number', 'annotations', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_page_strike_out_annotations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_page_strike_out_annotations`")
+        # verify the required parameter 'page_number' is set
+        if ('page_number' not in params) or (params['page_number'] is None):
+            raise ValueError("Missing the required parameter `page_number` when calling `post_page_strike_out_annotations`")
+        # verify the required parameter 'annotations' is set
+        if ('annotations' not in params) or (params['annotations'] is None):
+            raise ValueError("Missing the required parameter `annotations` when calling `post_page_strike_out_annotations`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'page_number' in params:
+            path_params['pageNumber'] = params['page_number']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'annotations' in params:
+            body_params = params['annotations']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/strikeout', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def post_page_text_annotations(self, name, page_number, annotations, **kwargs):
         """
         Add document page text annotations.
@@ -12710,6 +16011,258 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='TextReplaceResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def post_page_underline_annotations(self, name, page_number, annotations, **kwargs):
+        """
+        Add document page underline annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_page_underline_annotations(name, page_number, annotations, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param list[UnderlineAnnotation] annotations: The array of annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_page_underline_annotations_with_http_info(name, page_number, annotations, **kwargs)
+        else:
+            (data) = self.post_page_underline_annotations_with_http_info(name, page_number, annotations, **kwargs)
+            return data
+
+    def post_page_underline_annotations_with_http_info(self, name, page_number, annotations, **kwargs):
+        """
+        Add document page underline annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_page_underline_annotations_with_http_info(name, page_number, annotations, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param list[UnderlineAnnotation] annotations: The array of annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'page_number', 'annotations', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_page_underline_annotations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_page_underline_annotations`")
+        # verify the required parameter 'page_number' is set
+        if ('page_number' not in params) or (params['page_number'] is None):
+            raise ValueError("Missing the required parameter `page_number` when calling `post_page_underline_annotations`")
+        # verify the required parameter 'annotations' is set
+        if ('annotations' not in params) or (params['annotations'] is None):
+            raise ValueError("Missing the required parameter `annotations` when calling `post_page_underline_annotations`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'page_number' in params:
+            path_params['pageNumber'] = params['page_number']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'annotations' in params:
+            body_params = params['annotations']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/underline', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def post_popup_annotation(self, name, annotation_id, annotation, **kwargs):
+        """
+        Add document popup annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_popup_annotation(name, annotation_id, annotation, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The parent annotation ID. (required)
+        :param PopupAnnotation annotation: The annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_popup_annotation_with_http_info(name, annotation_id, annotation, **kwargs)
+        else:
+            (data) = self.post_popup_annotation_with_http_info(name, annotation_id, annotation, **kwargs)
+            return data
+
+    def post_popup_annotation_with_http_info(self, name, annotation_id, annotation, **kwargs):
+        """
+        Add document popup annotations.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_popup_annotation_with_http_info(name, annotation_id, annotation, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The parent annotation ID. (required)
+        :param PopupAnnotation annotation: The annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'annotation_id', 'annotation', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_popup_annotation" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_popup_annotation`")
+        # verify the required parameter 'annotation_id' is set
+        if ('annotation_id' not in params) or (params['annotation_id'] is None):
+            raise ValueError("Missing the required parameter `annotation_id` when calling `post_popup_annotation`")
+        # verify the required parameter 'annotation' is set
+        if ('annotation' not in params) or (params['annotation'] is None):
+            raise ValueError("Missing the required parameter `annotation` when calling `post_popup_annotation`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'annotation_id' in params:
+            path_params['annotationId'] = params['annotation_id']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'annotation' in params:
+            body_params = params['annotation']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/{annotationId}/popup', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -13308,6 +16861,132 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_caret_annotation(self, name, annotation_id, annotation, **kwargs):
+        """
+        Replace document caret annotation
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_caret_annotation(name, annotation_id, annotation, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param CaretAnnotation annotation: Annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: CaretAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_caret_annotation_with_http_info(name, annotation_id, annotation, **kwargs)
+        else:
+            (data) = self.put_caret_annotation_with_http_info(name, annotation_id, annotation, **kwargs)
+            return data
+
+    def put_caret_annotation_with_http_info(self, name, annotation_id, annotation, **kwargs):
+        """
+        Replace document caret annotation
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_caret_annotation_with_http_info(name, annotation_id, annotation, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param CaretAnnotation annotation: Annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: CaretAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'annotation_id', 'annotation', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_caret_annotation" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_caret_annotation`")
+        # verify the required parameter 'annotation_id' is set
+        if ('annotation_id' not in params) or (params['annotation_id'] is None):
+            raise ValueError("Missing the required parameter `annotation_id` when calling `put_caret_annotation`")
+        # verify the required parameter 'annotation' is set
+        if ('annotation' not in params) or (params['annotation'] is None):
+            raise ValueError("Missing the required parameter `annotation` when calling `put_caret_annotation`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'annotation_id' in params:
+            path_params['annotationId'] = params['annotation_id']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'annotation' in params:
+            body_params = params['annotation']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/caret/{annotationId}', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='CaretAnnotationResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -14029,7 +17708,133 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def put_html_in_storage_to_pdf(self, name, src_path, html_file_name, **kwargs):
+    def put_highlight_annotation(self, name, annotation_id, annotation, **kwargs):
+        """
+        Replace document highlight annotation
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_highlight_annotation(name, annotation_id, annotation, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param HighlightAnnotation annotation: Annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: HighlightAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_highlight_annotation_with_http_info(name, annotation_id, annotation, **kwargs)
+        else:
+            (data) = self.put_highlight_annotation_with_http_info(name, annotation_id, annotation, **kwargs)
+            return data
+
+    def put_highlight_annotation_with_http_info(self, name, annotation_id, annotation, **kwargs):
+        """
+        Replace document highlight annotation
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_highlight_annotation_with_http_info(name, annotation_id, annotation, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param HighlightAnnotation annotation: Annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: HighlightAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'annotation_id', 'annotation', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_highlight_annotation" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_highlight_annotation`")
+        # verify the required parameter 'annotation_id' is set
+        if ('annotation_id' not in params) or (params['annotation_id'] is None):
+            raise ValueError("Missing the required parameter `annotation_id` when calling `put_highlight_annotation`")
+        # verify the required parameter 'annotation' is set
+        if ('annotation' not in params) or (params['annotation'] is None):
+            raise ValueError("Missing the required parameter `annotation` when calling `put_highlight_annotation`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'annotation_id' in params:
+            path_params['annotationId'] = params['annotation_id']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'annotation' in params:
+            body_params = params['annotation']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/highlight/{annotationId}', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='HighlightAnnotationResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_html_in_storage_to_pdf(self, name, src_path, **kwargs):
         """
         Convert HTML file (located on storage) to PDF format and upload resulting file to storage. 
         This method makes a synchronous HTTP request by default. To make an
@@ -14038,13 +17843,13 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.put_html_in_storage_to_pdf(name, src_path, html_file_name, callback=callback_function)
+        >>> thread = api.put_html_in_storage_to_pdf(name, src_path, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.zip) (required)
-        :param str html_file_name: Name of HTML file in ZIP. (required)
+        :param str html_file_name: Name of HTML file in ZIP.
         :param float height: Page height
         :param float width: Page width
         :param bool is_landscape: Is page landscaped
@@ -14060,12 +17865,12 @@ class PdfApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.put_html_in_storage_to_pdf_with_http_info(name, src_path, html_file_name, **kwargs)
+            return self.put_html_in_storage_to_pdf_with_http_info(name, src_path, **kwargs)
         else:
-            (data) = self.put_html_in_storage_to_pdf_with_http_info(name, src_path, html_file_name, **kwargs)
+            (data) = self.put_html_in_storage_to_pdf_with_http_info(name, src_path, **kwargs)
             return data
 
-    def put_html_in_storage_to_pdf_with_http_info(self, name, src_path, html_file_name, **kwargs):
+    def put_html_in_storage_to_pdf_with_http_info(self, name, src_path, **kwargs):
         """
         Convert HTML file (located on storage) to PDF format and upload resulting file to storage. 
         This method makes a synchronous HTTP request by default. To make an
@@ -14074,13 +17879,13 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.put_html_in_storage_to_pdf_with_http_info(name, src_path, html_file_name, callback=callback_function)
+        >>> thread = api.put_html_in_storage_to_pdf_with_http_info(name, src_path, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.zip) (required)
-        :param str html_file_name: Name of HTML file in ZIP. (required)
+        :param str html_file_name: Name of HTML file in ZIP.
         :param float height: Page height
         :param float width: Page width
         :param bool is_landscape: Is page landscaped
@@ -14116,9 +17921,6 @@ class PdfApi(object):
         # verify the required parameter 'src_path' is set
         if ('src_path' not in params) or (params['src_path'] is None):
             raise ValueError("Missing the required parameter `src_path` when calling `put_html_in_storage_to_pdf`")
-        # verify the required parameter 'html_file_name' is set
-        if ('html_file_name' not in params) or (params['html_file_name'] is None):
-            raise ValueError("Missing the required parameter `html_file_name` when calling `put_html_in_storage_to_pdf`")
 
 
         collection_formats = {}
@@ -15343,6 +19145,132 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_ink_annotation(self, name, annotation_id, annotation, **kwargs):
+        """
+        Replace document ink annotation
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_ink_annotation(name, annotation_id, annotation, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param InkAnnotation annotation: Annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: InkAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_ink_annotation_with_http_info(name, annotation_id, annotation, **kwargs)
+        else:
+            (data) = self.put_ink_annotation_with_http_info(name, annotation_id, annotation, **kwargs)
+            return data
+
+    def put_ink_annotation_with_http_info(self, name, annotation_id, annotation, **kwargs):
+        """
+        Replace document ink annotation
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_ink_annotation_with_http_info(name, annotation_id, annotation, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param InkAnnotation annotation: Annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: InkAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'annotation_id', 'annotation', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_ink_annotation" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_ink_annotation`")
+        # verify the required parameter 'annotation_id' is set
+        if ('annotation_id' not in params) or (params['annotation_id'] is None):
+            raise ValueError("Missing the required parameter `annotation_id` when calling `put_ink_annotation`")
+        # verify the required parameter 'annotation' is set
+        if ('annotation' not in params) or (params['annotation'] is None):
+            raise ValueError("Missing the required parameter `annotation` when calling `put_ink_annotation`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'annotation_id' in params:
+            path_params['annotationId'] = params['annotation_id']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'annotation' in params:
+            body_params = params['annotation']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/ink/{annotationId}', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='InkAnnotationResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -20517,6 +24445,132 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def put_popup_annotation(self, name, annotation_id, annotation, **kwargs):
+        """
+        Replace document popup annotation
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_popup_annotation(name, annotation_id, annotation, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param PopupAnnotation annotation: Annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: PopupAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_popup_annotation_with_http_info(name, annotation_id, annotation, **kwargs)
+        else:
+            (data) = self.put_popup_annotation_with_http_info(name, annotation_id, annotation, **kwargs)
+            return data
+
+    def put_popup_annotation_with_http_info(self, name, annotation_id, annotation, **kwargs):
+        """
+        Replace document popup annotation
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_popup_annotation_with_http_info(name, annotation_id, annotation, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param PopupAnnotation annotation: Annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: PopupAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'annotation_id', 'annotation', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_popup_annotation" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_popup_annotation`")
+        # verify the required parameter 'annotation_id' is set
+        if ('annotation_id' not in params) or (params['annotation_id'] is None):
+            raise ValueError("Missing the required parameter `annotation_id` when calling `put_popup_annotation`")
+        # verify the required parameter 'annotation' is set
+        if ('annotation' not in params) or (params['annotation'] is None):
+            raise ValueError("Missing the required parameter `annotation` when calling `put_popup_annotation`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'annotation_id' in params:
+            path_params['annotationId'] = params['annotation_id']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'annotation' in params:
+            body_params = params['annotation']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/popup/{annotationId}', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='PopupAnnotationResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def put_privileges(self, name, **kwargs):
         """
         Update privilege document.
@@ -21247,6 +25301,258 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def put_squiggly_annotation(self, name, annotation_id, annotation, **kwargs):
+        """
+        Replace document squiggly annotation
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_squiggly_annotation(name, annotation_id, annotation, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param SquigglyAnnotation annotation: Annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: SquigglyAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_squiggly_annotation_with_http_info(name, annotation_id, annotation, **kwargs)
+        else:
+            (data) = self.put_squiggly_annotation_with_http_info(name, annotation_id, annotation, **kwargs)
+            return data
+
+    def put_squiggly_annotation_with_http_info(self, name, annotation_id, annotation, **kwargs):
+        """
+        Replace document squiggly annotation
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_squiggly_annotation_with_http_info(name, annotation_id, annotation, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param SquigglyAnnotation annotation: Annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: SquigglyAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'annotation_id', 'annotation', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_squiggly_annotation" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_squiggly_annotation`")
+        # verify the required parameter 'annotation_id' is set
+        if ('annotation_id' not in params) or (params['annotation_id'] is None):
+            raise ValueError("Missing the required parameter `annotation_id` when calling `put_squiggly_annotation`")
+        # verify the required parameter 'annotation' is set
+        if ('annotation' not in params) or (params['annotation'] is None):
+            raise ValueError("Missing the required parameter `annotation` when calling `put_squiggly_annotation`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'annotation_id' in params:
+            path_params['annotationId'] = params['annotation_id']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'annotation' in params:
+            body_params = params['annotation']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/squiggly/{annotationId}', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='SquigglyAnnotationResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_strike_out_annotation(self, name, annotation_id, annotation, **kwargs):
+        """
+        Replace document StrikeOut annotation
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_strike_out_annotation(name, annotation_id, annotation, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param StrikeOutAnnotation annotation: Annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: StrikeOutAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_strike_out_annotation_with_http_info(name, annotation_id, annotation, **kwargs)
+        else:
+            (data) = self.put_strike_out_annotation_with_http_info(name, annotation_id, annotation, **kwargs)
+            return data
+
+    def put_strike_out_annotation_with_http_info(self, name, annotation_id, annotation, **kwargs):
+        """
+        Replace document StrikeOut annotation
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_strike_out_annotation_with_http_info(name, annotation_id, annotation, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param StrikeOutAnnotation annotation: Annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: StrikeOutAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'annotation_id', 'annotation', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_strike_out_annotation" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_strike_out_annotation`")
+        # verify the required parameter 'annotation_id' is set
+        if ('annotation_id' not in params) or (params['annotation_id'] is None):
+            raise ValueError("Missing the required parameter `annotation_id` when calling `put_strike_out_annotation`")
+        # verify the required parameter 'annotation' is set
+        if ('annotation' not in params) or (params['annotation'] is None):
+            raise ValueError("Missing the required parameter `annotation` when calling `put_strike_out_annotation`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'annotation_id' in params:
+            path_params['annotationId'] = params['annotation_id']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'annotation' in params:
+            body_params = params['annotation']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/strikeout/{annotationId}', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='StrikeOutAnnotationResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def put_svg_in_storage_to_pdf(self, name, src_path, **kwargs):
         """
         Convert SVG file (located on storage) to PDF format and upload resulting file to storage. 
@@ -21517,6 +25823,132 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='TextAnnotationResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_underline_annotation(self, name, annotation_id, annotation, **kwargs):
+        """
+        Replace document underline annotation
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_underline_annotation(name, annotation_id, annotation, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param UnderlineAnnotation annotation: Annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: UnderlineAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_underline_annotation_with_http_info(name, annotation_id, annotation, **kwargs)
+        else:
+            (data) = self.put_underline_annotation_with_http_info(name, annotation_id, annotation, **kwargs)
+            return data
+
+    def put_underline_annotation_with_http_info(self, name, annotation_id, annotation, **kwargs):
+        """
+        Replace document underline annotation
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_underline_annotation_with_http_info(name, annotation_id, annotation, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param UnderlineAnnotation annotation: Annotation. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: UnderlineAnnotationResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'annotation_id', 'annotation', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_underline_annotation" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_underline_annotation`")
+        # verify the required parameter 'annotation_id' is set
+        if ('annotation_id' not in params) or (params['annotation_id'] is None):
+            raise ValueError("Missing the required parameter `annotation_id` when calling `put_underline_annotation`")
+        # verify the required parameter 'annotation' is set
+        if ('annotation' not in params) or (params['annotation'] is None):
+            raise ValueError("Missing the required parameter `annotation` when calling `put_underline_annotation`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'annotation_id' in params:
+            path_params['annotationId'] = params['annotation_id']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'annotation' in params:
+            body_params = params['annotation']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/underline/{annotationId}', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='UnderlineAnnotationResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
