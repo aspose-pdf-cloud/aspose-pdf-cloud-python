@@ -50,9 +50,6 @@ class PolyLineAnnotation(object):
     swagger_types = {
         'links': 'list[Link]',
         'contents': 'str',
-        'creation_date': 'str',
-        'subject': 'str',
-        'title': 'str',
         'modified': 'str',
         'id': 'str',
         'flags': 'list[AnnotationFlags]',
@@ -62,6 +59,9 @@ class PolyLineAnnotation(object):
         'z_index': 'int',
         'horizontal_alignment': 'HorizontalAlignment',
         'vertical_alignment': 'VerticalAlignment',
+        'creation_date': 'str',
+        'subject': 'str',
+        'title': 'str',
         'rich_text': 'str',
         'interior_color': 'Color',
         'starting_style': 'LineEnding',
@@ -74,9 +74,6 @@ class PolyLineAnnotation(object):
     attribute_map = {
         'links': 'Links',
         'contents': 'Contents',
-        'creation_date': 'CreationDate',
-        'subject': 'Subject',
-        'title': 'Title',
         'modified': 'Modified',
         'id': 'Id',
         'flags': 'Flags',
@@ -86,6 +83,9 @@ class PolyLineAnnotation(object):
         'z_index': 'ZIndex',
         'horizontal_alignment': 'HorizontalAlignment',
         'vertical_alignment': 'VerticalAlignment',
+        'creation_date': 'CreationDate',
+        'subject': 'Subject',
+        'title': 'Title',
         'rich_text': 'RichText',
         'interior_color': 'InteriorColor',
         'starting_style': 'StartingStyle',
@@ -95,16 +95,13 @@ class PolyLineAnnotation(object):
         'color': 'Color'
     }
 
-    def __init__(self, links=None, contents=None, creation_date=None, subject=None, title=None, modified=None, id=None, flags=None, name=None, rect=None, page_index=None, z_index=None, horizontal_alignment=None, vertical_alignment=None, rich_text=None, interior_color=None, starting_style=None, ending_style=None, intent=None, vertices=None, color=None):
+    def __init__(self, links=None, contents=None, modified=None, id=None, flags=None, name=None, rect=None, page_index=None, z_index=None, horizontal_alignment=None, vertical_alignment=None, creation_date=None, subject=None, title=None, rich_text=None, interior_color=None, starting_style=None, ending_style=None, intent=None, vertices=None, color=None):
         """
         PolyLineAnnotation - a model defined in Swagger
         """
 
         self._links = None
         self._contents = None
-        self._creation_date = None
-        self._subject = None
-        self._title = None
         self._modified = None
         self._id = None
         self._flags = None
@@ -114,6 +111,9 @@ class PolyLineAnnotation(object):
         self._z_index = None
         self._horizontal_alignment = None
         self._vertical_alignment = None
+        self._creation_date = None
+        self._subject = None
+        self._title = None
         self._rich_text = None
         self._interior_color = None
         self._starting_style = None
@@ -126,12 +126,6 @@ class PolyLineAnnotation(object):
           self.links = links
         if contents is not None:
           self.contents = contents
-        if creation_date is not None:
-          self.creation_date = creation_date
-        if subject is not None:
-          self.subject = subject
-        if title is not None:
-          self.title = title
         if modified is not None:
           self.modified = modified
         if id is not None:
@@ -150,6 +144,12 @@ class PolyLineAnnotation(object):
           self.horizontal_alignment = horizontal_alignment
         if vertical_alignment is not None:
           self.vertical_alignment = vertical_alignment
+        if creation_date is not None:
+          self.creation_date = creation_date
+        if subject is not None:
+          self.subject = subject
+        if title is not None:
+          self.title = title
         if rich_text is not None:
           self.rich_text = rich_text
         if interior_color is not None:
@@ -210,75 +210,6 @@ class PolyLineAnnotation(object):
         """
 
         self._contents = contents
-
-    @property
-    def creation_date(self):
-        """
-        Gets the creation_date of this PolyLineAnnotation.
-        The date and time when the annotation was created.
-
-        :return: The creation_date of this PolyLineAnnotation.
-        :rtype: str
-        """
-        return self._creation_date
-
-    @creation_date.setter
-    def creation_date(self, creation_date):
-        """
-        Sets the creation_date of this PolyLineAnnotation.
-        The date and time when the annotation was created.
-
-        :param creation_date: The creation_date of this PolyLineAnnotation.
-        :type: str
-        """
-
-        self._creation_date = creation_date
-
-    @property
-    def subject(self):
-        """
-        Gets the subject of this PolyLineAnnotation.
-        Get the annotation subject.
-
-        :return: The subject of this PolyLineAnnotation.
-        :rtype: str
-        """
-        return self._subject
-
-    @subject.setter
-    def subject(self, subject):
-        """
-        Sets the subject of this PolyLineAnnotation.
-        Get the annotation subject.
-
-        :param subject: The subject of this PolyLineAnnotation.
-        :type: str
-        """
-
-        self._subject = subject
-
-    @property
-    def title(self):
-        """
-        Gets the title of this PolyLineAnnotation.
-        Get the annotation title.
-
-        :return: The title of this PolyLineAnnotation.
-        :rtype: str
-        """
-        return self._title
-
-    @title.setter
-    def title(self, title):
-        """
-        Sets the title of this PolyLineAnnotation.
-        Get the annotation title.
-
-        :param title: The title of this PolyLineAnnotation.
-        :type: str
-        """
-
-        self._title = title
 
     @property
     def modified(self):
@@ -486,6 +417,75 @@ class PolyLineAnnotation(object):
         """
 
         self._vertical_alignment = vertical_alignment
+
+    @property
+    def creation_date(self):
+        """
+        Gets the creation_date of this PolyLineAnnotation.
+        The date and time when the annotation was created.
+
+        :return: The creation_date of this PolyLineAnnotation.
+        :rtype: str
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, creation_date):
+        """
+        Sets the creation_date of this PolyLineAnnotation.
+        The date and time when the annotation was created.
+
+        :param creation_date: The creation_date of this PolyLineAnnotation.
+        :type: str
+        """
+
+        self._creation_date = creation_date
+
+    @property
+    def subject(self):
+        """
+        Gets the subject of this PolyLineAnnotation.
+        Get the annotation subject.
+
+        :return: The subject of this PolyLineAnnotation.
+        :rtype: str
+        """
+        return self._subject
+
+    @subject.setter
+    def subject(self, subject):
+        """
+        Sets the subject of this PolyLineAnnotation.
+        Get the annotation subject.
+
+        :param subject: The subject of this PolyLineAnnotation.
+        :type: str
+        """
+
+        self._subject = subject
+
+    @property
+    def title(self):
+        """
+        Gets the title of this PolyLineAnnotation.
+        Get the annotation title.
+
+        :return: The title of this PolyLineAnnotation.
+        :rtype: str
+        """
+        return self._title
+
+    @title.setter
+    def title(self, title):
+        """
+        Sets the title of this PolyLineAnnotation.
+        Get the annotation title.
+
+        :param title: The title of this PolyLineAnnotation.
+        :type: str
+        """
+
+        self._title = title
 
     @property
     def rich_text(self):
