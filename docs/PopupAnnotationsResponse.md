@@ -1,4 +1,4 @@
-# PopupAnnotationsResponse
+﻿# PopupAnnotationsResponse
 
 
 ## Properties

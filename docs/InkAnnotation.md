@@ -1,4 +1,4 @@
-# InkAnnotation
+﻿# InkAnnotation
 Provides InkAnnotation.
 
 ## Properties

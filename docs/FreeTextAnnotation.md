@@ -1,4 +1,4 @@
-# FreeTextAnnotation
+﻿# FreeTextAnnotation
 Provides FreeTextAnnotation.
 
 ## Properties

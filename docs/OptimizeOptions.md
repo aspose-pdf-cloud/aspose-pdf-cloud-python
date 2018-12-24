@@ -1,4 +1,4 @@
-# OptimizeOptions
+﻿# OptimizeOptions
 Represents Pdf optimize options.
 
 ## Properties

@@ -1,4 +1,4 @@
-# CircleAnnotationsResponse
+﻿# CircleAnnotationsResponse
 
 
 ## Properties

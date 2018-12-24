@@ -1,4 +1,4 @@
-# Color
+﻿# Color
 Represents color DTO.
 
 ## Properties

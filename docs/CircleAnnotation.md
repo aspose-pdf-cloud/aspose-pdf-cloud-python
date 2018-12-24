@@ -1,4 +1,4 @@
-# CircleAnnotation
+﻿# CircleAnnotation
 Provides CircleAnnotation.
 
 ## Properties

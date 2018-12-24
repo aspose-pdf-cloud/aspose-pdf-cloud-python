@@ -1,4 +1,4 @@
-# Stamp
+﻿# Stamp
 Represents Pdf stamps.
 
 ## Properties

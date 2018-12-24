@@ -1,4 +1,4 @@
-# TextReplace
+﻿# TextReplace
 Single text replacement setting.
 
 ## Properties

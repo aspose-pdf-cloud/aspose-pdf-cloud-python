@@ -1,4 +1,4 @@
-# UnderlineAnnotation
+﻿# UnderlineAnnotation
 Provides UnderlineAnnotation.
 
 ## Properties

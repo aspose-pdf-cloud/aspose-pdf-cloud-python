@@ -1,4 +1,4 @@
-# LineAnnotations
+﻿# LineAnnotations
 List of annotations.
 
 ## Properties

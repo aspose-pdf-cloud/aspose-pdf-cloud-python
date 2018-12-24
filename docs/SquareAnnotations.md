@@ -1,4 +1,4 @@
-# SquareAnnotations
+﻿# SquareAnnotations
 List of annotations.
 
 ## Properties

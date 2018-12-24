@@ -514,7 +514,7 @@ class PolygonAnnotation(object):
     def interior_color(self):
         """
         Gets the interior_color of this PolygonAnnotation.
-        Gets or sets the interior color with which to fill the annotation?s line endings.
+        Gets or sets the interior color with which to fill the annotation’s line endings.
 
         :return: The interior_color of this PolygonAnnotation.
         :rtype: Color
@@ -525,7 +525,7 @@ class PolygonAnnotation(object):
     def interior_color(self, interior_color):
         """
         Sets the interior_color of this PolygonAnnotation.
-        Gets or sets the interior color with which to fill the annotation?s line endings.
+        Gets or sets the interior color with which to fill the annotation’s line endings.
 
         :param interior_color: The interior_color of this PolygonAnnotation.
         :type: Color

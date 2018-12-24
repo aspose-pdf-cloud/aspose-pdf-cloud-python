@@ -1,4 +1,4 @@
-# ImageTemplate
+﻿# ImageTemplate
 Template of image.
 
 ## Properties

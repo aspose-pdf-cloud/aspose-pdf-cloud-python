@@ -1,4 +1,4 @@
-# SplitResultDocument
+﻿# SplitResultDocument
 Represents split result document,
 
 ## Properties

@@ -1,4 +1,4 @@
-# TextRects
+﻿# TextRects
 Represents text items DTO.
 
 ## Properties

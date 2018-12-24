@@ -1,4 +1,4 @@
-# StrikeOutAnnotation
+﻿# StrikeOutAnnotation
 Provides StrikeOutAnnotation.
 
 ## Properties

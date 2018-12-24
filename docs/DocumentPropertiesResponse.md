@@ -1,4 +1,4 @@
-# DocumentPropertiesResponse
+﻿# DocumentPropertiesResponse
 
 
 ## Properties

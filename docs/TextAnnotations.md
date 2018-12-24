@@ -1,4 +1,4 @@
-# TextAnnotations
+﻿# TextAnnotations
 List of annotations.
 
 ## Properties

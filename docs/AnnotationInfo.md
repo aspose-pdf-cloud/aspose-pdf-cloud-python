@@ -1,4 +1,4 @@
-# AnnotationInfo
+﻿# AnnotationInfo
 Provides annotation.
 
 ## Properties

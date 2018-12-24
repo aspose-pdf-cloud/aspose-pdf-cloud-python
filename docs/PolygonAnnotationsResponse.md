@@ -1,4 +1,4 @@
-# PolygonAnnotationsResponse
+﻿# PolygonAnnotationsResponse
 
 
 ## Properties

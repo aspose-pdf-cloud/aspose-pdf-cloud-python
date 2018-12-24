@@ -9893,7 +9893,7 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param str content_recognition_mode: ?roperty tunes conversion for this or that desirable method of recognition of content.
+        :param str content_recognition_mode: Рroperty tunes conversion for this or that desirable method of recognition of content.
         :param str folder: The document folder.
         :param str storage: The document storage.
         :return: file
@@ -9921,7 +9921,7 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param str content_recognition_mode: ?roperty tunes conversion for this or that desirable method of recognition of content.
+        :param str content_recognition_mode: Рroperty tunes conversion for this or that desirable method of recognition of content.
         :param str folder: The document folder.
         :param str storage: The document storage.
         :return: file
@@ -21091,7 +21091,7 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-        :param str content_recognition_mode: ?roperty tunes conversion for this or that desirable method of recognition of content.
+        :param str content_recognition_mode: Рroperty tunes conversion for this or that desirable method of recognition of content.
         :param str storage: The document storage.
         :param file file: A file to be converted.
         :return: AsposeResponse
@@ -21119,7 +21119,7 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-        :param str content_recognition_mode: ?roperty tunes conversion for this or that desirable method of recognition of content.
+        :param str content_recognition_mode: Рroperty tunes conversion for this or that desirable method of recognition of content.
         :param str storage: The document storage.
         :param file file: A file to be converted.
         :return: AsposeResponse
@@ -22687,7 +22687,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-        :param str content_recognition_mode: ?roperty tunes conversion for this or that desirable method of recognition of content.
+        :param str content_recognition_mode: Рroperty tunes conversion for this or that desirable method of recognition of content.
         :param str folder: The document folder.
         :param str storage: The document storage.
         :return: AsposeResponse
@@ -22716,7 +22716,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-        :param str content_recognition_mode: ?roperty tunes conversion for this or that desirable method of recognition of content.
+        :param str content_recognition_mode: Рroperty tunes conversion for this or that desirable method of recognition of content.
         :param str folder: The document folder.
         :param str storage: The document storage.
         :return: AsposeResponse

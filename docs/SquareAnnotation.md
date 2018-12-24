@@ -1,4 +1,4 @@
-# SquareAnnotation
+﻿# SquareAnnotation
 Provides SquareAnnotation.
 
 ## Properties

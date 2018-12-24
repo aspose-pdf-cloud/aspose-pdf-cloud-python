@@ -1,4 +1,4 @@
-# PopupAnnotations
+﻿# PopupAnnotations
 List of annotations.
 
 ## Properties

@@ -1,4 +1,4 @@
-# MergeDocuments
+﻿# MergeDocuments
 Documents for merging.
 
 ## Properties

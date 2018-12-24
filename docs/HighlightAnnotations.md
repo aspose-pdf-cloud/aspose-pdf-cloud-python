@@ -1,4 +1,4 @@
-# HighlightAnnotations
+﻿# HighlightAnnotations
 List of annotations.
 
 ## Properties

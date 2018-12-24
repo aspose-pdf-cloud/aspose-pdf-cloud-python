@@ -1,4 +1,4 @@
-# SquareAnnotationsResponse
+﻿# SquareAnnotationsResponse
 
 
 ## Properties

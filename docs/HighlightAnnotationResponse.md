@@ -1,4 +1,4 @@
-# HighlightAnnotationResponse
+﻿# HighlightAnnotationResponse
 
 
 ## Properties

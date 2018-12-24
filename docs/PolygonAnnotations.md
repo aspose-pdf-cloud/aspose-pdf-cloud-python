@@ -1,4 +1,4 @@
-# PolygonAnnotations
+﻿# PolygonAnnotations
 List of annotations.
 
 ## Properties

@@ -1,4 +1,4 @@
-# StrikeOutAnnotations
+﻿# StrikeOutAnnotations
 List of annotations.
 
 ## Properties
