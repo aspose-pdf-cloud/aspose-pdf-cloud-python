@@ -1,4 +1,4 @@
-# Document
+﻿# Document
 Represents document DTO.
 
 ## Properties

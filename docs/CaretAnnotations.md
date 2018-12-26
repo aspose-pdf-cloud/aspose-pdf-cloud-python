@@ -1,4 +1,4 @@
-# CaretAnnotations
+﻿# CaretAnnotations
 List of annotations.
 
 ## Properties

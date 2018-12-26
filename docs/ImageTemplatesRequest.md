@@ -1,4 +1,4 @@
-# ImageTemplatesRequest
+﻿# ImageTemplatesRequest
 Create document from images request.
 
 ## Properties

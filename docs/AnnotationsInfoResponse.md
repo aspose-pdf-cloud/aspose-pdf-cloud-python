@@ -1,4 +1,4 @@
-# AnnotationsInfoResponse
+﻿# AnnotationsInfoResponse
 
 
 ## Properties

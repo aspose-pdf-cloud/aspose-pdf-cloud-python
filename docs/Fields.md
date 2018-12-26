@@ -1,4 +1,4 @@
-# Fields
+﻿# Fields
 List of form fields.
 
 ## Properties

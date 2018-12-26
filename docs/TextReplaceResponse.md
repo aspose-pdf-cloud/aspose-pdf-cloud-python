@@ -1,4 +1,4 @@
-# TextReplaceResponse
+﻿# TextReplaceResponse
 
 
 ## Properties

@@ -1,4 +1,4 @@
-# AttachmentResponse
+﻿# AttachmentResponse
 
 
 ## Properties

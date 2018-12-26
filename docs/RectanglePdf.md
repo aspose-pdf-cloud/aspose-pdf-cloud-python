@@ -1,4 +1,4 @@
-# RectanglePdf
+﻿# RectanglePdf
 Represents rectangle DTO.
 
 ## Properties

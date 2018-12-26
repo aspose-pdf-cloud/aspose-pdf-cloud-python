@@ -1,4 +1,4 @@
-# SignatureVerifyResponse
+﻿# SignatureVerifyResponse
 Returns also a message.
 
 ## Properties

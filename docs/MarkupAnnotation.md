@@ -1,4 +1,4 @@
-# MarkupAnnotation
+﻿# MarkupAnnotation
 Provides MarkupAnnotation.
 
 ## Properties

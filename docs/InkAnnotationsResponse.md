@@ -1,4 +1,4 @@
-# InkAnnotationsResponse
+﻿# InkAnnotationsResponse
 
 
 ## Properties

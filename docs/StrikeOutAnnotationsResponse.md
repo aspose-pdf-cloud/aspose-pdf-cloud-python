@@ -1,4 +1,4 @@
-# StrikeOutAnnotationsResponse
+﻿# StrikeOutAnnotationsResponse
 
 
 ## Properties

@@ -1,4 +1,4 @@
-# FreeTextAnnotations
+﻿# FreeTextAnnotations
 List of annotations.
 
 ## Properties

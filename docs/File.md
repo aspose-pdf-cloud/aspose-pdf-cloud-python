@@ -1,4 +1,4 @@
-# File
+﻿# File
 Represents file DTO.
 
 ## Properties

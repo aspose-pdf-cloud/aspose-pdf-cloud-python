@@ -1,4 +1,4 @@
-# FieldResponse
+﻿# FieldResponse
 
 
 ## Properties

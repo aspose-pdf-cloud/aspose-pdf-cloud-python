@@ -1,4 +1,4 @@
-# HighlightAnnotation
+﻿# HighlightAnnotation
 Provides HighlightAnnotation.
 
 ## Properties

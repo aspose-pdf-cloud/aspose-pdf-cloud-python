@@ -1,4 +1,4 @@
-# TextReplaceListRequest
+﻿# TextReplaceListRequest
 Multiple text replacements request.
 
 ## Properties

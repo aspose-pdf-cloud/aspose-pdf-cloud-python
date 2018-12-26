@@ -1,4 +1,4 @@
-# PolyLineAnnotation
+﻿# PolyLineAnnotation
 Provides PolyLineAnnotation.
 
 ## Properties
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **subject** | **str** | Get the annotation subject. | [optional] 
 **title** | **str** | Get the annotation title. | [optional] 
 **rich_text** | **str** | Get the annotation RichText. | [optional] 
-**interior_color** | [**Color**](Color.md) | Gets or sets the interior color with which to fill the annotation?s line endings. | [optional] 
+**interior_color** | [**Color**](Color.md) | Gets or sets the interior color with which to fill the annotation’s line endings. | [optional] 
 **starting_style** | [**LineEnding**](LineEnding.md) | Gets or sets the style of first line ending. | [optional] 
 **ending_style** | [**LineEnding**](LineEnding.md) | Gets or sets the style of second line ending. | [optional] 
 **intent** | [**PolyIntent**](PolyIntent.md) | Gets or sets the intent of the polygon or polyline annotation. | [optional] 

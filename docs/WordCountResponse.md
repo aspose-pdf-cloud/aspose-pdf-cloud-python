@@ -1,4 +1,4 @@
-# WordCountResponse
+﻿# WordCountResponse
 Number of words per document pages.
 
 ## Properties

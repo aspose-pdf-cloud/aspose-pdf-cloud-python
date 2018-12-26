@@ -1,4 +1,4 @@
-# LineAnnotationsResponse
+﻿# LineAnnotationsResponse
 
 
 ## Properties

@@ -1,4 +1,4 @@
-# LinkAnnotation
+﻿# LinkAnnotation
 Provides link to linkAnnotation.
 
 ## Properties

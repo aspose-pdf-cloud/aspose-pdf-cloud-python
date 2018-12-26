@@ -1,4 +1,4 @@
-# FreeTextAnnotationsResponse
+﻿# FreeTextAnnotationsResponse
 
 
 ## Properties

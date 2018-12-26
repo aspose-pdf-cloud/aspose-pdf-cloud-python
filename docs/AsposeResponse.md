@@ -1,4 +1,4 @@
-# AsposeResponse
+﻿# AsposeResponse
 Base class for all responses.
 
 ## Properties

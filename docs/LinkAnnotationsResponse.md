@@ -1,4 +1,4 @@
-# LinkAnnotationsResponse
+﻿# LinkAnnotationsResponse
 
 
 ## Properties

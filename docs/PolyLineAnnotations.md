@@ -1,4 +1,4 @@
-# PolyLineAnnotations
+﻿# PolyLineAnnotations
 List of annotations.
 
 ## Properties

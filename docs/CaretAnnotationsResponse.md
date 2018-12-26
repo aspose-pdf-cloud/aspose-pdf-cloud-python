@@ -1,4 +1,4 @@
-# CaretAnnotationsResponse
+﻿# CaretAnnotationsResponse
 
 
 ## Properties

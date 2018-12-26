@@ -1,4 +1,4 @@
-# TextAnnotationResponse
+﻿# TextAnnotationResponse
 
 
 ## Properties

@@ -1,4 +1,4 @@
-# TextRect
+﻿# TextRect
 Represents text DTO.
 
 ## Properties

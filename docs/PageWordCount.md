@@ -1,4 +1,4 @@
-# PageWordCount
+﻿# PageWordCount
 Page words count.
 
 ## Properties

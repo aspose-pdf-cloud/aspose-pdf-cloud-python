@@ -1,4 +1,4 @@
-# SquigglyAnnotations
+﻿# SquigglyAnnotations
 List of annotations.
 
 ## Properties

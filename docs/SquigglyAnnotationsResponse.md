@@ -1,4 +1,4 @@
-# SquigglyAnnotationsResponse
+﻿# SquigglyAnnotationsResponse
 
 
 ## Properties

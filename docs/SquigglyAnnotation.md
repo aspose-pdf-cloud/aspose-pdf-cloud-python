@@ -1,4 +1,4 @@
-# SquigglyAnnotation
+﻿# SquigglyAnnotation
 Provides SquigglyAnnotation.
 
 ## Properties

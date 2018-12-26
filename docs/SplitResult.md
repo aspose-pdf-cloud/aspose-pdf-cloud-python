@@ -1,4 +1,4 @@
-# SplitResult
+﻿# SplitResult
 Represents split result object.
 
 ## Properties

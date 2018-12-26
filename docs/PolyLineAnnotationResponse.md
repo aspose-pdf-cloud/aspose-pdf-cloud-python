@@ -1,4 +1,4 @@
-# PolyLineAnnotationResponse
+﻿# PolyLineAnnotationResponse
 
 
 ## Properties

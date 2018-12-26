@@ -1,4 +1,4 @@
-# MarginInfo
+﻿# MarginInfo
 
 
 ## Properties
