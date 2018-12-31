@@ -49,23 +49,24 @@ class PopupAnnotationWithParent(object):
     """
     swagger_types = {
         'links': 'list[Link]',
+        'color': 'Color',
         'contents': 'str',
         'modified': 'str',
         'id': 'str',
         'flags': 'list[AnnotationFlags]',
         'name': 'str',
-        'rect': 'RectanglePdf',
+        'rect': 'Rectangle',
         'page_index': 'int',
         'z_index': 'int',
         'horizontal_alignment': 'HorizontalAlignment',
         'vertical_alignment': 'VerticalAlignment',
-        'color': 'Color',
         'open': 'bool',
         'parent': 'AnnotationInfo'
     }
 
     attribute_map = {
         'links': 'Links',
+        'color': 'Color',
         'contents': 'Contents',
         'modified': 'Modified',
         'id': 'Id',
@@ -76,17 +77,17 @@ class PopupAnnotationWithParent(object):
         'z_index': 'ZIndex',
         'horizontal_alignment': 'HorizontalAlignment',
         'vertical_alignment': 'VerticalAlignment',
-        'color': 'Color',
         'open': 'Open',
         'parent': 'Parent'
     }
 
-    def __init__(self, links=None, contents=None, modified=None, id=None, flags=None, name=None, rect=None, page_index=None, z_index=None, horizontal_alignment=None, vertical_alignment=None, color=None, open=None, parent=None):
+    def __init__(self, links=None, color=None, contents=None, modified=None, id=None, flags=None, name=None, rect=None, page_index=None, z_index=None, horizontal_alignment=None, vertical_alignment=None, open=None, parent=None):
         """
         PopupAnnotationWithParent - a model defined in Swagger
         """
 
         self._links = None
+        self._color = None
         self._contents = None
         self._modified = None
         self._id = None
@@ -97,12 +98,13 @@ class PopupAnnotationWithParent(object):
         self._z_index = None
         self._horizontal_alignment = None
         self._vertical_alignment = None
-        self._color = None
         self._open = None
         self._parent = None
 
         if links is not None:
           self.links = links
+        if color is not None:
+          self.color = color
         if contents is not None:
           self.contents = contents
         if modified is not None:
@@ -123,8 +125,6 @@ class PopupAnnotationWithParent(object):
           self.horizontal_alignment = horizontal_alignment
         if vertical_alignment is not None:
           self.vertical_alignment = vertical_alignment
-        if color is not None:
-          self.color = color
         if open is not None:
           self.open = open
         if parent is not None:
@@ -152,6 +152,29 @@ class PopupAnnotationWithParent(object):
         """
 
         self._links = links
+
+    @property
+    def color(self):
+        """
+        Gets the color of this PopupAnnotationWithParent.
+        Color of the annotation.
+
+        :return: The color of this PopupAnnotationWithParent.
+        :rtype: Color
+        """
+        return self._color
+
+    @color.setter
+    def color(self, color):
+        """
+        Sets the color of this PopupAnnotationWithParent.
+        Color of the annotation.
+
+        :param color: The color of this PopupAnnotationWithParent.
+        :type: Color
+        """
+
+        self._color = color
 
     @property
     def contents(self):
@@ -275,7 +298,7 @@ class PopupAnnotationWithParent(object):
         Gets Rect of the annotation.
 
         :return: The rect of this PopupAnnotationWithParent.
-        :rtype: RectanglePdf
+        :rtype: Rectangle
         """
         return self._rect
 
@@ -286,7 +309,7 @@ class PopupAnnotationWithParent(object):
         Gets Rect of the annotation.
 
         :param rect: The rect of this PopupAnnotationWithParent.
-        :type: RectanglePdf
+        :type: Rectangle
         """
 
         self._rect = rect
@@ -382,29 +405,6 @@ class PopupAnnotationWithParent(object):
         """
 
         self._vertical_alignment = vertical_alignment
-
-    @property
-    def color(self):
-        """
-        Gets the color of this PopupAnnotationWithParent.
-        Color of the annotation.
-
-        :return: The color of this PopupAnnotationWithParent.
-        :rtype: Color
-        """
-        return self._color
-
-    @color.setter
-    def color(self, color):
-        """
-        Sets the color of this PopupAnnotationWithParent.
-        Color of the annotation.
-
-        :param color: The color of this PopupAnnotationWithParent.
-        :type: Color
-        """
-
-        self._color = color
 
     @property
     def open(self):

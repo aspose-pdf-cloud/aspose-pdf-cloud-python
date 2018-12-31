@@ -97,6 +97,7 @@ class SquigglyAnnotations(object):
     def list(self):
         """
         Gets the list of this SquigglyAnnotations.
+        List of squiggly-underline annotations.
 
         :return: The list of this SquigglyAnnotations.
         :rtype: list[SquigglyAnnotation]
@@ -107,6 +108,7 @@ class SquigglyAnnotations(object):
     def list(self, list):
         """
         Sets the list of this SquigglyAnnotations.
+        List of squiggly-underline annotations.
 
         :param list: The list of this SquigglyAnnotations.
         :type: list[SquigglyAnnotation]

@@ -126,6 +126,7 @@ class FieldResponse(object):
     def field(self):
         """
         Gets the field of this FieldResponse.
+        Field object
 
         :return: The field of this FieldResponse.
         :rtype: Field
@@ -136,6 +137,7 @@ class FieldResponse(object):
     def field(self, field):
         """
         Sets the field of this FieldResponse.
+        Field object
 
         :param field: The field of this FieldResponse.
         :type: Field

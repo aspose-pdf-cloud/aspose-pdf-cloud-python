@@ -97,6 +97,7 @@ class AnnotationsInfo(object):
     def list(self):
         """
         Gets the list of this AnnotationsInfo.
+        List of annotation info objects.
 
         :return: The list of this AnnotationsInfo.
         :rtype: list[AnnotationInfo]
@@ -107,6 +108,7 @@ class AnnotationsInfo(object):
     def list(self, list):
         """
         Sets the list of this AnnotationsInfo.
+        List of annotation info objects.
 
         :param list: The list of this AnnotationsInfo.
         :type: list[AnnotationInfo]

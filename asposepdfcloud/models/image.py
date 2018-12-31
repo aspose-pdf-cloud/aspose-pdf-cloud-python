@@ -52,7 +52,7 @@ class Image(object):
         'width': 'int',
         'height': 'int',
         'id': 'str',
-        'rectangle': 'RectanglePdf',
+        'rectangle': 'Rectangle',
         'page_number': 'int'
     }
 
@@ -189,7 +189,7 @@ class Image(object):
         Gets rectangle of the image.
 
         :return: The rectangle of this Image.
-        :rtype: RectanglePdf
+        :rtype: Rectangle
         """
         return self._rectangle
 
@@ -200,7 +200,7 @@ class Image(object):
         Gets rectangle of the image.
 
         :param rectangle: The rectangle of this Image.
-        :type: RectanglePdf
+        :type: Rectangle
         """
 
         self._rectangle = rectangle

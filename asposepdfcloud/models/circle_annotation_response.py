@@ -126,6 +126,7 @@ class CircleAnnotationResponse(object):
     def annotation(self):
         """
         Gets the annotation of this CircleAnnotationResponse.
+        Circle annotation object
 
         :return: The annotation of this CircleAnnotationResponse.
         :rtype: CircleAnnotation
@@ -136,6 +137,7 @@ class CircleAnnotationResponse(object):
     def annotation(self, annotation):
         """
         Sets the annotation of this CircleAnnotationResponse.
+        Circle annotation object
 
         :param annotation: The annotation of this CircleAnnotationResponse.
         :type: CircleAnnotation

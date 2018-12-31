@@ -126,6 +126,7 @@ class AnnotationsInfoResponse(object):
     def annotations(self):
         """
         Gets the annotations of this AnnotationsInfoResponse.
+        Annotations info
 
         :return: The annotations of this AnnotationsInfoResponse.
         :rtype: AnnotationsInfo
@@ -136,6 +137,7 @@ class AnnotationsInfoResponse(object):
     def annotations(self, annotations):
         """
         Sets the annotations of this AnnotationsInfoResponse.
+        Annotations info
 
         :param annotations: The annotations of this AnnotationsInfoResponse.
         :type: AnnotationsInfo

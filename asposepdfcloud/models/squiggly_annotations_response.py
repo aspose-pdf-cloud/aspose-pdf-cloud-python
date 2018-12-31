@@ -126,6 +126,7 @@ class SquigglyAnnotationsResponse(object):
     def annotations(self):
         """
         Gets the annotations of this SquigglyAnnotationsResponse.
+        Squiggly-underline annotations object
 
         :return: The annotations of this SquigglyAnnotationsResponse.
         :rtype: SquigglyAnnotations
@@ -136,6 +137,7 @@ class SquigglyAnnotationsResponse(object):
     def annotations(self, annotations):
         """
         Sets the annotations of this SquigglyAnnotationsResponse.
+        Squiggly-underline annotations object
 
         :param annotations: The annotations of this SquigglyAnnotationsResponse.
         :type: SquigglyAnnotations

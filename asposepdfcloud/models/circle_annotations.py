@@ -97,6 +97,7 @@ class CircleAnnotations(object):
     def list(self):
         """
         Gets the list of this CircleAnnotations.
+        List of circle annotations.
 
         :return: The list of this CircleAnnotations.
         :rtype: list[CircleAnnotation]
@@ -107,6 +108,7 @@ class CircleAnnotations(object):
     def list(self, list):
         """
         Sets the list of this CircleAnnotations.
+        List of circle annotations.
 
         :param list: The list of this CircleAnnotations.
         :type: list[CircleAnnotation]

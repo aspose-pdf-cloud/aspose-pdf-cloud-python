@@ -97,6 +97,7 @@ class Fields(object):
     def list(self):
         """
         Gets the list of this Fields.
+        List of form fields.
 
         :return: The list of this Fields.
         :rtype: list[Field]
@@ -107,6 +108,7 @@ class Fields(object):
     def list(self, list):
         """
         Sets the list of this Fields.
+        List of form fields.
 
         :param list: The list of this Fields.
         :type: list[Field]

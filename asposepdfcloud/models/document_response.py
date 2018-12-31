@@ -131,6 +131,7 @@ class DocumentResponse(object):
     def document(self):
         """
         Gets the document of this DocumentResponse.
+        Document object
 
         :return: The document of this DocumentResponse.
         :rtype: Document
@@ -141,6 +142,7 @@ class DocumentResponse(object):
     def document(self, document):
         """
         Sets the document of this DocumentResponse.
+        Document object
 
         :param document: The document of this DocumentResponse.
         :type: Document
@@ -152,6 +154,7 @@ class DocumentResponse(object):
     def messages(self):
         """
         Gets the messages of this DocumentResponse.
+        A list of messages obtained while producing the responce
 
         :return: The messages of this DocumentResponse.
         :rtype: list[str]
@@ -162,6 +165,7 @@ class DocumentResponse(object):
     def messages(self, messages):
         """
         Sets the messages of this DocumentResponse.
+        A list of messages obtained while producing the responce
 
         :param messages: The messages of this DocumentResponse.
         :type: list[str]

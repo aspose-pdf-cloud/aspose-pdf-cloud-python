@@ -69,6 +69,7 @@ class TextRects(object):
     def list(self):
         """
         Gets the list of this TextRects.
+        The list of text occurrences.
 
         :return: The list of this TextRects.
         :rtype: list[TextRect]
@@ -79,6 +80,7 @@ class TextRects(object):
     def list(self, list):
         """
         Sets the list of this TextRects.
+        The list of text occurrences.
 
         :param list: The list of this TextRects.
         :type: list[TextRect]

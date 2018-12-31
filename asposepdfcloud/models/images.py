@@ -97,6 +97,7 @@ class Images(object):
     def list(self):
         """
         Gets the list of this Images.
+        List of images.
 
         :return: The list of this Images.
         :rtype: list[Image]
@@ -107,6 +108,7 @@ class Images(object):
     def list(self, list):
         """
         Sets the list of this Images.
+        List of images.
 
         :param list: The list of this Images.
         :type: list[Image]

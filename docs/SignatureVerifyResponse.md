@@ -1,12 +1,12 @@
 ﻿# SignatureVerifyResponse
-Returns also a message.
+Represent responce containing signature verification result
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **int** | Response status code. | 
 **status** | **str** | Response status. | [optional] 
-**valid** | **bool** | Valid sign. | [optional] 
+**valid** | **bool** | True if signature is valid and false if not | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

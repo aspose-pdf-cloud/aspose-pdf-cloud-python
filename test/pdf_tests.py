@@ -154,7 +154,7 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.PolyLineAnnotation()
         annotation.name = 'Test Name'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -179,7 +179,7 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.PolyLineAnnotation()
         annotation.name = 'Test Name Updated'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text Updated'
@@ -236,7 +236,7 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.PolygonAnnotation()
         annotation.name = 'Test Name'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -261,7 +261,7 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.PolygonAnnotation()
         annotation.name = 'Test Name Updated'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text Updated'
@@ -318,7 +318,7 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.CircleAnnotation()
         annotation.name = 'Test Name'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -337,7 +337,7 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.CircleAnnotation()
         annotation.name = 'Test Name Updated'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text Updated'
@@ -389,7 +389,7 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.SquareAnnotation()
         annotation.name = 'Test Name'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -408,7 +408,7 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.SquareAnnotation()
         annotation.name = 'Test Name Updated'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text Updated'
@@ -461,7 +461,7 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.LineAnnotation()
         annotation.name = 'Test Name'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -481,7 +481,7 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.LineAnnotation()
         annotation.name = 'Test Name Updated'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text Updated'
@@ -539,7 +539,7 @@ class PdfTests(unittest.TestCase):
         annotation = asposepdfcloud.models.FreeTextAnnotation()
         annotation.name = 'Test Free Text'
         annotation.text_style = text_style
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.intent = asposepdfcloud.models.FreeTextIntent.FREETEXTTYPEWRITER
@@ -565,7 +565,7 @@ class PdfTests(unittest.TestCase):
         annotation = asposepdfcloud.models.FreeTextAnnotation()
         annotation.name = 'Test Free Text'
         annotation.text_style = text_style
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.intent = asposepdfcloud.models.FreeTextIntent.FREETEXTTYPEWRITER
@@ -619,7 +619,7 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.TextAnnotation()
         annotation.name = 'Test Free Text'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -639,7 +639,7 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.TextAnnotation()
         annotation.name = 'Test Free Text'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -693,7 +693,7 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.HighlightAnnotation()
         annotation.name = 'Name'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -719,7 +719,7 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.HighlightAnnotation()
         annotation.name = 'Name Updated'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Text Updated'
@@ -779,7 +779,7 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.UnderlineAnnotation()
         annotation.name = 'Name'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -805,7 +805,7 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.UnderlineAnnotation()
         annotation.name = 'Name Updated'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Text Updated'
@@ -864,7 +864,7 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.SquigglyAnnotation()
         annotation.name = 'Name'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -890,7 +890,7 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.SquigglyAnnotation()
         annotation.name = 'Name Updated'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Text Updated'
@@ -950,7 +950,7 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.StrikeOutAnnotation()
         annotation.name = 'Name'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -976,7 +976,7 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.StrikeOutAnnotation()
         annotation.name = 'Name Updated'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Text Updated'
@@ -1035,14 +1035,14 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.CaretAnnotation()
         annotation.name = 'Name'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
         annotation.subject = 'Subj'
         annotation.z_index = 1
         annotation.title = 'Title'
-        annotation.frame = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.frame = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.modified = '02/02/2018 00:00:00.000 AM'
 
         response = self.pdf_api.post_page_caret_annotations(file_name, page_number,  [annotation], folder=self.temp_folder)
@@ -1056,14 +1056,14 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.CaretAnnotation()
         annotation.name = 'Name Updated'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Text Updated'
         annotation.subject = 'Subj Updated'
         annotation.z_index = 1
         annotation.title = 'Title Updated'
-        annotation.frame = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.frame = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.modified = '02/02/2018 00:00:00.000 AM'
 
         response_annotations = self.pdf_api.get_document_caret_annotations(file_name, folder=self.temp_folder)
@@ -1111,7 +1111,7 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.InkAnnotation()
         annotation.name = 'Name'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -1143,7 +1143,7 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.InkAnnotation()
         annotation.name = 'Name Updated'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Text Updated'
@@ -1217,7 +1217,7 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.PopupAnnotation()
         annotation.name = 'Name'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.z_index = 1
@@ -1234,7 +1234,7 @@ class PdfTests(unittest.TestCase):
 
         annotation = asposepdfcloud.models.PopupAnnotation()
         annotation.name = 'Name Updated'
-        annotation.rect = asposepdfcloud.models.RectanglePdf(llx=100, lly=100, urx=200, ury=200)
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.z_index = 1
@@ -2213,7 +2213,7 @@ class PdfTests(unittest.TestCase):
         file_name = 'Hello_world.pdf'
         self.uploadFile(file_name)
 
-        rect = asposepdfcloud.models.RectanglePdf(50, 200, 200, 400)
+        rect = asposepdfcloud.models.Rectangle(50, 200, 200, 400)
 
         field = asposepdfcloud.models.Field()
         field.name = 'checkboxfield'
@@ -2288,6 +2288,18 @@ class PdfTests(unittest.TestCase):
         self.assertEqual(response.code, 200)
 
 
+    def testPostFlattenDocument(self):
+        file_name = 'PdfWithAcroForm.pdf'
+        self.uploadFile(file_name)
+
+        opts = {
+              "hide_buttons": True,
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.post_flatten_document(file_name,  **opts)
+        self.assertEqual(response.code, 200)
+
     def testPutFieldsFlatten(self):
         file_name = 'PdfWithAcroForm.pdf'
         self.uploadFile(file_name)
@@ -2298,7 +2310,6 @@ class PdfTests(unittest.TestCase):
 
         response = self.pdf_api.put_fields_flatten(file_name,  **opts)
         self.assertEqual(response.code, 200)
-
 
     # Images Tests
 
@@ -2645,7 +2656,7 @@ class PdfTests(unittest.TestCase):
               "folder" : self.temp_folder
         }
 
-        rect = asposepdfcloud.models.RectanglePdf(100, 100, 500, 500)
+        rect = asposepdfcloud.models.Rectangle(100, 100, 500, 500)
 
         linkAnnotation = asposepdfcloud.models.LinkAnnotation()
         linkAnnotation.action_type = asposepdfcloud.models.LinkActionType.GOTOURIACTION
@@ -2668,7 +2679,7 @@ class PdfTests(unittest.TestCase):
         self.assertEqual(annotations_response.code, 200)
         link_id = annotations_response.links.list[0].id
 
-        rect = asposepdfcloud.models.RectanglePdf(100, 100, 500, 500)
+        rect = asposepdfcloud.models.Rectangle(100, 100, 500, 500)
 
         linkAnnotation = asposepdfcloud.models.LinkAnnotation()
         linkAnnotation.action_type = asposepdfcloud.models.LinkActionType.GOTOURIACTION
@@ -3157,7 +3168,7 @@ class PdfTests(unittest.TestCase):
         signature_file_name = 'test1234.pfx'
         self.uploadFile(signature_file_name)
 
-        rectangle = asposepdfcloud.models.RectanglePdf(100, 100, 500, 500)
+        rectangle = asposepdfcloud.models.Rectangle(100, 100, 500, 500)
         
         signature = asposepdfcloud.models.Signature(
                 signature_path=self.temp_folder + '/' + signature_file_name,
@@ -3190,7 +3201,7 @@ class PdfTests(unittest.TestCase):
 
         page_number = 1
 
-        rectangle = asposepdfcloud.models.RectanglePdf(100, 100, 500, 500)
+        rectangle = asposepdfcloud.models.Rectangle(100, 100, 500, 500)
 
         signature = asposepdfcloud.models.Signature(
                 signature_path=self.temp_folder + '/' + signature_file_name,
@@ -3220,7 +3231,7 @@ class PdfTests(unittest.TestCase):
         signature_file_name = 'test1234.pfx'
         self.uploadFile(signature_file_name)
 
-        rectangle = asposepdfcloud.models.RectanglePdf(100, 100, 500, 500)
+        rectangle = asposepdfcloud.models.Rectangle(100, 100, 500, 500)
         
         signature = asposepdfcloud.models.Signature(
                 signature_path=self.temp_folder + '/' + signature_file_name,
@@ -3257,7 +3268,7 @@ class PdfTests(unittest.TestCase):
         file_name = 'marketing.pdf'
         self.uploadFile(file_name)
         
-        rect = asposepdfcloud.models.RectanglePdf(100, 100, 300, 300)
+        rect = asposepdfcloud.models.Rectangle(100, 100, 300, 300)
 
         text_replace = asposepdfcloud.models.TextReplace(
                 old_value='market',
@@ -3284,7 +3295,7 @@ class PdfTests(unittest.TestCase):
         self.uploadFile(file_name)
         page_number = 1
 
-        rect = asposepdfcloud.models.RectanglePdf(100, 100, 400, 400)
+        rect = asposepdfcloud.models.Rectangle(100, 100, 400, 400)
 
         text_replace = asposepdfcloud.models.TextReplace(
                 old_value='market',
@@ -3347,7 +3358,7 @@ class PdfTests(unittest.TestCase):
 
         page_number = 1
 
-        rectangle = asposepdfcloud.models.RectanglePdf(100, 100, 300, 300)
+        rectangle = asposepdfcloud.models.Rectangle(100, 100, 300, 300)
         
         foreground_color = asposepdfcloud.models.Color(a=0x00, r=0x00, g=0xFF, b=0x00)
         
@@ -3405,6 +3416,76 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.get_list_files(path=self.temp_folder)
         self.assertEqual(response.code, 200)
 
+    def testPostMoveFile(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        src = self.temp_folder + '/' + file_name
+        dest = self.temp_folder + '/4pages_renamed.pdf'
+
+        response = self.pdf_api.post_move_file(src, dest)
+        self.assertEqual(response.code, 200)
+
+    def testDeleteFile(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        path = self.temp_folder + '/' + file_name
+        
+        response = self.pdf_api.delete_file(path)
+        self.assertEqual(response.code, 200)
+
+    def testPutCreateFolder(self):
+
+        path = self.temp_folder + '/testFolder'
+        
+        response = self.pdf_api.put_create_folder(path)
+        self.assertEqual(response.code, 200)
+
+    def testPostMoveFolder(self):
+
+        src = self.temp_folder + '/testFolder'
+        response_create_folder = self.pdf_api.put_create_folder(src)
+        self.assertEqual(response_create_folder.code, 200)
+
+        dest = self.temp_folder + '/testFolderRednamed'
+
+        response = self.pdf_api.post_move_folder(src, dest)
+        self.assertEqual(response.code, 200)
+
+    def testDeleteFolder(self):
+
+        path = self.temp_folder + '/testFolder'
+        response_create_folder = self.pdf_api.put_create_folder(path)
+        self.assertEqual(response_create_folder.code, 200)
+
+        response = self.pdf_api.delete_folder(path)
+        self.assertEqual(response.code, 200)
+
+    def testGetIsStorageExist(self):
+        name = 'PDF-CI'
+        
+        response = self.pdf_api.get_is_storage_exist(name)
+        self.assertEqual(response.code, 200)
+
+    def testGetIsExist(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        path = self.temp_folder + '/' + file_name
+        
+        response = self.pdf_api.get_is_exist(path)
+        self.assertEqual(response.code, 200)
+
+    def testGetDiscUsage(self):
+        
+        response = self.pdf_api.get_disc_usage()
+        self.assertEqual(response.code, 200)
+
+    def testGetListFileVersions(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        path = self.temp_folder + '/' + file_name
+        
+        response = self.pdf_api.get_list_file_versions(path)
+        self.assertEqual(response.code, 200)
 
 if __name__ == '__main__':
     unittest.main()

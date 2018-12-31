@@ -126,6 +126,7 @@ class TextAnnotationResponse(object):
     def annotation(self):
         """
         Gets the annotation of this TextAnnotationResponse.
+        Text annotation object
 
         :return: The annotation of this TextAnnotationResponse.
         :rtype: TextAnnotation
@@ -136,6 +137,7 @@ class TextAnnotationResponse(object):
     def annotation(self, annotation):
         """
         Sets the annotation of this TextAnnotationResponse.
+        Text annotation object
 
         :param annotation: The annotation of this TextAnnotationResponse.
         :type: TextAnnotation

@@ -97,6 +97,7 @@ class Attachments(object):
     def list(self):
         """
         Gets the list of this Attachments.
+        List of annotations.
 
         :return: The list of this Attachments.
         :rtype: list[LinkElement]
@@ -107,6 +108,7 @@ class Attachments(object):
     def list(self, list):
         """
         Sets the list of this Attachments.
+        List of annotations.
 
         :param list: The list of this Attachments.
         :type: list[LinkElement]

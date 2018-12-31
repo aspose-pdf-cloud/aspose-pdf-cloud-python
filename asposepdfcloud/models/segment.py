@@ -73,6 +73,7 @@ class Segment(object):
     def value(self):
         """
         Gets the value of this Segment.
+        Text that the Segment object represents.
 
         :return: The value of this Segment.
         :rtype: str
@@ -83,6 +84,7 @@ class Segment(object):
     def value(self, value):
         """
         Sets the value of this Segment.
+        Text that the Segment object represents.
 
         :param value: The value of this Segment.
         :type: str
@@ -96,6 +98,7 @@ class Segment(object):
     def text_state(self):
         """
         Gets the text_state of this Segment.
+        Text state for the text that Segment object represents.
 
         :return: The text_state of this Segment.
         :rtype: TextState
@@ -106,6 +109,7 @@ class Segment(object):
     def text_state(self, text_state):
         """
         Sets the text_state of this Segment.
+        Text state for the text that Segment object represents.
 
         :param text_state: The text_state of this Segment.
         :type: TextState

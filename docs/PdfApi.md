@@ -8,6 +8,8 @@ Method | HTTP request | Description
 [**delete_document_annotations**](PdfApi.md#delete_document_annotations) | **DELETE** /pdf/\{name}/annotations | Delete all annotations from the document
 [**delete_document_link_annotations**](PdfApi.md#delete_document_link_annotations) | **DELETE** /pdf/\{name}/links | Delete all link annotations from the document
 [**delete_field**](PdfApi.md#delete_field) | **DELETE** /pdf/\{name}/fields/\{fieldName} | Delete document field by name.
+[**delete_file**](PdfApi.md#delete_file) | **DELETE** /storage/file | Remove a specific file 
+[**delete_folder**](PdfApi.md#delete_folder) | **DELETE** /storage/folder | Remove a specific folder 
 [**delete_image**](PdfApi.md#delete_image) | **DELETE** /pdf/\{name}/images/\{imageId} | Delete image from document page.
 [**delete_link_annotation**](PdfApi.md#delete_link_annotation) | **DELETE** /pdf/\{name}/links/\{linkId} | Delete document page link annotation by ID
 [**delete_page**](PdfApi.md#delete_page) | **DELETE** /pdf/\{name}/pages/\{pageNumber} | Delete document page by its number.
@@ -17,6 +19,7 @@ Method | HTTP request | Description
 [**delete_property**](PdfApi.md#delete_property) | **DELETE** /pdf/\{name}/documentproperties/\{propertyName} | Delete document property.
 [**get_caret_annotation**](PdfApi.md#get_caret_annotation) | **GET** /pdf/\{name}/annotations/caret/\{annotationId} | Read document page caret annotation by ID.
 [**get_circle_annotation**](PdfApi.md#get_circle_annotation) | **GET** /pdf/\{name}/annotations/circle/\{annotationId} | Read document page circle annotation by ID.
+[**get_disc_usage**](PdfApi.md#get_disc_usage) | **GET** /storage/disc | Check the disk usage of the current account 
 [**get_document**](PdfApi.md#get_document) | **GET** /pdf/\{name} | Read common document info.
 [**get_document_annotations**](PdfApi.md#get_document_annotations) | **GET** /pdf/\{name}/annotations | Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
 [**get_document_attachment_by_index**](PdfApi.md#get_document_attachment_by_index) | **GET** /pdf/\{name}/attachments/\{attachmentIndex} | Read document attachment info by its index.
@@ -54,9 +57,12 @@ Method | HTTP request | Description
 [**get_image_extract_as_tiff**](PdfApi.md#get_image_extract_as_tiff) | **GET** /pdf/\{name}/images/\{imageId}/extract/tiff | Extract document image in TIFF format
 [**get_images**](PdfApi.md#get_images) | **GET** /pdf/\{name}/pages/\{pageNumber}/images | Read document images.
 [**get_ink_annotation**](PdfApi.md#get_ink_annotation) | **GET** /pdf/\{name}/annotations/ink/\{annotationId} | Read document page ink annotation by ID.
+[**get_is_exist**](PdfApi.md#get_is_exist) | **GET** /storage/exist | Check if a specific file or folder exists
+[**get_is_storage_exist**](PdfApi.md#get_is_storage_exist) | **GET** /storage/\{name}/exist | Check if storage exists 
 [**get_la_te_x_in_storage_to_pdf**](PdfApi.md#get_la_te_x_in_storage_to_pdf) | **GET** /pdf/create/latex | Convert LaTeX file (located on storage) to PDF format and return resulting file in response. 
 [**get_line_annotation**](PdfApi.md#get_line_annotation) | **GET** /pdf/\{name}/annotations/line/\{annotationId} | Read document page line annotation by ID.
 [**get_link_annotation**](PdfApi.md#get_link_annotation) | **GET** /pdf/\{name}/links/\{linkId} | Read document link annotation by ID.
+[**get_list_file_versions**](PdfApi.md#get_list_file_versions) | **GET** /storage/version | Get the file&#39;s versions list 
 [**get_list_files**](PdfApi.md#get_list_files) | **GET** /storage/folder | Get the file listing of a specific folder 
 [**get_mht_in_storage_to_pdf**](PdfApi.md#get_mht_in_storage_to_pdf) | **GET** /pdf/create/mht | Convert MHT file (located on storage) to PDF format and return resulting file in response. 
 [**get_page**](PdfApi.md#get_page) | **GET** /pdf/\{name}/pages/\{pageNumber} | Read document page info.
@@ -119,7 +125,10 @@ Method | HTTP request | Description
 [**post_append_document**](PdfApi.md#post_append_document) | **POST** /pdf/\{name}/appendDocument | Append document to existing one.
 [**post_create_field**](PdfApi.md#post_create_field) | **POST** /pdf/\{name}/fields | Create field.
 [**post_document_text_replace**](PdfApi.md#post_document_text_replace) | **POST** /pdf/\{name}/text/replace | Document&#39;s replace text method.
+[**post_flatten_document**](PdfApi.md#post_flatten_document) | **POST** /pdf/\{name}/flatten | Removes all fields from the document and place their values instead.
 [**post_insert_image**](PdfApi.md#post_insert_image) | **POST** /pdf/\{name}/pages/\{pageNumber}/images | Insert image to document page.
+[**post_move_file**](PdfApi.md#post_move_file) | **POST** /storage/file | Move a specific file
+[**post_move_folder**](PdfApi.md#post_move_folder) | **POST** /storage/folder | Move a specific folder 
 [**post_move_page**](PdfApi.md#post_move_page) | **POST** /pdf/\{name}/pages/\{pageNumber}/movePage | Move page to new position.
 [**post_optimize_document**](PdfApi.md#post_optimize_document) | **POST** /pdf/\{name}/optimize | Optimize document.
 [**post_page_caret_annotations**](PdfApi.md#post_page_caret_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/caret | Add document page caret annotations.
@@ -147,6 +156,7 @@ Method | HTTP request | Description
 [**put_circle_annotation**](PdfApi.md#put_circle_annotation) | **PUT** /pdf/\{name}/annotations/circle/\{annotationId} | Replace document circle annotation
 [**put_create**](PdfApi.md#put_create) | **PUT** /storage/file | Upload a specific file 
 [**put_create_document**](PdfApi.md#put_create_document) | **PUT** /pdf/\{name} | Create empty document.
+[**put_create_folder**](PdfApi.md#put_create_folder) | **PUT** /storage/folder | Create the folder 
 [**put_epub_in_storage_to_pdf**](PdfApi.md#put_epub_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/epub | Convert EPUB file (located on storage) to PDF format and upload resulting file to storage. 
 [**put_fields_flatten**](PdfApi.md#put_fields_flatten) | **PUT** /pdf/\{name}/fields/flatten | Flatten form fields in document.
 [**put_free_text_annotation**](PdfApi.md#put_free_text_annotation) | **PUT** /pdf/\{name}/annotations/freetext/\{annotationId} | Replace document free text annotation
@@ -309,6 +319,54 @@ Name | Type | Description  | Notes
  **field_name** | **str**| The field name/ | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_file**
+> AsposeResponse delete_file(path, version_id=version_id, storage=storage)
+
+Remove a specific file 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **str**| Path of the file including file name and extension e.g. /Folder1/file.ext | 
+ **version_id** | **str**| File&#39;s version | [optional] 
+ **storage** | **str**| User&#39;s storage name | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_folder**
+> AsposeResponse delete_folder(path, storage=storage, recursive=recursive)
+
+Remove a specific folder 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **str**| Folder path e.g. /Folder1 | 
+ **storage** | **str**| User&#39;s storage name | [optional] 
+ **recursive** | **bool**| Remove recursivelly inner folder/files. If false and folder contains data than exception is raised. | [optional] [default to false]
 
 ### Return type
 
@@ -537,6 +595,28 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CircleAnnotationResponse**](CircleAnnotationResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_disc_usage**
+> DiscUsageResponse get_disc_usage(storage=storage)
+
+Check the disk usage of the current account 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storage** | **str**| User&#39;s storage name | [optional] 
+
+### Return type
+
+[**DiscUsageResponse**](DiscUsageResponse.md)
 
 ### HTTP request headers
 
@@ -1462,6 +1542,52 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_is_exist**
+> FileExistResponse get_is_exist(path, version_id=version_id, storage=storage)
+
+Check if a specific file or folder exists
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **str**| File or folder path e.g. /file.ext or /Folder1 | 
+ **version_id** | **str**| File&#39;s version | [optional] 
+ **storage** | **str**| User&#39;s storage name | [optional] 
+
+### Return type
+
+[**FileExistResponse**](FileExistResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_is_storage_exist**
+> StorageExistResponse get_is_storage_exist(name)
+
+Check if storage exists 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Storage name | 
+
+### Return type
+
+[**StorageExistResponse**](StorageExistResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_la_te_x_in_storage_to_pdf**
 > file get_la_te_x_in_storage_to_pdf(src_path, storage=storage)
 
@@ -1527,6 +1653,29 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**LinkAnnotationResponse**](LinkAnnotationResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_list_file_versions**
+> FileVersionsResponse get_list_file_versions(path, storage=storage)
+
+Get the file's versions list 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **str**| File path e.g. /file.ext or /Folder1/file.ext | 
+ **storage** | **str**| User&#39;s storage name | [optional] 
+
+### Return type
+
+[**FileVersionsResponse**](FileVersionsResponse.md)
 
 ### HTTP request headers
 
@@ -2155,10 +2304,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **page_number** | **int**| Number of page (starting from 1). | 
- **llx** | **float**|  | 
- **lly** | **float**|  | 
- **urx** | **float**|  | 
- **ury** | **float**|  | 
+ **llx** | **float**| X-coordinate of lower - left corner. | 
+ **lly** | **float**| Y - coordinate of lower-left corner. | 
+ **urx** | **float**| X - coordinate of upper-right corner. | 
+ **ury** | **float**| Y - coordinate of upper-right corner. | 
  **format** | **list[str]**| List of formats for search. | [optional] 
  **regex** | **str**| Formats are specified as a regular expression. | [optional] 
  **split_rects** | **bool**| Split result fragments (default is true). | [optional] 
@@ -2315,7 +2464,7 @@ Converts PDF document (located on storage) to EPUB format and returns resulting 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
- **content_recognition_mode** | **str**| Рroperty tunes conversion for this or that desirable method of recognition of content. | [optional] 
+ **content_recognition_mode** | **str**| Property tunes conversion for this or that desirable method of recognition of content. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 
@@ -2836,10 +2985,10 @@ Read document text.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
- **llx** | **float**|  | 
- **lly** | **float**|  | 
- **urx** | **float**|  | 
- **ury** | **float**|  | 
+ **llx** | **float**| X-coordinate of lower - left corner. | 
+ **lly** | **float**| Y - coordinate of lower-left corner. | 
+ **urx** | **float**| X - coordinate of upper-right corner. | 
+ **ury** | **float**| Y - coordinate of upper-right corner. | 
  **format** | **list[str]**| List of formats for search. | [optional] 
  **regex** | **str**| Formats are specified as a regular expression. | [optional] 
  **split_rects** | **bool**| Split result fragments (default is true). | [optional] 
@@ -3159,6 +3308,33 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **post_flatten_document**
+> AsposeResponse post_flatten_document(name, update_appearances=update_appearances, call_events=call_events, hide_buttons=hide_buttons, storage=storage, folder=folder)
+
+Removes all fields from the document and place their values instead.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **update_appearances** | **bool**| If set, all field appearances will be regenerated before flattening. This option may help if field is incorrectly flattened. This option may decrease performance.. | [optional] 
+ **call_events** | **bool**| If set, formatting and other JavaScript events will be called. | [optional] 
+ **hide_buttons** | **bool**| If set, buttons will be removed from flattened document. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **post_insert_image**
 > AsposeResponse post_insert_image(name, page_number, llx, lly, urx, ury, image_file_path=image_file_path, storage=storage, folder=folder, image=image)
 
@@ -3186,6 +3362,57 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_move_file**
+> AsposeResponse post_move_file(src, dest, version_id=version_id, storage=storage, dest_storage=dest_storage)
+
+Move a specific file
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **src** | **str**| Source file path e.g. /fileSource.ext | 
+ **dest** | **str**| Destination file path e.g. /fileDestination.ext | 
+ **version_id** | **str**| Source file&#39;s version, | [optional] 
+ **storage** | **str**| User&#39;s source storage name | [optional] 
+ **dest_storage** | **str**| User&#39;s destination storage name | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_move_folder**
+> AsposeResponse post_move_folder(src, dest, storage=storage, dest_storage=dest_storage)
+
+Move a specific folder 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **src** | **str**| Source folder path e.g. /Folder1 | 
+ **dest** | **str**| Destination folder path e.g. /Folder2 | 
+ **storage** | **str**| User&#39;s source storage name | [optional] 
+ **dest_storage** | **str**| User&#39;s destination storage name | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -3878,6 +4105,30 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DocumentResponse**](DocumentResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_create_folder**
+> AsposeResponse put_create_folder(path, storage=storage, dest_storage=dest_storage)
+
+Create the folder 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **str**| Target folder&#39;s path e.g. Folder1/Folder2/. The folders will be created recursively | 
+ **storage** | **str**| User&#39;s source storage name | [optional] 
+ **dest_storage** | **str**| User&#39;s destination storage name | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
 
 ### HTTP request headers
 
@@ -4683,7 +4934,7 @@ Converts PDF document (in request content) to EPUB format and uploads resulting 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **out_path** | **str**| Full resulting filename (ex. /folder1/folder2/result.epub) | 
- **content_recognition_mode** | **str**| Рroperty tunes conversion for this or that desirable method of recognition of content. | [optional] 
+ **content_recognition_mode** | **str**| Property tunes conversion for this or that desirable method of recognition of content. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
  **file** | **file**| A file to be converted. | [optional] 
 
@@ -5033,7 +5284,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **out_path** | **str**| Full resulting filename (ex. /folder1/folder2/result.epub) | 
- **content_recognition_mode** | **str**| Рroperty tunes conversion for this or that desirable method of recognition of content. | [optional] 
+ **content_recognition_mode** | **str**| Property tunes conversion for this or that desirable method of recognition of content. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 

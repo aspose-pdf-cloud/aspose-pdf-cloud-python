@@ -97,6 +97,7 @@ class CaretAnnotations(object):
     def list(self):
         """
         Gets the list of this CaretAnnotations.
+        List of caret annotations.
 
         :return: The list of this CaretAnnotations.
         :rtype: list[CaretAnnotation]
@@ -107,6 +108,7 @@ class CaretAnnotations(object):
     def list(self, list):
         """
         Sets the list of this CaretAnnotations.
+        List of caret annotations.
 
         :param list: The list of this CaretAnnotations.
         :type: list[CaretAnnotation]

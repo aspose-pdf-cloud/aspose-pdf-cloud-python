@@ -49,12 +49,13 @@ class LineAnnotation(object):
     """
     swagger_types = {
         'links': 'list[Link]',
+        'color': 'Color',
         'contents': 'str',
         'modified': 'str',
         'id': 'str',
         'flags': 'list[AnnotationFlags]',
         'name': 'str',
-        'rect': 'RectanglePdf',
+        'rect': 'Rectangle',
         'page_index': 'int',
         'z_index': 'int',
         'horizontal_alignment': 'HorizontalAlignment',
@@ -74,12 +75,12 @@ class LineAnnotation(object):
         'show_caption': 'bool',
         'caption_offset': 'Point',
         'caption_position': 'CaptionPosition',
-        'color': 'Color',
         'intent': 'LineIntent'
     }
 
     attribute_map = {
         'links': 'Links',
+        'color': 'Color',
         'contents': 'Contents',
         'modified': 'Modified',
         'id': 'Id',
@@ -105,16 +106,16 @@ class LineAnnotation(object):
         'show_caption': 'ShowCaption',
         'caption_offset': 'CaptionOffset',
         'caption_position': 'CaptionPosition',
-        'color': 'Color',
         'intent': 'Intent'
     }
 
-    def __init__(self, links=None, contents=None, modified=None, id=None, flags=None, name=None, rect=None, page_index=None, z_index=None, horizontal_alignment=None, vertical_alignment=None, creation_date=None, subject=None, title=None, rich_text=None, starting=None, starting_style=None, ending=None, ending_style=None, interior_color=None, leader_line=None, leader_line_extension=None, leader_line_offset=None, show_caption=None, caption_offset=None, caption_position=None, color=None, intent=None):
+    def __init__(self, links=None, color=None, contents=None, modified=None, id=None, flags=None, name=None, rect=None, page_index=None, z_index=None, horizontal_alignment=None, vertical_alignment=None, creation_date=None, subject=None, title=None, rich_text=None, starting=None, starting_style=None, ending=None, ending_style=None, interior_color=None, leader_line=None, leader_line_extension=None, leader_line_offset=None, show_caption=None, caption_offset=None, caption_position=None, intent=None):
         """
         LineAnnotation - a model defined in Swagger
         """
 
         self._links = None
+        self._color = None
         self._contents = None
         self._modified = None
         self._id = None
@@ -140,11 +141,12 @@ class LineAnnotation(object):
         self._show_caption = None
         self._caption_offset = None
         self._caption_position = None
-        self._color = None
         self._intent = None
 
         if links is not None:
           self.links = links
+        if color is not None:
+          self.color = color
         if contents is not None:
           self.contents = contents
         if modified is not None:
@@ -195,8 +197,6 @@ class LineAnnotation(object):
           self.caption_offset = caption_offset
         if caption_position is not None:
           self.caption_position = caption_position
-        if color is not None:
-          self.color = color
         if intent is not None:
           self.intent = intent
 
@@ -222,6 +222,29 @@ class LineAnnotation(object):
         """
 
         self._links = links
+
+    @property
+    def color(self):
+        """
+        Gets the color of this LineAnnotation.
+        Color of the annotation.
+
+        :return: The color of this LineAnnotation.
+        :rtype: Color
+        """
+        return self._color
+
+    @color.setter
+    def color(self, color):
+        """
+        Sets the color of this LineAnnotation.
+        Color of the annotation.
+
+        :param color: The color of this LineAnnotation.
+        :type: Color
+        """
+
+        self._color = color
 
     @property
     def contents(self):
@@ -345,7 +368,7 @@ class LineAnnotation(object):
         Gets Rect of the annotation.
 
         :return: The rect of this LineAnnotation.
-        :rtype: RectanglePdf
+        :rtype: Rectangle
         """
         return self._rect
 
@@ -356,7 +379,7 @@ class LineAnnotation(object):
         Gets Rect of the annotation.
 
         :param rect: The rect of this LineAnnotation.
-        :type: RectanglePdf
+        :type: Rectangle
         """
 
         self._rect = rect
@@ -797,29 +820,6 @@ class LineAnnotation(object):
         """
 
         self._caption_position = caption_position
-
-    @property
-    def color(self):
-        """
-        Gets the color of this LineAnnotation.
-        Color of the annotation.
-
-        :return: The color of this LineAnnotation.
-        :rtype: Color
-        """
-        return self._color
-
-    @color.setter
-    def color(self, color):
-        """
-        Sets the color of this LineAnnotation.
-        Color of the annotation.
-
-        :param color: The color of this LineAnnotation.
-        :type: Color
-        """
-
-        self._color = color
 
     @property
     def intent(self):

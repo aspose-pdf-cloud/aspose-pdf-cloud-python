@@ -126,6 +126,7 @@ class SquareAnnotationResponse(object):
     def annotation(self):
         """
         Gets the annotation of this SquareAnnotationResponse.
+        Square annotation object
 
         :return: The annotation of this SquareAnnotationResponse.
         :rtype: SquareAnnotation
@@ -136,6 +137,7 @@ class SquareAnnotationResponse(object):
     def annotation(self, annotation):
         """
         Sets the annotation of this SquareAnnotationResponse.
+        Square annotation object
 
         :param annotation: The annotation of this SquareAnnotationResponse.
         :type: SquareAnnotation

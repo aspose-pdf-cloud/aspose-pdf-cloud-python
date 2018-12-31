@@ -97,6 +97,7 @@ class PolyLineAnnotations(object):
     def list(self):
         """
         Gets the list of this PolyLineAnnotations.
+        List of polyline annotations.
 
         :return: The list of this PolyLineAnnotations.
         :rtype: list[PolyLineAnnotation]
@@ -107,6 +108,7 @@ class PolyLineAnnotations(object):
     def list(self, list):
         """
         Sets the list of this PolyLineAnnotations.
+        List of polyline annotations.
 
         :param list: The list of this PolyLineAnnotations.
         :type: list[PolyLineAnnotation]

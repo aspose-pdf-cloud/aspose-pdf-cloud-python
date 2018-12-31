@@ -97,6 +97,7 @@ class FreeTextAnnotations(object):
     def list(self):
         """
         Gets the list of this FreeTextAnnotations.
+        List of free text annotations.
 
         :return: The list of this FreeTextAnnotations.
         :rtype: list[FreeTextAnnotation]
@@ -107,6 +108,7 @@ class FreeTextAnnotations(object):
     def list(self, list):
         """
         Sets the list of this FreeTextAnnotations.
+        List of free text annotations.
 
         :param list: The list of this FreeTextAnnotations.
         :type: list[FreeTextAnnotation]

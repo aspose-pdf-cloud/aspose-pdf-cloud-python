@@ -80,6 +80,7 @@ class Color(object):
     def a(self):
         """
         Gets the a of this Color.
+        Alpha component.
 
         :return: The a of this Color.
         :rtype: int
@@ -90,6 +91,7 @@ class Color(object):
     def a(self, a):
         """
         Sets the a of this Color.
+        Alpha component.
 
         :param a: The a of this Color.
         :type: int
@@ -103,6 +105,7 @@ class Color(object):
     def r(self):
         """
         Gets the r of this Color.
+        Red component.
 
         :return: The r of this Color.
         :rtype: int
@@ -113,6 +116,7 @@ class Color(object):
     def r(self, r):
         """
         Sets the r of this Color.
+        Red component.
 
         :param r: The r of this Color.
         :type: int
@@ -126,6 +130,7 @@ class Color(object):
     def g(self):
         """
         Gets the g of this Color.
+        Green component.
 
         :return: The g of this Color.
         :rtype: int
@@ -136,6 +141,7 @@ class Color(object):
     def g(self, g):
         """
         Sets the g of this Color.
+        Green component.
 
         :param g: The g of this Color.
         :type: int
@@ -149,6 +155,7 @@ class Color(object):
     def b(self):
         """
         Gets the b of this Color.
+        Blue component.
 
         :return: The b of this Color.
         :rtype: int
@@ -159,6 +166,7 @@ class Color(object):
     def b(self, b):
         """
         Sets the b of this Color.
+        Blue component.
 
         :param b: The b of this Color.
         :type: int

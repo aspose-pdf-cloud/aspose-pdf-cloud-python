@@ -52,7 +52,7 @@ class Field(object):
         'name': 'str',
         'selected_items': 'list[int]',
         'type': 'FieldType',
-        'rect': 'RectanglePdf',
+        'rect': 'Rectangle',
         'values': 'list[str]'
     }
 
@@ -189,7 +189,7 @@ class Field(object):
         Field rectangle.
 
         :return: The rect of this Field.
-        :rtype: RectanglePdf
+        :rtype: Rectangle
         """
         return self._rect
 
@@ -200,7 +200,7 @@ class Field(object):
         Field rectangle.
 
         :param rect: The rect of this Field.
-        :type: RectanglePdf
+        :type: Rectangle
         """
 
         self._rect = rect

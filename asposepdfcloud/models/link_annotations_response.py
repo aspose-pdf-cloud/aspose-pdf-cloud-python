@@ -126,6 +126,7 @@ class LinkAnnotationsResponse(object):
     def links(self):
         """
         Gets the links of this LinkAnnotationsResponse.
+        LinkAnnotations object
 
         :return: The links of this LinkAnnotationsResponse.
         :rtype: LinkAnnotations
@@ -136,6 +137,7 @@ class LinkAnnotationsResponse(object):
     def links(self, links):
         """
         Sets the links of this LinkAnnotationsResponse.
+        LinkAnnotations object
 
         :param links: The links of this LinkAnnotationsResponse.
         :type: LinkAnnotations

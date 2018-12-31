@@ -126,6 +126,7 @@ class PolyLineAnnotationResponse(object):
     def annotation(self):
         """
         Gets the annotation of this PolyLineAnnotationResponse.
+        Polyline annotation object
 
         :return: The annotation of this PolyLineAnnotationResponse.
         :rtype: PolyLineAnnotation
@@ -136,6 +137,7 @@ class PolyLineAnnotationResponse(object):
     def annotation(self, annotation):
         """
         Sets the annotation of this PolyLineAnnotationResponse.
+        Polyline annotation object
 
         :param annotation: The annotation of this PolyLineAnnotationResponse.
         :type: PolyLineAnnotation

@@ -43,12 +43,14 @@ from .caret_symbol import CaretSymbol
 from .color import Color
 from .color_depth import ColorDepth
 from .compression_type import CompressionType
+from .disc_usage import DiscUsage
 from .doc_format import DocFormat
 from .doc_recognition_mode import DocRecognitionMode
 from .document_privilege import DocumentPrivilege
 from .epub_recognition_mode import EpubRecognitionMode
 from .field_type import FieldType
 from .file import File
+from .file_exist import FileExist
 from .font_encoding_rules import FontEncodingRules
 from .font_saving_modes import FontSavingModes
 from .font_styles import FontStyles
@@ -78,7 +80,7 @@ from .pdf_a_type import PdfAType
 from .point import Point
 from .poly_intent import PolyIntent
 from .raster_images_saving_modes import RasterImagesSavingModes
-from .rectangle_pdf import RectanglePdf
+from .rectangle import Rectangle
 from .rotation import Rotation
 from .segment import Segment
 from .shape_type import ShapeType
@@ -112,6 +114,7 @@ from .caret_annotations_response import CaretAnnotationsResponse
 from .circle_annotation_response import CircleAnnotationResponse
 from .circle_annotations import CircleAnnotations
 from .circle_annotations_response import CircleAnnotationsResponse
+from .disc_usage_response import DiscUsageResponse
 from .document import Document
 from .document_page_response import DocumentPageResponse
 from .document_pages_response import DocumentPagesResponse
@@ -124,6 +127,9 @@ from .field import Field
 from .field_response import FieldResponse
 from .fields import Fields
 from .fields_response import FieldsResponse
+from .file_exist_response import FileExistResponse
+from .file_version import FileVersion
+from .file_versions_response import FileVersionsResponse
 from .files_response import FilesResponse
 from .free_text_annotation_response import FreeTextAnnotationResponse
 from .free_text_annotations import FreeTextAnnotations
@@ -165,6 +171,7 @@ from .square_annotations_response import SquareAnnotationsResponse
 from .squiggly_annotation_response import SquigglyAnnotationResponse
 from .squiggly_annotations import SquigglyAnnotations
 from .squiggly_annotations_response import SquigglyAnnotationsResponse
+from .storage_exist_response import StorageExistResponse
 from .strike_out_annotation_response import StrikeOutAnnotationResponse
 from .strike_out_annotations import StrikeOutAnnotations
 from .strike_out_annotations_response import StrikeOutAnnotationsResponse

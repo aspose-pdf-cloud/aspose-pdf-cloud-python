@@ -97,6 +97,7 @@ class PopupAnnotations(object):
     def list(self):
         """
         Gets the list of this PopupAnnotations.
+        List of popup annotations.
 
         :return: The list of this PopupAnnotations.
         :rtype: list[PopupAnnotationWithParent]
@@ -107,6 +108,7 @@ class PopupAnnotations(object):
     def list(self, list):
         """
         Sets the list of this PopupAnnotations.
+        List of popup annotations.
 
         :param list: The list of this PopupAnnotations.
         :type: list[PopupAnnotationWithParent]

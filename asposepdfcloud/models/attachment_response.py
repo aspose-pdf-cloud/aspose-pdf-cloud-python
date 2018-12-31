@@ -126,6 +126,7 @@ class AttachmentResponse(object):
     def attachment(self):
         """
         Gets the attachment of this AttachmentResponse.
+        Attachment object
 
         :return: The attachment of this AttachmentResponse.
         :rtype: Attachment
@@ -136,6 +137,7 @@ class AttachmentResponse(object):
     def attachment(self, attachment):
         """
         Sets the attachment of this AttachmentResponse.
+        Attachment object
 
         :param attachment: The attachment of this AttachmentResponse.
         :type: Attachment

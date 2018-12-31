@@ -97,6 +97,7 @@ class LineAnnotations(object):
     def list(self):
         """
         Gets the list of this LineAnnotations.
+        List of line annotations.
 
         :return: The list of this LineAnnotations.
         :rtype: list[LineAnnotation]
@@ -107,6 +108,7 @@ class LineAnnotations(object):
     def list(self, list):
         """
         Sets the list of this LineAnnotations.
+        List of line annotations.
 
         :param list: The list of this LineAnnotations.
         :type: list[LineAnnotation]

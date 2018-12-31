@@ -49,12 +49,13 @@ class CommonFigureAnnotation(object):
     """
     swagger_types = {
         'links': 'list[Link]',
+        'color': 'Color',
         'contents': 'str',
         'modified': 'str',
         'id': 'str',
         'flags': 'list[AnnotationFlags]',
         'name': 'str',
-        'rect': 'RectanglePdf',
+        'rect': 'Rectangle',
         'page_index': 'int',
         'z_index': 'int',
         'horizontal_alignment': 'HorizontalAlignment',
@@ -64,11 +65,12 @@ class CommonFigureAnnotation(object):
         'title': 'str',
         'rich_text': 'str',
         'interior_color': 'Color',
-        'frame': 'RectanglePdf'
+        'frame': 'Rectangle'
     }
 
     attribute_map = {
         'links': 'Links',
+        'color': 'Color',
         'contents': 'Contents',
         'modified': 'Modified',
         'id': 'Id',
@@ -87,12 +89,13 @@ class CommonFigureAnnotation(object):
         'frame': 'Frame'
     }
 
-    def __init__(self, links=None, contents=None, modified=None, id=None, flags=None, name=None, rect=None, page_index=None, z_index=None, horizontal_alignment=None, vertical_alignment=None, creation_date=None, subject=None, title=None, rich_text=None, interior_color=None, frame=None):
+    def __init__(self, links=None, color=None, contents=None, modified=None, id=None, flags=None, name=None, rect=None, page_index=None, z_index=None, horizontal_alignment=None, vertical_alignment=None, creation_date=None, subject=None, title=None, rich_text=None, interior_color=None, frame=None):
         """
         CommonFigureAnnotation - a model defined in Swagger
         """
 
         self._links = None
+        self._color = None
         self._contents = None
         self._modified = None
         self._id = None
@@ -112,6 +115,8 @@ class CommonFigureAnnotation(object):
 
         if links is not None:
           self.links = links
+        if color is not None:
+          self.color = color
         if contents is not None:
           self.contents = contents
         if modified is not None:
@@ -167,6 +172,29 @@ class CommonFigureAnnotation(object):
         """
 
         self._links = links
+
+    @property
+    def color(self):
+        """
+        Gets the color of this CommonFigureAnnotation.
+        Color of the annotation.
+
+        :return: The color of this CommonFigureAnnotation.
+        :rtype: Color
+        """
+        return self._color
+
+    @color.setter
+    def color(self, color):
+        """
+        Sets the color of this CommonFigureAnnotation.
+        Color of the annotation.
+
+        :param color: The color of this CommonFigureAnnotation.
+        :type: Color
+        """
+
+        self._color = color
 
     @property
     def contents(self):
@@ -290,7 +318,7 @@ class CommonFigureAnnotation(object):
         Gets Rect of the annotation.
 
         :return: The rect of this CommonFigureAnnotation.
-        :rtype: RectanglePdf
+        :rtype: Rectangle
         """
         return self._rect
 
@@ -301,7 +329,7 @@ class CommonFigureAnnotation(object):
         Gets Rect of the annotation.
 
         :param rect: The rect of this CommonFigureAnnotation.
-        :type: RectanglePdf
+        :type: Rectangle
         """
 
         self._rect = rect
@@ -520,7 +548,7 @@ class CommonFigureAnnotation(object):
         Get or set the annotation Rectangle of frame.
 
         :return: The frame of this CommonFigureAnnotation.
-        :rtype: RectanglePdf
+        :rtype: Rectangle
         """
         return self._frame
 
@@ -531,7 +559,7 @@ class CommonFigureAnnotation(object):
         Get or set the annotation Rectangle of frame.
 
         :param frame: The frame of this CommonFigureAnnotation.
-        :type: RectanglePdf
+        :type: Rectangle
         """
 
         self._frame = frame

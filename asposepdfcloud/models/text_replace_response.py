@@ -126,6 +126,7 @@ class TextReplaceResponse(object):
     def matches(self):
         """
         Gets the matches of this TextReplaceResponse.
+        Number of matches
 
         :return: The matches of this TextReplaceResponse.
         :rtype: int
@@ -136,6 +137,7 @@ class TextReplaceResponse(object):
     def matches(self, matches):
         """
         Sets the matches of this TextReplaceResponse.
+        Number of matches
 
         :param matches: The matches of this TextReplaceResponse.
         :type: int

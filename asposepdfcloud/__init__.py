@@ -43,12 +43,14 @@ from .models.caret_symbol import CaretSymbol
 from .models.color import Color
 from .models.color_depth import ColorDepth
 from .models.compression_type import CompressionType
+from .models.disc_usage import DiscUsage
 from .models.doc_format import DocFormat
 from .models.doc_recognition_mode import DocRecognitionMode
 from .models.document_privilege import DocumentPrivilege
 from .models.epub_recognition_mode import EpubRecognitionMode
 from .models.field_type import FieldType
 from .models.file import File
+from .models.file_exist import FileExist
 from .models.font_encoding_rules import FontEncodingRules
 from .models.font_saving_modes import FontSavingModes
 from .models.font_styles import FontStyles
@@ -78,7 +80,7 @@ from .models.pdf_a_type import PdfAType
 from .models.point import Point
 from .models.poly_intent import PolyIntent
 from .models.raster_images_saving_modes import RasterImagesSavingModes
-from .models.rectangle_pdf import RectanglePdf
+from .models.rectangle import Rectangle
 from .models.rotation import Rotation
 from .models.segment import Segment
 from .models.shape_type import ShapeType
@@ -112,6 +114,7 @@ from .models.caret_annotations_response import CaretAnnotationsResponse
 from .models.circle_annotation_response import CircleAnnotationResponse
 from .models.circle_annotations import CircleAnnotations
 from .models.circle_annotations_response import CircleAnnotationsResponse
+from .models.disc_usage_response import DiscUsageResponse
 from .models.document import Document
 from .models.document_page_response import DocumentPageResponse
 from .models.document_pages_response import DocumentPagesResponse
@@ -124,6 +127,9 @@ from .models.field import Field
 from .models.field_response import FieldResponse
 from .models.fields import Fields
 from .models.fields_response import FieldsResponse
+from .models.file_exist_response import FileExistResponse
+from .models.file_version import FileVersion
+from .models.file_versions_response import FileVersionsResponse
 from .models.files_response import FilesResponse
 from .models.free_text_annotation_response import FreeTextAnnotationResponse
 from .models.free_text_annotations import FreeTextAnnotations
@@ -165,6 +171,7 @@ from .models.square_annotations_response import SquareAnnotationsResponse
 from .models.squiggly_annotation_response import SquigglyAnnotationResponse
 from .models.squiggly_annotations import SquigglyAnnotations
 from .models.squiggly_annotations_response import SquigglyAnnotationsResponse
+from .models.storage_exist_response import StorageExistResponse
 from .models.strike_out_annotation_response import StrikeOutAnnotationResponse
 from .models.strike_out_annotations import StrikeOutAnnotations
 from .models.strike_out_annotations_response import StrikeOutAnnotationsResponse

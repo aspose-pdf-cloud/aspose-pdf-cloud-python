@@ -97,6 +97,7 @@ class Pages(object):
     def list(self):
         """
         Gets the list of this Pages.
+        List of pages.
 
         :return: The list of this Pages.
         :rtype: list[Page]
@@ -107,6 +108,7 @@ class Pages(object):
     def list(self, list):
         """
         Sets the list of this Pages.
+        List of pages.
 
         :param list: The list of this Pages.
         :type: list[Page]

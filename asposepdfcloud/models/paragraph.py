@@ -55,7 +55,7 @@ class Paragraph(object):
         'right_margin': 'float',
         'top_margin': 'float',
         'bottom_margin': 'float',
-        'rectangle': 'RectanglePdf',
+        'rectangle': 'Rectangle',
         'rotation': 'float',
         'subsequent_lines_indent': 'float',
         'vertical_alignment': 'VerticalAlignment',
@@ -123,6 +123,7 @@ class Paragraph(object):
     def line_spacing(self):
         """
         Gets the line_spacing of this Paragraph.
+        Line spacing mode.
 
         :return: The line_spacing of this Paragraph.
         :rtype: LineSpacing
@@ -133,6 +134,7 @@ class Paragraph(object):
     def line_spacing(self, line_spacing):
         """
         Sets the line_spacing of this Paragraph.
+        Line spacing mode.
 
         :param line_spacing: The line_spacing of this Paragraph.
         :type: LineSpacing
@@ -144,6 +146,7 @@ class Paragraph(object):
     def wrap_mode(self):
         """
         Gets the wrap_mode of this Paragraph.
+        Word wrap mode.
 
         :return: The wrap_mode of this Paragraph.
         :rtype: WrapMode
@@ -154,6 +157,7 @@ class Paragraph(object):
     def wrap_mode(self, wrap_mode):
         """
         Sets the wrap_mode of this Paragraph.
+        Word wrap mode.
 
         :param wrap_mode: The wrap_mode of this Paragraph.
         :type: WrapMode
@@ -165,6 +169,7 @@ class Paragraph(object):
     def horizontal_alignment(self):
         """
         Gets the horizontal_alignment of this Paragraph.
+        Horizontal alignment for the text inside paragrph's rectangle.
 
         :return: The horizontal_alignment of this Paragraph.
         :rtype: TextHorizontalAlignment
@@ -175,6 +180,7 @@ class Paragraph(object):
     def horizontal_alignment(self, horizontal_alignment):
         """
         Sets the horizontal_alignment of this Paragraph.
+        Horizontal alignment for the text inside paragrph's rectangle.
 
         :param horizontal_alignment: The horizontal_alignment of this Paragraph.
         :type: TextHorizontalAlignment
@@ -186,6 +192,7 @@ class Paragraph(object):
     def left_margin(self):
         """
         Gets the left_margin of this Paragraph.
+        Left margin.
 
         :return: The left_margin of this Paragraph.
         :rtype: float
@@ -196,6 +203,7 @@ class Paragraph(object):
     def left_margin(self, left_margin):
         """
         Sets the left_margin of this Paragraph.
+        Left margin.
 
         :param left_margin: The left_margin of this Paragraph.
         :type: float
@@ -207,6 +215,7 @@ class Paragraph(object):
     def right_margin(self):
         """
         Gets the right_margin of this Paragraph.
+        Right margin.
 
         :return: The right_margin of this Paragraph.
         :rtype: float
@@ -217,6 +226,7 @@ class Paragraph(object):
     def right_margin(self, right_margin):
         """
         Sets the right_margin of this Paragraph.
+        Right margin.
 
         :param right_margin: The right_margin of this Paragraph.
         :type: float
@@ -228,6 +238,7 @@ class Paragraph(object):
     def top_margin(self):
         """
         Gets the top_margin of this Paragraph.
+        Top margin.
 
         :return: The top_margin of this Paragraph.
         :rtype: float
@@ -238,6 +249,7 @@ class Paragraph(object):
     def top_margin(self, top_margin):
         """
         Sets the top_margin of this Paragraph.
+        Top margin.
 
         :param top_margin: The top_margin of this Paragraph.
         :type: float
@@ -249,6 +261,7 @@ class Paragraph(object):
     def bottom_margin(self):
         """
         Gets the bottom_margin of this Paragraph.
+        Bottom margin.
 
         :return: The bottom_margin of this Paragraph.
         :rtype: float
@@ -259,6 +272,7 @@ class Paragraph(object):
     def bottom_margin(self, bottom_margin):
         """
         Sets the bottom_margin of this Paragraph.
+        Bottom margin.
 
         :param bottom_margin: The bottom_margin of this Paragraph.
         :type: float
@@ -270,9 +284,10 @@ class Paragraph(object):
     def rectangle(self):
         """
         Gets the rectangle of this Paragraph.
+        Rectangle of the paragraph.
 
         :return: The rectangle of this Paragraph.
-        :rtype: RectanglePdf
+        :rtype: Rectangle
         """
         return self._rectangle
 
@@ -280,9 +295,10 @@ class Paragraph(object):
     def rectangle(self, rectangle):
         """
         Sets the rectangle of this Paragraph.
+        Rectangle of the paragraph.
 
         :param rectangle: The rectangle of this Paragraph.
-        :type: RectanglePdf
+        :type: Rectangle
         """
 
         self._rectangle = rectangle
@@ -291,6 +307,7 @@ class Paragraph(object):
     def rotation(self):
         """
         Gets the rotation of this Paragraph.
+        Rotation angle in degrees.
 
         :return: The rotation of this Paragraph.
         :rtype: float
@@ -301,6 +318,7 @@ class Paragraph(object):
     def rotation(self, rotation):
         """
         Sets the rotation of this Paragraph.
+        Rotation angle in degrees.
 
         :param rotation: The rotation of this Paragraph.
         :type: float
@@ -312,6 +330,7 @@ class Paragraph(object):
     def subsequent_lines_indent(self):
         """
         Gets the subsequent_lines_indent of this Paragraph.
+        Subsequent lines indent value.
 
         :return: The subsequent_lines_indent of this Paragraph.
         :rtype: float
@@ -322,6 +341,7 @@ class Paragraph(object):
     def subsequent_lines_indent(self, subsequent_lines_indent):
         """
         Sets the subsequent_lines_indent of this Paragraph.
+        Subsequent lines indent value.
 
         :param subsequent_lines_indent: The subsequent_lines_indent of this Paragraph.
         :type: float
@@ -333,6 +353,7 @@ class Paragraph(object):
     def vertical_alignment(self):
         """
         Gets the vertical_alignment of this Paragraph.
+        Vertical alignment for the text inside paragrph's rectangle
 
         :return: The vertical_alignment of this Paragraph.
         :rtype: VerticalAlignment
@@ -343,6 +364,7 @@ class Paragraph(object):
     def vertical_alignment(self, vertical_alignment):
         """
         Sets the vertical_alignment of this Paragraph.
+        Vertical alignment for the text inside paragrph's rectangle
 
         :param vertical_alignment: The vertical_alignment of this Paragraph.
         :type: VerticalAlignment
@@ -354,6 +376,7 @@ class Paragraph(object):
     def lines(self):
         """
         Gets the lines of this Paragraph.
+        An array of text lines.
 
         :return: The lines of this Paragraph.
         :rtype: list[TextLine]
@@ -364,6 +387,7 @@ class Paragraph(object):
     def lines(self, lines):
         """
         Sets the lines of this Paragraph.
+        An array of text lines.
 
         :param lines: The lines of this Paragraph.
         :type: list[TextLine]

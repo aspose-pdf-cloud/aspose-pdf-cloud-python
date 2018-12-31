@@ -519,6 +519,230 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def delete_file(self, path, **kwargs):
+        """
+        Remove a specific file 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_file(path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str path: Path of the file including file name and extension e.g. /Folder1/file.ext (required)
+        :param str version_id: File's version
+        :param str storage: User's storage name
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.delete_file_with_http_info(path, **kwargs)
+        else:
+            (data) = self.delete_file_with_http_info(path, **kwargs)
+            return data
+
+    def delete_file_with_http_info(self, path, **kwargs):
+        """
+        Remove a specific file 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_file_with_http_info(path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str path: Path of the file including file name and extension e.g. /Folder1/file.ext (required)
+        :param str version_id: File's version
+        :param str storage: User's storage name
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['path', 'version_id', 'storage']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_file" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'path' is set
+        if ('path' not in params) or (params['path'] is None):
+            raise ValueError("Missing the required parameter `path` when calling `delete_file`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'path' in params:
+            query_params.append(('path', params['path']))
+        if 'version_id' in params:
+            query_params.append(('versionId', params['version_id']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/storage/file', 'DELETE',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def delete_folder(self, path, **kwargs):
+        """
+        Remove a specific folder 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_folder(path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str path: Folder path e.g. /Folder1 (required)
+        :param str storage: User's storage name
+        :param bool recursive: Remove recursivelly inner folder/files. If false and folder contains data than exception is raised.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.delete_folder_with_http_info(path, **kwargs)
+        else:
+            (data) = self.delete_folder_with_http_info(path, **kwargs)
+            return data
+
+    def delete_folder_with_http_info(self, path, **kwargs):
+        """
+        Remove a specific folder 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_folder_with_http_info(path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str path: Folder path e.g. /Folder1 (required)
+        :param str storage: User's storage name
+        :param bool recursive: Remove recursivelly inner folder/files. If false and folder contains data than exception is raised.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['path', 'storage', 'recursive']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_folder" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'path' is set
+        if ('path' not in params) or (params['path'] is None):
+            raise ValueError("Missing the required parameter `path` when calling `delete_folder`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'path' in params:
+            query_params.append(('path', params['path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'recursive' in params:
+            query_params.append(('recursive', params['recursive']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/storage/folder', 'DELETE',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def delete_image(self, name, image_id, **kwargs):
         """
         Delete image from document page.
@@ -1576,6 +1800,107 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='CircleAnnotationResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_disc_usage(self, **kwargs):
+        """
+        Check the disk usage of the current account 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_disc_usage(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str storage: User's storage name
+        :return: DiscUsageResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_disc_usage_with_http_info(**kwargs)
+        else:
+            (data) = self.get_disc_usage_with_http_info(**kwargs)
+            return data
+
+    def get_disc_usage_with_http_info(self, **kwargs):
+        """
+        Check the disk usage of the current account 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_disc_usage_with_http_info(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str storage: User's storage name
+        :return: DiscUsageResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['storage']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_disc_usage" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/storage/disc', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='DiscUsageResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -5885,6 +6210,222 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def get_is_exist(self, path, **kwargs):
+        """
+        Check if a specific file or folder exists
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_is_exist(path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str path: File or folder path e.g. /file.ext or /Folder1 (required)
+        :param str version_id: File's version
+        :param str storage: User's storage name
+        :return: FileExistResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_is_exist_with_http_info(path, **kwargs)
+        else:
+            (data) = self.get_is_exist_with_http_info(path, **kwargs)
+            return data
+
+    def get_is_exist_with_http_info(self, path, **kwargs):
+        """
+        Check if a specific file or folder exists
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_is_exist_with_http_info(path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str path: File or folder path e.g. /file.ext or /Folder1 (required)
+        :param str version_id: File's version
+        :param str storage: User's storage name
+        :return: FileExistResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['path', 'version_id', 'storage']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_is_exist" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'path' is set
+        if ('path' not in params) or (params['path'] is None):
+            raise ValueError("Missing the required parameter `path` when calling `get_is_exist`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'path' in params:
+            query_params.append(('path', params['path']))
+        if 'version_id' in params:
+            query_params.append(('versionId', params['version_id']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/storage/exist', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='FileExistResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_is_storage_exist(self, name, **kwargs):
+        """
+        Check if storage exists 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_is_storage_exist(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: Storage name (required)
+        :return: StorageExistResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_is_storage_exist_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_is_storage_exist_with_http_info(name, **kwargs)
+            return data
+
+    def get_is_storage_exist_with_http_info(self, name, **kwargs):
+        """
+        Check if storage exists 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_is_storage_exist_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: Storage name (required)
+        :return: StorageExistResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_is_storage_exist" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_is_storage_exist`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/storage/{name}/exist', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='StorageExistResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def get_la_te_x_in_storage_to_pdf(self, src_path, **kwargs):
         """
         Convert LaTeX file (located on storage) to PDF format and return resulting file in response. 
@@ -6224,6 +6765,114 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='LinkAnnotationResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_list_file_versions(self, path, **kwargs):
+        """
+        Get the file's versions list 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_list_file_versions(path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str path: File path e.g. /file.ext or /Folder1/file.ext (required)
+        :param str storage: User's storage name
+        :return: FileVersionsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_list_file_versions_with_http_info(path, **kwargs)
+        else:
+            (data) = self.get_list_file_versions_with_http_info(path, **kwargs)
+            return data
+
+    def get_list_file_versions_with_http_info(self, path, **kwargs):
+        """
+        Get the file's versions list 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_list_file_versions_with_http_info(path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str path: File path e.g. /file.ext or /Folder1/file.ext (required)
+        :param str storage: User's storage name
+        :return: FileVersionsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['path', 'storage']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_list_file_versions" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'path' is set
+        if ('path' not in params) or (params['path'] is None):
+            raise ValueError("Missing the required parameter `path` when calling `get_list_file_versions`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'path' in params:
+            query_params.append(('path', params['path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/storage/version', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='FileVersionsResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -9132,10 +9781,10 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param int page_number: Number of page (starting from 1). (required)
-        :param float llx: (required)
-        :param float lly: (required)
-        :param float urx: (required)
-        :param float ury: (required)
+        :param float llx: X-coordinate of lower - left corner. (required)
+        :param float lly: Y - coordinate of lower-left corner. (required)
+        :param float urx: X - coordinate of upper-right corner. (required)
+        :param float ury: Y - coordinate of upper-right corner. (required)
         :param list[str] format: List of formats for search.
         :param str regex: Formats are specified as a regular expression.
         :param bool split_rects: Split result fragments (default is true).
@@ -9167,10 +9816,10 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param int page_number: Number of page (starting from 1). (required)
-        :param float llx: (required)
-        :param float lly: (required)
-        :param float urx: (required)
-        :param float ury: (required)
+        :param float llx: X-coordinate of lower - left corner. (required)
+        :param float lly: Y - coordinate of lower-left corner. (required)
+        :param float urx: X - coordinate of upper-right corner. (required)
+        :param float ury: Y - coordinate of upper-right corner. (required)
         :param list[str] format: List of formats for search.
         :param str regex: Formats are specified as a regular expression.
         :param bool split_rects: Split result fragments (default is true).
@@ -9893,7 +10542,7 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param str content_recognition_mode: Рroperty tunes conversion for this or that desirable method of recognition of content.
+        :param str content_recognition_mode: Property tunes conversion for this or that desirable method of recognition of content.
         :param str folder: The document folder.
         :param str storage: The document storage.
         :return: file
@@ -9921,7 +10570,7 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param str content_recognition_mode: Рroperty tunes conversion for this or that desirable method of recognition of content.
+        :param str content_recognition_mode: Property tunes conversion for this or that desirable method of recognition of content.
         :param str folder: The document folder.
         :param str storage: The document storage.
         :return: file
@@ -12303,10 +12952,10 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param float llx: (required)
-        :param float lly: (required)
-        :param float urx: (required)
-        :param float ury: (required)
+        :param float llx: X-coordinate of lower - left corner. (required)
+        :param float lly: Y - coordinate of lower-left corner. (required)
+        :param float urx: X - coordinate of upper-right corner. (required)
+        :param float ury: Y - coordinate of upper-right corner. (required)
         :param list[str] format: List of formats for search.
         :param str regex: Formats are specified as a regular expression.
         :param bool split_rects: Split result fragments (default is true).
@@ -12337,10 +12986,10 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param float llx: (required)
-        :param float lly: (required)
-        :param float urx: (required)
-        :param float ury: (required)
+        :param float llx: X-coordinate of lower - left corner. (required)
+        :param float lly: Y - coordinate of lower-left corner. (required)
+        :param float urx: X - coordinate of upper-right corner. (required)
+        :param float ury: Y - coordinate of upper-right corner. (required)
         :param list[str] format: List of formats for search.
         :param str regex: Formats are specified as a regular expression.
         :param bool split_rects: Split result fragments (default is true).
@@ -13857,6 +14506,130 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def post_flatten_document(self, name, **kwargs):
+        """
+        Removes all fields from the document and place their values instead.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_flatten_document(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param bool update_appearances: If set, all field appearances will be regenerated before flattening. This option may help if field is incorrectly flattened. This option may decrease performance..
+        :param bool call_events: If set, formatting and other JavaScript events will be called.
+        :param bool hide_buttons: If set, buttons will be removed from flattened document.
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_flatten_document_with_http_info(name, **kwargs)
+        else:
+            (data) = self.post_flatten_document_with_http_info(name, **kwargs)
+            return data
+
+    def post_flatten_document_with_http_info(self, name, **kwargs):
+        """
+        Removes all fields from the document and place their values instead.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_flatten_document_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param bool update_appearances: If set, all field appearances will be regenerated before flattening. This option may help if field is incorrectly flattened. This option may decrease performance..
+        :param bool call_events: If set, formatting and other JavaScript events will be called.
+        :param bool hide_buttons: If set, buttons will be removed from flattened document.
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'update_appearances', 'call_events', 'hide_buttons', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_flatten_document" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_flatten_document`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'update_appearances' in params:
+            query_params.append(('updateAppearances', params['update_appearances']))
+        if 'call_events' in params:
+            query_params.append(('callEvents', params['call_events']))
+        if 'hide_buttons' in params:
+            query_params.append(('hideButtons', params['hide_buttons']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/flatten', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def post_insert_image(self, name, page_number, llx, lly, urx, ury, **kwargs):
         """
         Insert image to document page.
@@ -13998,6 +14771,248 @@ class PdfApi(object):
         auth_settings = []
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/images', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def post_move_file(self, src, dest, **kwargs):
+        """
+        Move a specific file
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_move_file(src, dest, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src: Source file path e.g. /fileSource.ext (required)
+        :param str dest: Destination file path e.g. /fileDestination.ext (required)
+        :param str version_id: Source file's version,
+        :param str storage: User's source storage name
+        :param str dest_storage: User's destination storage name
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_move_file_with_http_info(src, dest, **kwargs)
+        else:
+            (data) = self.post_move_file_with_http_info(src, dest, **kwargs)
+            return data
+
+    def post_move_file_with_http_info(self, src, dest, **kwargs):
+        """
+        Move a specific file
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_move_file_with_http_info(src, dest, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src: Source file path e.g. /fileSource.ext (required)
+        :param str dest: Destination file path e.g. /fileDestination.ext (required)
+        :param str version_id: Source file's version,
+        :param str storage: User's source storage name
+        :param str dest_storage: User's destination storage name
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['src', 'dest', 'version_id', 'storage', 'dest_storage']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_move_file" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'src' is set
+        if ('src' not in params) or (params['src'] is None):
+            raise ValueError("Missing the required parameter `src` when calling `post_move_file`")
+        # verify the required parameter 'dest' is set
+        if ('dest' not in params) or (params['dest'] is None):
+            raise ValueError("Missing the required parameter `dest` when calling `post_move_file`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'src' in params:
+            query_params.append(('src', params['src']))
+        if 'dest' in params:
+            query_params.append(('dest', params['dest']))
+        if 'version_id' in params:
+            query_params.append(('versionId', params['version_id']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'dest_storage' in params:
+            query_params.append(('destStorage', params['dest_storage']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['multipart/form-data'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/storage/file', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def post_move_folder(self, src, dest, **kwargs):
+        """
+        Move a specific folder 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_move_folder(src, dest, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src: Source folder path e.g. /Folder1 (required)
+        :param str dest: Destination folder path e.g. /Folder2 (required)
+        :param str storage: User's source storage name
+        :param str dest_storage: User's destination storage name
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_move_folder_with_http_info(src, dest, **kwargs)
+        else:
+            (data) = self.post_move_folder_with_http_info(src, dest, **kwargs)
+            return data
+
+    def post_move_folder_with_http_info(self, src, dest, **kwargs):
+        """
+        Move a specific folder 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_move_folder_with_http_info(src, dest, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src: Source folder path e.g. /Folder1 (required)
+        :param str dest: Destination folder path e.g. /Folder2 (required)
+        :param str storage: User's source storage name
+        :param str dest_storage: User's destination storage name
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['src', 'dest', 'storage', 'dest_storage']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_move_folder" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'src' is set
+        if ('src' not in params) or (params['src'] is None):
+            raise ValueError("Missing the required parameter `src` when calling `post_move_folder`")
+        # verify the required parameter 'dest' is set
+        if ('dest' not in params) or (params['dest'] is None):
+            raise ValueError("Missing the required parameter `dest` when calling `post_move_folder`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'src' in params:
+            query_params.append(('src', params['src']))
+        if 'dest' in params:
+            query_params.append(('dest', params['dest']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'dest_storage' in params:
+            query_params.append(('destStorage', params['dest_storage']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/storage/folder', 'POST',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -17344,6 +18359,118 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='DocumentResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_create_folder(self, path, **kwargs):
+        """
+        Create the folder 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_create_folder(path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str path: Target folder's path e.g. Folder1/Folder2/. The folders will be created recursively (required)
+        :param str storage: User's source storage name
+        :param str dest_storage: User's destination storage name
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_create_folder_with_http_info(path, **kwargs)
+        else:
+            (data) = self.put_create_folder_with_http_info(path, **kwargs)
+            return data
+
+    def put_create_folder_with_http_info(self, path, **kwargs):
+        """
+        Create the folder 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_create_folder_with_http_info(path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str path: Target folder's path e.g. Folder1/Folder2/. The folders will be created recursively (required)
+        :param str storage: User's source storage name
+        :param str dest_storage: User's destination storage name
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['path', 'storage', 'dest_storage']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_create_folder" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'path' is set
+        if ('path' not in params) or (params['path'] is None):
+            raise ValueError("Missing the required parameter `path` when calling `put_create_folder`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'path' in params:
+            query_params.append(('path', params['path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'dest_storage' in params:
+            query_params.append(('destStorage', params['dest_storage']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/storage/folder', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -21091,7 +22218,7 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-        :param str content_recognition_mode: Рroperty tunes conversion for this or that desirable method of recognition of content.
+        :param str content_recognition_mode: Property tunes conversion for this or that desirable method of recognition of content.
         :param str storage: The document storage.
         :param file file: A file to be converted.
         :return: AsposeResponse
@@ -21119,7 +22246,7 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-        :param str content_recognition_mode: Рroperty tunes conversion for this or that desirable method of recognition of content.
+        :param str content_recognition_mode: Property tunes conversion for this or that desirable method of recognition of content.
         :param str storage: The document storage.
         :param file file: A file to be converted.
         :return: AsposeResponse
@@ -22687,7 +23814,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-        :param str content_recognition_mode: Рroperty tunes conversion for this or that desirable method of recognition of content.
+        :param str content_recognition_mode: Property tunes conversion for this or that desirable method of recognition of content.
         :param str folder: The document folder.
         :param str storage: The document storage.
         :return: AsposeResponse
@@ -22716,7 +23843,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.epub) (required)
-        :param str content_recognition_mode: Рroperty tunes conversion for this or that desirable method of recognition of content.
+        :param str content_recognition_mode: Property tunes conversion for this or that desirable method of recognition of content.
         :param str folder: The document folder.
         :param str storage: The document storage.
         :return: AsposeResponse

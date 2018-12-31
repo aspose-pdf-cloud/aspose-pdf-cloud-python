@@ -1,13 +1,11 @@
-﻿# RectanglePdf
-Represents rectangle DTO.
+﻿# FileExist
+
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**llx** | **float** |  | 
-**lly** | **float** |  | 
-**urx** | **float** |  | 
-**ury** | **float** |  | 
+**is_exist** | **bool** |  | 
+**is_folder** | **bool** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

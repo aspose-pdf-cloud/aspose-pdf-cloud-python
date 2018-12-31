@@ -126,6 +126,7 @@ class ImagesResponse(object):
     def images(self):
         """
         Gets the images of this ImagesResponse.
+        Images object
 
         :return: The images of this ImagesResponse.
         :rtype: Images
@@ -136,6 +137,7 @@ class ImagesResponse(object):
     def images(self, images):
         """
         Sets the images of this ImagesResponse.
+        Images object
 
         :param images: The images of this ImagesResponse.
         :type: Images

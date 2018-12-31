@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **name** | **str** | Field name. | [optional] 
 **selected_items** | **list[int]** | Selected items. | [optional] 
 **type** | [**FieldType**](FieldType.md) | Field type. | [optional] 
-**rect** | [**RectanglePdf**](RectanglePdf.md) | Field rectangle. | [optional] 
+**rect** | [**Rectangle**](Rectangle.md) | Field rectangle. | [optional] 
 **values** | **list[str]** | Field values. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

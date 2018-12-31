@@ -126,7 +126,7 @@ class SignatureVerifyResponse(object):
     def valid(self):
         """
         Gets the valid of this SignatureVerifyResponse.
-        Valid sign.
+        True if signature is valid and false if not
 
         :return: The valid of this SignatureVerifyResponse.
         :rtype: bool
@@ -137,7 +137,7 @@ class SignatureVerifyResponse(object):
     def valid(self, valid):
         """
         Sets the valid of this SignatureVerifyResponse.
-        Valid sign.
+        True if signature is valid and false if not
 
         :param valid: The valid of this SignatureVerifyResponse.
         :type: bool
