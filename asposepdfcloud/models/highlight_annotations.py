@@ -97,6 +97,7 @@ class HighlightAnnotations(object):
     def list(self):
         """
         Gets the list of this HighlightAnnotations.
+        List of highlight annotations.
 
         :return: The list of this HighlightAnnotations.
         :rtype: list[HighlightAnnotation]
@@ -107,6 +108,7 @@ class HighlightAnnotations(object):
     def list(self, list):
         """
         Sets the list of this HighlightAnnotations.
+        List of highlight annotations.
 
         :param list: The list of this HighlightAnnotations.
         :type: list[HighlightAnnotation]

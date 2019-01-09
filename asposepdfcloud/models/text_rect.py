@@ -50,7 +50,7 @@ class TextRect(object):
     swagger_types = {
         'text': 'str',
         'page': 'int',
-        'rect': 'RectanglePdf'
+        'rect': 'Rectangle'
     }
 
     attribute_map = {
@@ -78,6 +78,7 @@ class TextRect(object):
     def text(self):
         """
         Gets the text of this TextRect.
+        Text of the occurrence.
 
         :return: The text of this TextRect.
         :rtype: str
@@ -88,6 +89,7 @@ class TextRect(object):
     def text(self, text):
         """
         Sets the text of this TextRect.
+        Text of the occurrence.
 
         :param text: The text of this TextRect.
         :type: str
@@ -99,6 +101,7 @@ class TextRect(object):
     def page(self):
         """
         Gets the page of this TextRect.
+        Page on which the occurrence is found.
 
         :return: The page of this TextRect.
         :rtype: int
@@ -109,6 +112,7 @@ class TextRect(object):
     def page(self, page):
         """
         Sets the page of this TextRect.
+        Page on which the occurrence is found.
 
         :param page: The page of this TextRect.
         :type: int
@@ -122,9 +126,10 @@ class TextRect(object):
     def rect(self):
         """
         Gets the rect of this TextRect.
+        Rectangle of the occurrence.
 
         :return: The rect of this TextRect.
-        :rtype: RectanglePdf
+        :rtype: Rectangle
         """
         return self._rect
 
@@ -132,9 +137,10 @@ class TextRect(object):
     def rect(self, rect):
         """
         Sets the rect of this TextRect.
+        Rectangle of the occurrence.
 
         :param rect: The rect of this TextRect.
-        :type: RectanglePdf
+        :type: Rectangle
         """
 
         self._rect = rect

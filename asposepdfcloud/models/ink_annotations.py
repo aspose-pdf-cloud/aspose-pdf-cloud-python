@@ -97,6 +97,7 @@ class InkAnnotations(object):
     def list(self):
         """
         Gets the list of this InkAnnotations.
+        List of ink annotations.
 
         :return: The list of this InkAnnotations.
         :rtype: list[InkAnnotation]
@@ -107,6 +108,7 @@ class InkAnnotations(object):
     def list(self, list):
         """
         Sets the list of this InkAnnotations.
+        List of ink annotations.
 
         :param list: The list of this InkAnnotations.
         :type: list[InkAnnotation]

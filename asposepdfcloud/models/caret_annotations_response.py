@@ -126,6 +126,7 @@ class CaretAnnotationsResponse(object):
     def annotations(self):
         """
         Gets the annotations of this CaretAnnotationsResponse.
+        Caret annotations object
 
         :return: The annotations of this CaretAnnotationsResponse.
         :rtype: CaretAnnotations
@@ -136,6 +137,7 @@ class CaretAnnotationsResponse(object):
     def annotations(self, annotations):
         """
         Sets the annotations of this CaretAnnotationsResponse.
+        Caret annotations object
 
         :param annotations: The annotations of this CaretAnnotationsResponse.
         :type: CaretAnnotations

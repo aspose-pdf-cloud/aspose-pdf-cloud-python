@@ -97,6 +97,7 @@ class PolygonAnnotations(object):
     def list(self):
         """
         Gets the list of this PolygonAnnotations.
+        List of polygon annotations.
 
         :return: The list of this PolygonAnnotations.
         :rtype: list[PolygonAnnotation]
@@ -107,6 +108,7 @@ class PolygonAnnotations(object):
     def list(self, list):
         """
         Sets the list of this PolygonAnnotations.
+        List of polygon annotations.
 
         :param list: The list of this PolygonAnnotations.
         :type: list[PolygonAnnotation]

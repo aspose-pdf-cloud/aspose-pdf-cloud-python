@@ -107,6 +107,7 @@ class DocumentProperty(object):
     def name(self):
         """
         Gets the name of this DocumentProperty.
+        Pame of the property.
 
         :return: The name of this DocumentProperty.
         :rtype: str
@@ -117,6 +118,7 @@ class DocumentProperty(object):
     def name(self, name):
         """
         Sets the name of this DocumentProperty.
+        Pame of the property.
 
         :param name: The name of this DocumentProperty.
         :type: str
@@ -128,6 +130,7 @@ class DocumentProperty(object):
     def value(self):
         """
         Gets the value of this DocumentProperty.
+        Property value.
 
         :return: The value of this DocumentProperty.
         :rtype: str
@@ -138,6 +141,7 @@ class DocumentProperty(object):
     def value(self, value):
         """
         Sets the value of this DocumentProperty.
+        Property value.
 
         :param value: The value of this DocumentProperty.
         :type: str
@@ -149,6 +153,7 @@ class DocumentProperty(object):
     def built_in(self):
         """
         Gets the built_in of this DocumentProperty.
+        Value indicating whether it is a built-in property.
 
         :return: The built_in of this DocumentProperty.
         :rtype: bool
@@ -159,6 +164,7 @@ class DocumentProperty(object):
     def built_in(self, built_in):
         """
         Sets the built_in of this DocumentProperty.
+        Value indicating whether it is a built-in property.
 
         :param built_in: The built_in of this DocumentProperty.
         :type: bool

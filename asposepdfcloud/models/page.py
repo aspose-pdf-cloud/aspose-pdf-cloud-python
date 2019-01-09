@@ -51,7 +51,7 @@ class Page(object):
         'links': 'list[Link]',
         'id': 'int',
         'images': 'Images',
-        'rectangle': 'RectanglePdf'
+        'rectangle': 'Rectangle'
     }
 
     attribute_map = {
@@ -130,6 +130,7 @@ class Page(object):
     def images(self):
         """
         Gets the images of this Page.
+        Page's images
 
         :return: The images of this Page.
         :rtype: Images
@@ -140,6 +141,7 @@ class Page(object):
     def images(self, images):
         """
         Sets the images of this Page.
+        Page's images
 
         :param images: The images of this Page.
         :type: Images
@@ -151,9 +153,10 @@ class Page(object):
     def rectangle(self):
         """
         Gets the rectangle of this Page.
+        Page's rectangle
 
         :return: The rectangle of this Page.
-        :rtype: RectanglePdf
+        :rtype: Rectangle
         """
         return self._rectangle
 
@@ -161,9 +164,10 @@ class Page(object):
     def rectangle(self, rectangle):
         """
         Sets the rectangle of this Page.
+        Page's rectangle
 
         :param rectangle: The rectangle of this Page.
-        :type: RectanglePdf
+        :type: Rectangle
         """
 
         self._rectangle = rectangle

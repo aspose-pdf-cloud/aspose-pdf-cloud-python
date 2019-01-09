@@ -126,6 +126,7 @@ class StrikeOutAnnotationResponse(object):
     def annotation(self):
         """
         Gets the annotation of this StrikeOutAnnotationResponse.
+        Strikeout annotation object
 
         :return: The annotation of this StrikeOutAnnotationResponse.
         :rtype: StrikeOutAnnotation
@@ -136,6 +137,7 @@ class StrikeOutAnnotationResponse(object):
     def annotation(self, annotation):
         """
         Sets the annotation of this StrikeOutAnnotationResponse.
+        Strikeout annotation object
 
         :param annotation: The annotation of this StrikeOutAnnotationResponse.
         :type: StrikeOutAnnotation

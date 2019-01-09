@@ -53,7 +53,7 @@ class LinkAnnotation(object):
         'action': 'str',
         'highlighting': 'LinkHighlightingMode',
         'color': 'Color',
-        'rect': 'RectanglePdf',
+        'rect': 'Rectangle',
         'id': 'str'
     }
 
@@ -208,7 +208,7 @@ class LinkAnnotation(object):
         Gets the rect of this LinkAnnotation.
 
         :return: The rect of this LinkAnnotation.
-        :rtype: RectanglePdf
+        :rtype: Rectangle
         """
         return self._rect
 
@@ -218,7 +218,7 @@ class LinkAnnotation(object):
         Sets the rect of this LinkAnnotation.
 
         :param rect: The rect of this LinkAnnotation.
-        :type: RectanglePdf
+        :type: Rectangle
         """
 
         self._rect = rect

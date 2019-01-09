@@ -126,6 +126,7 @@ class DocumentPropertiesResponse(object):
     def document_properties(self):
         """
         Gets the document_properties of this DocumentPropertiesResponse.
+        DocumentProperties object
 
         :return: The document_properties of this DocumentPropertiesResponse.
         :rtype: DocumentProperties
@@ -136,6 +137,7 @@ class DocumentPropertiesResponse(object):
     def document_properties(self, document_properties):
         """
         Sets the document_properties of this DocumentPropertiesResponse.
+        DocumentProperties object
 
         :param document_properties: The document_properties of this DocumentPropertiesResponse.
         :type: DocumentProperties

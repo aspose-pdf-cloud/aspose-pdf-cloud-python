@@ -126,7 +126,7 @@ class SplitResultResponse(object):
     def result(self):
         """
         Gets the result of this SplitResultResponse.
-        Gets or sets the splitting result.
+        SplitResult object.
 
         :return: The result of this SplitResultResponse.
         :rtype: SplitResult
@@ -137,7 +137,7 @@ class SplitResultResponse(object):
     def result(self, result):
         """
         Sets the result of this SplitResultResponse.
-        Gets or sets the splitting result.
+        SplitResult object.
 
         :param result: The result of this SplitResultResponse.
         :type: SplitResult

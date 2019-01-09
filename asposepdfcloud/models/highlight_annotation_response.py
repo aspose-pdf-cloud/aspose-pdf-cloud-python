@@ -126,6 +126,7 @@ class HighlightAnnotationResponse(object):
     def annotation(self):
         """
         Gets the annotation of this HighlightAnnotationResponse.
+        Highlight annotation object
 
         :return: The annotation of this HighlightAnnotationResponse.
         :rtype: HighlightAnnotation
@@ -136,6 +137,7 @@ class HighlightAnnotationResponse(object):
     def annotation(self, annotation):
         """
         Sets the annotation of this HighlightAnnotationResponse.
+        Highlight annotation object
 
         :param annotation: The annotation of this HighlightAnnotationResponse.
         :type: HighlightAnnotation

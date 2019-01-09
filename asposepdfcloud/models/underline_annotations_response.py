@@ -126,6 +126,7 @@ class UnderlineAnnotationsResponse(object):
     def annotations(self):
         """
         Gets the annotations of this UnderlineAnnotationsResponse.
+        Underline annotations object
 
         :return: The annotations of this UnderlineAnnotationsResponse.
         :rtype: UnderlineAnnotations
@@ -136,6 +137,7 @@ class UnderlineAnnotationsResponse(object):
     def annotations(self, annotations):
         """
         Sets the annotations of this UnderlineAnnotationsResponse.
+        Underline annotations object
 
         :param annotations: The annotations of this UnderlineAnnotationsResponse.
         :type: UnderlineAnnotations

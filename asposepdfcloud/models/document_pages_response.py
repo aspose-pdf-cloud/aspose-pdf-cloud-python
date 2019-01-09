@@ -126,6 +126,7 @@ class DocumentPagesResponse(object):
     def pages(self):
         """
         Gets the pages of this DocumentPagesResponse.
+        Page object
 
         :return: The pages of this DocumentPagesResponse.
         :rtype: Pages
@@ -136,6 +137,7 @@ class DocumentPagesResponse(object):
     def pages(self, pages):
         """
         Sets the pages of this DocumentPagesResponse.
+        Page object
 
         :param pages: The pages of this DocumentPagesResponse.
         :type: Pages

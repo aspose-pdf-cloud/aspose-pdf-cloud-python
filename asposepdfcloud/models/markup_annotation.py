@@ -49,12 +49,13 @@ class MarkupAnnotation(object):
     """
     swagger_types = {
         'links': 'list[Link]',
+        'color': 'Color',
         'contents': 'str',
         'modified': 'str',
         'id': 'str',
         'flags': 'list[AnnotationFlags]',
         'name': 'str',
-        'rect': 'RectanglePdf',
+        'rect': 'Rectangle',
         'page_index': 'int',
         'z_index': 'int',
         'horizontal_alignment': 'HorizontalAlignment',
@@ -67,6 +68,7 @@ class MarkupAnnotation(object):
 
     attribute_map = {
         'links': 'Links',
+        'color': 'Color',
         'contents': 'Contents',
         'modified': 'Modified',
         'id': 'Id',
@@ -83,12 +85,13 @@ class MarkupAnnotation(object):
         'rich_text': 'RichText'
     }
 
-    def __init__(self, links=None, contents=None, modified=None, id=None, flags=None, name=None, rect=None, page_index=None, z_index=None, horizontal_alignment=None, vertical_alignment=None, creation_date=None, subject=None, title=None, rich_text=None):
+    def __init__(self, links=None, color=None, contents=None, modified=None, id=None, flags=None, name=None, rect=None, page_index=None, z_index=None, horizontal_alignment=None, vertical_alignment=None, creation_date=None, subject=None, title=None, rich_text=None):
         """
         MarkupAnnotation - a model defined in Swagger
         """
 
         self._links = None
+        self._color = None
         self._contents = None
         self._modified = None
         self._id = None
@@ -106,6 +109,8 @@ class MarkupAnnotation(object):
 
         if links is not None:
           self.links = links
+        if color is not None:
+          self.color = color
         if contents is not None:
           self.contents = contents
         if modified is not None:
@@ -157,6 +162,29 @@ class MarkupAnnotation(object):
         """
 
         self._links = links
+
+    @property
+    def color(self):
+        """
+        Gets the color of this MarkupAnnotation.
+        Color of the annotation.
+
+        :return: The color of this MarkupAnnotation.
+        :rtype: Color
+        """
+        return self._color
+
+    @color.setter
+    def color(self, color):
+        """
+        Sets the color of this MarkupAnnotation.
+        Color of the annotation.
+
+        :param color: The color of this MarkupAnnotation.
+        :type: Color
+        """
+
+        self._color = color
 
     @property
     def contents(self):
@@ -280,7 +308,7 @@ class MarkupAnnotation(object):
         Gets Rect of the annotation.
 
         :return: The rect of this MarkupAnnotation.
-        :rtype: RectanglePdf
+        :rtype: Rectangle
         """
         return self._rect
 
@@ -291,7 +319,7 @@ class MarkupAnnotation(object):
         Gets Rect of the annotation.
 
         :param rect: The rect of this MarkupAnnotation.
-        :type: RectanglePdf
+        :type: Rectangle
         """
 
         self._rect = rect

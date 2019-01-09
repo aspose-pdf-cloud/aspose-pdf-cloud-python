@@ -126,6 +126,7 @@ class InkAnnotationResponse(object):
     def annotation(self):
         """
         Gets the annotation of this InkAnnotationResponse.
+        Ink annotation object
 
         :return: The annotation of this InkAnnotationResponse.
         :rtype: InkAnnotation
@@ -136,6 +137,7 @@ class InkAnnotationResponse(object):
     def annotation(self, annotation):
         """
         Sets the annotation of this InkAnnotationResponse.
+        Ink annotation object
 
         :param annotation: The annotation of this InkAnnotationResponse.
         :type: InkAnnotation

@@ -126,6 +126,7 @@ class DocumentPageResponse(object):
     def page(self):
         """
         Gets the page of this DocumentPageResponse.
+        Page object
 
         :return: The page of this DocumentPageResponse.
         :rtype: Page
@@ -136,6 +137,7 @@ class DocumentPageResponse(object):
     def page(self, page):
         """
         Sets the page of this DocumentPageResponse.
+        Page object
 
         :param page: The page of this DocumentPageResponse.
         :type: Page

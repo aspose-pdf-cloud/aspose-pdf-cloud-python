@@ -49,12 +49,13 @@ class HighlightAnnotation(object):
     """
     swagger_types = {
         'links': 'list[Link]',
+        'color': 'Color',
         'contents': 'str',
         'modified': 'str',
         'id': 'str',
         'flags': 'list[AnnotationFlags]',
         'name': 'str',
-        'rect': 'RectanglePdf',
+        'rect': 'Rectangle',
         'page_index': 'int',
         'z_index': 'int',
         'horizontal_alignment': 'HorizontalAlignment',
@@ -63,12 +64,12 @@ class HighlightAnnotation(object):
         'subject': 'str',
         'title': 'str',
         'rich_text': 'str',
-        'color': 'Color',
         'quad_points': 'list[Point]'
     }
 
     attribute_map = {
         'links': 'Links',
+        'color': 'Color',
         'contents': 'Contents',
         'modified': 'Modified',
         'id': 'Id',
@@ -83,16 +84,16 @@ class HighlightAnnotation(object):
         'subject': 'Subject',
         'title': 'Title',
         'rich_text': 'RichText',
-        'color': 'Color',
         'quad_points': 'QuadPoints'
     }
 
-    def __init__(self, links=None, contents=None, modified=None, id=None, flags=None, name=None, rect=None, page_index=None, z_index=None, horizontal_alignment=None, vertical_alignment=None, creation_date=None, subject=None, title=None, rich_text=None, color=None, quad_points=None):
+    def __init__(self, links=None, color=None, contents=None, modified=None, id=None, flags=None, name=None, rect=None, page_index=None, z_index=None, horizontal_alignment=None, vertical_alignment=None, creation_date=None, subject=None, title=None, rich_text=None, quad_points=None):
         """
         HighlightAnnotation - a model defined in Swagger
         """
 
         self._links = None
+        self._color = None
         self._contents = None
         self._modified = None
         self._id = None
@@ -107,11 +108,12 @@ class HighlightAnnotation(object):
         self._subject = None
         self._title = None
         self._rich_text = None
-        self._color = None
         self._quad_points = None
 
         if links is not None:
           self.links = links
+        if color is not None:
+          self.color = color
         if contents is not None:
           self.contents = contents
         if modified is not None:
@@ -140,8 +142,6 @@ class HighlightAnnotation(object):
           self.title = title
         if rich_text is not None:
           self.rich_text = rich_text
-        if color is not None:
-          self.color = color
         if quad_points is not None:
           self.quad_points = quad_points
 
@@ -167,6 +167,29 @@ class HighlightAnnotation(object):
         """
 
         self._links = links
+
+    @property
+    def color(self):
+        """
+        Gets the color of this HighlightAnnotation.
+        Color of the annotation.
+
+        :return: The color of this HighlightAnnotation.
+        :rtype: Color
+        """
+        return self._color
+
+    @color.setter
+    def color(self, color):
+        """
+        Sets the color of this HighlightAnnotation.
+        Color of the annotation.
+
+        :param color: The color of this HighlightAnnotation.
+        :type: Color
+        """
+
+        self._color = color
 
     @property
     def contents(self):
@@ -290,7 +313,7 @@ class HighlightAnnotation(object):
         Gets Rect of the annotation.
 
         :return: The rect of this HighlightAnnotation.
-        :rtype: RectanglePdf
+        :rtype: Rectangle
         """
         return self._rect
 
@@ -301,7 +324,7 @@ class HighlightAnnotation(object):
         Gets Rect of the annotation.
 
         :param rect: The rect of this HighlightAnnotation.
-        :type: RectanglePdf
+        :type: Rectangle
         """
 
         self._rect = rect
@@ -489,29 +512,6 @@ class HighlightAnnotation(object):
         """
 
         self._rich_text = rich_text
-
-    @property
-    def color(self):
-        """
-        Gets the color of this HighlightAnnotation.
-        Color of the annotation.
-
-        :return: The color of this HighlightAnnotation.
-        :rtype: Color
-        """
-        return self._color
-
-    @color.setter
-    def color(self, color):
-        """
-        Sets the color of this HighlightAnnotation.
-        Color of the annotation.
-
-        :param color: The color of this HighlightAnnotation.
-        :type: Color
-        """
-
-        self._color = color
 
     @property
     def quad_points(self):

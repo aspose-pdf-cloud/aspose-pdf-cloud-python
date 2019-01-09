@@ -97,6 +97,7 @@ class TextAnnotations(object):
     def list(self):
         """
         Gets the list of this TextAnnotations.
+        List of text annotations.
 
         :return: The list of this TextAnnotations.
         :rtype: list[TextAnnotation]
@@ -107,6 +108,7 @@ class TextAnnotations(object):
     def list(self, list):
         """
         Sets the list of this TextAnnotations.
+        List of text annotations.
 
         :param list: The list of this TextAnnotations.
         :type: list[TextAnnotation]

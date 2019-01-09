@@ -49,12 +49,13 @@ class PolyLineAnnotation(object):
     """
     swagger_types = {
         'links': 'list[Link]',
+        'color': 'Color',
         'contents': 'str',
         'modified': 'str',
         'id': 'str',
         'flags': 'list[AnnotationFlags]',
         'name': 'str',
-        'rect': 'RectanglePdf',
+        'rect': 'Rectangle',
         'page_index': 'int',
         'z_index': 'int',
         'horizontal_alignment': 'HorizontalAlignment',
@@ -67,12 +68,12 @@ class PolyLineAnnotation(object):
         'starting_style': 'LineEnding',
         'ending_style': 'LineEnding',
         'intent': 'PolyIntent',
-        'vertices': 'list[Point]',
-        'color': 'Color'
+        'vertices': 'list[Point]'
     }
 
     attribute_map = {
         'links': 'Links',
+        'color': 'Color',
         'contents': 'Contents',
         'modified': 'Modified',
         'id': 'Id',
@@ -91,16 +92,16 @@ class PolyLineAnnotation(object):
         'starting_style': 'StartingStyle',
         'ending_style': 'EndingStyle',
         'intent': 'Intent',
-        'vertices': 'Vertices',
-        'color': 'Color'
+        'vertices': 'Vertices'
     }
 
-    def __init__(self, links=None, contents=None, modified=None, id=None, flags=None, name=None, rect=None, page_index=None, z_index=None, horizontal_alignment=None, vertical_alignment=None, creation_date=None, subject=None, title=None, rich_text=None, interior_color=None, starting_style=None, ending_style=None, intent=None, vertices=None, color=None):
+    def __init__(self, links=None, color=None, contents=None, modified=None, id=None, flags=None, name=None, rect=None, page_index=None, z_index=None, horizontal_alignment=None, vertical_alignment=None, creation_date=None, subject=None, title=None, rich_text=None, interior_color=None, starting_style=None, ending_style=None, intent=None, vertices=None):
         """
         PolyLineAnnotation - a model defined in Swagger
         """
 
         self._links = None
+        self._color = None
         self._contents = None
         self._modified = None
         self._id = None
@@ -120,10 +121,11 @@ class PolyLineAnnotation(object):
         self._ending_style = None
         self._intent = None
         self._vertices = None
-        self._color = None
 
         if links is not None:
           self.links = links
+        if color is not None:
+          self.color = color
         if contents is not None:
           self.contents = contents
         if modified is not None:
@@ -162,8 +164,6 @@ class PolyLineAnnotation(object):
           self.intent = intent
         if vertices is not None:
           self.vertices = vertices
-        if color is not None:
-          self.color = color
 
     @property
     def links(self):
@@ -187,6 +187,29 @@ class PolyLineAnnotation(object):
         """
 
         self._links = links
+
+    @property
+    def color(self):
+        """
+        Gets the color of this PolyLineAnnotation.
+        Color of the annotation.
+
+        :return: The color of this PolyLineAnnotation.
+        :rtype: Color
+        """
+        return self._color
+
+    @color.setter
+    def color(self, color):
+        """
+        Sets the color of this PolyLineAnnotation.
+        Color of the annotation.
+
+        :param color: The color of this PolyLineAnnotation.
+        :type: Color
+        """
+
+        self._color = color
 
     @property
     def contents(self):
@@ -310,7 +333,7 @@ class PolyLineAnnotation(object):
         Gets Rect of the annotation.
 
         :return: The rect of this PolyLineAnnotation.
-        :rtype: RectanglePdf
+        :rtype: Rectangle
         """
         return self._rect
 
@@ -321,7 +344,7 @@ class PolyLineAnnotation(object):
         Gets Rect of the annotation.
 
         :param rect: The rect of this PolyLineAnnotation.
-        :type: RectanglePdf
+        :type: Rectangle
         """
 
         self._rect = rect
@@ -624,29 +647,6 @@ class PolyLineAnnotation(object):
         """
 
         self._vertices = vertices
-
-    @property
-    def color(self):
-        """
-        Gets the color of this PolyLineAnnotation.
-        Color of the annotation.
-
-        :return: The color of this PolyLineAnnotation.
-        :rtype: Color
-        """
-        return self._color
-
-    @color.setter
-    def color(self, color):
-        """
-        Sets the color of this PolyLineAnnotation.
-        Color of the annotation.
-
-        :param color: The color of this PolyLineAnnotation.
-        :type: Color
-        """
-
-        self._color = color
 
     def to_dict(self):
         """

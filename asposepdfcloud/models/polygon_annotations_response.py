@@ -126,6 +126,7 @@ class PolygonAnnotationsResponse(object):
     def annotations(self):
         """
         Gets the annotations of this PolygonAnnotationsResponse.
+        Polygon annotations object
 
         :return: The annotations of this PolygonAnnotationsResponse.
         :rtype: PolygonAnnotations
@@ -136,6 +137,7 @@ class PolygonAnnotationsResponse(object):
     def annotations(self, annotations):
         """
         Sets the annotations of this PolygonAnnotationsResponse.
+        Polygon annotations object
 
         :param annotations: The annotations of this PolygonAnnotationsResponse.
         :type: PolygonAnnotations

@@ -56,7 +56,7 @@ class Signature(object):
         'contact': 'str',
         'location': 'str',
         'visible': 'bool',
-        'rectangle': 'RectanglePdf',
+        'rectangle': 'Rectangle',
         'form_field_name': 'str',
         'authority': 'str',
         'date': 'str',
@@ -318,7 +318,7 @@ class Signature(object):
         Gets or sets the visible rectangle of the signature. Supports only when signing particular page.
 
         :return: The rectangle of this Signature.
-        :rtype: RectanglePdf
+        :rtype: Rectangle
         """
         return self._rectangle
 
@@ -329,7 +329,7 @@ class Signature(object):
         Gets or sets the visible rectangle of the signature. Supports only when signing particular page.
 
         :param rectangle: The rectangle of this Signature.
-        :type: RectanglePdf
+        :type: Rectangle
         """
 
         self._rectangle = rectangle

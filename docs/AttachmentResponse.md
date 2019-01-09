@@ -1,12 +1,12 @@
 ﻿# AttachmentResponse
-
+Represents response containing single attachment info
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **int** | Response status code. | 
 **status** | **str** | Response status. | [optional] 
-**attachment** | [**Attachment**](Attachment.md) |  | [optional] 
+**attachment** | [**Attachment**](Attachment.md) | Attachment object | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

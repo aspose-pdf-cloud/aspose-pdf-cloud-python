@@ -97,6 +97,7 @@ class StrikeOutAnnotations(object):
     def list(self):
         """
         Gets the list of this StrikeOutAnnotations.
+        List of strikeout annotations.
 
         :return: The list of this StrikeOutAnnotations.
         :rtype: list[StrikeOutAnnotation]
@@ -107,6 +108,7 @@ class StrikeOutAnnotations(object):
     def list(self, list):
         """
         Sets the list of this StrikeOutAnnotations.
+        List of strikeout annotations.
 
         :param list: The list of this StrikeOutAnnotations.
         :type: list[StrikeOutAnnotation]

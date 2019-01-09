@@ -5,12 +5,13 @@ Provides InkAnnotation.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **links** | [**list[Link]**](Link.md) | Link to the document. | [optional] 
+**color** | [**Color**](Color.md) | Color of the annotation. | [optional] 
 **contents** | **str** | Get the annotation content. | [optional] 
 **modified** | **str** | The date and time when the annotation was last modified. | [optional] 
 **id** | **str** | Gets ID of the annotation. | [optional] 
 **flags** | [**list[AnnotationFlags]**](AnnotationFlags.md) | Gets Flags of the annotation. | [optional] 
 **name** | **str** | Gets Name of the annotation. | [optional] 
-**rect** | [**RectanglePdf**](RectanglePdf.md) | Gets Rect of the annotation. | [optional] 
+**rect** | [**Rectangle**](Rectangle.md) | Gets Rect of the annotation. | [optional] 
 **page_index** | **int** | Gets PageIndex of the annotation. | [optional] 
 **z_index** | **int** | Gets ZIndex of the annotation. | [optional] 
 **horizontal_alignment** | [**HorizontalAlignment**](HorizontalAlignment.md) | Gets HorizontalAlignment of the annotation. | [optional] 
@@ -19,7 +20,6 @@ Name | Type | Description | Notes
 **subject** | **str** | Get the annotation subject. | [optional] 
 **title** | **str** | Get the annotation title. | [optional] 
 **rich_text** | **str** | Get the annotation RichText. | [optional] 
-**color** | [**Color**](Color.md) | Color of the annotation. | [optional] 
 **ink_list** | **list[list[Point]]** | Gets or sets list of gestures that are independent lines which are represented by Point[] arrays. | [optional] 
 **cap_style** | [**CapStyle**](CapStyle.md) | Style of ink annotation line endings. | [optional] 
 

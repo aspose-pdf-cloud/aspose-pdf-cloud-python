@@ -126,6 +126,7 @@ class LineAnnotationResponse(object):
     def annotation(self):
         """
         Gets the annotation of this LineAnnotationResponse.
+        Line annotation object
 
         :return: The annotation of this LineAnnotationResponse.
         :rtype: LineAnnotation
@@ -136,6 +137,7 @@ class LineAnnotationResponse(object):
     def annotation(self, annotation):
         """
         Sets the annotation of this LineAnnotationResponse.
+        Line annotation object
 
         :param annotation: The annotation of this LineAnnotationResponse.
         :type: LineAnnotation

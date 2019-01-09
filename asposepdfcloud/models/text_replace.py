@@ -52,7 +52,7 @@ class TextReplace(object):
         'new_value': 'str',
         'regex': 'bool',
         'text_state': 'TextState',
-        'rect': 'RectanglePdf'
+        'rect': 'Rectangle'
     }
 
     attribute_map = {
@@ -187,7 +187,7 @@ class TextReplace(object):
         Rectangle area where searched original text.
 
         :return: The rect of this TextReplace.
-        :rtype: RectanglePdf
+        :rtype: Rectangle
         """
         return self._rect
 
@@ -198,7 +198,7 @@ class TextReplace(object):
         Rectangle area where searched original text.
 
         :param rect: The rect of this TextReplace.
-        :type: RectanglePdf
+        :type: Rectangle
         """
 
         self._rect = rect

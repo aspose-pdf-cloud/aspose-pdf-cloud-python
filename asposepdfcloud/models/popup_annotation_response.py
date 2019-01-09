@@ -126,6 +126,7 @@ class PopupAnnotationResponse(object):
     def annotation(self):
         """
         Gets the annotation of this PopupAnnotationResponse.
+        Popup annotation object
 
         :return: The annotation of this PopupAnnotationResponse.
         :rtype: PopupAnnotationWithParent
@@ -136,6 +137,7 @@ class PopupAnnotationResponse(object):
     def annotation(self, annotation):
         """
         Sets the annotation of this PopupAnnotationResponse.
+        Popup annotation object
 
         :param annotation: The annotation of this PopupAnnotationResponse.
         :type: PopupAnnotationWithParent

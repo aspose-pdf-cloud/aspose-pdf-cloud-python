@@ -97,6 +97,7 @@ class SquareAnnotations(object):
     def list(self):
         """
         Gets the list of this SquareAnnotations.
+        List of square annotations.
 
         :return: The list of this SquareAnnotations.
         :rtype: list[SquareAnnotation]
@@ -107,6 +108,7 @@ class SquareAnnotations(object):
     def list(self, list):
         """
         Sets the list of this SquareAnnotations.
+        List of square annotations.
 
         :param list: The list of this SquareAnnotations.
         :type: list[SquareAnnotation]

@@ -129,6 +129,7 @@ class TextReplaceListRequest(object):
     def start_index(self):
         """
         Gets the start_index of this TextReplaceListRequest.
+        The index of first match to be replaced.
 
         :return: The start_index of this TextReplaceListRequest.
         :rtype: int
@@ -139,6 +140,7 @@ class TextReplaceListRequest(object):
     def start_index(self, start_index):
         """
         Sets the start_index of this TextReplaceListRequest.
+        The index of first match to be replaced.
 
         :param start_index: The start_index of this TextReplaceListRequest.
         :type: int
@@ -150,6 +152,7 @@ class TextReplaceListRequest(object):
     def count_replace(self):
         """
         Gets the count_replace of this TextReplaceListRequest.
+        The number of matches to be replaced.
 
         :return: The count_replace of this TextReplaceListRequest.
         :rtype: int
@@ -160,6 +163,7 @@ class TextReplaceListRequest(object):
     def count_replace(self, count_replace):
         """
         Sets the count_replace of this TextReplaceListRequest.
+        The number of matches to be replaced.
 
         :param count_replace: The count_replace of this TextReplaceListRequest.
         :type: int

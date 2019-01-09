@@ -50,29 +50,29 @@ class TextRectsResponse(object):
     swagger_types = {
         'code': 'int',
         'status': 'str',
-        'text_occurences': 'TextRects'
+        'text_occurrences': 'TextRects'
     }
 
     attribute_map = {
         'code': 'Code',
         'status': 'Status',
-        'text_occurences': 'TextOccurences'
+        'text_occurrences': 'TextOccurrences'
     }
 
-    def __init__(self, code=None, status=None, text_occurences=None):
+    def __init__(self, code=None, status=None, text_occurrences=None):
         """
         TextRectsResponse - a model defined in Swagger
         """
 
         self._code = None
         self._status = None
-        self._text_occurences = None
+        self._text_occurrences = None
 
         self.code = code
         if status is not None:
           self.status = status
-        if text_occurences is not None:
-          self.text_occurences = text_occurences
+        if text_occurrences is not None:
+          self.text_occurrences = text_occurrences
 
     @property
     def code(self):
@@ -123,25 +123,27 @@ class TextRectsResponse(object):
         self._status = status
 
     @property
-    def text_occurences(self):
+    def text_occurrences(self):
         """
-        Gets the text_occurences of this TextRectsResponse.
+        Gets the text_occurrences of this TextRectsResponse.
+        TextRects object
 
-        :return: The text_occurences of this TextRectsResponse.
+        :return: The text_occurrences of this TextRectsResponse.
         :rtype: TextRects
         """
-        return self._text_occurences
+        return self._text_occurrences
 
-    @text_occurences.setter
-    def text_occurences(self, text_occurences):
+    @text_occurrences.setter
+    def text_occurrences(self, text_occurrences):
         """
-        Sets the text_occurences of this TextRectsResponse.
+        Sets the text_occurrences of this TextRectsResponse.
+        TextRects object
 
-        :param text_occurences: The text_occurences of this TextRectsResponse.
+        :param text_occurrences: The text_occurrences of this TextRectsResponse.
         :type: TextRects
         """
 
-        self._text_occurences = text_occurences
+        self._text_occurrences = text_occurrences
 
     def to_dict(self):
         """

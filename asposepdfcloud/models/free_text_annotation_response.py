@@ -126,6 +126,7 @@ class FreeTextAnnotationResponse(object):
     def annotation(self):
         """
         Gets the annotation of this FreeTextAnnotationResponse.
+        Free text annotation object
 
         :return: The annotation of this FreeTextAnnotationResponse.
         :rtype: FreeTextAnnotation
@@ -136,6 +137,7 @@ class FreeTextAnnotationResponse(object):
     def annotation(self, annotation):
         """
         Sets the annotation of this FreeTextAnnotationResponse.
+        Free text annotation object
 
         :param annotation: The annotation of this FreeTextAnnotationResponse.
         :type: FreeTextAnnotation

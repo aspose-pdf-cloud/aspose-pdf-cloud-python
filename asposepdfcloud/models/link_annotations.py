@@ -97,6 +97,7 @@ class LinkAnnotations(object):
     def list(self):
         """
         Gets the list of this LinkAnnotations.
+        List of link annotations.
 
         :return: The list of this LinkAnnotations.
         :rtype: list[LinkAnnotation]
@@ -107,6 +108,7 @@ class LinkAnnotations(object):
     def list(self, list):
         """
         Sets the list of this LinkAnnotations.
+        List of link annotations.
 
         :param list: The list of this LinkAnnotations.
         :type: list[LinkAnnotation]

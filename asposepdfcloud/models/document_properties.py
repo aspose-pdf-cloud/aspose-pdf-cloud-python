@@ -97,6 +97,7 @@ class DocumentProperties(object):
     def list(self):
         """
         Gets the list of this DocumentProperties.
+        List of PDF document properties.
 
         :return: The list of this DocumentProperties.
         :rtype: list[DocumentProperty]
@@ -107,6 +108,7 @@ class DocumentProperties(object):
     def list(self, list):
         """
         Sets the list of this DocumentProperties.
+        List of PDF document properties.
 
         :param list: The list of this DocumentProperties.
         :type: list[DocumentProperty]

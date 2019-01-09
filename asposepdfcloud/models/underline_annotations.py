@@ -97,6 +97,7 @@ class UnderlineAnnotations(object):
     def list(self):
         """
         Gets the list of this UnderlineAnnotations.
+        List of underline annotations.
 
         :return: The list of this UnderlineAnnotations.
         :rtype: list[UnderlineAnnotation]
@@ -107,6 +108,7 @@ class UnderlineAnnotations(object):
     def list(self, list):
         """
         Sets the list of this UnderlineAnnotations.
+        List of underline annotations.
 
         :param list: The list of this UnderlineAnnotations.
         :type: list[UnderlineAnnotation]

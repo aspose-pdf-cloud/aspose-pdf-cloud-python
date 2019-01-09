@@ -49,12 +49,13 @@ class CircleAnnotation(object):
     """
     swagger_types = {
         'links': 'list[Link]',
+        'color': 'Color',
         'contents': 'str',
         'modified': 'str',
         'id': 'str',
         'flags': 'list[AnnotationFlags]',
         'name': 'str',
-        'rect': 'RectanglePdf',
+        'rect': 'Rectangle',
         'page_index': 'int',
         'z_index': 'int',
         'horizontal_alignment': 'HorizontalAlignment',
@@ -64,12 +65,12 @@ class CircleAnnotation(object):
         'title': 'str',
         'rich_text': 'str',
         'interior_color': 'Color',
-        'frame': 'RectanglePdf',
-        'color': 'Color'
+        'frame': 'Rectangle'
     }
 
     attribute_map = {
         'links': 'Links',
+        'color': 'Color',
         'contents': 'Contents',
         'modified': 'Modified',
         'id': 'Id',
@@ -85,16 +86,16 @@ class CircleAnnotation(object):
         'title': 'Title',
         'rich_text': 'RichText',
         'interior_color': 'InteriorColor',
-        'frame': 'Frame',
-        'color': 'Color'
+        'frame': 'Frame'
     }
 
-    def __init__(self, links=None, contents=None, modified=None, id=None, flags=None, name=None, rect=None, page_index=None, z_index=None, horizontal_alignment=None, vertical_alignment=None, creation_date=None, subject=None, title=None, rich_text=None, interior_color=None, frame=None, color=None):
+    def __init__(self, links=None, color=None, contents=None, modified=None, id=None, flags=None, name=None, rect=None, page_index=None, z_index=None, horizontal_alignment=None, vertical_alignment=None, creation_date=None, subject=None, title=None, rich_text=None, interior_color=None, frame=None):
         """
         CircleAnnotation - a model defined in Swagger
         """
 
         self._links = None
+        self._color = None
         self._contents = None
         self._modified = None
         self._id = None
@@ -111,10 +112,11 @@ class CircleAnnotation(object):
         self._rich_text = None
         self._interior_color = None
         self._frame = None
-        self._color = None
 
         if links is not None:
           self.links = links
+        if color is not None:
+          self.color = color
         if contents is not None:
           self.contents = contents
         if modified is not None:
@@ -147,8 +149,6 @@ class CircleAnnotation(object):
           self.interior_color = interior_color
         if frame is not None:
           self.frame = frame
-        if color is not None:
-          self.color = color
 
     @property
     def links(self):
@@ -172,6 +172,29 @@ class CircleAnnotation(object):
         """
 
         self._links = links
+
+    @property
+    def color(self):
+        """
+        Gets the color of this CircleAnnotation.
+        Color of the annotation.
+
+        :return: The color of this CircleAnnotation.
+        :rtype: Color
+        """
+        return self._color
+
+    @color.setter
+    def color(self, color):
+        """
+        Sets the color of this CircleAnnotation.
+        Color of the annotation.
+
+        :param color: The color of this CircleAnnotation.
+        :type: Color
+        """
+
+        self._color = color
 
     @property
     def contents(self):
@@ -295,7 +318,7 @@ class CircleAnnotation(object):
         Gets Rect of the annotation.
 
         :return: The rect of this CircleAnnotation.
-        :rtype: RectanglePdf
+        :rtype: Rectangle
         """
         return self._rect
 
@@ -306,7 +329,7 @@ class CircleAnnotation(object):
         Gets Rect of the annotation.
 
         :param rect: The rect of this CircleAnnotation.
-        :type: RectanglePdf
+        :type: Rectangle
         """
 
         self._rect = rect
@@ -525,7 +548,7 @@ class CircleAnnotation(object):
         Get or set the annotation Rectangle of frame.
 
         :return: The frame of this CircleAnnotation.
-        :rtype: RectanglePdf
+        :rtype: Rectangle
         """
         return self._frame
 
@@ -536,33 +559,10 @@ class CircleAnnotation(object):
         Get or set the annotation Rectangle of frame.
 
         :param frame: The frame of this CircleAnnotation.
-        :type: RectanglePdf
+        :type: Rectangle
         """
 
         self._frame = frame
-
-    @property
-    def color(self):
-        """
-        Gets the color of this CircleAnnotation.
-        Color of the annotation.
-
-        :return: The color of this CircleAnnotation.
-        :rtype: Color
-        """
-        return self._color
-
-    @color.setter
-    def color(self, color):
-        """
-        Sets the color of this CircleAnnotation.
-        Color of the annotation.
-
-        :param color: The color of this CircleAnnotation.
-        :type: Color
-        """
-
-        self._color = color
 
     def to_dict(self):
         """
