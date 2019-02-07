@@ -1325,7 +1325,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.get_download_document_attachment_by_index(file_name, attachment_index, **opts)
-        self.assertIsInstance(response, str);
+        self.assertIsInstance(response, str)
     
 
     # Bookmarks Tests
@@ -2705,7 +2705,6 @@ class PdfTests(unittest.TestCase):
         file_name = 'PdfWithLinks.pdf'
         self.uploadFile(file_name)
 
-        page_number = 1
         opts = {
               "folder" : self.temp_folder
         }
@@ -3259,7 +3258,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.get_verify_signature(file_name, signature.form_field_name, **opts)
-        self.assertEqual(response_sign.code, 200)
+        self.assertEqual(response.code, 200)
 
 
     # Text Replace Tests
@@ -3371,7 +3370,7 @@ class PdfTests(unittest.TestCase):
                     background_color=background_color,
                     font_style=asposepdfcloud.models.FontStyles.BOLD)
 
-        segment = asposepdfcloud.models.Segment(value='segment 1', text_state=text_state);
+        segment = asposepdfcloud.models.Segment(value='segment 1', text_state=text_state)
 
         text_line = asposepdfcloud.models.TextLine(horizontal_alignment=asposepdfcloud.models.TextHorizontalAlignment.RIGHT,
             segments=[segment])

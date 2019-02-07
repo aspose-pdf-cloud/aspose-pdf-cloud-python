@@ -166,10 +166,6 @@ class ApiClient(object):
                             guess_type(filename)[0] or 'application/octet-stream'
                         header_params['Content-Type'] = mimetype
 
-
-        # auth setting
-        self.update_params_for_auth(header_params, query_params, auth_settings)
-
         # body
         if body:
             body = self.sanitize_for_serialization(body)
@@ -610,33 +606,6 @@ class ApiClient(object):
             return 'application/json'
         else:
             return content_types[0]
-
-    def update_params_for_auth(self, headers, querys, auth_settings):
-        """
-        Updates header and query params based on authentication setting.
-
-        :param headers: Header parameters dict to be updated.
-        :param querys: Query parameters tuple list to be updated.
-        :param auth_settings: Authentication setting identifiers list.
-        """
-        config = Configuration()
-
-        if not auth_settings:
-            return
-
-        for auth in auth_settings:
-            auth_setting = config.auth_settings().get(auth)
-            if auth_setting:
-                if not auth_setting['value']:
-                    continue
-                elif auth_setting['in'] == 'header':
-                    headers[auth_setting['key']] = auth_setting['value']
-                elif auth_setting['in'] == 'query':
-                    querys.append((auth_setting['key'], auth_setting['value']))
-                else:
-                    raise ValueError(
-                        'Authentication token must be in `query` or `header`'
-                    )
 
     def __deserialize_file(self, response):
         """
