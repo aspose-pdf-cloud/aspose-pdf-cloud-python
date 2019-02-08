@@ -3,7 +3,7 @@
     Aspose.PDF Cloud API Reference
 
 
-   Copyright (c) 2018 Aspose.PDF Cloud
+   Copyright (c) 2019 Aspose.PDF Cloud
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
@@ -622,7 +622,7 @@ class ApiClient(object):
         os.remove(path)
 
         content_disposition = response.getheader("Content-Disposition")
-        if content_disposition:
+        if content_disposition and content_disposition != "attachment":
             filename = re.\
                 search(r'filename=[\'"]?([^\'"\s]+)[\'"]?', content_disposition).\
                 group(1)
@@ -682,7 +682,7 @@ class ApiClient(object):
             )
 
     def __deserialize_datatime(self, string):
-        match = re.match(r"\/Date\((\d+?)000\+0000\)\/", string)
+        match = re.match(r"/Date\((\d+?)000\+0000\)/", string)
         if match:
             dt = datetime.utcfromtimestamp(int(match[1]))
             return dt

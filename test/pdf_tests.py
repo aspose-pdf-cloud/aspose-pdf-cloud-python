@@ -117,6 +117,367 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.delete_annotation(file_name, annotation_id, folder=self.temp_folder)
         self.assertEqual(response.code, 200)
 
+    # FileAttachment Annotations Tests
+
+    def testGetDocumentFileAttachmentAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.get_document_file_attachment_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetPageFileAttachmentAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 2
+
+        response = self.pdf_api.get_page_file_attachment_annotations(file_name, page_number, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetFileAttachmentAnnotation(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        response_annotations = self.pdf_api.get_document_file_attachment_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.get_file_attachment_annotation(file_name, annotation_id, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testPostPageFileAttachmentAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        attachment_file = '4pages.pdf'
+        self.uploadFile(attachment_file)
+
+        page_number = 1
+
+        annotation = asposepdfcloud.models.FileAttachmentAnnotation()
+        annotation.name = 'Test Name'
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
+        annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
+        annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        annotation.rich_text = 'Rich Text'
+        annotation.subject = 'Subj'
+        annotation.z_index = 1
+        annotation.title = 'Title'
+        annotation.modified = '01/01/2018 12:00:00.000 AM'
+        annotation.file_path = self.temp_folder + '/' + attachment_file
+        annotation.file_name = attachment_file
+
+        response = self.pdf_api.post_page_file_attachment_annotations(file_name, page_number, [annotation], folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+
+    def testPutFileAttachmentAnnotation(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        attachment_file = '4pages.pdf'
+        self.uploadFile(attachment_file)
+
+        annotation = asposepdfcloud.models.FileAttachmentAnnotation()
+        annotation.name = 'Test Name'
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
+        annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
+        annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        annotation.rich_text = 'Rich Text'
+        annotation.subject = 'Subj'
+        annotation.z_index = 1
+        annotation.title = 'Title'
+        annotation.modified = '01/01/2018 12:00:00.000 AM'
+        annotation.file_path = self.temp_folder + '/' + attachment_file
+        annotation.file_name = attachment_file
+
+        response_annotations = self.pdf_api.get_document_file_attachment_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.put_file_attachment_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+    def testGetFileAttachmentAnnotationData(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        response_annotations = self.pdf_api.get_document_file_attachment_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.get_file_attachment_annotation_data(file_name, annotation_id, folder=self.temp_folder)
+        self.assertIsInstance(response, str)
+
+    def testPutFileAttachmentAnnotationDataExtract(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        response_annotations = self.pdf_api.get_document_file_attachment_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.put_file_attachment_annotation_data_extract(file_name, annotation_id, folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+    # Sound Annotations Tests
+
+    def testGetDocumentSoundAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.get_document_sound_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetPageSoundAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 2
+
+        response = self.pdf_api.get_page_sound_annotations(file_name, page_number, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetSoundAnnotation(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        response_annotations = self.pdf_api.get_document_sound_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.get_sound_annotation(file_name, annotation_id, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testPostPageSoundAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        attachment_file = '4pages.pdf'
+        self.uploadFile(attachment_file)
+
+        page_number = 1
+
+        annotation = asposepdfcloud.models.SoundAnnotation()
+        annotation.name = 'Test Name'
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
+        annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
+        annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        annotation.rich_text = 'Rich Text'
+        annotation.subject = 'Subj'
+        annotation.z_index = 1
+        annotation.title = 'Title'
+        annotation.modified = '01/01/2018 12:00:00.000 AM'
+        annotation.file_path = self.temp_folder + '/' + attachment_file
+
+        response = self.pdf_api.post_page_sound_annotations(file_name, page_number, [annotation], folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+
+    def testPutSoundAnnotation(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        attachment_file = '4pages.pdf'
+        self.uploadFile(attachment_file)
+
+        annotation = asposepdfcloud.models.SoundAnnotation()
+        annotation.name = 'Test Name'
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
+        annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
+        annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        annotation.rich_text = 'Rich Text'
+        annotation.subject = 'Subj'
+        annotation.z_index = 1
+        annotation.title = 'Title'
+        annotation.modified = '01/01/2018 12:00:00.000 AM'
+        annotation.file_path = self.temp_folder + '/' + attachment_file
+
+        response_annotations = self.pdf_api.get_document_sound_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.put_sound_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+    def testGetSoundAnnotationData(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        response_annotations = self.pdf_api.get_document_sound_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.get_sound_annotation_data(file_name, annotation_id, folder=self.temp_folder)
+        self.assertIsInstance(response, str)
+
+    def testPutSoundAnnotationDataExtract(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        response_annotations = self.pdf_api.get_document_sound_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.put_sound_annotation_data_extract(file_name, annotation_id, out_file_path="outFile.dat", folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+
+    # Redaction Annotations Tests
+
+    def testGetDocumentRedactionAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.get_document_redaction_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetPageRedactionAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 2
+
+        response = self.pdf_api.get_page_redaction_annotations(file_name, page_number, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetRedactionAnnotation(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        response_annotations = self.pdf_api.get_document_redaction_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.get_redaction_annotation(file_name, annotation_id, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testPostPageRedactionAnnotations(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 1
+
+        annotation = asposepdfcloud.models.RedactionAnnotation()
+        annotation.name = 'Test Name'
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
+        annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
+        annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        annotation.z_index = 1
+        annotation.quad_point = [
+            asposepdfcloud.models.Point(10, 40),
+            asposepdfcloud.models.Point(30, 40)
+        ]
+        annotation.modified = '01/01/2018 12:00:00.000 AM'
+
+        response = self.pdf_api.post_page_redaction_annotations(file_name, page_number, [annotation], folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+
+    def testPutRedactionAnnotation(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+        
+        page_number = 1
+
+        annotation = asposepdfcloud.models.RedactionAnnotation()
+        annotation.name = 'Test Name Updated'
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
+        annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
+        annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        annotation.z_index = 1
+        annotation.quad_point = [
+            asposepdfcloud.models.Point(10, 40),
+            asposepdfcloud.models.Point(30, 40)
+        ]
+        annotation.modified = '01/01/2018 12:01:02.000 AM'
+
+        response = self.pdf_api.post_page_redaction_annotations(file_name, page_number, [annotation], folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+        response_annotations = self.pdf_api.get_document_redaction_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.put_redaction_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+
+    # Movie Annotations Tests
+
+    def testGetDocumentMovieAnnotations(self):
+        file_name = 'PdfWithAnnotations1.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.get_document_movie_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetPageMovieAnnotations(self):
+        file_name = 'PdfWithAnnotations1.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 2
+
+        response = self.pdf_api.get_page_movie_annotations(file_name, page_number, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetMovieAnnotation(self):
+        file_name = 'PdfWithAnnotations1.pdf'
+        self.uploadFile(file_name)
+
+        response_annotations = self.pdf_api.get_document_movie_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.get_movie_annotation(file_name, annotation_id, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testPostPageMovieAnnotations(self):
+        file_name = 'PdfWithAnnotations1.pdf'
+        self.uploadFile(file_name)
+
+        attachment_file = '4pages.pdf'
+        self.uploadFile(attachment_file)
+
+        page_number = 1
+
+        annotation = asposepdfcloud.models.MovieAnnotation()
+        annotation.name = 'Test Name'
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
+        annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
+        annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        annotation.z_index = 1
+        annotation.modified = '01/01/2018 12:00:00.000 AM'
+        annotation.file_path = self.temp_folder + '/' + attachment_file
+        
+        response = self.pdf_api.post_page_movie_annotations(file_name, page_number, [annotation], folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+
+    def testPutMovieAnnotation(self):
+        file_name = 'PdfWithAnnotations1.pdf'
+        self.uploadFile(file_name)
+
+        attachment_file = '4pages.pdf'
+        self.uploadFile(attachment_file)
+
+        annotation = asposepdfcloud.models.MovieAnnotation()
+        annotation.name = 'Test Name'
+        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
+        annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
+        annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        annotation.z_index = 1
+        annotation.modified = '01/01/2018 12:00:00.000 AM'
+        annotation.file_path = self.temp_folder + '/' + attachment_file
+        
+        response_annotations = self.pdf_api.get_document_movie_annotations(file_name, folder=self.temp_folder)
+        self.assertEqual(response_annotations.code, 200)
+        annotation_id = response_annotations.annotations.list[0].id
+
+        response = self.pdf_api.put_movie_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
     # PolyLine Annotations Tests
 
     def testGetDocumentPolyLineAnnotations(self):
@@ -3478,7 +3839,8 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.get_disc_usage()
         self.assertEqual(response.code, 200)
 
-    def testGetListFileVersions(self):
+
+    def testGetListFileVersion(self):
         file_name = '4pages.pdf'
         self.uploadFile(file_name)
         path = self.temp_folder + '/' + file_name

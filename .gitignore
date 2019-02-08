@@ -203,3 +203,4 @@ src/Settings/servercreds.json
 dist/
 *.egg-info
 
+.vscode
