@@ -4,7 +4,7 @@
     Aspose.PDF Cloud API Reference
 
 
-   Copyright (c) 2018 Aspose.PDF Cloud
+   Copyright (c) 2019 Aspose.PDF Cloud
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
@@ -66,7 +66,6 @@ class PdfTests(unittest.TestCase):
 
     def tearDown(self):
         pass
-
     
     # Annotations Tests
 
@@ -3838,7 +3837,6 @@ class PdfTests(unittest.TestCase):
         
         response = self.pdf_api.get_disc_usage()
         self.assertEqual(response.code, 200)
-
 
     def testGetListFileVersion(self):
         file_name = '4pages.pdf'

@@ -682,9 +682,9 @@ class ApiClient(object):
             )
 
     def __deserialize_datatime(self, string):
-        match = re.match(r"/Date\((\d+?)000\+0000\)/", string)
+        match = re.match(r'/Date\((\d+?)000\+0000\)/', string, flags=re.UNICODE)
         if match:
-            dt = datetime.utcfromtimestamp(int(match[1]))
+            dt = datetime.utcfromtimestamp(int(match.group(1)))
             return dt
         else:
             return None
