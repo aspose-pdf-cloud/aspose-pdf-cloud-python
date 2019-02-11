@@ -4,7 +4,7 @@
     Aspose.PDF Cloud API Reference
 
 
-   Copyright (c) 2018 Aspose.PDF Cloud
+   Copyright (c) 2019 Aspose.PDF Cloud
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
@@ -51,6 +51,7 @@ from .models.epub_recognition_mode import EpubRecognitionMode
 from .models.field_type import FieldType
 from .models.file import File
 from .models.file_exist import FileExist
+from .models.file_icon import FileIcon
 from .models.font_encoding_rules import FontEncodingRules
 from .models.font_saving_modes import FontSavingModes
 from .models.font_styles import FontStyles
@@ -86,6 +87,8 @@ from .models.segment import Segment
 from .models.shape_type import ShapeType
 from .models.signature import Signature
 from .models.signature_type import SignatureType
+from .models.sound_encoding import SoundEncoding
+from .models.sound_icon import SoundIcon
 from .models.split_result import SplitResult
 from .models.stamp import Stamp
 from .models.stamp_type import StampType
@@ -127,6 +130,9 @@ from .models.field import Field
 from .models.field_response import FieldResponse
 from .models.fields import Fields
 from .models.fields_response import FieldsResponse
+from .models.file_attachment_annotation_response import FileAttachmentAnnotationResponse
+from .models.file_attachment_annotations import FileAttachmentAnnotations
+from .models.file_attachment_annotations_response import FileAttachmentAnnotationsResponse
 from .models.file_exist_response import FileExistResponse
 from .models.file_version import FileVersion
 from .models.file_versions_response import FileVersionsResponse
@@ -151,6 +157,9 @@ from .models.link_annotation import LinkAnnotation
 from .models.link_annotation_response import LinkAnnotationResponse
 from .models.link_annotations import LinkAnnotations
 from .models.link_annotations_response import LinkAnnotationsResponse
+from .models.movie_annotation_response import MovieAnnotationResponse
+from .models.movie_annotations import MovieAnnotations
+from .models.movie_annotations_response import MovieAnnotationsResponse
 from .models.page import Page
 from .models.pages import Pages
 from .models.poly_line_annotation_response import PolyLineAnnotationResponse
@@ -162,7 +171,13 @@ from .models.polygon_annotations_response import PolygonAnnotationsResponse
 from .models.popup_annotation_response import PopupAnnotationResponse
 from .models.popup_annotations import PopupAnnotations
 from .models.popup_annotations_response import PopupAnnotationsResponse
+from .models.redaction_annotation_response import RedactionAnnotationResponse
+from .models.redaction_annotations import RedactionAnnotations
+from .models.redaction_annotations_response import RedactionAnnotationsResponse
 from .models.signature_verify_response import SignatureVerifyResponse
+from .models.sound_annotation_response import SoundAnnotationResponse
+from .models.sound_annotations import SoundAnnotations
+from .models.sound_annotations_response import SoundAnnotationsResponse
 from .models.split_result_document import SplitResultDocument
 from .models.split_result_response import SplitResultResponse
 from .models.square_annotation_response import SquareAnnotationResponse
@@ -186,15 +201,19 @@ from .models.underline_annotations_response import UnderlineAnnotationsResponse
 from .models.word_count_response import WordCountResponse
 from .models.annotation_info import AnnotationInfo
 from .models.markup_annotation import MarkupAnnotation
+from .models.movie_annotation import MovieAnnotation
 from .models.popup_annotation import PopupAnnotation
+from .models.redaction_annotation import RedactionAnnotation
 from .models.caret_annotation import CaretAnnotation
 from .models.common_figure_annotation import CommonFigureAnnotation
+from .models.file_attachment_annotation import FileAttachmentAnnotation
 from .models.free_text_annotation import FreeTextAnnotation
 from .models.highlight_annotation import HighlightAnnotation
 from .models.ink_annotation import InkAnnotation
 from .models.line_annotation import LineAnnotation
 from .models.poly_annotation import PolyAnnotation
 from .models.popup_annotation_with_parent import PopupAnnotationWithParent
+from .models.sound_annotation import SoundAnnotation
 from .models.squiggly_annotation import SquigglyAnnotation
 from .models.strike_out_annotation import StrikeOutAnnotation
 from .models.text_annotation import TextAnnotation

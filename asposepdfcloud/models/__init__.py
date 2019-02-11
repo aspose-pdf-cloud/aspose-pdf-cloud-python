@@ -4,7 +4,7 @@
     Aspose.PDF Cloud API Reference
 
 
-   Copyright (c) 2018 Aspose.PDF Cloud
+   Copyright (c) 2019 Aspose.PDF Cloud
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
@@ -51,6 +51,7 @@ from .epub_recognition_mode import EpubRecognitionMode
 from .field_type import FieldType
 from .file import File
 from .file_exist import FileExist
+from .file_icon import FileIcon
 from .font_encoding_rules import FontEncodingRules
 from .font_saving_modes import FontSavingModes
 from .font_styles import FontStyles
@@ -86,6 +87,8 @@ from .segment import Segment
 from .shape_type import ShapeType
 from .signature import Signature
 from .signature_type import SignatureType
+from .sound_encoding import SoundEncoding
+from .sound_icon import SoundIcon
 from .split_result import SplitResult
 from .stamp import Stamp
 from .stamp_type import StampType
@@ -127,6 +130,9 @@ from .field import Field
 from .field_response import FieldResponse
 from .fields import Fields
 from .fields_response import FieldsResponse
+from .file_attachment_annotation_response import FileAttachmentAnnotationResponse
+from .file_attachment_annotations import FileAttachmentAnnotations
+from .file_attachment_annotations_response import FileAttachmentAnnotationsResponse
 from .file_exist_response import FileExistResponse
 from .file_version import FileVersion
 from .file_versions_response import FileVersionsResponse
@@ -151,6 +157,9 @@ from .link_annotation import LinkAnnotation
 from .link_annotation_response import LinkAnnotationResponse
 from .link_annotations import LinkAnnotations
 from .link_annotations_response import LinkAnnotationsResponse
+from .movie_annotation_response import MovieAnnotationResponse
+from .movie_annotations import MovieAnnotations
+from .movie_annotations_response import MovieAnnotationsResponse
 from .page import Page
 from .pages import Pages
 from .poly_line_annotation_response import PolyLineAnnotationResponse
@@ -162,7 +171,13 @@ from .polygon_annotations_response import PolygonAnnotationsResponse
 from .popup_annotation_response import PopupAnnotationResponse
 from .popup_annotations import PopupAnnotations
 from .popup_annotations_response import PopupAnnotationsResponse
+from .redaction_annotation_response import RedactionAnnotationResponse
+from .redaction_annotations import RedactionAnnotations
+from .redaction_annotations_response import RedactionAnnotationsResponse
 from .signature_verify_response import SignatureVerifyResponse
+from .sound_annotation_response import SoundAnnotationResponse
+from .sound_annotations import SoundAnnotations
+from .sound_annotations_response import SoundAnnotationsResponse
 from .split_result_document import SplitResultDocument
 from .split_result_response import SplitResultResponse
 from .square_annotation_response import SquareAnnotationResponse
@@ -186,15 +201,19 @@ from .underline_annotations_response import UnderlineAnnotationsResponse
 from .word_count_response import WordCountResponse
 from .annotation_info import AnnotationInfo
 from .markup_annotation import MarkupAnnotation
+from .movie_annotation import MovieAnnotation
 from .popup_annotation import PopupAnnotation
+from .redaction_annotation import RedactionAnnotation
 from .caret_annotation import CaretAnnotation
 from .common_figure_annotation import CommonFigureAnnotation
+from .file_attachment_annotation import FileAttachmentAnnotation
 from .free_text_annotation import FreeTextAnnotation
 from .highlight_annotation import HighlightAnnotation
 from .ink_annotation import InkAnnotation
 from .line_annotation import LineAnnotation
 from .poly_annotation import PolyAnnotation
 from .popup_annotation_with_parent import PopupAnnotationWithParent
+from .sound_annotation import SoundAnnotation
 from .squiggly_annotation import SquigglyAnnotation
 from .strike_out_annotation import StrikeOutAnnotation
 from .text_annotation import TextAnnotation

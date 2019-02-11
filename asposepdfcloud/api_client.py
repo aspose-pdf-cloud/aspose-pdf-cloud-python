@@ -3,7 +3,7 @@
     Aspose.PDF Cloud API Reference
 
 
-   Copyright (c) 2018 Aspose.PDF Cloud
+   Copyright (c) 2019 Aspose.PDF Cloud
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
@@ -165,10 +165,6 @@ class ApiClient(object):
                         mimetype = mimetypes.\
                             guess_type(filename)[0] or 'application/octet-stream'
                         header_params['Content-Type'] = mimetype
-
-
-        # auth setting
-        self.update_params_for_auth(header_params, query_params, auth_settings)
 
         # body
         if body:
@@ -611,33 +607,6 @@ class ApiClient(object):
         else:
             return content_types[0]
 
-    def update_params_for_auth(self, headers, querys, auth_settings):
-        """
-        Updates header and query params based on authentication setting.
-
-        :param headers: Header parameters dict to be updated.
-        :param querys: Query parameters tuple list to be updated.
-        :param auth_settings: Authentication setting identifiers list.
-        """
-        config = Configuration()
-
-        if not auth_settings:
-            return
-
-        for auth in auth_settings:
-            auth_setting = config.auth_settings().get(auth)
-            if auth_setting:
-                if not auth_setting['value']:
-                    continue
-                elif auth_setting['in'] == 'header':
-                    headers[auth_setting['key']] = auth_setting['value']
-                elif auth_setting['in'] == 'query':
-                    querys.append((auth_setting['key'], auth_setting['value']))
-                else:
-                    raise ValueError(
-                        'Authentication token must be in `query` or `header`'
-                    )
-
     def __deserialize_file(self, response):
         """
         Saves response body into a file in a temporary folder,
@@ -653,7 +622,7 @@ class ApiClient(object):
         os.remove(path)
 
         content_disposition = response.getheader("Content-Disposition")
-        if content_disposition:
+        if content_disposition and content_disposition != "attachment":
             filename = re.\
                 search(r'filename=[\'"]?([^\'"\s]+)[\'"]?', content_disposition).\
                 group(1)
@@ -713,9 +682,9 @@ class ApiClient(object):
             )
 
     def __deserialize_datatime(self, string):
-        match = re.match(r"\/Date\((\d+?)000\+0000\)\/", string)
+        match = re.match(r'/Date\((\d+?)000\+0000\)/', string, flags=re.UNICODE)
         if match:
-            dt = datetime.utcfromtimestamp(int(match[1]))
+            dt = datetime.utcfromtimestamp(int(match.group(1)))
             return dt
         else:
             return None
