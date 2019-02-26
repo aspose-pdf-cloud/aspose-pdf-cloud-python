@@ -91,6 +91,7 @@ from .models.sound_encoding import SoundEncoding
 from .models.sound_icon import SoundIcon
 from .models.split_result import SplitResult
 from .models.stamp import Stamp
+from .models.stamp_icon import StampIcon
 from .models.stamp_type import StampType
 from .models.text_horizontal_alignment import TextHorizontalAlignment
 from .models.text_icon import TextIcon
@@ -174,6 +175,9 @@ from .models.popup_annotations_response import PopupAnnotationsResponse
 from .models.redaction_annotation_response import RedactionAnnotationResponse
 from .models.redaction_annotations import RedactionAnnotations
 from .models.redaction_annotations_response import RedactionAnnotationsResponse
+from .models.screen_annotation_response import ScreenAnnotationResponse
+from .models.screen_annotations import ScreenAnnotations
+from .models.screen_annotations_response import ScreenAnnotationsResponse
 from .models.signature_verify_response import SignatureVerifyResponse
 from .models.sound_annotation_response import SoundAnnotationResponse
 from .models.sound_annotations import SoundAnnotations
@@ -186,6 +190,9 @@ from .models.square_annotations_response import SquareAnnotationsResponse
 from .models.squiggly_annotation_response import SquigglyAnnotationResponse
 from .models.squiggly_annotations import SquigglyAnnotations
 from .models.squiggly_annotations_response import SquigglyAnnotationsResponse
+from .models.stamp_annotation_response import StampAnnotationResponse
+from .models.stamp_annotations import StampAnnotations
+from .models.stamp_annotations_response import StampAnnotationsResponse
 from .models.storage_exist_response import StorageExistResponse
 from .models.strike_out_annotation_response import StrikeOutAnnotationResponse
 from .models.strike_out_annotations import StrikeOutAnnotations
@@ -204,6 +211,7 @@ from .models.markup_annotation import MarkupAnnotation
 from .models.movie_annotation import MovieAnnotation
 from .models.popup_annotation import PopupAnnotation
 from .models.redaction_annotation import RedactionAnnotation
+from .models.screen_annotation import ScreenAnnotation
 from .models.caret_annotation import CaretAnnotation
 from .models.common_figure_annotation import CommonFigureAnnotation
 from .models.file_attachment_annotation import FileAttachmentAnnotation
@@ -215,6 +223,7 @@ from .models.poly_annotation import PolyAnnotation
 from .models.popup_annotation_with_parent import PopupAnnotationWithParent
 from .models.sound_annotation import SoundAnnotation
 from .models.squiggly_annotation import SquigglyAnnotation
+from .models.stamp_annotation import StampAnnotation
 from .models.strike_out_annotation import StrikeOutAnnotation
 from .models.text_annotation import TextAnnotation
 from .models.underline_annotation import UnderlineAnnotation
