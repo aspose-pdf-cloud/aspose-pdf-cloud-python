@@ -91,6 +91,7 @@ from .sound_encoding import SoundEncoding
 from .sound_icon import SoundIcon
 from .split_result import SplitResult
 from .stamp import Stamp
+from .stamp_icon import StampIcon
 from .stamp_type import StampType
 from .text_horizontal_alignment import TextHorizontalAlignment
 from .text_icon import TextIcon
@@ -174,6 +175,9 @@ from .popup_annotations_response import PopupAnnotationsResponse
 from .redaction_annotation_response import RedactionAnnotationResponse
 from .redaction_annotations import RedactionAnnotations
 from .redaction_annotations_response import RedactionAnnotationsResponse
+from .screen_annotation_response import ScreenAnnotationResponse
+from .screen_annotations import ScreenAnnotations
+from .screen_annotations_response import ScreenAnnotationsResponse
 from .signature_verify_response import SignatureVerifyResponse
 from .sound_annotation_response import SoundAnnotationResponse
 from .sound_annotations import SoundAnnotations
@@ -186,6 +190,9 @@ from .square_annotations_response import SquareAnnotationsResponse
 from .squiggly_annotation_response import SquigglyAnnotationResponse
 from .squiggly_annotations import SquigglyAnnotations
 from .squiggly_annotations_response import SquigglyAnnotationsResponse
+from .stamp_annotation_response import StampAnnotationResponse
+from .stamp_annotations import StampAnnotations
+from .stamp_annotations_response import StampAnnotationsResponse
 from .storage_exist_response import StorageExistResponse
 from .strike_out_annotation_response import StrikeOutAnnotationResponse
 from .strike_out_annotations import StrikeOutAnnotations
@@ -204,6 +211,7 @@ from .markup_annotation import MarkupAnnotation
 from .movie_annotation import MovieAnnotation
 from .popup_annotation import PopupAnnotation
 from .redaction_annotation import RedactionAnnotation
+from .screen_annotation import ScreenAnnotation
 from .caret_annotation import CaretAnnotation
 from .common_figure_annotation import CommonFigureAnnotation
 from .file_attachment_annotation import FileAttachmentAnnotation
@@ -215,6 +223,7 @@ from .poly_annotation import PolyAnnotation
 from .popup_annotation_with_parent import PopupAnnotationWithParent
 from .sound_annotation import SoundAnnotation
 from .squiggly_annotation import SquigglyAnnotation
+from .stamp_annotation import StampAnnotation
 from .strike_out_annotation import StrikeOutAnnotation
 from .text_annotation import TextAnnotation
 from .underline_annotation import UnderlineAnnotation
