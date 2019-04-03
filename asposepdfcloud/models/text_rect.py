@@ -50,16 +50,26 @@ class TextRect(object):
     swagger_types = {
         'text': 'str',
         'page': 'int',
-        'rect': 'Rectangle'
+        'rect': 'Rectangle',
+        'horizontal_alignment': 'HorizontalAlignment',
+        'vertical_alignment': 'VerticalAlignment',
+        'position': 'Position',
+        'baseline_position': 'Position',
+        'text_state': 'TextState'
     }
 
     attribute_map = {
         'text': 'Text',
         'page': 'Page',
-        'rect': 'Rect'
+        'rect': 'Rect',
+        'horizontal_alignment': 'HorizontalAlignment',
+        'vertical_alignment': 'VerticalAlignment',
+        'position': 'Position',
+        'baseline_position': 'BaselinePosition',
+        'text_state': 'TextState'
     }
 
-    def __init__(self, text=None, page=None, rect=None):
+    def __init__(self, text=None, page=None, rect=None, horizontal_alignment=None, vertical_alignment=None, position=None, baseline_position=None, text_state=None):
         """
         TextRect - a model defined in Swagger
         """
@@ -67,12 +77,28 @@ class TextRect(object):
         self._text = None
         self._page = None
         self._rect = None
+        self._horizontal_alignment = None
+        self._vertical_alignment = None
+        self._position = None
+        self._baseline_position = None
+        self._text_state = None
 
         if text is not None:
           self.text = text
-        self.page = page
+        if page is not None:
+          self.page = page
         if rect is not None:
           self.rect = rect
+        if horizontal_alignment is not None:
+          self.horizontal_alignment = horizontal_alignment
+        if vertical_alignment is not None:
+          self.vertical_alignment = vertical_alignment
+        if position is not None:
+          self.position = position
+        if baseline_position is not None:
+          self.baseline_position = baseline_position
+        if text_state is not None:
+          self.text_state = text_state
 
     @property
     def text(self):
@@ -117,8 +143,6 @@ class TextRect(object):
         :param page: The page of this TextRect.
         :type: int
         """
-        if page is None:
-            raise ValueError("Invalid value for `page`, must not be `None`")
 
         self._page = page
 
@@ -144,6 +168,121 @@ class TextRect(object):
         """
 
         self._rect = rect
+
+    @property
+    def horizontal_alignment(self):
+        """
+        Gets the horizontal_alignment of this TextRect.
+        Gets or sets a horizontal alignment of text fragment. 
+
+        :return: The horizontal_alignment of this TextRect.
+        :rtype: HorizontalAlignment
+        """
+        return self._horizontal_alignment
+
+    @horizontal_alignment.setter
+    def horizontal_alignment(self, horizontal_alignment):
+        """
+        Sets the horizontal_alignment of this TextRect.
+        Gets or sets a horizontal alignment of text fragment. 
+
+        :param horizontal_alignment: The horizontal_alignment of this TextRect.
+        :type: HorizontalAlignment
+        """
+
+        self._horizontal_alignment = horizontal_alignment
+
+    @property
+    def vertical_alignment(self):
+        """
+        Gets the vertical_alignment of this TextRect.
+        Gets or sets a vertical alignment of text fragment. 
+
+        :return: The vertical_alignment of this TextRect.
+        :rtype: VerticalAlignment
+        """
+        return self._vertical_alignment
+
+    @vertical_alignment.setter
+    def vertical_alignment(self, vertical_alignment):
+        """
+        Sets the vertical_alignment of this TextRect.
+        Gets or sets a vertical alignment of text fragment. 
+
+        :param vertical_alignment: The vertical_alignment of this TextRect.
+        :type: VerticalAlignment
+        """
+
+        self._vertical_alignment = vertical_alignment
+
+    @property
+    def position(self):
+        """
+        Gets the position of this TextRect.
+        Gets or sets text position for text, represented with  object.
+
+        :return: The position of this TextRect.
+        :rtype: Position
+        """
+        return self._position
+
+    @position.setter
+    def position(self, position):
+        """
+        Sets the position of this TextRect.
+        Gets or sets text position for text, represented with  object.
+
+        :param position: The position of this TextRect.
+        :type: Position
+        """
+
+        self._position = position
+
+    @property
+    def baseline_position(self):
+        """
+        Gets the baseline_position of this TextRect.
+        Gets text position for text, represented with  object. The YIndent of the Position structure represents baseline coordinate of the text fragment.
+
+        :return: The baseline_position of this TextRect.
+        :rtype: Position
+        """
+        return self._baseline_position
+
+    @baseline_position.setter
+    def baseline_position(self, baseline_position):
+        """
+        Sets the baseline_position of this TextRect.
+        Gets text position for text, represented with  object. The YIndent of the Position structure represents baseline coordinate of the text fragment.
+
+        :param baseline_position: The baseline_position of this TextRect.
+        :type: Position
+        """
+
+        self._baseline_position = baseline_position
+
+    @property
+    def text_state(self):
+        """
+        Gets the text_state of this TextRect.
+        Gets or sets text state for the text that  object represents.
+
+        :return: The text_state of this TextRect.
+        :rtype: TextState
+        """
+        return self._text_state
+
+    @text_state.setter
+    def text_state(self, text_state):
+        """
+        Sets the text_state of this TextRect.
+        Gets or sets text state for the text that  object represents.
+
+        :param text_state: The text_state of this TextRect.
+        :type: TextState
+        """
+
+        self._text_state = text_state
 
     def to_dict(self):
         """
