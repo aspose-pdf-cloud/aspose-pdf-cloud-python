@@ -230,6 +230,190 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.put_file_attachment_annotation_data_extract(file_name, annotation_id, folder=self.temp_folder)
         self.assertEqual(response.code, 201)
 
+    # Stamp Tests
+
+    def testGetDocumentStamps(self):
+        file_name = 'PageNumberStamp.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.get_document_stamps(file_name, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testDeleteDocumentStamps(self):
+        file_name = 'PageNumberStamp.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.delete_document_stamps(file_name, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetPageStamps(self):
+        file_name = 'PageNumberStamp.pdf'
+        self.uploadFile(file_name)
+        page_number = 1
+
+        response = self.pdf_api.get_page_stamps(file_name, page_number, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testDeletePageStamps(self):
+        file_name = 'PageNumberStamp.pdf'
+        self.uploadFile(file_name)
+        page_number = 1
+
+        response = self.pdf_api.delete_page_stamps(file_name, page_number, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testPostPageTextStamps(self):
+        file_name = 'PageNumberStamp.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 1
+
+        text_state = asposepdfcloud.models.TextState(font_size=14, font_style=asposepdfcloud.models.FontStyles.REGULAR)
+
+        stamp = asposepdfcloud.models.TextStamp()
+        stamp.background = True
+        stamp.left_margin = 1
+        stamp.right_margin = 2
+        stamp.top_margin = 3
+        stamp.bottom_margin = 4
+        stamp.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        stamp.vertical_alignment = asposepdfcloud.models.VerticalAlignment.CENTER
+        stamp.opacity = 1
+        stamp.rotate = asposepdfcloud.models.Rotation.NONE
+        stamp.rotate_angle = 0
+        stamp.x_indent = 0
+        stamp.y_indent = 0
+        stamp.zoom = 1
+        stamp.text_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        stamp.value = 'Text Stamp'
+        stamp.text_state = text_state
+
+        response = self.pdf_api.post_page_text_stamps(file_name, page_number, [stamp], folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+    def testPostPageImageStamps(self):
+        file_name = 'PageNumberStamp.pdf'
+        self.uploadFile(file_name)
+
+        image = 'Koala.jpg'
+        self.uploadFile(image)
+
+        page_number = 1
+
+        stamp = asposepdfcloud.models.ImageStamp()
+        stamp.background = True
+        stamp.left_margin = 1
+        stamp.right_margin = 2
+        stamp.top_margin = 3
+        stamp.bottom_margin = 4
+        stamp.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        stamp.vertical_alignment = asposepdfcloud.models.VerticalAlignment.CENTER
+        stamp.opacity = 1
+        stamp.rotate = asposepdfcloud.models.Rotation.NONE
+        stamp.rotate_angle = 0
+        stamp.x_indent = 0
+        stamp.y_indent = 0
+        stamp.zoom = 1
+        stamp.file_name = self.temp_folder + '/' + image
+
+        response = self.pdf_api.post_page_image_stamps(file_name, page_number, [stamp], folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+    def testPostPagePdfPageStamps(self):
+        file_name = 'PageNumberStamp.pdf'
+        self.uploadFile(file_name)
+
+        pdf = '4pages.pdf'
+        self.uploadFile(pdf)
+
+        page_number = 1
+
+        stamp = asposepdfcloud.models.PdfPageStamp()
+        stamp.background = True
+        stamp.left_margin = 1
+        stamp.right_margin = 2
+        stamp.top_margin = 3
+        stamp.bottom_margin = 4
+        stamp.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        stamp.vertical_alignment = asposepdfcloud.models.VerticalAlignment.CENTER
+        stamp.opacity = 1
+        stamp.rotate = asposepdfcloud.models.Rotation.NONE
+        stamp.rotate_angle = 0
+        stamp.x_indent = 0
+        stamp.y_indent = 0
+        stamp.zoom = 1
+        stamp.file_name = self.temp_folder + '/' + pdf
+        stamp.page_index = 2
+
+        response = self.pdf_api.post_page_pdf_page_stamps(file_name, page_number, [stamp], folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+    def testDeleteStamp(self):
+        file_name = 'PageNumberStamp.pdf'
+        self.uploadFile(file_name)
+        
+        stampResponse = self.pdf_api.get_document_stamps(file_name, folder=self.temp_folder)
+        self.assertEqual(stampResponse.code, 200)
+        stamp_id = stampResponse.stamps.list[0].id
+
+        response = self.pdf_api.delete_stamp(file_name, stamp_id, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    # Tables Tests
+
+    def testGetDocumentTables(self):
+        file_name = 'PdfWithTable.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.get_document_tables(file_name, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testDeleteDocumentTables(self):
+        file_name = 'PdfWithTable.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.delete_document_tables(file_name, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetPageTables(self):
+        file_name = 'PdfWithTable.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 1
+
+        response = self.pdf_api.get_page_tables(file_name, page_number, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testDeletePageTables(self):
+        file_name = 'PdfWithTable.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 1
+
+        response = self.pdf_api.delete_page_tables(file_name, page_number, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetTable(self):
+        file_name = 'PdfWithTable.pdf'
+        self.uploadFile(file_name)
+
+        table_response = self.pdf_api.get_document_tables(file_name, folder=self.temp_folder)
+        self.assertEqual(table_response.code, 200)
+        table_id = table_response.tables.list[0].id
+
+        response = self.pdf_api.get_table(file_name, table_id, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testDeleteTable(self):
+        file_name = 'PdfWithTable.pdf'
+        self.uploadFile(file_name)
+
+        table_response = self.pdf_api.get_document_tables(file_name, folder=self.temp_folder)
+        self.assertEqual(table_response.code, 200)
+        table_id = table_response.tables.list[0].id
+
+        response = self.pdf_api.delete_table(file_name, table_id, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
 
     # Stamp Annotations Tests
 
@@ -409,7 +593,7 @@ class PdfTests(unittest.TestCase):
 
         response = self.pdf_api.put_screen_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
         self.assertEqual(response.code, 201)
-    """
+    
     def testGetScreenAnnotationData(self):
         file_name = 'PdfWithScreenAnnotations.pdf'
         self.uploadFile(file_name)
@@ -424,14 +608,15 @@ class PdfTests(unittest.TestCase):
     def testPutScreenAnnotationDataExtract(self):
         file_name = 'PdfWithScreenAnnotations.pdf'
         self.uploadFile(file_name)
+        out_file_path = self.temp_folder + '/screen.dat'
 
         response_annotations = self.pdf_api.get_document_screen_annotations(file_name, folder=self.temp_folder)
         self.assertEqual(response_annotations.code, 200)
         annotation_id = response_annotations.annotations.list[0].id
 
-        response = self.pdf_api.put_screen_annotation_data_extract(file_name, annotation_id, folder=self.temp_folder)
+        response = self.pdf_api.put_screen_annotation_data_extract(file_name, annotation_id, out_file_path, folder=self.temp_folder)
         self.assertEqual(response.code, 201)
-    """
+    
 
     # Sound Annotations Tests
 

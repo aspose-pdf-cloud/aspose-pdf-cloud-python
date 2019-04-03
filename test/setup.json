@@ -1,6 +1,6 @@
 {
-  "app_key": "",
-  "app_sid": "",
+  "app_key" : "",
+    "app_sid" : "",
   "output_location": "./output/",
   "product_uri": "https://billing.cloud.saltov.dynabic.com/v2.0"
 }

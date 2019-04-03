@@ -54,7 +54,7 @@ class PdfApi(object):
             self.api_client = api_client
         else:
             if not config.api_client:
-                config.api_client = ApiClient()
+                config.api_client = ApiClient(None, None)
             self.api_client = config.api_client
 
     def delete_annotation(self, name, annotation_id, **kwargs):
@@ -386,6 +386,230 @@ class PdfApi(object):
         auth_settings = []
 
         return self.api_client.call_api('/pdf/{name}/links', 'DELETE',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def delete_document_stamps(self, name, **kwargs):
+        """
+        Delete all stamps from the document
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_document_stamps(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.delete_document_stamps_with_http_info(name, **kwargs)
+        else:
+            (data) = self.delete_document_stamps_with_http_info(name, **kwargs)
+            return data
+
+    def delete_document_stamps_with_http_info(self, name, **kwargs):
+        """
+        Delete all stamps from the document
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_document_stamps_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_document_stamps" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `delete_document_stamps`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/stamps', 'DELETE',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def delete_document_tables(self, name, **kwargs):
+        """
+        Delete all tables from the document
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_document_tables(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.delete_document_tables_with_http_info(name, **kwargs)
+        else:
+            (data) = self.delete_document_tables_with_http_info(name, **kwargs)
+            return data
+
+    def delete_document_tables_with_http_info(self, name, **kwargs):
+        """
+        Delete all tables from the document
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_document_tables_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_document_tables" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `delete_document_tables`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/tables', 'DELETE',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -1338,6 +1562,244 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def delete_page_stamps(self, name, page_number, **kwargs):
+        """
+        Delete all stamps from the page
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_page_stamps(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.delete_page_stamps_with_http_info(name, page_number, **kwargs)
+        else:
+            (data) = self.delete_page_stamps_with_http_info(name, page_number, **kwargs)
+            return data
+
+    def delete_page_stamps_with_http_info(self, name, page_number, **kwargs):
+        """
+        Delete all stamps from the page
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_page_stamps_with_http_info(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'page_number', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_page_stamps" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `delete_page_stamps`")
+        # verify the required parameter 'page_number' is set
+        if ('page_number' not in params) or (params['page_number'] is None):
+            raise ValueError("Missing the required parameter `page_number` when calling `delete_page_stamps`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'page_number' in params:
+            path_params['pageNumber'] = params['page_number']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/stamps', 'DELETE',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def delete_page_tables(self, name, page_number, **kwargs):
+        """
+        Delete all tables from the page
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_page_tables(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.delete_page_tables_with_http_info(name, page_number, **kwargs)
+        else:
+            (data) = self.delete_page_tables_with_http_info(name, page_number, **kwargs)
+            return data
+
+    def delete_page_tables_with_http_info(self, name, page_number, **kwargs):
+        """
+        Delete all tables from the page
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_page_tables_with_http_info(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'page_number', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_page_tables" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `delete_page_tables`")
+        # verify the required parameter 'page_number' is set
+        if ('page_number' not in params) or (params['page_number'] is None):
+            raise ValueError("Missing the required parameter `page_number` when calling `delete_page_tables`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'page_number' in params:
+            path_params['pageNumber'] = params['page_number']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/tables', 'DELETE',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def delete_properties(self, name, **kwargs):
         """
         Delete custom document properties.
@@ -1555,6 +2017,244 @@ class PdfApi(object):
         auth_settings = []
 
         return self.api_client.call_api('/pdf/{name}/documentproperties/{propertyName}', 'DELETE',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def delete_stamp(self, name, stamp_id, **kwargs):
+        """
+        Delete document stamp by ID
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_stamp(name, stamp_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str stamp_id: The stamp ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.delete_stamp_with_http_info(name, stamp_id, **kwargs)
+        else:
+            (data) = self.delete_stamp_with_http_info(name, stamp_id, **kwargs)
+            return data
+
+    def delete_stamp_with_http_info(self, name, stamp_id, **kwargs):
+        """
+        Delete document stamp by ID
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_stamp_with_http_info(name, stamp_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str stamp_id: The stamp ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'stamp_id', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_stamp" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `delete_stamp`")
+        # verify the required parameter 'stamp_id' is set
+        if ('stamp_id' not in params) or (params['stamp_id'] is None):
+            raise ValueError("Missing the required parameter `stamp_id` when calling `delete_stamp`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'stamp_id' in params:
+            path_params['stampId'] = params['stamp_id']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/stamps/{stampId}', 'DELETE',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def delete_table(self, name, table_id, **kwargs):
+        """
+        Delete document table by ID
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_table(name, table_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str table_id: The table ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.delete_table_with_http_info(name, table_id, **kwargs)
+        else:
+            (data) = self.delete_table_with_http_info(name, table_id, **kwargs)
+            return data
+
+    def delete_table_with_http_info(self, name, table_id, **kwargs):
+        """
+        Delete document table by ID
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_table_with_http_info(name, table_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str table_id: The table ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'table_id', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_table" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `delete_table`")
+        # verify the required parameter 'table_id' is set
+        if ('table_id' not in params) or (params['table_id'] is None):
+            raise ValueError("Missing the required parameter `table_id` when calling `delete_table`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'table_id' in params:
+            path_params['tableId'] = params['table_id']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/tables/{tableId}', 'DELETE',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -4733,6 +5433,118 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def get_document_stamps(self, name, **kwargs):
+        """
+        Read document stamps.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_stamps(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: StampsInfoResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_document_stamps_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_document_stamps_with_http_info(name, **kwargs)
+            return data
+
+    def get_document_stamps_with_http_info(self, name, **kwargs):
+        """
+        Read document stamps.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_stamps_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: StampsInfoResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_document_stamps" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_document_stamps`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/stamps', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='StampsInfoResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def get_document_strike_out_annotations(self, name, **kwargs):
         """
         Read document StrikeOut annotations.
@@ -4838,6 +5650,118 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='StrikeOutAnnotationsResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_document_tables(self, name, **kwargs):
+        """
+        Read document tables.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_tables(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: (required)
+        :param str storage:
+        :param str folder:
+        :return: TablesRecognizedResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_document_tables_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_document_tables_with_http_info(name, **kwargs)
+            return data
+
+    def get_document_tables_with_http_info(self, name, **kwargs):
+        """
+        Read document tables.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_tables_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: (required)
+        :param str storage:
+        :param str folder:
+        :return: TablesRecognizedResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_document_tables" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_document_tables`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/tables', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='TablesRecognizedResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -8243,7 +9167,7 @@ class PdfApi(object):
 
     def get_page_annotations(self, name, page_number, **kwargs):
         """
-        Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
+        Read document page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -8271,7 +9195,7 @@ class PdfApi(object):
 
     def get_page_annotations_with_http_info(self, name, page_number, **kwargs):
         """
-        Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
+        Read document page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -11390,6 +12314,125 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def get_page_stamps(self, name, page_number, **kwargs):
+        """
+        Read page document stamps.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_page_stamps(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: StampsInfoResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_page_stamps_with_http_info(name, page_number, **kwargs)
+        else:
+            (data) = self.get_page_stamps_with_http_info(name, page_number, **kwargs)
+            return data
+
+    def get_page_stamps_with_http_info(self, name, page_number, **kwargs):
+        """
+        Read page document stamps.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_page_stamps_with_http_info(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: StampsInfoResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'page_number', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_page_stamps" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_page_stamps`")
+        # verify the required parameter 'page_number' is set
+        if ('page_number' not in params) or (params['page_number'] is None):
+            raise ValueError("Missing the required parameter `page_number` when calling `get_page_stamps`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'page_number' in params:
+            path_params['pageNumber'] = params['page_number']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/stamps', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='StampsInfoResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def get_page_strike_out_annotations(self, name, page_number, **kwargs):
         """
         Read document page StrikeOut annotations.
@@ -11502,6 +12545,125 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='StrikeOutAnnotationsResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_page_tables(self, name, page_number, **kwargs):
+        """
+        Read document page tables.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_page_tables(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: (required)
+        :param int page_number: (required)
+        :param str storage:
+        :param str folder:
+        :return: TablesRecognizedResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_page_tables_with_http_info(name, page_number, **kwargs)
+        else:
+            (data) = self.get_page_tables_with_http_info(name, page_number, **kwargs)
+            return data
+
+    def get_page_tables_with_http_info(self, name, page_number, **kwargs):
+        """
+        Read document page tables.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_page_tables_with_http_info(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: (required)
+        :param int page_number: (required)
+        :param str storage:
+        :param str folder:
+        :return: TablesRecognizedResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'page_number', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_page_tables" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_page_tables`")
+        # verify the required parameter 'page_number' is set
+        if ('page_number' not in params) or (params['page_number'] is None):
+            raise ValueError("Missing the required parameter `page_number` when calling `get_page_tables`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'page_number' in params:
+            path_params['pageNumber'] = params['page_number']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/tables', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='TablesRecognizedResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -14398,7 +15560,7 @@ class PdfApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
+            select_header_accept(['multipart/form-data'])
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.\
@@ -14415,6 +15577,125 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='ScreenAnnotationResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_screen_annotation_data(self, name, annotation_id, **kwargs):
+        """
+        Read document page screen annotation by ID.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_screen_annotation_data(name, annotation_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_screen_annotation_data_with_http_info(name, annotation_id, **kwargs)
+        else:
+            (data) = self.get_screen_annotation_data_with_http_info(name, annotation_id, **kwargs)
+            return data
+
+    def get_screen_annotation_data_with_http_info(self, name, annotation_id, **kwargs):
+        """
+        Read document page screen annotation by ID.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_screen_annotation_data_with_http_info(name, annotation_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'annotation_id', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_screen_annotation_data" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_screen_annotation_data`")
+        # verify the required parameter 'annotation_id' is set
+        if ('annotation_id' not in params) or (params['annotation_id'] is None):
+            raise ValueError("Missing the required parameter `annotation_id` when calling `get_screen_annotation_data`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'annotation_id' in params:
+            path_params['annotationId'] = params['annotation_id']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/screen/{annotationId}/data', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -15388,6 +16669,125 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_table(self, name, table_id, **kwargs):
+        """
+        Read document page table by ID.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_table(name, table_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str table_id: The table ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: TableRecognizedResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_table_with_http_info(name, table_id, **kwargs)
+        else:
+            (data) = self.get_table_with_http_info(name, table_id, **kwargs)
+            return data
+
+    def get_table_with_http_info(self, name, table_id, **kwargs):
+        """
+        Read document page table by ID.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_table_with_http_info(name, table_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str table_id: The table ID. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: TableRecognizedResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'table_id', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_table" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_table`")
+        # verify the required parameter 'table_id' is set
+        if ('table_id' not in params) or (params['table_id'] is None):
+            raise ValueError("Missing the required parameter `table_id` when calling `get_table`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'table_id' in params:
+            path_params['tableId'] = params['table_id']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/tables/{tableId}', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='TableRecognizedResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -18356,6 +19756,132 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def post_page_image_stamps(self, name, page_number, stamps, **kwargs):
+        """
+        Add document page image stamps.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_page_image_stamps(name, page_number, stamps, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param list[ImageStamp] stamps: The array of stamp. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_page_image_stamps_with_http_info(name, page_number, stamps, **kwargs)
+        else:
+            (data) = self.post_page_image_stamps_with_http_info(name, page_number, stamps, **kwargs)
+            return data
+
+    def post_page_image_stamps_with_http_info(self, name, page_number, stamps, **kwargs):
+        """
+        Add document page image stamps.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_page_image_stamps_with_http_info(name, page_number, stamps, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param list[ImageStamp] stamps: The array of stamp. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'page_number', 'stamps', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_page_image_stamps" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_page_image_stamps`")
+        # verify the required parameter 'page_number' is set
+        if ('page_number' not in params) or (params['page_number'] is None):
+            raise ValueError("Missing the required parameter `page_number` when calling `post_page_image_stamps`")
+        # verify the required parameter 'stamps' is set
+        if ('stamps' not in params) or (params['stamps'] is None):
+            raise ValueError("Missing the required parameter `stamps` when calling `post_page_image_stamps`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'page_number' in params:
+            path_params['pageNumber'] = params['page_number']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'stamps' in params:
+            body_params = params['stamps']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/stamps/image', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def post_page_ink_annotations(self, name, page_number, annotations, **kwargs):
         """
         Add document page ink annotations.
@@ -18846,6 +20372,132 @@ class PdfApi(object):
         auth_settings = []
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/movie', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def post_page_pdf_page_stamps(self, name, page_number, stamps, **kwargs):
+        """
+        Add document pdf page stamps.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_page_pdf_page_stamps(name, page_number, stamps, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param list[PdfPageStamp] stamps: The array of stamp. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_page_pdf_page_stamps_with_http_info(name, page_number, stamps, **kwargs)
+        else:
+            (data) = self.post_page_pdf_page_stamps_with_http_info(name, page_number, stamps, **kwargs)
+            return data
+
+    def post_page_pdf_page_stamps_with_http_info(self, name, page_number, stamps, **kwargs):
+        """
+        Add document pdf page stamps.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_page_pdf_page_stamps_with_http_info(name, page_number, stamps, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param list[PdfPageStamp] stamps: The array of stamp. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'page_number', 'stamps', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_page_pdf_page_stamps" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_page_pdf_page_stamps`")
+        # verify the required parameter 'page_number' is set
+        if ('page_number' not in params) or (params['page_number'] is None):
+            raise ValueError("Missing the required parameter `page_number` when calling `post_page_pdf_page_stamps`")
+        # verify the required parameter 'stamps' is set
+        if ('stamps' not in params) or (params['stamps'] is None):
+            raise ValueError("Missing the required parameter `stamps` when calling `post_page_pdf_page_stamps`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'page_number' in params:
+            path_params['pageNumber'] = params['page_number']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'stamps' in params:
+            body_params = params['stamps']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/stamps/pdfpage', 'POST',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -20239,6 +21891,132 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='TextReplaceResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def post_page_text_stamps(self, name, page_number, stamps, **kwargs):
+        """
+        Add document page text stamps.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_page_text_stamps(name, page_number, stamps, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param list[TextStamp] stamps: The array of stamp. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_page_text_stamps_with_http_info(name, page_number, stamps, **kwargs)
+        else:
+            (data) = self.post_page_text_stamps_with_http_info(name, page_number, stamps, **kwargs)
+            return data
+
+    def post_page_text_stamps_with_http_info(self, name, page_number, stamps, **kwargs):
+        """
+        Add document page text stamps.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_page_text_stamps_with_http_info(name, page_number, stamps, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param list[TextStamp] stamps: The array of stamp. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'page_number', 'stamps', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_page_text_stamps" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_page_text_stamps`")
+        # verify the required parameter 'page_number' is set
+        if ('page_number' not in params) or (params['page_number'] is None):
+            raise ValueError("Missing the required parameter `page_number` when calling `post_page_text_stamps`")
+        # verify the required parameter 'stamps' is set
+        if ('stamps' not in params) or (params['stamps'] is None):
+            raise ValueError("Missing the required parameter `stamps` when calling `post_page_text_stamps`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'page_number' in params:
+            path_params['pageNumber'] = params['page_number']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'stamps' in params:
+            body_params = params['stamps']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/stamps/text', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -30018,6 +31796,132 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='ScreenAnnotationResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_screen_annotation_data_extract(self, name, annotation_id, out_file_path, **kwargs):
+        """
+        Extract document screen annotation content to storage
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_screen_annotation_data_extract(name, annotation_id, out_file_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param str out_file_path: The output file path. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_screen_annotation_data_extract_with_http_info(name, annotation_id, out_file_path, **kwargs)
+        else:
+            (data) = self.put_screen_annotation_data_extract_with_http_info(name, annotation_id, out_file_path, **kwargs)
+            return data
+
+    def put_screen_annotation_data_extract_with_http_info(self, name, annotation_id, out_file_path, **kwargs):
+        """
+        Extract document screen annotation content to storage
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_screen_annotation_data_extract_with_http_info(name, annotation_id, out_file_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str annotation_id: The annotation ID. (required)
+        :param str out_file_path: The output file path. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'annotation_id', 'out_file_path', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_screen_annotation_data_extract" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_screen_annotation_data_extract`")
+        # verify the required parameter 'annotation_id' is set
+        if ('annotation_id' not in params) or (params['annotation_id'] is None):
+            raise ValueError("Missing the required parameter `annotation_id` when calling `put_screen_annotation_data_extract`")
+        # verify the required parameter 'out_file_path' is set
+        if ('out_file_path' not in params) or (params['out_file_path'] is None):
+            raise ValueError("Missing the required parameter `out_file_path` when calling `put_screen_annotation_data_extract`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'annotation_id' in params:
+            path_params['annotationId'] = params['annotation_id']
+
+        query_params = []
+        if 'out_file_path' in params:
+            query_params.append(('outFilePath', params['out_file_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api('/pdf/{name}/annotations/screen/{annotationId}/data/extract', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
