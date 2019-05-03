@@ -50,85 +50,75 @@ class PdfPageStamp(object):
     swagger_types = {
         'links': 'list[Link]',
         'background': 'bool',
-        'bottom_margin': 'float',
         'horizontal_alignment': 'HorizontalAlignment',
-        'left_margin': 'float',
         'opacity': 'float',
-        'right_margin': 'float',
         'rotate': 'Rotation',
         'rotate_angle': 'float',
-        'top_margin': 'float',
-        'vertical_alignment': 'VerticalAlignment',
         'x_indent': 'float',
         'y_indent': 'float',
         'zoom': 'float',
         'file_name': 'str',
-        'page_index': 'int'
+        'page_index': 'int',
+        'vertical_alignment': 'VerticalAlignment',
+        'bottom_margin': 'float',
+        'left_margin': 'float',
+        'top_margin': 'float',
+        'right_margin': 'float'
     }
 
     attribute_map = {
         'links': 'Links',
         'background': 'Background',
-        'bottom_margin': 'BottomMargin',
         'horizontal_alignment': 'HorizontalAlignment',
-        'left_margin': 'LeftMargin',
         'opacity': 'Opacity',
-        'right_margin': 'RightMargin',
         'rotate': 'Rotate',
         'rotate_angle': 'RotateAngle',
-        'top_margin': 'TopMargin',
-        'vertical_alignment': 'VerticalAlignment',
         'x_indent': 'XIndent',
         'y_indent': 'YIndent',
         'zoom': 'Zoom',
         'file_name': 'FileName',
-        'page_index': 'PageIndex'
+        'page_index': 'PageIndex',
+        'vertical_alignment': 'VerticalAlignment',
+        'bottom_margin': 'BottomMargin',
+        'left_margin': 'LeftMargin',
+        'top_margin': 'TopMargin',
+        'right_margin': 'RightMargin'
     }
 
-    def __init__(self, links=None, background=None, bottom_margin=None, horizontal_alignment=None, left_margin=None, opacity=None, right_margin=None, rotate=None, rotate_angle=None, top_margin=None, vertical_alignment=None, x_indent=None, y_indent=None, zoom=None, file_name=None, page_index=None):
+    def __init__(self, links=None, background=None, horizontal_alignment=None, opacity=None, rotate=None, rotate_angle=None, x_indent=None, y_indent=None, zoom=None, file_name=None, page_index=None, vertical_alignment=None, bottom_margin=None, left_margin=None, top_margin=None, right_margin=None):
         """
         PdfPageStamp - a model defined in Swagger
         """
 
         self._links = None
         self._background = None
-        self._bottom_margin = None
         self._horizontal_alignment = None
-        self._left_margin = None
         self._opacity = None
-        self._right_margin = None
         self._rotate = None
         self._rotate_angle = None
-        self._top_margin = None
-        self._vertical_alignment = None
         self._x_indent = None
         self._y_indent = None
         self._zoom = None
         self._file_name = None
         self._page_index = None
+        self._vertical_alignment = None
+        self._bottom_margin = None
+        self._left_margin = None
+        self._top_margin = None
+        self._right_margin = None
 
         if links is not None:
           self.links = links
         if background is not None:
           self.background = background
-        if bottom_margin is not None:
-          self.bottom_margin = bottom_margin
         if horizontal_alignment is not None:
           self.horizontal_alignment = horizontal_alignment
-        if left_margin is not None:
-          self.left_margin = left_margin
         if opacity is not None:
           self.opacity = opacity
-        if right_margin is not None:
-          self.right_margin = right_margin
         if rotate is not None:
           self.rotate = rotate
         if rotate_angle is not None:
           self.rotate_angle = rotate_angle
-        if top_margin is not None:
-          self.top_margin = top_margin
-        if vertical_alignment is not None:
-          self.vertical_alignment = vertical_alignment
         if x_indent is not None:
           self.x_indent = x_indent
         if y_indent is not None:
@@ -139,6 +129,16 @@ class PdfPageStamp(object):
           self.file_name = file_name
         if page_index is not None:
           self.page_index = page_index
+        if vertical_alignment is not None:
+          self.vertical_alignment = vertical_alignment
+        if bottom_margin is not None:
+          self.bottom_margin = bottom_margin
+        if left_margin is not None:
+          self.left_margin = left_margin
+        if top_margin is not None:
+          self.top_margin = top_margin
+        if right_margin is not None:
+          self.right_margin = right_margin
 
     @property
     def links(self):
@@ -187,29 +187,6 @@ class PdfPageStamp(object):
         self._background = background
 
     @property
-    def bottom_margin(self):
-        """
-        Gets the bottom_margin of this PdfPageStamp.
-        Gets or sets bottom margin of stamp.
-
-        :return: The bottom_margin of this PdfPageStamp.
-        :rtype: float
-        """
-        return self._bottom_margin
-
-    @bottom_margin.setter
-    def bottom_margin(self, bottom_margin):
-        """
-        Sets the bottom_margin of this PdfPageStamp.
-        Gets or sets bottom margin of stamp.
-
-        :param bottom_margin: The bottom_margin of this PdfPageStamp.
-        :type: float
-        """
-
-        self._bottom_margin = bottom_margin
-
-    @property
     def horizontal_alignment(self):
         """
         Gets the horizontal_alignment of this PdfPageStamp.
@@ -233,29 +210,6 @@ class PdfPageStamp(object):
         self._horizontal_alignment = horizontal_alignment
 
     @property
-    def left_margin(self):
-        """
-        Gets the left_margin of this PdfPageStamp.
-        Gets or sets left margin of stamp.
-
-        :return: The left_margin of this PdfPageStamp.
-        :rtype: float
-        """
-        return self._left_margin
-
-    @left_margin.setter
-    def left_margin(self, left_margin):
-        """
-        Sets the left_margin of this PdfPageStamp.
-        Gets or sets left margin of stamp.
-
-        :param left_margin: The left_margin of this PdfPageStamp.
-        :type: float
-        """
-
-        self._left_margin = left_margin
-
-    @property
     def opacity(self):
         """
         Gets the opacity of this PdfPageStamp.
@@ -277,29 +231,6 @@ class PdfPageStamp(object):
         """
 
         self._opacity = opacity
-
-    @property
-    def right_margin(self):
-        """
-        Gets the right_margin of this PdfPageStamp.
-        Gets or sets right margin of stamp.
-
-        :return: The right_margin of this PdfPageStamp.
-        :rtype: float
-        """
-        return self._right_margin
-
-    @right_margin.setter
-    def right_margin(self, right_margin):
-        """
-        Sets the right_margin of this PdfPageStamp.
-        Gets or sets right margin of stamp.
-
-        :param right_margin: The right_margin of this PdfPageStamp.
-        :type: float
-        """
-
-        self._right_margin = right_margin
 
     @property
     def rotate(self):
@@ -346,52 +277,6 @@ class PdfPageStamp(object):
         """
 
         self._rotate_angle = rotate_angle
-
-    @property
-    def top_margin(self):
-        """
-        Gets the top_margin of this PdfPageStamp.
-        Gets or sets top margin of stamp.
-
-        :return: The top_margin of this PdfPageStamp.
-        :rtype: float
-        """
-        return self._top_margin
-
-    @top_margin.setter
-    def top_margin(self, top_margin):
-        """
-        Sets the top_margin of this PdfPageStamp.
-        Gets or sets top margin of stamp.
-
-        :param top_margin: The top_margin of this PdfPageStamp.
-        :type: float
-        """
-
-        self._top_margin = top_margin
-
-    @property
-    def vertical_alignment(self):
-        """
-        Gets the vertical_alignment of this PdfPageStamp.
-        Gets or sets vertical alignment of stamp on page.
-
-        :return: The vertical_alignment of this PdfPageStamp.
-        :rtype: VerticalAlignment
-        """
-        return self._vertical_alignment
-
-    @vertical_alignment.setter
-    def vertical_alignment(self, vertical_alignment):
-        """
-        Sets the vertical_alignment of this PdfPageStamp.
-        Gets or sets vertical alignment of stamp on page.
-
-        :param vertical_alignment: The vertical_alignment of this PdfPageStamp.
-        :type: VerticalAlignment
-        """
-
-        self._vertical_alignment = vertical_alignment
 
     @property
     def x_indent(self):
@@ -507,6 +392,121 @@ class PdfPageStamp(object):
         """
 
         self._page_index = page_index
+
+    @property
+    def vertical_alignment(self):
+        """
+        Gets the vertical_alignment of this PdfPageStamp.
+        Gets or sets vertical alignment of stamp on page.
+
+        :return: The vertical_alignment of this PdfPageStamp.
+        :rtype: VerticalAlignment
+        """
+        return self._vertical_alignment
+
+    @vertical_alignment.setter
+    def vertical_alignment(self, vertical_alignment):
+        """
+        Sets the vertical_alignment of this PdfPageStamp.
+        Gets or sets vertical alignment of stamp on page.
+
+        :param vertical_alignment: The vertical_alignment of this PdfPageStamp.
+        :type: VerticalAlignment
+        """
+
+        self._vertical_alignment = vertical_alignment
+
+    @property
+    def bottom_margin(self):
+        """
+        Gets the bottom_margin of this PdfPageStamp.
+        Gets or sets bottom margin of stamp.
+
+        :return: The bottom_margin of this PdfPageStamp.
+        :rtype: float
+        """
+        return self._bottom_margin
+
+    @bottom_margin.setter
+    def bottom_margin(self, bottom_margin):
+        """
+        Sets the bottom_margin of this PdfPageStamp.
+        Gets or sets bottom margin of stamp.
+
+        :param bottom_margin: The bottom_margin of this PdfPageStamp.
+        :type: float
+        """
+
+        self._bottom_margin = bottom_margin
+
+    @property
+    def left_margin(self):
+        """
+        Gets the left_margin of this PdfPageStamp.
+        Gets or sets left margin of stamp.
+
+        :return: The left_margin of this PdfPageStamp.
+        :rtype: float
+        """
+        return self._left_margin
+
+    @left_margin.setter
+    def left_margin(self, left_margin):
+        """
+        Sets the left_margin of this PdfPageStamp.
+        Gets or sets left margin of stamp.
+
+        :param left_margin: The left_margin of this PdfPageStamp.
+        :type: float
+        """
+
+        self._left_margin = left_margin
+
+    @property
+    def top_margin(self):
+        """
+        Gets the top_margin of this PdfPageStamp.
+        Gets or sets top margin of stamp.
+
+        :return: The top_margin of this PdfPageStamp.
+        :rtype: float
+        """
+        return self._top_margin
+
+    @top_margin.setter
+    def top_margin(self, top_margin):
+        """
+        Sets the top_margin of this PdfPageStamp.
+        Gets or sets top margin of stamp.
+
+        :param top_margin: The top_margin of this PdfPageStamp.
+        :type: float
+        """
+
+        self._top_margin = top_margin
+
+    @property
+    def right_margin(self):
+        """
+        Gets the right_margin of this PdfPageStamp.
+        Gets or sets right margin of stamp.
+
+        :return: The right_margin of this PdfPageStamp.
+        :rtype: float
+        """
+        return self._right_margin
+
+    @right_margin.setter
+    def right_margin(self, right_margin):
+        """
+        Sets the right_margin of this PdfPageStamp.
+        Gets or sets right margin of stamp.
+
+        :param right_margin: The right_margin of this PdfPageStamp.
+        :type: float
+        """
+
+        self._right_margin = right_margin
 
     def to_dict(self):
         """

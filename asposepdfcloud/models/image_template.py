@@ -56,7 +56,7 @@ class ImageTemplate(object):
         'bottom_margin': 'float',
         'page_width': 'float',
         'page_height': 'float',
-        'margin_info': 'MarginInfo'
+        'margin_info': 'MarginInfo2'
     }
 
     attribute_map = {
@@ -285,7 +285,7 @@ class ImageTemplate(object):
         Gets the margin_info of this ImageTemplate.
 
         :return: The margin_info of this ImageTemplate.
-        :rtype: MarginInfo
+        :rtype: MarginInfo2
         """
         return self._margin_info
 
@@ -295,7 +295,7 @@ class ImageTemplate(object):
         Sets the margin_info of this ImageTemplate.
 
         :param margin_info: The margin_info of this ImageTemplate.
-        :type: MarginInfo
+        :type: MarginInfo2
         """
 
         self._margin_info = margin_info

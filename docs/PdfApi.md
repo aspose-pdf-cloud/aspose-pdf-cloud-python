@@ -1,6 +1,6 @@
 ﻿# swagger_client.PdfApi
 
-All URIs are relative to *https://api.aspose.cloud/v2.0*
+All URIs are relative to *https://api-dev.aspose.cloud/v2.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -30,7 +30,6 @@ Method | HTTP request | Description
 [**get_document_annotations**](PdfApi.md#get_document_annotations) | **GET** /pdf/\{name}/annotations | Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
 [**get_document_attachment_by_index**](PdfApi.md#get_document_attachment_by_index) | **GET** /pdf/\{name}/attachments/\{attachmentIndex} | Read document attachment info by its index.
 [**get_document_attachments**](PdfApi.md#get_document_attachments) | **GET** /pdf/\{name}/attachments | Read document attachments info.
-[**get_document_bookmarks**](PdfApi.md#get_document_bookmarks) | **GET** /pdf/\{name}/bookmarks | Read document bookmark/bookmarks (including children).
 [**get_document_caret_annotations**](PdfApi.md#get_document_caret_annotations) | **GET** /pdf/\{name}/annotations/caret | Read document caret annotations.
 [**get_document_circle_annotations**](PdfApi.md#get_document_circle_annotations) | **GET** /pdf/\{name}/annotations/circle | Read document circle annotations.
 [**get_document_file_attachment_annotations**](PdfApi.md#get_document_file_attachment_annotations) | **GET** /pdf/\{name}/annotations/fileattachment | Read document FileAttachment annotations.
@@ -127,6 +126,7 @@ Method | HTTP request | Description
 [**get_pdf_in_storage_to_svg**](PdfApi.md#get_pdf_in_storage_to_svg) | **GET** /pdf/\{name}/convert/svg | Converts PDF document (located on storage) to SVG format and returns resulting file in response content
 [**get_pdf_in_storage_to_tiff**](PdfApi.md#get_pdf_in_storage_to_tiff) | **GET** /pdf/\{name}/convert/tiff | Converts PDF document (located on storage) to TIFF format and returns resulting file in response content
 [**get_pdf_in_storage_to_xls**](PdfApi.md#get_pdf_in_storage_to_xls) | **GET** /pdf/\{name}/convert/xls | Converts PDF document (located on storage) to XLS format and returns resulting file in response content
+[**get_pdf_in_storage_to_xlsx**](PdfApi.md#get_pdf_in_storage_to_xlsx) | **GET** /pdf/\{name}/convert/xlsx | Converts PDF document (located on storage) to XLSX format and returns resulting file in response content
 [**get_pdf_in_storage_to_xml**](PdfApi.md#get_pdf_in_storage_to_xml) | **GET** /pdf/\{name}/convert/xml | Converts PDF document (located on storage) to XML format and returns resulting file in response content
 [**get_pdf_in_storage_to_xps**](PdfApi.md#get_pdf_in_storage_to_xps) | **GET** /pdf/\{name}/convert/xps | Converts PDF document (located on storage) to XPS format and returns resulting file in response content
 [**get_poly_line_annotation**](PdfApi.md#get_poly_line_annotation) | **GET** /pdf/\{name}/annotations/polyline/\{annotationId} | Read document page polyline annotation by ID.
@@ -156,8 +156,16 @@ Method | HTTP request | Description
 [**get_xps_in_storage_to_pdf**](PdfApi.md#get_xps_in_storage_to_pdf) | **GET** /pdf/create/xps | Convert XPS file (located on storage) to PDF format and return resulting file in response. 
 [**get_xsl_fo_in_storage_to_pdf**](PdfApi.md#get_xsl_fo_in_storage_to_pdf) | **GET** /pdf/create/xslfo | Convert XslFo file (located on storage) to PDF format and return resulting file in response. 
 [**post_append_document**](PdfApi.md#post_append_document) | **POST** /pdf/\{name}/appendDocument | Append document to existing one.
+[**post_change_password_document_in_storage**](PdfApi.md#post_change_password_document_in_storage) | **POST** /pdf/\{name}/changepassword | Change document password in storage.
 [**post_create_field**](PdfApi.md#post_create_field) | **POST** /pdf/\{name}/fields | Create field.
+[**post_decrypt_document_in_storage**](PdfApi.md#post_decrypt_document_in_storage) | **POST** /pdf/\{name}/decrypt | Decrypt document in storage.
+[**post_document_image_footer**](PdfApi.md#post_document_image_footer) | **POST** /pdf/\{name}/footer/image | Add document image footer.
+[**post_document_image_header**](PdfApi.md#post_document_image_header) | **POST** /pdf/\{name}/header/image | Add document image header.
+[**post_document_page_number_stamps**](PdfApi.md#post_document_page_number_stamps) | **POST** /pdf/\{name}/stamps/pagenumber | Add document page number stamps.
+[**post_document_text_footer**](PdfApi.md#post_document_text_footer) | **POST** /pdf/\{name}/footer/text | Add document text footer.
+[**post_document_text_header**](PdfApi.md#post_document_text_header) | **POST** /pdf/\{name}/header/text | Add document text header.
 [**post_document_text_replace**](PdfApi.md#post_document_text_replace) | **POST** /pdf/\{name}/text/replace | Document&#39;s replace text method.
+[**post_encrypt_document_in_storage**](PdfApi.md#post_encrypt_document_in_storage) | **POST** /pdf/\{name}/encrypt | Encrypt document in storage.
 [**post_flatten_document**](PdfApi.md#post_flatten_document) | **POST** /pdf/\{name}/flatten | Flatten the document.
 [**post_insert_image**](PdfApi.md#post_insert_image) | **POST** /pdf/\{name}/pages/\{pageNumber}/images | Insert image to document page.
 [**post_move_file**](PdfApi.md#post_move_file) | **POST** /storage/file | Move a specific file
@@ -184,6 +192,7 @@ Method | HTTP request | Description
 [**post_page_squiggly_annotations**](PdfApi.md#post_page_squiggly_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/squiggly | Add document page squiggly annotations.
 [**post_page_stamp_annotations**](PdfApi.md#post_page_stamp_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/stamp | Add document page stamp annotations.
 [**post_page_strike_out_annotations**](PdfApi.md#post_page_strike_out_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/strikeout | Add document page StrikeOut annotations.
+[**post_page_tables**](PdfApi.md#post_page_tables) | **POST** /pdf/\{name}/pages/\{pageNumber}/tables | Add document page tables.
 [**post_page_text_annotations**](PdfApi.md#post_page_text_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/text | Add document page text annotations.
 [**post_page_text_replace**](PdfApi.md#post_page_text_replace) | **POST** /pdf/\{name}/pages/\{pageNumber}/text/replace | Page&#39;s replace text method.
 [**post_page_text_stamps**](PdfApi.md#post_page_text_stamps) | **POST** /pdf/\{name}/pages/\{pageNumber}/stamps/text | Add document page text stamps.
@@ -196,10 +205,13 @@ Method | HTTP request | Description
 [**put_add_text**](PdfApi.md#put_add_text) | **PUT** /pdf/\{name}/pages/\{pageNumber}/text | Add text to PDF document page.
 [**put_annotations_flatten**](PdfApi.md#put_annotations_flatten) | **PUT** /pdf/\{name}/annotations/flatten | Flattens the annotations of the specified types
 [**put_caret_annotation**](PdfApi.md#put_caret_annotation) | **PUT** /pdf/\{name}/annotations/caret/\{annotationId} | Replace document caret annotation
+[**put_change_password_document**](PdfApi.md#put_change_password_document) | **PUT** /pdf/changepassword | Change document password from content.
 [**put_circle_annotation**](PdfApi.md#put_circle_annotation) | **PUT** /pdf/\{name}/annotations/circle/\{annotationId} | Replace document circle annotation
 [**put_create**](PdfApi.md#put_create) | **PUT** /storage/file | Upload a specific file 
 [**put_create_document**](PdfApi.md#put_create_document) | **PUT** /pdf/\{name} | Create empty document.
 [**put_create_folder**](PdfApi.md#put_create_folder) | **PUT** /storage/folder | Create the folder 
+[**put_decrypt_document**](PdfApi.md#put_decrypt_document) | **PUT** /pdf/decrypt | Decrypt document from content.
+[**put_encrypt_document**](PdfApi.md#put_encrypt_document) | **PUT** /pdf/encrypt | Encrypt document from content.
 [**put_epub_in_storage_to_pdf**](PdfApi.md#put_epub_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/epub | Convert EPUB file (located on storage) to PDF format and upload resulting file to storage. 
 [**put_fields_flatten**](PdfApi.md#put_fields_flatten) | **PUT** /pdf/\{name}/fields/flatten | Flatten form fields in document.
 [**put_file_attachment_annotation**](PdfApi.md#put_file_attachment_annotation) | **PUT** /pdf/\{name}/annotations/fileattachment/\{annotationId} | Replace document FileAttachment annotation
@@ -241,6 +253,7 @@ Method | HTTP request | Description
 [**put_pdf_in_request_to_svg**](PdfApi.md#put_pdf_in_request_to_svg) | **PUT** /pdf/convert/svg | Converts PDF document (in request content) to SVG format and uploads resulting file to storage.
 [**put_pdf_in_request_to_tiff**](PdfApi.md#put_pdf_in_request_to_tiff) | **PUT** /pdf/convert/tiff | Converts PDF document (in request content) to TIFF format and uploads resulting file to storage.
 [**put_pdf_in_request_to_xls**](PdfApi.md#put_pdf_in_request_to_xls) | **PUT** /pdf/convert/xls | Converts PDF document (in request content) to XLS format and uploads resulting file to storage.
+[**put_pdf_in_request_to_xlsx**](PdfApi.md#put_pdf_in_request_to_xlsx) | **PUT** /pdf/convert/xlsx | Converts PDF document (in request content) to XLSX format and uploads resulting file to storage.
 [**put_pdf_in_request_to_xml**](PdfApi.md#put_pdf_in_request_to_xml) | **PUT** /pdf/convert/xml | Converts PDF document (in request content) to XML format and uploads resulting file to storage.
 [**put_pdf_in_request_to_xps**](PdfApi.md#put_pdf_in_request_to_xps) | **PUT** /pdf/convert/xps | Converts PDF document (in request content) to XPS format and uploads resulting file to storage.
 [**put_pdf_in_storage_to_doc**](PdfApi.md#put_pdf_in_storage_to_doc) | **PUT** /pdf/\{name}/convert/doc | Converts PDF document (located on storage) to DOC format and uploads resulting file to storage
@@ -253,6 +266,7 @@ Method | HTTP request | Description
 [**put_pdf_in_storage_to_svg**](PdfApi.md#put_pdf_in_storage_to_svg) | **PUT** /pdf/\{name}/convert/svg | Converts PDF document (located on storage) to SVG format and uploads resulting file to storage
 [**put_pdf_in_storage_to_tiff**](PdfApi.md#put_pdf_in_storage_to_tiff) | **PUT** /pdf/\{name}/convert/tiff | Converts PDF document (located on storage) to TIFF format and uploads resulting file to storage
 [**put_pdf_in_storage_to_xls**](PdfApi.md#put_pdf_in_storage_to_xls) | **PUT** /pdf/\{name}/convert/xls | Converts PDF document (located on storage) to XLS format and uploads resulting file to storage
+[**put_pdf_in_storage_to_xlsx**](PdfApi.md#put_pdf_in_storage_to_xlsx) | **PUT** /pdf/\{name}/convert/xlsx | Converts PDF document (located on storage) to XLSX format and uploads resulting file to storage
 [**put_pdf_in_storage_to_xml**](PdfApi.md#put_pdf_in_storage_to_xml) | **PUT** /pdf/\{name}/convert/xml | Converts PDF document (located on storage) to XML format and uploads resulting file to storage
 [**put_pdf_in_storage_to_xps**](PdfApi.md#put_pdf_in_storage_to_xps) | **PUT** /pdf/\{name}/convert/xps | Converts PDF document (located on storage) to XPS format and uploads resulting file to storage
 [**put_poly_line_annotation**](PdfApi.md#put_poly_line_annotation) | **PUT** /pdf/\{name}/annotations/polyline/\{annotationId} | Replace document polyline annotation
@@ -274,6 +288,7 @@ Method | HTTP request | Description
 [**put_stamp_annotation_data_extract**](PdfApi.md#put_stamp_annotation_data_extract) | **PUT** /pdf/\{name}/annotations/stamp/\{annotationId}/data/extract | Extract document stamp annotation content to storage
 [**put_strike_out_annotation**](PdfApi.md#put_strike_out_annotation) | **PUT** /pdf/\{name}/annotations/strikeout/\{annotationId} | Replace document StrikeOut annotation
 [**put_svg_in_storage_to_pdf**](PdfApi.md#put_svg_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/svg | Convert SVG file (located on storage) to PDF format and upload resulting file to storage. 
+[**put_table**](PdfApi.md#put_table) | **PUT** /pdf/\{name}/tables/\{tableId} | Replace document page table.
 [**put_text_annotation**](PdfApi.md#put_text_annotation) | **PUT** /pdf/\{name}/annotations/text/\{annotationId} | Replace document text annotation
 [**put_underline_annotation**](PdfApi.md#put_underline_annotation) | **PUT** /pdf/\{name}/annotations/underline/\{annotationId} | Replace document underline annotation
 [**put_update_field**](PdfApi.md#put_update_field) | **PUT** /pdf/\{name}/fields/\{fieldName} | Update field.
@@ -846,7 +861,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: multipart/form-data
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -920,31 +935,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_document_bookmarks**
-> file get_document_bookmarks(name, bookmark_path=bookmark_path, storage=storage, folder=folder)
-
-Read document bookmark/bookmarks (including children).
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **str**| The document name. | 
- **bookmark_path** | **str**| The bookmark path. Leave it empty if you want to get all the bookmarks in the document. | [optional] 
- **storage** | **str**| The document storage. | [optional] 
- **folder** | **str**| The document folder. | [optional] 
-
-### Return type
-
-**file**
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: multipart/form-data
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3391,6 +3381,34 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_pdf_in_storage_to_xlsx**
+> file get_pdf_in_storage_to_xlsx(name, insert_blank_column_at_first=insert_blank_column_at_first, minimize_the_number_of_worksheets=minimize_the_number_of_worksheets, scale_factor=scale_factor, uniform_worksheets=uniform_worksheets, folder=folder, storage=storage)
+
+Converts PDF document (located on storage) to XLSX format and returns resulting file in response content
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **insert_blank_column_at_first** | **bool**| Insert blank column at first | [optional] 
+ **minimize_the_number_of_worksheets** | **bool**| Minimize the number of worksheets | [optional] 
+ **scale_factor** | **float**| Scale factor | [optional] 
+ **uniform_worksheets** | **bool**| Uniform worksheets | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+
+### Return type
+
+**file**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_pdf_in_storage_to_xml**
 > file get_pdf_in_storage_to_xml(name, folder=folder, storage=storage)
 
@@ -4125,6 +4143,33 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **post_change_password_document_in_storage**
+> AsposeResponse post_change_password_document_in_storage(name, owner_password, new_user_password, new_owner_password, storage=storage, folder=folder)
+
+Change document password in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Document name. | 
+ **owner_password** | **str**| Owner password (encrypted Base64). | 
+ **new_user_password** | **str**| New user password (encrypted Base64). | 
+ **new_owner_password** | **str**| New owner password (encrypted Base64). | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **post_create_field**
 > AsposeResponse post_create_field(name, page, field=field, storage=storage, folder=folder)
 
@@ -4137,6 +4182,166 @@ Name | Type | Description  | Notes
  **name** | **str**| The document name. | 
  **page** | **int**| Document page number. | 
  **field** | [**Field**](Field.md)| with the field data. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_decrypt_document_in_storage**
+> AsposeResponse post_decrypt_document_in_storage(name, password, storage=storage, folder=folder)
+
+Decrypt document in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Document name. | 
+ **password** | **str**| The password (encrypted Base64). | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_document_image_footer**
+> AsposeResponse post_document_image_footer(name, image_footer, start_page_number=start_page_number, end_page_number=end_page_number, storage=storage, folder=folder)
+
+Add document image footer.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **image_footer** | [**ImageFooter**](ImageFooter.md)| The image footer. | 
+ **start_page_number** | **int**| The start page number. | [optional] 
+ **end_page_number** | **int**| The end page number. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_document_image_header**
+> AsposeResponse post_document_image_header(name, image_header, start_page_number=start_page_number, end_page_number=end_page_number, storage=storage, folder=folder)
+
+Add document image header.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **image_header** | [**ImageHeader**](ImageHeader.md)| The image header. | 
+ **start_page_number** | **int**| The start page number. | [optional] 
+ **end_page_number** | **int**| The end page number. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_document_page_number_stamps**
+> AsposeResponse post_document_page_number_stamps(name, stamp, start_page_number=start_page_number, end_page_number=end_page_number, storage=storage, folder=folder)
+
+Add document page number stamps.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **stamp** | [**PageNumberStamp**](PageNumberStamp.md)| The stamp. | 
+ **start_page_number** | **int**| The start page number. | [optional] 
+ **end_page_number** | **int**| The end page number. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_document_text_footer**
+> AsposeResponse post_document_text_footer(name, text_footer, start_page_number=start_page_number, end_page_number=end_page_number, storage=storage, folder=folder)
+
+Add document text footer.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **text_footer** | [**TextFooter**](TextFooter.md)| The text footer. | 
+ **start_page_number** | **int**| The start page number. | [optional] 
+ **end_page_number** | **int**| The end page number. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_document_text_header**
+> AsposeResponse post_document_text_header(name, text_header, start_page_number=start_page_number, end_page_number=end_page_number, storage=storage, folder=folder)
+
+Add document text header.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **text_header** | [**TextHeader**](TextHeader.md)| The text header. | 
+ **start_page_number** | **int**| The start page number. | [optional] 
+ **end_page_number** | **int**| The end page number. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
 
@@ -4168,6 +4373,35 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TextReplaceResponse**](TextReplaceResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_encrypt_document_in_storage**
+> AsposeResponse post_encrypt_document_in_storage(name, user_password, owner_password, crypto_algorithm, permissions_flags=permissions_flags, use_pdf20=use_pdf20, storage=storage, folder=folder)
+
+Encrypt document in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Document name. | 
+ **user_password** | **str**| User password (encrypted Base64). | 
+ **owner_password** | **str**| Owner password (encrypted Base64). | 
+ **crypto_algorithm** | **str**| Cryptographic algorithm, see  for details. | 
+ **permissions_flags** | [**list[PermissionsFlags]**](PermissionsFlags.md)| Array of document permissions, see  for details. | [optional] 
+ **use_pdf20** | **bool**| Support for revision 6 (Extension 8). | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
 
 ### HTTP request headers
 
@@ -4856,6 +5090,32 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **post_page_tables**
+> AsposeResponse post_page_tables(name, page_number, tables, storage=storage, folder=folder)
+
+Add document page tables.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **page_number** | **int**| The page number. | 
+ **tables** | [**list[Table]**](Table.md)| The array of table. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **post_page_text_annotations**
 > AsposeResponse post_page_text_annotations(name, page_number, annotations, storage=storage, folder=folder)
 
@@ -5167,6 +5427,33 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **put_change_password_document**
+> AsposeResponse put_change_password_document(out_path, owner_password, new_user_password, new_owner_password, storage=storage, file=file)
+
+Change document password from content.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **out_path** | **str**| Full resulting filename (ex. /folder1/folder2/result.doc) | 
+ **owner_password** | **str**| Owner password (encrypted Base64). | 
+ **new_user_password** | **str**| New user password (encrypted Base64). | 
+ **new_owner_password** | **str**| New owner password (encrypted Base64). | 
+ **storage** | **str**| The document storage. | [optional] 
+ **file** | **file**| A file to be changed password. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **put_circle_annotation**
 > CircleAnnotationResponse put_circle_annotation(name, annotation_id, annotation, storage=storage, folder=folder)
 
@@ -5262,6 +5549,60 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_decrypt_document**
+> AsposeResponse put_decrypt_document(out_path, password, storage=storage, file=file)
+
+Decrypt document from content.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **out_path** | **str**| Full resulting filename (ex. /folder1/folder2/result.doc) | 
+ **password** | **str**| The password (encrypted Base64). | 
+ **storage** | **str**| The document storage. | [optional] 
+ **file** | **file**| A file to be derypted. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_encrypt_document**
+> AsposeResponse put_encrypt_document(out_path, user_password, owner_password, crypto_algorithm, permissions_flags=permissions_flags, use_pdf20=use_pdf20, storage=storage, file=file)
+
+Encrypt document from content.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **out_path** | **str**| Full resulting filename (ex. /folder1/folder2/result.doc) | 
+ **user_password** | **str**| User password (encrypted Base64). | 
+ **owner_password** | **str**| Owner password (encrypted Base64). | 
+ **crypto_algorithm** | **str**| Cryptographic algorithm, see  for details. | 
+ **permissions_flags** | [**list[PermissionsFlags]**](PermissionsFlags.md)| Array of document permissions, see  for details. | [optional] 
+ **use_pdf20** | **bool**| Support for revision 6 (Extension 8). | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+ **file** | **file**| A file to be encrypted. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -6399,6 +6740,34 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **put_pdf_in_request_to_xlsx**
+> AsposeResponse put_pdf_in_request_to_xlsx(out_path, insert_blank_column_at_first=insert_blank_column_at_first, minimize_the_number_of_worksheets=minimize_the_number_of_worksheets, scale_factor=scale_factor, uniform_worksheets=uniform_worksheets, storage=storage, file=file)
+
+Converts PDF document (in request content) to XLSX format and uploads resulting file to storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **out_path** | **str**| Full resulting filename (ex. /folder1/folder2/result.xlsx) | 
+ **insert_blank_column_at_first** | **bool**| Insert blank column at first | [optional] 
+ **minimize_the_number_of_worksheets** | **bool**| Minimize the number of worksheets | [optional] 
+ **scale_factor** | **float**| Scale factor | [optional] 
+ **uniform_worksheets** | **bool**| Uniform worksheets | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+ **file** | **file**| A file to be converted. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **put_pdf_in_request_to_xml**
 > AsposeResponse put_pdf_in_request_to_xml(out_path, storage=storage, file=file)
 
@@ -6739,6 +7108,35 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **out_path** | **str**| Full resulting filename (ex. /folder1/folder2/result.xls) | 
+ **insert_blank_column_at_first** | **bool**| Insert blank column at first | [optional] 
+ **minimize_the_number_of_worksheets** | **bool**| Minimize the number of worksheets | [optional] 
+ **scale_factor** | **float**| Scale factor | [optional] 
+ **uniform_worksheets** | **bool**| Uniform worksheets | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_pdf_in_storage_to_xlsx**
+> AsposeResponse put_pdf_in_storage_to_xlsx(name, out_path, insert_blank_column_at_first=insert_blank_column_at_first, minimize_the_number_of_worksheets=minimize_the_number_of_worksheets, scale_factor=scale_factor, uniform_worksheets=uniform_worksheets, folder=folder, storage=storage)
+
+Converts PDF document (located on storage) to XLSX format and uploads resulting file to storage
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **out_path** | **str**| Full resulting filename (ex. /folder1/folder2/result.xlsx) | 
  **insert_blank_column_at_first** | **bool**| Insert blank column at first | [optional] 
  **minimize_the_number_of_worksheets** | **bool**| Minimize the number of worksheets | [optional] 
  **scale_factor** | **float**| Scale factor | [optional] 
@@ -7294,6 +7692,32 @@ Name | Type | Description  | Notes
  **margin_top** | **float**| Page margin top | [optional] 
  **dst_folder** | **str**| The destination document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_table**
+> AsposeResponse put_table(name, table_id, table, storage=storage, folder=folder)
+
+Replace document page table.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **table_id** | **str**| The table ID. | 
+ **table** | [**Table**](Table.md)| The table. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
 
 ### Return type
 

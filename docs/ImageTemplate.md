@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **bottom_margin** | **float** |  | [optional] 
 **page_width** | **float** |  | [optional] 
 **page_height** | **float** |  | [optional] 
-**margin_info** | [**MarginInfo**](MarginInfo.md) |  | [optional] 
+**margin_info** | [**MarginInfo2**](MarginInfo2.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

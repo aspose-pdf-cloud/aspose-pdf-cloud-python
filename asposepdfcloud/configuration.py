@@ -62,7 +62,7 @@ class Configuration(object):
         Constructor
         """
         # Default Base url
-        self.host = "https://api.aspose.cloud/v2.0"
+        self.host = "https://api-dev.aspose.cloud/v2.0"
         # Default api client
         self.api_client = None
         # Temp file folder for downloading files
