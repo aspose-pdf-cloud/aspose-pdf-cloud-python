@@ -35,6 +35,7 @@ import os
 import sys
 import unittest
 import json
+import base64
 
 import asposepdfcloud
 from asposepdfcloud.apis.pdf_api import PdfApi
@@ -359,6 +360,158 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.delete_stamp(file_name, stamp_id, folder=self.temp_folder)
         self.assertEqual(response.code, 200)
 
+    def testPostDocumentPageNumberStamps(self):
+        name = '4pages.pdf'
+        self.uploadFile(name)
+
+        stamp = asposepdfcloud.models.PageNumberStamp()
+        stamp.background = True
+        stamp.left_margin = 1
+        stamp.right_margin = 2
+        stamp.top_margin = 3
+        stamp.bottom_margin = 4
+        stamp.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        stamp.vertical_alignment = asposepdfcloud.models.VerticalAlignment.BOTTOM
+        stamp.opacity = 1
+        stamp.rotate = asposepdfcloud.models.Rotation.NONE
+        stamp.rotate_angle = 0
+        stamp.x_indent = 0
+        stamp.y_indent = 0
+        stamp.zoom = 1
+        stamp.starting_number = 3
+        stamp.value = 'Page #'
+
+        response = self.pdf_api.post_document_page_number_stamps(name, stamp, start_page_number=2, end_page_number=3, folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+    # Header Footer Tests
+
+    def testPostDocumentTextHeader(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+
+        foreground_color = asposepdfcloud.models.Color(a=0xFF, r=0, g=0xFF, b=0)
+        background_color = asposepdfcloud.models.Color(a=0xFF, r=0xFF, g=0, b=0)
+
+        text_state = asposepdfcloud.models.TextState(
+                    font_size=14, 
+                    font='Arial Bold', 
+                    foreground_color=foreground_color,
+                    background_color=background_color,
+                    font_style=asposepdfcloud.models.FontStyles.BOLD)
+
+        header = asposepdfcloud.models.TextHeader()
+        header.background = True
+        header.left_margin = 1
+        header.right_margin = 2
+        header.top_margin = 3
+        header.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        header.opacity = 1
+        header.rotate = asposepdfcloud.models.Rotation.NONE
+        header.rotate_angle = 0
+        header.x_indent = 0
+        header.y_indent = 0
+        header.zoom = 1
+        header.text_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        header.value = 'Header'
+        header.text_state = text_state
+
+        start_page_number = 2
+        end_page_number = 3
+
+        response = self.pdf_api.post_document_text_header(file_name, header, start_page_number=start_page_number, end_page_number=end_page_number, folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+    def testPostDocumentTextFooter(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+
+        foreground_color = asposepdfcloud.models.Color(a=0xFF, r=0, g=0xFF, b=0)
+        background_color = asposepdfcloud.models.Color(a=0xFF, r=0xFF, g=0, b=0)
+
+        text_state = asposepdfcloud.models.TextState(
+                    font_size=14, 
+                    font='Arial Bold', 
+                    foreground_color=foreground_color,
+                    background_color=background_color,
+                    font_style=asposepdfcloud.models.FontStyles.BOLD)
+
+        footer = asposepdfcloud.models.TextFooter()
+        footer.background = True
+        footer.left_margin = 1
+        footer.right_margin = 2
+        footer.bottom_margin = 3
+        footer.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        footer.opacity = 1
+        footer.rotate = asposepdfcloud.models.Rotation.NONE
+        footer.rotate_angle = 0
+        footer.x_indent = 0
+        footer.y_indent = 0
+        footer.zoom = 1
+        footer.text_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        footer.value = 'Footer'
+        footer.text_state = text_state
+
+        start_page_number = 2
+        end_page_number = 3
+
+        response = self.pdf_api.post_document_text_footer(file_name, footer, start_page_number=start_page_number, end_page_number=end_page_number, folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+    def testPostDocumentImageHeader(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+
+        image = 'Koala.jpg'
+        self.uploadFile(image)
+
+        header = asposepdfcloud.models.ImageHeader()
+        header.background = True
+        header.left_margin = 1
+        header.right_margin = 2
+        header.top_margin = 20
+        header.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        header.opacity = 1
+        header.rotate = asposepdfcloud.models.Rotation.NONE
+        header.rotate_angle = 0
+        header.x_indent = 0
+        header.y_indent = 0
+        header.zoom = 1
+        header.file_name = self.temp_folder + '/' + image
+
+        start_page_number = 2
+        end_page_number = 3
+
+        response = self.pdf_api.post_document_image_header(file_name, header, start_page_number=start_page_number, end_page_number=end_page_number, folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+    def testPostDocumentImageFooter(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        
+        image = 'Koala.jpg'
+        self.uploadFile(image)
+
+        footer = asposepdfcloud.models.ImageFooter()
+        footer.background = True
+        footer.left_margin = 1
+        footer.right_margin = 2
+        footer.bottom_margin = 3
+        footer.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        footer.opacity = 1
+        footer.rotate = asposepdfcloud.models.Rotation.NONE
+        footer.rotate_angle = 0
+        footer.x_indent = 0
+        footer.y_indent = 0
+        footer.zoom = 1
+        footer.file_name = self.temp_folder + '/' + image
+
+        start_page_number = 2
+        end_page_number = 3
+
+        response = self.pdf_api.post_document_image_footer(file_name, footer, start_page_number=start_page_number, end_page_number=end_page_number, folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+    
     # Tables Tests
 
     def testGetDocumentTables(self):
@@ -414,6 +567,104 @@ class PdfTests(unittest.TestCase):
 
         response = self.pdf_api.delete_table(file_name, table_id, folder=self.temp_folder)
         self.assertEqual(response.code, 200)
+
+    def testPostPageTables(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 1
+        table = self.__drawTable()
+
+        response = self.pdf_api.post_page_tables(file_name, page_number, [table], folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+    def testPutTable(self):
+        file_name = 'PdfWithTable.pdf'
+        self.uploadFile(file_name)
+
+        tables_response = self.pdf_api.get_document_tables(file_name, folder=self.temp_folder)
+        self.assertEqual(tables_response.code, 200)
+        table_id = tables_response.tables.list[0].id
+
+        table = self.__drawTable()
+
+        response = self.pdf_api.put_table(file_name, table_id, table, folder=self.temp_folder)
+        self.assertEqual(response.code, 201)
+
+
+    def __drawTable(self):
+
+        text_state = asposepdfcloud.models.TextState(
+                    font_size=10, 
+                    font='Arial Bold', 
+                    foreground_color=asposepdfcloud.models.Color(a=0xFF, r=0, g=0xFF, b=0),
+                    background_color=asposepdfcloud.models.Color(a=0xFF, r=0xFF, g=0, b=0),
+                    font_style=asposepdfcloud.models.FontStyles.BOLD)
+
+        num_of_cols = 5
+        num_of_rows = 5
+
+        table = asposepdfcloud.models.Table()
+        table.rows = []
+
+        col_widths = ''
+        for _ in range(num_of_cols):
+            col_widths += ' 30'
+        
+
+        table.column_widths = col_widths
+
+        table.default_cell_text_state = text_state
+
+        border_table_border = asposepdfcloud.models.GraphInfo()
+
+        border_table_border.color = asposepdfcloud.models.Color(a=0xFF, r=0, g=0, b=0xFF)
+        border_table_border.line_width = 1
+
+        border_info = asposepdfcloud.models.BorderInfo()
+        border_info.top = border_table_border
+        border_info.right = border_table_border
+        border_info.bottom = border_table_border
+        border_info.left = border_table_border
+
+        table.default_cell_border = border_info
+        table.top = 100
+
+        for r in range(num_of_rows):
+            row = asposepdfcloud.models.Row(cells=[])
+
+            for c in range(num_of_cols):
+                cell = asposepdfcloud.models.Cell()
+                cell.background_color = asposepdfcloud.models.Color(a=0xFF, r=0xFF, g=0, b=0xFF)
+                cell.default_cell_text_state = text_state
+                cell.paragraphs = [asposepdfcloud.models.TextRect(text='value')]
+
+                # change properties on cell
+
+                if c == 1:
+                    cell.default_cell_text_state.foreground_color = asposepdfcloud.models.Color(a=0xFF, r=0, g=0, b=0xFF)
+
+                # change properties on cell AFTER first clearing and re-adding paragraphs
+                elif c == 2:
+                    cell.paragraphs[0] =  asposepdfcloud.models.TextRect(text='y')
+                    cell.default_cell_text_state.foreground_color = asposepdfcloud.models.Color(a=0xFF, r=0, g=0xFF, b=0)
+
+                #change properties on paragraph
+                elif c == 3:
+                    cell.paragraphs[0].text_state = text_state
+                    cell.paragraphs[0].text_state.foreground_color = asposepdfcloud.models.Color(a=0xFF, r=0, g=0xFF, b=0xFF)
+
+                # change properties on paragraph AFTER first clearing and re-adding paragraphs
+                elif c == 4:
+                    cell.paragraphs[0] = asposepdfcloud.models.TextRect(text='y')
+                    cell.paragraphs[0].text_state = text_state
+                    cell.paragraphs[0].text_state.foreground_color = asposepdfcloud.models.Color(a=0xFF, r=0xFF, g=0xFF, b=0xFF)
+
+                row.cells.append(cell)
+            
+            table.rows.append(row)
+        
+        return table
 
     # Stamp Annotations Tests
 
@@ -2085,19 +2336,6 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.get_download_document_attachment_by_index(file_name, attachment_index, **opts)
         self.assertIsInstance(response, str)
     
-
-    # Bookmarks Tests
-
-    def testGetDocumentBookmarks(self):
-        file_name = 'PdfWithBookmarks.pdf'
-        self.uploadFile(file_name)
-
-        opts = {
-              "folder" : self.temp_folder
-        }
-
-        response = self.pdf_api.get_document_bookmarks(file_name, **opts)
-        self.assertIsInstance(response, str)
     
     # Convert Tests
     # To Doc
@@ -2334,6 +2572,42 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.put_pdf_in_request_to_xls(self.temp_folder + '/' + result_file_name, **opts)
         self.assertEqual(response.code, 201)
 
+    # To XLSX
+    def testGetPdfInStorageToXlsx(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_pdf_in_storage_to_xlsx(file_name, **opts)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfInStorageToXlsx(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        result_file_name = "result.xlsx"
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_pdf_in_storage_to_xlsx(file_name, self.temp_folder + '/' + result_file_name, **opts)
+        self.assertEqual(response.code, 201)
+
+
+    def testPutPdfInRequestToXlsx(self):
+        file_name = '4pages.pdf'
+        result_file_name = "result.xlsx"
+
+        opts = {
+              "file" : self.test_data_path + file_name
+        }
+
+        response = self.pdf_api.put_pdf_in_request_to_xlsx(self.temp_folder + '/' + result_file_name, **opts)
+        self.assertEqual(response.code, 201)
 
     # To HTML
     def testGetPdfInStorageToHtml(self):
@@ -4018,6 +4292,99 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.get_verify_signature(file_name, signature.form_field_name, **opts)
         self.assertEqual(response.code, 200)
 
+
+    # Encrypt Decrypt Tests
+
+    def testPutEncryptDocument(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+
+        out_path = self.temp_folder + '/' + file_name
+        user_password_encoded = base64.b64encode(b'user $^Password!&')
+        owner_password_encoded = base64.b64encode(b'owner\//? $12^Password!&')
+
+        opts = {
+            "file" : self.test_data_path + file_name
+        }
+
+        response = self.pdf_api.put_encrypt_document(out_path, user_password_encoded,
+                    owner_password_encoded, asposepdfcloud.models.CryptoAlgorithm.AESX128, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testPostEncryptDocumentInStorage(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+
+        user_password_encoded = base64.b64encode(b'user $^Password!&')
+        owner_password_encoded = base64.b64encode(b'owner\//? $12^Password!&')
+
+        opts = {
+            "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.post_encrypt_document_in_storage(file_name, user_password_encoded,
+                    owner_password_encoded, asposepdfcloud.models.CryptoAlgorithm.AESX128, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testPutDencryptDocument(self):
+        file_name = '4pagesEncrypted.pdf'
+        self.uploadFile(file_name)
+
+        out_path = self.temp_folder + '/' + file_name
+        user_password_encoded = base64.b64encode(b'user $^Password!&')
+        
+        opts = {
+            "file" : self.test_data_path + file_name
+        }
+
+        response = self.pdf_api.put_decrypt_document(out_path, user_password_encoded, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testPostDecryptDocumentInStorage(self):
+        file_name = '4pagesEncrypted.pdf'
+        self.uploadFile(file_name)
+
+        user_password_encoded = base64.b64encode(b'user $^Password!&')
+        
+        opts = {
+            "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.post_decrypt_document_in_storage(file_name, user_password_encoded, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testPutChangePasswordDocument(self):
+        file_name = '4pagesEncrypted.pdf'
+        self.uploadFile(file_name)
+
+        out_path = self.temp_folder + '/' + file_name
+        owner_password_encoded = base64.b64encode(b'owner\//? $12^Password!&')
+        new_user_password_encoded = base64.b64encode(b'user new\//? $12^Password!&')
+        new_owner_password_encoded = base64.b64encode(b'owner new\//? $12^Password!&')
+
+        opts = {
+            "file" : self.test_data_path + file_name
+        }
+
+        response = self.pdf_api.put_change_password_document(out_path, owner_password_encoded, new_user_password_encoded,
+                    new_owner_password_encoded, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testPostChangePasswordDocumentInStorage(self):
+        file_name = '4pagesEncrypted.pdf'
+        self.uploadFile(file_name)
+
+        owner_password_encoded = base64.b64encode(b'owner\//? $12^Password!&')
+        new_user_password_encoded = base64.b64encode(b'user new\//? $12^Password!&')
+        new_owner_password_encoded = base64.b64encode(b'owner new\//? $12^Password!&')
+
+        opts = {
+            "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.post_change_password_document_in_storage(file_name, owner_password_encoded, new_user_password_encoded,
+                    new_owner_password_encoded, **opts)
+        self.assertEqual(response.code, 200)
 
     # Text Replace Tests
 

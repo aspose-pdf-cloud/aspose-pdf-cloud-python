@@ -1,4 +1,4 @@
-﻿# ImageStamp
+﻿# PageNumberStamp
 Represents Pdf stamps.
 
 ## Properties
@@ -13,9 +13,8 @@ Name | Type | Description | Notes
 **x_indent** | **float** | Horizontal stamp coordinate, starting from the left. | [optional] 
 **y_indent** | **float** | Vertical stamp coordinate, starting from the bottom. | [optional] 
 **zoom** | **float** | Zooming factor of the stamp. Allows to scale stamp. | [optional] 
-**file_name** | **str** | Gets or sets the file name. | [optional] 
-**width** | **float** | Gets or sets image width. Setting this property allos to scal image horizontally. | [optional] 
-**height** | **float** | Gets or sets image height. Setting this image allows to scale image vertically. | [optional] 
+**value** | **str** | Gets or sets string value which is used as stamp on the page. | [optional] 
+**starting_number** | **int** | Gets or sets value of the number of starting page. Other pages will be numbered starting from this value. | [optional] 
 **vertical_alignment** | [**VerticalAlignment**](VerticalAlignment.md) | Gets or sets vertical alignment of stamp on page. | [optional] 
 **bottom_margin** | **float** | Gets or sets bottom margin of stamp. | [optional] 
 **left_margin** | **float** | Gets or sets left margin of stamp. | [optional] 
