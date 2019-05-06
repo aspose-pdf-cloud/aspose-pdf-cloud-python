@@ -1,6 +1,6 @@
 ﻿# swagger_client.PdfApi
 
-All URIs are relative to *https://api-dev.aspose.cloud/v2.0*
+All URIs are relative to *https://api.aspose.cloud/v2.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

@@ -79,7 +79,6 @@ from .link_action_type import LinkActionType
 from .link_element import LinkElement
 from .link_highlighting_mode import LinkHighlightingMode
 from .margin_info import MarginInfo
-from .margin_info2 import MarginInfo2
 from .merge_documents import MergeDocuments
 from .optimize_options import OptimizeOptions
 from .page_word_count import PageWordCount
