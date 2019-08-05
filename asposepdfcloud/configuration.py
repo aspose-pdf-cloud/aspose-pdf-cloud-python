@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -62,7 +62,7 @@ class Configuration(object):
         Constructor
         """
         # Default Base url
-        self.host = "https://api.aspose.cloud/v2.0"
+        self.host = "https://api.aspose.cloud/v3.0"
         # Default api client
         self.api_client = None
         # Temp file folder for downloading files
@@ -70,9 +70,6 @@ class Configuration(object):
         
         # access token for OAuth
         self.access_token = ""
-
-        # refresh token for OAuth
-        self.refresh_token = ""
 
         # Logging Settings
         self.logger = {}
@@ -201,6 +198,6 @@ class Configuration(object):
         return "Python SDK Debug Report:\n"\
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
-               "Version of the API: 2.0\n"\
-               "SDK Package Version: 19.5.0".\
+               "Version of the API: 3.0\n"\
+               "SDK Package Version: 19.7.0".\
                format(env=sys.platform, pyversion=sys.version)

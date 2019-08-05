@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -79,16 +79,13 @@ class Image(object):
 
         if links is not None:
           self.links = links
-        if width is not None:
-          self.width = width
-        if height is not None:
-          self.height = height
+        self.width = width
+        self.height = height
         if id is not None:
           self.id = id
         if rectangle is not None:
           self.rectangle = rectangle
-        if page_number is not None:
-          self.page_number = page_number
+        self.page_number = page_number
 
     @property
     def links(self):
@@ -133,6 +130,8 @@ class Image(object):
         :param width: The width of this Image.
         :type: int
         """
+        if width is None:
+            raise ValueError("Invalid value for `width`, must not be `None`")
 
         self._width = width
 
@@ -156,6 +155,8 @@ class Image(object):
         :param height: The height of this Image.
         :type: int
         """
+        if height is None:
+            raise ValueError("Invalid value for `height`, must not be `None`")
 
         self._height = height
 
@@ -225,6 +226,8 @@ class Image(object):
         :param page_number: The page_number of this Image.
         :type: int
         """
+        if page_number is None:
+            raise ValueError("Invalid value for `page_number`, must not be `None`")
 
         self._page_number = page_number
 

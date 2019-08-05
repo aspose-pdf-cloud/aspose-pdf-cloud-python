@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -35,7 +35,6 @@ from .models.annotation_flags import AnnotationFlags
 from .models.annotation_state import AnnotationState
 from .models.annotation_type import AnnotationType
 from .models.antialiasing_processing_type import AntialiasingProcessingType
-from .models.append_document import AppendDocument
 from .models.aspose_response import AsposeResponse
 from .models.border_corner_style import BorderCornerStyle
 from .models.border_info import BorderInfo
@@ -54,10 +53,13 @@ from .models.doc_format import DocFormat
 from .models.doc_recognition_mode import DocRecognitionMode
 from .models.document_privilege import DocumentPrivilege
 from .models.epub_recognition_mode import EpubRecognitionMode
+from .models.error import Error
+from .models.error_details import ErrorDetails
 from .models.field_type import FieldType
-from .models.file import File
-from .models.file_exist import FileExist
 from .models.file_icon import FileIcon
+from .models.file_versions import FileVersions
+from .models.files_list import FilesList
+from .models.files_upload_result import FilesUploadResult
 from .models.font_encoding_rules import FontEncodingRules
 from .models.font_saving_modes import FontSavingModes
 from .models.font_styles import FontStyles
@@ -80,6 +82,7 @@ from .models.link_element import LinkElement
 from .models.link_highlighting_mode import LinkHighlightingMode
 from .models.margin_info import MarginInfo
 from .models.merge_documents import MergeDocuments
+from .models.object_exist import ObjectExist
 from .models.optimize_options import OptimizeOptions
 from .models.page_word_count import PageWordCount
 from .models.paragraph import Paragraph
@@ -104,6 +107,8 @@ from .models.split_result import SplitResult
 from .models.stamp import Stamp
 from .models.stamp_icon import StampIcon
 from .models.stamp_type import StampType
+from .models.storage_exist import StorageExist
+from .models.storage_file import StorageFile
 from .models.table_broken import TableBroken
 from .models.text_horizontal_alignment import TextHorizontalAlignment
 from .models.text_icon import TextIcon
@@ -124,13 +129,16 @@ from .models.attachment import Attachment
 from .models.attachment_response import AttachmentResponse
 from .models.attachments import Attachments
 from .models.attachments_response import AttachmentsResponse
+from .models.bookmark import Bookmark
+from .models.bookmark_response import BookmarkResponse
+from .models.bookmarks import Bookmarks
+from .models.bookmarks_response import BookmarksResponse
 from .models.caret_annotation_response import CaretAnnotationResponse
 from .models.caret_annotations import CaretAnnotations
 from .models.caret_annotations_response import CaretAnnotationsResponse
 from .models.circle_annotation_response import CircleAnnotationResponse
 from .models.circle_annotations import CircleAnnotations
 from .models.circle_annotations_response import CircleAnnotationsResponse
-from .models.disc_usage_response import DiscUsageResponse
 from .models.document import Document
 from .models.document_page_response import DocumentPageResponse
 from .models.document_pages_response import DocumentPagesResponse
@@ -146,10 +154,7 @@ from .models.fields_response import FieldsResponse
 from .models.file_attachment_annotation_response import FileAttachmentAnnotationResponse
 from .models.file_attachment_annotations import FileAttachmentAnnotations
 from .models.file_attachment_annotations_response import FileAttachmentAnnotationsResponse
-from .models.file_exist_response import FileExistResponse
 from .models.file_version import FileVersion
-from .models.file_versions_response import FileVersionsResponse
-from .models.files_response import FilesResponse
 from .models.free_text_annotation_response import FreeTextAnnotationResponse
 from .models.free_text_annotations import FreeTextAnnotations
 from .models.free_text_annotations_response import FreeTextAnnotationsResponse
@@ -209,7 +214,6 @@ from .models.stamp_base import StampBase
 from .models.stamp_info import StampInfo
 from .models.stamps_info import StampsInfo
 from .models.stamps_info_response import StampsInfoResponse
-from .models.storage_exist_response import StorageExistResponse
 from .models.strike_out_annotation_response import StrikeOutAnnotationResponse
 from .models.strike_out_annotations import StrikeOutAnnotations
 from .models.strike_out_annotations_response import StrikeOutAnnotationsResponse

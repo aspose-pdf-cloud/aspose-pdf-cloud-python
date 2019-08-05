@@ -1,17 +1,22 @@
 ﻿# swagger_client.PdfApi
 
-All URIs are relative to *https://api.aspose.cloud/v2.0*
+All URIs are relative to *https://api.aspose.cloud/v3.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**copy_file**](PdfApi.md#copy_file) | **PUT** /pdf/storage/file/copy/\{srcPath} | Copy file
+[**copy_folder**](PdfApi.md#copy_folder) | **PUT** /pdf/storage/folder/copy/\{srcPath} | Copy folder
+[**create_folder**](PdfApi.md#create_folder) | **PUT** /pdf/storage/folder/\{path} | Create the folder
 [**delete_annotation**](PdfApi.md#delete_annotation) | **DELETE** /pdf/\{name}/annotations/\{annotationId} | Delete document annotation by ID
+[**delete_bookmark**](PdfApi.md#delete_bookmark) | **DELETE** /pdf/\{name}/bookmarks/bookmark/\{bookmarkPath} | Delete document bookmark by ID.
 [**delete_document_annotations**](PdfApi.md#delete_document_annotations) | **DELETE** /pdf/\{name}/annotations | Delete all annotations from the document
+[**delete_document_bookmarks**](PdfApi.md#delete_document_bookmarks) | **DELETE** /pdf/\{name}/bookmarks/tree | Delete all document bookmarks.
 [**delete_document_link_annotations**](PdfApi.md#delete_document_link_annotations) | **DELETE** /pdf/\{name}/links | Delete all link annotations from the document
 [**delete_document_stamps**](PdfApi.md#delete_document_stamps) | **DELETE** /pdf/\{name}/stamps | Delete all stamps from the document
 [**delete_document_tables**](PdfApi.md#delete_document_tables) | **DELETE** /pdf/\{name}/tables | Delete all tables from the document
 [**delete_field**](PdfApi.md#delete_field) | **DELETE** /pdf/\{name}/fields/\{fieldName} | Delete document field by name.
-[**delete_file**](PdfApi.md#delete_file) | **DELETE** /storage/file | Remove a specific file 
-[**delete_folder**](PdfApi.md#delete_folder) | **DELETE** /storage/folder | Remove a specific folder 
+[**delete_file**](PdfApi.md#delete_file) | **DELETE** /pdf/storage/file/\{path} | Delete file
+[**delete_folder**](PdfApi.md#delete_folder) | **DELETE** /pdf/storage/folder/\{path} | Delete folder
 [**delete_image**](PdfApi.md#delete_image) | **DELETE** /pdf/\{name}/images/\{imageId} | Delete image from document page.
 [**delete_link_annotation**](PdfApi.md#delete_link_annotation) | **DELETE** /pdf/\{name}/links/\{linkId} | Delete document page link annotation by ID
 [**delete_page**](PdfApi.md#delete_page) | **DELETE** /pdf/\{name}/pages/\{pageNumber} | Delete document page by its number.
@@ -23,13 +28,17 @@ Method | HTTP request | Description
 [**delete_property**](PdfApi.md#delete_property) | **DELETE** /pdf/\{name}/documentproperties/\{propertyName} | Delete document property.
 [**delete_stamp**](PdfApi.md#delete_stamp) | **DELETE** /pdf/\{name}/stamps/\{stampId} | Delete document stamp by ID
 [**delete_table**](PdfApi.md#delete_table) | **DELETE** /pdf/\{name}/tables/\{tableId} | Delete document table by ID
+[**download_file**](PdfApi.md#download_file) | **GET** /pdf/storage/file/\{path} | Download file
+[**get_bookmark**](PdfApi.md#get_bookmark) | **GET** /pdf/\{name}/bookmarks/bookmark/\{bookmarkPath} | Read document bookmark.
+[**get_bookmarks**](PdfApi.md#get_bookmarks) | **GET** /pdf/\{name}/bookmarks/list/\{bookmarkPath} | Read document bookmarks node list.
 [**get_caret_annotation**](PdfApi.md#get_caret_annotation) | **GET** /pdf/\{name}/annotations/caret/\{annotationId} | Read document page caret annotation by ID.
 [**get_circle_annotation**](PdfApi.md#get_circle_annotation) | **GET** /pdf/\{name}/annotations/circle/\{annotationId} | Read document page circle annotation by ID.
-[**get_disc_usage**](PdfApi.md#get_disc_usage) | **GET** /storage/disc | Check the disk usage of the current account 
+[**get_disc_usage**](PdfApi.md#get_disc_usage) | **GET** /pdf/storage/disc | Get disc usage
 [**get_document**](PdfApi.md#get_document) | **GET** /pdf/\{name} | Read common document info.
 [**get_document_annotations**](PdfApi.md#get_document_annotations) | **GET** /pdf/\{name}/annotations | Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
 [**get_document_attachment_by_index**](PdfApi.md#get_document_attachment_by_index) | **GET** /pdf/\{name}/attachments/\{attachmentIndex} | Read document attachment info by its index.
 [**get_document_attachments**](PdfApi.md#get_document_attachments) | **GET** /pdf/\{name}/attachments | Read document attachments info.
+[**get_document_bookmarks**](PdfApi.md#get_document_bookmarks) | **GET** /pdf/\{name}/bookmarks/tree | Read document bookmarks tree.
 [**get_document_caret_annotations**](PdfApi.md#get_document_caret_annotations) | **GET** /pdf/\{name}/annotations/caret | Read document caret annotations.
 [**get_document_circle_annotations**](PdfApi.md#get_document_circle_annotations) | **GET** /pdf/\{name}/annotations/circle | Read document circle annotations.
 [**get_document_file_attachment_annotations**](PdfApi.md#get_document_file_attachment_annotations) | **GET** /pdf/\{name}/annotations/fileattachment | Read document FileAttachment annotations.
@@ -55,13 +64,17 @@ Method | HTTP request | Description
 [**get_document_tables**](PdfApi.md#get_document_tables) | **GET** /pdf/\{name}/tables | Read document tables.
 [**get_document_text_annotations**](PdfApi.md#get_document_text_annotations) | **GET** /pdf/\{name}/annotations/text | Read document text annotations.
 [**get_document_underline_annotations**](PdfApi.md#get_document_underline_annotations) | **GET** /pdf/\{name}/annotations/underline | Read document underline annotations.
-[**get_download**](PdfApi.md#get_download) | **GET** /storage/file | Download a specific file 
 [**get_download_document_attachment_by_index**](PdfApi.md#get_download_document_attachment_by_index) | **GET** /pdf/\{name}/attachments/\{attachmentIndex}/download | Download document attachment content by its index.
 [**get_epub_in_storage_to_pdf**](PdfApi.md#get_epub_in_storage_to_pdf) | **GET** /pdf/create/epub | Convert EPUB file (located on storage) to PDF format and return resulting file in response. 
+[**get_export_fields_from_pdf_to_fdf_in_storage**](PdfApi.md#get_export_fields_from_pdf_to_fdf_in_storage) | **GET** /pdf/\{name}/export/fdf | Export fields from from PDF in storage to FDF file.
+[**get_export_fields_from_pdf_to_xfdf_in_storage**](PdfApi.md#get_export_fields_from_pdf_to_xfdf_in_storage) | **GET** /pdf/\{name}/export/xfdf | Export fields from from PDF in storage to XFDF file.
+[**get_export_fields_from_pdf_to_xml_in_storage**](PdfApi.md#get_export_fields_from_pdf_to_xml_in_storage) | **GET** /pdf/\{name}/export/xml | Export fields from from PDF in storage to XML file.
 [**get_field**](PdfApi.md#get_field) | **GET** /pdf/\{name}/fields/\{fieldName} | Get document field by name.
 [**get_fields**](PdfApi.md#get_fields) | **GET** /pdf/\{name}/fields | Get document fields.
 [**get_file_attachment_annotation**](PdfApi.md#get_file_attachment_annotation) | **GET** /pdf/\{name}/annotations/fileattachment/\{annotationId} | Read document page FileAttachment annotation by ID.
 [**get_file_attachment_annotation_data**](PdfApi.md#get_file_attachment_annotation_data) | **GET** /pdf/\{name}/annotations/fileattachment/\{annotationId}/data | Read document page FileAttachment annotation by ID.
+[**get_file_versions**](PdfApi.md#get_file_versions) | **GET** /pdf/storage/version/\{path} | Get file versions
+[**get_files_list**](PdfApi.md#get_files_list) | **GET** /pdf/storage/folder/\{path} | Get all files and folders within a folder
 [**get_free_text_annotation**](PdfApi.md#get_free_text_annotation) | **GET** /pdf/\{name}/annotations/freetext/\{annotationId} | Read document page free text annotation by ID.
 [**get_highlight_annotation**](PdfApi.md#get_highlight_annotation) | **GET** /pdf/\{name}/annotations/highlight/\{annotationId} | Read document page highlight annotation by ID.
 [**get_html_in_storage_to_pdf**](PdfApi.md#get_html_in_storage_to_pdf) | **GET** /pdf/create/html | Convert HTML file (located on storage) to PDF format and return resulting file in response. 
@@ -71,14 +84,13 @@ Method | HTTP request | Description
 [**get_image_extract_as_png**](PdfApi.md#get_image_extract_as_png) | **GET** /pdf/\{name}/images/\{imageId}/extract/png | Extract document image in PNG format
 [**get_image_extract_as_tiff**](PdfApi.md#get_image_extract_as_tiff) | **GET** /pdf/\{name}/images/\{imageId}/extract/tiff | Extract document image in TIFF format
 [**get_images**](PdfApi.md#get_images) | **GET** /pdf/\{name}/pages/\{pageNumber}/images | Read document images.
+[**get_import_fields_from_fdf_in_storage**](PdfApi.md#get_import_fields_from_fdf_in_storage) | **GET** /pdf/\{name}/import/fdf | Update fields from FDF file in storage.
+[**get_import_fields_from_xfdf_in_storage**](PdfApi.md#get_import_fields_from_xfdf_in_storage) | **GET** /pdf/\{name}/import/xfdf | Update fields from XFDF file in storage.
+[**get_import_fields_from_xml_in_storage**](PdfApi.md#get_import_fields_from_xml_in_storage) | **GET** /pdf/\{name}/import/xml | Import from XML file (located on storage) to PDF format and return resulting file in response. 
 [**get_ink_annotation**](PdfApi.md#get_ink_annotation) | **GET** /pdf/\{name}/annotations/ink/\{annotationId} | Read document page ink annotation by ID.
-[**get_is_exist**](PdfApi.md#get_is_exist) | **GET** /storage/exist | Check if a specific file or folder exists
-[**get_is_storage_exist**](PdfApi.md#get_is_storage_exist) | **GET** /storage/\{name}/exist | Check if storage exists 
 [**get_la_te_x_in_storage_to_pdf**](PdfApi.md#get_la_te_x_in_storage_to_pdf) | **GET** /pdf/create/latex | Convert LaTeX file (located on storage) to PDF format and return resulting file in response. 
 [**get_line_annotation**](PdfApi.md#get_line_annotation) | **GET** /pdf/\{name}/annotations/line/\{annotationId} | Read document page line annotation by ID.
 [**get_link_annotation**](PdfApi.md#get_link_annotation) | **GET** /pdf/\{name}/links/\{linkId} | Read document link annotation by ID.
-[**get_list_file_versions**](PdfApi.md#get_list_file_versions) | **GET** /storage/version | Get the file&#39;s versions list 
-[**get_list_files**](PdfApi.md#get_list_files) | **GET** /storage/folder | Get the file listing of a specific folder 
 [**get_mht_in_storage_to_pdf**](PdfApi.md#get_mht_in_storage_to_pdf) | **GET** /pdf/create/mht | Convert MHT file (located on storage) to PDF format and return resulting file in response. 
 [**get_movie_annotation**](PdfApi.md#get_movie_annotation) | **GET** /pdf/\{name}/annotations/movie/\{annotationId} | Read document page movie annotation by ID.
 [**get_page**](PdfApi.md#get_page) | **GET** /pdf/\{name}/pages/\{pageNumber} | Read document page info.
@@ -155,7 +167,11 @@ Method | HTTP request | Description
 [**get_xml_in_storage_to_pdf**](PdfApi.md#get_xml_in_storage_to_pdf) | **GET** /pdf/create/xml | Convert XML file (located on storage) to PDF format and return resulting file in response. 
 [**get_xps_in_storage_to_pdf**](PdfApi.md#get_xps_in_storage_to_pdf) | **GET** /pdf/create/xps | Convert XPS file (located on storage) to PDF format and return resulting file in response. 
 [**get_xsl_fo_in_storage_to_pdf**](PdfApi.md#get_xsl_fo_in_storage_to_pdf) | **GET** /pdf/create/xslfo | Convert XslFo file (located on storage) to PDF format and return resulting file in response. 
+[**move_file**](PdfApi.md#move_file) | **PUT** /pdf/storage/file/move/\{srcPath} | Move file
+[**move_folder**](PdfApi.md#move_folder) | **PUT** /pdf/storage/folder/move/\{srcPath} | Move folder
+[**object_exists**](PdfApi.md#object_exists) | **GET** /pdf/storage/exist/\{path} | Check if file or folder exists
 [**post_append_document**](PdfApi.md#post_append_document) | **POST** /pdf/\{name}/appendDocument | Append document to existing one.
+[**post_bookmark**](PdfApi.md#post_bookmark) | **POST** /pdf/\{name}/bookmarks/bookmark/\{bookmarkPath} | Add document bookmarks.
 [**post_change_password_document_in_storage**](PdfApi.md#post_change_password_document_in_storage) | **POST** /pdf/\{name}/changepassword | Change document password in storage.
 [**post_create_field**](PdfApi.md#post_create_field) | **POST** /pdf/\{name}/fields | Create field.
 [**post_decrypt_document_in_storage**](PdfApi.md#post_decrypt_document_in_storage) | **POST** /pdf/\{name}/decrypt | Decrypt document in storage.
@@ -167,9 +183,10 @@ Method | HTTP request | Description
 [**post_document_text_replace**](PdfApi.md#post_document_text_replace) | **POST** /pdf/\{name}/text/replace | Document&#39;s replace text method.
 [**post_encrypt_document_in_storage**](PdfApi.md#post_encrypt_document_in_storage) | **POST** /pdf/\{name}/encrypt | Encrypt document in storage.
 [**post_flatten_document**](PdfApi.md#post_flatten_document) | **POST** /pdf/\{name}/flatten | Flatten the document.
+[**post_import_fields_from_fdf**](PdfApi.md#post_import_fields_from_fdf) | **POST** /pdf/\{name}/import/fdf | Update fields from FDF file in request.
+[**post_import_fields_from_xfdf**](PdfApi.md#post_import_fields_from_xfdf) | **POST** /pdf/\{name}/import/xfdf | Update fields from XFDF file in request.
+[**post_import_fields_from_xml**](PdfApi.md#post_import_fields_from_xml) | **POST** /pdf/\{name}/import/xml | Update fields from XML file in request.
 [**post_insert_image**](PdfApi.md#post_insert_image) | **POST** /pdf/\{name}/pages/\{pageNumber}/images | Insert image to document page.
-[**post_move_file**](PdfApi.md#post_move_file) | **POST** /storage/file | Move a specific file
-[**post_move_folder**](PdfApi.md#post_move_folder) | **POST** /storage/folder | Move a specific folder 
 [**post_move_page**](PdfApi.md#post_move_page) | **POST** /pdf/\{name}/pages/\{pageNumber}/movePage | Move page to new position.
 [**post_optimize_document**](PdfApi.md#post_optimize_document) | **POST** /pdf/\{name}/optimize | Optimize document.
 [**post_page_caret_annotations**](PdfApi.md#post_page_caret_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/caret | Add document page caret annotations.
@@ -204,15 +221,17 @@ Method | HTTP request | Description
 [**put_add_new_page**](PdfApi.md#put_add_new_page) | **PUT** /pdf/\{name}/pages | Add new page to end of the document.
 [**put_add_text**](PdfApi.md#put_add_text) | **PUT** /pdf/\{name}/pages/\{pageNumber}/text | Add text to PDF document page.
 [**put_annotations_flatten**](PdfApi.md#put_annotations_flatten) | **PUT** /pdf/\{name}/annotations/flatten | Flattens the annotations of the specified types
+[**put_bookmark**](PdfApi.md#put_bookmark) | **PUT** /pdf/\{name}/bookmarks/bookmark/\{bookmarkPath} | Update document bookmark.
 [**put_caret_annotation**](PdfApi.md#put_caret_annotation) | **PUT** /pdf/\{name}/annotations/caret/\{annotationId} | Replace document caret annotation
 [**put_change_password_document**](PdfApi.md#put_change_password_document) | **PUT** /pdf/changepassword | Change document password from content.
 [**put_circle_annotation**](PdfApi.md#put_circle_annotation) | **PUT** /pdf/\{name}/annotations/circle/\{annotationId} | Replace document circle annotation
-[**put_create**](PdfApi.md#put_create) | **PUT** /storage/file | Upload a specific file 
 [**put_create_document**](PdfApi.md#put_create_document) | **PUT** /pdf/\{name} | Create empty document.
-[**put_create_folder**](PdfApi.md#put_create_folder) | **PUT** /storage/folder | Create the folder 
 [**put_decrypt_document**](PdfApi.md#put_decrypt_document) | **PUT** /pdf/decrypt | Decrypt document from content.
 [**put_encrypt_document**](PdfApi.md#put_encrypt_document) | **PUT** /pdf/encrypt | Encrypt document from content.
 [**put_epub_in_storage_to_pdf**](PdfApi.md#put_epub_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/epub | Convert EPUB file (located on storage) to PDF format and upload resulting file to storage. 
+[**put_export_fields_from_pdf_to_fdf_in_storage**](PdfApi.md#put_export_fields_from_pdf_to_fdf_in_storage) | **PUT** /pdf/\{name}/export/fdf | Export fields from from PDF in storage to FDF file in storage.
+[**put_export_fields_from_pdf_to_xfdf_in_storage**](PdfApi.md#put_export_fields_from_pdf_to_xfdf_in_storage) | **PUT** /pdf/\{name}/export/xfdf | Export fields from from PDF in storage to XFDF file in storage.
+[**put_export_fields_from_pdf_to_xml_in_storage**](PdfApi.md#put_export_fields_from_pdf_to_xml_in_storage) | **PUT** /pdf/\{name}/export/xml | Export fields from from PDF in storage to XML file in storage.
 [**put_fields_flatten**](PdfApi.md#put_fields_flatten) | **PUT** /pdf/\{name}/fields/flatten | Flatten form fields in document.
 [**put_file_attachment_annotation**](PdfApi.md#put_file_attachment_annotation) | **PUT** /pdf/\{name}/annotations/fileattachment/\{annotationId} | Replace document FileAttachment annotation
 [**put_file_attachment_annotation_data_extract**](PdfApi.md#put_file_attachment_annotation_data_extract) | **PUT** /pdf/\{name}/annotations/fileattachment/\{annotationId}/data/extract | Extract document FileAttachment annotation content to storage
@@ -228,6 +247,9 @@ Method | HTTP request | Description
 [**put_images_extract_as_jpeg**](PdfApi.md#put_images_extract_as_jpeg) | **PUT** /pdf/\{name}/pages/\{pageNumber}/images/extract/jpeg | Extract document images in JPEG format to folder.
 [**put_images_extract_as_png**](PdfApi.md#put_images_extract_as_png) | **PUT** /pdf/\{name}/pages/\{pageNumber}/images/extract/png | Extract document images in PNG format to folder.
 [**put_images_extract_as_tiff**](PdfApi.md#put_images_extract_as_tiff) | **PUT** /pdf/\{name}/pages/\{pageNumber}/images/extract/tiff | Extract document images in TIFF format to folder.
+[**put_import_fields_from_fdf_in_storage**](PdfApi.md#put_import_fields_from_fdf_in_storage) | **PUT** /pdf/\{name}/import/fdf | Update fields from FDF file in storage.
+[**put_import_fields_from_xfdf_in_storage**](PdfApi.md#put_import_fields_from_xfdf_in_storage) | **PUT** /pdf/\{name}/import/xfdf | Update fields from XFDF file in storage.
+[**put_import_fields_from_xml_in_storage**](PdfApi.md#put_import_fields_from_xml_in_storage) | **PUT** /pdf/\{name}/import/xml | Update fields from XML file in storage.
 [**put_ink_annotation**](PdfApi.md#put_ink_annotation) | **PUT** /pdf/\{name}/annotations/ink/\{annotationId} | Replace document ink annotation
 [**put_la_te_x_in_storage_to_pdf**](PdfApi.md#put_la_te_x_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/latex | Convert LaTeX file (located on storage) to PDF format and upload resulting file to storage. 
 [**put_line_annotation**](PdfApi.md#put_line_annotation) | **PUT** /pdf/\{name}/annotations/line/\{annotationId} | Replace document line annotation
@@ -299,7 +321,83 @@ Method | HTTP request | Description
 [**put_xml_in_storage_to_pdf**](PdfApi.md#put_xml_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/xml | Convert XML file (located on storage) to PDF format and upload resulting file to storage. 
 [**put_xps_in_storage_to_pdf**](PdfApi.md#put_xps_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/xps | Convert XPS file (located on storage) to PDF format and upload resulting file to storage. 
 [**put_xsl_fo_in_storage_to_pdf**](PdfApi.md#put_xsl_fo_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/xslfo | Convert XslFo file (located on storage) to PDF format and upload resulting file to storage. 
+[**storage_exists**](PdfApi.md#storage_exists) | **GET** /pdf/storage/\{storageName}/exist | Check if storage exists
+[**upload_file**](PdfApi.md#upload_file) | **PUT** /pdf/storage/file/\{path} | Upload file
 
+
+# **copy_file**
+> copy_file(src_path, dest_path, src_storage_name=src_storage_name, dest_storage_name=dest_storage_name, version_id=version_id)
+
+Copy file
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **src_path** | **str**| Source file path e.g. &#39;/folder/file.ext&#39; | 
+ **dest_path** | **str**| Destination file path | 
+ **src_storage_name** | **str**| Source storage name | [optional] 
+ **dest_storage_name** | **str**| Destination storage name | [optional] 
+ **version_id** | **str**| File version ID to copy | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **copy_folder**
+> copy_folder(src_path, dest_path, src_storage_name=src_storage_name, dest_storage_name=dest_storage_name)
+
+Copy folder
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **src_path** | **str**| Source folder path e.g. &#39;/src&#39; | 
+ **dest_path** | **str**| Destination folder path e.g. &#39;/dst&#39; | 
+ **src_storage_name** | **str**| Source storage name | [optional] 
+ **dest_storage_name** | **str**| Destination storage name | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_folder**
+> create_folder(path, storage_name=storage_name)
+
+Create the folder
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **str**| Folder path to create e.g. &#39;folder_1/folder_2/&#39; | 
+ **storage_name** | **str**| Storage name | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_annotation**
 > AsposeResponse delete_annotation(name, annotation_id, storage=storage, folder=folder)
@@ -326,6 +424,31 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_bookmark**
+> AsposeResponse delete_bookmark(name, bookmark_path, folder=folder, storage=storage)
+
+Delete document bookmark by ID.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **bookmark_path** | **str**| The bookmark path. | 
+ **folder** | **str**| The document folder. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_document_annotations**
 > AsposeResponse delete_document_annotations(name, storage=storage, folder=folder)
 
@@ -338,6 +461,30 @@ Name | Type | Description  | Notes
  **name** | **str**| The document name. | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_document_bookmarks**
+> AsposeResponse delete_document_bookmarks(name, folder=folder, storage=storage)
+
+Delete all document bookmarks.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **folder** | **str**| The document folder. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
 
 ### Return type
 
@@ -448,21 +595,21 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_file**
-> AsposeResponse delete_file(path, version_id=version_id, storage=storage)
+> delete_file(path, storage_name=storage_name, version_id=version_id)
 
-Remove a specific file 
+Delete file
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **str**| Path of the file including file name and extension e.g. /Folder1/file.ext | 
- **version_id** | **str**| File&#39;s version | [optional] 
- **storage** | **str**| User&#39;s storage name | [optional] 
+ **path** | **str**| File path e.g. &#39;/folder/file.ext&#39; | 
+ **storage_name** | **str**| Storage name | [optional] 
+ **version_id** | **str**| File version ID to delete | [optional] 
 
 ### Return type
 
-[**AsposeResponse**](AsposeResponse.md)
+void (empty response body)
 
 ### HTTP request headers
 
@@ -472,21 +619,21 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_folder**
-> AsposeResponse delete_folder(path, storage=storage, recursive=recursive)
+> delete_folder(path, storage_name=storage_name, recursive=recursive)
 
-Remove a specific folder 
+Delete folder
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **str**| Folder path e.g. /Folder1 | 
- **storage** | **str**| User&#39;s storage name | [optional] 
- **recursive** | **bool**| Remove recursivelly inner folder/files. If false and folder contains data than exception is raised. | [optional] [default to false]
+ **path** | **str**| Folder path e.g. &#39;/folder&#39; | 
+ **storage_name** | **str**| Storage name | [optional] 
+ **recursive** | **bool**| Enable to delete folders, subfolders and files | [optional] [default to false]
 
 ### Return type
 
-[**AsposeResponse**](AsposeResponse.md)
+void (empty response body)
 
 ### HTTP request headers
 
@@ -769,6 +916,80 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **download_file**
+> file download_file(path, storage_name=storage_name, version_id=version_id)
+
+Download file
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **str**| File path e.g. &#39;/folder/file.ext&#39; | 
+ **storage_name** | **str**| Storage name | [optional] 
+ **version_id** | **str**| File version ID to download | [optional] 
+
+### Return type
+
+**file**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_bookmark**
+> BookmarkResponse get_bookmark(name, bookmark_path, folder=folder, storage=storage)
+
+Read document bookmark.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **bookmark_path** | **str**| The bookmark path. | 
+ **folder** | **str**| The document folder. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+
+### Return type
+
+[**BookmarkResponse**](BookmarkResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_bookmarks**
+> BookmarksResponse get_bookmarks(name, bookmark_path, folder=folder, storage=storage)
+
+Read document bookmarks node list.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **bookmark_path** | **str**| The bookmark path. | 
+ **folder** | **str**| The document folder. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+
+### Return type
+
+[**BookmarksResponse**](BookmarksResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_caret_annotation**
 > CaretAnnotationResponse get_caret_annotation(name, annotation_id, storage=storage, folder=folder)
 
@@ -820,19 +1041,19 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_disc_usage**
-> DiscUsageResponse get_disc_usage(storage=storage)
+> DiscUsage get_disc_usage(storage_name=storage_name)
 
-Check the disk usage of the current account 
+Get disc usage
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storage** | **str**| User&#39;s storage name | [optional] 
+ **storage_name** | **str**| Storage name | [optional] 
 
 ### Return type
 
-[**DiscUsageResponse**](DiscUsageResponse.md)
+[**DiscUsage**](DiscUsage.md)
 
 ### HTTP request headers
 
@@ -930,6 +1151,30 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AttachmentsResponse**](AttachmentsResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_document_bookmarks**
+> BookmarksResponse get_document_bookmarks(name, folder=folder, storage=storage)
+
+Read document bookmarks tree.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **folder** | **str**| The document folder. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+
+### Return type
+
+[**BookmarksResponse**](BookmarksResponse.md)
 
 ### HTTP request headers
 
@@ -1540,30 +1785,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_download**
-> file get_download(path, version_id=version_id, storage=storage)
-
-Download a specific file 
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **path** | **str**| Path of the file including the file name and extension e.g. /file.ext | 
- **version_id** | **str**| File&#39;s version | [optional] 
- **storage** | **str**| User&#39;s storage name | [optional] 
-
-### Return type
-
-**file**
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: multipart/form-data
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_download_document_attachment_by_index**
 > file get_download_document_attachment_by_index(name, attachment_index, storage=storage, folder=folder)
 
@@ -1612,6 +1833,78 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_export_fields_from_pdf_to_fdf_in_storage**
+> file get_export_fields_from_pdf_to_fdf_in_storage(name, storage=storage, folder=folder)
+
+Export fields from from PDF in storage to FDF file.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+**file**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_export_fields_from_pdf_to_xfdf_in_storage**
+> file get_export_fields_from_pdf_to_xfdf_in_storage(name, storage=storage, folder=folder)
+
+Export fields from from PDF in storage to XFDF file.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+**file**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_export_fields_from_pdf_to_xml_in_storage**
+> file get_export_fields_from_pdf_to_xml_in_storage(name, storage=storage, folder=folder)
+
+Export fields from from PDF in storage to XML file.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+**file**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_field**
 > FieldResponse get_field(name, field_name, storage=storage, folder=folder)
 
@@ -1622,7 +1915,7 @@ Get document field by name.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
- **field_name** | **str**| The field name/ | 
+ **field_name** | **str**| The field name (name should be encoded). | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
 
@@ -1682,7 +1975,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: multipart/form-data
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1708,6 +2001,52 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: multipart/form-data
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_file_versions**
+> FileVersions get_file_versions(path, storage_name=storage_name)
+
+Get file versions
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **str**| File path e.g. &#39;/file.ext&#39; | 
+ **storage_name** | **str**| Storage name | [optional] 
+
+### Return type
+
+[**FileVersions**](FileVersions.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_files_list**
+> FilesList get_files_list(path, storage_name=storage_name)
+
+Get all files and folders within a folder
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **str**| Folder path e.g. &#39;/folder&#39; | 
+ **storage_name** | **str**| Storage name | [optional] 
+
+### Return type
+
+[**FilesList**](FilesList.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1813,7 +2152,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: multipart/form-data
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1828,8 +2167,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **image_id** | **str**| Image ID. | 
- **width** | **int**| The converted image width. | [optional] 
- **height** | **int**| The converted image height. | [optional] 
+ **width** | **int**| The converted image width. | [optional] [default to 0]
+ **height** | **int**| The converted image height. | [optional] [default to 0]
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
 
@@ -1855,8 +2194,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **image_id** | **str**| Image ID. | 
- **width** | **int**| The converted image width. | [optional] 
- **height** | **int**| The converted image height. | [optional] 
+ **width** | **int**| The converted image width. | [optional] [default to 0]
+ **height** | **int**| The converted image height. | [optional] [default to 0]
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
 
@@ -1882,8 +2221,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **image_id** | **str**| Image ID. | 
- **width** | **int**| The converted image width. | [optional] 
- **height** | **int**| The converted image height. | [optional] 
+ **width** | **int**| The converted image width. | [optional] [default to 0]
+ **height** | **int**| The converted image height. | [optional] [default to 0]
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
 
@@ -1909,8 +2248,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **image_id** | **str**| Image ID. | 
- **width** | **int**| The converted image width. | [optional] 
- **height** | **int**| The converted image height. | [optional] 
+ **width** | **int**| The converted image width. | [optional] [default to 0]
+ **height** | **int**| The converted image height. | [optional] [default to 0]
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
 
@@ -1950,6 +2289,81 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_import_fields_from_fdf_in_storage**
+> file get_import_fields_from_fdf_in_storage(name, fdf_file_path, storage=storage, folder=folder)
+
+Update fields from FDF file in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **fdf_file_path** | **str**| The Fdf file path. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+**file**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_import_fields_from_xfdf_in_storage**
+> file get_import_fields_from_xfdf_in_storage(name, xfdf_file_path, storage=storage, folder=folder)
+
+Update fields from XFDF file in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **xfdf_file_path** | **str**| The XFDF file path. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+**file**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_import_fields_from_xml_in_storage**
+> file get_import_fields_from_xml_in_storage(name, xml_file_path, storage=storage, folder=folder)
+
+Import from XML file (located on storage) to PDF format and return resulting file in response. 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **xml_file_path** | **str**| Full source filename (ex. /folder1/folder2/template.xml) | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+**file**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_ink_annotation**
 > InkAnnotationResponse get_ink_annotation(name, annotation_id, storage=storage, folder=folder)
 
@@ -1967,52 +2381,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**InkAnnotationResponse**](InkAnnotationResponse.md)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_is_exist**
-> FileExistResponse get_is_exist(path, version_id=version_id, storage=storage)
-
-Check if a specific file or folder exists
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **path** | **str**| File or folder path e.g. /file.ext or /Folder1 | 
- **version_id** | **str**| File&#39;s version | [optional] 
- **storage** | **str**| User&#39;s storage name | [optional] 
-
-### Return type
-
-[**FileExistResponse**](FileExistResponse.md)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_is_storage_exist**
-> StorageExistResponse get_is_storage_exist(name)
-
-Check if storage exists 
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **str**| Storage name | 
-
-### Return type
-
-[**StorageExistResponse**](StorageExistResponse.md)
 
 ### HTTP request headers
 
@@ -2094,52 +2462,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_list_file_versions**
-> FileVersionsResponse get_list_file_versions(path, storage=storage)
-
-Get the file's versions list 
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **path** | **str**| File path e.g. /file.ext or /Folder1/file.ext | 
- **storage** | **str**| User&#39;s storage name | [optional] 
-
-### Return type
-
-[**FileVersionsResponse**](FileVersionsResponse.md)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_list_files**
-> FilesResponse get_list_files(path=path, storage=storage)
-
-Get the file listing of a specific folder 
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **path** | **str**| Start with name of storage e.g. root folder &#39;/&#39;or some folder &#39;/folder1/..&#39; | [optional] [default to /]
- **storage** | **str**| User&#39;s storage name | [optional] 
-
-### Return type
-
-[**FilesResponse**](FilesResponse.md)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_mht_in_storage_to_pdf**
 > file get_mht_in_storage_to_pdf(src_path, storage=storage)
 
@@ -2209,7 +2531,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: multipart/form-data
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2299,8 +2621,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **page_number** | **int**| The page number. | 
- **width** | **int**| The converted image width. | [optional] 
- **height** | **int**| The converted image height. | [optional] 
+ **width** | **int**| The converted image width. | [optional] [default to 0]
+ **height** | **int**| The converted image height. | [optional] [default to 0]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 
@@ -2326,8 +2648,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **page_number** | **int**| The page number. | 
- **width** | **int**| The converted image width. | [optional] 
- **height** | **int**| The converted image height. | [optional] 
+ **width** | **int**| The converted image width. | [optional] [default to 0]
+ **height** | **int**| The converted image height. | [optional] [default to 0]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 
@@ -2353,8 +2675,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **page_number** | **int**| The page number. | 
- **width** | **int**| The converted image width. | [optional] 
- **height** | **int**| The converted image height. | [optional] 
+ **width** | **int**| The converted image width. | [optional] [default to 0]
+ **height** | **int**| The converted image height. | [optional] [default to 0]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 
@@ -2380,8 +2702,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **page_number** | **int**| The page number. | 
- **width** | **int**| The converted image width. | [optional] 
- **height** | **int**| The converted image height. | [optional] 
+ **width** | **int**| The converted image width. | [optional] [default to 0]
+ **height** | **int**| The converted image height. | [optional] [default to 0]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 
@@ -2407,8 +2729,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **page_number** | **int**| The page number. | 
- **width** | **int**| The converted image width. | [optional] 
- **height** | **int**| The converted image height. | [optional] 
+ **width** | **int**| The converted image width. | [optional] [default to 0]
+ **height** | **int**| The converted image height. | [optional] [default to 0]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 
@@ -2434,8 +2756,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **page_number** | **int**| The page number. | 
- **width** | **int**| The converted image width. | [optional] 
- **height** | **int**| The converted image height. | [optional] 
+ **width** | **int**| The converted image width. | [optional] [default to 0]
+ **height** | **int**| The converted image height. | [optional] [default to 0]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 
@@ -2968,7 +3290,7 @@ Name | Type | Description  | Notes
  **ury** | **float**| Y - coordinate of upper-right corner. | 
  **format** | **list[str]**| List of formats for search. | [optional] 
  **regex** | **str**| Formats are specified as a regular expression. | [optional] 
- **split_rects** | **bool**| Split result fragments (default is true). | [optional] 
+ **split_rects** | **bool**| Split result fragments (default is true). | [optional] [default to true]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 
@@ -3601,7 +3923,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: multipart/form-data
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3651,7 +3973,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: multipart/form-data
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3877,7 +4199,7 @@ Name | Type | Description  | Notes
  **ury** | **float**| Y - coordinate of upper-right corner. | 
  **format** | **list[str]**| List of formats for search. | [optional] 
  **regex** | **str**| Formats are specified as a regular expression. | [optional] 
- **split_rects** | **bool**| Split result fragments (default is true). | [optional] 
+ **split_rects** | **bool**| Split result fragments (default is true). | [optional] [default to true]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 
@@ -4115,8 +4437,83 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **move_file**
+> move_file(src_path, dest_path, src_storage_name=src_storage_name, dest_storage_name=dest_storage_name, version_id=version_id)
+
+Move file
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **src_path** | **str**| Source file path e.g. &#39;/src.ext&#39; | 
+ **dest_path** | **str**| Destination file path e.g. &#39;/dest.ext&#39; | 
+ **src_storage_name** | **str**| Source storage name | [optional] 
+ **dest_storage_name** | **str**| Destination storage name | [optional] 
+ **version_id** | **str**| File version ID to move | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **move_folder**
+> move_folder(src_path, dest_path, src_storage_name=src_storage_name, dest_storage_name=dest_storage_name)
+
+Move folder
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **src_path** | **str**| Folder path to move e.g. &#39;/folder&#39; | 
+ **dest_path** | **str**| Destination folder path to move to e.g &#39;/dst&#39; | 
+ **src_storage_name** | **str**| Source storage name | [optional] 
+ **dest_storage_name** | **str**| Destination storage name | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **object_exists**
+> ObjectExist object_exists(path, storage_name=storage_name, version_id=version_id)
+
+Check if file or folder exists
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **str**| File or folder path e.g. &#39;/file.ext&#39; or &#39;/folder&#39; | 
+ **storage_name** | **str**| Storage name | [optional] 
+ **version_id** | **str**| File version ID | [optional] 
+
+### Return type
+
+[**ObjectExist**](ObjectExist.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **post_append_document**
-> DocumentResponse post_append_document(name, append_document=append_document, append_file=append_file, start_page=start_page, end_page=end_page, storage=storage, folder=folder)
+> DocumentResponse post_append_document(name, append_file, start_page=start_page, end_page=end_page, storage=storage, folder=folder)
 
 Append document to existing one.
 
@@ -4125,8 +4522,7 @@ Append document to existing one.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The original document name. | 
- **append_document** | [**AppendDocument**](AppendDocument.md)| with the append document data. | [optional] 
- **append_file** | **str**| Append file server path. | [optional] 
+ **append_file** | **str**| Append file server path. | 
  **start_page** | **int**| Appending start page. | [optional] [default to 0]
  **end_page** | **int**| Appending end page. | [optional] [default to 0]
  **storage** | **str**| The documents storage. | [optional] 
@@ -4135,6 +4531,32 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DocumentResponse**](DocumentResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_bookmark**
+> BookmarksResponse post_bookmark(name, bookmark_path, bookmarks, folder=folder, storage=storage)
+
+Add document bookmarks.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **bookmark_path** | **str**| The bookmark path. | 
+ **bookmarks** | [**list[Bookmark]**](Bookmark.md)| The array of bookmark. | 
+ **folder** | **str**| The document folder. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+
+### Return type
+
+[**BookmarksResponse**](BookmarksResponse.md)
 
 ### HTTP request headers
 
@@ -4171,7 +4593,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_create_field**
-> AsposeResponse post_create_field(name, page, field=field, storage=storage, folder=folder)
+> AsposeResponse post_create_field(name, page, field, storage=storage, folder=folder)
 
 Create field.
 
@@ -4181,7 +4603,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **page** | **int**| Document page number. | 
- **field** | [**Field**](Field.md)| with the field data. | [optional] 
+ **field** | [**Field**](Field.md)| Field with the field data. | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
 
@@ -4393,8 +4815,8 @@ Name | Type | Description  | Notes
  **name** | **str**| Document name. | 
  **user_password** | **str**| User password (encrypted Base64). | 
  **owner_password** | **str**| Owner password (encrypted Base64). | 
- **crypto_algorithm** | **str**| Cryptographic algorithm, see  for details. | 
- **permissions_flags** | [**list[PermissionsFlags]**](PermissionsFlags.md)| Array of document permissions, see  for details. | [optional] 
+ **crypto_algorithm** | **str**| Cryptographic algorithm, see CryptoAlgorithm for details. | 
+ **permissions_flags** | [**list[PermissionsFlags]**](PermissionsFlags.md)| Array of document permissions, see PermissionsFlags for details. | [optional] 
  **use_pdf20** | **bool**| Support for revision 6 (Extension 8). | [optional] 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
@@ -4437,6 +4859,81 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **post_import_fields_from_fdf**
+> AsposeResponse post_import_fields_from_fdf(name, storage=storage, folder=folder, fdf_data=fdf_data)
+
+Update fields from FDF file in request.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+ **fdf_data** | **file**| Fdf file. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_import_fields_from_xfdf**
+> AsposeResponse post_import_fields_from_xfdf(name, storage=storage, folder=folder, xfdf_data=xfdf_data)
+
+Update fields from XFDF file in request.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+ **xfdf_data** | **file**| Xfdf file. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_import_fields_from_xml**
+> AsposeResponse post_import_fields_from_xml(name, storage=storage, folder=folder, xml_data=xml_data)
+
+Update fields from XML file in request.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+ **xml_data** | **file**| Xml file. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **post_insert_image**
 > AsposeResponse post_insert_image(name, page_number, llx, lly, urx, ury, image_file_path=image_file_path, storage=storage, folder=folder, image=image)
 
@@ -4468,57 +4965,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **post_move_file**
-> AsposeResponse post_move_file(src, dest, version_id=version_id, storage=storage, dest_storage=dest_storage)
-
-Move a specific file
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **src** | **str**| Source file path e.g. /fileSource.ext | 
- **dest** | **str**| Destination file path e.g. /fileDestination.ext | 
- **version_id** | **str**| Source file&#39;s version, | [optional] 
- **storage** | **str**| User&#39;s source storage name | [optional] 
- **dest_storage** | **str**| User&#39;s destination storage name | [optional] 
-
-### Return type
-
-[**AsposeResponse**](AsposeResponse.md)
-
-### HTTP request headers
-
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **post_move_folder**
-> AsposeResponse post_move_folder(src, dest, storage=storage, dest_storage=dest_storage)
-
-Move a specific folder 
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **src** | **str**| Source folder path e.g. /Folder1 | 
- **dest** | **str**| Destination folder path e.g. /Folder2 | 
- **storage** | **str**| User&#39;s source storage name | [optional] 
- **dest_storage** | **str**| User&#39;s destination storage name | [optional] 
-
-### Return type
-
-[**AsposeResponse**](AsposeResponse.md)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **post_move_page**
 > AsposeResponse post_move_page(name, page_number, new_index, storage=storage, folder=folder)
 
@@ -4546,7 +4992,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_optimize_document**
-> AsposeResponse post_optimize_document(name, options=options, storage=storage, folder=folder)
+> AsposeResponse post_optimize_document(name, options, storage=storage, folder=folder)
 
 Optimize document.
 
@@ -4555,7 +5001,7 @@ Optimize document.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
- **options** | [**OptimizeOptions**](OptimizeOptions.md)| The optimization options. | [optional] 
+ **options** | [**OptimizeOptions**](OptimizeOptions.md)| The optimization options. | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
 
@@ -5247,7 +5693,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_sign_document**
-> AsposeResponse post_sign_document(name, signature=signature, storage=storage, folder=folder)
+> AsposeResponse post_sign_document(name, sign, storage=storage, folder=folder)
 
 Sign document.
 
@@ -5256,7 +5702,7 @@ Sign document.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
- **signature** | [**Signature**](Signature.md)| Signature object containing signature data. | [optional] 
+ **sign** | [**Signature**](Signature.md)| Signature object containing signature data. | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
 
@@ -5272,7 +5718,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_sign_page**
-> AsposeResponse post_sign_page(name, page_number, signature=signature, storage=storage, folder=folder)
+> AsposeResponse post_sign_page(name, page_number, sign, storage=storage, folder=folder)
 
 Sign page.
 
@@ -5282,7 +5728,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **page_number** | **int**| The page number. | 
- **signature** | [**Signature**](Signature.md)| Signature object containing signature data. | [optional] 
+ **sign** | [**Signature**](Signature.md)| Signature object containing signature data. | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
 
@@ -5349,7 +5795,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_add_text**
-> AsposeResponse put_add_text(name, page_number, paragraph=paragraph, folder=folder, storage=storage)
+> AsposeResponse put_add_text(name, page_number, paragraph, folder=folder, storage=storage)
 
 Add text to PDF document page.
 
@@ -5359,7 +5805,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **page_number** | **int**| Number of page (starting from 1). | 
- **paragraph** | [**Paragraph**](Paragraph.md)| Paragraph data. | [optional] 
+ **paragraph** | [**Paragraph**](Paragraph.md)| Paragraph data. | 
  **folder** | **str**| Document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 
@@ -5393,6 +5839,32 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_bookmark**
+> BookmarkResponse put_bookmark(name, bookmark_path, bookmark, folder=folder, storage=storage)
+
+Update document bookmark.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **bookmark_path** | **str**| The bookmark path. | 
+ **bookmark** | [**Bookmark**](Bookmark.md)| The bookmark. | 
+ **folder** | **str**| The document folder. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+
+### Return type
+
+[**BookmarkResponse**](BookmarkResponse.md)
 
 ### HTTP request headers
 
@@ -5480,31 +5952,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **put_create**
-> AsposeResponse put_create(path, file, version_id=version_id, storage=storage)
-
-Upload a specific file 
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **path** | **str**| Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext | 
- **file** | **file**| File to upload | 
- **version_id** | **str**| Source file&#39;s version | [optional] 
- **storage** | **str**| User&#39;s storage name | [optional] 
-
-### Return type
-
-[**AsposeResponse**](AsposeResponse.md)
-
-### HTTP request headers
-
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **put_create_document**
 > DocumentResponse put_create_document(name, storage=storage, folder=folder)
 
@@ -5521,30 +5968,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DocumentResponse**](DocumentResponse.md)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **put_create_folder**
-> AsposeResponse put_create_folder(path, storage=storage, dest_storage=dest_storage)
-
-Create the folder 
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **path** | **str**| Target folder&#39;s path e.g. Folder1/Folder2/. The folders will be created recursively | 
- **storage** | **str**| User&#39;s source storage name | [optional] 
- **dest_storage** | **str**| User&#39;s destination storage name | [optional] 
-
-### Return type
-
-[**AsposeResponse**](AsposeResponse.md)
 
 ### HTTP request headers
 
@@ -5590,8 +6013,8 @@ Name | Type | Description  | Notes
  **out_path** | **str**| Full resulting filename (ex. /folder1/folder2/result.doc) | 
  **user_password** | **str**| User password (encrypted Base64). | 
  **owner_password** | **str**| Owner password (encrypted Base64). | 
- **crypto_algorithm** | **str**| Cryptographic algorithm, see  for details. | 
- **permissions_flags** | [**list[PermissionsFlags]**](PermissionsFlags.md)| Array of document permissions, see  for details. | [optional] 
+ **crypto_algorithm** | **str**| Cryptographic algorithm, see CryptoAlgorithm for details. | 
+ **permissions_flags** | [**list[PermissionsFlags]**](PermissionsFlags.md)| Array of document permissions, see PermissionsFlags for details. | [optional] 
  **use_pdf20** | **bool**| Support for revision 6 (Extension 8). | [optional] 
  **storage** | **str**| The document storage. | [optional] 
  **file** | **file**| A file to be encrypted. | [optional] 
@@ -5620,6 +6043,81 @@ Name | Type | Description  | Notes
  **src_path** | **str**| Full source filename (ex. /folder1/folder2/template.epub) | 
  **storage** | **str**| The document storage. | [optional] 
  **dst_folder** | **str**| The destination document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_export_fields_from_pdf_to_fdf_in_storage**
+> AsposeResponse put_export_fields_from_pdf_to_fdf_in_storage(name, fdf_output_file_path, storage=storage, folder=folder)
+
+Export fields from from PDF in storage to FDF file in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **fdf_output_file_path** | **str**| The output Fdf file path. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_export_fields_from_pdf_to_xfdf_in_storage**
+> AsposeResponse put_export_fields_from_pdf_to_xfdf_in_storage(name, xfdf_output_file_path, storage=storage, folder=folder)
+
+Export fields from from PDF in storage to XFDF file in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **xfdf_output_file_path** | **str**| The output xfdf file path. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_export_fields_from_pdf_to_xml_in_storage**
+> AsposeResponse put_export_fields_from_pdf_to_xml_in_storage(name, xml_output_file_path, storage=storage, folder=folder)
+
+Export fields from from PDF in storage to XML file in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **xml_output_file_path** | **str**| The output xml file path. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
 
 ### Return type
 
@@ -5804,8 +6302,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **image_id** | **str**| Image ID. | 
- **width** | **int**| The converted image width. | [optional] 
- **height** | **int**| The converted image height. | [optional] 
+ **width** | **int**| The converted image width. | [optional] [default to 0]
+ **height** | **int**| The converted image height. | [optional] [default to 0]
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **dest_folder** | **str**| The document folder. | [optional] 
@@ -5832,8 +6330,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **image_id** | **str**| Image ID. | 
- **width** | **int**| The converted image width. | [optional] 
- **height** | **int**| The converted image height. | [optional] 
+ **width** | **int**| The converted image width. | [optional] [default to 0]
+ **height** | **int**| The converted image height. | [optional] [default to 0]
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **dest_folder** | **str**| The document folder. | [optional] 
@@ -5860,8 +6358,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **image_id** | **str**| Image ID. | 
- **width** | **int**| The converted image width. | [optional] 
- **height** | **int**| The converted image height. | [optional] 
+ **width** | **int**| The converted image width. | [optional] [default to 0]
+ **height** | **int**| The converted image height. | [optional] [default to 0]
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **dest_folder** | **str**| The document folder. | [optional] 
@@ -5888,8 +6386,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **image_id** | **str**| Image ID. | 
- **width** | **int**| The converted image width. | [optional] 
- **height** | **int**| The converted image height. | [optional] 
+ **width** | **int**| The converted image width. | [optional] [default to 0]
+ **height** | **int**| The converted image height. | [optional] [default to 0]
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **dest_folder** | **str**| The document folder. | [optional] 
@@ -5915,7 +6413,7 @@ Convert image file (located on storage) to PDF format and upload resulting file 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
- **image_templates** | [**ImageTemplatesRequest**](ImageTemplatesRequest.md)| Image templates | 
+ **image_templates** | [**ImageTemplatesRequest**](ImageTemplatesRequest.md)| ImageTemplatesRequestImage templates | 
  **dst_folder** | **str**| The destination document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 
@@ -5941,8 +6439,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **page_number** | **int**| The page number. | 
- **width** | **int**| The converted image width. | [optional] 
- **height** | **int**| The converted image height. | [optional] 
+ **width** | **int**| The converted image width. | [optional] [default to 0]
+ **height** | **int**| The converted image height. | [optional] [default to 0]
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **dest_folder** | **str**| The document folder. | [optional] 
@@ -5969,9 +6467,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **page_number** | **int**| The page number. | 
- **width** | **int**| The converted image width. | [optional] 
- **height** | **int**| The converted image height. | [optional] 
- **storage** | **str**|  | [optional] 
+ **width** | **int**| The converted image width. | [optional] [default to 0]
+ **height** | **int**| The converted image height. | [optional] [default to 0]
+ **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **dest_folder** | **str**| The document folder. | [optional] 
 
@@ -5997,8 +6495,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **page_number** | **int**| The page number. | 
- **width** | **int**| The converted image width. | [optional] 
- **height** | **int**| The converted image height. | [optional] 
+ **width** | **int**| The converted image width. | [optional] [default to 0]
+ **height** | **int**| The converted image height. | [optional] [default to 0]
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **dest_folder** | **str**| The document folder. | [optional] 
@@ -6025,11 +6523,86 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **page_number** | **int**| The page number. | 
- **width** | **int**| The converted image width. | [optional] 
- **height** | **int**| The converted image height. | [optional] 
+ **width** | **int**| The converted image width. | [optional] [default to 0]
+ **height** | **int**| The converted image height. | [optional] [default to 0]
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **dest_folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_import_fields_from_fdf_in_storage**
+> AsposeResponse put_import_fields_from_fdf_in_storage(name, fdf_file_path, storage=storage, folder=folder)
+
+Update fields from FDF file in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **fdf_file_path** | **str**| The Fdf file path. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_import_fields_from_xfdf_in_storage**
+> AsposeResponse put_import_fields_from_xfdf_in_storage(name, xfdf_file_path, storage=storage, folder=folder)
+
+Update fields from XFDF file in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **xfdf_file_path** | **str**| The XFDF file path. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_import_fields_from_xml_in_storage**
+> AsposeResponse put_import_fields_from_xml_in_storage(name, xml_file_path, storage=storage, folder=folder)
+
+Update fields from XML file in storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **xml_file_path** | **str**| Full source filename (ex. /folder1/folder2/template.xml) | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
 
 ### Return type
 
@@ -6146,7 +6719,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_merge_documents**
-> DocumentResponse put_merge_documents(name, merge_documents=merge_documents, storage=storage, folder=folder)
+> DocumentResponse put_merge_documents(name, merge_documents, storage=storage, folder=folder)
 
 Merge a list of documents.
 
@@ -6155,7 +6728,7 @@ Merge a list of documents.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| Resulting documen name. | 
- **merge_documents** | [**MergeDocuments**](MergeDocuments.md)| with a list of documents. | [optional] 
+ **merge_documents** | [**MergeDocuments**](MergeDocuments.md)| MergeDocuments with a list of documents. | 
  **storage** | **str**| Resulting document storage. | [optional] 
  **folder** | **str**| Resulting document folder. | [optional] 
 
@@ -6232,7 +6805,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **page_number** | **int**| The page number. | 
- **stamp** | [**Stamp**](Stamp.md)| with data. | 
+ **stamp** | [**Stamp**](Stamp.md)| Stamp with data. | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
 
@@ -6259,8 +6832,8 @@ Name | Type | Description  | Notes
  **name** | **str**| The document name. | 
  **page_number** | **int**| The page number. | 
  **out_path** | **str**| The out path of result image. | 
- **width** | **int**| The converted image width. | [optional] 
- **height** | **int**| The converted image height. | [optional] 
+ **width** | **int**| The converted image width. | [optional] [default to 0]
+ **height** | **int**| The converted image height. | [optional] [default to 0]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 
@@ -6287,8 +6860,8 @@ Name | Type | Description  | Notes
  **name** | **str**| The document name. | 
  **page_number** | **int**| The page number. | 
  **out_path** | **str**| The out path of result image. | 
- **width** | **int**| The converted image width. | [optional] 
- **height** | **int**| The converted image height. | [optional] 
+ **width** | **int**| The converted image width. | [optional] [default to 0]
+ **height** | **int**| The converted image height. | [optional] [default to 0]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 
@@ -6315,8 +6888,8 @@ Name | Type | Description  | Notes
  **name** | **str**| The document name. | 
  **page_number** | **int**| The page number. | 
  **out_path** | **str**| The out path of result image. | 
- **width** | **int**| The converted image width. | [optional] 
- **height** | **int**| The converted image height. | [optional] 
+ **width** | **int**| The converted image width. | [optional] [default to 0]
+ **height** | **int**| The converted image height. | [optional] [default to 0]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 
@@ -6343,8 +6916,8 @@ Name | Type | Description  | Notes
  **name** | **str**| The document name. | 
  **page_number** | **int**| The page number. | 
  **out_path** | **str**| The out path of result image. | 
- **width** | **int**| The converted image width. | [optional] 
- **height** | **int**| The converted image height. | [optional] 
+ **width** | **int**| The converted image width. | [optional] [default to 0]
+ **height** | **int**| The converted image height. | [optional] [default to 0]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 
@@ -6371,8 +6944,8 @@ Name | Type | Description  | Notes
  **name** | **str**| The document name. | 
  **page_number** | **int**| The page number. | 
  **out_path** | **str**| The out path of result image. | 
- **width** | **int**| The converted image width. | [optional] 
- **height** | **int**| The converted image height. | [optional] 
+ **width** | **int**| The converted image width. | [optional] [default to 0]
+ **height** | **int**| The converted image height. | [optional] [default to 0]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 
@@ -6399,8 +6972,8 @@ Name | Type | Description  | Notes
  **name** | **str**| The document name. | 
  **page_number** | **int**| The page number. | 
  **out_path** | **str**| The out path of result image. | 
- **width** | **int**| The converted image width. | [optional] 
- **height** | **int**| The converted image height. | [optional] 
+ **width** | **int**| The converted image width. | [optional] [default to 0]
+ **height** | **int**| The converted image height. | [optional] [default to 0]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 
@@ -7284,7 +7857,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_privileges**
-> AsposeResponse put_privileges(name, privileges=privileges, storage=storage, folder=folder)
+> AsposeResponse put_privileges(name, privileges, storage=storage, folder=folder)
 
 Update privilege document.
 
@@ -7293,7 +7866,7 @@ Update privilege document.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
- **privileges** | [**DocumentPrivilege**](DocumentPrivilege.md)| Document privileges.  | [optional] 
+ **privileges** | [**DocumentPrivilege**](DocumentPrivilege.md)| Document privileges. DocumentPrivilege | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
 
@@ -7783,7 +8356,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_update_field**
-> FieldResponse put_update_field(name, field_name, field=field, storage=storage, folder=folder)
+> FieldResponse put_update_field(name, field_name, field, storage=storage, folder=folder)
 
 Update field.
 
@@ -7793,7 +8366,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **field_name** | **str**| The name of a field to be updated. | 
- **field** | [**Field**](Field.md)| with the field data. | [optional] 
+ **field** | [**Field**](Field.md)| Field with the field data. | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
 
@@ -7809,7 +8382,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_update_fields**
-> FieldsResponse put_update_fields(name, fields=fields, storage=storage, folder=folder)
+> FieldsResponse put_update_fields(name, fields, storage=storage, folder=folder)
 
 Update fields.
 
@@ -7818,7 +8391,7 @@ Update fields.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
- **fields** | [**Fields**](Fields.md)| with the fields data. | [optional] 
+ **fields** | [**Fields**](Fields.md)| Fields with the fields data. | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
 
@@ -7986,6 +8559,52 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **storage_exists**
+> StorageExist storage_exists(storage_name)
+
+Check if storage exists
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storage_name** | **str**| Storage name | 
+
+### Return type
+
+[**StorageExist**](StorageExist.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **upload_file**
+> FilesUploadResult upload_file(path, file, storage_name=storage_name)
+
+Upload file
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **str**| Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.              | 
+ **file** | **file**| File to upload | 
+ **storage_name** | **str**| Storage name | [optional] 
+
+### Return type
+
+[**FilesUploadResult**](FilesUploadResult.md)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

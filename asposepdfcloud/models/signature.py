@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -143,6 +143,8 @@ class Signature(object):
         """
         if signature_path is None:
             raise ValueError("Invalid value for `signature_path`, must not be `None`")
+        if signature_path is not None and len(signature_path) < 1:
+            raise ValueError("Invalid value for `signature_path`, length must be greater than or equal to `1`")
 
         self._signature_path = signature_path
 
@@ -290,7 +292,7 @@ class Signature(object):
     def visible(self):
         """
         Gets the visible of this Signature.
-        Gets or sets a value indicating whether this  is visible. Supports only when signing particular page.
+        Gets or sets a value indicating whether this Signature is visible. Supports only when signing particular page.
 
         :return: The visible of this Signature.
         :rtype: bool
@@ -301,7 +303,7 @@ class Signature(object):
     def visible(self, visible):
         """
         Sets the visible of this Signature.
-        Gets or sets a value indicating whether this  is visible. Supports only when signing particular page.
+        Gets or sets a value indicating whether this Signature is visible. Supports only when signing particular page.
 
         :param visible: The visible of this Signature.
         :type: bool

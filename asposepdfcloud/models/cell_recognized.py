@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -74,7 +74,7 @@ class CellRecognized(object):
     def text_rects(self):
         """
         Gets the text_rects of this CellRecognized.
-        Gets collection of  objects that describes text containing in the cell
+        Gets collection of TextRect objects that describes text containing in the cell
 
         :return: The text_rects of this CellRecognized.
         :rtype: TextRects
@@ -85,7 +85,7 @@ class CellRecognized(object):
     def text_rects(self, text_rects):
         """
         Sets the text_rects of this CellRecognized.
-        Gets collection of  objects that describes text containing in the cell
+        Gets collection of TextRect objects that describes text containing in the cell
 
         :param text_rects: The text_rects of this CellRecognized.
         :type: TextRects

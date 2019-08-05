@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -87,8 +87,7 @@ class Field(object):
           self.type = type
         if rect is not None:
           self.rect = rect
-        if values is not None:
-          self.values = values
+        self.values = values
 
     @property
     def links(self):
@@ -225,6 +224,8 @@ class Field(object):
         :param values: The values of this Field.
         :type: list[str]
         """
+        if values is None:
+            raise ValueError("Invalid value for `values`, must not be `None`")
 
         self._values = values
 

@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -71,8 +71,7 @@ class SignatureVerifyResponse(object):
         self.code = code
         if status is not None:
           self.status = status
-        if valid is not None:
-          self.valid = valid
+        self.valid = valid
 
     @property
     def code(self):
@@ -142,6 +141,8 @@ class SignatureVerifyResponse(object):
         :param valid: The valid of this SignatureVerifyResponse.
         :type: bool
         """
+        if valid is None:
+            raise ValueError("Invalid value for `valid`, must not be `None`")
 
         self._valid = valid
 

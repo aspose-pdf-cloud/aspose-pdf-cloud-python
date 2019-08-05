@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -56,6 +56,356 @@ class PdfApi(object):
             if not config.api_client:
                 config.api_client = ApiClient(None, None)
             self.api_client = config.api_client
+
+    def copy_file(self, src_path, dest_path, **kwargs):
+        """
+        Copy file
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.copy_file(src_path, dest_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Source file path e.g. '/folder/file.ext' (required)
+        :param str dest_path: Destination file path (required)
+        :param str src_storage_name: Source storage name
+        :param str dest_storage_name: Destination storage name
+        :param str version_id: File version ID to copy
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.copy_file_with_http_info(src_path, dest_path, **kwargs)
+        else:
+            (data) = self.copy_file_with_http_info(src_path, dest_path, **kwargs)
+            return data
+
+    def copy_file_with_http_info(self, src_path, dest_path, **kwargs):
+        """
+        Copy file
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.copy_file_with_http_info(src_path, dest_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Source file path e.g. '/folder/file.ext' (required)
+        :param str dest_path: Destination file path (required)
+        :param str src_storage_name: Source storage name
+        :param str dest_storage_name: Destination storage name
+        :param str version_id: File version ID to copy
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['src_path', 'dest_path', 'src_storage_name', 'dest_storage_name', 'version_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method copy_file" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'src_path' is set
+        if ('src_path' not in params) or (params['src_path'] is None):
+            raise ValueError("Missing the required parameter `src_path` when calling `copy_file`")
+        # verify the required parameter 'dest_path' is set
+        if ('dest_path' not in params) or (params['dest_path'] is None):
+            raise ValueError("Missing the required parameter `dest_path` when calling `copy_file`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'src_path' in params:
+            path_params['srcPath'] = params['src_path']
+
+        query_params = []
+        if 'dest_path' in params:
+            query_params.append(('destPath', params['dest_path']))
+        if 'src_storage_name' in params:
+            query_params.append(('srcStorageName', params['src_storage_name']))
+        if 'dest_storage_name' in params:
+            query_params.append(('destStorageName', params['dest_storage_name']))
+        if 'version_id' in params:
+            query_params.append(('versionId', params['version_id']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/storage/file/copy/{srcPath}', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type=None,
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def copy_folder(self, src_path, dest_path, **kwargs):
+        """
+        Copy folder
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.copy_folder(src_path, dest_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Source folder path e.g. '/src' (required)
+        :param str dest_path: Destination folder path e.g. '/dst' (required)
+        :param str src_storage_name: Source storage name
+        :param str dest_storage_name: Destination storage name
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.copy_folder_with_http_info(src_path, dest_path, **kwargs)
+        else:
+            (data) = self.copy_folder_with_http_info(src_path, dest_path, **kwargs)
+            return data
+
+    def copy_folder_with_http_info(self, src_path, dest_path, **kwargs):
+        """
+        Copy folder
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.copy_folder_with_http_info(src_path, dest_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Source folder path e.g. '/src' (required)
+        :param str dest_path: Destination folder path e.g. '/dst' (required)
+        :param str src_storage_name: Source storage name
+        :param str dest_storage_name: Destination storage name
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['src_path', 'dest_path', 'src_storage_name', 'dest_storage_name']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method copy_folder" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'src_path' is set
+        if ('src_path' not in params) or (params['src_path'] is None):
+            raise ValueError("Missing the required parameter `src_path` when calling `copy_folder`")
+        # verify the required parameter 'dest_path' is set
+        if ('dest_path' not in params) or (params['dest_path'] is None):
+            raise ValueError("Missing the required parameter `dest_path` when calling `copy_folder`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'src_path' in params:
+            path_params['srcPath'] = params['src_path']
+
+        query_params = []
+        if 'dest_path' in params:
+            query_params.append(('destPath', params['dest_path']))
+        if 'src_storage_name' in params:
+            query_params.append(('srcStorageName', params['src_storage_name']))
+        if 'dest_storage_name' in params:
+            query_params.append(('destStorageName', params['dest_storage_name']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/storage/folder/copy/{srcPath}', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type=None,
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def create_folder(self, path, **kwargs):
+        """
+        Create the folder
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.create_folder(path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str path: Folder path to create e.g. 'folder_1/folder_2/' (required)
+        :param str storage_name: Storage name
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.create_folder_with_http_info(path, **kwargs)
+        else:
+            (data) = self.create_folder_with_http_info(path, **kwargs)
+            return data
+
+    def create_folder_with_http_info(self, path, **kwargs):
+        """
+        Create the folder
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.create_folder_with_http_info(path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str path: Folder path to create e.g. 'folder_1/folder_2/' (required)
+        :param str storage_name: Storage name
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['path', 'storage_name']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_folder" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'path' is set
+        if ('path' not in params) or (params['path'] is None):
+            raise ValueError("Missing the required parameter `path` when calling `create_folder`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'path' in params:
+            path_params['path'] = params['path']
+
+        query_params = []
+        if 'storage_name' in params:
+            query_params.append(('storageName', params['storage_name']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/storage/folder/{path}', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type=None,
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
 
     def delete_annotation(self, name, annotation_id, **kwargs):
         """
@@ -159,9 +509,128 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/{annotationId}', 'DELETE',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def delete_bookmark(self, name, bookmark_path, **kwargs):
+        """
+        Delete document bookmark by ID.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_bookmark(name, bookmark_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str bookmark_path: The bookmark path. (required)
+        :param str folder: The document folder.
+        :param str storage: The document storage.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.delete_bookmark_with_http_info(name, bookmark_path, **kwargs)
+        else:
+            (data) = self.delete_bookmark_with_http_info(name, bookmark_path, **kwargs)
+            return data
+
+    def delete_bookmark_with_http_info(self, name, bookmark_path, **kwargs):
+        """
+        Delete document bookmark by ID.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_bookmark_with_http_info(name, bookmark_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str bookmark_path: The bookmark path. (required)
+        :param str folder: The document folder.
+        :param str storage: The document storage.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'bookmark_path', 'folder', 'storage']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_bookmark" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `delete_bookmark`")
+        # verify the required parameter 'bookmark_path' is set
+        if ('bookmark_path' not in params) or (params['bookmark_path'] is None):
+            raise ValueError("Missing the required parameter `bookmark_path` when calling `delete_bookmark`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'bookmark_path' in params:
+            path_params['bookmarkPath'] = params['bookmark_path']
+
+        query_params = []
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/bookmarks/bookmark/{bookmarkPath}', 'DELETE',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -271,9 +740,121 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations', 'DELETE',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def delete_document_bookmarks(self, name, **kwargs):
+        """
+        Delete all document bookmarks.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_document_bookmarks(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str folder: The document folder.
+        :param str storage: The document storage.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.delete_document_bookmarks_with_http_info(name, **kwargs)
+        else:
+            (data) = self.delete_document_bookmarks_with_http_info(name, **kwargs)
+            return data
+
+    def delete_document_bookmarks_with_http_info(self, name, **kwargs):
+        """
+        Delete all document bookmarks.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_document_bookmarks_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str folder: The document folder.
+        :param str storage: The document storage.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'folder', 'storage']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_document_bookmarks" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `delete_document_bookmarks`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/bookmarks/tree', 'DELETE',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -383,7 +964,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/links', 'DELETE',
                                         path_params,
@@ -495,7 +1076,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/stamps', 'DELETE',
                                         path_params,
@@ -607,7 +1188,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/tables', 'DELETE',
                                         path_params,
@@ -726,7 +1307,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/fields/{fieldName}', 'DELETE',
                                         path_params,
@@ -745,7 +1326,7 @@ class PdfApi(object):
 
     def delete_file(self, path, **kwargs):
         """
-        Remove a specific file 
+        Delete file
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -756,10 +1337,10 @@ class PdfApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str path: Path of the file including file name and extension e.g. /Folder1/file.ext (required)
-        :param str version_id: File's version
-        :param str storage: User's storage name
-        :return: AsposeResponse
+        :param str path: File path e.g. '/folder/file.ext' (required)
+        :param str storage_name: Storage name
+        :param str version_id: File version ID to delete
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -772,7 +1353,7 @@ class PdfApi(object):
 
     def delete_file_with_http_info(self, path, **kwargs):
         """
-        Remove a specific file 
+        Delete file
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -783,15 +1364,15 @@ class PdfApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str path: Path of the file including file name and extension e.g. /Folder1/file.ext (required)
-        :param str version_id: File's version
-        :param str storage: User's storage name
-        :return: AsposeResponse
+        :param str path: File path e.g. '/folder/file.ext' (required)
+        :param str storage_name: Storage name
+        :param str version_id: File version ID to delete
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['path', 'version_id', 'storage']
+        all_params = ['path', 'storage_name', 'version_id']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -814,14 +1395,14 @@ class PdfApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'path' in params:
+            path_params['path'] = params['path']
 
         query_params = []
-        if 'path' in params:
-            query_params.append(('path', params['path']))
+        if 'storage_name' in params:
+            query_params.append(('storageName', params['storage_name']))
         if 'version_id' in params:
             query_params.append(('versionId', params['version_id']))
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
 
         header_params = {}
 
@@ -838,16 +1419,16 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
-        return self.api_client.call_api('/storage/file', 'DELETE',
+        return self.api_client.call_api('/pdf/storage/file/{path}', 'DELETE',
                                         path_params,
                                         query_params,
                                         header_params,
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='AsposeResponse',
+                                        response_type=None,
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -857,7 +1438,7 @@ class PdfApi(object):
 
     def delete_folder(self, path, **kwargs):
         """
-        Remove a specific folder 
+        Delete folder
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -868,10 +1449,10 @@ class PdfApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str path: Folder path e.g. /Folder1 (required)
-        :param str storage: User's storage name
-        :param bool recursive: Remove recursivelly inner folder/files. If false and folder contains data than exception is raised.
-        :return: AsposeResponse
+        :param str path: Folder path e.g. '/folder' (required)
+        :param str storage_name: Storage name
+        :param bool recursive: Enable to delete folders, subfolders and files
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -884,7 +1465,7 @@ class PdfApi(object):
 
     def delete_folder_with_http_info(self, path, **kwargs):
         """
-        Remove a specific folder 
+        Delete folder
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -895,15 +1476,15 @@ class PdfApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str path: Folder path e.g. /Folder1 (required)
-        :param str storage: User's storage name
-        :param bool recursive: Remove recursivelly inner folder/files. If false and folder contains data than exception is raised.
-        :return: AsposeResponse
+        :param str path: Folder path e.g. '/folder' (required)
+        :param str storage_name: Storage name
+        :param bool recursive: Enable to delete folders, subfolders and files
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['path', 'storage', 'recursive']
+        all_params = ['path', 'storage_name', 'recursive']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -926,12 +1507,12 @@ class PdfApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'path' in params:
+            path_params['path'] = params['path']
 
         query_params = []
-        if 'path' in params:
-            query_params.append(('path', params['path']))
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
+        if 'storage_name' in params:
+            query_params.append(('storageName', params['storage_name']))
         if 'recursive' in params:
             query_params.append(('recursive', params['recursive']))
 
@@ -950,16 +1531,16 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
-        return self.api_client.call_api('/storage/folder', 'DELETE',
+        return self.api_client.call_api('/pdf/storage/folder/{path}', 'DELETE',
                                         path_params,
                                         query_params,
                                         header_params,
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='AsposeResponse',
+                                        response_type=None,
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -1069,7 +1650,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/images/{imageId}', 'DELETE',
                                         path_params,
@@ -1188,7 +1769,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/links/{linkId}', 'DELETE',
                                         path_params,
@@ -1307,7 +1888,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}', 'DELETE',
                                         path_params,
@@ -1426,7 +2007,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations', 'DELETE',
                                         path_params,
@@ -1545,7 +2126,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/links', 'DELETE',
                                         path_params,
@@ -1664,7 +2245,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/stamps', 'DELETE',
                                         path_params,
@@ -1783,7 +2364,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/tables', 'DELETE',
                                         path_params,
@@ -1895,7 +2476,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/documentproperties', 'DELETE',
                                         path_params,
@@ -2014,7 +2595,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/documentproperties/{propertyName}', 'DELETE',
                                         path_params,
@@ -2133,7 +2714,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/stamps/{stampId}', 'DELETE',
                                         path_params,
@@ -2252,7 +2833,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/tables/{tableId}', 'DELETE',
                                         path_params,
@@ -2262,6 +2843,356 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def download_file(self, path, **kwargs):
+        """
+        Download file
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.download_file(path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str path: File path e.g. '/folder/file.ext' (required)
+        :param str storage_name: Storage name
+        :param str version_id: File version ID to download
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.download_file_with_http_info(path, **kwargs)
+        else:
+            (data) = self.download_file_with_http_info(path, **kwargs)
+            return data
+
+    def download_file_with_http_info(self, path, **kwargs):
+        """
+        Download file
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.download_file_with_http_info(path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str path: File path e.g. '/folder/file.ext' (required)
+        :param str storage_name: Storage name
+        :param str version_id: File version ID to download
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['path', 'storage_name', 'version_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method download_file" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'path' is set
+        if ('path' not in params) or (params['path'] is None):
+            raise ValueError("Missing the required parameter `path` when calling `download_file`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'path' in params:
+            path_params['path'] = params['path']
+
+        query_params = []
+        if 'storage_name' in params:
+            query_params.append(('storageName', params['storage_name']))
+        if 'version_id' in params:
+            query_params.append(('versionId', params['version_id']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/storage/file/{path}', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_bookmark(self, name, bookmark_path, **kwargs):
+        """
+        Read document bookmark.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_bookmark(name, bookmark_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str bookmark_path: The bookmark path. (required)
+        :param str folder: The document folder.
+        :param str storage: The document storage.
+        :return: BookmarkResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_bookmark_with_http_info(name, bookmark_path, **kwargs)
+        else:
+            (data) = self.get_bookmark_with_http_info(name, bookmark_path, **kwargs)
+            return data
+
+    def get_bookmark_with_http_info(self, name, bookmark_path, **kwargs):
+        """
+        Read document bookmark.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_bookmark_with_http_info(name, bookmark_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str bookmark_path: The bookmark path. (required)
+        :param str folder: The document folder.
+        :param str storage: The document storage.
+        :return: BookmarkResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'bookmark_path', 'folder', 'storage']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_bookmark" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_bookmark`")
+        # verify the required parameter 'bookmark_path' is set
+        if ('bookmark_path' not in params) or (params['bookmark_path'] is None):
+            raise ValueError("Missing the required parameter `bookmark_path` when calling `get_bookmark`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'bookmark_path' in params:
+            path_params['bookmarkPath'] = params['bookmark_path']
+
+        query_params = []
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/bookmarks/bookmark/{bookmarkPath}', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='BookmarkResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_bookmarks(self, name, bookmark_path, **kwargs):
+        """
+        Read document bookmarks node list.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_bookmarks(name, bookmark_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str bookmark_path: The bookmark path. (required)
+        :param str folder: The document folder.
+        :param str storage: The document storage.
+        :return: BookmarksResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_bookmarks_with_http_info(name, bookmark_path, **kwargs)
+        else:
+            (data) = self.get_bookmarks_with_http_info(name, bookmark_path, **kwargs)
+            return data
+
+    def get_bookmarks_with_http_info(self, name, bookmark_path, **kwargs):
+        """
+        Read document bookmarks node list.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_bookmarks_with_http_info(name, bookmark_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str bookmark_path: The bookmark path. (required)
+        :param str folder: The document folder.
+        :param str storage: The document storage.
+        :return: BookmarksResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'bookmark_path', 'folder', 'storage']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_bookmarks" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_bookmarks`")
+        # verify the required parameter 'bookmark_path' is set
+        if ('bookmark_path' not in params) or (params['bookmark_path'] is None):
+            raise ValueError("Missing the required parameter `bookmark_path` when calling `get_bookmarks`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'bookmark_path' in params:
+            path_params['bookmarkPath'] = params['bookmark_path']
+
+        query_params = []
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/bookmarks/list/{bookmarkPath}', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='BookmarksResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -2371,7 +3302,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/caret/{annotationId}', 'GET',
                                         path_params,
@@ -2490,7 +3421,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/circle/{annotationId}', 'GET',
                                         path_params,
@@ -2509,7 +3440,7 @@ class PdfApi(object):
 
     def get_disc_usage(self, **kwargs):
         """
-        Check the disk usage of the current account 
+        Get disc usage
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -2520,8 +3451,8 @@ class PdfApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str storage: User's storage name
-        :return: DiscUsageResponse
+        :param str storage_name: Storage name
+        :return: DiscUsage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -2534,7 +3465,7 @@ class PdfApi(object):
 
     def get_disc_usage_with_http_info(self, **kwargs):
         """
-        Check the disk usage of the current account 
+        Get disc usage
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -2545,13 +3476,13 @@ class PdfApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str storage: User's storage name
-        :return: DiscUsageResponse
+        :param str storage_name: Storage name
+        :return: DiscUsage
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['storage']
+        all_params = ['storage_name']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2573,8 +3504,8 @@ class PdfApi(object):
         path_params = {}
 
         query_params = []
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
+        if 'storage_name' in params:
+            query_params.append(('storageName', params['storage_name']))
 
         header_params = {}
 
@@ -2591,16 +3522,16 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
-        return self.api_client.call_api('/storage/disc', 'GET',
+        return self.api_client.call_api('/pdf/storage/disc', 'GET',
                                         path_params,
                                         query_params,
                                         header_params,
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='DiscUsageResponse',
+                                        response_type='DiscUsage',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -2703,7 +3634,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}', 'GET',
                                         path_params,
@@ -2815,7 +3746,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations', 'GET',
                                         path_params,
@@ -2934,7 +3865,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/attachments/{attachmentIndex}', 'GET',
                                         path_params,
@@ -3046,7 +3977,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/attachments', 'GET',
                                         path_params,
@@ -3056,6 +3987,118 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='AttachmentsResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_document_bookmarks(self, name, **kwargs):
+        """
+        Read document bookmarks tree.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_bookmarks(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str folder: The document folder.
+        :param str storage: The document storage.
+        :return: BookmarksResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_document_bookmarks_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_document_bookmarks_with_http_info(name, **kwargs)
+            return data
+
+    def get_document_bookmarks_with_http_info(self, name, **kwargs):
+        """
+        Read document bookmarks tree.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_bookmarks_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str folder: The document folder.
+        :param str storage: The document storage.
+        :return: BookmarksResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'folder', 'storage']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_document_bookmarks" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_document_bookmarks`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/bookmarks/tree', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='BookmarksResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -3158,7 +4201,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/caret', 'GET',
                                         path_params,
@@ -3270,7 +4313,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/circle', 'GET',
                                         path_params,
@@ -3382,7 +4425,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/fileattachment', 'GET',
                                         path_params,
@@ -3494,7 +4537,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/freetext', 'GET',
                                         path_params,
@@ -3606,7 +4649,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/highlight', 'GET',
                                         path_params,
@@ -3718,7 +4761,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/ink', 'GET',
                                         path_params,
@@ -3830,7 +4873,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/line', 'GET',
                                         path_params,
@@ -3942,7 +4985,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/movie', 'GET',
                                         path_params,
@@ -4054,7 +5097,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/polyline', 'GET',
                                         path_params,
@@ -4166,7 +5209,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/polygon', 'GET',
                                         path_params,
@@ -4278,7 +5321,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/popup', 'GET',
                                         path_params,
@@ -4397,7 +5440,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/{annotationId}/popup', 'GET',
                                         path_params,
@@ -4509,7 +5552,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/documentproperties', 'GET',
                                         path_params,
@@ -4628,7 +5671,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/documentproperties/{propertyName}', 'GET',
                                         path_params,
@@ -4740,7 +5783,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/redaction', 'GET',
                                         path_params,
@@ -4852,7 +5895,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/screen', 'GET',
                                         path_params,
@@ -4964,7 +6007,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/sound', 'GET',
                                         path_params,
@@ -5076,7 +6119,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/square', 'GET',
                                         path_params,
@@ -5188,7 +6231,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/squiggly', 'GET',
                                         path_params,
@@ -5300,7 +6343,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/stamp', 'GET',
                                         path_params,
@@ -5412,7 +6455,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/stamps', 'GET',
                                         path_params,
@@ -5524,7 +6567,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/strikeout', 'GET',
                                         path_params,
@@ -5636,7 +6679,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/tables', 'GET',
                                         path_params,
@@ -5748,7 +6791,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/text', 'GET',
                                         path_params,
@@ -5860,7 +6903,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/underline', 'GET',
                                         path_params,
@@ -5870,118 +6913,6 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='UnderlineAnnotationsResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def get_download(self, path, **kwargs):
-        """
-        Download a specific file 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_download(path, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str path: Path of the file including the file name and extension e.g. /file.ext (required)
-        :param str version_id: File's version
-        :param str storage: User's storage name
-        :return: file
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.get_download_with_http_info(path, **kwargs)
-        else:
-            (data) = self.get_download_with_http_info(path, **kwargs)
-            return data
-
-    def get_download_with_http_info(self, path, **kwargs):
-        """
-        Download a specific file 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_download_with_http_info(path, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str path: Path of the file including the file name and extension e.g. /file.ext (required)
-        :param str version_id: File's version
-        :param str storage: User's storage name
-        :return: file
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['path', 'version_id', 'storage']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_download" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'path' is set
-        if ('path' not in params) or (params['path'] is None):
-            raise ValueError("Missing the required parameter `path` when calling `get_download`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'path' in params:
-            query_params.append(('path', params['path']))
-        if 'version_id' in params:
-            query_params.append(('versionId', params['version_id']))
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['multipart/form-data'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/storage/file', 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='file',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -6091,7 +7022,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/attachments/{attachmentIndex}/download', 'GET',
                                         path_params,
@@ -6199,9 +7130,345 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/create/epub', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_export_fields_from_pdf_to_fdf_in_storage(self, name, **kwargs):
+        """
+        Export fields from from PDF in storage to FDF file.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_export_fields_from_pdf_to_fdf_in_storage(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_export_fields_from_pdf_to_fdf_in_storage_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_export_fields_from_pdf_to_fdf_in_storage_with_http_info(name, **kwargs)
+            return data
+
+    def get_export_fields_from_pdf_to_fdf_in_storage_with_http_info(self, name, **kwargs):
+        """
+        Export fields from from PDF in storage to FDF file.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_export_fields_from_pdf_to_fdf_in_storage_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_export_fields_from_pdf_to_fdf_in_storage" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_export_fields_from_pdf_to_fdf_in_storage`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/export/fdf', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_export_fields_from_pdf_to_xfdf_in_storage(self, name, **kwargs):
+        """
+        Export fields from from PDF in storage to XFDF file.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_export_fields_from_pdf_to_xfdf_in_storage(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_export_fields_from_pdf_to_xfdf_in_storage_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_export_fields_from_pdf_to_xfdf_in_storage_with_http_info(name, **kwargs)
+            return data
+
+    def get_export_fields_from_pdf_to_xfdf_in_storage_with_http_info(self, name, **kwargs):
+        """
+        Export fields from from PDF in storage to XFDF file.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_export_fields_from_pdf_to_xfdf_in_storage_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_export_fields_from_pdf_to_xfdf_in_storage" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_export_fields_from_pdf_to_xfdf_in_storage`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/export/xfdf', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_export_fields_from_pdf_to_xml_in_storage(self, name, **kwargs):
+        """
+        Export fields from from PDF in storage to XML file.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_export_fields_from_pdf_to_xml_in_storage(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_export_fields_from_pdf_to_xml_in_storage_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_export_fields_from_pdf_to_xml_in_storage_with_http_info(name, **kwargs)
+            return data
+
+    def get_export_fields_from_pdf_to_xml_in_storage_with_http_info(self, name, **kwargs):
+        """
+        Export fields from from PDF in storage to XML file.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_export_fields_from_pdf_to_xml_in_storage_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_export_fields_from_pdf_to_xml_in_storage" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_export_fields_from_pdf_to_xml_in_storage`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/export/xml', 'GET',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -6230,7 +7497,7 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param str field_name: The field name/ (required)
+        :param str field_name: The field name (name should be encoded). (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
         :return: FieldResponse
@@ -6258,7 +7525,7 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param str field_name: The field name/ (required)
+        :param str field_name: The field name (name should be encoded). (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
         :return: FieldResponse
@@ -6318,7 +7585,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/fields/{fieldName}', 'GET',
                                         path_params,
@@ -6430,7 +7697,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/fields', 'GET',
                                         path_params,
@@ -6542,14 +7809,14 @@ class PdfApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
-            select_header_accept(['multipart/form-data'])
+            select_header_accept(['application/json'])
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.\
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/fileattachment/{annotationId}', 'GET',
                                         path_params,
@@ -6668,7 +7935,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/fileattachment/{annotationId}/data', 'GET',
                                         path_params,
@@ -6678,6 +7945,222 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_file_versions(self, path, **kwargs):
+        """
+        Get file versions
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_file_versions(path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str path: File path e.g. '/file.ext' (required)
+        :param str storage_name: Storage name
+        :return: FileVersions
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_file_versions_with_http_info(path, **kwargs)
+        else:
+            (data) = self.get_file_versions_with_http_info(path, **kwargs)
+            return data
+
+    def get_file_versions_with_http_info(self, path, **kwargs):
+        """
+        Get file versions
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_file_versions_with_http_info(path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str path: File path e.g. '/file.ext' (required)
+        :param str storage_name: Storage name
+        :return: FileVersions
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['path', 'storage_name']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_file_versions" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'path' is set
+        if ('path' not in params) or (params['path'] is None):
+            raise ValueError("Missing the required parameter `path` when calling `get_file_versions`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'path' in params:
+            path_params['path'] = params['path']
+
+        query_params = []
+        if 'storage_name' in params:
+            query_params.append(('storageName', params['storage_name']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/storage/version/{path}', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='FileVersions',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_files_list(self, path, **kwargs):
+        """
+        Get all files and folders within a folder
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_files_list(path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str path: Folder path e.g. '/folder' (required)
+        :param str storage_name: Storage name
+        :return: FilesList
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_files_list_with_http_info(path, **kwargs)
+        else:
+            (data) = self.get_files_list_with_http_info(path, **kwargs)
+            return data
+
+    def get_files_list_with_http_info(self, path, **kwargs):
+        """
+        Get all files and folders within a folder
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_files_list_with_http_info(path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str path: Folder path e.g. '/folder' (required)
+        :param str storage_name: Storage name
+        :return: FilesList
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['path', 'storage_name']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_files_list" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'path' is set
+        if ('path' not in params) or (params['path'] is None):
+            raise ValueError("Missing the required parameter `path` when calling `get_files_list`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'path' in params:
+            path_params['path'] = params['path']
+
+        query_params = []
+        if 'storage_name' in params:
+            query_params.append(('storageName', params['storage_name']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/storage/folder/{path}', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='FilesList',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -6787,7 +8270,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/freetext/{annotationId}', 'GET',
                                         path_params,
@@ -6906,7 +8389,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/highlight/{annotationId}', 'GET',
                                         path_params,
@@ -7046,7 +8529,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/create/html', 'GET',
                                         path_params,
@@ -7158,14 +8641,14 @@ class PdfApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
-            select_header_accept(['multipart/form-data'])
+            select_header_accept(['application/json'])
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.\
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/images/{imageId}', 'GET',
                                         path_params,
@@ -7292,7 +8775,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/images/{imageId}/extract/gif', 'GET',
                                         path_params,
@@ -7419,7 +8902,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/images/{imageId}/extract/jpeg', 'GET',
                                         path_params,
@@ -7546,7 +9029,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/images/{imageId}/extract/png', 'GET',
                                         path_params,
@@ -7673,7 +9156,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/images/{imageId}/extract/tiff', 'GET',
                                         path_params,
@@ -7792,7 +9275,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/images', 'GET',
                                         path_params,
@@ -7802,6 +9285,363 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='ImagesResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_import_fields_from_fdf_in_storage(self, name, fdf_file_path, **kwargs):
+        """
+        Update fields from FDF file in storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_import_fields_from_fdf_in_storage(name, fdf_file_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str fdf_file_path: The Fdf file path. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_import_fields_from_fdf_in_storage_with_http_info(name, fdf_file_path, **kwargs)
+        else:
+            (data) = self.get_import_fields_from_fdf_in_storage_with_http_info(name, fdf_file_path, **kwargs)
+            return data
+
+    def get_import_fields_from_fdf_in_storage_with_http_info(self, name, fdf_file_path, **kwargs):
+        """
+        Update fields from FDF file in storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_import_fields_from_fdf_in_storage_with_http_info(name, fdf_file_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str fdf_file_path: The Fdf file path. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'fdf_file_path', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_import_fields_from_fdf_in_storage" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_import_fields_from_fdf_in_storage`")
+        # verify the required parameter 'fdf_file_path' is set
+        if ('fdf_file_path' not in params) or (params['fdf_file_path'] is None):
+            raise ValueError("Missing the required parameter `fdf_file_path` when calling `get_import_fields_from_fdf_in_storage`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'fdf_file_path' in params:
+            query_params.append(('fdfFilePath', params['fdf_file_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/import/fdf', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_import_fields_from_xfdf_in_storage(self, name, xfdf_file_path, **kwargs):
+        """
+        Update fields from XFDF file in storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_import_fields_from_xfdf_in_storage(name, xfdf_file_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str xfdf_file_path: The XFDF file path. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_import_fields_from_xfdf_in_storage_with_http_info(name, xfdf_file_path, **kwargs)
+        else:
+            (data) = self.get_import_fields_from_xfdf_in_storage_with_http_info(name, xfdf_file_path, **kwargs)
+            return data
+
+    def get_import_fields_from_xfdf_in_storage_with_http_info(self, name, xfdf_file_path, **kwargs):
+        """
+        Update fields from XFDF file in storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_import_fields_from_xfdf_in_storage_with_http_info(name, xfdf_file_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str xfdf_file_path: The XFDF file path. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'xfdf_file_path', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_import_fields_from_xfdf_in_storage" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_import_fields_from_xfdf_in_storage`")
+        # verify the required parameter 'xfdf_file_path' is set
+        if ('xfdf_file_path' not in params) or (params['xfdf_file_path'] is None):
+            raise ValueError("Missing the required parameter `xfdf_file_path` when calling `get_import_fields_from_xfdf_in_storage`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'xfdf_file_path' in params:
+            query_params.append(('xfdfFilePath', params['xfdf_file_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/import/xfdf', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_import_fields_from_xml_in_storage(self, name, xml_file_path, **kwargs):
+        """
+        Import from XML file (located on storage) to PDF format and return resulting file in response. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_import_fields_from_xml_in_storage(name, xml_file_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str xml_file_path: Full source filename (ex. /folder1/folder2/template.xml) (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_import_fields_from_xml_in_storage_with_http_info(name, xml_file_path, **kwargs)
+        else:
+            (data) = self.get_import_fields_from_xml_in_storage_with_http_info(name, xml_file_path, **kwargs)
+            return data
+
+    def get_import_fields_from_xml_in_storage_with_http_info(self, name, xml_file_path, **kwargs):
+        """
+        Import from XML file (located on storage) to PDF format and return resulting file in response. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_import_fields_from_xml_in_storage_with_http_info(name, xml_file_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str xml_file_path: Full source filename (ex. /folder1/folder2/template.xml) (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'xml_file_path', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_import_fields_from_xml_in_storage" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_import_fields_from_xml_in_storage`")
+        # verify the required parameter 'xml_file_path' is set
+        if ('xml_file_path' not in params) or (params['xml_file_path'] is None):
+            raise ValueError("Missing the required parameter `xml_file_path` when calling `get_import_fields_from_xml_in_storage`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'xml_file_path' in params:
+            query_params.append(('xmlFilePath', params['xml_file_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/import/xml', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -7911,7 +9751,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/ink/{annotationId}', 'GET',
                                         path_params,
@@ -7921,222 +9761,6 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='InkAnnotationResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def get_is_exist(self, path, **kwargs):
-        """
-        Check if a specific file or folder exists
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_is_exist(path, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str path: File or folder path e.g. /file.ext or /Folder1 (required)
-        :param str version_id: File's version
-        :param str storage: User's storage name
-        :return: FileExistResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.get_is_exist_with_http_info(path, **kwargs)
-        else:
-            (data) = self.get_is_exist_with_http_info(path, **kwargs)
-            return data
-
-    def get_is_exist_with_http_info(self, path, **kwargs):
-        """
-        Check if a specific file or folder exists
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_is_exist_with_http_info(path, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str path: File or folder path e.g. /file.ext or /Folder1 (required)
-        :param str version_id: File's version
-        :param str storage: User's storage name
-        :return: FileExistResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['path', 'version_id', 'storage']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_is_exist" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'path' is set
-        if ('path' not in params) or (params['path'] is None):
-            raise ValueError("Missing the required parameter `path` when calling `get_is_exist`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'path' in params:
-            query_params.append(('path', params['path']))
-        if 'version_id' in params:
-            query_params.append(('versionId', params['version_id']))
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/storage/exist', 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='FileExistResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def get_is_storage_exist(self, name, **kwargs):
-        """
-        Check if storage exists 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_is_storage_exist(name, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: Storage name (required)
-        :return: StorageExistResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.get_is_storage_exist_with_http_info(name, **kwargs)
-        else:
-            (data) = self.get_is_storage_exist_with_http_info(name, **kwargs)
-            return data
-
-    def get_is_storage_exist_with_http_info(self, name, **kwargs):
-        """
-        Check if storage exists 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_is_storage_exist_with_http_info(name, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: Storage name (required)
-        :return: StorageExistResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['name']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_is_storage_exist" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `get_is_storage_exist`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'name' in params:
-            path_params['name'] = params['name']
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/storage/{name}/exist', 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='StorageExistResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -8235,7 +9859,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/create/latex', 'GET',
                                         path_params,
@@ -8354,7 +9978,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/line/{annotationId}', 'GET',
                                         path_params,
@@ -8473,7 +10097,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/links/{linkId}', 'GET',
                                         path_params,
@@ -8483,219 +10107,6 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='LinkAnnotationResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def get_list_file_versions(self, path, **kwargs):
-        """
-        Get the file's versions list 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_list_file_versions(path, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str path: File path e.g. /file.ext or /Folder1/file.ext (required)
-        :param str storage: User's storage name
-        :return: FileVersionsResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.get_list_file_versions_with_http_info(path, **kwargs)
-        else:
-            (data) = self.get_list_file_versions_with_http_info(path, **kwargs)
-            return data
-
-    def get_list_file_versions_with_http_info(self, path, **kwargs):
-        """
-        Get the file's versions list 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_list_file_versions_with_http_info(path, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str path: File path e.g. /file.ext or /Folder1/file.ext (required)
-        :param str storage: User's storage name
-        :return: FileVersionsResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['path', 'storage']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_list_file_versions" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'path' is set
-        if ('path' not in params) or (params['path'] is None):
-            raise ValueError("Missing the required parameter `path` when calling `get_list_file_versions`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'path' in params:
-            query_params.append(('path', params['path']))
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/storage/version', 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='FileVersionsResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def get_list_files(self, **kwargs):
-        """
-        Get the file listing of a specific folder 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_list_files(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str path: Start with name of storage e.g. root folder '/'or some folder '/folder1/..'
-        :param str storage: User's storage name
-        :return: FilesResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.get_list_files_with_http_info(**kwargs)
-        else:
-            (data) = self.get_list_files_with_http_info(**kwargs)
-            return data
-
-    def get_list_files_with_http_info(self, **kwargs):
-        """
-        Get the file listing of a specific folder 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_list_files_with_http_info(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str path: Start with name of storage e.g. root folder '/'or some folder '/folder1/..'
-        :param str storage: User's storage name
-        :return: FilesResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['path', 'storage']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_list_files" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'path' in params:
-            query_params.append(('path', params['path']))
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/storage/folder', 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='FilesResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -8794,7 +10205,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/create/mht', 'GET',
                                         path_params,
@@ -8913,7 +10324,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/movie/{annotationId}', 'GET',
                                         path_params,
@@ -9025,14 +10436,14 @@ class PdfApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
-            select_header_accept(['multipart/form-data'])
+            select_header_accept(['application/json'])
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.\
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}', 'GET',
                                         path_params,
@@ -9151,7 +10562,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations', 'GET',
                                         path_params,
@@ -9270,7 +10681,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/caret', 'GET',
                                         path_params,
@@ -9389,7 +10800,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/circle', 'GET',
                                         path_params,
@@ -9516,7 +10927,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/convert/bmp', 'GET',
                                         path_params,
@@ -9643,7 +11054,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/convert/emf', 'GET',
                                         path_params,
@@ -9770,7 +11181,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/convert/gif', 'GET',
                                         path_params,
@@ -9897,7 +11308,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/convert/jpeg', 'GET',
                                         path_params,
@@ -10024,7 +11435,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/convert/png', 'GET',
                                         path_params,
@@ -10151,7 +11562,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/convert/tiff', 'GET',
                                         path_params,
@@ -10270,7 +11681,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/fileattachment', 'GET',
                                         path_params,
@@ -10389,7 +11800,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/freetext', 'GET',
                                         path_params,
@@ -10508,7 +11919,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/highlight', 'GET',
                                         path_params,
@@ -10627,7 +12038,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/ink', 'GET',
                                         path_params,
@@ -10746,7 +12157,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/line', 'GET',
                                         path_params,
@@ -10872,7 +12283,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/links/{linkId}', 'GET',
                                         path_params,
@@ -10991,7 +12402,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/links', 'GET',
                                         path_params,
@@ -11110,7 +12521,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/movie', 'GET',
                                         path_params,
@@ -11229,7 +12640,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/polyline', 'GET',
                                         path_params,
@@ -11348,7 +12759,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/polygon', 'GET',
                                         path_params,
@@ -11467,7 +12878,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/popup', 'GET',
                                         path_params,
@@ -11586,7 +12997,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/redaction', 'GET',
                                         path_params,
@@ -11705,7 +13116,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/screen', 'GET',
                                         path_params,
@@ -11824,7 +13235,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/sound', 'GET',
                                         path_params,
@@ -11943,7 +13354,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/square', 'GET',
                                         path_params,
@@ -12062,7 +13473,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/squiggly', 'GET',
                                         path_params,
@@ -12181,7 +13592,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/stamp', 'GET',
                                         path_params,
@@ -12300,7 +13711,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/stamps', 'GET',
                                         path_params,
@@ -12419,7 +13830,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/strikeout', 'GET',
                                         path_params,
@@ -12538,7 +13949,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/tables', 'GET',
                                         path_params,
@@ -12665,7 +14076,7 @@ class PdfApi(object):
         query_params = []
         if 'format' in params:
             query_params.append(('format', params['format']))
-            collection_formats['format'] = 'multi'
+            collection_formats['format'] = 'csv'
         if 'regex' in params:
             query_params.append(('regex', params['regex']))
         if 'split_rects' in params:
@@ -12698,7 +14109,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/text', 'GET',
                                         path_params,
@@ -12817,7 +14228,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/text', 'GET',
                                         path_params,
@@ -12936,7 +14347,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/underline', 'GET',
                                         path_params,
@@ -13048,7 +14459,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages', 'GET',
                                         path_params,
@@ -13156,7 +14567,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/create/pcl', 'GET',
                                         path_params,
@@ -13300,7 +14711,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/doc', 'GET',
                                         path_params,
@@ -13416,7 +14827,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/epub', 'GET',
                                         path_params,
@@ -13594,7 +15005,7 @@ class PdfApi(object):
             query_params.append(('cssClassNamesPrefix', params['css_class_names_prefix']))
         if 'explicit_list_of_saved_pages' in params:
             query_params.append(('explicitListOfSavedPages', params['explicit_list_of_saved_pages']))
-            collection_formats['explicitListOfSavedPages'] = 'multi'
+            collection_formats['explicitListOfSavedPages'] = 'csv'
         if 'font_encoding_strategy' in params:
             query_params.append(('fontEncodingStrategy', params['font_encoding_strategy']))
         if 'font_saving_mode' in params:
@@ -13641,7 +15052,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/html', 'GET',
                                         path_params,
@@ -13757,7 +15168,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/latex', 'GET',
                                         path_params,
@@ -13869,7 +15280,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/mobixml', 'GET',
                                         path_params,
@@ -13988,7 +15399,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/pdfa', 'GET',
                                         path_params,
@@ -14108,7 +15519,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/pptx', 'GET',
                                         path_params,
@@ -14224,7 +15635,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/svg', 'GET',
                                         path_params,
@@ -14396,7 +15807,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/tiff', 'GET',
                                         path_params,
@@ -14524,7 +15935,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/xls', 'GET',
                                         path_params,
@@ -14652,7 +16063,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/xlsx', 'GET',
                                         path_params,
@@ -14764,7 +16175,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/xml', 'GET',
                                         path_params,
@@ -14876,7 +16287,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/xps', 'GET',
                                         path_params,
@@ -14995,7 +16406,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/polyline/{annotationId}', 'GET',
                                         path_params,
@@ -15114,7 +16525,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/polygon/{annotationId}', 'GET',
                                         path_params,
@@ -15233,7 +16644,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/popup/{annotationId}', 'GET',
                                         path_params,
@@ -15341,7 +16752,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/create/ps', 'GET',
                                         path_params,
@@ -15460,7 +16871,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/redaction/{annotationId}', 'GET',
                                         path_params,
@@ -15572,14 +16983,14 @@ class PdfApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
-            select_header_accept(['multipart/form-data'])
+            select_header_accept(['application/json'])
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.\
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/screen/{annotationId}', 'GET',
                                         path_params,
@@ -15698,7 +17109,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/screen/{annotationId}/data', 'GET',
                                         path_params,
@@ -15810,14 +17221,14 @@ class PdfApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
-            select_header_accept(['multipart/form-data'])
+            select_header_accept(['application/json'])
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.\
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/sound/{annotationId}', 'GET',
                                         path_params,
@@ -15936,7 +17347,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/sound/{annotationId}/data', 'GET',
                                         path_params,
@@ -16055,7 +17466,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/square/{annotationId}', 'GET',
                                         path_params,
@@ -16174,7 +17585,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/squiggly/{annotationId}', 'GET',
                                         path_params,
@@ -16293,7 +17704,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/stamp/{annotationId}', 'GET',
                                         path_params,
@@ -16412,7 +17823,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/stamp/{annotationId}/data', 'GET',
                                         path_params,
@@ -16531,7 +17942,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/strikeout/{annotationId}', 'GET',
                                         path_params,
@@ -16671,7 +18082,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/create/svg', 'GET',
                                         path_params,
@@ -16790,7 +18201,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/tables/{tableId}', 'GET',
                                         path_params,
@@ -16910,7 +18321,7 @@ class PdfApi(object):
         query_params = []
         if 'format' in params:
             query_params.append(('format', params['format']))
-            collection_formats['format'] = 'multi'
+            collection_formats['format'] = 'csv'
         if 'regex' in params:
             query_params.append(('regex', params['regex']))
         if 'split_rects' in params:
@@ -16943,7 +18354,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/text', 'GET',
                                         path_params,
@@ -17062,7 +18473,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/text/{annotationId}', 'GET',
                                         path_params,
@@ -17181,7 +18592,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/underline/{annotationId}', 'GET',
                                         path_params,
@@ -17300,7 +18711,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/verifySignature', 'GET',
                                         path_params,
@@ -17436,7 +18847,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/create/web', 'GET',
                                         path_params,
@@ -17548,7 +18959,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/wordCount', 'GET',
                                         path_params,
@@ -17660,7 +19071,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/xfatoacroform', 'GET',
                                         path_params,
@@ -17772,7 +19183,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/create/xml', 'GET',
                                         path_params,
@@ -17880,7 +19291,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/create/xps', 'GET',
                                         path_params,
@@ -17988,7 +19399,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/create/xslfo', 'GET',
                                         path_params,
@@ -18005,7 +19416,361 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def post_append_document(self, name, **kwargs):
+    def move_file(self, src_path, dest_path, **kwargs):
+        """
+        Move file
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.move_file(src_path, dest_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Source file path e.g. '/src.ext' (required)
+        :param str dest_path: Destination file path e.g. '/dest.ext' (required)
+        :param str src_storage_name: Source storage name
+        :param str dest_storage_name: Destination storage name
+        :param str version_id: File version ID to move
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.move_file_with_http_info(src_path, dest_path, **kwargs)
+        else:
+            (data) = self.move_file_with_http_info(src_path, dest_path, **kwargs)
+            return data
+
+    def move_file_with_http_info(self, src_path, dest_path, **kwargs):
+        """
+        Move file
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.move_file_with_http_info(src_path, dest_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Source file path e.g. '/src.ext' (required)
+        :param str dest_path: Destination file path e.g. '/dest.ext' (required)
+        :param str src_storage_name: Source storage name
+        :param str dest_storage_name: Destination storage name
+        :param str version_id: File version ID to move
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['src_path', 'dest_path', 'src_storage_name', 'dest_storage_name', 'version_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method move_file" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'src_path' is set
+        if ('src_path' not in params) or (params['src_path'] is None):
+            raise ValueError("Missing the required parameter `src_path` when calling `move_file`")
+        # verify the required parameter 'dest_path' is set
+        if ('dest_path' not in params) or (params['dest_path'] is None):
+            raise ValueError("Missing the required parameter `dest_path` when calling `move_file`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'src_path' in params:
+            path_params['srcPath'] = params['src_path']
+
+        query_params = []
+        if 'dest_path' in params:
+            query_params.append(('destPath', params['dest_path']))
+        if 'src_storage_name' in params:
+            query_params.append(('srcStorageName', params['src_storage_name']))
+        if 'dest_storage_name' in params:
+            query_params.append(('destStorageName', params['dest_storage_name']))
+        if 'version_id' in params:
+            query_params.append(('versionId', params['version_id']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/storage/file/move/{srcPath}', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type=None,
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def move_folder(self, src_path, dest_path, **kwargs):
+        """
+        Move folder
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.move_folder(src_path, dest_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Folder path to move e.g. '/folder' (required)
+        :param str dest_path: Destination folder path to move to e.g '/dst' (required)
+        :param str src_storage_name: Source storage name
+        :param str dest_storage_name: Destination storage name
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.move_folder_with_http_info(src_path, dest_path, **kwargs)
+        else:
+            (data) = self.move_folder_with_http_info(src_path, dest_path, **kwargs)
+            return data
+
+    def move_folder_with_http_info(self, src_path, dest_path, **kwargs):
+        """
+        Move folder
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.move_folder_with_http_info(src_path, dest_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str src_path: Folder path to move e.g. '/folder' (required)
+        :param str dest_path: Destination folder path to move to e.g '/dst' (required)
+        :param str src_storage_name: Source storage name
+        :param str dest_storage_name: Destination storage name
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['src_path', 'dest_path', 'src_storage_name', 'dest_storage_name']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method move_folder" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'src_path' is set
+        if ('src_path' not in params) or (params['src_path'] is None):
+            raise ValueError("Missing the required parameter `src_path` when calling `move_folder`")
+        # verify the required parameter 'dest_path' is set
+        if ('dest_path' not in params) or (params['dest_path'] is None):
+            raise ValueError("Missing the required parameter `dest_path` when calling `move_folder`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'src_path' in params:
+            path_params['srcPath'] = params['src_path']
+
+        query_params = []
+        if 'dest_path' in params:
+            query_params.append(('destPath', params['dest_path']))
+        if 'src_storage_name' in params:
+            query_params.append(('srcStorageName', params['src_storage_name']))
+        if 'dest_storage_name' in params:
+            query_params.append(('destStorageName', params['dest_storage_name']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/storage/folder/move/{srcPath}', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type=None,
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def object_exists(self, path, **kwargs):
+        """
+        Check if file or folder exists
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.object_exists(path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str path: File or folder path e.g. '/file.ext' or '/folder' (required)
+        :param str storage_name: Storage name
+        :param str version_id: File version ID
+        :return: ObjectExist
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.object_exists_with_http_info(path, **kwargs)
+        else:
+            (data) = self.object_exists_with_http_info(path, **kwargs)
+            return data
+
+    def object_exists_with_http_info(self, path, **kwargs):
+        """
+        Check if file or folder exists
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.object_exists_with_http_info(path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str path: File or folder path e.g. '/file.ext' or '/folder' (required)
+        :param str storage_name: Storage name
+        :param str version_id: File version ID
+        :return: ObjectExist
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['path', 'storage_name', 'version_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method object_exists" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'path' is set
+        if ('path' not in params) or (params['path'] is None):
+            raise ValueError("Missing the required parameter `path` when calling `object_exists`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'path' in params:
+            path_params['path'] = params['path']
+
+        query_params = []
+        if 'storage_name' in params:
+            query_params.append(('storageName', params['storage_name']))
+        if 'version_id' in params:
+            query_params.append(('versionId', params['version_id']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/storage/exist/{path}', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='ObjectExist',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def post_append_document(self, name, append_file, **kwargs):
         """
         Append document to existing one.
         This method makes a synchronous HTTP request by default. To make an
@@ -18014,13 +19779,12 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.post_append_document(name, callback=callback_function)
+        >>> thread = api.post_append_document(name, append_file, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The original document name. (required)
-        :param AppendDocument append_document: with the append document data.
-        :param str append_file: Append file server path.
+        :param str append_file: Append file server path. (required)
         :param int start_page: Appending start page.
         :param int end_page: Appending end page.
         :param str storage: The documents storage.
@@ -18031,12 +19795,12 @@ class PdfApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.post_append_document_with_http_info(name, **kwargs)
+            return self.post_append_document_with_http_info(name, append_file, **kwargs)
         else:
-            (data) = self.post_append_document_with_http_info(name, **kwargs)
+            (data) = self.post_append_document_with_http_info(name, append_file, **kwargs)
             return data
 
-    def post_append_document_with_http_info(self, name, **kwargs):
+    def post_append_document_with_http_info(self, name, append_file, **kwargs):
         """
         Append document to existing one.
         This method makes a synchronous HTTP request by default. To make an
@@ -18045,13 +19809,12 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.post_append_document_with_http_info(name, callback=callback_function)
+        >>> thread = api.post_append_document_with_http_info(name, append_file, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The original document name. (required)
-        :param AppendDocument append_document: with the append document data.
-        :param str append_file: Append file server path.
+        :param str append_file: Append file server path. (required)
         :param int start_page: Appending start page.
         :param int end_page: Appending end page.
         :param str storage: The documents storage.
@@ -18061,7 +19824,7 @@ class PdfApi(object):
                  returns the request thread.
         """
 
-        all_params = ['name', 'append_document', 'append_file', 'start_page', 'end_page', 'storage', 'folder']
+        all_params = ['name', 'append_file', 'start_page', 'end_page', 'storage', 'folder']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -18079,6 +19842,9 @@ class PdfApi(object):
         # verify the required parameter 'name' is set
         if ('name' not in params) or (params['name'] is None):
             raise ValueError("Missing the required parameter `name` when calling `post_append_document`")
+        # verify the required parameter 'append_file' is set
+        if ('append_file' not in params) or (params['append_file'] is None):
+            raise ValueError("Missing the required parameter `append_file` when calling `post_append_document`")
 
 
         collection_formats = {}
@@ -18105,8 +19871,6 @@ class PdfApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'append_document' in params:
-            body_params = params['append_document']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
             select_header_accept(['application/json'])
@@ -18116,7 +19880,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/appendDocument', 'POST',
                                         path_params,
@@ -18126,6 +19890,132 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='DocumentResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def post_bookmark(self, name, bookmark_path, bookmarks, **kwargs):
+        """
+        Add document bookmarks.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_bookmark(name, bookmark_path, bookmarks, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str bookmark_path: The bookmark path. (required)
+        :param list[Bookmark] bookmarks: The array of bookmark. (required)
+        :param str folder: The document folder.
+        :param str storage: The document storage.
+        :return: BookmarksResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_bookmark_with_http_info(name, bookmark_path, bookmarks, **kwargs)
+        else:
+            (data) = self.post_bookmark_with_http_info(name, bookmark_path, bookmarks, **kwargs)
+            return data
+
+    def post_bookmark_with_http_info(self, name, bookmark_path, bookmarks, **kwargs):
+        """
+        Add document bookmarks.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_bookmark_with_http_info(name, bookmark_path, bookmarks, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str bookmark_path: The bookmark path. (required)
+        :param list[Bookmark] bookmarks: The array of bookmark. (required)
+        :param str folder: The document folder.
+        :param str storage: The document storage.
+        :return: BookmarksResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'bookmark_path', 'bookmarks', 'folder', 'storage']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_bookmark" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_bookmark`")
+        # verify the required parameter 'bookmark_path' is set
+        if ('bookmark_path' not in params) or (params['bookmark_path'] is None):
+            raise ValueError("Missing the required parameter `bookmark_path` when calling `post_bookmark`")
+        # verify the required parameter 'bookmarks' is set
+        if ('bookmarks' not in params) or (params['bookmarks'] is None):
+            raise ValueError("Missing the required parameter `bookmarks` when calling `post_bookmark`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'bookmark_path' in params:
+            path_params['bookmarkPath'] = params['bookmark_path']
+
+        query_params = []
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'bookmarks' in params:
+            body_params = params['bookmarks']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/bookmarks/bookmark/{bookmarkPath}', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='BookmarksResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -18249,7 +20139,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/changepassword', 'POST',
                                         path_params,
@@ -18266,7 +20156,7 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def post_create_field(self, name, page, **kwargs):
+    def post_create_field(self, name, page, field, **kwargs):
         """
         Create field.
         This method makes a synchronous HTTP request by default. To make an
@@ -18275,13 +20165,13 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.post_create_field(name, page, callback=callback_function)
+        >>> thread = api.post_create_field(name, page, field, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param int page: Document page number. (required)
-        :param Field field: with the field data.
+        :param Field field: Field with the field data. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
         :return: AsposeResponse
@@ -18290,12 +20180,12 @@ class PdfApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.post_create_field_with_http_info(name, page, **kwargs)
+            return self.post_create_field_with_http_info(name, page, field, **kwargs)
         else:
-            (data) = self.post_create_field_with_http_info(name, page, **kwargs)
+            (data) = self.post_create_field_with_http_info(name, page, field, **kwargs)
             return data
 
-    def post_create_field_with_http_info(self, name, page, **kwargs):
+    def post_create_field_with_http_info(self, name, page, field, **kwargs):
         """
         Create field.
         This method makes a synchronous HTTP request by default. To make an
@@ -18304,13 +20194,13 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.post_create_field_with_http_info(name, page, callback=callback_function)
+        >>> thread = api.post_create_field_with_http_info(name, page, field, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param int page: Document page number. (required)
-        :param Field field: with the field data.
+        :param Field field: Field with the field data. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
         :return: AsposeResponse
@@ -18339,6 +20229,9 @@ class PdfApi(object):
         # verify the required parameter 'page' is set
         if ('page' not in params) or (params['page'] is None):
             raise ValueError("Missing the required parameter `page` when calling `post_create_field`")
+        # verify the required parameter 'field' is set
+        if ('field' not in params) or (params['field'] is None):
+            raise ValueError("Missing the required parameter `field` when calling `post_create_field`")
 
 
         collection_formats = {}
@@ -18372,7 +20265,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/fields', 'POST',
                                         path_params,
@@ -18491,7 +20384,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/decrypt', 'POST',
                                         path_params,
@@ -18618,7 +20511,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/footer/image', 'POST',
                                         path_params,
@@ -18745,7 +20638,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/header/image', 'POST',
                                         path_params,
@@ -18872,7 +20765,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/stamps/pagenumber', 'POST',
                                         path_params,
@@ -18999,7 +20892,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/footer/text', 'POST',
                                         path_params,
@@ -19126,7 +21019,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/header/text', 'POST',
                                         path_params,
@@ -19245,7 +21138,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/text/replace', 'POST',
                                         path_params,
@@ -19278,8 +21171,8 @@ class PdfApi(object):
         :param str name: Document name. (required)
         :param str user_password: User password (encrypted Base64). (required)
         :param str owner_password: Owner password (encrypted Base64). (required)
-        :param str crypto_algorithm: Cryptographic algorithm, see  for details. (required)
-        :param list[PermissionsFlags] permissions_flags: Array of document permissions, see  for details.
+        :param str crypto_algorithm: Cryptographic algorithm, see CryptoAlgorithm for details. (required)
+        :param list[PermissionsFlags] permissions_flags: Array of document permissions, see PermissionsFlags for details.
         :param bool use_pdf20: Support for revision 6 (Extension 8).
         :param str storage: The document storage.
         :param str folder: The document folder.
@@ -19310,8 +21203,8 @@ class PdfApi(object):
         :param str name: Document name. (required)
         :param str user_password: User password (encrypted Base64). (required)
         :param str owner_password: Owner password (encrypted Base64). (required)
-        :param str crypto_algorithm: Cryptographic algorithm, see  for details. (required)
-        :param list[PermissionsFlags] permissions_flags: Array of document permissions, see  for details.
+        :param str crypto_algorithm: Cryptographic algorithm, see CryptoAlgorithm for details. (required)
+        :param list[PermissionsFlags] permissions_flags: Array of document permissions, see PermissionsFlags for details.
         :param bool use_pdf20: Support for revision 6 (Extension 8).
         :param str storage: The document storage.
         :param str folder: The document folder.
@@ -19364,7 +21257,7 @@ class PdfApi(object):
             query_params.append(('cryptoAlgorithm', params['crypto_algorithm']))
         if 'permissions_flags' in params:
             query_params.append(('permissionsFlags', params['permissions_flags']))
-            collection_formats['permissionsFlags'] = 'multi'
+            collection_formats['permissionsFlags'] = 'csv'
         if 'use_pdf20' in params:
             query_params.append(('usePdf20', params['use_pdf20']))
         if 'storage' in params:
@@ -19387,7 +21280,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/encrypt', 'POST',
                                         path_params,
@@ -19511,9 +21404,357 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/flatten', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def post_import_fields_from_fdf(self, name, **kwargs):
+        """
+        Update fields from FDF file in request.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_import_fields_from_fdf(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param file fdf_data: Fdf file.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_import_fields_from_fdf_with_http_info(name, **kwargs)
+        else:
+            (data) = self.post_import_fields_from_fdf_with_http_info(name, **kwargs)
+            return data
+
+    def post_import_fields_from_fdf_with_http_info(self, name, **kwargs):
+        """
+        Update fields from FDF file in request.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_import_fields_from_fdf_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param file fdf_data: Fdf file.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'storage', 'folder', 'fdf_data']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_import_fields_from_fdf" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_import_fields_from_fdf`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'fdf_data' in params:
+            local_var_files['fdfData'] = params['fdf_data']
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['multipart/form-data'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/import/fdf', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def post_import_fields_from_xfdf(self, name, **kwargs):
+        """
+        Update fields from XFDF file in request.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_import_fields_from_xfdf(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param file xfdf_data: Xfdf file.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_import_fields_from_xfdf_with_http_info(name, **kwargs)
+        else:
+            (data) = self.post_import_fields_from_xfdf_with_http_info(name, **kwargs)
+            return data
+
+    def post_import_fields_from_xfdf_with_http_info(self, name, **kwargs):
+        """
+        Update fields from XFDF file in request.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_import_fields_from_xfdf_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param file xfdf_data: Xfdf file.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'storage', 'folder', 'xfdf_data']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_import_fields_from_xfdf" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_import_fields_from_xfdf`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'xfdf_data' in params:
+            local_var_files['xfdfData'] = params['xfdf_data']
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['multipart/form-data'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/import/xfdf', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def post_import_fields_from_xml(self, name, **kwargs):
+        """
+        Update fields from XML file in request.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_import_fields_from_xml(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param file xml_data: Xml file.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_import_fields_from_xml_with_http_info(name, **kwargs)
+        else:
+            (data) = self.post_import_fields_from_xml_with_http_info(name, **kwargs)
+            return data
+
+    def post_import_fields_from_xml_with_http_info(self, name, **kwargs):
+        """
+        Update fields from XML file in request.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_import_fields_from_xml_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param file xml_data: Xml file.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'storage', 'folder', 'xml_data']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_import_fields_from_xml" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_import_fields_from_xml`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'xml_data' in params:
+            local_var_files['xmlData'] = params['xml_data']
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['multipart/form-data'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/import/xml', 'POST',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -19666,251 +21907,9 @@ class PdfApi(object):
             select_header_content_type(['multipart/form-data'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/images', 'POST',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='AsposeResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def post_move_file(self, src, dest, **kwargs):
-        """
-        Move a specific file
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.post_move_file(src, dest, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str src: Source file path e.g. /fileSource.ext (required)
-        :param str dest: Destination file path e.g. /fileDestination.ext (required)
-        :param str version_id: Source file's version,
-        :param str storage: User's source storage name
-        :param str dest_storage: User's destination storage name
-        :return: AsposeResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.post_move_file_with_http_info(src, dest, **kwargs)
-        else:
-            (data) = self.post_move_file_with_http_info(src, dest, **kwargs)
-            return data
-
-    def post_move_file_with_http_info(self, src, dest, **kwargs):
-        """
-        Move a specific file
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.post_move_file_with_http_info(src, dest, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str src: Source file path e.g. /fileSource.ext (required)
-        :param str dest: Destination file path e.g. /fileDestination.ext (required)
-        :param str version_id: Source file's version,
-        :param str storage: User's source storage name
-        :param str dest_storage: User's destination storage name
-        :return: AsposeResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['src', 'dest', 'version_id', 'storage', 'dest_storage']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method post_move_file" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'src' is set
-        if ('src' not in params) or (params['src'] is None):
-            raise ValueError("Missing the required parameter `src` when calling `post_move_file`")
-        # verify the required parameter 'dest' is set
-        if ('dest' not in params) or (params['dest'] is None):
-            raise ValueError("Missing the required parameter `dest` when calling `post_move_file`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'src' in params:
-            query_params.append(('src', params['src']))
-        if 'dest' in params:
-            query_params.append(('dest', params['dest']))
-        if 'version_id' in params:
-            query_params.append(('versionId', params['version_id']))
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-        if 'dest_storage' in params:
-            query_params.append(('destStorage', params['dest_storage']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['multipart/form-data'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/storage/file', 'POST',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='AsposeResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def post_move_folder(self, src, dest, **kwargs):
-        """
-        Move a specific folder 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.post_move_folder(src, dest, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str src: Source folder path e.g. /Folder1 (required)
-        :param str dest: Destination folder path e.g. /Folder2 (required)
-        :param str storage: User's source storage name
-        :param str dest_storage: User's destination storage name
-        :return: AsposeResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.post_move_folder_with_http_info(src, dest, **kwargs)
-        else:
-            (data) = self.post_move_folder_with_http_info(src, dest, **kwargs)
-            return data
-
-    def post_move_folder_with_http_info(self, src, dest, **kwargs):
-        """
-        Move a specific folder 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.post_move_folder_with_http_info(src, dest, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str src: Source folder path e.g. /Folder1 (required)
-        :param str dest: Destination folder path e.g. /Folder2 (required)
-        :param str storage: User's source storage name
-        :param str dest_storage: User's destination storage name
-        :return: AsposeResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['src', 'dest', 'storage', 'dest_storage']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method post_move_folder" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'src' is set
-        if ('src' not in params) or (params['src'] is None):
-            raise ValueError("Missing the required parameter `src` when calling `post_move_folder`")
-        # verify the required parameter 'dest' is set
-        if ('dest' not in params) or (params['dest'] is None):
-            raise ValueError("Missing the required parameter `dest` when calling `post_move_folder`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'src' in params:
-            query_params.append(('src', params['src']))
-        if 'dest' in params:
-            query_params.append(('dest', params['dest']))
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-        if 'dest_storage' in params:
-            query_params.append(('destStorage', params['dest_storage']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/storage/folder', 'POST',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -20034,7 +22033,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/movePage', 'POST',
                                         path_params,
@@ -20051,7 +22050,7 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def post_optimize_document(self, name, **kwargs):
+    def post_optimize_document(self, name, options, **kwargs):
         """
         Optimize document.
         This method makes a synchronous HTTP request by default. To make an
@@ -20060,12 +22059,12 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.post_optimize_document(name, callback=callback_function)
+        >>> thread = api.post_optimize_document(name, options, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param OptimizeOptions options: The optimization options.
+        :param OptimizeOptions options: The optimization options. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
         :return: AsposeResponse
@@ -20074,12 +22073,12 @@ class PdfApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.post_optimize_document_with_http_info(name, **kwargs)
+            return self.post_optimize_document_with_http_info(name, options, **kwargs)
         else:
-            (data) = self.post_optimize_document_with_http_info(name, **kwargs)
+            (data) = self.post_optimize_document_with_http_info(name, options, **kwargs)
             return data
 
-    def post_optimize_document_with_http_info(self, name, **kwargs):
+    def post_optimize_document_with_http_info(self, name, options, **kwargs):
         """
         Optimize document.
         This method makes a synchronous HTTP request by default. To make an
@@ -20088,12 +22087,12 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.post_optimize_document_with_http_info(name, callback=callback_function)
+        >>> thread = api.post_optimize_document_with_http_info(name, options, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param OptimizeOptions options: The optimization options.
+        :param OptimizeOptions options: The optimization options. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
         :return: AsposeResponse
@@ -20119,6 +22118,9 @@ class PdfApi(object):
         # verify the required parameter 'name' is set
         if ('name' not in params) or (params['name'] is None):
             raise ValueError("Missing the required parameter `name` when calling `post_optimize_document`")
+        # verify the required parameter 'options' is set
+        if ('options' not in params) or (params['options'] is None):
+            raise ValueError("Missing the required parameter `options` when calling `post_optimize_document`")
 
 
         collection_formats = {}
@@ -20150,7 +22152,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/optimize', 'POST',
                                         path_params,
@@ -20276,7 +22278,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/caret', 'POST',
                                         path_params,
@@ -20402,7 +22404,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/circle', 'POST',
                                         path_params,
@@ -20528,7 +22530,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/fileattachment', 'POST',
                                         path_params,
@@ -20654,7 +22656,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/freetext', 'POST',
                                         path_params,
@@ -20780,7 +22782,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/highlight', 'POST',
                                         path_params,
@@ -20906,7 +22908,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/stamps/image', 'POST',
                                         path_params,
@@ -21032,7 +23034,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/ink', 'POST',
                                         path_params,
@@ -21158,7 +23160,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/line', 'POST',
                                         path_params,
@@ -21284,7 +23286,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/links', 'POST',
                                         path_params,
@@ -21410,7 +23412,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/movie', 'POST',
                                         path_params,
@@ -21536,7 +23538,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/stamps/pdfpage', 'POST',
                                         path_params,
@@ -21662,7 +23664,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/polyline', 'POST',
                                         path_params,
@@ -21788,7 +23790,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/polygon', 'POST',
                                         path_params,
@@ -21914,7 +23916,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/redaction', 'POST',
                                         path_params,
@@ -22040,7 +24042,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/screen', 'POST',
                                         path_params,
@@ -22166,7 +24168,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/sound', 'POST',
                                         path_params,
@@ -22292,7 +24294,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/square', 'POST',
                                         path_params,
@@ -22418,7 +24420,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/squiggly', 'POST',
                                         path_params,
@@ -22544,7 +24546,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/stamp', 'POST',
                                         path_params,
@@ -22670,7 +24672,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/strikeout', 'POST',
                                         path_params,
@@ -22796,7 +24798,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/tables', 'POST',
                                         path_params,
@@ -22922,7 +24924,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/text', 'POST',
                                         path_params,
@@ -23048,7 +25050,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/text/replace', 'POST',
                                         path_params,
@@ -23174,7 +25176,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/stamps/text', 'POST',
                                         path_params,
@@ -23300,7 +25302,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/annotations/underline', 'POST',
                                         path_params,
@@ -23426,7 +25428,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/{annotationId}/popup', 'POST',
                                         path_params,
@@ -23443,7 +25445,7 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def post_sign_document(self, name, **kwargs):
+    def post_sign_document(self, name, sign, **kwargs):
         """
         Sign document.
         This method makes a synchronous HTTP request by default. To make an
@@ -23452,12 +25454,12 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.post_sign_document(name, callback=callback_function)
+        >>> thread = api.post_sign_document(name, sign, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param Signature signature: Signature object containing signature data.
+        :param Signature sign: Signature object containing signature data. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
         :return: AsposeResponse
@@ -23466,12 +25468,12 @@ class PdfApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.post_sign_document_with_http_info(name, **kwargs)
+            return self.post_sign_document_with_http_info(name, sign, **kwargs)
         else:
-            (data) = self.post_sign_document_with_http_info(name, **kwargs)
+            (data) = self.post_sign_document_with_http_info(name, sign, **kwargs)
             return data
 
-    def post_sign_document_with_http_info(self, name, **kwargs):
+    def post_sign_document_with_http_info(self, name, sign, **kwargs):
         """
         Sign document.
         This method makes a synchronous HTTP request by default. To make an
@@ -23480,12 +25482,12 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.post_sign_document_with_http_info(name, callback=callback_function)
+        >>> thread = api.post_sign_document_with_http_info(name, sign, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param Signature signature: Signature object containing signature data.
+        :param Signature sign: Signature object containing signature data. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
         :return: AsposeResponse
@@ -23493,7 +25495,7 @@ class PdfApi(object):
                  returns the request thread.
         """
 
-        all_params = ['name', 'signature', 'storage', 'folder']
+        all_params = ['name', 'sign', 'storage', 'folder']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -23511,6 +25513,9 @@ class PdfApi(object):
         # verify the required parameter 'name' is set
         if ('name' not in params) or (params['name'] is None):
             raise ValueError("Missing the required parameter `name` when calling `post_sign_document`")
+        # verify the required parameter 'sign' is set
+        if ('sign' not in params) or (params['sign'] is None):
+            raise ValueError("Missing the required parameter `sign` when calling `post_sign_document`")
 
 
         collection_formats = {}
@@ -23531,8 +25536,8 @@ class PdfApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'signature' in params:
-            body_params = params['signature']
+        if 'sign' in params:
+            body_params = params['sign']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
             select_header_accept(['application/json'])
@@ -23542,7 +25547,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/sign', 'POST',
                                         path_params,
@@ -23559,7 +25564,7 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def post_sign_page(self, name, page_number, **kwargs):
+    def post_sign_page(self, name, page_number, sign, **kwargs):
         """
         Sign page.
         This method makes a synchronous HTTP request by default. To make an
@@ -23568,13 +25573,13 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.post_sign_page(name, page_number, callback=callback_function)
+        >>> thread = api.post_sign_page(name, page_number, sign, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param int page_number: The page number. (required)
-        :param Signature signature: Signature object containing signature data.
+        :param Signature sign: Signature object containing signature data. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
         :return: AsposeResponse
@@ -23583,12 +25588,12 @@ class PdfApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.post_sign_page_with_http_info(name, page_number, **kwargs)
+            return self.post_sign_page_with_http_info(name, page_number, sign, **kwargs)
         else:
-            (data) = self.post_sign_page_with_http_info(name, page_number, **kwargs)
+            (data) = self.post_sign_page_with_http_info(name, page_number, sign, **kwargs)
             return data
 
-    def post_sign_page_with_http_info(self, name, page_number, **kwargs):
+    def post_sign_page_with_http_info(self, name, page_number, sign, **kwargs):
         """
         Sign page.
         This method makes a synchronous HTTP request by default. To make an
@@ -23597,13 +25602,13 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.post_sign_page_with_http_info(name, page_number, callback=callback_function)
+        >>> thread = api.post_sign_page_with_http_info(name, page_number, sign, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param int page_number: The page number. (required)
-        :param Signature signature: Signature object containing signature data.
+        :param Signature sign: Signature object containing signature data. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
         :return: AsposeResponse
@@ -23611,7 +25616,7 @@ class PdfApi(object):
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'signature', 'storage', 'folder']
+        all_params = ['name', 'page_number', 'sign', 'storage', 'folder']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -23632,6 +25637,9 @@ class PdfApi(object):
         # verify the required parameter 'page_number' is set
         if ('page_number' not in params) or (params['page_number'] is None):
             raise ValueError("Missing the required parameter `page_number` when calling `post_sign_page`")
+        # verify the required parameter 'sign' is set
+        if ('sign' not in params) or (params['sign'] is None):
+            raise ValueError("Missing the required parameter `sign` when calling `post_sign_page`")
 
 
         collection_formats = {}
@@ -23654,8 +25662,8 @@ class PdfApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'signature' in params:
-            body_params = params['signature']
+        if 'sign' in params:
+            body_params = params['sign']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
             select_header_accept(['application/json'])
@@ -23665,7 +25673,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/sign', 'POST',
                                         path_params,
@@ -23789,7 +25797,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/split', 'POST',
                                         path_params,
@@ -23901,7 +25909,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages', 'PUT',
                                         path_params,
@@ -23918,7 +25926,7 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def put_add_text(self, name, page_number, **kwargs):
+    def put_add_text(self, name, page_number, paragraph, **kwargs):
         """
         Add text to PDF document page.
         This method makes a synchronous HTTP request by default. To make an
@@ -23927,13 +25935,13 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.put_add_text(name, page_number, callback=callback_function)
+        >>> thread = api.put_add_text(name, page_number, paragraph, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param int page_number: Number of page (starting from 1). (required)
-        :param Paragraph paragraph: Paragraph data.
+        :param Paragraph paragraph: Paragraph data. (required)
         :param str folder: Document folder.
         :param str storage: The document storage.
         :return: AsposeResponse
@@ -23942,12 +25950,12 @@ class PdfApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.put_add_text_with_http_info(name, page_number, **kwargs)
+            return self.put_add_text_with_http_info(name, page_number, paragraph, **kwargs)
         else:
-            (data) = self.put_add_text_with_http_info(name, page_number, **kwargs)
+            (data) = self.put_add_text_with_http_info(name, page_number, paragraph, **kwargs)
             return data
 
-    def put_add_text_with_http_info(self, name, page_number, **kwargs):
+    def put_add_text_with_http_info(self, name, page_number, paragraph, **kwargs):
         """
         Add text to PDF document page.
         This method makes a synchronous HTTP request by default. To make an
@@ -23956,13 +25964,13 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.put_add_text_with_http_info(name, page_number, callback=callback_function)
+        >>> thread = api.put_add_text_with_http_info(name, page_number, paragraph, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param int page_number: Number of page (starting from 1). (required)
-        :param Paragraph paragraph: Paragraph data.
+        :param Paragraph paragraph: Paragraph data. (required)
         :param str folder: Document folder.
         :param str storage: The document storage.
         :return: AsposeResponse
@@ -23991,6 +25999,9 @@ class PdfApi(object):
         # verify the required parameter 'page_number' is set
         if ('page_number' not in params) or (params['page_number'] is None):
             raise ValueError("Missing the required parameter `page_number` when calling `put_add_text`")
+        # verify the required parameter 'paragraph' is set
+        if ('paragraph' not in params) or (params['paragraph'] is None):
+            raise ValueError("Missing the required parameter `paragraph` when calling `put_add_text`")
 
 
         collection_formats = {}
@@ -24024,7 +26035,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/text', 'PUT',
                                         path_params,
@@ -24128,7 +26139,7 @@ class PdfApi(object):
             query_params.append(('endPage', params['end_page']))
         if 'annotation_types' in params:
             query_params.append(('annotationTypes', params['annotation_types']))
-            collection_formats['annotationTypes'] = 'multi'
+            collection_formats['annotationTypes'] = 'csv'
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
@@ -24149,7 +26160,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/flatten', 'PUT',
                                         path_params,
@@ -24159,6 +26170,132 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_bookmark(self, name, bookmark_path, bookmark, **kwargs):
+        """
+        Update document bookmark.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_bookmark(name, bookmark_path, bookmark, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str bookmark_path: The bookmark path. (required)
+        :param Bookmark bookmark: The bookmark. (required)
+        :param str folder: The document folder.
+        :param str storage: The document storage.
+        :return: BookmarkResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_bookmark_with_http_info(name, bookmark_path, bookmark, **kwargs)
+        else:
+            (data) = self.put_bookmark_with_http_info(name, bookmark_path, bookmark, **kwargs)
+            return data
+
+    def put_bookmark_with_http_info(self, name, bookmark_path, bookmark, **kwargs):
+        """
+        Update document bookmark.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_bookmark_with_http_info(name, bookmark_path, bookmark, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str bookmark_path: The bookmark path. (required)
+        :param Bookmark bookmark: The bookmark. (required)
+        :param str folder: The document folder.
+        :param str storage: The document storage.
+        :return: BookmarkResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'bookmark_path', 'bookmark', 'folder', 'storage']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_bookmark" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_bookmark`")
+        # verify the required parameter 'bookmark_path' is set
+        if ('bookmark_path' not in params) or (params['bookmark_path'] is None):
+            raise ValueError("Missing the required parameter `bookmark_path` when calling `put_bookmark`")
+        # verify the required parameter 'bookmark' is set
+        if ('bookmark' not in params) or (params['bookmark'] is None):
+            raise ValueError("Missing the required parameter `bookmark` when calling `put_bookmark`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'bookmark_path' in params:
+            path_params['bookmarkPath'] = params['bookmark_path']
+
+        query_params = []
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'bookmark' in params:
+            body_params = params['bookmark']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/bookmarks/bookmark/{bookmarkPath}', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='BookmarkResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -24275,7 +26412,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/caret/{annotationId}', 'PUT',
                                         path_params,
@@ -24408,7 +26545,7 @@ class PdfApi(object):
             select_header_content_type(['multipart/form-data'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/changepassword', 'PUT',
                                         path_params,
@@ -24534,7 +26671,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/circle/{annotationId}', 'PUT',
                                         path_params,
@@ -24544,125 +26681,6 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='CircleAnnotationResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def put_create(self, path, file, **kwargs):
-        """
-        Upload a specific file 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.put_create(path, file, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str path: Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext (required)
-        :param file file: File to upload (required)
-        :param str version_id: Source file's version
-        :param str storage: User's storage name
-        :return: AsposeResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.put_create_with_http_info(path, file, **kwargs)
-        else:
-            (data) = self.put_create_with_http_info(path, file, **kwargs)
-            return data
-
-    def put_create_with_http_info(self, path, file, **kwargs):
-        """
-        Upload a specific file 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.put_create_with_http_info(path, file, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str path: Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext (required)
-        :param file file: File to upload (required)
-        :param str version_id: Source file's version
-        :param str storage: User's storage name
-        :return: AsposeResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['path', 'file', 'version_id', 'storage']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method put_create" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'path' is set
-        if ('path' not in params) or (params['path'] is None):
-            raise ValueError("Missing the required parameter `path` when calling `put_create`")
-        # verify the required parameter 'file' is set
-        if ('file' not in params) or (params['file'] is None):
-            raise ValueError("Missing the required parameter `file` when calling `put_create`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'path' in params:
-            query_params.append(('path', params['path']))
-        if 'version_id' in params:
-            query_params.append(('versionId', params['version_id']))
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'file' in params:
-            local_var_files['File'] = params['file']
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['multipart/form-data'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/storage/file', 'PUT',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -24765,7 +26783,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}', 'PUT',
                                         path_params,
@@ -24775,118 +26793,6 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='DocumentResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def put_create_folder(self, path, **kwargs):
-        """
-        Create the folder 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.put_create_folder(path, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str path: Target folder's path e.g. Folder1/Folder2/. The folders will be created recursively (required)
-        :param str storage: User's source storage name
-        :param str dest_storage: User's destination storage name
-        :return: AsposeResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.put_create_folder_with_http_info(path, **kwargs)
-        else:
-            (data) = self.put_create_folder_with_http_info(path, **kwargs)
-            return data
-
-    def put_create_folder_with_http_info(self, path, **kwargs):
-        """
-        Create the folder 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.put_create_folder_with_http_info(path, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str path: Target folder's path e.g. Folder1/Folder2/. The folders will be created recursively (required)
-        :param str storage: User's source storage name
-        :param str dest_storage: User's destination storage name
-        :return: AsposeResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['path', 'storage', 'dest_storage']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method put_create_folder" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'path' is set
-        if ('path' not in params) or (params['path'] is None):
-            raise ValueError("Missing the required parameter `path` when calling `put_create_folder`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'path' in params:
-            query_params.append(('path', params['path']))
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-        if 'dest_storage' in params:
-            query_params.append(('destStorage', params['dest_storage']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api('/storage/folder', 'PUT',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='AsposeResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -24996,7 +26902,7 @@ class PdfApi(object):
             select_header_content_type(['multipart/form-data'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/decrypt', 'PUT',
                                         path_params,
@@ -25029,8 +26935,8 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.doc) (required)
         :param str user_password: User password (encrypted Base64). (required)
         :param str owner_password: Owner password (encrypted Base64). (required)
-        :param str crypto_algorithm: Cryptographic algorithm, see  for details. (required)
-        :param list[PermissionsFlags] permissions_flags: Array of document permissions, see  for details.
+        :param str crypto_algorithm: Cryptographic algorithm, see CryptoAlgorithm for details. (required)
+        :param list[PermissionsFlags] permissions_flags: Array of document permissions, see PermissionsFlags for details.
         :param bool use_pdf20: Support for revision 6 (Extension 8).
         :param str storage: The document storage.
         :param file file: A file to be encrypted.
@@ -25061,8 +26967,8 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.doc) (required)
         :param str user_password: User password (encrypted Base64). (required)
         :param str owner_password: Owner password (encrypted Base64). (required)
-        :param str crypto_algorithm: Cryptographic algorithm, see  for details. (required)
-        :param list[PermissionsFlags] permissions_flags: Array of document permissions, see  for details.
+        :param str crypto_algorithm: Cryptographic algorithm, see CryptoAlgorithm for details. (required)
+        :param list[PermissionsFlags] permissions_flags: Array of document permissions, see PermissionsFlags for details.
         :param bool use_pdf20: Support for revision 6 (Extension 8).
         :param str storage: The document storage.
         :param file file: A file to be encrypted.
@@ -25115,7 +27021,7 @@ class PdfApi(object):
             query_params.append(('cryptoAlgorithm', params['crypto_algorithm']))
         if 'permissions_flags' in params:
             query_params.append(('permissionsFlags', params['permissions_flags']))
-            collection_formats['permissionsFlags'] = 'multi'
+            collection_formats['permissionsFlags'] = 'csv'
         if 'use_pdf20' in params:
             query_params.append(('usePdf20', params['use_pdf20']))
         if 'storage' in params:
@@ -25138,7 +27044,7 @@ class PdfApi(object):
             select_header_content_type(['multipart/form-data'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/encrypt', 'PUT',
                                         path_params,
@@ -25257,9 +27163,366 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/create/epub', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_export_fields_from_pdf_to_fdf_in_storage(self, name, fdf_output_file_path, **kwargs):
+        """
+        Export fields from from PDF in storage to FDF file in storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_export_fields_from_pdf_to_fdf_in_storage(name, fdf_output_file_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str fdf_output_file_path: The output Fdf file path. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_export_fields_from_pdf_to_fdf_in_storage_with_http_info(name, fdf_output_file_path, **kwargs)
+        else:
+            (data) = self.put_export_fields_from_pdf_to_fdf_in_storage_with_http_info(name, fdf_output_file_path, **kwargs)
+            return data
+
+    def put_export_fields_from_pdf_to_fdf_in_storage_with_http_info(self, name, fdf_output_file_path, **kwargs):
+        """
+        Export fields from from PDF in storage to FDF file in storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_export_fields_from_pdf_to_fdf_in_storage_with_http_info(name, fdf_output_file_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str fdf_output_file_path: The output Fdf file path. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'fdf_output_file_path', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_export_fields_from_pdf_to_fdf_in_storage" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_export_fields_from_pdf_to_fdf_in_storage`")
+        # verify the required parameter 'fdf_output_file_path' is set
+        if ('fdf_output_file_path' not in params) or (params['fdf_output_file_path'] is None):
+            raise ValueError("Missing the required parameter `fdf_output_file_path` when calling `put_export_fields_from_pdf_to_fdf_in_storage`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'fdf_output_file_path' in params:
+            query_params.append(('fdfOutputFilePath', params['fdf_output_file_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/export/fdf', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_export_fields_from_pdf_to_xfdf_in_storage(self, name, xfdf_output_file_path, **kwargs):
+        """
+        Export fields from from PDF in storage to XFDF file in storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_export_fields_from_pdf_to_xfdf_in_storage(name, xfdf_output_file_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str xfdf_output_file_path: The output xfdf file path. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_export_fields_from_pdf_to_xfdf_in_storage_with_http_info(name, xfdf_output_file_path, **kwargs)
+        else:
+            (data) = self.put_export_fields_from_pdf_to_xfdf_in_storage_with_http_info(name, xfdf_output_file_path, **kwargs)
+            return data
+
+    def put_export_fields_from_pdf_to_xfdf_in_storage_with_http_info(self, name, xfdf_output_file_path, **kwargs):
+        """
+        Export fields from from PDF in storage to XFDF file in storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_export_fields_from_pdf_to_xfdf_in_storage_with_http_info(name, xfdf_output_file_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str xfdf_output_file_path: The output xfdf file path. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'xfdf_output_file_path', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_export_fields_from_pdf_to_xfdf_in_storage" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_export_fields_from_pdf_to_xfdf_in_storage`")
+        # verify the required parameter 'xfdf_output_file_path' is set
+        if ('xfdf_output_file_path' not in params) or (params['xfdf_output_file_path'] is None):
+            raise ValueError("Missing the required parameter `xfdf_output_file_path` when calling `put_export_fields_from_pdf_to_xfdf_in_storage`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'xfdf_output_file_path' in params:
+            query_params.append(('xfdfOutputFilePath', params['xfdf_output_file_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/export/xfdf', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_export_fields_from_pdf_to_xml_in_storage(self, name, xml_output_file_path, **kwargs):
+        """
+        Export fields from from PDF in storage to XML file in storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_export_fields_from_pdf_to_xml_in_storage(name, xml_output_file_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str xml_output_file_path: The output xml file path. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_export_fields_from_pdf_to_xml_in_storage_with_http_info(name, xml_output_file_path, **kwargs)
+        else:
+            (data) = self.put_export_fields_from_pdf_to_xml_in_storage_with_http_info(name, xml_output_file_path, **kwargs)
+            return data
+
+    def put_export_fields_from_pdf_to_xml_in_storage_with_http_info(self, name, xml_output_file_path, **kwargs):
+        """
+        Export fields from from PDF in storage to XML file in storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_export_fields_from_pdf_to_xml_in_storage_with_http_info(name, xml_output_file_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str xml_output_file_path: The output xml file path. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'xml_output_file_path', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_export_fields_from_pdf_to_xml_in_storage" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_export_fields_from_pdf_to_xml_in_storage`")
+        # verify the required parameter 'xml_output_file_path' is set
+        if ('xml_output_file_path' not in params) or (params['xml_output_file_path'] is None):
+            raise ValueError("Missing the required parameter `xml_output_file_path` when calling `put_export_fields_from_pdf_to_xml_in_storage`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'xml_output_file_path' in params:
+            query_params.append(('xmlOutputFilePath', params['xml_output_file_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/export/xml', 'PUT',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -25369,7 +27632,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/fields/flatten', 'PUT',
                                         path_params,
@@ -25495,7 +27758,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/fileattachment/{annotationId}', 'PUT',
                                         path_params,
@@ -25618,7 +27881,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/fileattachment/{annotationId}/data/extract', 'PUT',
                                         path_params,
@@ -25744,7 +28007,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/freetext/{annotationId}', 'PUT',
                                         path_params,
@@ -25870,7 +28133,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/highlight/{annotationId}', 'PUT',
                                         path_params,
@@ -26021,7 +28284,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/create/html', 'PUT',
                                         path_params,
@@ -26152,7 +28415,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/images/{imageId}/extract/gif', 'PUT',
                                         path_params,
@@ -26283,7 +28546,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/images/{imageId}/extract/jpeg', 'PUT',
                                         path_params,
@@ -26414,7 +28677,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/images/{imageId}/extract/png', 'PUT',
                                         path_params,
@@ -26545,7 +28808,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/images/{imageId}/extract/tiff', 'PUT',
                                         path_params,
@@ -26576,7 +28839,7 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param ImageTemplatesRequest image_templates: Image templates (required)
+        :param ImageTemplatesRequest image_templates: ImageTemplatesRequestImage templates (required)
         :param str dst_folder: The destination document folder.
         :param str storage: The document storage.
         :return: AsposeResponse
@@ -26604,7 +28867,7 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param ImageTemplatesRequest image_templates: Image templates (required)
+        :param ImageTemplatesRequest image_templates: ImageTemplatesRequestImage templates (required)
         :param str dst_folder: The destination document folder.
         :param str storage: The document storage.
         :return: AsposeResponse
@@ -26664,7 +28927,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/create/images', 'PUT',
                                         path_params,
@@ -26795,7 +29058,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/images/extract/gif', 'PUT',
                                         path_params,
@@ -26829,7 +29092,7 @@ class PdfApi(object):
         :param int page_number: The page number. (required)
         :param int width: The converted image width.
         :param int height: The converted image height.
-        :param str storage:
+        :param str storage: The document storage.
         :param str folder: The document folder.
         :param str dest_folder: The document folder.
         :return: AsposeResponse
@@ -26860,7 +29123,7 @@ class PdfApi(object):
         :param int page_number: The page number. (required)
         :param int width: The converted image width.
         :param int height: The converted image height.
-        :param str storage:
+        :param str storage: The document storage.
         :param str folder: The document folder.
         :param str dest_folder: The document folder.
         :return: AsposeResponse
@@ -26926,7 +29189,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/images/extract/jpeg', 'PUT',
                                         path_params,
@@ -27057,7 +29320,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/images/extract/png', 'PUT',
                                         path_params,
@@ -27188,9 +29451,366 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/images/extract/tiff', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_import_fields_from_fdf_in_storage(self, name, fdf_file_path, **kwargs):
+        """
+        Update fields from FDF file in storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_import_fields_from_fdf_in_storage(name, fdf_file_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str fdf_file_path: The Fdf file path. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_import_fields_from_fdf_in_storage_with_http_info(name, fdf_file_path, **kwargs)
+        else:
+            (data) = self.put_import_fields_from_fdf_in_storage_with_http_info(name, fdf_file_path, **kwargs)
+            return data
+
+    def put_import_fields_from_fdf_in_storage_with_http_info(self, name, fdf_file_path, **kwargs):
+        """
+        Update fields from FDF file in storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_import_fields_from_fdf_in_storage_with_http_info(name, fdf_file_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str fdf_file_path: The Fdf file path. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'fdf_file_path', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_import_fields_from_fdf_in_storage" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_import_fields_from_fdf_in_storage`")
+        # verify the required parameter 'fdf_file_path' is set
+        if ('fdf_file_path' not in params) or (params['fdf_file_path'] is None):
+            raise ValueError("Missing the required parameter `fdf_file_path` when calling `put_import_fields_from_fdf_in_storage`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'fdf_file_path' in params:
+            query_params.append(('fdfFilePath', params['fdf_file_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/import/fdf', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_import_fields_from_xfdf_in_storage(self, name, xfdf_file_path, **kwargs):
+        """
+        Update fields from XFDF file in storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_import_fields_from_xfdf_in_storage(name, xfdf_file_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str xfdf_file_path: The XFDF file path. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_import_fields_from_xfdf_in_storage_with_http_info(name, xfdf_file_path, **kwargs)
+        else:
+            (data) = self.put_import_fields_from_xfdf_in_storage_with_http_info(name, xfdf_file_path, **kwargs)
+            return data
+
+    def put_import_fields_from_xfdf_in_storage_with_http_info(self, name, xfdf_file_path, **kwargs):
+        """
+        Update fields from XFDF file in storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_import_fields_from_xfdf_in_storage_with_http_info(name, xfdf_file_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str xfdf_file_path: The XFDF file path. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'xfdf_file_path', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_import_fields_from_xfdf_in_storage" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_import_fields_from_xfdf_in_storage`")
+        # verify the required parameter 'xfdf_file_path' is set
+        if ('xfdf_file_path' not in params) or (params['xfdf_file_path'] is None):
+            raise ValueError("Missing the required parameter `xfdf_file_path` when calling `put_import_fields_from_xfdf_in_storage`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'xfdf_file_path' in params:
+            query_params.append(('xfdfFilePath', params['xfdf_file_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/import/xfdf', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_import_fields_from_xml_in_storage(self, name, xml_file_path, **kwargs):
+        """
+        Update fields from XML file in storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_import_fields_from_xml_in_storage(name, xml_file_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str xml_file_path: Full source filename (ex. /folder1/folder2/template.xml) (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_import_fields_from_xml_in_storage_with_http_info(name, xml_file_path, **kwargs)
+        else:
+            (data) = self.put_import_fields_from_xml_in_storage_with_http_info(name, xml_file_path, **kwargs)
+            return data
+
+    def put_import_fields_from_xml_in_storage_with_http_info(self, name, xml_file_path, **kwargs):
+        """
+        Update fields from XML file in storage.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_import_fields_from_xml_in_storage_with_http_info(name, xml_file_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str xml_file_path: Full source filename (ex. /folder1/folder2/template.xml) (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'xml_file_path', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_import_fields_from_xml_in_storage" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_import_fields_from_xml_in_storage`")
+        # verify the required parameter 'xml_file_path' is set
+        if ('xml_file_path' not in params) or (params['xml_file_path'] is None):
+            raise ValueError("Missing the required parameter `xml_file_path` when calling `put_import_fields_from_xml_in_storage`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'xml_file_path' in params:
+            query_params.append(('xmlFilePath', params['xml_file_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/import/xml', 'PUT',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -27314,7 +29934,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/ink/{annotationId}', 'PUT',
                                         path_params,
@@ -27433,7 +30053,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/create/latex', 'PUT',
                                         path_params,
@@ -27559,7 +30179,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/line/{annotationId}', 'PUT',
                                         path_params,
@@ -27685,7 +30305,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/links/{linkId}', 'PUT',
                                         path_params,
@@ -27702,7 +30322,7 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def put_merge_documents(self, name, **kwargs):
+    def put_merge_documents(self, name, merge_documents, **kwargs):
         """
         Merge a list of documents.
         This method makes a synchronous HTTP request by default. To make an
@@ -27711,12 +30331,12 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.put_merge_documents(name, callback=callback_function)
+        >>> thread = api.put_merge_documents(name, merge_documents, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: Resulting documen name. (required)
-        :param MergeDocuments merge_documents: with a list of documents.
+        :param MergeDocuments merge_documents: MergeDocuments with a list of documents. (required)
         :param str storage: Resulting document storage.
         :param str folder: Resulting document folder.
         :return: DocumentResponse
@@ -27725,12 +30345,12 @@ class PdfApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.put_merge_documents_with_http_info(name, **kwargs)
+            return self.put_merge_documents_with_http_info(name, merge_documents, **kwargs)
         else:
-            (data) = self.put_merge_documents_with_http_info(name, **kwargs)
+            (data) = self.put_merge_documents_with_http_info(name, merge_documents, **kwargs)
             return data
 
-    def put_merge_documents_with_http_info(self, name, **kwargs):
+    def put_merge_documents_with_http_info(self, name, merge_documents, **kwargs):
         """
         Merge a list of documents.
         This method makes a synchronous HTTP request by default. To make an
@@ -27739,12 +30359,12 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.put_merge_documents_with_http_info(name, callback=callback_function)
+        >>> thread = api.put_merge_documents_with_http_info(name, merge_documents, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: Resulting documen name. (required)
-        :param MergeDocuments merge_documents: with a list of documents.
+        :param MergeDocuments merge_documents: MergeDocuments with a list of documents. (required)
         :param str storage: Resulting document storage.
         :param str folder: Resulting document folder.
         :return: DocumentResponse
@@ -27770,6 +30390,9 @@ class PdfApi(object):
         # verify the required parameter 'name' is set
         if ('name' not in params) or (params['name'] is None):
             raise ValueError("Missing the required parameter `name` when calling `put_merge_documents`")
+        # verify the required parameter 'merge_documents' is set
+        if ('merge_documents' not in params) or (params['merge_documents'] is None):
+            raise ValueError("Missing the required parameter `merge_documents` when calling `put_merge_documents`")
 
 
         collection_formats = {}
@@ -27801,7 +30424,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/merge', 'PUT',
                                         path_params,
@@ -27920,7 +30543,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/create/mht', 'PUT',
                                         path_params,
@@ -28046,7 +30669,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/movie/{annotationId}', 'PUT',
                                         path_params,
@@ -28078,7 +30701,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param int page_number: The page number. (required)
-        :param Stamp stamp: with data. (required)
+        :param Stamp stamp: Stamp with data. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
         :return: AsposeResponse
@@ -28107,7 +30730,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param int page_number: The page number. (required)
-        :param Stamp stamp: with data. (required)
+        :param Stamp stamp: Stamp with data. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
         :return: AsposeResponse
@@ -28172,7 +30795,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/stamp', 'PUT',
                                         path_params,
@@ -28306,7 +30929,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/convert/bmp', 'PUT',
                                         path_params,
@@ -28440,7 +31063,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/convert/emf', 'PUT',
                                         path_params,
@@ -28574,7 +31197,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/convert/gif', 'PUT',
                                         path_params,
@@ -28708,7 +31331,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/convert/jpeg', 'PUT',
                                         path_params,
@@ -28842,7 +31465,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/convert/png', 'PUT',
                                         path_params,
@@ -28976,7 +31599,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/convert/tiff', 'PUT',
                                         path_params,
@@ -29095,7 +31718,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/create/pcl', 'PUT',
                                         path_params,
@@ -29239,7 +31862,7 @@ class PdfApi(object):
             select_header_content_type(['multipart/form-data'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/convert/doc', 'PUT',
                                         path_params,
@@ -29355,7 +31978,7 @@ class PdfApi(object):
             select_header_content_type(['multipart/form-data'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/convert/epub', 'PUT',
                                         path_params,
@@ -29533,7 +32156,7 @@ class PdfApi(object):
             query_params.append(('cssClassNamesPrefix', params['css_class_names_prefix']))
         if 'explicit_list_of_saved_pages' in params:
             query_params.append(('explicitListOfSavedPages', params['explicit_list_of_saved_pages']))
-            collection_formats['explicitListOfSavedPages'] = 'multi'
+            collection_formats['explicitListOfSavedPages'] = 'csv'
         if 'font_encoding_strategy' in params:
             query_params.append(('fontEncodingStrategy', params['font_encoding_strategy']))
         if 'font_saving_mode' in params:
@@ -29580,7 +32203,7 @@ class PdfApi(object):
             select_header_content_type(['multipart/form-data'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/convert/html', 'PUT',
                                         path_params,
@@ -29696,7 +32319,7 @@ class PdfApi(object):
             select_header_content_type(['multipart/form-data'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/convert/latex', 'PUT',
                                         path_params,
@@ -29808,7 +32431,7 @@ class PdfApi(object):
             select_header_content_type(['multipart/form-data'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/convert/mobixml', 'PUT',
                                         path_params,
@@ -29927,7 +32550,7 @@ class PdfApi(object):
             select_header_content_type(['multipart/form-data'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/convert/pdfa', 'PUT',
                                         path_params,
@@ -30047,7 +32670,7 @@ class PdfApi(object):
             select_header_content_type(['multipart/form-data'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/convert/pptx', 'PUT',
                                         path_params,
@@ -30159,7 +32782,7 @@ class PdfApi(object):
             select_header_content_type(['multipart/form-data'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/convert/svg', 'PUT',
                                         path_params,
@@ -30331,7 +32954,7 @@ class PdfApi(object):
             select_header_content_type(['multipart/form-data'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/convert/tiff', 'PUT',
                                         path_params,
@@ -30459,7 +33082,7 @@ class PdfApi(object):
             select_header_content_type(['multipart/form-data'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/convert/xls', 'PUT',
                                         path_params,
@@ -30587,7 +33210,7 @@ class PdfApi(object):
             select_header_content_type(['multipart/form-data'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/convert/xlsx', 'PUT',
                                         path_params,
@@ -30699,7 +33322,7 @@ class PdfApi(object):
             select_header_content_type(['multipart/form-data'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/convert/xml', 'PUT',
                                         path_params,
@@ -30811,7 +33434,7 @@ class PdfApi(object):
             select_header_content_type(['multipart/form-data'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/convert/xps', 'PUT',
                                         path_params,
@@ -30962,7 +33585,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/doc', 'PUT',
                                         path_params,
@@ -31085,7 +33708,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/epub', 'PUT',
                                         path_params,
@@ -31270,7 +33893,7 @@ class PdfApi(object):
             query_params.append(('cssClassNamesPrefix', params['css_class_names_prefix']))
         if 'explicit_list_of_saved_pages' in params:
             query_params.append(('explicitListOfSavedPages', params['explicit_list_of_saved_pages']))
-            collection_formats['explicitListOfSavedPages'] = 'multi'
+            collection_formats['explicitListOfSavedPages'] = 'csv'
         if 'font_encoding_strategy' in params:
             query_params.append(('fontEncodingStrategy', params['font_encoding_strategy']))
         if 'font_saving_mode' in params:
@@ -31317,7 +33940,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/html', 'PUT',
                                         path_params,
@@ -31440,7 +34063,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/latex', 'PUT',
                                         path_params,
@@ -31559,7 +34182,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/mobixml', 'PUT',
                                         path_params,
@@ -31685,7 +34308,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/pdfa', 'PUT',
                                         path_params,
@@ -31812,7 +34435,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/pptx', 'PUT',
                                         path_params,
@@ -31931,7 +34554,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/svg', 'PUT',
                                         path_params,
@@ -32110,7 +34733,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/tiff', 'PUT',
                                         path_params,
@@ -32245,7 +34868,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/xls', 'PUT',
                                         path_params,
@@ -32380,7 +35003,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/xlsx', 'PUT',
                                         path_params,
@@ -32499,7 +35122,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/xml', 'PUT',
                                         path_params,
@@ -32618,7 +35241,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/xps', 'PUT',
                                         path_params,
@@ -32744,7 +35367,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/polyline/{annotationId}', 'PUT',
                                         path_params,
@@ -32870,7 +35493,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/polygon/{annotationId}', 'PUT',
                                         path_params,
@@ -32996,7 +35619,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/popup/{annotationId}', 'PUT',
                                         path_params,
@@ -33013,7 +35636,7 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def put_privileges(self, name, **kwargs):
+    def put_privileges(self, name, privileges, **kwargs):
         """
         Update privilege document.
         This method makes a synchronous HTTP request by default. To make an
@@ -33022,12 +35645,12 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.put_privileges(name, callback=callback_function)
+        >>> thread = api.put_privileges(name, privileges, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param DocumentPrivilege privileges: Document privileges. 
+        :param DocumentPrivilege privileges: Document privileges. DocumentPrivilege (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
         :return: AsposeResponse
@@ -33036,12 +35659,12 @@ class PdfApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.put_privileges_with_http_info(name, **kwargs)
+            return self.put_privileges_with_http_info(name, privileges, **kwargs)
         else:
-            (data) = self.put_privileges_with_http_info(name, **kwargs)
+            (data) = self.put_privileges_with_http_info(name, privileges, **kwargs)
             return data
 
-    def put_privileges_with_http_info(self, name, **kwargs):
+    def put_privileges_with_http_info(self, name, privileges, **kwargs):
         """
         Update privilege document.
         This method makes a synchronous HTTP request by default. To make an
@@ -33050,12 +35673,12 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.put_privileges_with_http_info(name, callback=callback_function)
+        >>> thread = api.put_privileges_with_http_info(name, privileges, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param DocumentPrivilege privileges: Document privileges. 
+        :param DocumentPrivilege privileges: Document privileges. DocumentPrivilege (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
         :return: AsposeResponse
@@ -33081,6 +35704,9 @@ class PdfApi(object):
         # verify the required parameter 'name' is set
         if ('name' not in params) or (params['name'] is None):
             raise ValueError("Missing the required parameter `name` when calling `put_privileges`")
+        # verify the required parameter 'privileges' is set
+        if ('privileges' not in params) or (params['privileges'] is None):
+            raise ValueError("Missing the required parameter `privileges` when calling `put_privileges`")
 
 
         collection_formats = {}
@@ -33112,7 +35738,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/privileges', 'PUT',
                                         path_params,
@@ -33231,7 +35857,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/create/ps', 'PUT',
                                         path_params,
@@ -33357,7 +35983,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/redaction/{annotationId}', 'PUT',
                                         path_params,
@@ -33484,7 +36110,7 @@ class PdfApi(object):
             select_header_content_type(['multipart/form-data'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/images/{imageId}', 'PUT',
                                         path_params,
@@ -33610,7 +36236,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/screen/{annotationId}', 'PUT',
                                         path_params,
@@ -33736,7 +36362,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/screen/{annotationId}/data/extract', 'PUT',
                                         path_params,
@@ -33852,7 +36478,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/ocr', 'PUT',
                                         path_params,
@@ -33978,7 +36604,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/documentproperties/{propertyName}', 'PUT',
                                         path_params,
@@ -34104,7 +36730,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/sound/{annotationId}', 'PUT',
                                         path_params,
@@ -34230,7 +36856,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/sound/{annotationId}/data/extract', 'PUT',
                                         path_params,
@@ -34356,7 +36982,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/square/{annotationId}', 'PUT',
                                         path_params,
@@ -34482,7 +37108,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/squiggly/{annotationId}', 'PUT',
                                         path_params,
@@ -34608,7 +37234,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/stamp/{annotationId}', 'PUT',
                                         path_params,
@@ -34734,7 +37360,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/stamp/{annotationId}/data/extract', 'PUT',
                                         path_params,
@@ -34860,7 +37486,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/strikeout/{annotationId}', 'PUT',
                                         path_params,
@@ -35011,7 +37637,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/create/svg', 'PUT',
                                         path_params,
@@ -35137,7 +37763,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/tables/{tableId}', 'PUT',
                                         path_params,
@@ -35263,7 +37889,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/text/{annotationId}', 'PUT',
                                         path_params,
@@ -35389,7 +38015,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/annotations/underline/{annotationId}', 'PUT',
                                         path_params,
@@ -35406,7 +38032,7 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def put_update_field(self, name, field_name, **kwargs):
+    def put_update_field(self, name, field_name, field, **kwargs):
         """
         Update field.
         This method makes a synchronous HTTP request by default. To make an
@@ -35415,13 +38041,13 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.put_update_field(name, field_name, callback=callback_function)
+        >>> thread = api.put_update_field(name, field_name, field, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str field_name: The name of a field to be updated. (required)
-        :param Field field: with the field data.
+        :param Field field: Field with the field data. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
         :return: FieldResponse
@@ -35430,12 +38056,12 @@ class PdfApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.put_update_field_with_http_info(name, field_name, **kwargs)
+            return self.put_update_field_with_http_info(name, field_name, field, **kwargs)
         else:
-            (data) = self.put_update_field_with_http_info(name, field_name, **kwargs)
+            (data) = self.put_update_field_with_http_info(name, field_name, field, **kwargs)
             return data
 
-    def put_update_field_with_http_info(self, name, field_name, **kwargs):
+    def put_update_field_with_http_info(self, name, field_name, field, **kwargs):
         """
         Update field.
         This method makes a synchronous HTTP request by default. To make an
@@ -35444,13 +38070,13 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.put_update_field_with_http_info(name, field_name, callback=callback_function)
+        >>> thread = api.put_update_field_with_http_info(name, field_name, field, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str field_name: The name of a field to be updated. (required)
-        :param Field field: with the field data.
+        :param Field field: Field with the field data. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
         :return: FieldResponse
@@ -35479,6 +38105,9 @@ class PdfApi(object):
         # verify the required parameter 'field_name' is set
         if ('field_name' not in params) or (params['field_name'] is None):
             raise ValueError("Missing the required parameter `field_name` when calling `put_update_field`")
+        # verify the required parameter 'field' is set
+        if ('field' not in params) or (params['field'] is None):
+            raise ValueError("Missing the required parameter `field` when calling `put_update_field`")
 
 
         collection_formats = {}
@@ -35512,7 +38141,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/fields/{fieldName}', 'PUT',
                                         path_params,
@@ -35529,7 +38158,7 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def put_update_fields(self, name, **kwargs):
+    def put_update_fields(self, name, fields, **kwargs):
         """
         Update fields.
         This method makes a synchronous HTTP request by default. To make an
@@ -35538,12 +38167,12 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.put_update_fields(name, callback=callback_function)
+        >>> thread = api.put_update_fields(name, fields, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param Fields fields: with the fields data.
+        :param Fields fields: Fields with the fields data. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
         :return: FieldsResponse
@@ -35552,12 +38181,12 @@ class PdfApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.put_update_fields_with_http_info(name, **kwargs)
+            return self.put_update_fields_with_http_info(name, fields, **kwargs)
         else:
-            (data) = self.put_update_fields_with_http_info(name, **kwargs)
+            (data) = self.put_update_fields_with_http_info(name, fields, **kwargs)
             return data
 
-    def put_update_fields_with_http_info(self, name, **kwargs):
+    def put_update_fields_with_http_info(self, name, fields, **kwargs):
         """
         Update fields.
         This method makes a synchronous HTTP request by default. To make an
@@ -35566,12 +38195,12 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.put_update_fields_with_http_info(name, callback=callback_function)
+        >>> thread = api.put_update_fields_with_http_info(name, fields, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param Fields fields: with the fields data.
+        :param Fields fields: Fields with the fields data. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
         :return: FieldsResponse
@@ -35597,6 +38226,9 @@ class PdfApi(object):
         # verify the required parameter 'name' is set
         if ('name' not in params) or (params['name'] is None):
             raise ValueError("Missing the required parameter `name` when calling `put_update_fields`")
+        # verify the required parameter 'fields' is set
+        if ('fields' not in params) or (params['fields'] is None):
+            raise ValueError("Missing the required parameter `fields` when calling `put_update_fields`")
 
 
         collection_formats = {}
@@ -35628,7 +38260,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/fields', 'PUT',
                                         path_params,
@@ -35775,7 +38407,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/create/web', 'PUT',
                                         path_params,
@@ -35887,7 +38519,7 @@ class PdfApi(object):
             select_header_content_type(['multipart/form-data'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/convert/xfatoacroform', 'PUT',
                                         path_params,
@@ -36006,7 +38638,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/convert/xfatoacroform', 'PUT',
                                         path_params,
@@ -36129,7 +38761,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/create/xml', 'PUT',
                                         path_params,
@@ -36248,7 +38880,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/create/xps', 'PUT',
                                         path_params,
@@ -36367,7 +38999,7 @@ class PdfApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/create/xslfo', 'PUT',
                                         path_params,
@@ -36377,6 +39009,225 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def storage_exists(self, storage_name, **kwargs):
+        """
+        Check if storage exists
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.storage_exists(storage_name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str storage_name: Storage name (required)
+        :return: StorageExist
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.storage_exists_with_http_info(storage_name, **kwargs)
+        else:
+            (data) = self.storage_exists_with_http_info(storage_name, **kwargs)
+            return data
+
+    def storage_exists_with_http_info(self, storage_name, **kwargs):
+        """
+        Check if storage exists
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.storage_exists_with_http_info(storage_name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str storage_name: Storage name (required)
+        :return: StorageExist
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['storage_name']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method storage_exists" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'storage_name' is set
+        if ('storage_name' not in params) or (params['storage_name'] is None):
+            raise ValueError("Missing the required parameter `storage_name` when calling `storage_exists`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'storage_name' in params:
+            path_params['storageName'] = params['storage_name']
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/storage/{storageName}/exist', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='StorageExist',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def upload_file(self, path, file, **kwargs):
+        """
+        Upload file
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.upload_file(path, file, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str path: Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.              (required)
+        :param file file: File to upload (required)
+        :param str storage_name: Storage name
+        :return: FilesUploadResult
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.upload_file_with_http_info(path, file, **kwargs)
+        else:
+            (data) = self.upload_file_with_http_info(path, file, **kwargs)
+            return data
+
+    def upload_file_with_http_info(self, path, file, **kwargs):
+        """
+        Upload file
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.upload_file_with_http_info(path, file, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str path: Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.              (required)
+        :param file file: File to upload (required)
+        :param str storage_name: Storage name
+        :return: FilesUploadResult
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['path', 'file', 'storage_name']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method upload_file" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'path' is set
+        if ('path' not in params) or (params['path'] is None):
+            raise ValueError("Missing the required parameter `path` when calling `upload_file`")
+        # verify the required parameter 'file' is set
+        if ('file' not in params) or (params['file'] is None):
+            raise ValueError("Missing the required parameter `file` when calling `upload_file`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'path' in params:
+            path_params['path'] = params['path']
+
+        query_params = []
+        if 'storage_name' in params:
+            query_params.append(('storageName', params['storage_name']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'file' in params:
+            local_var_files['File'] = params['file']
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['multipart/form-data'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/storage/file/{path}', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='FilesUploadResult',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),

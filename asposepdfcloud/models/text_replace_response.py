@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -71,8 +71,7 @@ class TextReplaceResponse(object):
         self.code = code
         if status is not None:
           self.status = status
-        if matches is not None:
-          self.matches = matches
+        self.matches = matches
 
     @property
     def code(self):
@@ -142,6 +141,8 @@ class TextReplaceResponse(object):
         :param matches: The matches of this TextReplaceResponse.
         :type: int
         """
+        if matches is None:
+            raise ValueError("Invalid value for `matches`, must not be `None`")
 
         self._matches = matches
 

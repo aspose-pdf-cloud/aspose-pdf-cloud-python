@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -108,6 +108,7 @@ class TextReplaceListRequest(object):
     def default_font(self):
         """
         Gets the default_font of this TextReplaceListRequest.
+        Name of font to use if requested font is not embedded into document.
 
         :return: The default_font of this TextReplaceListRequest.
         :rtype: str
@@ -118,6 +119,7 @@ class TextReplaceListRequest(object):
     def default_font(self, default_font):
         """
         Sets the default_font of this TextReplaceListRequest.
+        Name of font to use if requested font is not embedded into document.
 
         :param default_font: The default_font of this TextReplaceListRequest.
         :type: str

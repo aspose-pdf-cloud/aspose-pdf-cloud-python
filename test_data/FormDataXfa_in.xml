@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xfa:data xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/">
+  <form1>
+    <FirstName>Dou</FirstName>
+    <LastName>Jon</LastName>
+    <HiddenField><![CDATA[<Root><HeaderId>999</HeaderId></Root>]]></HiddenField>
+  </form1>
+</xfa:data>

@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -139,8 +139,7 @@ class SoundAnnotation(object):
           self.flags = flags
         if name is not None:
           self.name = name
-        if rect is not None:
-          self.rect = rect
+        self.rect = rect
         if page_index is not None:
           self.page_index = page_index
         if z_index is not None:
@@ -157,8 +156,7 @@ class SoundAnnotation(object):
           self.title = title
         if rich_text is not None:
           self.rich_text = rich_text
-        if file_path is not None:
-          self.file_path = file_path
+        self.file_path = file_path
         if icon is not None:
           self.icon = icon
         if rate is not None:
@@ -351,6 +349,8 @@ class SoundAnnotation(object):
         :param rect: The rect of this SoundAnnotation.
         :type: Rectangle
         """
+        if rect is None:
+            raise ValueError("Invalid value for `rect`, must not be `None`")
 
         self._rect = rect
 
@@ -558,7 +558,6 @@ class SoundAnnotation(object):
         :param file_path: The file_path of this SoundAnnotation.
         :type: str
         """
-
         self._file_path = file_path
 
     @property

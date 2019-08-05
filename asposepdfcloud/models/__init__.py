@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -35,7 +35,6 @@ from .annotation_flags import AnnotationFlags
 from .annotation_state import AnnotationState
 from .annotation_type import AnnotationType
 from .antialiasing_processing_type import AntialiasingProcessingType
-from .append_document import AppendDocument
 from .aspose_response import AsposeResponse
 from .border_corner_style import BorderCornerStyle
 from .border_info import BorderInfo
@@ -54,10 +53,13 @@ from .doc_format import DocFormat
 from .doc_recognition_mode import DocRecognitionMode
 from .document_privilege import DocumentPrivilege
 from .epub_recognition_mode import EpubRecognitionMode
+from .error import Error
+from .error_details import ErrorDetails
 from .field_type import FieldType
-from .file import File
-from .file_exist import FileExist
 from .file_icon import FileIcon
+from .file_versions import FileVersions
+from .files_list import FilesList
+from .files_upload_result import FilesUploadResult
 from .font_encoding_rules import FontEncodingRules
 from .font_saving_modes import FontSavingModes
 from .font_styles import FontStyles
@@ -80,6 +82,7 @@ from .link_element import LinkElement
 from .link_highlighting_mode import LinkHighlightingMode
 from .margin_info import MarginInfo
 from .merge_documents import MergeDocuments
+from .object_exist import ObjectExist
 from .optimize_options import OptimizeOptions
 from .page_word_count import PageWordCount
 from .paragraph import Paragraph
@@ -104,6 +107,8 @@ from .split_result import SplitResult
 from .stamp import Stamp
 from .stamp_icon import StampIcon
 from .stamp_type import StampType
+from .storage_exist import StorageExist
+from .storage_file import StorageFile
 from .table_broken import TableBroken
 from .text_horizontal_alignment import TextHorizontalAlignment
 from .text_icon import TextIcon
@@ -124,13 +129,16 @@ from .attachment import Attachment
 from .attachment_response import AttachmentResponse
 from .attachments import Attachments
 from .attachments_response import AttachmentsResponse
+from .bookmark import Bookmark
+from .bookmark_response import BookmarkResponse
+from .bookmarks import Bookmarks
+from .bookmarks_response import BookmarksResponse
 from .caret_annotation_response import CaretAnnotationResponse
 from .caret_annotations import CaretAnnotations
 from .caret_annotations_response import CaretAnnotationsResponse
 from .circle_annotation_response import CircleAnnotationResponse
 from .circle_annotations import CircleAnnotations
 from .circle_annotations_response import CircleAnnotationsResponse
-from .disc_usage_response import DiscUsageResponse
 from .document import Document
 from .document_page_response import DocumentPageResponse
 from .document_pages_response import DocumentPagesResponse
@@ -146,10 +154,7 @@ from .fields_response import FieldsResponse
 from .file_attachment_annotation_response import FileAttachmentAnnotationResponse
 from .file_attachment_annotations import FileAttachmentAnnotations
 from .file_attachment_annotations_response import FileAttachmentAnnotationsResponse
-from .file_exist_response import FileExistResponse
 from .file_version import FileVersion
-from .file_versions_response import FileVersionsResponse
-from .files_response import FilesResponse
 from .free_text_annotation_response import FreeTextAnnotationResponse
 from .free_text_annotations import FreeTextAnnotations
 from .free_text_annotations_response import FreeTextAnnotationsResponse
@@ -209,7 +214,6 @@ from .stamp_base import StampBase
 from .stamp_info import StampInfo
 from .stamps_info import StampsInfo
 from .stamps_info_response import StampsInfoResponse
-from .storage_exist_response import StorageExistResponse
 from .strike_out_annotation_response import StrikeOutAnnotationResponse
 from .strike_out_annotations import StrikeOutAnnotations
 from .strike_out_annotations_response import StrikeOutAnnotationsResponse

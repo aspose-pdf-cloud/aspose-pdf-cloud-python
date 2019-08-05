@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -124,8 +124,7 @@ class StrikeOutAnnotation(object):
           self.flags = flags
         if name is not None:
           self.name = name
-        if rect is not None:
-          self.rect = rect
+        self.rect = rect
         if page_index is not None:
           self.page_index = page_index
         if z_index is not None:
@@ -326,6 +325,8 @@ class StrikeOutAnnotation(object):
         :param rect: The rect of this StrikeOutAnnotation.
         :type: Rectangle
         """
+        if rect is None:
+            raise ValueError("Invalid value for `rect`, must not be `None`")
 
         self._rect = rect
 

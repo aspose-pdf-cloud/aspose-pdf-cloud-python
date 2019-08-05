@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **id** | **str** | Gets ID of the annotation. | [optional] 
 **flags** | [**list[AnnotationFlags]**](AnnotationFlags.md) | Gets Flags of the annotation. | [optional] 
 **name** | **str** | Gets Name of the annotation. | [optional] 
-**rect** | [**Rectangle**](Rectangle.md) | Gets Rect of the annotation. | [optional] 
+**rect** | [**Rectangle**](Rectangle.md) | Gets Rect of the annotation. | 
 **page_index** | **int** | Gets PageIndex of the annotation. | [optional] 
 **z_index** | **int** | Gets ZIndex of the annotation. | [optional] 
 **horizontal_alignment** | [**HorizontalAlignment**](HorizontalAlignment.md) | Gets HorizontalAlignment of the annotation. | [optional] 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **justification** | [**Justification**](Justification.md) | Gets Justification of the annotation. | [optional] 
 **intent** | [**FreeTextIntent**](FreeTextIntent.md) | Gets or sets the intent of the free text annotation. | [optional] 
 **rotate** | [**Rotation**](Rotation.md) | Angle of annotation rotation. | [optional] 
-**text_style** | [**TextStyle**](TextStyle.md) | Text style of the annotation. | [optional] 
+**text_style** | [**TextStyle**](TextStyle.md) | Text style of the annotation. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

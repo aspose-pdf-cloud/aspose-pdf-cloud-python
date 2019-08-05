@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -82,8 +82,7 @@ class SplitResultDocument(object):
           self.type = type
         if title is not None:
           self.title = title
-        if id is not None:
-          self.id = id
+        self.id = id
 
     @property
     def href(self):
@@ -197,6 +196,8 @@ class SplitResultDocument(object):
         :param id: The id of this SplitResultDocument.
         :type: int
         """
+        if id is None:
+            raise ValueError("Invalid value for `id`, must not be `None`")
 
         self._id = id
 

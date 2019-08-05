@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -90,13 +90,13 @@ class FileVersion(object):
           self.path = path
         if version_id is not None:
           self.version_id = version_id
-        if is_latest is not None:
-          self.is_latest = is_latest
+        self.is_latest = is_latest
 
     @property
     def name(self):
         """
         Gets the name of this FileVersion.
+        File or folder name.
 
         :return: The name of this FileVersion.
         :rtype: str
@@ -107,6 +107,7 @@ class FileVersion(object):
     def name(self, name):
         """
         Sets the name of this FileVersion.
+        File or folder name.
 
         :param name: The name of this FileVersion.
         :type: str
@@ -118,6 +119,7 @@ class FileVersion(object):
     def is_folder(self):
         """
         Gets the is_folder of this FileVersion.
+        True if it is a folder.
 
         :return: The is_folder of this FileVersion.
         :rtype: bool
@@ -128,6 +130,7 @@ class FileVersion(object):
     def is_folder(self, is_folder):
         """
         Sets the is_folder of this FileVersion.
+        True if it is a folder.
 
         :param is_folder: The is_folder of this FileVersion.
         :type: bool
@@ -141,6 +144,7 @@ class FileVersion(object):
     def modified_date(self):
         """
         Gets the modified_date of this FileVersion.
+        File or folder last modified DateTime.
 
         :return: The modified_date of this FileVersion.
         :rtype: datetime
@@ -151,6 +155,7 @@ class FileVersion(object):
     def modified_date(self, modified_date):
         """
         Sets the modified_date of this FileVersion.
+        File or folder last modified DateTime.
 
         :param modified_date: The modified_date of this FileVersion.
         :type: datetime
@@ -162,6 +167,7 @@ class FileVersion(object):
     def size(self):
         """
         Gets the size of this FileVersion.
+        File or folder size.
 
         :return: The size of this FileVersion.
         :rtype: int
@@ -172,6 +178,7 @@ class FileVersion(object):
     def size(self, size):
         """
         Sets the size of this FileVersion.
+        File or folder size.
 
         :param size: The size of this FileVersion.
         :type: int
@@ -185,6 +192,7 @@ class FileVersion(object):
     def path(self):
         """
         Gets the path of this FileVersion.
+        File or folder path.
 
         :return: The path of this FileVersion.
         :rtype: str
@@ -195,6 +203,7 @@ class FileVersion(object):
     def path(self, path):
         """
         Sets the path of this FileVersion.
+        File or folder path.
 
         :param path: The path of this FileVersion.
         :type: str
@@ -206,6 +215,7 @@ class FileVersion(object):
     def version_id(self):
         """
         Gets the version_id of this FileVersion.
+        File Version ID.
 
         :return: The version_id of this FileVersion.
         :rtype: str
@@ -216,6 +226,7 @@ class FileVersion(object):
     def version_id(self, version_id):
         """
         Sets the version_id of this FileVersion.
+        File Version ID.
 
         :param version_id: The version_id of this FileVersion.
         :type: str
@@ -227,6 +238,7 @@ class FileVersion(object):
     def is_latest(self):
         """
         Gets the is_latest of this FileVersion.
+        Specifies whether the file is (true) or is not (false) the latest version of an file.
 
         :return: The is_latest of this FileVersion.
         :rtype: bool
@@ -237,10 +249,13 @@ class FileVersion(object):
     def is_latest(self, is_latest):
         """
         Sets the is_latest of this FileVersion.
+        Specifies whether the file is (true) or is not (false) the latest version of an file.
 
         :param is_latest: The is_latest of this FileVersion.
         :type: bool
         """
+        if is_latest is None:
+            raise ValueError("Invalid value for `is_latest`, must not be `None`")
 
         self._is_latest = is_latest
 

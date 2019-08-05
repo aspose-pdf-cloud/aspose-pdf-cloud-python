@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -157,8 +157,7 @@ class LineAnnotation(object):
           self.flags = flags
         if name is not None:
           self.name = name
-        if rect is not None:
-          self.rect = rect
+        self.rect = rect
         if page_index is not None:
           self.page_index = page_index
         if z_index is not None:
@@ -175,12 +174,10 @@ class LineAnnotation(object):
           self.title = title
         if rich_text is not None:
           self.rich_text = rich_text
-        if starting is not None:
-          self.starting = starting
+        self.starting = starting
         if starting_style is not None:
           self.starting_style = starting_style
-        if ending is not None:
-          self.ending = ending
+        self.ending = ending
         if ending_style is not None:
           self.ending_style = ending_style
         if interior_color is not None:
@@ -381,6 +378,8 @@ class LineAnnotation(object):
         :param rect: The rect of this LineAnnotation.
         :type: Rectangle
         """
+        if rect is None:
+            raise ValueError("Invalid value for `rect`, must not be `None`")
 
         self._rect = rect
 
@@ -588,6 +587,8 @@ class LineAnnotation(object):
         :param starting: The starting of this LineAnnotation.
         :type: Point
         """
+        if starting is None:
+            raise ValueError("Invalid value for `starting`, must not be `None`")
 
         self._starting = starting
 
@@ -634,6 +635,8 @@ class LineAnnotation(object):
         :param ending: The ending of this LineAnnotation.
         :type: Point
         """
+        if ending is None:
+            raise ValueError("Invalid value for `ending`, must not be `None`")
 
         self._ending = ending
 

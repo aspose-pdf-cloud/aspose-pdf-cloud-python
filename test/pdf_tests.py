@@ -63,7 +63,7 @@ class PdfTests(unittest.TestCase):
 
 
     def uploadFile(self, name):
-        self.pdf_api.put_create(self.temp_folder + '/' + name, self.test_data_path + name)
+        self.pdf_api.upload_file(self.temp_folder + '/' + name, self.test_data_path + name)
 
     def tearDown(self):
         pass
@@ -165,9 +165,8 @@ class PdfTests(unittest.TestCase):
 
         page_number = 1
 
-        annotation = asposepdfcloud.models.FileAttachmentAnnotation()
+        annotation = asposepdfcloud.models.FileAttachmentAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Test Name'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -179,7 +178,7 @@ class PdfTests(unittest.TestCase):
         annotation.file_name = attachment_file
 
         response = self.pdf_api.post_page_file_attachment_annotations(file_name, page_number, [annotation], folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutFileAttachmentAnnotation(self):
@@ -189,9 +188,8 @@ class PdfTests(unittest.TestCase):
         attachment_file = '4pages.pdf'
         self.uploadFile(attachment_file)
 
-        annotation = asposepdfcloud.models.FileAttachmentAnnotation()
+        annotation = asposepdfcloud.models.FileAttachmentAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Test Name'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -207,7 +205,7 @@ class PdfTests(unittest.TestCase):
         annotation_id = response_annotations.annotations.list[0].id
 
         response = self.pdf_api.put_file_attachment_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     def testGetFileAttachmentAnnotationData(self):
         file_name = 'PdfWithAnnotations.pdf'
@@ -229,7 +227,7 @@ class PdfTests(unittest.TestCase):
         annotation_id = response_annotations.annotations.list[0].id
 
         response = self.pdf_api.put_file_attachment_annotation_data_extract(file_name, annotation_id, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     # Stamp Tests
 
@@ -290,7 +288,7 @@ class PdfTests(unittest.TestCase):
         stamp.text_state = text_state
 
         response = self.pdf_api.post_page_text_stamps(file_name, page_number, [stamp], folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     def testPostPageImageStamps(self):
         file_name = 'PageNumberStamp.pdf'
@@ -318,7 +316,7 @@ class PdfTests(unittest.TestCase):
         stamp.file_name = self.temp_folder + '/' + image
 
         response = self.pdf_api.post_page_image_stamps(file_name, page_number, [stamp], folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     def testPostPagePdfPageStamps(self):
         file_name = 'PageNumberStamp.pdf'
@@ -347,7 +345,7 @@ class PdfTests(unittest.TestCase):
         stamp.page_index = 2
 
         response = self.pdf_api.post_page_pdf_page_stamps(file_name, page_number, [stamp], folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     def testDeleteStamp(self):
         file_name = 'PageNumberStamp.pdf'
@@ -382,7 +380,7 @@ class PdfTests(unittest.TestCase):
         stamp.value = 'Page #'
 
         response = self.pdf_api.post_document_page_number_stamps(name, stamp, start_page_number=2, end_page_number=3, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     # Header Footer Tests
 
@@ -420,7 +418,7 @@ class PdfTests(unittest.TestCase):
         end_page_number = 3
 
         response = self.pdf_api.post_document_text_header(file_name, header, start_page_number=start_page_number, end_page_number=end_page_number, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     def testPostDocumentTextFooter(self):
         file_name = '4pages.pdf'
@@ -456,7 +454,7 @@ class PdfTests(unittest.TestCase):
         end_page_number = 3
 
         response = self.pdf_api.post_document_text_footer(file_name, footer, start_page_number=start_page_number, end_page_number=end_page_number, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     def testPostDocumentImageHeader(self):
         file_name = '4pages.pdf'
@@ -483,7 +481,7 @@ class PdfTests(unittest.TestCase):
         end_page_number = 3
 
         response = self.pdf_api.post_document_image_header(file_name, header, start_page_number=start_page_number, end_page_number=end_page_number, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     def testPostDocumentImageFooter(self):
         file_name = '4pages.pdf'
@@ -510,7 +508,7 @@ class PdfTests(unittest.TestCase):
         end_page_number = 3
 
         response = self.pdf_api.post_document_image_footer(file_name, footer, start_page_number=start_page_number, end_page_number=end_page_number, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
     
     # Tables Tests
 
@@ -576,7 +574,7 @@ class PdfTests(unittest.TestCase):
         table = self.__drawTable()
 
         response = self.pdf_api.post_page_tables(file_name, page_number, [table], folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     def testPutTable(self):
         file_name = 'PdfWithTable.pdf'
@@ -589,7 +587,7 @@ class PdfTests(unittest.TestCase):
         table = self.__drawTable()
 
         response = self.pdf_api.put_table(file_name, table_id, table, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def __drawTable(self):
@@ -604,8 +602,7 @@ class PdfTests(unittest.TestCase):
         num_of_cols = 5
         num_of_rows = 5
 
-        table = asposepdfcloud.models.Table()
-        table.rows = []
+        table = asposepdfcloud.models.Table(rows = [])
 
         col_widths = ''
         for _ in range(num_of_cols):
@@ -704,9 +701,8 @@ class PdfTests(unittest.TestCase):
 
         page_number = 1
 
-        annotation = asposepdfcloud.models.StampAnnotation()
+        annotation = asposepdfcloud.models.StampAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Test Name'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -717,7 +713,7 @@ class PdfTests(unittest.TestCase):
         annotation.file_path = self.temp_folder + '/' + attachment_file
 
         response = self.pdf_api.post_page_stamp_annotations(file_name, page_number, [annotation], folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutStampAnnotation(self):
@@ -727,9 +723,8 @@ class PdfTests(unittest.TestCase):
         attachment_file = '4pages.pdf'
         self.uploadFile(attachment_file)
 
-        annotation = asposepdfcloud.models.StampAnnotation()
+        annotation = asposepdfcloud.models.StampAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Test Name'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -744,7 +739,7 @@ class PdfTests(unittest.TestCase):
         annotation_id = response_annotations.annotations.list[0].id
 
         response = self.pdf_api.put_stamp_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     def testGetStampAnnotationData(self):
         file_name = 'PdfWithAnnotations.pdf'
@@ -766,7 +761,7 @@ class PdfTests(unittest.TestCase):
         annotation_id = response_annotations.annotations.list[0].id
 
         response = self.pdf_api.put_stamp_annotation_data_extract(file_name, annotation_id, out_file_path='stamp.dat', folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     # Screen Annotations Tests
@@ -807,9 +802,8 @@ class PdfTests(unittest.TestCase):
 
         page_number = 1
 
-        annotation = asposepdfcloud.models.ScreenAnnotation()
+        annotation = asposepdfcloud.models.ScreenAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Test Name'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.z_index = 1
@@ -818,7 +812,7 @@ class PdfTests(unittest.TestCase):
         annotation.file_path = self.temp_folder + '/' + attachment_file
 
         response = self.pdf_api.post_page_screen_annotations(file_name, page_number, [annotation], folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutScreenAnnotation(self):
@@ -828,9 +822,8 @@ class PdfTests(unittest.TestCase):
         attachment_file = 'ScreenMovie.swf'
         self.uploadFile(attachment_file)
 
-        annotation = asposepdfcloud.models.ScreenAnnotation()
+        annotation = asposepdfcloud.models.ScreenAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Test Name'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.z_index = 1
@@ -843,7 +836,7 @@ class PdfTests(unittest.TestCase):
         annotation_id = response_annotations.annotations.list[0].id
 
         response = self.pdf_api.put_screen_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
     
     def testGetScreenAnnotationData(self):
         file_name = 'PdfWithScreenAnnotations.pdf'
@@ -866,7 +859,7 @@ class PdfTests(unittest.TestCase):
         annotation_id = response_annotations.annotations.list[0].id
 
         response = self.pdf_api.put_screen_annotation_data_extract(file_name, annotation_id, out_file_path, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
     
 
     # Sound Annotations Tests
@@ -907,9 +900,8 @@ class PdfTests(unittest.TestCase):
 
         page_number = 1
 
-        annotation = asposepdfcloud.models.SoundAnnotation()
+        annotation = asposepdfcloud.models.SoundAnnotation(rect=asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Test Name'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -920,7 +912,7 @@ class PdfTests(unittest.TestCase):
         annotation.file_path = self.temp_folder + '/' + attachment_file
 
         response = self.pdf_api.post_page_sound_annotations(file_name, page_number, [annotation], folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutSoundAnnotation(self):
@@ -930,9 +922,8 @@ class PdfTests(unittest.TestCase):
         attachment_file = '4pages.pdf'
         self.uploadFile(attachment_file)
 
-        annotation = asposepdfcloud.models.SoundAnnotation()
+        annotation = asposepdfcloud.models.SoundAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Test Name'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -947,7 +938,7 @@ class PdfTests(unittest.TestCase):
         annotation_id = response_annotations.annotations.list[0].id
 
         response = self.pdf_api.put_sound_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     def testGetSoundAnnotationData(self):
         file_name = 'PdfWithAnnotations.pdf'
@@ -969,7 +960,7 @@ class PdfTests(unittest.TestCase):
         annotation_id = response_annotations.annotations.list[0].id
 
         response = self.pdf_api.put_sound_annotation_data_extract(file_name, annotation_id, out_file_path="outFile.dat", folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     # Redaction Annotations Tests
@@ -1007,9 +998,8 @@ class PdfTests(unittest.TestCase):
 
         page_number = 1
 
-        annotation = asposepdfcloud.models.RedactionAnnotation()
+        annotation = asposepdfcloud.models.RedactionAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Test Name'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.z_index = 1
@@ -1020,7 +1010,7 @@ class PdfTests(unittest.TestCase):
         annotation.modified = '01/01/2018 12:00:00.000 AM'
 
         response = self.pdf_api.post_page_redaction_annotations(file_name, page_number, [annotation], folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutRedactionAnnotation(self):
@@ -1029,9 +1019,8 @@ class PdfTests(unittest.TestCase):
         
         page_number = 1
 
-        annotation = asposepdfcloud.models.RedactionAnnotation()
+        annotation = asposepdfcloud.models.RedactionAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Test Name Updated'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.z_index = 1
@@ -1042,14 +1031,14 @@ class PdfTests(unittest.TestCase):
         annotation.modified = '01/01/2018 12:01:02.000 AM'
 
         response = self.pdf_api.post_page_redaction_annotations(file_name, page_number, [annotation], folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
         response_annotations = self.pdf_api.get_document_redaction_annotations(file_name, folder=self.temp_folder)
         self.assertEqual(response_annotations.code, 200)
         annotation_id = response_annotations.annotations.list[0].id
 
         response = self.pdf_api.put_redaction_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     # Movie Annotations Tests
@@ -1090,9 +1079,8 @@ class PdfTests(unittest.TestCase):
 
         page_number = 1
 
-        annotation = asposepdfcloud.models.MovieAnnotation()
+        annotation = asposepdfcloud.models.MovieAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Test Name'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.z_index = 1
@@ -1100,7 +1088,7 @@ class PdfTests(unittest.TestCase):
         annotation.file_path = self.temp_folder + '/' + attachment_file
         
         response = self.pdf_api.post_page_movie_annotations(file_name, page_number, [annotation], folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutMovieAnnotation(self):
@@ -1110,9 +1098,8 @@ class PdfTests(unittest.TestCase):
         attachment_file = '4pages.pdf'
         self.uploadFile(attachment_file)
 
-        annotation = asposepdfcloud.models.MovieAnnotation()
+        annotation = asposepdfcloud.models.MovieAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Test Name'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.z_index = 1
@@ -1124,7 +1111,7 @@ class PdfTests(unittest.TestCase):
         annotation_id = response_annotations.annotations.list[0].id
 
         response = self.pdf_api.put_movie_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     # PolyLine Annotations Tests
 
@@ -1160,53 +1147,50 @@ class PdfTests(unittest.TestCase):
         self.uploadFile(file_name)
 
         page_number = 1
-
-        annotation = asposepdfcloud.models.PolyLineAnnotation()
+        vertices = [
+                asposepdfcloud.models.Point(10, 10),
+                asposepdfcloud.models.Point(20, 10),
+                asposepdfcloud.models.Point(10, 20),
+                asposepdfcloud.models.Point(10, 10)
+            ]
+        annotation = asposepdfcloud.models.PolyLineAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200), vertices = vertices)
         annotation.name = 'Test Name'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
         annotation.subject = 'Subj'
         annotation.z_index = 1
         annotation.title = 'Title'
-        annotation.vertices = [
+        
+
+        response = self.pdf_api.post_page_poly_line_annotations(file_name, page_number,  [annotation], folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+
+    def testPutPolyLineAnnotation(self):
+        file_name = 'PdfWithAnnotations.pdf'
+        self.uploadFile(file_name)
+        vertices = [
                 asposepdfcloud.models.Point(10, 10),
                 asposepdfcloud.models.Point(20, 10),
                 asposepdfcloud.models.Point(10, 20),
                 asposepdfcloud.models.Point(10, 10)
             ]
 
-        response = self.pdf_api.post_page_poly_line_annotations(file_name, page_number,  [annotation], folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
-
-
-    def testPutPolyLineAnnotation(self):
-        file_name = 'PdfWithAnnotations.pdf'
-        self.uploadFile(file_name)
-
-
-        annotation = asposepdfcloud.models.PolyLineAnnotation()
+        annotation = asposepdfcloud.models.PolyLineAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200), vertices = vertices)
         annotation.name = 'Test Name Updated'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text Updated'
         annotation.subject = 'Subj Updated'
         annotation.z_index = 1
         annotation.title = 'Title Updated'
-        annotation.vertices = [
-                        asposepdfcloud.models.Point(10, 10),
-                        asposepdfcloud.models.Point(20, 10),
-                        asposepdfcloud.models.Point(10, 20),
-                        asposepdfcloud.models.Point(10, 10)
-                    ]
         response_annotations = self.pdf_api.get_document_poly_line_annotations(file_name, folder=self.temp_folder)
         self.assertEqual(response_annotations.code, 200)
         annotation_id = response_annotations.annotations.list[0].id
 
         response = self.pdf_api.put_poly_line_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     # Polygon Annotations Tests
 
@@ -1242,10 +1226,14 @@ class PdfTests(unittest.TestCase):
         self.uploadFile(file_name)
 
         page_number = 1
-
-        annotation = asposepdfcloud.models.PolygonAnnotation()
+        vertices = [
+                asposepdfcloud.models.Point(10, 10),
+                asposepdfcloud.models.Point(20, 10),
+                asposepdfcloud.models.Point(10, 20),
+                asposepdfcloud.models.Point(10, 10)
+            ]
+        annotation = asposepdfcloud.models.PolygonAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200), vertices = vertices)
         annotation.name = 'Test Name'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -1260,35 +1248,34 @@ class PdfTests(unittest.TestCase):
             ]
 
         response = self.pdf_api.post_page_polygon_annotations(file_name, page_number,  [annotation], folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutPolygonAnnotation(self):
         file_name = 'PdfWithAnnotations.pdf'
         self.uploadFile(file_name)
+        
+        vertices = [
+                asposepdfcloud.models.Point(10, 10),
+                asposepdfcloud.models.Point(20, 10),
+                asposepdfcloud.models.Point(10, 20),
+                asposepdfcloud.models.Point(10, 10)
+            ]
 
-
-        annotation = asposepdfcloud.models.PolygonAnnotation()
+        annotation = asposepdfcloud.models.PolygonAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200), vertices = vertices)
         annotation.name = 'Test Name Updated'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text Updated'
         annotation.subject = 'Subj Updated'
         annotation.z_index = 1
         annotation.title = 'Title Updated'
-        annotation.vertices = [
-                        asposepdfcloud.models.Point(10, 10),
-                        asposepdfcloud.models.Point(20, 10),
-                        asposepdfcloud.models.Point(10, 20),
-                        asposepdfcloud.models.Point(10, 10)
-                    ]
         response_annotations = self.pdf_api.get_document_polygon_annotations(file_name, folder=self.temp_folder)
         self.assertEqual(response_annotations.code, 200)
         annotation_id = response_annotations.annotations.list[0].id
 
         response = self.pdf_api.put_polygon_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     # Circle Annotations Tests
 
@@ -1325,9 +1312,8 @@ class PdfTests(unittest.TestCase):
 
         page_number = 1
 
-        annotation = asposepdfcloud.models.CircleAnnotation()
+        annotation = asposepdfcloud.models.CircleAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Test Name'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -1336,7 +1322,7 @@ class PdfTests(unittest.TestCase):
         annotation.title = 'Title'
 
         response = self.pdf_api.post_page_circle_annotations(file_name, page_number,  [annotation], folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutCircleAnnotation(self):
@@ -1344,9 +1330,8 @@ class PdfTests(unittest.TestCase):
         self.uploadFile(file_name)
 
 
-        annotation = asposepdfcloud.models.CircleAnnotation()
+        annotation = asposepdfcloud.models.CircleAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Test Name Updated'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text Updated'
@@ -1359,7 +1344,7 @@ class PdfTests(unittest.TestCase):
         annotation_id = response_annotations.annotations.list[0].id
 
         response = self.pdf_api.put_circle_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     # Square Annotations Tests
 
@@ -1396,9 +1381,8 @@ class PdfTests(unittest.TestCase):
 
         page_number = 1
 
-        annotation = asposepdfcloud.models.SquareAnnotation()
+        annotation = asposepdfcloud.models.SquareAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Test Name'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -1407,7 +1391,7 @@ class PdfTests(unittest.TestCase):
         annotation.title = 'Title'
 
         response = self.pdf_api.post_page_square_annotations(file_name, page_number,  [annotation], folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutSquareAnnotation(self):
@@ -1415,9 +1399,8 @@ class PdfTests(unittest.TestCase):
         self.uploadFile(file_name)
 
 
-        annotation = asposepdfcloud.models.SquareAnnotation()
+        annotation = asposepdfcloud.models.SquareAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Test Name Updated'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text Updated'
@@ -1430,7 +1413,7 @@ class PdfTests(unittest.TestCase):
         annotation_id = response_annotations.annotations.list[0].id
 
         response = self.pdf_api.put_square_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     # Line Annotations Tests
@@ -1468,19 +1451,18 @@ class PdfTests(unittest.TestCase):
 
         page_number = 1
 
-        annotation = asposepdfcloud.models.LineAnnotation()
+        annotation = asposepdfcloud.models.LineAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200), 
+            starting = asposepdfcloud.models.Point(10, 10), 
+            ending = asposepdfcloud.models.Point(100, 100))
         annotation.name = 'Test Name'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
         annotation.subject = 'Subj'
         annotation.z_index = 1
-        annotation.starting = asposepdfcloud.models.Point(10, 10)
-        annotation.ending = asposepdfcloud.models.Point(100, 100)
 
         response = self.pdf_api.post_page_line_annotations(file_name, page_number,  [annotation], folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutLineAnnotation(self):
@@ -1488,23 +1470,22 @@ class PdfTests(unittest.TestCase):
         self.uploadFile(file_name)
 
 
-        annotation = asposepdfcloud.models.LineAnnotation()
+        annotation = asposepdfcloud.models.LineAnnotation(rect=asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200), 
+            starting=asposepdfcloud.models.Point(10, 10),
+            ending=asposepdfcloud.models.Point(100, 100))
         annotation.name = 'Test Name Updated'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text Updated'
         annotation.subject = 'Subj Updated'
         annotation.z_index = 1
-        annotation.starting = asposepdfcloud.models.Point(10, 10)
-        annotation.ending = asposepdfcloud.models.Point(100, 100)
 
         response_annotations = self.pdf_api.get_document_line_annotations(file_name, folder=self.temp_folder)
         self.assertEqual(response_annotations.code, 200)
         annotation_id = response_annotations.annotations.list[0].id
 
         response = self.pdf_api.put_line_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     # Free Text Annotations Tests
 
@@ -1545,10 +1526,8 @@ class PdfTests(unittest.TestCase):
                 foreground_color=asposepdfcloud.models.Color(a=0xFF, r=0, g=0xFF, b=0),
                 background_color=asposepdfcloud.models.Color(a=0xFF, r=0xFF, g=0, b=0))
 
-        annotation = asposepdfcloud.models.FreeTextAnnotation()
+        annotation = asposepdfcloud.models.FreeTextAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200), text_style = text_style)
         annotation.name = 'Test Free Text'
-        annotation.text_style = text_style
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.intent = asposepdfcloud.models.FreeTextIntent.FREETEXTTYPEWRITER
@@ -1559,7 +1538,7 @@ class PdfTests(unittest.TestCase):
         annotation.title = 'Title'
 
         response = self.pdf_api.post_page_free_text_annotations(file_name, page_number,  [annotation], folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutFreeTextAnnotation(self):
@@ -1571,10 +1550,8 @@ class PdfTests(unittest.TestCase):
                 foreground_color=asposepdfcloud.models.Color(a=0xFF, r=0, g=0xFF, b=0),
                 background_color=asposepdfcloud.models.Color(a=0xFF, r=0xFF, g=0, b=0))
 
-        annotation = asposepdfcloud.models.FreeTextAnnotation()
+        annotation = asposepdfcloud.models.FreeTextAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200), text_style = text_style)
         annotation.name = 'Test Free Text'
-        annotation.text_style = text_style
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.intent = asposepdfcloud.models.FreeTextIntent.FREETEXTTYPEWRITER
@@ -1589,7 +1566,7 @@ class PdfTests(unittest.TestCase):
         annotation_id = response_annotations.annotations.list[0].id
 
         response = self.pdf_api.put_free_text_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     # Text Annotations Tests
 
@@ -1626,9 +1603,8 @@ class PdfTests(unittest.TestCase):
 
         page_number = 1
 
-        annotation = asposepdfcloud.models.TextAnnotation()
+        annotation = asposepdfcloud.models.TextAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Test Free Text'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -1638,7 +1614,7 @@ class PdfTests(unittest.TestCase):
         annotation.state = asposepdfcloud.models.AnnotationState.UNDEFINED
 
         response = self.pdf_api.post_page_text_annotations(file_name, page_number,  [annotation], folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutTextAnnotation(self):
@@ -1646,9 +1622,8 @@ class PdfTests(unittest.TestCase):
         self.uploadFile(file_name)
 
 
-        annotation = asposepdfcloud.models.TextAnnotation()
+        annotation = asposepdfcloud.models.TextAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Test Free Text'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -1662,7 +1637,7 @@ class PdfTests(unittest.TestCase):
         annotation_id = response_annotations.annotations.list[0].id
 
         response = self.pdf_api.put_text_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     # Highlight Annotations Tests
@@ -1700,9 +1675,8 @@ class PdfTests(unittest.TestCase):
 
         page_number = 1
 
-        annotation = asposepdfcloud.models.HighlightAnnotation()
+        annotation = asposepdfcloud.models.HighlightAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Name'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -1718,7 +1692,7 @@ class PdfTests(unittest.TestCase):
         annotation.modified = '02/02/2018 00:00:00.000 AM'
 
         response = self.pdf_api.post_page_highlight_annotations(file_name, page_number,  [annotation], folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutHighlightAnnotation(self):
@@ -1726,9 +1700,8 @@ class PdfTests(unittest.TestCase):
         self.uploadFile(file_name)
 
 
-        annotation = asposepdfcloud.models.HighlightAnnotation()
+        annotation = asposepdfcloud.models.HighlightAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Name Updated'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Text Updated'
@@ -1748,7 +1721,7 @@ class PdfTests(unittest.TestCase):
         annotation_id = response_annotations.annotations.list[0].id
 
         response = self.pdf_api.put_highlight_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     # Underline Annotations Tests
@@ -1786,9 +1759,8 @@ class PdfTests(unittest.TestCase):
 
         page_number = 1
 
-        annotation = asposepdfcloud.models.UnderlineAnnotation()
+        annotation = asposepdfcloud.models.UnderlineAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Name'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -1804,7 +1776,7 @@ class PdfTests(unittest.TestCase):
         annotation.modified = '02/02/2018 00:00:00.000 AM'
 
         response = self.pdf_api.post_page_underline_annotations(file_name, page_number,  [annotation], folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutUnderlineAnnotation(self):
@@ -1812,9 +1784,8 @@ class PdfTests(unittest.TestCase):
         self.uploadFile(file_name)
 
 
-        annotation = asposepdfcloud.models.UnderlineAnnotation()
+        annotation = asposepdfcloud.models.UnderlineAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Name Updated'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Text Updated'
@@ -1834,7 +1805,7 @@ class PdfTests(unittest.TestCase):
         annotation_id = response_annotations.annotations.list[0].id
 
         response = self.pdf_api.put_underline_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     # Squiggly Annotations Tests
 
@@ -1871,9 +1842,8 @@ class PdfTests(unittest.TestCase):
 
         page_number = 1
 
-        annotation = asposepdfcloud.models.SquigglyAnnotation()
+        annotation = asposepdfcloud.models.SquigglyAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Name'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -1889,7 +1859,7 @@ class PdfTests(unittest.TestCase):
         annotation.modified = '02/02/2018 00:00:00.000 AM'
 
         response = self.pdf_api.post_page_squiggly_annotations(file_name, page_number,  [annotation], folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutSquigglyAnnotation(self):
@@ -1897,9 +1867,8 @@ class PdfTests(unittest.TestCase):
         self.uploadFile(file_name)
 
 
-        annotation = asposepdfcloud.models.SquigglyAnnotation()
+        annotation = asposepdfcloud.models.SquigglyAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Name Updated'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Text Updated'
@@ -1919,7 +1888,7 @@ class PdfTests(unittest.TestCase):
         annotation_id = response_annotations.annotations.list[0].id
 
         response = self.pdf_api.put_squiggly_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     # StrikeOut Annotations Tests
@@ -1957,9 +1926,8 @@ class PdfTests(unittest.TestCase):
 
         page_number = 1
 
-        annotation = asposepdfcloud.models.StrikeOutAnnotation()
+        annotation = asposepdfcloud.models.StrikeOutAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Name'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -1975,7 +1943,7 @@ class PdfTests(unittest.TestCase):
         annotation.modified = '02/02/2018 00:00:00.000 AM'
 
         response = self.pdf_api.post_page_strike_out_annotations(file_name, page_number,  [annotation], folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutStrikeOutAnnotation(self):
@@ -1983,9 +1951,8 @@ class PdfTests(unittest.TestCase):
         self.uploadFile(file_name)
 
 
-        annotation = asposepdfcloud.models.StrikeOutAnnotation()
+        annotation = asposepdfcloud.models.StrikeOutAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Name Updated'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Text Updated'
@@ -2005,7 +1972,7 @@ class PdfTests(unittest.TestCase):
         annotation_id = response_annotations.annotations.list[0].id
 
         response = self.pdf_api.put_strike_out_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     # Caret Annotations Tests
 
@@ -2042,9 +2009,8 @@ class PdfTests(unittest.TestCase):
 
         page_number = 1
 
-        annotation = asposepdfcloud.models.CaretAnnotation()
+        annotation = asposepdfcloud.models.CaretAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Name'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -2055,7 +2021,7 @@ class PdfTests(unittest.TestCase):
         annotation.modified = '02/02/2018 00:00:00.000 AM'
 
         response = self.pdf_api.post_page_caret_annotations(file_name, page_number,  [annotation], folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutCaretAnnotation(self):
@@ -2063,9 +2029,8 @@ class PdfTests(unittest.TestCase):
         self.uploadFile(file_name)
 
 
-        annotation = asposepdfcloud.models.CaretAnnotation()
+        annotation = asposepdfcloud.models.CaretAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Name Updated'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Text Updated'
@@ -2080,7 +2045,7 @@ class PdfTests(unittest.TestCase):
         annotation_id = response_annotations.annotations.list[0].id
 
         response = self.pdf_api.put_caret_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
         # Ink Annotations Tests
@@ -2118,9 +2083,8 @@ class PdfTests(unittest.TestCase):
 
         page_number = 1
 
-        annotation = asposepdfcloud.models.InkAnnotation()
+        annotation = asposepdfcloud.models.InkAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Name'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Rich Text'
@@ -2142,7 +2106,7 @@ class PdfTests(unittest.TestCase):
         annotation.modified = '02/02/2018 00:00:00.000 AM'
 
         response = self.pdf_api.post_page_ink_annotations(file_name, page_number,  [annotation], folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutInkAnnotation(self):
@@ -2150,9 +2114,8 @@ class PdfTests(unittest.TestCase):
         self.uploadFile(file_name)
 
 
-        annotation = asposepdfcloud.models.InkAnnotation()
+        annotation = asposepdfcloud.models.InkAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Name Updated'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.rich_text = 'Text Updated'
@@ -2178,7 +2141,7 @@ class PdfTests(unittest.TestCase):
         annotation_id = response_annotations.annotations.list[0].id
 
         response = self.pdf_api.put_ink_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     # Popup Annotations Tests
 
@@ -2224,16 +2187,15 @@ class PdfTests(unittest.TestCase):
 
         parent_id = 'GI5TCMR3GE2TQLBSGM3CYMJYGUWDENRV'
 
-        annotation = asposepdfcloud.models.PopupAnnotation()
+        annotation = asposepdfcloud.models.PopupAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Name'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.z_index = 1
         annotation.modified = '02/02/2018 00:00:00.000 AM'
 
         response = self.pdf_api.post_popup_annotation(file_name, parent_id, annotation, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutPopupAnnotation(self):
@@ -2241,9 +2203,8 @@ class PdfTests(unittest.TestCase):
         self.uploadFile(file_name)
 
 
-        annotation = asposepdfcloud.models.PopupAnnotation()
+        annotation = asposepdfcloud.models.PopupAnnotation(rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200))
         annotation.name = 'Name Updated'
-        annotation.rect = asposepdfcloud.models.Rectangle(llx=100, lly=100, urx=200, ury=200)
         annotation.flags = [asposepdfcloud.models.AnnotationFlags.DEFAULT]
         annotation.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
         annotation.z_index = 1
@@ -2254,11 +2215,11 @@ class PdfTests(unittest.TestCase):
         annotation_id = response_annotations.annotations.list[0].id
 
         response = self.pdf_api.put_popup_annotation(file_name, annotation_id, annotation, folder=self.temp_folder)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     # Append Tests
 
-    def testPostAppendDocumentUsingQueryParams(self):
+    def testPostAppendDocument(self):
         file_name = 'PdfWithImages2.pdf'
         append_file_name = '4pages.pdf'
 
@@ -2270,25 +2231,6 @@ class PdfTests(unittest.TestCase):
           "start_page" : 2,
           "end_page" : 4,
           "folder" : self.temp_folder
-        }
-
-        response = self.pdf_api.post_append_document(file_name, **opts)
-        self.assertEqual(response.code, 200)
-
-
-    def testPostAppendDocumentUsingBodyParams(self):
-        file_name = 'PdfWithImages2.pdf'
-        append_file_name = '4pages.pdf'
-
-        self.uploadFile(file_name)
-        self.uploadFile(append_file_name)
-
-        append_document = asposepdfcloud.models.AppendDocument(self.temp_folder + '/' + append_file_name, start_page=2, end_page=4)
-
-
-        opts = {
-            "append_document" : append_document,
-            "folder" : self.temp_folder
         }
 
         response = self.pdf_api.post_append_document(file_name, **opts)
@@ -2361,7 +2303,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_doc(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutPdfInRequestToDoc(self):
@@ -2373,7 +2315,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_request_to_doc(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     # To PDFA
@@ -2404,7 +2346,7 @@ class PdfTests(unittest.TestCase):
                 self.temp_folder + '/' + result_file_name, 
                 asposepdfcloud.models.PdfAType.PDFA1A,
                 **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutPdfInRequestToPdfA(self):
@@ -2419,7 +2361,7 @@ class PdfTests(unittest.TestCase):
                 self.temp_folder + '/' + result_file_name, 
                 asposepdfcloud.models.PdfAType.PDFA1A, 
                 **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     # To Tiff
     def testGetPdfInStorageToTiff(self):
@@ -2444,7 +2386,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_tiff(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutPdfInRequestToTiff(self):
@@ -2456,7 +2398,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_request_to_tiff(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     # To SVG
@@ -2483,7 +2425,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_svg(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutPdfInRequestToSvg(self):
@@ -2495,7 +2437,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_request_to_svg(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
      
     # To XPS
 
@@ -2521,7 +2463,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_xps(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutPdfInRequestToXps(self):
@@ -2533,7 +2475,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_request_to_xps(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     # To XLS
     def testGetPdfInStorageToXls(self):
@@ -2558,7 +2500,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_xls(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutPdfInRequestToXls(self):
@@ -2570,7 +2512,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_request_to_xls(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     # To XLSX
     def testGetPdfInStorageToXlsx(self):
@@ -2595,7 +2537,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_xlsx(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutPdfInRequestToXlsx(self):
@@ -2607,7 +2549,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_request_to_xlsx(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     # To HTML
     def testGetPdfInStorageToHtml(self):
@@ -2632,7 +2574,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_html(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutPdfInRequestToHtml(self):
@@ -2644,7 +2586,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_request_to_html(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     # To EPUB
@@ -2670,7 +2612,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_epub(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutPdfInRequestToEpub(self):
@@ -2682,7 +2624,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_request_to_epub(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     # To PPTX
@@ -2708,7 +2650,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_pptx(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutPdfInRequestToPptx(self):
@@ -2720,7 +2662,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_request_to_pptx(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     # To LaTeX
@@ -2746,7 +2688,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_la_te_x(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutPdfInRequestToLaTeX(self):
@@ -2758,7 +2700,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_request_to_la_te_x(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     # To Mobi Xml
@@ -2784,7 +2726,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_mobi_xml(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutPdfInRequestToMobiXml(self):
@@ -2796,7 +2738,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_request_to_mobi_xml(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     # PDF Xfa To Acro Form
@@ -2822,7 +2764,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_xfa_pdf_in_storage_to_acro_form(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutXfaPdfInRequestToAcroForm(self):
@@ -2834,7 +2776,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_xfa_pdf_in_request_to_acro_form(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     # To Xml
@@ -2860,7 +2802,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_xml(file_name, self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testPutPdfInRequestToXml(self):
@@ -2872,7 +2814,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_pdf_in_request_to_xml(self.temp_folder + '/' + result_file_name, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     # Convert to PDF Tests
@@ -2896,7 +2838,7 @@ class PdfTests(unittest.TestCase):
             "dst_folder" : self.temp_folder
         }
         response = self.pdf_api.put_epub_in_storage_to_pdf(result_name, src_path, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testGetWebInStorageToPdf(self):
@@ -2914,12 +2856,12 @@ class PdfTests(unittest.TestCase):
             "dst_folder" : self.temp_folder
         }
         response = self.pdf_api.put_web_in_storage_to_pdf(result_name, url, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
 
     def testGetLaTeXInStorageToPdf(self):
-        file_name = 'TexExample.tex'
+        file_name = 'sample.tex'
         self.uploadFile(file_name)
 
         src_path = self.temp_folder + '/' + file_name
@@ -2928,7 +2870,7 @@ class PdfTests(unittest.TestCase):
 
 
     def testPutLaTeXInStorageToPdf(self):
-        file_name = 'TexExample.tex'
+        file_name = 'sample.tex'
         self.uploadFile(file_name)
         result_name = 'fromTex.pdf'
 
@@ -2937,7 +2879,7 @@ class PdfTests(unittest.TestCase):
             "dst_folder" : self.temp_folder
         }
         response = self.pdf_api.put_la_te_x_in_storage_to_pdf(result_name, src_path, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testGetMhtInStorageToPdf(self):
@@ -2959,7 +2901,7 @@ class PdfTests(unittest.TestCase):
             "dst_folder" : self.temp_folder
         }
         response = self.pdf_api.put_mht_in_storage_to_pdf(result_name, src_path, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
 
@@ -2993,7 +2935,7 @@ class PdfTests(unittest.TestCase):
             "html_file_name": html_file_name
         }
         response = self.pdf_api.put_html_in_storage_to_pdf(result_name, src_path, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testGetXslFoInStorageToPdf(self):
@@ -3015,7 +2957,7 @@ class PdfTests(unittest.TestCase):
             "dst_folder" : self.temp_folder
         }
         response = self.pdf_api.put_xsl_fo_in_storage_to_pdf(result_name, src_path, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
 
@@ -3038,7 +2980,7 @@ class PdfTests(unittest.TestCase):
             "dst_folder" : self.temp_folder
         }
         response = self.pdf_api.put_xps_in_storage_to_pdf(result_name, src_path, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
 
@@ -3061,7 +3003,7 @@ class PdfTests(unittest.TestCase):
             "dst_folder" : self.temp_folder
         }
         response = self.pdf_api.put_svg_in_storage_to_pdf(result_name, src_path, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
     def testGetPclInStorageToPdf(self):
@@ -3083,7 +3025,7 @@ class PdfTests(unittest.TestCase):
             "dst_folder" : self.temp_folder
         }
         response = self.pdf_api.put_pcl_in_storage_to_pdf(result_name, src_path, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
 
 
@@ -3106,7 +3048,7 @@ class PdfTests(unittest.TestCase):
             "dst_folder" : self.temp_folder
         }
         response = self.pdf_api.put_xml_in_storage_to_pdf(result_name, src_path, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     def testGetPsInStorageToPdf(self):
         file_name = 'Typography.PS'
@@ -3127,7 +3069,7 @@ class PdfTests(unittest.TestCase):
             "dst_folder" : self.temp_folder
         }
         response = self.pdf_api.put_ps_in_storage_to_pdf(result_name, src_path, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     def testPutImageInStorageToPdf(self):
         data_file_1 = "33539.jpg"
@@ -3152,7 +3094,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_image_in_storage_to_pdf(result_name, image_templates_request, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     
     # Document Tests
@@ -3247,9 +3189,8 @@ class PdfTests(unittest.TestCase):
 
         rect = asposepdfcloud.models.Rectangle(50, 200, 200, 400)
 
-        field = asposepdfcloud.models.Field()
+        field = asposepdfcloud.models.Field(values = ['1'])
         field.name = 'checkboxfield'
-        field.values = ['1']
         field.type = 'Boolean'
         field.rect = rect
 
@@ -3270,9 +3211,8 @@ class PdfTests(unittest.TestCase):
 
         field_name = 'textField'
 
-        field = asposepdfcloud.models.Field()
+        field = asposepdfcloud.models.Field(values = ['Text field updated value.'])
         field.name = field_name
-        field.values = ['Text field updated value.']
         field.type = asposepdfcloud.models.FieldType.TEXT
 
         opts = {
@@ -3290,13 +3230,11 @@ class PdfTests(unittest.TestCase):
 
         field_name = 'textField'
 
-        field = asposepdfcloud.models.Field()
+        field = asposepdfcloud.models.Field(values = ['Text field updated value.'])
         field.name = field_name
-        field.values = ['Text field updated value.']
         field.type = asposepdfcloud.models.FieldType.TEXT
 
-        fields = asposepdfcloud.models.Fields()
-        fields.list = [field]
+        fields = asposepdfcloud.models.Fields(list = [field])
 
         opts = {
               "fields" : fields,
@@ -3436,7 +3374,7 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.post_insert_image(file_name, page_number, llx, lly, urx, ury, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
     
     def testPutImagesExtractAsJpeg(self):
         name = "PdfWithImages2.pdf"
@@ -3690,13 +3628,13 @@ class PdfTests(unittest.TestCase):
 
         rect = asposepdfcloud.models.Rectangle(100, 100, 500, 500)
 
-        linkAnnotation = asposepdfcloud.models.LinkAnnotation()
-        linkAnnotation.action_type = asposepdfcloud.models.LinkActionType.GOTOURIACTION
-        linkAnnotation.action = "https://products.aspose.cloud/pdf"
-        linkAnnotation.rect = rect
+        linkAnnotation = asposepdfcloud.models.LinkAnnotation(action_type=asposepdfcloud.models.LinkActionType.GOTOURIACTION, 
+            action="https://products.aspose.cloud/pdf",
+            highlighting=asposepdfcloud.models.LinkHighlightingMode.NONE,
+            rect = rect)
 
         response = self.pdf_api.post_page_link_annotations(file_name, page_number, [linkAnnotation], **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
 
     def testPutLinkAnnotation(self):
         file_name = 'PdfWithLinks.pdf'
@@ -3713,13 +3651,13 @@ class PdfTests(unittest.TestCase):
 
         rect = asposepdfcloud.models.Rectangle(100, 100, 500, 500)
 
-        linkAnnotation = asposepdfcloud.models.LinkAnnotation()
-        linkAnnotation.action_type = asposepdfcloud.models.LinkActionType.GOTOURIACTION
-        linkAnnotation.action = "https://products.aspose.cloud/pdf"
-        linkAnnotation.rect = rect
+        linkAnnotation = asposepdfcloud.models.LinkAnnotation(action_type=asposepdfcloud.models.LinkActionType.GOTOURIACTION, 
+            action="https://products.aspose.cloud/pdf",
+            highlighting=asposepdfcloud.models.LinkHighlightingMode.NONE,
+            rect = rect)
 
         response = self.pdf_api.put_link_annotation(file_name, link_id, linkAnnotation, **opts)
-        self.assertEqual(response.code, 201)
+        self.assertEqual(response.code, 200)
     
     def testDeletePageLinkAnnotations(self):
         file_name = 'PdfWithLinks.pdf'
@@ -4096,20 +4034,18 @@ class PdfTests(unittest.TestCase):
         file_name = 'PdfWithAcroForm.pdf'
         self.uploadFile(file_name)
 
-        property_1 = asposepdfcloud.models.DocumentProperty()
-        property_1.name = 'prop1'
-        property_1.value = 'val1'
+        property_1_name = 'prop1'
+        property_1_value = 'val1'
 
         opts = {
               "folder" : self.temp_folder
         }
 
-        property_2 = asposepdfcloud.models.DocumentProperty()
-        property_2.name = 'prop2'
-        property_2.value = 'val2'
+        property_2_name = 'prop2'
+        property_2_value = 'val2'
 
-        self.pdf_api.put_set_property(file_name, property_1.name, property_1.value, **opts)
-        self.pdf_api.put_set_property(file_name, property_2.name, property_2.value, **opts)
+        self.pdf_api.put_set_property(file_name, property_1_name, property_1_value, **opts)
+        self.pdf_api.put_set_property(file_name, property_2_name, property_2_value, **opts)
 
         response = self.pdf_api.delete_properties(file_name, **opts)
         self.assertEqual(response.code, 200)
@@ -4119,17 +4055,16 @@ class PdfTests(unittest.TestCase):
         file_name = 'PdfWithAcroForm.pdf'
         self.uploadFile(file_name)
 
-        property_1 = asposepdfcloud.models.DocumentProperty()
-        property_1.name = 'prop1'
-        property_1.value = 'val1'
+        property_1_name = 'prop1'
+        property_1_value = 'val1'
 
         opts = {
               "folder" : self.temp_folder
         }
 
-        self.pdf_api.put_set_property(file_name, property_1.name, property_1.value, **opts)
+        self.pdf_api.put_set_property(file_name, property_1_name, property_1_value, **opts)
 
-        response = self.pdf_api.delete_property(file_name, property_1.name, **opts)
+        response = self.pdf_api.delete_property(file_name, property_1_name, **opts)
         self.assertEqual(response.code, 200)
 
 
@@ -4137,20 +4072,18 @@ class PdfTests(unittest.TestCase):
         file_name = 'PdfWithAcroForm.pdf'
         self.uploadFile(file_name)
 
-        property_1 = asposepdfcloud.models.DocumentProperty()
-        property_1.name = 'prop1'
-        property_1.value = 'val1'
+        property_1_name = 'prop1'
+        property_1_value = 'val1'
 
         opts = {
               "folder" : self.temp_folder
         }
 
-        property_2 = asposepdfcloud.models.DocumentProperty()
-        property_2.name = 'prop2'
-        property_2.value = 'val2'
+        property_2_name = 'prop2'
+        property_2_value = 'val2'
 
-        self.pdf_api.put_set_property(file_name, property_1.name, property_1.value, **opts)
-        self.pdf_api.put_set_property(file_name, property_2.name, property_2.value, **opts)
+        self.pdf_api.put_set_property(file_name, property_1_name, property_1_value, **opts)
+        self.pdf_api.put_set_property(file_name, property_2_name, property_2_value, **opts)
 
         response = self.pdf_api.get_document_properties(file_name, **opts)
         self.assertEqual(response.code, 200)
@@ -4160,17 +4093,16 @@ class PdfTests(unittest.TestCase):
         file_name = 'PdfWithAcroForm.pdf'
         self.uploadFile(file_name)
 
-        property_1 = asposepdfcloud.models.DocumentProperty()
-        property_1.name = 'prop1'
-        property_1.value = 'val1'
+        property_1_name = 'prop1'
+        property_1_value = 'val1'
 
         opts = {
               "folder" : self.temp_folder
         }
 
-        self.pdf_api.put_set_property(file_name, property_1.name, property_1.value, **opts)
+        self.pdf_api.put_set_property(file_name, property_1_name, property_1_value, **opts)
 
-        response = self.pdf_api.get_document_property(file_name, property_1.name, **opts)
+        response = self.pdf_api.get_document_property(file_name, property_1_name, **opts)
         self.assertEqual(response.code, 200)
 
 
@@ -4178,15 +4110,14 @@ class PdfTests(unittest.TestCase):
         file_name = 'PdfWithAcroForm.pdf'
         self.uploadFile(file_name)
 
-        property_1 = asposepdfcloud.models.DocumentProperty()
-        property_1.name = 'prop1'
-        property_1.value = 'val1'
+        property_1_name = 'prop1'
+        property_1_value = 'val1'
 
         opts = {
               "folder" : self.temp_folder
         }
 
-        response = self.pdf_api.put_set_property(file_name, property_1.name, property_1.value, **opts)
+        response = self.pdf_api.put_set_property(file_name, property_1_name, property_1_value, **opts)
         self.assertEqual(response.code, 200)
 
     
@@ -4215,7 +4146,7 @@ class PdfTests(unittest.TestCase):
                 show_properties=False)
 
         opts = {
-              "signature" : signature,
+              "sign" : signature,
               "folder" : self.temp_folder
         }
 
@@ -4248,7 +4179,7 @@ class PdfTests(unittest.TestCase):
                 show_properties=False)
 
         opts = {
-              "signature" : signature,
+              "sign" : signature,
               "folder" : self.temp_folder
         }
 
@@ -4278,7 +4209,7 @@ class PdfTests(unittest.TestCase):
                 show_properties=False)
 
         opts = {
-              "signature" : signature,
+              "sign" : signature,
               "folder" : self.temp_folder
         }
 
@@ -4524,30 +4455,28 @@ class PdfTests(unittest.TestCase):
 
 
     # Storage Tests
-    
-    def testPutCreate(self):
+    def testUploadFile(self):
         file_name = '4pages.pdf'
-        response = self.pdf_api.put_create(self.temp_folder + '/' + file_name, self.test_data_path + file_name)
-        self.assertEqual(response.code, 200)
+        response = self.pdf_api.upload_file(self.temp_folder + '/' + file_name, self.test_data_path + file_name)
+        self.assertEqual(len(response.uploaded), 1)
     
-    def testGetDownload(self):
+    def testDownloadFile(self):
         file_name = '4pages.pdf'
         self.uploadFile(file_name)
-        response = self.pdf_api.get_download(self.temp_folder + '/' + file_name)
+        response = self.pdf_api.download_file(self.temp_folder + '/' + file_name)
         self.assertIsInstance(response, str)
 
-    def testGetListFiles(self):
-        response = self.pdf_api.get_list_files(path=self.temp_folder)
-        self.assertEqual(response.code, 200)
+    def testGetFilesList(self):
+        response = self.pdf_api.get_files_list(path=self.temp_folder)
+        self.assertGreater(len(response.value), 0)
 
-    def testPostMoveFile(self):
+    def testMoveFile(self):
         file_name = '4pages.pdf'
         self.uploadFile(file_name)
         src = self.temp_folder + '/' + file_name
         dest = self.temp_folder + '/4pages_renamed.pdf'
 
-        response = self.pdf_api.post_move_file(src, dest)
-        self.assertEqual(response.code, 200)
+        response = self.pdf_api.move_file(src, dest)
 
     def testDeleteFile(self):
         file_name = '4pages.pdf'
@@ -4555,60 +4484,381 @@ class PdfTests(unittest.TestCase):
         path = self.temp_folder + '/' + file_name
         
         response = self.pdf_api.delete_file(path)
-        self.assertEqual(response.code, 200)
 
-    def testPutCreateFolder(self):
+    def testCreateFolder(self):
 
         path = self.temp_folder + '/testFolder'
         
-        response = self.pdf_api.put_create_folder(path)
-        self.assertEqual(response.code, 200)
+        response = self.pdf_api.create_folder(path)
 
-    def testPostMoveFolder(self):
+    def testMoveFolder(self):
 
         src = self.temp_folder + '/testFolder'
-        response_create_folder = self.pdf_api.put_create_folder(src)
-        self.assertEqual(response_create_folder.code, 200)
-
+        response_create_folder = self.pdf_api.create_folder(src)
         dest = self.temp_folder + '/testFolderRednamed'
-
-        response = self.pdf_api.post_move_folder(src, dest)
-        self.assertEqual(response.code, 200)
-
+        response = self.pdf_api.move_folder(src, dest)
+        
     def testDeleteFolder(self):
 
         path = self.temp_folder + '/testFolder'
-        response_create_folder = self.pdf_api.put_create_folder(path)
-        self.assertEqual(response_create_folder.code, 200)
-
+        response_create_folder = self.pdf_api.create_folder(path)
         response = self.pdf_api.delete_folder(path)
-        self.assertEqual(response.code, 200)
 
-    def testGetIsStorageExist(self):
+    def testStorageExists(self):
         name = 'PDF-CI'
         
-        response = self.pdf_api.get_is_storage_exist(name)
-        self.assertEqual(response.code, 200)
+        response = self.pdf_api.storage_exists(name)
+        self.assertEqual(response.exists, True)
 
-    def testGetIsExist(self):
+    def testObjectExists(self):
         file_name = '4pages.pdf'
         self.uploadFile(file_name)
         path = self.temp_folder + '/' + file_name
         
-        response = self.pdf_api.get_is_exist(path)
-        self.assertEqual(response.code, 200)
+        response = self.pdf_api.object_exists(path)
+        self.assertEqual(response.exists, True)
 
     def testGetDiscUsage(self):
         
         response = self.pdf_api.get_disc_usage()
-        self.assertEqual(response.code, 200)
+        self.assertGreater(response.total_size, 0)
 
-    def testGetListFileVersion(self):
+    def testGetFileVersions(self):
         file_name = '4pages.pdf'
         self.uploadFile(file_name)
         path = self.temp_folder + '/' + file_name
         
-        response = self.pdf_api.get_list_file_versions(path)
+        response = self.pdf_api.get_file_versions(path)
+        self.assertGreater(len(response.value), 0)
+
+    # Bookmark Tests
+    def testGetDocumentBookmarks(self):
+        file_name = 'PdfWithBookmarks.pdf'
+        self.uploadFile(file_name)
+        
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_document_bookmarks(file_name, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testGetBookmarks(self):
+        file_name = 'PdfWithBookmarks.pdf'
+        self.uploadFile(file_name)
+        
+        bookmark_path = '1/1'
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_bookmarks(file_name, bookmark_path, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testGetBookmark(self):
+        file_name = 'PdfWithBookmarks.pdf'
+        self.uploadFile(file_name)
+        
+        bookmark_path = '1/1'
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_bookmark(file_name, bookmark_path, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testDeleteDocumentBookmarks(self):
+        file_name = 'PdfWithBookmarks.pdf'
+        self.uploadFile(file_name)
+        
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.delete_document_bookmarks(file_name, **opts)
+        self.assertEqual(response.code, 200)
+    
+    def testDeleteBookmark(self):
+        file_name = 'PdfWithBookmarks.pdf'
+        self.uploadFile(file_name)
+        
+        bookmark_path = '1/1'
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.delete_bookmark(file_name, bookmark_path, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testPostBookmark(self):
+        file_name = 'PdfWithBookmarks.pdf'
+        self.uploadFile(file_name)
+        
+        bookmark_path = '2'
+
+        bookmark = asposepdfcloud.models.Bookmark()
+        bookmark .action = 'GoTo'
+        bookmark.bold = True
+        bookmark.italic = False
+        bookmark.title = 'New Bookmark XYZ'
+        bookmark.page_display = 'XYZ'
+        bookmark.page_display_bottom = 10
+        bookmark.page_display_left = 10
+        bookmark.page_display_right = 10
+        bookmark.page_display_top = 10
+        bookmark.page_display_zoom = 2
+        bookmark.page_number = 2
+        bookmark.color = asposepdfcloud.models.Color(a=0xFF, r=0, g=0xFF, b=0)
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.post_bookmark(file_name, bookmark_path, [bookmark], **opts)
+        self.assertEqual(response.code, 200)
+
+    def testPutBookmark(self):
+        file_name = 'PdfWithBookmarks.pdf'
+        self.uploadFile(file_name)
+        
+        bookmark_path = '2'
+
+        bookmark = asposepdfcloud.models.Bookmark()
+        bookmark .action = 'GoTo'
+        bookmark.bold = True
+        bookmark.italic = False
+        bookmark.title = 'New Bookmark XYZ'
+        bookmark.page_display = 'XYZ'
+        bookmark.page_display_bottom = 10
+        bookmark.page_display_left = 10
+        bookmark.page_display_right = 10
+        bookmark.page_display_top = 10
+        bookmark.page_display_zoom = 2
+        bookmark.page_number = 2
+        bookmark.color = asposepdfcloud.models.Color(a=0xFF, r=0, g=0xFF, b=0)
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_bookmark(file_name, bookmark_path, bookmark, **opts)
+        self.assertEqual(response.code, 200)
+
+    # Import Export Tests
+    def testGetExportFieldsFromPdfToXmlInStorage(self):
+        file_name = 'FormData.pdf'
+        self.uploadFile(file_name)
+        
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_export_fields_from_pdf_to_xml_in_storage(file_name, **opts)
+        self.assertIsInstance(response, str)
+
+    def testGetExportFieldsFromPdfToFdfInStorage(self):
+        file_name = 'FormData.pdf'
+        self.uploadFile(file_name)
+        
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_export_fields_from_pdf_to_fdf_in_storage(file_name, **opts)
+        self.assertIsInstance(response, str)
+
+    def testGetExportFieldsFromPdfToXfdfInStorage(self):
+        file_name = 'FormData.pdf'
+        self.uploadFile(file_name)
+        
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_export_fields_from_pdf_to_xfdf_in_storage(file_name, **opts)
+        self.assertIsInstance(response, str)
+
+    def testPutExportFieldsFromPdfToXmlInStorage(self):
+        file_name = 'FormData.pdf'
+        self.uploadFile(file_name)
+        
+        out_path = self.temp_folder + '/exportData.xml'
+
+        opts = {
+            
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_export_fields_from_pdf_to_xml_in_storage(file_name, out_path, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testPutExportFieldsFromPdfToFdfInStorage(self):
+        file_name = 'FormData.pdf'
+        self.uploadFile(file_name)
+        
+        out_path = self.temp_folder + '/exportData.fdf'
+
+        opts = {
+            
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_export_fields_from_pdf_to_fdf_in_storage(file_name, out_path, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testPutExportFieldsFromPdfToXfdfInStorage(self):
+        file_name = 'FormData.pdf'
+        self.uploadFile(file_name)
+        
+        out_path = self.temp_folder + '/exportData.xfdf'
+
+        opts = {
+            
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_export_fields_from_pdf_to_xfdf_in_storage(file_name, out_path, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testGetImportFieldsFromFdfInStorage(self):
+        file_name = 'FormData.pdf'
+        self.uploadFile(file_name)
+        
+        data_file = 'FormData.fdf'
+        self.uploadFile(data_file)
+
+        data_path = self.temp_folder + '/' + data_file
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_import_fields_from_fdf_in_storage(file_name, data_path, **opts)
+        self.assertIsInstance(response, str)
+
+    def testGetImportFieldsFromXfdfInStorage(self):
+        file_name = 'FormDataXfdf_in.pdf'
+        self.uploadFile(file_name)
+        
+        data_file = 'FormDataXfdf_in.xfdf'
+        self.uploadFile(data_file)
+
+        data_path = self.temp_folder + '/' + data_file
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_import_fields_from_xfdf_in_storage(file_name, data_path, **opts)
+        self.assertIsInstance(response, str)
+
+    def testGetImportFieldsFromXmlInStorage(self):
+        file_name = 'FormDataXfa_in.pdf'
+        self.uploadFile(file_name)
+        
+        data_file = 'FormDataXfa_in.xml'
+        self.uploadFile(data_file)
+
+        data_path = self.temp_folder + '/' + data_file
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_import_fields_from_xml_in_storage(file_name, data_path, **opts)
+        self.assertIsInstance(response, str)
+
+    def testPutImportFieldsFromFdfInStorage(self):
+        file_name = 'FormData.pdf'
+        self.uploadFile(file_name)
+        
+        data_file = 'FormData.fdf'
+        self.uploadFile(data_file)
+
+        data_path = self.temp_folder + '/' + data_file
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_import_fields_from_fdf_in_storage(file_name, data_path, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testPutImportFieldsFromXfdfInStorage(self):
+        file_name = 'FormDataXfdf_in.pdf'
+        self.uploadFile(file_name)
+        
+        data_file = 'FormDataXfdf_in.xfdf'
+        self.uploadFile(data_file)
+
+        data_path = self.temp_folder + '/' + data_file
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_import_fields_from_xfdf_in_storage(file_name, data_path, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testPutImportFieldsFromXmlInStorage(self):
+        file_name = 'FormDataXfa_in.pdf'
+        self.uploadFile(file_name)
+        
+        data_file = 'FormDataXfa_in.xml'
+        self.uploadFile(data_file)
+
+        data_path = self.temp_folder + '/' + data_file
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_import_fields_from_xml_in_storage(file_name, data_path, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testPostImportFieldsFromFdf(self):
+        file_name = 'FormData.pdf'
+        self.uploadFile(file_name)
+        
+        data_file = 'FormData.fdf'
+
+        opts = {
+            "fdf_data": self.test_data_path + data_file,
+            "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.post_import_fields_from_fdf(file_name, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testPostImportFieldsFromXfdf(self):
+        file_name = 'FormDataXfdf_in.pdf'
+        self.uploadFile(file_name)
+        
+        data_file = 'FormDataXfdf_in.xfdf'
+
+        opts = {
+            "xfdf_data": self.test_data_path + data_file, 
+            "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.post_import_fields_from_xfdf(file_name, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testPosttImportFieldsFromXml(self):
+        file_name = 'FormDataXfa_in.pdf'
+        self.uploadFile(file_name)
+        
+        data_file = 'FormDataXfa_in.xml'
+
+        opts = {
+            "xml_data": self.test_data_path + data_file, 
+            "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.post_import_fields_from_xml(file_name, **opts)
         self.assertEqual(response.code, 200)
 
 if __name__ == '__main__':
