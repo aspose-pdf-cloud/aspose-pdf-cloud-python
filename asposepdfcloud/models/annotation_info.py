@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -112,8 +112,7 @@ class AnnotationInfo(object):
           self.flags = flags
         if name is not None:
           self.name = name
-        if rect is not None:
-          self.rect = rect
+        self.rect = rect
         if page_index is not None:
           self.page_index = page_index
         if z_index is not None:
@@ -122,8 +121,7 @@ class AnnotationInfo(object):
           self.horizontal_alignment = horizontal_alignment
         if vertical_alignment is not None:
           self.vertical_alignment = vertical_alignment
-        if annotation_type is not None:
-          self.annotation_type = annotation_type
+        self.annotation_type = annotation_type
 
     @property
     def links(self):
@@ -306,6 +304,8 @@ class AnnotationInfo(object):
         :param rect: The rect of this AnnotationInfo.
         :type: Rectangle
         """
+        if rect is None:
+            raise ValueError("Invalid value for `rect`, must not be `None`")
 
         self._rect = rect
 
@@ -421,6 +421,8 @@ class AnnotationInfo(object):
         :param annotation_type: The annotation_type of this AnnotationInfo.
         :type: AnnotationType
         """
+        if annotation_type is None:
+            raise ValueError("Invalid value for `annotation_type`, must not be `None`")
 
         self._annotation_type = annotation_type
 

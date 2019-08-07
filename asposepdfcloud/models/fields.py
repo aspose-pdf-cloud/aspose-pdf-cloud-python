@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -67,8 +67,7 @@ class Fields(object):
 
         if links is not None:
           self.links = links
-        if list is not None:
-          self.list = list
+        self.list = list
 
     @property
     def links(self):
@@ -113,6 +112,8 @@ class Fields(object):
         :param list: The list of this Fields.
         :type: list[Field]
         """
+        if list is None:
+            raise ValueError("Invalid value for `list`, must not be `None`")
 
         self._list = list
 

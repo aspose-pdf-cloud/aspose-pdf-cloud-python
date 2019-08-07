@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -142,7 +142,7 @@ class GraphInfo(object):
     def color(self):
         """
         Gets the color of this GraphInfo.
-        Gets or sets a  object that indicates the color of the graph.
+        Gets or sets a Color object that indicates the color of the graph.
 
         :return: The color of this GraphInfo.
         :rtype: Color
@@ -153,7 +153,7 @@ class GraphInfo(object):
     def color(self, color):
         """
         Sets the color of this GraphInfo.
-        Gets or sets a  object that indicates the color of the graph.
+        Gets or sets a Color object that indicates the color of the graph.
 
         :param color: The color of this GraphInfo.
         :type: Color
@@ -211,7 +211,7 @@ class GraphInfo(object):
     def fill_color(self):
         """
         Gets the fill_color of this GraphInfo.
-        Gets or sets a  object that indicates the fill color of the graph.
+        Gets or sets a Color object that indicates the fill color of the graph.
 
         :return: The fill_color of this GraphInfo.
         :rtype: Color
@@ -222,7 +222,7 @@ class GraphInfo(object):
     def fill_color(self, fill_color):
         """
         Sets the fill_color of this GraphInfo.
-        Gets or sets a  object that indicates the fill color of the graph.
+        Gets or sets a Color object that indicates the fill color of the graph.
 
         :param fill_color: The fill_color of this GraphInfo.
         :type: Color

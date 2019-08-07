@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -77,8 +77,7 @@ class DocumentProperty(object):
           self.name = name
         if value is not None:
           self.value = value
-        if built_in is not None:
-          self.built_in = built_in
+        self.built_in = built_in
 
     @property
     def links(self):
@@ -169,6 +168,8 @@ class DocumentProperty(object):
         :param built_in: The built_in of this DocumentProperty.
         :type: bool
         """
+        if built_in is None:
+            raise ValueError("Invalid value for `built_in`, must not be `None`")
 
         self._built_in = built_in
 

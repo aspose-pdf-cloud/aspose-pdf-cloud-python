@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -136,8 +136,7 @@ class PolyAnnotation(object):
           self.flags = flags
         if name is not None:
           self.name = name
-        if rect is not None:
-          self.rect = rect
+        self.rect = rect
         if page_index is not None:
           self.page_index = page_index
         if z_index is not None:
@@ -162,8 +161,7 @@ class PolyAnnotation(object):
           self.ending_style = ending_style
         if intent is not None:
           self.intent = intent
-        if vertices is not None:
-          self.vertices = vertices
+        self.vertices = vertices
 
     @property
     def links(self):
@@ -346,6 +344,8 @@ class PolyAnnotation(object):
         :param rect: The rect of this PolyAnnotation.
         :type: Rectangle
         """
+        if rect is None:
+            raise ValueError("Invalid value for `rect`, must not be `None`")
 
         self._rect = rect
 
@@ -645,6 +645,8 @@ class PolyAnnotation(object):
         :param vertices: The vertices of this PolyAnnotation.
         :type: list[Point]
         """
+        if vertices is None:
+            raise ValueError("Invalid value for `vertices`, must not be `None`")
 
         self._vertices = vertices
 

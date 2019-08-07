@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -126,7 +126,7 @@ class WordCountResponse(object):
     def words_per_page(self):
         """
         Gets the words_per_page of this WordCountResponse.
-        with words per page info.            
+        WordCount with words per page info.
 
         :return: The words_per_page of this WordCountResponse.
         :rtype: WordCount
@@ -137,7 +137,7 @@ class WordCountResponse(object):
     def words_per_page(self, words_per_page):
         """
         Sets the words_per_page of this WordCountResponse.
-        with words per page info.            
+        WordCount with words per page info.
 
         :param words_per_page: The words_per_page of this WordCountResponse.
         :type: WordCount

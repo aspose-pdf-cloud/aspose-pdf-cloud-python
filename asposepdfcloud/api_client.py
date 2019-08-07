@@ -22,7 +22,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -192,7 +192,7 @@ class ApiClient(object):
                                          _request_timeout=_request_timeout)
         except ApiException as error:
             if error.status == 401:
-                self.__refresh_token()
+                self.__request_token()
                 self.__add_o_auth_token(header_params)
                 response_data = self.request(method, url,
                                          query_params=query_params,
@@ -240,10 +240,10 @@ class ApiClient(object):
                     }
 
         # resource path
-        resource_path = "/oauth2/token"
+        resource_path = "/connect/token"
 
         # request url
-        url = self.host.replace("/v2.0", "") + resource_path
+        url = self.host.replace("/v3.0", "") + resource_path
 
         # perform request and return response
         response_data = self.request(method, url,
@@ -252,36 +252,7 @@ class ApiClient(object):
 
         data = json.loads(str(response_data.data))
         config.access_token = data['access_token']
-        config.refresh_token = data['refresh_token']
 
-    def __refresh_token(self):
-        config = Configuration()
-
-        # header parameters
-        header_params =  {"Content-Type" : "application/x-www-form-urlencoded"}
-
-        method = 'POST'
-
-        # post params
-        post_params = {
-                    "grant_type" : "refresh_token",
-                    "refresh_token" : config.refresh_token
-                    }
-
-        # resource path
-        resource_path = "/oauth2/token"
-
-        # request url
-        url = self.host.replace("/v2.0", "") + resource_path
-
-        # perform request and return response
-        response_data = self.request(method, url,
-                                     headers=header_params,
-                                     post_params=post_params)
-
-        data = json.loads(str(response_data.data))
-        config.access_token = data['access_token']
-        config.refresh_token = data['refresh_token']
 
     def __add_o_auth_token(self, header_params):
         config = Configuration()

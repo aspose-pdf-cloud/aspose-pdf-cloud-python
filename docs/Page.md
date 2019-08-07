@@ -5,7 +5,7 @@ Provides link to page.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **links** | [**list[Link]**](Link.md) | Link to the document. | [optional] 
-**id** | **int** | Page&#39;s id. | [optional] 
+**id** | **int** | Page&#39;s id. | 
 **images** | [**Images**](Images.md) | Page&#39;s images | [optional] 
 **rectangle** | [**Rectangle**](Rectangle.md) | Page&#39;s rectangle | [optional] 
 

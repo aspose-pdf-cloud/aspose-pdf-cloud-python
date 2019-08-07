@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -82,16 +82,12 @@ class LinkAnnotation(object):
 
         if links is not None:
           self.links = links
-        if action_type is not None:
-          self.action_type = action_type
-        if action is not None:
-          self.action = action
-        if highlighting is not None:
-          self.highlighting = highlighting
+        self.action_type = action_type
+        self.action = action
+        self.highlighting = highlighting
         if color is not None:
           self.color = color
-        if rect is not None:
-          self.rect = rect
+        self.rect = rect
         if id is not None:
           self.id = id
 
@@ -136,6 +132,8 @@ class LinkAnnotation(object):
         :param action_type: The action_type of this LinkAnnotation.
         :type: LinkActionType
         """
+        if action_type is None:
+            raise ValueError("Invalid value for `action_type`, must not be `None`")
 
         self._action_type = action_type
 
@@ -157,6 +155,10 @@ class LinkAnnotation(object):
         :param action: The action of this LinkAnnotation.
         :type: str
         """
+        if action is None:
+            raise ValueError("Invalid value for `action`, must not be `None`")
+        if action is not None and len(action) < 1:
+            raise ValueError("Invalid value for `action`, length must be greater than or equal to `1`")
 
         self._action = action
 
@@ -178,6 +180,8 @@ class LinkAnnotation(object):
         :param highlighting: The highlighting of this LinkAnnotation.
         :type: LinkHighlightingMode
         """
+        if highlighting is None:
+            raise ValueError("Invalid value for `highlighting`, must not be `None`")
 
         self._highlighting = highlighting
 
@@ -220,6 +224,8 @@ class LinkAnnotation(object):
         :param rect: The rect of this LinkAnnotation.
         :type: Rectangle
         """
+        if rect is None:
+            raise ValueError("Invalid value for `rect`, must not be `None`")
 
         self._rect = rect
 

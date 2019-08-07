@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -95,8 +95,7 @@ class Attachment(object):
           self.creation_date = creation_date
         if modification_date is not None:
           self.modification_date = modification_date
-        if size is not None:
-          self.size = size
+        self.size = size
         if check_sum is not None:
           self.check_sum = check_sum
 
@@ -258,6 +257,8 @@ class Attachment(object):
         :param size: The size of this Attachment.
         :type: int
         """
+        if size is None:
+            raise ValueError("Invalid value for `size`, must not be `None`")
 
         self._size = size
 

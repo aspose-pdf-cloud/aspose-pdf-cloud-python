@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -241,7 +241,7 @@ class TextStamp(object):
     def rotate(self):
         """
         Gets the rotate of this TextStamp.
-        Sets or gets the rotation of stamp content according  values. Note. This property is for set angles which are multiples of 90 degrees (0, 90, 180, 270 degrees). To set arbitrary angle use RotateAngle property.  If angle set by ArbitraryAngle is not multiple of 90 then Rotate property returns Rotation.None.
+        Sets or gets the rotation of stamp content according Rotation values. Note. This property is for set angles which are multiples of 90 degrees (0, 90, 180, 270 degrees). To set arbitrary angle use RotateAngle property.  If angle set by ArbitraryAngle is not multiple of 90 then Rotate property returns Rotation.None.
 
         :return: The rotate of this TextStamp.
         :rtype: Rotation
@@ -252,7 +252,7 @@ class TextStamp(object):
     def rotate(self, rotate):
         """
         Sets the rotate of this TextStamp.
-        Sets or gets the rotation of stamp content according  values. Note. This property is for set angles which are multiples of 90 degrees (0, 90, 180, 270 degrees). To set arbitrary angle use RotateAngle property.  If angle set by ArbitraryAngle is not multiple of 90 then Rotate property returns Rotation.None.
+        Sets or gets the rotation of stamp content according Rotation values. Note. This property is for set angles which are multiples of 90 degrees (0, 90, 180, 270 degrees). To set arbitrary angle use RotateAngle property.  If angle set by ArbitraryAngle is not multiple of 90 then Rotate property returns Rotation.None.
 
         :param rotate: The rotate of this TextStamp.
         :type: Rotation
@@ -402,7 +402,7 @@ class TextStamp(object):
     def text_state(self):
         """
         Gets the text_state of this TextStamp.
-        Gets text properties of the stamp. See  for details.
+        Gets text properties of the stamp. See TextState for details.
 
         :return: The text_state of this TextStamp.
         :rtype: TextState
@@ -413,7 +413,7 @@ class TextStamp(object):
     def text_state(self, text_state):
         """
         Sets the text_state of this TextStamp.
-        Gets text properties of the stamp. See  for details.
+        Gets text properties of the stamp. See TextState for details.
 
         :param text_state: The text_state of this TextStamp.
         :type: TextState

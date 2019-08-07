@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -219,7 +219,7 @@ class TextRect(object):
     def position(self):
         """
         Gets the position of this TextRect.
-        Gets or sets text position for text, represented with  object.
+        Gets or sets text position for text, represented with TextRect object.
 
         :return: The position of this TextRect.
         :rtype: Position
@@ -230,7 +230,7 @@ class TextRect(object):
     def position(self, position):
         """
         Sets the position of this TextRect.
-        Gets or sets text position for text, represented with  object.
+        Gets or sets text position for text, represented with TextRect object.
 
         :param position: The position of this TextRect.
         :type: Position
@@ -242,7 +242,7 @@ class TextRect(object):
     def baseline_position(self):
         """
         Gets the baseline_position of this TextRect.
-        Gets text position for text, represented with  object. The YIndent of the Position structure represents baseline coordinate of the text fragment.
+        Gets text position for text, represented with TextRect object. The YIndent of the Position structure represents baseline coordinate of the text fragment.
 
         :return: The baseline_position of this TextRect.
         :rtype: Position
@@ -253,7 +253,7 @@ class TextRect(object):
     def baseline_position(self, baseline_position):
         """
         Sets the baseline_position of this TextRect.
-        Gets text position for text, represented with  object. The YIndent of the Position structure represents baseline coordinate of the text fragment.
+        Gets text position for text, represented with TextRect object. The YIndent of the Position structure represents baseline coordinate of the text fragment.
 
         :param baseline_position: The baseline_position of this TextRect.
         :type: Position
@@ -265,7 +265,7 @@ class TextRect(object):
     def text_state(self):
         """
         Gets the text_state of this TextRect.
-        Gets or sets text state for the text that  object represents.
+        Gets or sets text state for the text that TextRect object represents.
 
         :return: The text_state of this TextRect.
         :rtype: TextState
@@ -276,7 +276,7 @@ class TextRect(object):
     def text_state(self, text_state):
         """
         Sets the text_state of this TextRect.
-        Gets or sets text state for the text that  object represents.
+        Gets or sets text state for the text that TextRect object represents.
 
         :param text_state: The text_state of this TextRect.
         :type: TextState

@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -231,7 +231,7 @@ class TextFooter(object):
     def rotate(self):
         """
         Gets the rotate of this TextFooter.
-        Sets or gets the rotation of stamp content according  values. Note. This property is for set angles which are multiples of 90 degrees (0, 90, 180, 270 degrees). To set arbitrary angle use RotateAngle property.  If angle set by ArbitraryAngle is not multiple of 90 then Rotate property returns Rotation.None.
+        Sets or gets the rotation of stamp content according Rotation values. Note. This property is for set angles which are multiples of 90 degrees (0, 90, 180, 270 degrees). To set arbitrary angle use RotateAngle property.  If angle set by ArbitraryAngle is not multiple of 90 then Rotate property returns Rotation.None.
 
         :return: The rotate of this TextFooter.
         :rtype: Rotation
@@ -242,7 +242,7 @@ class TextFooter(object):
     def rotate(self, rotate):
         """
         Sets the rotate of this TextFooter.
-        Sets or gets the rotation of stamp content according  values. Note. This property is for set angles which are multiples of 90 degrees (0, 90, 180, 270 degrees). To set arbitrary angle use RotateAngle property.  If angle set by ArbitraryAngle is not multiple of 90 then Rotate property returns Rotation.None.
+        Sets or gets the rotation of stamp content according Rotation values. Note. This property is for set angles which are multiples of 90 degrees (0, 90, 180, 270 degrees). To set arbitrary angle use RotateAngle property.  If angle set by ArbitraryAngle is not multiple of 90 then Rotate property returns Rotation.None.
 
         :param rotate: The rotate of this TextFooter.
         :type: Rotation
@@ -392,7 +392,7 @@ class TextFooter(object):
     def text_state(self):
         """
         Gets the text_state of this TextFooter.
-        Gets text properties of the stamp. See  for details.
+        Gets text properties of the stamp. See TextState for details.
 
         :return: The text_state of this TextFooter.
         :rtype: TextState
@@ -403,7 +403,7 @@ class TextFooter(object):
     def text_state(self, text_state):
         """
         Sets the text_state of this TextFooter.
-        Gets text properties of the stamp. See  for details.
+        Gets text properties of the stamp. See TextState for details.
 
         :param text_state: The text_state of this TextFooter.
         :type: TextState

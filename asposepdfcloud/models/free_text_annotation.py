@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -133,8 +133,7 @@ class FreeTextAnnotation(object):
           self.flags = flags
         if name is not None:
           self.name = name
-        if rect is not None:
-          self.rect = rect
+        self.rect = rect
         if page_index is not None:
           self.page_index = page_index
         if z_index is not None:
@@ -157,8 +156,7 @@ class FreeTextAnnotation(object):
           self.intent = intent
         if rotate is not None:
           self.rotate = rotate
-        if text_style is not None:
-          self.text_style = text_style
+        self.text_style = text_style
 
     @property
     def links(self):
@@ -341,6 +339,8 @@ class FreeTextAnnotation(object):
         :param rect: The rect of this FreeTextAnnotation.
         :type: Rectangle
         """
+        if rect is None:
+            raise ValueError("Invalid value for `rect`, must not be `None`")
 
         self._rect = rect
 
@@ -617,6 +617,8 @@ class FreeTextAnnotation(object):
         :param text_style: The text_style of this FreeTextAnnotation.
         :type: TextStyle
         """
+        if text_style is None:
+            raise ValueError("Invalid value for `text_style`, must not be `None`")
 
         self._text_style = text_style
 

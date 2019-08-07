@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -104,6 +104,8 @@ class TextReplace(object):
         """
         if old_value is None:
             raise ValueError("Invalid value for `old_value`, must not be `None`")
+        if old_value is not None and len(old_value) < 1:
+            raise ValueError("Invalid value for `old_value`, length must be greater than or equal to `1`")
 
         self._old_value = old_value
 
@@ -129,6 +131,8 @@ class TextReplace(object):
         """
         if new_value is None:
             raise ValueError("Invalid value for `new_value`, must not be `None`")
+        if new_value is not None and len(new_value) < 1:
+            raise ValueError("Invalid value for `new_value`, length must be greater than or equal to `1`")
 
         self._new_value = new_value
 

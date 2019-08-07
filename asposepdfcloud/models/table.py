@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -146,8 +146,7 @@ class Table(object):
           self.default_cell_padding = default_cell_padding
         if border is not None:
           self.border = border
-        if rows is not None:
-          self.rows = rows
+        self.rows = rows
         if default_column_width is not None:
           self.default_column_width = default_column_width
         if default_cell_border is not None:
@@ -402,6 +401,8 @@ class Table(object):
         :param rows: The rows of this Table.
         :type: list[Row]
         """
+        if rows is None:
+            raise ValueError("Invalid value for `rows`, must not be `None`")
 
         self._rows = rows
 

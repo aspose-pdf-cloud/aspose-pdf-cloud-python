@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -97,8 +97,7 @@ class StampInfo(object):
           self.text = text
         if visible is not None:
           self.visible = visible
-        if stamp_type is not None:
-          self.stamp_type = stamp_type
+        self.stamp_type = stamp_type
 
     @property
     def links(self):
@@ -281,6 +280,8 @@ class StampInfo(object):
         :param stamp_type: The stamp_type of this StampInfo.
         :type: StampType
         """
+        if stamp_type is None:
+            raise ValueError("Invalid value for `stamp_type`, must not be `None`")
 
         self._stamp_type = stamp_type
 

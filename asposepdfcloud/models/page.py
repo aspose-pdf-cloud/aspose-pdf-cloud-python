@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -73,8 +73,7 @@ class Page(object):
 
         if links is not None:
           self.links = links
-        if id is not None:
-          self.id = id
+        self.id = id
         if images is not None:
           self.images = images
         if rectangle is not None:
@@ -123,6 +122,8 @@ class Page(object):
         :param id: The id of this Page.
         :type: int
         """
+        if id is None:
+            raise ValueError("Invalid value for `id`, must not be `None`")
 
         self._id = id
 

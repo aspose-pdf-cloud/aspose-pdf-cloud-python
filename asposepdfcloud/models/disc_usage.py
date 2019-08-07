@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -72,6 +72,7 @@ class DiscUsage(object):
     def used_size(self):
         """
         Gets the used_size of this DiscUsage.
+        Application used disc space.
 
         :return: The used_size of this DiscUsage.
         :rtype: int
@@ -82,6 +83,7 @@ class DiscUsage(object):
     def used_size(self, used_size):
         """
         Sets the used_size of this DiscUsage.
+        Application used disc space.
 
         :param used_size: The used_size of this DiscUsage.
         :type: int
@@ -95,6 +97,7 @@ class DiscUsage(object):
     def total_size(self):
         """
         Gets the total_size of this DiscUsage.
+        Total disc space.
 
         :return: The total_size of this DiscUsage.
         :rtype: int
@@ -105,6 +108,7 @@ class DiscUsage(object):
     def total_size(self, total_size):
         """
         Sets the total_size of this DiscUsage.
+        Total disc space.
 
         :param total_size: The total_size of this DiscUsage.
         :type: int

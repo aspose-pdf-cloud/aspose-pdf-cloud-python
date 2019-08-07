@@ -23,7 +23,7 @@
 
 
 
-    OpenAPI spec version: 2.0
+    OpenAPI spec version: 3.0
     
 """
 
@@ -125,6 +125,8 @@ class ImageTemplate(object):
         """
         if image_path is None:
             raise ValueError("Invalid value for `image_path`, must not be `None`")
+        if image_path is not None and len(image_path) < 1:
+            raise ValueError("Invalid value for `image_path`, length must be greater than or equal to `1`")
 
         self._image_path = image_path
 
