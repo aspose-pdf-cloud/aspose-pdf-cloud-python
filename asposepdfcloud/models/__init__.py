@@ -50,6 +50,7 @@ from .compression_type import CompressionType
 from .crypto_algorithm import CryptoAlgorithm
 from .disc_usage import DiscUsage
 from .doc_format import DocFormat
+from .doc_mdp_access_permission_type import DocMDPAccessPermissionType
 from .doc_recognition_mode import DocRecognitionMode
 from .document_privilege import DocumentPrivilege
 from .epub_recognition_mode import EpubRecognitionMode
@@ -100,6 +101,7 @@ from .row_recognized import RowRecognized
 from .segment import Segment
 from .shape_type import ShapeType
 from .signature import Signature
+from .signature_custom_appearance import SignatureCustomAppearance
 from .signature_type import SignatureType
 from .sound_encoding import SoundEncoding
 from .sound_icon import SoundIcon
@@ -119,6 +121,7 @@ from .text_replace import TextReplace
 from .text_replace_list_request import TextReplaceListRequest
 from .text_state import TextState
 from .text_style import TextStyle
+from .timestamp_settings import TimestampSettings
 from .vertical_alignment import VerticalAlignment
 from .word_count import WordCount
 from .wrap_mode import WrapMode
@@ -155,6 +158,7 @@ from .file_attachment_annotation_response import FileAttachmentAnnotationRespons
 from .file_attachment_annotations import FileAttachmentAnnotations
 from .file_attachment_annotations_response import FileAttachmentAnnotationsResponse
 from .file_version import FileVersion
+from .form_field import FormField
 from .free_text_annotation_response import FreeTextAnnotationResponse
 from .free_text_annotations import FreeTextAnnotations
 from .free_text_annotations_response import FreeTextAnnotationsResponse
@@ -195,6 +199,9 @@ from .redaction_annotations_response import RedactionAnnotationsResponse
 from .screen_annotation_response import ScreenAnnotationResponse
 from .screen_annotations import ScreenAnnotations
 from .screen_annotations_response import ScreenAnnotationsResponse
+from .signature_field_response import SignatureFieldResponse
+from .signature_fields import SignatureFields
+from .signature_fields_response import SignatureFieldsResponse
 from .signature_verify_response import SignatureVerifyResponse
 from .sound_annotation_response import SoundAnnotationResponse
 from .sound_annotations import SoundAnnotations
@@ -242,6 +249,7 @@ from .pdf_page_stamp import PdfPageStamp
 from .popup_annotation import PopupAnnotation
 from .redaction_annotation import RedactionAnnotation
 from .screen_annotation import ScreenAnnotation
+from .signature_field import SignatureField
 from .text_footer import TextFooter
 from .text_header import TextHeader
 from .text_stamp import TextStamp
