@@ -60,7 +60,10 @@ class Signature(object):
         'form_field_name': 'str',
         'authority': 'str',
         'date': 'str',
-        'show_properties': 'bool'
+        'show_properties': 'bool',
+        'timestamp_settings': 'TimestampSettings',
+        'is_valid': 'bool',
+        'custom_appearance': 'SignatureCustomAppearance'
     }
 
     attribute_map = {
@@ -76,10 +79,13 @@ class Signature(object):
         'form_field_name': 'FormFieldName',
         'authority': 'Authority',
         'date': 'Date',
-        'show_properties': 'ShowProperties'
+        'show_properties': 'ShowProperties',
+        'timestamp_settings': 'TimestampSettings',
+        'is_valid': 'IsValid',
+        'custom_appearance': 'CustomAppearance'
     }
 
-    def __init__(self, signature_path=None, signature_type=None, password=None, appearance=None, reason=None, contact=None, location=None, visible=None, rectangle=None, form_field_name=None, authority=None, date=None, show_properties=None):
+    def __init__(self, signature_path=None, signature_type=None, password=None, appearance=None, reason=None, contact=None, location=None, visible=None, rectangle=None, form_field_name=None, authority=None, date=None, show_properties=None, timestamp_settings=None, is_valid=None, custom_appearance=None):
         """
         Signature - a model defined in Swagger
         """
@@ -97,6 +103,9 @@ class Signature(object):
         self._authority = None
         self._date = None
         self._show_properties = None
+        self._timestamp_settings = None
+        self._is_valid = None
+        self._custom_appearance = None
 
         self.signature_path = signature_path
         self.signature_type = signature_type
@@ -120,6 +129,12 @@ class Signature(object):
         if date is not None:
           self.date = date
         self.show_properties = show_properties
+        if timestamp_settings is not None:
+          self.timestamp_settings = timestamp_settings
+        if is_valid is not None:
+          self.is_valid = is_valid
+        if custom_appearance is not None:
+          self.custom_appearance = custom_appearance
 
     @property
     def signature_path(self):
@@ -141,10 +156,6 @@ class Signature(object):
         :param signature_path: The signature_path of this Signature.
         :type: str
         """
-        if signature_path is None:
-            raise ValueError("Invalid value for `signature_path`, must not be `None`")
-        if signature_path is not None and len(signature_path) < 1:
-            raise ValueError("Invalid value for `signature_path`, length must be greater than or equal to `1`")
 
         self._signature_path = signature_path
 
@@ -429,6 +440,75 @@ class Signature(object):
             raise ValueError("Invalid value for `show_properties`, must not be `None`")
 
         self._show_properties = show_properties
+
+    @property
+    def timestamp_settings(self):
+        """
+        Gets the timestamp_settings of this Signature.
+        Gets/sets timestamp settings.
+
+        :return: The timestamp_settings of this Signature.
+        :rtype: TimestampSettings
+        """
+        return self._timestamp_settings
+
+    @timestamp_settings.setter
+    def timestamp_settings(self, timestamp_settings):
+        """
+        Sets the timestamp_settings of this Signature.
+        Gets/sets timestamp settings.
+
+        :param timestamp_settings: The timestamp_settings of this Signature.
+        :type: TimestampSettings
+        """
+
+        self._timestamp_settings = timestamp_settings
+
+    @property
+    def is_valid(self):
+        """
+        Gets the is_valid of this Signature.
+        Verify the document regarding this signature and return true if document is valid or otherwise false.
+
+        :return: The is_valid of this Signature.
+        :rtype: bool
+        """
+        return self._is_valid
+
+    @is_valid.setter
+    def is_valid(self, is_valid):
+        """
+        Sets the is_valid of this Signature.
+        Verify the document regarding this signature and return true if document is valid or otherwise false.
+
+        :param is_valid: The is_valid of this Signature.
+        :type: bool
+        """
+
+        self._is_valid = is_valid
+
+    @property
+    def custom_appearance(self):
+        """
+        Gets the custom_appearance of this Signature.
+        Gets/sets the custom appearance.
+
+        :return: The custom_appearance of this Signature.
+        :rtype: SignatureCustomAppearance
+        """
+        return self._custom_appearance
+
+    @custom_appearance.setter
+    def custom_appearance(self, custom_appearance):
+        """
+        Sets the custom_appearance of this Signature.
+        Gets/sets the custom appearance.
+
+        :param custom_appearance: The custom_appearance of this Signature.
+        :type: SignatureCustomAppearance
+        """
+
+        self._custom_appearance = custom_appearance
 
     def to_dict(self):
         """

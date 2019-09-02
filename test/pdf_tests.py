@@ -3096,7 +3096,27 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.put_image_in_storage_to_pdf(result_name, image_templates_request, **opts)
         self.assertEqual(response.code, 200)
 
-    
+    def testGetMarkdownInStorageToPdf(self):
+        file_name = 'mixed.md'
+        self.uploadFile(file_name)
+
+        src_path = self.temp_folder + '/' + file_name
+        response = self.pdf_api.get_markdown_in_storage_to_pdf(src_path)
+        self.assertIsInstance(response, str)
+
+
+    def testPutMarkdownInStorageToPdf(self):
+        file_name = 'mixed.md'
+        self.uploadFile(file_name)
+        result_name = 'fromMd.pdf'
+
+        src_path = self.temp_folder + '/' + file_name
+        opts = {
+            "dst_folder" : self.temp_folder
+        }
+        response = self.pdf_api.put_markdown_in_storage_to_pdf(result_name, src_path, **opts)
+        self.assertEqual(response.code, 200)
+
     # Document Tests
 
     def testGetDocument(self):
@@ -3279,6 +3299,39 @@ class PdfTests(unittest.TestCase):
         }
 
         response = self.pdf_api.put_fields_flatten(file_name,  **opts)
+        self.assertEqual(response.code, 200)
+
+    def testGetDocumentSignatureFields(self):
+        file_name = 'adbe.x509.rsa_sha1.valid.pdf'
+        self.uploadFile(file_name)
+        
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_document_signature_fields(file_name, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testGetPageSignatureFields(self):
+        file_name = 'adbe.x509.rsa_sha1.valid.pdf'
+        self.uploadFile(file_name)
+        page_number = 1
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_page_signature_fields(file_name, page_number, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testGetSignatureField(self):
+        file_name = 'adbe.x509.rsa_sha1.valid.pdf'
+        self.uploadFile(file_name)
+        field_name = 'Signature1'
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_signature_field(file_name, field_name, **opts)
         self.assertEqual(response.code, 200)
 
     # Images Tests
@@ -4223,6 +4276,36 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.get_verify_signature(file_name, signature.form_field_name, **opts)
         self.assertEqual(response.code, 200)
 
+    def testPostPageCertify(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+
+        signature_file_name = '33226.p12'
+        self.uploadFile(signature_file_name)
+
+        page_number = 1
+        permission_type = asposepdfcloud.models.DocMDPAccessPermissionType.NOCHANGES
+        rectangle = asposepdfcloud.models.Rectangle(100, 100, 500, 500)
+
+        signature = asposepdfcloud.models.Signature(
+                signature_path=self.temp_folder + '/' + signature_file_name,
+                signature_type=asposepdfcloud.models.SignatureType.PKCS7,
+                password='sIikZSmz',
+                contact='testself.mail.ru',
+                location='Ukraine',
+                visible=True,
+                rectangle=rectangle,
+                form_field_name='Signature1',
+                authority='Sergey Smal',
+                date='08/01/2012 12:15:00.000 PM',
+                show_properties=False)
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.post_page_certify(file_name, page_number, signature, permission_type, **opts)
+        self.assertEqual(response.code, 200)
 
     # Encrypt Decrypt Tests
 

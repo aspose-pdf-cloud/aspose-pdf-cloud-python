@@ -50,6 +50,7 @@ from .models.compression_type import CompressionType
 from .models.crypto_algorithm import CryptoAlgorithm
 from .models.disc_usage import DiscUsage
 from .models.doc_format import DocFormat
+from .models.doc_mdp_access_permission_type import DocMDPAccessPermissionType
 from .models.doc_recognition_mode import DocRecognitionMode
 from .models.document_privilege import DocumentPrivilege
 from .models.epub_recognition_mode import EpubRecognitionMode
@@ -100,6 +101,7 @@ from .models.row_recognized import RowRecognized
 from .models.segment import Segment
 from .models.shape_type import ShapeType
 from .models.signature import Signature
+from .models.signature_custom_appearance import SignatureCustomAppearance
 from .models.signature_type import SignatureType
 from .models.sound_encoding import SoundEncoding
 from .models.sound_icon import SoundIcon
@@ -119,6 +121,7 @@ from .models.text_replace import TextReplace
 from .models.text_replace_list_request import TextReplaceListRequest
 from .models.text_state import TextState
 from .models.text_style import TextStyle
+from .models.timestamp_settings import TimestampSettings
 from .models.vertical_alignment import VerticalAlignment
 from .models.word_count import WordCount
 from .models.wrap_mode import WrapMode
@@ -155,6 +158,7 @@ from .models.file_attachment_annotation_response import FileAttachmentAnnotation
 from .models.file_attachment_annotations import FileAttachmentAnnotations
 from .models.file_attachment_annotations_response import FileAttachmentAnnotationsResponse
 from .models.file_version import FileVersion
+from .models.form_field import FormField
 from .models.free_text_annotation_response import FreeTextAnnotationResponse
 from .models.free_text_annotations import FreeTextAnnotations
 from .models.free_text_annotations_response import FreeTextAnnotationsResponse
@@ -195,6 +199,9 @@ from .models.redaction_annotations_response import RedactionAnnotationsResponse
 from .models.screen_annotation_response import ScreenAnnotationResponse
 from .models.screen_annotations import ScreenAnnotations
 from .models.screen_annotations_response import ScreenAnnotationsResponse
+from .models.signature_field_response import SignatureFieldResponse
+from .models.signature_fields import SignatureFields
+from .models.signature_fields_response import SignatureFieldsResponse
 from .models.signature_verify_response import SignatureVerifyResponse
 from .models.sound_annotation_response import SoundAnnotationResponse
 from .models.sound_annotations import SoundAnnotations
@@ -242,6 +249,7 @@ from .models.pdf_page_stamp import PdfPageStamp
 from .models.popup_annotation import PopupAnnotation
 from .models.redaction_annotation import RedactionAnnotation
 from .models.screen_annotation import ScreenAnnotation
+from .models.signature_field import SignatureField
 from .models.text_footer import TextFooter
 from .models.text_header import TextHeader
 from .models.text_stamp import TextStamp
