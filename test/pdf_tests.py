@@ -3334,6 +3334,69 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.get_signature_field(file_name, field_name, **opts)
         self.assertEqual(response.code, 200)
 
+    def testGetDocumentTextBoxFields(self):
+        file_name = 'FormDataTextBox.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.get_document_text_box_fields(file_name, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetPageTextBoxFields(self):
+        file_name = 'FormDataTextBox.pdf'
+        self.uploadFile(file_name)
+
+        page_number = 1
+
+        response = self.pdf_api.get_page_text_box_fields(file_name, page_number, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetTextBoxField(self):
+        file_name = 'FormDataTextBox.pdf'
+        self.uploadFile(file_name)
+
+        field_name = 'Petitioner'
+
+        response = self.pdf_api.get_text_box_field(file_name, field_name, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testPostTextBoxFields(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+
+        text_box = asposepdfcloud.models.TextBoxField(
+            page_index=1,
+            is_group=False,
+            color=asposepdfcloud.models.Color(a=0xFF, r=0xFF, g=0, b=0),
+            multiline=True,
+            max_len=100,
+            rect=asposepdfcloud.models.Rectangle(50, 200, 200, 400),
+            value='Page 1\nValue',
+            partial_name='testField'
+        )
+
+        response = self.pdf_api.post_text_box_fields(file_name, [text_box], folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testPutTextBoxField(self):
+        file_name = 'FormDataTextBox.pdf'
+        self.uploadFile(file_name)
+
+        text_box = asposepdfcloud.models.TextBoxField(
+            page_index=1,
+            is_group=False,
+            color=asposepdfcloud.models.Color(a=0xFF, r=0xFF, g=0, b=0),
+            multiline=True,
+            max_len=100,
+            rect=asposepdfcloud.models.Rectangle(50, 200, 200, 400),
+            value='Page 1\nValue',
+            partial_name='testField'
+        )
+        
+        field_name = 'Petitioner'
+
+        response = self.pdf_api.put_text_box_field(file_name, field_name, text_box, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
     # Images Tests
 
     def testGetImage(self):
