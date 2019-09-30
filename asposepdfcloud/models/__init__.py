@@ -232,6 +232,9 @@ from .tables_recognized_response import TablesRecognizedResponse
 from .text_annotation_response import TextAnnotationResponse
 from .text_annotations import TextAnnotations
 from .text_annotations_response import TextAnnotationsResponse
+from .text_box_field_response import TextBoxFieldResponse
+from .text_box_fields import TextBoxFields
+from .text_box_fields_response import TextBoxFieldsResponse
 from .text_rects_response import TextRectsResponse
 from .text_replace_response import TextReplaceResponse
 from .underline_annotation_response import UnderlineAnnotationResponse
@@ -250,6 +253,7 @@ from .popup_annotation import PopupAnnotation
 from .redaction_annotation import RedactionAnnotation
 from .screen_annotation import ScreenAnnotation
 from .signature_field import SignatureField
+from .text_box_field import TextBoxField
 from .text_footer import TextFooter
 from .text_header import TextHeader
 from .text_stamp import TextStamp
