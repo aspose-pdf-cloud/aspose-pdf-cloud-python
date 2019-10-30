@@ -3397,6 +3397,158 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.put_text_box_field(file_name, field_name, text_box, folder=self.temp_folder)
         self.assertEqual(response.code, 200)
 
+    def testGetDocumentCheckBoxFields(self):
+        file_name = 'PdfWithAcroForm.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.get_document_check_box_fields(file_name, folder=self.temp_folder)
+
+    def testGetPageCheckBoxFields(self):
+        file_name = 'PdfWithAcroForm.pdf'
+        self.uploadFile(file_name)
+        page_number = 1
+
+        response = self.pdf_api.get_page_check_box_fields(file_name, page_number, folder=self.temp_folder)
+
+    def testGetCheckBoxField(self):
+        file_name = 'PdfWithAcroForm.pdf'
+        self.uploadFile(file_name)
+
+        field_name = 'checkboxField'
+
+        response = self.pdf_api.get_check_box_field(file_name, field_name, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testPostCheckBoxFields(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+
+        field = asposepdfcloud.models.CheckBoxField(
+            page_index=1,
+            is_group=False,
+            checked=True,
+            color=asposepdfcloud.models.Color(a=0xFF, r=0xFF, g=0, b=0),
+            rect=asposepdfcloud.models.Rectangle(50, 200, 200, 400),
+            export_value='true',
+            partial_name='testField',
+            style=asposepdfcloud.models.BoxStyle.CROSS
+        )
+
+        response = self.pdf_api.post_check_box_fields(file_name, [field], folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testPutCheckBoxField(self):
+        file_name = 'PdfWithAcroForm.pdf'
+        self.uploadFile(file_name)
+        
+        field_name = 'checkboxField'
+
+        field = asposepdfcloud.models.CheckBoxField(
+            page_index=1,
+            is_group=False,
+            checked=True,
+            color=asposepdfcloud.models.Color(a=0xFF, r=0xFF, g=0, b=0),
+            rect=asposepdfcloud.models.Rectangle(50, 200, 200, 400),
+            export_value='true',
+            partial_name='testField',
+            style=asposepdfcloud.models.BoxStyle.CROSS
+        )
+
+        response = self.pdf_api.put_check_box_field(file_name, field_name, field, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetDocumentRadioButtonFields(self):
+        file_name = 'PdfWithAcroForm.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.get_document_radio_button_fields(file_name, folder=self.temp_folder)
+
+    def testGetPageRadioButtonFields(self):
+        file_name = 'PdfWithAcroForm.pdf'
+        self.uploadFile(file_name)
+        page_number = 1
+
+        response = self.pdf_api.get_page_radio_button_fields(file_name, page_number, folder=self.temp_folder)
+
+    def testGetRadioButtonField(self):
+        file_name = 'PdfWithAcroForm.pdf'
+        self.uploadFile(file_name)
+
+        field_name = 'radiobuttonField'
+
+        response = self.pdf_api.get_radio_button_field(file_name, field_name, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testPostRadioButtonFields(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+
+        field = asposepdfcloud.models.RadioButtonField(
+            page_index=1,
+            is_group=False,
+            selected=1,
+            color=asposepdfcloud.models.Color(a=0xFF, r=0xFF, g=0, b=0),
+            rect=asposepdfcloud.models.Rectangle(100, 100, 160, 140),
+            partial_name='testField',
+            style=asposepdfcloud.models.BoxStyle.CROSS,
+            margin=asposepdfcloud.models.MarginInfo(left=0, right=0, top=0, bottom=0),
+            radio_button_options_field=[
+                asposepdfcloud.models.RadioButtonOptionField(
+                    page_index=1,
+                    is_group=False,
+                    option_name='1',
+                    rect=asposepdfcloud.models.Rectangle(100, 130, 160, 140),
+                    style=asposepdfcloud.models.BoxStyle.SQUARE
+                ),
+                asposepdfcloud.models.RadioButtonOptionField(
+                    page_index=1,
+                    is_group=False,
+                    option_name='2',
+                    rect=asposepdfcloud.models.Rectangle(150, 120, 160, 130),
+                    style=asposepdfcloud.models.BoxStyle.SQUARE
+                )
+            ]
+        )
+
+        response = self.pdf_api.post_radio_button_fields(file_name, [field], folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testPutRadioButtonField(self):
+        file_name = 'PdfWithAcroForm.pdf'
+        self.uploadFile(file_name)
+
+        field_name = 'radiobuttonField'
+
+        field = asposepdfcloud.models.RadioButtonField(
+            page_index=1,
+            is_group=False,
+            selected=1,
+            color=asposepdfcloud.models.Color(a=0xFF, r=0xFF, g=0, b=0),
+            rect=asposepdfcloud.models.Rectangle(100, 100, 160, 140),
+            partial_name='testField',
+            style=asposepdfcloud.models.BoxStyle.CROSS,
+            margin=asposepdfcloud.models.MarginInfo(left=0, right=0, top=0, bottom=0),
+            radio_button_options_field=[
+                asposepdfcloud.models.RadioButtonOptionField(
+                    page_index=1,
+                    is_group=False,
+                    option_name='1',
+                    rect=asposepdfcloud.models.Rectangle(100, 130, 160, 140),
+                    style=asposepdfcloud.models.BoxStyle.SQUARE
+                ),
+                asposepdfcloud.models.RadioButtonOptionField(
+                    page_index=1,
+                    is_group=False,
+                    option_name='2',
+                    rect=asposepdfcloud.models.Rectangle(150, 120, 160, 130),
+                    style=asposepdfcloud.models.BoxStyle.SQUARE
+                )
+            ]
+        )
+
+        response = self.pdf_api.put_radio_button_field(file_name, field_name, field, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
     # Images Tests
 
     def testGetImage(self):
