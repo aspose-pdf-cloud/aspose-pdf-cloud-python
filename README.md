@@ -1,6 +1,6 @@
 ﻿# Aspose.PDF Cloud
 - API version: 3.0
-- Package version: 19.9.0
+- Package version: 19.10.0
 
 [Aspose.PDF Cloud](https://products.aspose.cloud/pdf) is a true REST API that enables you to perform a wide range of document processing operations including creation, manipulation, conversion and rendering of Pdf documents in the cloud.
 
@@ -123,6 +123,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**get_bookmark**](docs/PdfApi.md#get_bookmark) | **GET** /pdf/\{name}/bookmarks/bookmark/\{bookmarkPath} | Read document bookmark.
 *PdfApi* | [**get_bookmarks**](docs/PdfApi.md#get_bookmarks) | **GET** /pdf/\{name}/bookmarks/list/\{bookmarkPath} | Read document bookmarks node list.
 *PdfApi* | [**get_caret_annotation**](docs/PdfApi.md#get_caret_annotation) | **GET** /pdf/\{name}/annotations/caret/\{annotationId} | Read document page caret annotation by ID.
+*PdfApi* | [**get_check_box_field**](docs/PdfApi.md#get_check_box_field) | **GET** /pdf/\{name}/fields/checkbox/\{fieldName} | Read document checkbox field by name.
 *PdfApi* | [**get_circle_annotation**](docs/PdfApi.md#get_circle_annotation) | **GET** /pdf/\{name}/annotations/circle/\{annotationId} | Read document page circle annotation by ID.
 *PdfApi* | [**get_disc_usage**](docs/PdfApi.md#get_disc_usage) | **GET** /pdf/storage/disc | Get disc usage
 *PdfApi* | [**get_document**](docs/PdfApi.md#get_document) | **GET** /pdf/\{name} | Read common document info.
@@ -131,6 +132,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**get_document_attachments**](docs/PdfApi.md#get_document_attachments) | **GET** /pdf/\{name}/attachments | Read document attachments info.
 *PdfApi* | [**get_document_bookmarks**](docs/PdfApi.md#get_document_bookmarks) | **GET** /pdf/\{name}/bookmarks/tree | Read document bookmarks tree.
 *PdfApi* | [**get_document_caret_annotations**](docs/PdfApi.md#get_document_caret_annotations) | **GET** /pdf/\{name}/annotations/caret | Read document caret annotations.
+*PdfApi* | [**get_document_check_box_fields**](docs/PdfApi.md#get_document_check_box_fields) | **GET** /pdf/\{name}/fields/checkbox | Read document checkbox fields.
 *PdfApi* | [**get_document_circle_annotations**](docs/PdfApi.md#get_document_circle_annotations) | **GET** /pdf/\{name}/annotations/circle | Read document circle annotations.
 *PdfApi* | [**get_document_file_attachment_annotations**](docs/PdfApi.md#get_document_file_attachment_annotations) | **GET** /pdf/\{name}/annotations/fileattachment | Read document FileAttachment annotations.
 *PdfApi* | [**get_document_free_text_annotations**](docs/PdfApi.md#get_document_free_text_annotations) | **GET** /pdf/\{name}/annotations/freetext | Read document free text annotations.
@@ -144,6 +146,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**get_document_popup_annotations_by_parent**](docs/PdfApi.md#get_document_popup_annotations_by_parent) | **GET** /pdf/\{name}/annotations/\{annotationId}/popup | Read document popup annotations by parent id.
 *PdfApi* | [**get_document_properties**](docs/PdfApi.md#get_document_properties) | **GET** /pdf/\{name}/documentproperties | Read document properties.
 *PdfApi* | [**get_document_property**](docs/PdfApi.md#get_document_property) | **GET** /pdf/\{name}/documentproperties/\{propertyName} | Read document property by name.
+*PdfApi* | [**get_document_radio_button_fields**](docs/PdfApi.md#get_document_radio_button_fields) | **GET** /pdf/\{name}/fields/radiobutton | Read document radiobutton fields.
 *PdfApi* | [**get_document_redaction_annotations**](docs/PdfApi.md#get_document_redaction_annotations) | **GET** /pdf/\{name}/annotations/redaction | Read document redaction annotations.
 *PdfApi* | [**get_document_screen_annotations**](docs/PdfApi.md#get_document_screen_annotations) | **GET** /pdf/\{name}/annotations/screen | Read document screen annotations.
 *PdfApi* | [**get_document_signature_fields**](docs/PdfApi.md#get_document_signature_fields) | **GET** /pdf/\{name}/fields/signature | Read document signature fields.
@@ -190,6 +193,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**get_page**](docs/PdfApi.md#get_page) | **GET** /pdf/\{name}/pages/\{pageNumber} | Read document page info.
 *PdfApi* | [**get_page_annotations**](docs/PdfApi.md#get_page_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations | Read document page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
 *PdfApi* | [**get_page_caret_annotations**](docs/PdfApi.md#get_page_caret_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/caret | Read document page caret annotations.
+*PdfApi* | [**get_page_check_box_fields**](docs/PdfApi.md#get_page_check_box_fields) | **GET** /pdf/\{name}/page/\{pageNumber}/fields/checkbox | Read document page checkbox fields.
 *PdfApi* | [**get_page_circle_annotations**](docs/PdfApi.md#get_page_circle_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/circle | Read document page circle annotations.
 *PdfApi* | [**get_page_convert_to_bmp**](docs/PdfApi.md#get_page_convert_to_bmp) | **GET** /pdf/\{name}/pages/\{pageNumber}/convert/bmp | Convert document page to Bmp image and return resulting file in response.
 *PdfApi* | [**get_page_convert_to_emf**](docs/PdfApi.md#get_page_convert_to_emf) | **GET** /pdf/\{name}/pages/\{pageNumber}/convert/emf | Convert document page to Emf image and return resulting file in response.
@@ -208,6 +212,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**get_page_poly_line_annotations**](docs/PdfApi.md#get_page_poly_line_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/polyline | Read document page polyline annotations.
 *PdfApi* | [**get_page_polygon_annotations**](docs/PdfApi.md#get_page_polygon_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/polygon | Read document page polygon annotations.
 *PdfApi* | [**get_page_popup_annotations**](docs/PdfApi.md#get_page_popup_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/popup | Read document page popup annotations.
+*PdfApi* | [**get_page_radio_button_fields**](docs/PdfApi.md#get_page_radio_button_fields) | **GET** /pdf/\{name}/page/\{pageNumber}/fields/radiobutton | Read document page radiobutton fields.
 *PdfApi* | [**get_page_redaction_annotations**](docs/PdfApi.md#get_page_redaction_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/redaction | Read document page redaction annotations.
 *PdfApi* | [**get_page_screen_annotations**](docs/PdfApi.md#get_page_screen_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/screen | Read document page screen annotations.
 *PdfApi* | [**get_page_signature_fields**](docs/PdfApi.md#get_page_signature_fields) | **GET** /pdf/\{name}/page/\{pageNumber}/fields/signature | Read document page signature fields.
@@ -241,6 +246,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**get_polygon_annotation**](docs/PdfApi.md#get_polygon_annotation) | **GET** /pdf/\{name}/annotations/polygon/\{annotationId} | Read document page polygon annotation by ID.
 *PdfApi* | [**get_popup_annotation**](docs/PdfApi.md#get_popup_annotation) | **GET** /pdf/\{name}/annotations/popup/\{annotationId} | Read document page popup annotation by ID.
 *PdfApi* | [**get_ps_in_storage_to_pdf**](docs/PdfApi.md#get_ps_in_storage_to_pdf) | **GET** /pdf/create/ps | Convert PS file (located on storage) to PDF format and return resulting file in response. 
+*PdfApi* | [**get_radio_button_field**](docs/PdfApi.md#get_radio_button_field) | **GET** /pdf/\{name}/fields/radiobutton/\{fieldName} | Read document RadioButton field by name.
 *PdfApi* | [**get_redaction_annotation**](docs/PdfApi.md#get_redaction_annotation) | **GET** /pdf/\{name}/annotations/redaction/\{annotationId} | Read document page redaction annotation by ID.
 *PdfApi* | [**get_screen_annotation**](docs/PdfApi.md#get_screen_annotation) | **GET** /pdf/\{name}/annotations/screen/\{annotationId} | Read document page screen annotation by ID.
 *PdfApi* | [**get_screen_annotation_data**](docs/PdfApi.md#get_screen_annotation_data) | **GET** /pdf/\{name}/annotations/screen/\{annotationId}/data | Read document page screen annotation by ID.
@@ -271,6 +277,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**post_append_document**](docs/PdfApi.md#post_append_document) | **POST** /pdf/\{name}/appendDocument | Append document to existing one.
 *PdfApi* | [**post_bookmark**](docs/PdfApi.md#post_bookmark) | **POST** /pdf/\{name}/bookmarks/bookmark/\{bookmarkPath} | Add document bookmarks.
 *PdfApi* | [**post_change_password_document_in_storage**](docs/PdfApi.md#post_change_password_document_in_storage) | **POST** /pdf/\{name}/changepassword | Change document password in storage.
+*PdfApi* | [**post_check_box_fields**](docs/PdfApi.md#post_check_box_fields) | **POST** /pdf/\{name}/fields/checkbox | Add document checkbox fields.
 *PdfApi* | [**post_create_field**](docs/PdfApi.md#post_create_field) | **POST** /pdf/\{name}/fields | Create field.
 *PdfApi* | [**post_decrypt_document_in_storage**](docs/PdfApi.md#post_decrypt_document_in_storage) | **POST** /pdf/\{name}/decrypt | Decrypt document in storage.
 *PdfApi* | [**post_document_image_footer**](docs/PdfApi.md#post_document_image_footer) | **POST** /pdf/\{name}/footer/image | Add document image footer.
@@ -314,6 +321,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**post_page_text_stamps**](docs/PdfApi.md#post_page_text_stamps) | **POST** /pdf/\{name}/pages/\{pageNumber}/stamps/text | Add document page text stamps.
 *PdfApi* | [**post_page_underline_annotations**](docs/PdfApi.md#post_page_underline_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/underline | Add document page underline annotations.
 *PdfApi* | [**post_popup_annotation**](docs/PdfApi.md#post_popup_annotation) | **POST** /pdf/\{name}/annotations/\{annotationId}/popup | Add document popup annotations.
+*PdfApi* | [**post_radio_button_fields**](docs/PdfApi.md#post_radio_button_fields) | **POST** /pdf/\{name}/fields/radiobutton | Add document RadioButton fields.
 *PdfApi* | [**post_sign_document**](docs/PdfApi.md#post_sign_document) | **POST** /pdf/\{name}/sign | Sign document.
 *PdfApi* | [**post_sign_page**](docs/PdfApi.md#post_sign_page) | **POST** /pdf/\{name}/pages/\{pageNumber}/sign | Sign page.
 *PdfApi* | [**post_split_document**](docs/PdfApi.md#post_split_document) | **POST** /pdf/\{name}/split | Split document to parts.
@@ -324,6 +332,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**put_bookmark**](docs/PdfApi.md#put_bookmark) | **PUT** /pdf/\{name}/bookmarks/bookmark/\{bookmarkPath} | Update document bookmark.
 *PdfApi* | [**put_caret_annotation**](docs/PdfApi.md#put_caret_annotation) | **PUT** /pdf/\{name}/annotations/caret/\{annotationId} | Replace document caret annotation
 *PdfApi* | [**put_change_password_document**](docs/PdfApi.md#put_change_password_document) | **PUT** /pdf/changepassword | Change document password from content.
+*PdfApi* | [**put_check_box_field**](docs/PdfApi.md#put_check_box_field) | **PUT** /pdf/\{name}/fields/checkbox/\{fieldName} | Replace document checkbox field
 *PdfApi* | [**put_circle_annotation**](docs/PdfApi.md#put_circle_annotation) | **PUT** /pdf/\{name}/annotations/circle/\{annotationId} | Replace document circle annotation
 *PdfApi* | [**put_create_document**](docs/PdfApi.md#put_create_document) | **PUT** /pdf/\{name} | Create empty document.
 *PdfApi* | [**put_decrypt_document**](docs/PdfApi.md#put_decrypt_document) | **PUT** /pdf/decrypt | Decrypt document from content.
@@ -397,6 +406,7 @@ Class | Method | HTTP request | Description
 *PdfApi* | [**put_popup_annotation**](docs/PdfApi.md#put_popup_annotation) | **PUT** /pdf/\{name}/annotations/popup/\{annotationId} | Replace document popup annotation
 *PdfApi* | [**put_privileges**](docs/PdfApi.md#put_privileges) | **PUT** /pdf/\{name}/privileges | Update privilege document.
 *PdfApi* | [**put_ps_in_storage_to_pdf**](docs/PdfApi.md#put_ps_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/ps | Convert PS file (located on storage) to PDF format and upload resulting file to storage. 
+*PdfApi* | [**put_radio_button_field**](docs/PdfApi.md#put_radio_button_field) | **PUT** /pdf/\{name}/fields/radiobutton/\{fieldName} | Replace document RadioButton field
 *PdfApi* | [**put_redaction_annotation**](docs/PdfApi.md#put_redaction_annotation) | **PUT** /pdf/\{name}/annotations/redaction/\{annotationId} | Replace document redaction annotation
 *PdfApi* | [**put_replace_image**](docs/PdfApi.md#put_replace_image) | **PUT** /pdf/\{name}/images/\{imageId} | Replace document image.
 *PdfApi* | [**put_screen_annotation**](docs/PdfApi.md#put_screen_annotation) | **PUT** /pdf/\{name}/annotations/screen/\{annotationId} | Replace document screen annotation
@@ -436,6 +446,7 @@ Class | Method | HTTP request | Description
  - [AsposeResponse](docs/AsposeResponse.md)
  - [BorderCornerStyle](docs/BorderCornerStyle.md)
  - [BorderInfo](docs/BorderInfo.md)
+ - [BoxStyle](docs/BoxStyle.md)
  - [CapStyle](docs/CapStyle.md)
  - [CaptionPosition](docs/CaptionPosition.md)
  - [CaretSymbol](docs/CaretSymbol.md)
@@ -483,6 +494,7 @@ Class | Method | HTTP request | Description
  - [MergeDocuments](docs/MergeDocuments.md)
  - [ObjectExist](docs/ObjectExist.md)
  - [OptimizeOptions](docs/OptimizeOptions.md)
+ - [Option](docs/Option.md)
  - [PageWordCount](docs/PageWordCount.md)
  - [Paragraph](docs/Paragraph.md)
  - [PartsEmbeddingModes](docs/PartsEmbeddingModes.md)
@@ -537,6 +549,9 @@ Class | Method | HTTP request | Description
  - [CaretAnnotationResponse](docs/CaretAnnotationResponse.md)
  - [CaretAnnotations](docs/CaretAnnotations.md)
  - [CaretAnnotationsResponse](docs/CaretAnnotationsResponse.md)
+ - [CheckBoxFieldResponse](docs/CheckBoxFieldResponse.md)
+ - [CheckBoxFields](docs/CheckBoxFields.md)
+ - [CheckBoxFieldsResponse](docs/CheckBoxFieldsResponse.md)
  - [CircleAnnotationResponse](docs/CircleAnnotationResponse.md)
  - [CircleAnnotations](docs/CircleAnnotations.md)
  - [CircleAnnotationsResponse](docs/CircleAnnotationsResponse.md)
@@ -591,6 +606,9 @@ Class | Method | HTTP request | Description
  - [PopupAnnotationResponse](docs/PopupAnnotationResponse.md)
  - [PopupAnnotations](docs/PopupAnnotations.md)
  - [PopupAnnotationsResponse](docs/PopupAnnotationsResponse.md)
+ - [RadioButtonFieldResponse](docs/RadioButtonFieldResponse.md)
+ - [RadioButtonFields](docs/RadioButtonFields.md)
+ - [RadioButtonFieldsResponse](docs/RadioButtonFieldsResponse.md)
  - [RedactionAnnotationResponse](docs/RedactionAnnotationResponse.md)
  - [RedactionAnnotations](docs/RedactionAnnotations.md)
  - [RedactionAnnotationsResponse](docs/RedactionAnnotationsResponse.md)
@@ -640,6 +658,8 @@ Class | Method | HTTP request | Description
  - [UnderlineAnnotationsResponse](docs/UnderlineAnnotationsResponse.md)
  - [WordCountResponse](docs/WordCountResponse.md)
  - [AnnotationInfo](docs/AnnotationInfo.md)
+ - [CheckBoxField](docs/CheckBoxField.md)
+ - [ChoiceField](docs/ChoiceField.md)
  - [ImageFooter](docs/ImageFooter.md)
  - [ImageHeader](docs/ImageHeader.md)
  - [ImageStamp](docs/ImageStamp.md)
@@ -648,6 +668,7 @@ Class | Method | HTTP request | Description
  - [PageNumberStamp](docs/PageNumberStamp.md)
  - [PdfPageStamp](docs/PdfPageStamp.md)
  - [PopupAnnotation](docs/PopupAnnotation.md)
+ - [RadioButtonOptionField](docs/RadioButtonOptionField.md)
  - [RedactionAnnotation](docs/RedactionAnnotation.md)
  - [ScreenAnnotation](docs/ScreenAnnotation.md)
  - [SignatureField](docs/SignatureField.md)
@@ -664,6 +685,7 @@ Class | Method | HTTP request | Description
  - [LineAnnotation](docs/LineAnnotation.md)
  - [PolyAnnotation](docs/PolyAnnotation.md)
  - [PopupAnnotationWithParent](docs/PopupAnnotationWithParent.md)
+ - [RadioButtonField](docs/RadioButtonField.md)
  - [SoundAnnotation](docs/SoundAnnotation.md)
  - [SquigglyAnnotation](docs/SquigglyAnnotation.md)
  - [StampAnnotation](docs/StampAnnotation.md)

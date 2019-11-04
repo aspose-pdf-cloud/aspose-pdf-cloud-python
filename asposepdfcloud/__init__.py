@@ -38,6 +38,7 @@ from .models.antialiasing_processing_type import AntialiasingProcessingType
 from .models.aspose_response import AsposeResponse
 from .models.border_corner_style import BorderCornerStyle
 from .models.border_info import BorderInfo
+from .models.box_style import BoxStyle
 from .models.cap_style import CapStyle
 from .models.caption_position import CaptionPosition
 from .models.caret_symbol import CaretSymbol
@@ -85,6 +86,7 @@ from .models.margin_info import MarginInfo
 from .models.merge_documents import MergeDocuments
 from .models.object_exist import ObjectExist
 from .models.optimize_options import OptimizeOptions
+from .models.option import Option
 from .models.page_word_count import PageWordCount
 from .models.paragraph import Paragraph
 from .models.parts_embedding_modes import PartsEmbeddingModes
@@ -139,6 +141,9 @@ from .models.bookmarks_response import BookmarksResponse
 from .models.caret_annotation_response import CaretAnnotationResponse
 from .models.caret_annotations import CaretAnnotations
 from .models.caret_annotations_response import CaretAnnotationsResponse
+from .models.check_box_field_response import CheckBoxFieldResponse
+from .models.check_box_fields import CheckBoxFields
+from .models.check_box_fields_response import CheckBoxFieldsResponse
 from .models.circle_annotation_response import CircleAnnotationResponse
 from .models.circle_annotations import CircleAnnotations
 from .models.circle_annotations_response import CircleAnnotationsResponse
@@ -193,6 +198,9 @@ from .models.polygon_annotations_response import PolygonAnnotationsResponse
 from .models.popup_annotation_response import PopupAnnotationResponse
 from .models.popup_annotations import PopupAnnotations
 from .models.popup_annotations_response import PopupAnnotationsResponse
+from .models.radio_button_field_response import RadioButtonFieldResponse
+from .models.radio_button_fields import RadioButtonFields
+from .models.radio_button_fields_response import RadioButtonFieldsResponse
 from .models.redaction_annotation_response import RedactionAnnotationResponse
 from .models.redaction_annotations import RedactionAnnotations
 from .models.redaction_annotations_response import RedactionAnnotationsResponse
@@ -242,6 +250,8 @@ from .models.underline_annotations import UnderlineAnnotations
 from .models.underline_annotations_response import UnderlineAnnotationsResponse
 from .models.word_count_response import WordCountResponse
 from .models.annotation_info import AnnotationInfo
+from .models.check_box_field import CheckBoxField
+from .models.choice_field import ChoiceField
 from .models.image_footer import ImageFooter
 from .models.image_header import ImageHeader
 from .models.image_stamp import ImageStamp
@@ -250,6 +260,7 @@ from .models.movie_annotation import MovieAnnotation
 from .models.page_number_stamp import PageNumberStamp
 from .models.pdf_page_stamp import PdfPageStamp
 from .models.popup_annotation import PopupAnnotation
+from .models.radio_button_option_field import RadioButtonOptionField
 from .models.redaction_annotation import RedactionAnnotation
 from .models.screen_annotation import ScreenAnnotation
 from .models.signature_field import SignatureField
@@ -266,6 +277,7 @@ from .models.ink_annotation import InkAnnotation
 from .models.line_annotation import LineAnnotation
 from .models.poly_annotation import PolyAnnotation
 from .models.popup_annotation_with_parent import PopupAnnotationWithParent
+from .models.radio_button_field import RadioButtonField
 from .models.sound_annotation import SoundAnnotation
 from .models.squiggly_annotation import SquigglyAnnotation
 from .models.stamp_annotation import StampAnnotation

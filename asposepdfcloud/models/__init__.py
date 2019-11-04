@@ -38,6 +38,7 @@ from .antialiasing_processing_type import AntialiasingProcessingType
 from .aspose_response import AsposeResponse
 from .border_corner_style import BorderCornerStyle
 from .border_info import BorderInfo
+from .box_style import BoxStyle
 from .cap_style import CapStyle
 from .caption_position import CaptionPosition
 from .caret_symbol import CaretSymbol
@@ -85,6 +86,7 @@ from .margin_info import MarginInfo
 from .merge_documents import MergeDocuments
 from .object_exist import ObjectExist
 from .optimize_options import OptimizeOptions
+from .option import Option
 from .page_word_count import PageWordCount
 from .paragraph import Paragraph
 from .parts_embedding_modes import PartsEmbeddingModes
@@ -139,6 +141,9 @@ from .bookmarks_response import BookmarksResponse
 from .caret_annotation_response import CaretAnnotationResponse
 from .caret_annotations import CaretAnnotations
 from .caret_annotations_response import CaretAnnotationsResponse
+from .check_box_field_response import CheckBoxFieldResponse
+from .check_box_fields import CheckBoxFields
+from .check_box_fields_response import CheckBoxFieldsResponse
 from .circle_annotation_response import CircleAnnotationResponse
 from .circle_annotations import CircleAnnotations
 from .circle_annotations_response import CircleAnnotationsResponse
@@ -193,6 +198,9 @@ from .polygon_annotations_response import PolygonAnnotationsResponse
 from .popup_annotation_response import PopupAnnotationResponse
 from .popup_annotations import PopupAnnotations
 from .popup_annotations_response import PopupAnnotationsResponse
+from .radio_button_field_response import RadioButtonFieldResponse
+from .radio_button_fields import RadioButtonFields
+from .radio_button_fields_response import RadioButtonFieldsResponse
 from .redaction_annotation_response import RedactionAnnotationResponse
 from .redaction_annotations import RedactionAnnotations
 from .redaction_annotations_response import RedactionAnnotationsResponse
@@ -242,6 +250,8 @@ from .underline_annotations import UnderlineAnnotations
 from .underline_annotations_response import UnderlineAnnotationsResponse
 from .word_count_response import WordCountResponse
 from .annotation_info import AnnotationInfo
+from .check_box_field import CheckBoxField
+from .choice_field import ChoiceField
 from .image_footer import ImageFooter
 from .image_header import ImageHeader
 from .image_stamp import ImageStamp
@@ -250,6 +260,7 @@ from .movie_annotation import MovieAnnotation
 from .page_number_stamp import PageNumberStamp
 from .pdf_page_stamp import PdfPageStamp
 from .popup_annotation import PopupAnnotation
+from .radio_button_option_field import RadioButtonOptionField
 from .redaction_annotation import RedactionAnnotation
 from .screen_annotation import ScreenAnnotation
 from .signature_field import SignatureField
@@ -266,6 +277,7 @@ from .ink_annotation import InkAnnotation
 from .line_annotation import LineAnnotation
 from .poly_annotation import PolyAnnotation
 from .popup_annotation_with_parent import PopupAnnotationWithParent
+from .radio_button_field import RadioButtonField
 from .sound_annotation import SoundAnnotation
 from .squiggly_annotation import SquigglyAnnotation
 from .stamp_annotation import StampAnnotation
