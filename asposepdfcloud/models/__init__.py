@@ -147,6 +147,9 @@ from .check_box_fields_response import CheckBoxFieldsResponse
 from .circle_annotation_response import CircleAnnotationResponse
 from .circle_annotations import CircleAnnotations
 from .circle_annotations_response import CircleAnnotationsResponse
+from .combo_box_field_response import ComboBoxFieldResponse
+from .combo_box_fields import ComboBoxFields
+from .combo_box_fields_response import ComboBoxFieldsResponse
 from .document import Document
 from .document_page_response import DocumentPageResponse
 from .document_pages_response import DocumentPagesResponse
@@ -269,6 +272,7 @@ from .text_footer import TextFooter
 from .text_header import TextHeader
 from .text_stamp import TextStamp
 from .caret_annotation import CaretAnnotation
+from .combo_box_field import ComboBoxField
 from .common_figure_annotation import CommonFigureAnnotation
 from .file_attachment_annotation import FileAttachmentAnnotation
 from .free_text_annotation import FreeTextAnnotation
