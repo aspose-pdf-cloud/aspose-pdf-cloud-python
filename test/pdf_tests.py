@@ -3549,6 +3549,84 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.put_radio_button_field(file_name, field_name, field, folder=self.temp_folder)
         self.assertEqual(response.code, 200)
 
+    def testGetDocumentComboBoxFields(self):
+        file_name = 'PdfWithAcroForm.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.get_document_combo_box_fields(file_name, folder=self.temp_folder)
+
+    def testGetPageComboBoxFields(self):
+        file_name = 'PdfWithAcroForm.pdf'
+        self.uploadFile(file_name)
+        page_number = 1
+
+        response = self.pdf_api.get_page_combo_box_fields(file_name, page_number, folder=self.temp_folder)
+
+    def testGetComboBoxField(self):
+        file_name = 'PdfWithAcroForm.pdf'
+        self.uploadFile(file_name)
+
+        field_name = 'comboboxField'
+
+        response = self.pdf_api.get_combo_box_field(file_name, field_name, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testPostComboBoxFields(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+
+        field = asposepdfcloud.models.ComboBoxField(
+            page_index=1,
+            is_group=False,
+            selected=1,
+            color=asposepdfcloud.models.Color(a=0xFF, r=0xFF, g=0, b=0),
+            rect=asposepdfcloud.models.Rectangle(100, 100, 160, 140),
+            partial_name='testField',
+            margin=asposepdfcloud.models.MarginInfo(left=0, right=0, top=0, bottom=0),
+            options=[
+                asposepdfcloud.models.Option(
+                    name='one',
+                    value='one',
+                ),
+                asposepdfcloud.models.Option(
+                    name='two',
+                    value='two',
+                ),
+            ]
+        )
+
+        response = self.pdf_api.post_combo_box_fields(file_name, [field], folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testPutComboBoxField(self):
+        file_name = 'PdfWithAcroForm.pdf'
+        self.uploadFile(file_name)
+
+        field_name = 'ComboBoxField'
+
+        field = asposepdfcloud.models.ComboBoxField(
+            page_index=1,
+            is_group=False,
+            selected=1,
+            color=asposepdfcloud.models.Color(a=0xFF, r=0xFF, g=0, b=0),
+            rect=asposepdfcloud.models.Rectangle(100, 100, 160, 140),
+            partial_name='testField',
+            margin=asposepdfcloud.models.MarginInfo(left=0, right=0, top=0, bottom=0),
+            options=[
+                asposepdfcloud.models.Option(
+                    name='one',
+                    value='one',
+                ),
+                asposepdfcloud.models.Option(
+                    name='two',
+                    value='two',
+                ),
+            ]
+        )
+
+        response = self.pdf_api.put_combo_box_field(file_name, field_name, field, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
     # Images Tests
 
     def testGetImage(self):
@@ -4803,7 +4881,7 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.delete_folder(path)
 
     def testStorageExists(self):
-        name = 'PDF-CI'
+        name = 'First Storage'
         
         response = self.pdf_api.storage_exists(name)
         self.assertEqual(response.exists, True)

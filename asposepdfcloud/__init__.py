@@ -147,6 +147,9 @@ from .models.check_box_fields_response import CheckBoxFieldsResponse
 from .models.circle_annotation_response import CircleAnnotationResponse
 from .models.circle_annotations import CircleAnnotations
 from .models.circle_annotations_response import CircleAnnotationsResponse
+from .models.combo_box_field_response import ComboBoxFieldResponse
+from .models.combo_box_fields import ComboBoxFields
+from .models.combo_box_fields_response import ComboBoxFieldsResponse
 from .models.document import Document
 from .models.document_page_response import DocumentPageResponse
 from .models.document_pages_response import DocumentPagesResponse
@@ -269,6 +272,7 @@ from .models.text_footer import TextFooter
 from .models.text_header import TextHeader
 from .models.text_stamp import TextStamp
 from .models.caret_annotation import CaretAnnotation
+from .models.combo_box_field import ComboBoxField
 from .models.common_figure_annotation import CommonFigureAnnotation
 from .models.file_attachment_annotation import FileAttachmentAnnotation
 from .models.free_text_annotation import FreeTextAnnotation
