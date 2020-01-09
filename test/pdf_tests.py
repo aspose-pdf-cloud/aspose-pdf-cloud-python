@@ -4,7 +4,7 @@
     Aspose.PDF Cloud API Reference
 
 
-   Copyright (c) 2019 Aspose.PDF Cloud
+   Copyright (c) 2020 Aspose.PDF Cloud
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
@@ -3175,6 +3175,69 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.put_create_document(file_name, **opts)
         self.assertEqual(response.code, 200)
    
+    def testPostCreateEmptyDocument(self):
+        file_name = 'empty_post.pdf'
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        document_config = asposepdfcloud.models.DocumentConfig(
+            document_properties=asposepdfcloud.models.DocumentProperties(
+                list=[
+                    asposepdfcloud.models.DocumentProperty(
+                        built_in=False,
+                        name="prop1",
+                        value="Val1"
+                    )
+                ]),
+                display_properties=asposepdfcloud.models.DisplayProperties(
+                    center_window=True,
+                    hide_menu_bar=True
+                ),
+                default_page_config=asposepdfcloud.models.DefaultPageConfig(
+                    height=100,
+                    width=100
+                ),
+                pages_count=2
+        )
+
+        response = self.pdf_api.post_create_document(file_name, document_config, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testGetDocumentDisplayProperties(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.get_document_display_properties(file_name, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testPutDocumentDisplayProperties(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        display_properties = asposepdfcloud.models.DisplayProperties(
+                center_window=True,
+                direction=asposepdfcloud.models.Direction.L2R,
+                display_doc_title=True,
+                hide_menu_bar=True,
+                hide_tool_bar=True,
+                hide_window_ui=True,
+                non_full_screen_page_mode=asposepdfcloud.models.PageMode.USENONE,
+                page_layout=asposepdfcloud.models.PageLayout.TWOPAGELEFT,
+                page_mode=asposepdfcloud.models.PageMode.USEOC,
+        )
+
+        response = self.pdf_api.put_document_display_properties(file_name, display_properties, **opts)
+        self.assertEqual(response.code, 200)
 
     # Fields Tests
 
@@ -3602,7 +3665,7 @@ class PdfTests(unittest.TestCase):
         file_name = 'PdfWithAcroForm.pdf'
         self.uploadFile(file_name)
 
-        field_name = 'ComboBoxField'
+        field_name = 'comboboxField'
 
         field = asposepdfcloud.models.ComboBoxField(
             page_index=1,
@@ -3625,6 +3688,100 @@ class PdfTests(unittest.TestCase):
         )
 
         response = self.pdf_api.put_combo_box_field(file_name, field_name, field, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testGetDocumentListBoxFields(self):
+        file_name = 'PdfWithAcroForm.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.get_document_list_box_fields(file_name, folder=self.temp_folder)
+
+    def testGetPageListBoxFields(self):
+        file_name = 'PdfWithAcroForm.pdf'
+        self.uploadFile(file_name)
+        page_number = 1
+
+        response = self.pdf_api.get_page_list_box_fields(file_name, page_number, folder=self.temp_folder)
+
+    def testGetListBoxField(self):
+        file_name = 'PdfWithAcroForm.pdf'
+        self.uploadFile(file_name)
+
+        field_name = 'listboxField'
+
+        response = self.pdf_api.get_list_box_field(file_name, field_name, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testPostListBoxFields(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+
+        field = asposepdfcloud.models.ListBoxField(
+            page_index=1,
+            multi_select=True,
+            color=asposepdfcloud.models.Color(a=0xFF, r=0xFF, g=0, b=0),
+            rect=asposepdfcloud.models.Rectangle(100, 100, 160, 140),
+            partial_name='testField',
+            margin=asposepdfcloud.models.MarginInfo(left=0, right=0, top=0, bottom=0),
+            selected_items=[1, 4],
+            options=[
+                asposepdfcloud.models.Option(
+                    name='one',
+                    value='one',
+                ),
+                asposepdfcloud.models.Option(
+                    name='two',
+                    value='two',
+                ),
+                asposepdfcloud.models.Option(
+                    name='three',
+                    value='three',
+                ),
+                asposepdfcloud.models.Option(
+                    name='four',
+                    value='four',
+                ),
+            ]
+        )
+
+        response = self.pdf_api.post_list_box_fields(file_name, [field], folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testPutListBoxField(self):
+        file_name = 'PdfWithAcroForm.pdf'
+        self.uploadFile(file_name)
+
+        field_name = 'listboxField'
+
+        field = asposepdfcloud.models.ListBoxField(
+            page_index=1,
+            multi_select=True,
+            color=asposepdfcloud.models.Color(a=0xFF, r=0xFF, g=0, b=0),
+            rect=asposepdfcloud.models.Rectangle(100, 100, 160, 140),
+            partial_name='testField',
+            margin=asposepdfcloud.models.MarginInfo(left=0, right=0, top=0, bottom=0),
+            selected_items=[1, 4],
+            options=[
+                asposepdfcloud.models.Option(
+                    name='one',
+                    value='one',
+                ),
+                asposepdfcloud.models.Option(
+                    name='two',
+                    value='two',
+                ),
+                asposepdfcloud.models.Option(
+                    name='three',
+                    value='three',
+                ),
+                asposepdfcloud.models.Option(
+                    name='four',
+                    value='four',
+                ),
+            ]
+        )
+
+        response = self.pdf_api.put_list_box_field(file_name, field_name, field, folder=self.temp_folder)
         self.assertEqual(response.code, 200)
 
     # Images Tests

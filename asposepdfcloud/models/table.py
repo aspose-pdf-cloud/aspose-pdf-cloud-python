@@ -4,7 +4,7 @@
     Aspose.PDF Cloud API Reference
 
 
-   Copyright (c) 2019 Aspose.PDF Cloud
+   Copyright (c) 2020 Aspose.PDF Cloud
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
@@ -57,6 +57,7 @@ class Table(object):
         'default_cell_text_state': 'TextState',
         'default_cell_padding': 'MarginInfo',
         'border': 'BorderInfo',
+        'margin': 'MarginInfo',
         'rows': 'list[Row]',
         'default_column_width': 'str',
         'default_cell_border': 'BorderInfo',
@@ -83,6 +84,7 @@ class Table(object):
         'default_cell_text_state': 'DefaultCellTextState',
         'default_cell_padding': 'DefaultCellPadding',
         'border': 'Border',
+        'margin': 'Margin',
         'rows': 'Rows',
         'default_column_width': 'DefaultColumnWidth',
         'default_cell_border': 'DefaultCellBorder',
@@ -99,7 +101,7 @@ class Table(object):
         'z_index': 'ZIndex'
     }
 
-    def __init__(self, links=None, alignment=None, horizontal_alignment=None, vertical_alignment=None, top=None, left=None, default_cell_text_state=None, default_cell_padding=None, border=None, rows=None, default_column_width=None, default_cell_border=None, broken=None, column_widths=None, repeating_rows_count=None, repeating_columns_count=None, repeating_rows_style=None, corner_style=None, break_text=None, background_color=None, is_borders_included=None, column_adjustment=None, z_index=None):
+    def __init__(self, links=None, alignment=None, horizontal_alignment=None, vertical_alignment=None, top=None, left=None, default_cell_text_state=None, default_cell_padding=None, border=None, margin=None, rows=None, default_column_width=None, default_cell_border=None, broken=None, column_widths=None, repeating_rows_count=None, repeating_columns_count=None, repeating_rows_style=None, corner_style=None, break_text=None, background_color=None, is_borders_included=None, column_adjustment=None, z_index=None):
         """
         Table - a model defined in Swagger
         """
@@ -113,6 +115,7 @@ class Table(object):
         self._default_cell_text_state = None
         self._default_cell_padding = None
         self._border = None
+        self._margin = None
         self._rows = None
         self._default_column_width = None
         self._default_cell_border = None
@@ -146,6 +149,8 @@ class Table(object):
           self.default_cell_padding = default_cell_padding
         if border is not None:
           self.border = border
+        if margin is not None:
+          self.margin = margin
         self.rows = rows
         if default_column_width is not None:
           self.default_column_width = default_column_width
@@ -380,6 +385,29 @@ class Table(object):
         """
 
         self._border = border
+
+    @property
+    def margin(self):
+        """
+        Gets the margin of this Table.
+        Gets or sets a outer margin for paragraph (for pdf generation)
+
+        :return: The margin of this Table.
+        :rtype: MarginInfo
+        """
+        return self._margin
+
+    @margin.setter
+    def margin(self, margin):
+        """
+        Sets the margin of this Table.
+        Gets or sets a outer margin for paragraph (for pdf generation)
+
+        :param margin: The margin of this Table.
+        :type: MarginInfo
+        """
+
+        self._margin = margin
 
     @property
     def rows(self):

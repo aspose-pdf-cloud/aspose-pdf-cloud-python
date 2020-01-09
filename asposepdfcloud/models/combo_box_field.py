@@ -4,7 +4,7 @@
     Aspose.PDF Cloud API Reference
 
 
-   Copyright (c) 2019 Aspose.PDF Cloud
+   Copyright (c) 2020 Aspose.PDF Cloud
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
@@ -66,12 +66,13 @@ class ComboBoxField(object):
         'highlighting': 'LinkHighlightingMode',
         'horizontal_alignment': 'HorizontalAlignment',
         'vertical_alignment': 'VerticalAlignment',
+        'border': 'Border',
         'multi_select': 'bool',
+        'selected': 'int',
         'options': 'list[Option]',
         'active_state': 'str',
         'editable': 'bool',
-        'spell_check': 'bool',
-        'selected': 'int'
+        'spell_check': 'bool'
     }
 
     attribute_map = {
@@ -93,15 +94,16 @@ class ComboBoxField(object):
         'highlighting': 'Highlighting',
         'horizontal_alignment': 'HorizontalAlignment',
         'vertical_alignment': 'VerticalAlignment',
+        'border': 'Border',
         'multi_select': 'MultiSelect',
+        'selected': 'Selected',
         'options': 'Options',
         'active_state': 'ActiveState',
         'editable': 'Editable',
-        'spell_check': 'SpellCheck',
-        'selected': 'Selected'
+        'spell_check': 'SpellCheck'
     }
 
-    def __init__(self, links=None, partial_name=None, rect=None, value=None, page_index=None, height=None, width=None, z_index=None, is_group=None, parent=None, is_shared_field=None, flags=None, color=None, contents=None, margin=None, highlighting=None, horizontal_alignment=None, vertical_alignment=None, multi_select=None, options=None, active_state=None, editable=None, spell_check=None, selected=None):
+    def __init__(self, links=None, partial_name=None, rect=None, value=None, page_index=None, height=None, width=None, z_index=None, is_group=None, parent=None, is_shared_field=None, flags=None, color=None, contents=None, margin=None, highlighting=None, horizontal_alignment=None, vertical_alignment=None, border=None, multi_select=None, selected=None, options=None, active_state=None, editable=None, spell_check=None):
         """
         ComboBoxField - a model defined in Swagger
         """
@@ -124,12 +126,13 @@ class ComboBoxField(object):
         self._highlighting = None
         self._horizontal_alignment = None
         self._vertical_alignment = None
+        self._border = None
         self._multi_select = None
+        self._selected = None
         self._options = None
         self._active_state = None
         self._editable = None
         self._spell_check = None
-        self._selected = None
 
         if links is not None:
           self.links = links
@@ -146,7 +149,8 @@ class ComboBoxField(object):
           self.width = width
         if z_index is not None:
           self.z_index = z_index
-        self.is_group = is_group
+        if is_group is not None:
+          self.is_group = is_group
         if parent is not None:
           self.parent = parent
         if is_shared_field is not None:
@@ -165,8 +169,12 @@ class ComboBoxField(object):
           self.horizontal_alignment = horizontal_alignment
         if vertical_alignment is not None:
           self.vertical_alignment = vertical_alignment
+        if border is not None:
+          self.border = border
         if multi_select is not None:
           self.multi_select = multi_select
+        if selected is not None:
+          self.selected = selected
         if options is not None:
           self.options = options
         if active_state is not None:
@@ -175,7 +183,6 @@ class ComboBoxField(object):
           self.editable = editable
         if spell_check is not None:
           self.spell_check = spell_check
-        self.selected = selected
 
     @property
     def links(self):
@@ -383,8 +390,6 @@ class ComboBoxField(object):
         :param is_group: The is_group of this ComboBoxField.
         :type: bool
         """
-        if is_group is None:
-            raise ValueError("Invalid value for `is_group`, must not be `None`")
 
         self._is_group = is_group
 
@@ -596,6 +601,29 @@ class ComboBoxField(object):
         self._vertical_alignment = vertical_alignment
 
     @property
+    def border(self):
+        """
+        Gets the border of this ComboBoxField.
+        Gets or sets annotation border characteristics.
+
+        :return: The border of this ComboBoxField.
+        :rtype: Border
+        """
+        return self._border
+
+    @border.setter
+    def border(self, border):
+        """
+        Sets the border of this ComboBoxField.
+        Gets or sets annotation border characteristics.
+
+        :param border: The border of this ComboBoxField.
+        :type: Border
+        """
+
+        self._border = border
+
+    @property
     def multi_select(self):
         """
         Gets the multi_select of this ComboBoxField.
@@ -617,6 +645,29 @@ class ComboBoxField(object):
         """
 
         self._multi_select = multi_select
+
+    @property
+    def selected(self):
+        """
+        Gets the selected of this ComboBoxField.
+        Gets or sets index of selected item. Numbering of items is started from 1.
+
+        :return: The selected of this ComboBoxField.
+        :rtype: int
+        """
+        return self._selected
+
+    @selected.setter
+    def selected(self, selected):
+        """
+        Sets the selected of this ComboBoxField.
+        Gets or sets index of selected item. Numbering of items is started from 1.
+
+        :param selected: The selected of this ComboBoxField.
+        :type: int
+        """
+
+        self._selected = selected
 
     @property
     def options(self):
@@ -709,31 +760,6 @@ class ComboBoxField(object):
         """
 
         self._spell_check = spell_check
-
-    @property
-    def selected(self):
-        """
-        Gets the selected of this ComboBoxField.
-        Gets or sets index of selected item. Numbering of items is started from 1.
-
-        :return: The selected of this ComboBoxField.
-        :rtype: int
-        """
-        return self._selected
-
-    @selected.setter
-    def selected(self, selected):
-        """
-        Sets the selected of this ComboBoxField.
-        Gets or sets index of selected item. Numbering of items is started from 1.
-
-        :param selected: The selected of this ComboBoxField.
-        :type: int
-        """
-        if selected is None:
-            raise ValueError("Invalid value for `selected`, must not be `None`")
-
-        self._selected = selected
 
     def to_dict(self):
         """

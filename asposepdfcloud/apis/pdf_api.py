@@ -4,7 +4,7 @@
     Aspose.PDF Cloud API Reference
 
 
-   Copyright (c) 2019 Aspose.PDF Cloud
+   Copyright (c) 2020 Aspose.PDF Cloud
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
@@ -4792,6 +4792,118 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def get_document_display_properties(self, name, **kwargs):
+        """
+        Read document display properties.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_display_properties(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: (required)
+        :param str storage:
+        :param str folder:
+        :return: DisplayPropertiesResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_document_display_properties_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_document_display_properties_with_http_info(name, **kwargs)
+            return data
+
+    def get_document_display_properties_with_http_info(self, name, **kwargs):
+        """
+        Read document display properties.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_display_properties_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: (required)
+        :param str storage:
+        :param str folder:
+        :return: DisplayPropertiesResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_document_display_properties" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_document_display_properties`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/displayproperties', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='DisplayPropertiesResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def get_document_file_attachment_annotations(self, name, **kwargs):
         """
         Read document FileAttachment annotations.
@@ -5345,6 +5457,118 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='LineAnnotationsResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_document_list_box_fields(self, name, **kwargs):
+        """
+        Read document listbox fields.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_list_box_fields(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: ListBoxFieldsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_document_list_box_fields_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_document_list_box_fields_with_http_info(name, **kwargs)
+            return data
+
+    def get_document_list_box_fields_with_http_info(self, name, **kwargs):
+        """
+        Read document listbox fields.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_document_list_box_fields_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: ListBoxFieldsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_document_list_box_fields" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_document_list_box_fields`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/fields/listbox', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='ListBoxFieldsResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -10912,6 +11136,125 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def get_list_box_field(self, name, field_name, **kwargs):
+        """
+        Read document listbox field by name.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_list_box_field(name, field_name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str field_name: The field name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: ListBoxFieldResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_list_box_field_with_http_info(name, field_name, **kwargs)
+        else:
+            (data) = self.get_list_box_field_with_http_info(name, field_name, **kwargs)
+            return data
+
+    def get_list_box_field_with_http_info(self, name, field_name, **kwargs):
+        """
+        Read document listbox field by name.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_list_box_field_with_http_info(name, field_name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str field_name: The field name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: ListBoxFieldResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'field_name', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_list_box_field" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_list_box_field`")
+        # verify the required parameter 'field_name' is set
+        if ('field_name' not in params) or (params['field_name'] is None):
+            raise ValueError("Missing the required parameter `field_name` when calling `get_list_box_field`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'field_name' in params:
+            path_params['fieldName'] = params['field_name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/fields/listbox/{fieldName}', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='ListBoxFieldResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def get_markdown_in_storage_to_pdf(self, src_path, **kwargs):
         """
         Convert MD file (located on storage) to PDF format and return resulting file in response. 
@@ -13556,6 +13899,125 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='LinkAnnotationsResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_page_list_box_fields(self, name, page_number, **kwargs):
+        """
+        Read document page listbox fields.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_page_list_box_fields(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: ListBoxFieldsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_page_list_box_fields_with_http_info(name, page_number, **kwargs)
+        else:
+            (data) = self.get_page_list_box_fields_with_http_info(name, page_number, **kwargs)
+            return data
+
+    def get_page_list_box_fields_with_http_info(self, name, page_number, **kwargs):
+        """
+        Read document page listbox fields.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_page_list_box_fields_with_http_info(name, page_number, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param int page_number: The page number. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: ListBoxFieldsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'page_number', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_page_list_box_fields" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_page_list_box_fields`")
+        # verify the required parameter 'page_number' is set
+        if ('page_number' not in params) or (params['page_number'] is None):
+            raise ValueError("Missing the required parameter `page_number` when calling `get_page_list_box_fields`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'page_number' in params:
+            path_params['pageNumber'] = params['page_number']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/page/{pageNumber}/fields/listbox', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='ListBoxFieldsResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -16389,6 +16851,7 @@ class PdfApi(object):
         :param bool try_save_text_underlining_and_strikeouting_in_css: PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param bool flow_layout_paragraph_full_width: This attribute specifies full width paragraph text for Flow mode, FixedLayout = false.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -16444,12 +16907,13 @@ class PdfApi(object):
         :param bool try_save_text_underlining_and_strikeouting_in_css: PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param bool flow_layout_paragraph_full_width: This attribute specifies full width paragraph text for Flow mode, FixedLayout = false.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'additional_margin_width_in_points', 'compress_svg_graphics_if_any', 'convert_marked_content_to_layers', 'default_font_name', 'document_type', 'fixed_layout', 'image_resolution', 'minimal_line_width', 'prevent_glyphs_grouping', 'split_css_into_pages', 'split_into_pages', 'use_z_order', 'antialiasing_processing', 'css_class_names_prefix', 'explicit_list_of_saved_pages', 'font_encoding_strategy', 'font_saving_mode', 'html_markup_generation_mode', 'letters_positioning_method', 'pages_flow_type_depends_on_viewers_screen_size', 'parts_embedding_mode', 'raster_images_saving_mode', 'remove_empty_areas_on_top_and_bottom', 'save_shadowed_texts_as_transparent_texts', 'save_transparent_texts', 'special_folder_for_all_images', 'special_folder_for_svg_images', 'try_save_text_underlining_and_strikeouting_in_css', 'folder', 'storage']
+        all_params = ['name', 'additional_margin_width_in_points', 'compress_svg_graphics_if_any', 'convert_marked_content_to_layers', 'default_font_name', 'document_type', 'fixed_layout', 'image_resolution', 'minimal_line_width', 'prevent_glyphs_grouping', 'split_css_into_pages', 'split_into_pages', 'use_z_order', 'antialiasing_processing', 'css_class_names_prefix', 'explicit_list_of_saved_pages', 'font_encoding_strategy', 'font_saving_mode', 'html_markup_generation_mode', 'letters_positioning_method', 'pages_flow_type_depends_on_viewers_screen_size', 'parts_embedding_mode', 'raster_images_saving_mode', 'remove_empty_areas_on_top_and_bottom', 'save_shadowed_texts_as_transparent_texts', 'save_transparent_texts', 'special_folder_for_all_images', 'special_folder_for_svg_images', 'try_save_text_underlining_and_strikeouting_in_css', 'folder', 'storage', 'flow_layout_paragraph_full_width']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -16537,6 +17001,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'flow_layout_paragraph_full_width' in params:
+            query_params.append(('flowLayoutParagraphFullWidth', params['flow_layout_paragraph_full_width']))
 
         header_params = {}
 
@@ -22252,6 +22718,125 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def post_create_document(self, name, document_config, **kwargs):
+        """
+        Create empty document.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_create_document(name, document_config, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The new document name. (required)
+        :param DocumentConfig document_config: The document config for new document. (required)
+        :param str storage: The document storage.
+        :param str folder: The new document folder.
+        :return: DocumentResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_create_document_with_http_info(name, document_config, **kwargs)
+        else:
+            (data) = self.post_create_document_with_http_info(name, document_config, **kwargs)
+            return data
+
+    def post_create_document_with_http_info(self, name, document_config, **kwargs):
+        """
+        Create empty document.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_create_document_with_http_info(name, document_config, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The new document name. (required)
+        :param DocumentConfig document_config: The document config for new document. (required)
+        :param str storage: The document storage.
+        :param str folder: The new document folder.
+        :return: DocumentResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'document_config', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_create_document" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_create_document`")
+        # verify the required parameter 'document_config' is set
+        if ('document_config' not in params) or (params['document_config'] is None):
+            raise ValueError("Missing the required parameter `document_config` when calling `post_create_document`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'document_config' in params:
+            body_params = params['document_config']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='DocumentResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def post_create_field(self, name, page, field, **kwargs):
         """
         Create field.
@@ -24006,6 +24591,125 @@ class PdfApi(object):
         auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/pages/{pageNumber}/images', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def post_list_box_fields(self, name, fields, **kwargs):
+        """
+        Add document listbox fields.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_list_box_fields(name, fields, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param list[ListBoxField] fields: The array of field. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_list_box_fields_with_http_info(name, fields, **kwargs)
+        else:
+            (data) = self.post_list_box_fields_with_http_info(name, fields, **kwargs)
+            return data
+
+    def post_list_box_fields_with_http_info(self, name, fields, **kwargs):
+        """
+        Add document listbox fields.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_list_box_fields_with_http_info(name, fields, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param list[ListBoxField] fields: The array of field. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'fields', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_list_box_fields" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_list_box_fields`")
+        # verify the required parameter 'fields' is set
+        if ('fields' not in params) or (params['fields'] is None):
+            raise ValueError("Missing the required parameter `fields` when calling `post_list_box_fields`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'fields' in params:
+            body_params = params['fields']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/fields/listbox', 'POST',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -29638,6 +30342,125 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def put_document_display_properties(self, name, display_properties, **kwargs):
+        """
+        Update document display properties.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_document_display_properties(name, display_properties, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param DisplayProperties display_properties: The display properties. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: DisplayPropertiesResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_document_display_properties_with_http_info(name, display_properties, **kwargs)
+        else:
+            (data) = self.put_document_display_properties_with_http_info(name, display_properties, **kwargs)
+            return data
+
+    def put_document_display_properties_with_http_info(self, name, display_properties, **kwargs):
+        """
+        Update document display properties.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_document_display_properties_with_http_info(name, display_properties, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param DisplayProperties display_properties: The display properties. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: DisplayPropertiesResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'display_properties', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_document_display_properties" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_document_display_properties`")
+        # verify the required parameter 'display_properties' is set
+        if ('display_properties' not in params) or (params['display_properties'] is None):
+            raise ValueError("Missing the required parameter `display_properties` when calling `put_document_display_properties`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'display_properties' in params:
+            body_params = params['display_properties']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/displayproperties', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='DisplayPropertiesResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def put_encrypt_document(self, out_path, user_password, owner_password, crypto_algorithm, **kwargs):
         """
         Encrypt document from content.
@@ -33041,6 +33864,132 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def put_list_box_field(self, name, field_name, field, **kwargs):
+        """
+        Replace document listbox field
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_list_box_field(name, field_name, field, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str field_name: The field name. (required)
+        :param ListBoxField field: The field. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: ListBoxFieldResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_list_box_field_with_http_info(name, field_name, field, **kwargs)
+        else:
+            (data) = self.put_list_box_field_with_http_info(name, field_name, field, **kwargs)
+            return data
+
+    def put_list_box_field_with_http_info(self, name, field_name, field, **kwargs):
+        """
+        Replace document listbox field
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_list_box_field_with_http_info(name, field_name, field, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str field_name: The field name. (required)
+        :param ListBoxField field: The field. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: ListBoxFieldResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'field_name', 'field', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_list_box_field" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_list_box_field`")
+        # verify the required parameter 'field_name' is set
+        if ('field_name' not in params) or (params['field_name'] is None):
+            raise ValueError("Missing the required parameter `field_name` when calling `put_list_box_field`")
+        # verify the required parameter 'field' is set
+        if ('field' not in params) or (params['field'] is None):
+            raise ValueError("Missing the required parameter `field` when calling `put_list_box_field`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+        if 'field_name' in params:
+            path_params['fieldName'] = params['field_name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'field' in params:
+            body_params = params['field']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/fields/listbox/{fieldName}', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='ListBoxFieldResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def put_markdown_in_storage_to_pdf(self, name, src_path, **kwargs):
         """
         Convert MD file (located on storage) to PDF format and upload resulting file to storage. 
@@ -34876,6 +35825,7 @@ class PdfApi(object):
         :param str special_folder_for_svg_images: The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
         :param bool try_save_text_underlining_and_strikeouting_in_css: PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
         :param str storage: The document storage.
+        :param bool flow_layout_paragraph_full_width: This attribute specifies full width paragraph text for Flow mode, FixedLayout = false.
         :param file file: A file to be converted.
         :return: AsposeResponse
                  If the method is called asynchronously,
@@ -34931,13 +35881,14 @@ class PdfApi(object):
         :param str special_folder_for_svg_images: The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file.
         :param bool try_save_text_underlining_and_strikeouting_in_css: PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
         :param str storage: The document storage.
+        :param bool flow_layout_paragraph_full_width: This attribute specifies full width paragraph text for Flow mode, FixedLayout = false.
         :param file file: A file to be converted.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['out_path', 'additional_margin_width_in_points', 'compress_svg_graphics_if_any', 'convert_marked_content_to_layers', 'default_font_name', 'document_type', 'fixed_layout', 'image_resolution', 'minimal_line_width', 'prevent_glyphs_grouping', 'split_css_into_pages', 'split_into_pages', 'use_z_order', 'antialiasing_processing', 'css_class_names_prefix', 'explicit_list_of_saved_pages', 'font_encoding_strategy', 'font_saving_mode', 'html_markup_generation_mode', 'letters_positioning_method', 'pages_flow_type_depends_on_viewers_screen_size', 'parts_embedding_mode', 'raster_images_saving_mode', 'remove_empty_areas_on_top_and_bottom', 'save_shadowed_texts_as_transparent_texts', 'save_transparent_texts', 'special_folder_for_all_images', 'special_folder_for_svg_images', 'try_save_text_underlining_and_strikeouting_in_css', 'storage', 'file']
+        all_params = ['out_path', 'additional_margin_width_in_points', 'compress_svg_graphics_if_any', 'convert_marked_content_to_layers', 'default_font_name', 'document_type', 'fixed_layout', 'image_resolution', 'minimal_line_width', 'prevent_glyphs_grouping', 'split_css_into_pages', 'split_into_pages', 'use_z_order', 'antialiasing_processing', 'css_class_names_prefix', 'explicit_list_of_saved_pages', 'font_encoding_strategy', 'font_saving_mode', 'html_markup_generation_mode', 'letters_positioning_method', 'pages_flow_type_depends_on_viewers_screen_size', 'parts_embedding_mode', 'raster_images_saving_mode', 'remove_empty_areas_on_top_and_bottom', 'save_shadowed_texts_as_transparent_texts', 'save_transparent_texts', 'special_folder_for_all_images', 'special_folder_for_svg_images', 'try_save_text_underlining_and_strikeouting_in_css', 'storage', 'flow_layout_paragraph_full_width', 'file']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -35023,6 +35974,8 @@ class PdfApi(object):
             query_params.append(('trySaveTextUnderliningAndStrikeoutingInCss', params['try_save_text_underlining_and_strikeouting_in_css']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'flow_layout_paragraph_full_width' in params:
+            query_params.append(('flowLayoutParagraphFullWidth', params['flow_layout_paragraph_full_width']))
 
         header_params = {}
 
@@ -36608,6 +37561,7 @@ class PdfApi(object):
         :param bool try_save_text_underlining_and_strikeouting_in_css: PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param bool flow_layout_paragraph_full_width: This attribute specifies full width paragraph text for Flow mode, FixedLayout = false.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -36664,12 +37618,13 @@ class PdfApi(object):
         :param bool try_save_text_underlining_and_strikeouting_in_css: PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param bool flow_layout_paragraph_full_width: This attribute specifies full width paragraph text for Flow mode, FixedLayout = false.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'out_path', 'additional_margin_width_in_points', 'compress_svg_graphics_if_any', 'convert_marked_content_to_layers', 'default_font_name', 'document_type', 'fixed_layout', 'image_resolution', 'minimal_line_width', 'prevent_glyphs_grouping', 'split_css_into_pages', 'split_into_pages', 'use_z_order', 'antialiasing_processing', 'css_class_names_prefix', 'explicit_list_of_saved_pages', 'font_encoding_strategy', 'font_saving_mode', 'html_markup_generation_mode', 'letters_positioning_method', 'pages_flow_type_depends_on_viewers_screen_size', 'parts_embedding_mode', 'raster_images_saving_mode', 'remove_empty_areas_on_top_and_bottom', 'save_shadowed_texts_as_transparent_texts', 'save_transparent_texts', 'special_folder_for_all_images', 'special_folder_for_svg_images', 'try_save_text_underlining_and_strikeouting_in_css', 'folder', 'storage']
+        all_params = ['name', 'out_path', 'additional_margin_width_in_points', 'compress_svg_graphics_if_any', 'convert_marked_content_to_layers', 'default_font_name', 'document_type', 'fixed_layout', 'image_resolution', 'minimal_line_width', 'prevent_glyphs_grouping', 'split_css_into_pages', 'split_into_pages', 'use_z_order', 'antialiasing_processing', 'css_class_names_prefix', 'explicit_list_of_saved_pages', 'font_encoding_strategy', 'font_saving_mode', 'html_markup_generation_mode', 'letters_positioning_method', 'pages_flow_type_depends_on_viewers_screen_size', 'parts_embedding_mode', 'raster_images_saving_mode', 'remove_empty_areas_on_top_and_bottom', 'save_shadowed_texts_as_transparent_texts', 'save_transparent_texts', 'special_folder_for_all_images', 'special_folder_for_svg_images', 'try_save_text_underlining_and_strikeouting_in_css', 'folder', 'storage', 'flow_layout_paragraph_full_width']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -36762,6 +37717,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'flow_layout_paragraph_full_width' in params:
+            query_params.append(('flowLayoutParagraphFullWidth', params['flow_layout_paragraph_full_width']))
 
         header_params = {}
 

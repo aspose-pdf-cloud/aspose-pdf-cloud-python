@@ -4,7 +4,7 @@
     Aspose.PDF Cloud API Reference
 
 
-   Copyright (c) 2019 Aspose.PDF Cloud
+   Copyright (c) 2020 Aspose.PDF Cloud
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
@@ -65,7 +65,8 @@ class FormField(object):
         'margin': 'MarginInfo',
         'highlighting': 'LinkHighlightingMode',
         'horizontal_alignment': 'HorizontalAlignment',
-        'vertical_alignment': 'VerticalAlignment'
+        'vertical_alignment': 'VerticalAlignment',
+        'border': 'Border'
     }
 
     attribute_map = {
@@ -86,10 +87,11 @@ class FormField(object):
         'margin': 'Margin',
         'highlighting': 'Highlighting',
         'horizontal_alignment': 'HorizontalAlignment',
-        'vertical_alignment': 'VerticalAlignment'
+        'vertical_alignment': 'VerticalAlignment',
+        'border': 'Border'
     }
 
-    def __init__(self, links=None, partial_name=None, rect=None, value=None, page_index=None, height=None, width=None, z_index=None, is_group=None, parent=None, is_shared_field=None, flags=None, color=None, contents=None, margin=None, highlighting=None, horizontal_alignment=None, vertical_alignment=None):
+    def __init__(self, links=None, partial_name=None, rect=None, value=None, page_index=None, height=None, width=None, z_index=None, is_group=None, parent=None, is_shared_field=None, flags=None, color=None, contents=None, margin=None, highlighting=None, horizontal_alignment=None, vertical_alignment=None, border=None):
         """
         FormField - a model defined in Swagger
         """
@@ -112,6 +114,7 @@ class FormField(object):
         self._highlighting = None
         self._horizontal_alignment = None
         self._vertical_alignment = None
+        self._border = None
 
         if links is not None:
           self.links = links
@@ -128,7 +131,8 @@ class FormField(object):
           self.width = width
         if z_index is not None:
           self.z_index = z_index
-        self.is_group = is_group
+        if is_group is not None:
+          self.is_group = is_group
         if parent is not None:
           self.parent = parent
         if is_shared_field is not None:
@@ -147,6 +151,8 @@ class FormField(object):
           self.horizontal_alignment = horizontal_alignment
         if vertical_alignment is not None:
           self.vertical_alignment = vertical_alignment
+        if border is not None:
+          self.border = border
 
     @property
     def links(self):
@@ -354,8 +360,6 @@ class FormField(object):
         :param is_group: The is_group of this FormField.
         :type: bool
         """
-        if is_group is None:
-            raise ValueError("Invalid value for `is_group`, must not be `None`")
 
         self._is_group = is_group
 
@@ -565,6 +569,29 @@ class FormField(object):
         """
 
         self._vertical_alignment = vertical_alignment
+
+    @property
+    def border(self):
+        """
+        Gets the border of this FormField.
+        Gets or sets annotation border characteristics.
+
+        :return: The border of this FormField.
+        :rtype: Border
+        """
+        return self._border
+
+    @border.setter
+    def border(self, border):
+        """
+        Sets the border of this FormField.
+        Gets or sets annotation border characteristics.
+
+        :param border: The border of this FormField.
+        :type: Border
+        """
+
+        self._border = border
 
     def to_dict(self):
         """

@@ -4,7 +4,7 @@
     Aspose.PDF Cloud API Reference
 
 
-   Copyright (c) 2019 Aspose.PDF Cloud
+   Copyright (c) 2020 Aspose.PDF Cloud
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
@@ -50,28 +50,33 @@ class Document(object):
     swagger_types = {
         'links': 'list[Link]',
         'document_properties': 'DocumentProperties',
+        'display_properties': 'DisplayProperties',
         'pages': 'Pages'
     }
 
     attribute_map = {
         'links': 'Links',
         'document_properties': 'DocumentProperties',
+        'display_properties': 'DisplayProperties',
         'pages': 'Pages'
     }
 
-    def __init__(self, links=None, document_properties=None, pages=None):
+    def __init__(self, links=None, document_properties=None, display_properties=None, pages=None):
         """
         Document - a model defined in Swagger
         """
 
         self._links = None
         self._document_properties = None
+        self._display_properties = None
         self._pages = None
 
         if links is not None:
           self.links = links
         if document_properties is not None:
           self.document_properties = document_properties
+        if display_properties is not None:
+          self.display_properties = display_properties
         if pages is not None:
           self.pages = pages
 
@@ -120,6 +125,29 @@ class Document(object):
         """
 
         self._document_properties = document_properties
+
+    @property
+    def display_properties(self):
+        """
+        Gets the display_properties of this Document.
+        Document display properties.
+
+        :return: The display_properties of this Document.
+        :rtype: DisplayProperties
+        """
+        return self._display_properties
+
+    @display_properties.setter
+    def display_properties(self, display_properties):
+        """
+        Sets the display_properties of this Document.
+        Document display properties.
+
+        :param display_properties: The display_properties of this Document.
+        :type: DisplayProperties
+        """
+
+        self._display_properties = display_properties
 
     @property
     def pages(self):
