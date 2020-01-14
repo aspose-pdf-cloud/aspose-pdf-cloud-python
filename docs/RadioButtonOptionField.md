@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **height** | **float** | Gets or sets height of the field. | [optional] 
 **width** | **float** | Gets or sets width of the field. | [optional] 
 **z_index** | **int** | Z index. | [optional] 
-**is_group** | **bool** | Is group. | 
+**is_group** | **bool** | Is group. | [optional] 
 **parent** | [**FormField**](FormField.md) | Gets field parent. | [optional] 
 **is_shared_field** | **bool** | Property for Generator support. Used when field is added to header or footer. If true, this field will created once and it&#39;s appearance will be visible on all pages of the document. If false, separated field will be created for every document page. | [optional] 
 **flags** | [**list[AnnotationFlags]**](AnnotationFlags.md) | Gets Flags of the field. | [optional] 
@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **highlighting** | [**LinkHighlightingMode**](LinkHighlightingMode.md) | Field highlighting mode. | [optional] 
 **horizontal_alignment** | [**HorizontalAlignment**](HorizontalAlignment.md) | Gets HorizontalAlignment of the field. | [optional] 
 **vertical_alignment** | [**VerticalAlignment**](VerticalAlignment.md) | Gets VerticalAlignment of the field. | [optional] 
+**border** | [**Border**](Border.md) | Gets or sets annotation border characteristics. | [optional] 
 **option_name** | **str** | Gets or sets name of the option. | [optional] 
 **style** | [**BoxStyle**](BoxStyle.md) | Style of field box. | [optional] 
 

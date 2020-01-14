@@ -4,7 +4,7 @@
     Aspose.PDF Cloud API Reference
 
 
-   Copyright (c) 2019 Aspose.PDF Cloud
+   Copyright (c) 2020 Aspose.PDF Cloud
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
@@ -36,8 +36,11 @@ from .models.annotation_state import AnnotationState
 from .models.annotation_type import AnnotationType
 from .models.antialiasing_processing_type import AntialiasingProcessingType
 from .models.aspose_response import AsposeResponse
+from .models.border import Border
 from .models.border_corner_style import BorderCornerStyle
+from .models.border_effect import BorderEffect
 from .models.border_info import BorderInfo
+from .models.border_style import BorderStyle
 from .models.box_style import BoxStyle
 from .models.cap_style import CapStyle
 from .models.caption_position import CaptionPosition
@@ -49,10 +52,14 @@ from .models.color_depth import ColorDepth
 from .models.column_adjustment import ColumnAdjustment
 from .models.compression_type import CompressionType
 from .models.crypto_algorithm import CryptoAlgorithm
+from .models.dash import Dash
+from .models.default_page_config import DefaultPageConfig
+from .models.direction import Direction
 from .models.disc_usage import DiscUsage
 from .models.doc_format import DocFormat
 from .models.doc_mdp_access_permission_type import DocMDPAccessPermissionType
 from .models.doc_recognition_mode import DocRecognitionMode
+from .models.document_config import DocumentConfig
 from .models.document_privilege import DocumentPrivilege
 from .models.epub_recognition_mode import EpubRecognitionMode
 from .models.error import Error
@@ -87,6 +94,8 @@ from .models.merge_documents import MergeDocuments
 from .models.object_exist import ObjectExist
 from .models.optimize_options import OptimizeOptions
 from .models.option import Option
+from .models.page_layout import PageLayout
+from .models.page_mode import PageMode
 from .models.page_word_count import PageWordCount
 from .models.paragraph import Paragraph
 from .models.parts_embedding_modes import PartsEmbeddingModes
@@ -150,6 +159,8 @@ from .models.circle_annotations_response import CircleAnnotationsResponse
 from .models.combo_box_field_response import ComboBoxFieldResponse
 from .models.combo_box_fields import ComboBoxFields
 from .models.combo_box_fields_response import ComboBoxFieldsResponse
+from .models.display_properties import DisplayProperties
+from .models.display_properties_response import DisplayPropertiesResponse
 from .models.document import Document
 from .models.document_page_response import DocumentPageResponse
 from .models.document_pages_response import DocumentPagesResponse
@@ -187,6 +198,9 @@ from .models.link_annotation import LinkAnnotation
 from .models.link_annotation_response import LinkAnnotationResponse
 from .models.link_annotations import LinkAnnotations
 from .models.link_annotations_response import LinkAnnotationsResponse
+from .models.list_box_field_response import ListBoxFieldResponse
+from .models.list_box_fields import ListBoxFields
+from .models.list_box_fields_response import ListBoxFieldsResponse
 from .models.movie_annotation_response import MovieAnnotationResponse
 from .models.movie_annotations import MovieAnnotations
 from .models.movie_annotations_response import MovieAnnotationsResponse
@@ -279,6 +293,7 @@ from .models.free_text_annotation import FreeTextAnnotation
 from .models.highlight_annotation import HighlightAnnotation
 from .models.ink_annotation import InkAnnotation
 from .models.line_annotation import LineAnnotation
+from .models.list_box_field import ListBoxField
 from .models.poly_annotation import PolyAnnotation
 from .models.popup_annotation_with_parent import PopupAnnotationWithParent
 from .models.radio_button_field import RadioButtonField

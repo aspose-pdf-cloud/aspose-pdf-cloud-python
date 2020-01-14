@@ -45,11 +45,13 @@ Method | HTTP request | Description
 [**get_document_check_box_fields**](PdfApi.md#get_document_check_box_fields) | **GET** /pdf/\{name}/fields/checkbox | Read document checkbox fields.
 [**get_document_circle_annotations**](PdfApi.md#get_document_circle_annotations) | **GET** /pdf/\{name}/annotations/circle | Read document circle annotations.
 [**get_document_combo_box_fields**](PdfApi.md#get_document_combo_box_fields) | **GET** /pdf/\{name}/fields/combobox | Read document combobox fields.
+[**get_document_display_properties**](PdfApi.md#get_document_display_properties) | **GET** /pdf/\{name}/displayproperties | Read document display properties.
 [**get_document_file_attachment_annotations**](PdfApi.md#get_document_file_attachment_annotations) | **GET** /pdf/\{name}/annotations/fileattachment | Read document FileAttachment annotations.
 [**get_document_free_text_annotations**](PdfApi.md#get_document_free_text_annotations) | **GET** /pdf/\{name}/annotations/freetext | Read document free text annotations.
 [**get_document_highlight_annotations**](PdfApi.md#get_document_highlight_annotations) | **GET** /pdf/\{name}/annotations/highlight | Read document highlight annotations.
 [**get_document_ink_annotations**](PdfApi.md#get_document_ink_annotations) | **GET** /pdf/\{name}/annotations/ink | Read document ink annotations.
 [**get_document_line_annotations**](PdfApi.md#get_document_line_annotations) | **GET** /pdf/\{name}/annotations/line | Read document line annotations.
+[**get_document_list_box_fields**](PdfApi.md#get_document_list_box_fields) | **GET** /pdf/\{name}/fields/listbox | Read document listbox fields.
 [**get_document_movie_annotations**](PdfApi.md#get_document_movie_annotations) | **GET** /pdf/\{name}/annotations/movie | Read document movie annotations.
 [**get_document_poly_line_annotations**](PdfApi.md#get_document_poly_line_annotations) | **GET** /pdf/\{name}/annotations/polyline | Read document polyline annotations.
 [**get_document_polygon_annotations**](PdfApi.md#get_document_polygon_annotations) | **GET** /pdf/\{name}/annotations/polygon | Read document polygon annotations.
@@ -98,6 +100,7 @@ Method | HTTP request | Description
 [**get_la_te_x_in_storage_to_pdf**](PdfApi.md#get_la_te_x_in_storage_to_pdf) | **GET** /pdf/create/latex | Convert LaTeX file (located on storage) to PDF format and return resulting file in response. 
 [**get_line_annotation**](PdfApi.md#get_line_annotation) | **GET** /pdf/\{name}/annotations/line/\{annotationId} | Read document page line annotation by ID.
 [**get_link_annotation**](PdfApi.md#get_link_annotation) | **GET** /pdf/\{name}/links/\{linkId} | Read document link annotation by ID.
+[**get_list_box_field**](PdfApi.md#get_list_box_field) | **GET** /pdf/\{name}/fields/listbox/\{fieldName} | Read document listbox field by name.
 [**get_markdown_in_storage_to_pdf**](PdfApi.md#get_markdown_in_storage_to_pdf) | **GET** /pdf/create/markdown | Convert MD file (located on storage) to PDF format and return resulting file in response. 
 [**get_mht_in_storage_to_pdf**](PdfApi.md#get_mht_in_storage_to_pdf) | **GET** /pdf/create/mht | Convert MHT file (located on storage) to PDF format and return resulting file in response. 
 [**get_movie_annotation**](PdfApi.md#get_movie_annotation) | **GET** /pdf/\{name}/annotations/movie/\{annotationId} | Read document page movie annotation by ID.
@@ -120,6 +123,7 @@ Method | HTTP request | Description
 [**get_page_line_annotations**](PdfApi.md#get_page_line_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/line | Read document page line annotations.
 [**get_page_link_annotation**](PdfApi.md#get_page_link_annotation) | **GET** /pdf/\{name}/pages/\{pageNumber}/links/\{linkId} | Read document page link annotation by ID.
 [**get_page_link_annotations**](PdfApi.md#get_page_link_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/links | Read document page link annotations.
+[**get_page_list_box_fields**](PdfApi.md#get_page_list_box_fields) | **GET** /pdf/\{name}/page/\{pageNumber}/fields/listbox | Read document page listbox fields.
 [**get_page_movie_annotations**](PdfApi.md#get_page_movie_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/movie | Read document page movie annotations.
 [**get_page_poly_line_annotations**](PdfApi.md#get_page_poly_line_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/polyline | Read document page polyline annotations.
 [**get_page_polygon_annotations**](PdfApi.md#get_page_polygon_annotations) | **GET** /pdf/\{name}/pages/\{pageNumber}/annotations/polygon | Read document page polygon annotations.
@@ -191,6 +195,7 @@ Method | HTTP request | Description
 [**post_change_password_document_in_storage**](PdfApi.md#post_change_password_document_in_storage) | **POST** /pdf/\{name}/changepassword | Change document password in storage.
 [**post_check_box_fields**](PdfApi.md#post_check_box_fields) | **POST** /pdf/\{name}/fields/checkbox | Add document checkbox fields.
 [**post_combo_box_fields**](PdfApi.md#post_combo_box_fields) | **POST** /pdf/\{name}/fields/combobox | Add document combobox fields.
+[**post_create_document**](PdfApi.md#post_create_document) | **POST** /pdf/\{name} | Create empty document.
 [**post_create_field**](PdfApi.md#post_create_field) | **POST** /pdf/\{name}/fields | Create field.
 [**post_decrypt_document_in_storage**](PdfApi.md#post_decrypt_document_in_storage) | **POST** /pdf/\{name}/decrypt | Decrypt document in storage.
 [**post_document_image_footer**](PdfApi.md#post_document_image_footer) | **POST** /pdf/\{name}/footer/image | Add document image footer.
@@ -205,6 +210,7 @@ Method | HTTP request | Description
 [**post_import_fields_from_xfdf**](PdfApi.md#post_import_fields_from_xfdf) | **POST** /pdf/\{name}/import/xfdf | Update fields from XFDF file in request.
 [**post_import_fields_from_xml**](PdfApi.md#post_import_fields_from_xml) | **POST** /pdf/\{name}/import/xml | Update fields from XML file in request.
 [**post_insert_image**](PdfApi.md#post_insert_image) | **POST** /pdf/\{name}/pages/\{pageNumber}/images | Insert image to document page.
+[**post_list_box_fields**](PdfApi.md#post_list_box_fields) | **POST** /pdf/\{name}/fields/listbox | Add document listbox fields.
 [**post_move_page**](PdfApi.md#post_move_page) | **POST** /pdf/\{name}/pages/\{pageNumber}/movePage | Move page to new position.
 [**post_optimize_document**](PdfApi.md#post_optimize_document) | **POST** /pdf/\{name}/optimize | Optimize document.
 [**post_page_caret_annotations**](PdfApi.md#post_page_caret_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/caret | Add document page caret annotations.
@@ -250,6 +256,7 @@ Method | HTTP request | Description
 [**put_combo_box_field**](PdfApi.md#put_combo_box_field) | **PUT** /pdf/\{name}/fields/combobox/\{fieldName} | Replace document combobox field
 [**put_create_document**](PdfApi.md#put_create_document) | **PUT** /pdf/\{name} | Create empty document.
 [**put_decrypt_document**](PdfApi.md#put_decrypt_document) | **PUT** /pdf/decrypt | Decrypt document from content.
+[**put_document_display_properties**](PdfApi.md#put_document_display_properties) | **PUT** /pdf/\{name}/displayproperties | Update document display properties.
 [**put_encrypt_document**](PdfApi.md#put_encrypt_document) | **PUT** /pdf/encrypt | Encrypt document from content.
 [**put_epub_in_storage_to_pdf**](PdfApi.md#put_epub_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/epub | Convert EPUB file (located on storage) to PDF format and upload resulting file to storage. 
 [**put_export_fields_from_pdf_to_fdf_in_storage**](PdfApi.md#put_export_fields_from_pdf_to_fdf_in_storage) | **PUT** /pdf/\{name}/export/fdf | Export fields from from PDF in storage to FDF file in storage.
@@ -277,6 +284,7 @@ Method | HTTP request | Description
 [**put_la_te_x_in_storage_to_pdf**](PdfApi.md#put_la_te_x_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/latex | Convert LaTeX file (located on storage) to PDF format and upload resulting file to storage. 
 [**put_line_annotation**](PdfApi.md#put_line_annotation) | **PUT** /pdf/\{name}/annotations/line/\{annotationId} | Replace document line annotation
 [**put_link_annotation**](PdfApi.md#put_link_annotation) | **PUT** /pdf/\{name}/links/\{linkId} | Replace document page link annotations
+[**put_list_box_field**](PdfApi.md#put_list_box_field) | **PUT** /pdf/\{name}/fields/listbox/\{fieldName} | Replace document listbox field
 [**put_markdown_in_storage_to_pdf**](PdfApi.md#put_markdown_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/markdown | Convert MD file (located on storage) to PDF format and upload resulting file to storage. 
 [**put_merge_documents**](PdfApi.md#put_merge_documents) | **PUT** /pdf/\{name}/merge | Merge a list of documents.
 [**put_mht_in_storage_to_pdf**](PdfApi.md#put_mht_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/mht | Convert MHT file (located on storage) to PDF format and upload resulting file to storage. 
@@ -1355,6 +1363,30 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_document_display_properties**
+> DisplayPropertiesResponse get_document_display_properties(name, storage=storage, folder=folder)
+
+Read document display properties.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**|  | 
+ **storage** | **str**|  | [optional] 
+ **folder** | **str**|  | [optional] 
+
+### Return type
+
+[**DisplayPropertiesResponse**](DisplayPropertiesResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_document_file_attachment_annotations**
 > FileAttachmentAnnotationsResponse get_document_file_attachment_annotations(name, storage=storage, folder=folder)
 
@@ -1467,6 +1499,30 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**LineAnnotationsResponse**](LineAnnotationsResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_document_list_box_fields**
+> ListBoxFieldsResponse get_document_list_box_fields(name, storage=storage, folder=folder)
+
+Read document listbox fields.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**ListBoxFieldsResponse**](ListBoxFieldsResponse.md)
 
 ### HTTP request headers
 
@@ -2658,6 +2714,31 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_list_box_field**
+> ListBoxFieldResponse get_list_box_field(name, field_name, storage=storage, folder=folder)
+
+Read document listbox field by name.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **field_name** | **str**| The field name. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**ListBoxFieldResponse**](ListBoxFieldResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_markdown_in_storage_to_pdf**
 > file get_markdown_in_storage_to_pdf(src_path, storage=storage)
 
@@ -3209,6 +3290,31 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**LinkAnnotationsResponse**](LinkAnnotationsResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_page_list_box_fields**
+> ListBoxFieldsResponse get_page_list_box_fields(name, page_number, storage=storage, folder=folder)
+
+Read document page listbox fields.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **page_number** | **int**| The page number. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**ListBoxFieldsResponse**](ListBoxFieldsResponse.md)
 
 ### HTTP request headers
 
@@ -3804,7 +3910,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_pdf_in_storage_to_html**
-> file get_pdf_in_storage_to_html(name, additional_margin_width_in_points=additional_margin_width_in_points, compress_svg_graphics_if_any=compress_svg_graphics_if_any, convert_marked_content_to_layers=convert_marked_content_to_layers, default_font_name=default_font_name, document_type=document_type, fixed_layout=fixed_layout, image_resolution=image_resolution, minimal_line_width=minimal_line_width, prevent_glyphs_grouping=prevent_glyphs_grouping, split_css_into_pages=split_css_into_pages, split_into_pages=split_into_pages, use_z_order=use_z_order, antialiasing_processing=antialiasing_processing, css_class_names_prefix=css_class_names_prefix, explicit_list_of_saved_pages=explicit_list_of_saved_pages, font_encoding_strategy=font_encoding_strategy, font_saving_mode=font_saving_mode, html_markup_generation_mode=html_markup_generation_mode, letters_positioning_method=letters_positioning_method, pages_flow_type_depends_on_viewers_screen_size=pages_flow_type_depends_on_viewers_screen_size, parts_embedding_mode=parts_embedding_mode, raster_images_saving_mode=raster_images_saving_mode, remove_empty_areas_on_top_and_bottom=remove_empty_areas_on_top_and_bottom, save_shadowed_texts_as_transparent_texts=save_shadowed_texts_as_transparent_texts, save_transparent_texts=save_transparent_texts, special_folder_for_all_images=special_folder_for_all_images, special_folder_for_svg_images=special_folder_for_svg_images, try_save_text_underlining_and_strikeouting_in_css=try_save_text_underlining_and_strikeouting_in_css, folder=folder, storage=storage)
+> file get_pdf_in_storage_to_html(name, additional_margin_width_in_points=additional_margin_width_in_points, compress_svg_graphics_if_any=compress_svg_graphics_if_any, convert_marked_content_to_layers=convert_marked_content_to_layers, default_font_name=default_font_name, document_type=document_type, fixed_layout=fixed_layout, image_resolution=image_resolution, minimal_line_width=minimal_line_width, prevent_glyphs_grouping=prevent_glyphs_grouping, split_css_into_pages=split_css_into_pages, split_into_pages=split_into_pages, use_z_order=use_z_order, antialiasing_processing=antialiasing_processing, css_class_names_prefix=css_class_names_prefix, explicit_list_of_saved_pages=explicit_list_of_saved_pages, font_encoding_strategy=font_encoding_strategy, font_saving_mode=font_saving_mode, html_markup_generation_mode=html_markup_generation_mode, letters_positioning_method=letters_positioning_method, pages_flow_type_depends_on_viewers_screen_size=pages_flow_type_depends_on_viewers_screen_size, parts_embedding_mode=parts_embedding_mode, raster_images_saving_mode=raster_images_saving_mode, remove_empty_areas_on_top_and_bottom=remove_empty_areas_on_top_and_bottom, save_shadowed_texts_as_transparent_texts=save_shadowed_texts_as_transparent_texts, save_transparent_texts=save_transparent_texts, special_folder_for_all_images=special_folder_for_all_images, special_folder_for_svg_images=special_folder_for_svg_images, try_save_text_underlining_and_strikeouting_in_css=try_save_text_underlining_and_strikeouting_in_css, folder=folder, storage=storage, flow_layout_paragraph_full_width=flow_layout_paragraph_full_width)
 
 Converts PDF document (located on storage) to Html format and returns resulting file in response content
 
@@ -3843,6 +3949,7 @@ Name | Type | Description  | Notes
  **try_save_text_underlining_and_strikeouting_in_css** | **bool**| PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **flow_layout_paragraph_full_width** | **bool**| This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false. | [optional] 
 
 ### Return type
 
@@ -5061,6 +5168,31 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **post_create_document**
+> DocumentResponse post_create_document(name, document_config, storage=storage, folder=folder)
+
+Create empty document.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The new document name. | 
+ **document_config** | [**DocumentConfig**](DocumentConfig.md)| The document config for new document. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The new document folder. | [optional] 
+
+### Return type
+
+[**DocumentResponse**](DocumentResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **post_create_field**
 > AsposeResponse post_create_field(name, page, field, storage=storage, folder=folder)
 
@@ -5430,6 +5562,31 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_list_box_fields**
+> AsposeResponse post_list_box_fields(name, fields, storage=storage, folder=folder)
+
+Add document listbox fields.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **fields** | [**list[ListBoxField]**](ListBoxField.md)| The array of field. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -6599,6 +6756,31 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **put_document_display_properties**
+> DisplayPropertiesResponse put_document_display_properties(name, display_properties, storage=storage, folder=folder)
+
+Update document display properties.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **display_properties** | [**DisplayProperties**](DisplayProperties.md)| The display properties. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**DisplayPropertiesResponse**](DisplayPropertiesResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **put_encrypt_document**
 > AsposeResponse put_encrypt_document(out_path, user_password, owner_password, crypto_algorithm, permissions_flags=permissions_flags, use_pdf20=use_pdf20, storage=storage, file=file)
 
@@ -7316,6 +7498,32 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **put_list_box_field**
+> ListBoxFieldResponse put_list_box_field(name, field_name, field, storage=storage, folder=folder)
+
+Replace document listbox field
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **field_name** | **str**| The field name. | 
+ **field** | [**ListBoxField**](ListBoxField.md)| The field. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**ListBoxFieldResponse**](ListBoxFieldResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **put_markdown_in_storage_to_pdf**
 > AsposeResponse put_markdown_in_storage_to_pdf(name, src_path, storage=storage, dst_folder=dst_folder)
 
@@ -7694,7 +7902,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_pdf_in_request_to_html**
-> AsposeResponse put_pdf_in_request_to_html(out_path, additional_margin_width_in_points=additional_margin_width_in_points, compress_svg_graphics_if_any=compress_svg_graphics_if_any, convert_marked_content_to_layers=convert_marked_content_to_layers, default_font_name=default_font_name, document_type=document_type, fixed_layout=fixed_layout, image_resolution=image_resolution, minimal_line_width=minimal_line_width, prevent_glyphs_grouping=prevent_glyphs_grouping, split_css_into_pages=split_css_into_pages, split_into_pages=split_into_pages, use_z_order=use_z_order, antialiasing_processing=antialiasing_processing, css_class_names_prefix=css_class_names_prefix, explicit_list_of_saved_pages=explicit_list_of_saved_pages, font_encoding_strategy=font_encoding_strategy, font_saving_mode=font_saving_mode, html_markup_generation_mode=html_markup_generation_mode, letters_positioning_method=letters_positioning_method, pages_flow_type_depends_on_viewers_screen_size=pages_flow_type_depends_on_viewers_screen_size, parts_embedding_mode=parts_embedding_mode, raster_images_saving_mode=raster_images_saving_mode, remove_empty_areas_on_top_and_bottom=remove_empty_areas_on_top_and_bottom, save_shadowed_texts_as_transparent_texts=save_shadowed_texts_as_transparent_texts, save_transparent_texts=save_transparent_texts, special_folder_for_all_images=special_folder_for_all_images, special_folder_for_svg_images=special_folder_for_svg_images, try_save_text_underlining_and_strikeouting_in_css=try_save_text_underlining_and_strikeouting_in_css, storage=storage, file=file)
+> AsposeResponse put_pdf_in_request_to_html(out_path, additional_margin_width_in_points=additional_margin_width_in_points, compress_svg_graphics_if_any=compress_svg_graphics_if_any, convert_marked_content_to_layers=convert_marked_content_to_layers, default_font_name=default_font_name, document_type=document_type, fixed_layout=fixed_layout, image_resolution=image_resolution, minimal_line_width=minimal_line_width, prevent_glyphs_grouping=prevent_glyphs_grouping, split_css_into_pages=split_css_into_pages, split_into_pages=split_into_pages, use_z_order=use_z_order, antialiasing_processing=antialiasing_processing, css_class_names_prefix=css_class_names_prefix, explicit_list_of_saved_pages=explicit_list_of_saved_pages, font_encoding_strategy=font_encoding_strategy, font_saving_mode=font_saving_mode, html_markup_generation_mode=html_markup_generation_mode, letters_positioning_method=letters_positioning_method, pages_flow_type_depends_on_viewers_screen_size=pages_flow_type_depends_on_viewers_screen_size, parts_embedding_mode=parts_embedding_mode, raster_images_saving_mode=raster_images_saving_mode, remove_empty_areas_on_top_and_bottom=remove_empty_areas_on_top_and_bottom, save_shadowed_texts_as_transparent_texts=save_shadowed_texts_as_transparent_texts, save_transparent_texts=save_transparent_texts, special_folder_for_all_images=special_folder_for_all_images, special_folder_for_svg_images=special_folder_for_svg_images, try_save_text_underlining_and_strikeouting_in_css=try_save_text_underlining_and_strikeouting_in_css, storage=storage, flow_layout_paragraph_full_width=flow_layout_paragraph_full_width, file=file)
 
 Converts PDF document (in request content) to Html format and uploads resulting file to storage.
 
@@ -7732,6 +7940,7 @@ Name | Type | Description  | Notes
  **special_folder_for_svg_images** | **str**| The path to directory to which must be saved only SVG-images if they are encountered during saving of document as HTML. If parameter is empty or null then SVG files(if any) wil be saved together with other image-files (near to output file) or in special folder for images (if it specified in SpecialImagesFolderIfAny option). It does not affect anything if CustomImageSavingStrategy property was successfully used to process relevant image file. | [optional] 
  **try_save_text_underlining_and_strikeouting_in_css** | **bool**| PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **flow_layout_paragraph_full_width** | **bool**| This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false. | [optional] 
  **file** | **file**| A file to be converted. | [optional] 
 
 ### Return type
@@ -8072,7 +8281,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_pdf_in_storage_to_html**
-> AsposeResponse put_pdf_in_storage_to_html(name, out_path, additional_margin_width_in_points=additional_margin_width_in_points, compress_svg_graphics_if_any=compress_svg_graphics_if_any, convert_marked_content_to_layers=convert_marked_content_to_layers, default_font_name=default_font_name, document_type=document_type, fixed_layout=fixed_layout, image_resolution=image_resolution, minimal_line_width=minimal_line_width, prevent_glyphs_grouping=prevent_glyphs_grouping, split_css_into_pages=split_css_into_pages, split_into_pages=split_into_pages, use_z_order=use_z_order, antialiasing_processing=antialiasing_processing, css_class_names_prefix=css_class_names_prefix, explicit_list_of_saved_pages=explicit_list_of_saved_pages, font_encoding_strategy=font_encoding_strategy, font_saving_mode=font_saving_mode, html_markup_generation_mode=html_markup_generation_mode, letters_positioning_method=letters_positioning_method, pages_flow_type_depends_on_viewers_screen_size=pages_flow_type_depends_on_viewers_screen_size, parts_embedding_mode=parts_embedding_mode, raster_images_saving_mode=raster_images_saving_mode, remove_empty_areas_on_top_and_bottom=remove_empty_areas_on_top_and_bottom, save_shadowed_texts_as_transparent_texts=save_shadowed_texts_as_transparent_texts, save_transparent_texts=save_transparent_texts, special_folder_for_all_images=special_folder_for_all_images, special_folder_for_svg_images=special_folder_for_svg_images, try_save_text_underlining_and_strikeouting_in_css=try_save_text_underlining_and_strikeouting_in_css, folder=folder, storage=storage)
+> AsposeResponse put_pdf_in_storage_to_html(name, out_path, additional_margin_width_in_points=additional_margin_width_in_points, compress_svg_graphics_if_any=compress_svg_graphics_if_any, convert_marked_content_to_layers=convert_marked_content_to_layers, default_font_name=default_font_name, document_type=document_type, fixed_layout=fixed_layout, image_resolution=image_resolution, minimal_line_width=minimal_line_width, prevent_glyphs_grouping=prevent_glyphs_grouping, split_css_into_pages=split_css_into_pages, split_into_pages=split_into_pages, use_z_order=use_z_order, antialiasing_processing=antialiasing_processing, css_class_names_prefix=css_class_names_prefix, explicit_list_of_saved_pages=explicit_list_of_saved_pages, font_encoding_strategy=font_encoding_strategy, font_saving_mode=font_saving_mode, html_markup_generation_mode=html_markup_generation_mode, letters_positioning_method=letters_positioning_method, pages_flow_type_depends_on_viewers_screen_size=pages_flow_type_depends_on_viewers_screen_size, parts_embedding_mode=parts_embedding_mode, raster_images_saving_mode=raster_images_saving_mode, remove_empty_areas_on_top_and_bottom=remove_empty_areas_on_top_and_bottom, save_shadowed_texts_as_transparent_texts=save_shadowed_texts_as_transparent_texts, save_transparent_texts=save_transparent_texts, special_folder_for_all_images=special_folder_for_all_images, special_folder_for_svg_images=special_folder_for_svg_images, try_save_text_underlining_and_strikeouting_in_css=try_save_text_underlining_and_strikeouting_in_css, folder=folder, storage=storage, flow_layout_paragraph_full_width=flow_layout_paragraph_full_width)
 
 Converts PDF document (located on storage) to Html format and uploads resulting file to storage
 
@@ -8112,6 +8321,7 @@ Name | Type | Description  | Notes
  **try_save_text_underlining_and_strikeouting_in_css** | **bool**| PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text&#39;s underlining and put this info into CSS instead of drawing of underlining graphically. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **flow_layout_paragraph_full_width** | **bool**| This attribute specifies full width paragraph text for Flow mode, FixedLayout &#x3D; false. | [optional] 
 
 ### Return type
 

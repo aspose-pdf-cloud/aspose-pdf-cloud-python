@@ -4,7 +4,7 @@
     Aspose.PDF Cloud API Reference
 
 
-   Copyright (c) 2019 Aspose.PDF Cloud
+   Copyright (c) 2020 Aspose.PDF Cloud
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
@@ -36,8 +36,11 @@ from .annotation_state import AnnotationState
 from .annotation_type import AnnotationType
 from .antialiasing_processing_type import AntialiasingProcessingType
 from .aspose_response import AsposeResponse
+from .border import Border
 from .border_corner_style import BorderCornerStyle
+from .border_effect import BorderEffect
 from .border_info import BorderInfo
+from .border_style import BorderStyle
 from .box_style import BoxStyle
 from .cap_style import CapStyle
 from .caption_position import CaptionPosition
@@ -49,10 +52,14 @@ from .color_depth import ColorDepth
 from .column_adjustment import ColumnAdjustment
 from .compression_type import CompressionType
 from .crypto_algorithm import CryptoAlgorithm
+from .dash import Dash
+from .default_page_config import DefaultPageConfig
+from .direction import Direction
 from .disc_usage import DiscUsage
 from .doc_format import DocFormat
 from .doc_mdp_access_permission_type import DocMDPAccessPermissionType
 from .doc_recognition_mode import DocRecognitionMode
+from .document_config import DocumentConfig
 from .document_privilege import DocumentPrivilege
 from .epub_recognition_mode import EpubRecognitionMode
 from .error import Error
@@ -87,6 +94,8 @@ from .merge_documents import MergeDocuments
 from .object_exist import ObjectExist
 from .optimize_options import OptimizeOptions
 from .option import Option
+from .page_layout import PageLayout
+from .page_mode import PageMode
 from .page_word_count import PageWordCount
 from .paragraph import Paragraph
 from .parts_embedding_modes import PartsEmbeddingModes
@@ -150,6 +159,8 @@ from .circle_annotations_response import CircleAnnotationsResponse
 from .combo_box_field_response import ComboBoxFieldResponse
 from .combo_box_fields import ComboBoxFields
 from .combo_box_fields_response import ComboBoxFieldsResponse
+from .display_properties import DisplayProperties
+from .display_properties_response import DisplayPropertiesResponse
 from .document import Document
 from .document_page_response import DocumentPageResponse
 from .document_pages_response import DocumentPagesResponse
@@ -187,6 +198,9 @@ from .link_annotation import LinkAnnotation
 from .link_annotation_response import LinkAnnotationResponse
 from .link_annotations import LinkAnnotations
 from .link_annotations_response import LinkAnnotationsResponse
+from .list_box_field_response import ListBoxFieldResponse
+from .list_box_fields import ListBoxFields
+from .list_box_fields_response import ListBoxFieldsResponse
 from .movie_annotation_response import MovieAnnotationResponse
 from .movie_annotations import MovieAnnotations
 from .movie_annotations_response import MovieAnnotationsResponse
@@ -279,6 +293,7 @@ from .free_text_annotation import FreeTextAnnotation
 from .highlight_annotation import HighlightAnnotation
 from .ink_annotation import InkAnnotation
 from .line_annotation import LineAnnotation
+from .list_box_field import ListBoxField
 from .poly_annotation import PolyAnnotation
 from .popup_annotation_with_parent import PopupAnnotationWithParent
 from .radio_button_field import RadioButtonField
