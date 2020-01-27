@@ -243,6 +243,7 @@ Method | HTTP request | Description
 [**post_radio_button_fields**](PdfApi.md#post_radio_button_fields) | **POST** /pdf/\{name}/fields/radiobutton | Add document RadioButton fields.
 [**post_sign_document**](PdfApi.md#post_sign_document) | **POST** /pdf/\{name}/sign | Sign document.
 [**post_sign_page**](PdfApi.md#post_sign_page) | **POST** /pdf/\{name}/pages/\{pageNumber}/sign | Sign page.
+[**post_signature_field**](PdfApi.md#post_signature_field) | **POST** /pdf/\{name}/fields/signature | Add document signature field.
 [**post_split_document**](PdfApi.md#post_split_document) | **POST** /pdf/\{name}/split | Split document to parts.
 [**post_text_box_fields**](PdfApi.md#post_text_box_fields) | **POST** /pdf/\{name}/fields/textbox | Add document text box fields.
 [**put_add_new_page**](PdfApi.md#put_add_new_page) | **PUT** /pdf/\{name}/pages | Add new page to end of the document.
@@ -335,6 +336,7 @@ Method | HTTP request | Description
 [**put_screen_annotation_data_extract**](PdfApi.md#put_screen_annotation_data_extract) | **PUT** /pdf/\{name}/annotations/screen/\{annotationId}/data/extract | Extract document screen annotation content to storage
 [**put_searchable_document**](PdfApi.md#put_searchable_document) | **PUT** /pdf/\{name}/ocr | Create searchable PDF document. Generate OCR layer for images in input PDF document.
 [**put_set_property**](PdfApi.md#put_set_property) | **PUT** /pdf/\{name}/documentproperties/\{propertyName} | Add/update document property.
+[**put_signature_field**](PdfApi.md#put_signature_field) | **PUT** /pdf/\{name}/fields/signature/\{fieldName} | Replace document signature field.
 [**put_sound_annotation**](PdfApi.md#put_sound_annotation) | **PUT** /pdf/\{name}/annotations/sound/\{annotationId} | Replace document sound annotation
 [**put_sound_annotation_data_extract**](PdfApi.md#put_sound_annotation_data_extract) | **PUT** /pdf/\{name}/annotations/sound/\{annotationId}/data/extract | Extract document sound annotation content to storage
 [**put_square_annotation**](PdfApi.md#put_square_annotation) | **PUT** /pdf/\{name}/annotations/square/\{annotationId} | Replace document square annotation
@@ -6421,6 +6423,31 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **post_signature_field**
+> AsposeResponse post_signature_field(name, field, storage=storage, folder=folder)
+
+Add document signature field.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **field** | [**SignatureField**](SignatureField.md)| The field. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **post_split_document**
 > SplitResultResponse post_split_document(name, format=format, _from=_from, to=to, storage=storage, folder=folder)
 
@@ -8913,6 +8940,32 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DocumentPropertyResponse**](DocumentPropertyResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_signature_field**
+> SignatureFieldResponse put_signature_field(name, field_name, field, storage=storage, folder=folder)
+
+Replace document signature field.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **field_name** | **str**| The field name. | 
+ **field** | [**SignatureField**](SignatureField.md)| The field. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**SignatureFieldResponse**](SignatureFieldResponse.md)
 
 ### HTTP request headers
 

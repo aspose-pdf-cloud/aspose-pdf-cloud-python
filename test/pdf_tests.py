@@ -3397,6 +3397,70 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.get_signature_field(file_name, field_name, **opts)
         self.assertEqual(response.code, 200)
 
+    def testPostSignatureField(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        
+        signature_file_name = '33226.p12'
+        self.uploadFile(signature_file_name)
+
+        signature = asposepdfcloud.models.Signature(
+                signature_path=self.temp_folder + '/' + signature_file_name,
+                signature_type=asposepdfcloud.models.SignatureType.PKCS7,
+                password='sIikZSmz',
+                contact='testself.mail.ru',
+                location='Ukraine',
+                visible=True,
+                rectangle=asposepdfcloud.models.Rectangle(100, 100, 0, 0),
+                form_field_name='Signature1',
+                authority='Sergey Smal',
+                date='08/01/2012 12:15:00.000 PM',
+                show_properties=False)
+
+        field = asposepdfcloud.models.SignatureField(page_index=1)
+        field.signature = signature
+        field.partial_name = 'sign1'
+        field.rect = asposepdfcloud.models.Rectangle(100, 100, 0, 0)
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.post_signature_field(file_name, field, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testPutSignatureField(self):
+        file_name = 'adbe.x509.rsa_sha1.valid.pdf'
+        self.uploadFile(file_name)
+        
+        signature_file_name = '33226.p12'
+        self.uploadFile(signature_file_name)
+
+        signature = asposepdfcloud.models.Signature(
+                signature_path=self.temp_folder + '/' + signature_file_name,
+                signature_type=asposepdfcloud.models.SignatureType.PKCS7,
+                password='sIikZSmz',
+                contact='testself.mail.ru',
+                location='Ukraine',
+                visible=True,
+                rectangle=asposepdfcloud.models.Rectangle(100, 100, 0, 0),
+                form_field_name='Signature1',
+                authority='Sergey Smal',
+                date='08/01/2012 12:15:00.000 PM',
+                show_properties=False)
+
+        field = asposepdfcloud.models.SignatureField(page_index=1)
+        field.signature = signature
+        field.partial_name = 'sign1'
+        field.rect = asposepdfcloud.models.Rectangle(100, 100, 0, 0)
+
+        opts = {
+              "folder" : self.temp_folder
+        }
+
+        response = self.pdf_api.put_signature_field(file_name, 'Signature1', field, **opts)
+        self.assertEqual(response.code, 200)
+
     def testGetDocumentTextBoxFields(self):
         file_name = 'FormDataTextBox.pdf'
         self.uploadFile(file_name)
