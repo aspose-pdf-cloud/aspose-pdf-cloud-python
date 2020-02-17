@@ -3117,6 +3117,27 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.put_markdown_in_storage_to_pdf(result_name, src_path, **opts)
         self.assertEqual(response.code, 200)
 
+    def testGetPdfAInStorageToPdf(self):
+        file_name = '4pagesPdfA.pdf'
+        self.uploadFile(file_name)
+
+        src_path = self.temp_folder + '/' + file_name
+        response = self.pdf_api.get_pdf_a_in_storage_to_pdf(src_path)
+        self.assertIsInstance(response, str)
+
+
+    def testPutPdfAInStorageToPdf(self):
+        file_name = '4pagesPdfA.pdf'
+        self.uploadFile(file_name)
+        result_name = 'fromPdfA.pdf'
+
+        src_path = self.temp_folder + '/' + file_name
+        opts = {
+            "dst_folder" : self.temp_folder
+        }
+        response = self.pdf_api.put_pdf_a_in_storage_to_pdf(result_name, src_path, **opts)
+        self.assertEqual(response.code, 200)
+
     # Document Tests
 
     def testGetDocument(self):
