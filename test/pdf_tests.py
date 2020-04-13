@@ -646,16 +646,15 @@ class PdfTests(unittest.TestCase):
                     cell.paragraphs[0] =  asposepdfcloud.models.TextRect(text='y')
                     cell.default_cell_text_state.foreground_color = asposepdfcloud.models.Color(a=0xFF, r=0, g=0xFF, b=0)
 
-                #change properties on paragraph
+                # change properties on paragraph
                 elif c == 3:
                     cell.paragraphs[0].text_state = text_state
                     cell.paragraphs[0].text_state.foreground_color = asposepdfcloud.models.Color(a=0xFF, r=0, g=0xFF, b=0xFF)
 
-                # change properties on paragraph AFTER first clearing and re-adding paragraphs
+                # HTML Fragment
                 elif c == 4:
-                    cell.paragraphs[0] = asposepdfcloud.models.TextRect(text='y')
-                    cell.paragraphs[0].text_state = text_state
-                    cell.paragraphs[0].text_state.foreground_color = asposepdfcloud.models.Color(a=0xFF, r=0xFF, g=0xFF, b=0xFF)
+                    cell.paragraphs = None
+                    cell.html_fragment = '<ul><li>First</li><li>Second</li></ul>'
 
                 row.cells.append(cell)
             

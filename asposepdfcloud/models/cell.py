@@ -53,6 +53,7 @@ class Cell(object):
         'border': 'BorderInfo',
         'background_color': 'Color',
         'background_image_file': 'str',
+        'background_image_storage_file': 'str',
         'alignment': 'HorizontalAlignment',
         'default_cell_text_state': 'TextState',
         'paragraphs': 'list[TextRect]',
@@ -60,7 +61,9 @@ class Cell(object):
         'vertical_alignment': 'VerticalAlignment',
         'col_span': 'int',
         'row_span': 'int',
-        'width': 'float'
+        'width': 'float',
+        'html_fragment': 'str',
+        'images': 'list[ImageFragment]'
     }
 
     attribute_map = {
@@ -69,6 +72,7 @@ class Cell(object):
         'border': 'Border',
         'background_color': 'BackgroundColor',
         'background_image_file': 'BackgroundImageFile',
+        'background_image_storage_file': 'BackgroundImageStorageFile',
         'alignment': 'Alignment',
         'default_cell_text_state': 'DefaultCellTextState',
         'paragraphs': 'Paragraphs',
@@ -76,10 +80,12 @@ class Cell(object):
         'vertical_alignment': 'VerticalAlignment',
         'col_span': 'ColSpan',
         'row_span': 'RowSpan',
-        'width': 'Width'
+        'width': 'Width',
+        'html_fragment': 'HtmlFragment',
+        'images': 'Images'
     }
 
-    def __init__(self, is_no_border=None, margin=None, border=None, background_color=None, background_image_file=None, alignment=None, default_cell_text_state=None, paragraphs=None, is_word_wrapped=None, vertical_alignment=None, col_span=None, row_span=None, width=None):
+    def __init__(self, is_no_border=None, margin=None, border=None, background_color=None, background_image_file=None, background_image_storage_file=None, alignment=None, default_cell_text_state=None, paragraphs=None, is_word_wrapped=None, vertical_alignment=None, col_span=None, row_span=None, width=None, html_fragment=None, images=None):
         """
         Cell - a model defined in Swagger
         """
@@ -89,6 +95,7 @@ class Cell(object):
         self._border = None
         self._background_color = None
         self._background_image_file = None
+        self._background_image_storage_file = None
         self._alignment = None
         self._default_cell_text_state = None
         self._paragraphs = None
@@ -97,6 +104,8 @@ class Cell(object):
         self._col_span = None
         self._row_span = None
         self._width = None
+        self._html_fragment = None
+        self._images = None
 
         if is_no_border is not None:
           self.is_no_border = is_no_border
@@ -108,6 +117,8 @@ class Cell(object):
           self.background_color = background_color
         if background_image_file is not None:
           self.background_image_file = background_image_file
+        if background_image_storage_file is not None:
+          self.background_image_storage_file = background_image_storage_file
         if alignment is not None:
           self.alignment = alignment
         if default_cell_text_state is not None:
@@ -124,6 +135,10 @@ class Cell(object):
           self.row_span = row_span
         if width is not None:
           self.width = width
+        if html_fragment is not None:
+          self.html_fragment = html_fragment
+        if images is not None:
+          self.images = images
 
     @property
     def is_no_border(self):
@@ -239,6 +254,29 @@ class Cell(object):
         """
 
         self._background_image_file = background_image_file
+
+    @property
+    def background_image_storage_file(self):
+        """
+        Gets the background_image_storage_file of this Cell.
+        Gets or sets path of the background image file from storage.
+
+        :return: The background_image_storage_file of this Cell.
+        :rtype: str
+        """
+        return self._background_image_storage_file
+
+    @background_image_storage_file.setter
+    def background_image_storage_file(self, background_image_storage_file):
+        """
+        Sets the background_image_storage_file of this Cell.
+        Gets or sets path of the background image file from storage.
+
+        :param background_image_storage_file: The background_image_storage_file of this Cell.
+        :type: str
+        """
+
+        self._background_image_storage_file = background_image_storage_file
 
     @property
     def alignment(self):
@@ -423,6 +461,52 @@ class Cell(object):
         """
 
         self._width = width
+
+    @property
+    def html_fragment(self):
+        """
+        Gets the html_fragment of this Cell.
+        Gets or sets Html fragment.
+
+        :return: The html_fragment of this Cell.
+        :rtype: str
+        """
+        return self._html_fragment
+
+    @html_fragment.setter
+    def html_fragment(self, html_fragment):
+        """
+        Sets the html_fragment of this Cell.
+        Gets or sets Html fragment.
+
+        :param html_fragment: The html_fragment of this Cell.
+        :type: str
+        """
+
+        self._html_fragment = html_fragment
+
+    @property
+    def images(self):
+        """
+        Gets the images of this Cell.
+        Gets or sets ImageFragment list.
+
+        :return: The images of this Cell.
+        :rtype: list[ImageFragment]
+        """
+        return self._images
+
+    @images.setter
+    def images(self, images):
+        """
+        Sets the images of this Cell.
+        Gets or sets ImageFragment list.
+
+        :param images: The images of this Cell.
+        :type: list[ImageFragment]
+        """
+
+        self._images = images
 
     def to_dict(self):
         """
