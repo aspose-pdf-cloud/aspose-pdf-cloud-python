@@ -17162,7 +17162,6 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param int pages_count: Pages count.
         :param str folder: The document folder.
         :param str storage: The document storage.
         :return: file
@@ -17190,7 +17189,6 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
-        :param int pages_count: Pages count.
         :param str folder: The document folder.
         :param str storage: The document storage.
         :return: file
@@ -17198,7 +17196,7 @@ class PdfApi(object):
                  returns the request thread.
         """
 
-        all_params = ['name', 'pages_count', 'folder', 'storage']
+        all_params = ['name', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -17225,8 +17223,6 @@ class PdfApi(object):
             path_params['name'] = params['name']
 
         query_params = []
-        if 'pages_count' in params:
-            query_params.append(('pagesCount', params['pages_count']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
@@ -36379,7 +36375,6 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.tex) (required)
-        :param int pages_count: Pages count.
         :param str storage: The document storage.
         :param file file: A file to be converted.
         :return: AsposeResponse
@@ -36407,7 +36402,6 @@ class PdfApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.tex) (required)
-        :param int pages_count: Pages count.
         :param str storage: The document storage.
         :param file file: A file to be converted.
         :return: AsposeResponse
@@ -36415,7 +36409,7 @@ class PdfApi(object):
                  returns the request thread.
         """
 
-        all_params = ['out_path', 'pages_count', 'storage', 'file']
+        all_params = ['out_path', 'storage', 'file']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -36442,8 +36436,6 @@ class PdfApi(object):
         query_params = []
         if 'out_path' in params:
             query_params.append(('outPath', params['out_path']))
-        if 'pages_count' in params:
-            query_params.append(('pagesCount', params['pages_count']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
 
@@ -38121,7 +38113,6 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.tex) (required)
-        :param int pages_count: Pages count.
         :param str folder: The document folder.
         :param str storage: The document storage.
         :return: AsposeResponse
@@ -38150,7 +38141,6 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.tex) (required)
-        :param int pages_count: Pages count.
         :param str folder: The document folder.
         :param str storage: The document storage.
         :return: AsposeResponse
@@ -38158,7 +38148,7 @@ class PdfApi(object):
                  returns the request thread.
         """
 
-        all_params = ['name', 'out_path', 'pages_count', 'folder', 'storage']
+        all_params = ['name', 'out_path', 'folder', 'storage']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -38190,8 +38180,6 @@ class PdfApi(object):
         query_params = []
         if 'out_path' in params:
             query_params.append(('outPath', params['out_path']))
-        if 'pages_count' in params:
-            query_params.append(('pagesCount', params['pages_count']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
         if 'storage' in params:

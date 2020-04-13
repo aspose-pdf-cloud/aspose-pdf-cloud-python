@@ -77,6 +77,7 @@ from .models.graph_info import GraphInfo
 from .models.horizontal_alignment import HorizontalAlignment
 from .models.html_document_type import HtmlDocumentType
 from .models.html_markup_generation_modes import HtmlMarkupGenerationModes
+from .models.image_fragment import ImageFragment
 from .models.image_src_type import ImageSrcType
 from .models.image_template import ImageTemplate
 from .models.image_templates_request import ImageTemplatesRequest

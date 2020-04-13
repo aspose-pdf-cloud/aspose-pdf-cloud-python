@@ -3991,7 +3991,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_pdf_in_storage_to_la_te_x**
-> file get_pdf_in_storage_to_la_te_x(name, pages_count=pages_count, folder=folder, storage=storage)
+> file get_pdf_in_storage_to_la_te_x(name, folder=folder, storage=storage)
 
 Converts PDF document (located on storage) to LaTeX format and returns resulting file in response content
 
@@ -4000,7 +4000,6 @@ Converts PDF document (located on storage) to LaTeX format and returns resulting
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
- **pages_count** | **int**| Pages count. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 
@@ -8034,7 +8033,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_pdf_in_request_to_la_te_x**
-> AsposeResponse put_pdf_in_request_to_la_te_x(out_path, pages_count=pages_count, storage=storage, file=file)
+> AsposeResponse put_pdf_in_request_to_la_te_x(out_path, storage=storage, file=file)
 
 Converts PDF document (in request content) to LaTeX format and uploads resulting file to storage.
 
@@ -8043,7 +8042,6 @@ Converts PDF document (in request content) to LaTeX format and uploads resulting
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **out_path** | **str**| Full resulting filename (ex. /folder1/folder2/result.tex) | 
- **pages_count** | **int**| Pages count. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
  **file** | **file**| A file to be converted. | [optional] 
 
@@ -8414,7 +8412,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_pdf_in_storage_to_la_te_x**
-> AsposeResponse put_pdf_in_storage_to_la_te_x(name, out_path, pages_count=pages_count, folder=folder, storage=storage)
+> AsposeResponse put_pdf_in_storage_to_la_te_x(name, out_path, folder=folder, storage=storage)
 
 Converts PDF document (located on storage) to LaTeX format and uploads resulting file to storage
 
@@ -8424,7 +8422,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **out_path** | **str**| Full resulting filename (ex. /folder1/folder2/result.tex) | 
- **pages_count** | **int**| Pages count. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 

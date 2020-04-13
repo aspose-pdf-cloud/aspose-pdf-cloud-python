@@ -77,6 +77,7 @@ from .graph_info import GraphInfo
 from .horizontal_alignment import HorizontalAlignment
 from .html_document_type import HtmlDocumentType
 from .html_markup_generation_modes import HtmlMarkupGenerationModes
+from .image_fragment import ImageFragment
 from .image_src_type import ImageSrcType
 from .image_template import ImageTemplate
 from .image_templates_request import ImageTemplatesRequest
