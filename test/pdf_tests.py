@@ -2664,8 +2664,8 @@ class PdfTests(unittest.TestCase):
         self.assertEqual(response.code, 200)
 
 
-    # To LaTeX
-    def testGetPdfInStorageToLaTeX(self):
+    # To TeX
+    def testGetPdfInStorageToTeX(self):
         file_name = '4pages.pdf'
         self.uploadFile(file_name)
         
@@ -2673,32 +2673,32 @@ class PdfTests(unittest.TestCase):
               "folder" : self.temp_folder
         }
 
-        response = self.pdf_api.get_pdf_in_storage_to_la_te_x(file_name, **opts)
+        response = self.pdf_api.get_pdf_in_storage_to_te_x(file_name, **opts)
         self.assertIsInstance(response, str)
 
 
-    def testPutPdfInStorageToLaTeX(self):
+    def testPutPdfInStorageToTeX(self):
         file_name = '4pages.pdf'
         self.uploadFile(file_name)
-        result_file_name = "result.latex"
+        result_file_name = "result.tex"
 
         opts = {
               "folder" : self.temp_folder
         }
 
-        response = self.pdf_api.put_pdf_in_storage_to_la_te_x(file_name, self.temp_folder + '/' + result_file_name, **opts)
+        response = self.pdf_api.put_pdf_in_storage_to_te_x(file_name, self.temp_folder + '/' + result_file_name, **opts)
         self.assertEqual(response.code, 200)
 
 
-    def testPutPdfInRequestToLaTeX(self):
+    def testPutPdfInRequestToTeX(self):
         file_name = '4pages.pdf'
-        result_file_name = "result.latex"
+        result_file_name = "result.tex"
 
         opts = {
               "file" : self.test_data_path + file_name
         }
 
-        response = self.pdf_api.put_pdf_in_request_to_la_te_x(self.temp_folder + '/' + result_file_name, **opts)
+        response = self.pdf_api.put_pdf_in_request_to_te_x(self.temp_folder + '/' + result_file_name, **opts)
         self.assertEqual(response.code, 200)
 
 
@@ -2859,16 +2859,16 @@ class PdfTests(unittest.TestCase):
 
 
 
-    def testGetLaTeXInStorageToPdf(self):
+    def testGetTeXInStorageToPdf(self):
         file_name = 'sample.tex'
         self.uploadFile(file_name)
 
         src_path = self.temp_folder + '/' + file_name
-        response = self.pdf_api.get_la_te_x_in_storage_to_pdf(src_path)
+        response = self.pdf_api.get_te_x_in_storage_to_pdf(src_path)
         self.assertIsInstance(response, str)
 
 
-    def testPutLaTeXInStorageToPdf(self):
+    def testPutTeXInStorageToPdf(self):
         file_name = 'sample.tex'
         self.uploadFile(file_name)
         result_name = 'fromTex.pdf'
@@ -2877,7 +2877,7 @@ class PdfTests(unittest.TestCase):
         opts = {
             "dst_folder" : self.temp_folder
         }
-        response = self.pdf_api.put_la_te_x_in_storage_to_pdf(result_name, src_path, **opts)
+        response = self.pdf_api.put_te_x_in_storage_to_pdf(result_name, src_path, **opts)
         self.assertEqual(response.code, 200)
 
 

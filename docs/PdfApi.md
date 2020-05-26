@@ -97,7 +97,7 @@ Method | HTTP request | Description
 [**get_import_fields_from_xfdf_in_storage**](PdfApi.md#get_import_fields_from_xfdf_in_storage) | **GET** /pdf/\{name}/import/xfdf | Update fields from XFDF file in storage.
 [**get_import_fields_from_xml_in_storage**](PdfApi.md#get_import_fields_from_xml_in_storage) | **GET** /pdf/\{name}/import/xml | Import from XML file (located on storage) to PDF format and return resulting file in response. 
 [**get_ink_annotation**](PdfApi.md#get_ink_annotation) | **GET** /pdf/\{name}/annotations/ink/\{annotationId} | Read document page ink annotation by ID.
-[**get_la_te_x_in_storage_to_pdf**](PdfApi.md#get_la_te_x_in_storage_to_pdf) | **GET** /pdf/create/latex | Convert LaTeX file (located on storage) to PDF format and return resulting file in response. 
+[**get_la_te_x_in_storage_to_pdf**](PdfApi.md#get_la_te_x_in_storage_to_pdf) | **GET** /pdf/create/latex | Convert TeX file (located on storage) to PDF format and return resulting file in response. 
 [**get_line_annotation**](PdfApi.md#get_line_annotation) | **GET** /pdf/\{name}/annotations/line/\{annotationId} | Read document page line annotation by ID.
 [**get_link_annotation**](PdfApi.md#get_link_annotation) | **GET** /pdf/\{name}/links/\{linkId} | Read document link annotation by ID.
 [**get_list_box_field**](PdfApi.md#get_list_box_field) | **GET** /pdf/\{name}/fields/listbox/\{fieldName} | Read document listbox field by name.
@@ -149,11 +149,12 @@ Method | HTTP request | Description
 [**get_pdf_in_storage_to_doc**](PdfApi.md#get_pdf_in_storage_to_doc) | **GET** /pdf/\{name}/convert/doc | Converts PDF document (located on storage) to DOC format and returns resulting file in response content
 [**get_pdf_in_storage_to_epub**](PdfApi.md#get_pdf_in_storage_to_epub) | **GET** /pdf/\{name}/convert/epub | Converts PDF document (located on storage) to EPUB format and returns resulting file in response content
 [**get_pdf_in_storage_to_html**](PdfApi.md#get_pdf_in_storage_to_html) | **GET** /pdf/\{name}/convert/html | Converts PDF document (located on storage) to Html format and returns resulting file in response content
-[**get_pdf_in_storage_to_la_te_x**](PdfApi.md#get_pdf_in_storage_to_la_te_x) | **GET** /pdf/\{name}/convert/latex | Converts PDF document (located on storage) to LaTeX format and returns resulting file in response content
+[**get_pdf_in_storage_to_la_te_x**](PdfApi.md#get_pdf_in_storage_to_la_te_x) | **GET** /pdf/\{name}/convert/latex | Converts PDF document (located on storage) to TeX format and returns resulting file in response content
 [**get_pdf_in_storage_to_mobi_xml**](PdfApi.md#get_pdf_in_storage_to_mobi_xml) | **GET** /pdf/\{name}/convert/mobixml | Converts PDF document (located on storage) to MOBIXML format and returns resulting file in response content
 [**get_pdf_in_storage_to_pdf_a**](PdfApi.md#get_pdf_in_storage_to_pdf_a) | **GET** /pdf/\{name}/convert/pdfa | Converts PDF document (located on storage) to PdfA format and returns resulting file in response content
 [**get_pdf_in_storage_to_pptx**](PdfApi.md#get_pdf_in_storage_to_pptx) | **GET** /pdf/\{name}/convert/pptx | Converts PDF document (located on storage) to PPTX format and returns resulting file in response content
 [**get_pdf_in_storage_to_svg**](PdfApi.md#get_pdf_in_storage_to_svg) | **GET** /pdf/\{name}/convert/svg | Converts PDF document (located on storage) to SVG format and returns resulting file in response content
+[**get_pdf_in_storage_to_te_x**](PdfApi.md#get_pdf_in_storage_to_te_x) | **GET** /pdf/\{name}/convert/tex | Converts PDF document (located on storage) to TeX format and returns resulting file in response content
 [**get_pdf_in_storage_to_tiff**](PdfApi.md#get_pdf_in_storage_to_tiff) | **GET** /pdf/\{name}/convert/tiff | Converts PDF document (located on storage) to TIFF format and returns resulting file in response content
 [**get_pdf_in_storage_to_xls**](PdfApi.md#get_pdf_in_storage_to_xls) | **GET** /pdf/\{name}/convert/xls | Converts PDF document (located on storage) to XLS format and returns resulting file in response content
 [**get_pdf_in_storage_to_xlsx**](PdfApi.md#get_pdf_in_storage_to_xlsx) | **GET** /pdf/\{name}/convert/xlsx | Converts PDF document (located on storage) to XLSX format and returns resulting file in response content
@@ -177,6 +178,7 @@ Method | HTTP request | Description
 [**get_strike_out_annotation**](PdfApi.md#get_strike_out_annotation) | **GET** /pdf/\{name}/annotations/strikeout/\{annotationId} | Read document page StrikeOut annotation by ID.
 [**get_svg_in_storage_to_pdf**](PdfApi.md#get_svg_in_storage_to_pdf) | **GET** /pdf/create/svg | Convert SVG file (located on storage) to PDF format and return resulting file in response. 
 [**get_table**](PdfApi.md#get_table) | **GET** /pdf/\{name}/tables/\{tableId} | Read document page table by ID.
+[**get_te_x_in_storage_to_pdf**](PdfApi.md#get_te_x_in_storage_to_pdf) | **GET** /pdf/create/tex | Convert TeX file (located on storage) to PDF format and return resulting file in response. 
 [**get_text**](PdfApi.md#get_text) | **GET** /pdf/\{name}/text | Read document text.
 [**get_text_annotation**](PdfApi.md#get_text_annotation) | **GET** /pdf/\{name}/annotations/text/\{annotationId} | Read document page text annotation by ID.
 [**get_text_box_field**](PdfApi.md#get_text_box_field) | **GET** /pdf/\{name}/fields/textbox/\{fieldName} | Read document text box field by name.
@@ -283,7 +285,7 @@ Method | HTTP request | Description
 [**put_import_fields_from_xfdf_in_storage**](PdfApi.md#put_import_fields_from_xfdf_in_storage) | **PUT** /pdf/\{name}/import/xfdf | Update fields from XFDF file in storage.
 [**put_import_fields_from_xml_in_storage**](PdfApi.md#put_import_fields_from_xml_in_storage) | **PUT** /pdf/\{name}/import/xml | Update fields from XML file in storage.
 [**put_ink_annotation**](PdfApi.md#put_ink_annotation) | **PUT** /pdf/\{name}/annotations/ink/\{annotationId} | Replace document ink annotation
-[**put_la_te_x_in_storage_to_pdf**](PdfApi.md#put_la_te_x_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/latex | Convert LaTeX file (located on storage) to PDF format and upload resulting file to storage. 
+[**put_la_te_x_in_storage_to_pdf**](PdfApi.md#put_la_te_x_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/latex | Convert TeX file (located on storage) to PDF format and upload resulting file to storage. 
 [**put_line_annotation**](PdfApi.md#put_line_annotation) | **PUT** /pdf/\{name}/annotations/line/\{annotationId} | Replace document line annotation
 [**put_link_annotation**](PdfApi.md#put_link_annotation) | **PUT** /pdf/\{name}/links/\{linkId} | Replace document page link annotations
 [**put_list_box_field**](PdfApi.md#put_list_box_field) | **PUT** /pdf/\{name}/fields/listbox/\{fieldName} | Replace document listbox field
@@ -303,11 +305,12 @@ Method | HTTP request | Description
 [**put_pdf_in_request_to_doc**](PdfApi.md#put_pdf_in_request_to_doc) | **PUT** /pdf/convert/doc | Converts PDF document (in request content) to DOC format and uploads resulting file to storage.
 [**put_pdf_in_request_to_epub**](PdfApi.md#put_pdf_in_request_to_epub) | **PUT** /pdf/convert/epub | Converts PDF document (in request content) to EPUB format and uploads resulting file to storage.
 [**put_pdf_in_request_to_html**](PdfApi.md#put_pdf_in_request_to_html) | **PUT** /pdf/convert/html | Converts PDF document (in request content) to Html format and uploads resulting file to storage.
-[**put_pdf_in_request_to_la_te_x**](PdfApi.md#put_pdf_in_request_to_la_te_x) | **PUT** /pdf/convert/latex | Converts PDF document (in request content) to LaTeX format and uploads resulting file to storage.
+[**put_pdf_in_request_to_la_te_x**](PdfApi.md#put_pdf_in_request_to_la_te_x) | **PUT** /pdf/convert/latex | Converts PDF document (in request content) to TeX format and uploads resulting file to storage.
 [**put_pdf_in_request_to_mobi_xml**](PdfApi.md#put_pdf_in_request_to_mobi_xml) | **PUT** /pdf/convert/mobixml | Converts PDF document (in request content) to MOBIXML format and uploads resulting file to storage.
 [**put_pdf_in_request_to_pdf_a**](PdfApi.md#put_pdf_in_request_to_pdf_a) | **PUT** /pdf/convert/pdfa | Converts PDF document (in request content) to PdfA format and uploads resulting file to storage.
 [**put_pdf_in_request_to_pptx**](PdfApi.md#put_pdf_in_request_to_pptx) | **PUT** /pdf/convert/pptx | Converts PDF document (in request content) to PPTX format and uploads resulting file to storage.
 [**put_pdf_in_request_to_svg**](PdfApi.md#put_pdf_in_request_to_svg) | **PUT** /pdf/convert/svg | Converts PDF document (in request content) to SVG format and uploads resulting file to storage.
+[**put_pdf_in_request_to_te_x**](PdfApi.md#put_pdf_in_request_to_te_x) | **PUT** /pdf/convert/tex | Converts PDF document (in request content) to TeX format and uploads resulting file to storage.
 [**put_pdf_in_request_to_tiff**](PdfApi.md#put_pdf_in_request_to_tiff) | **PUT** /pdf/convert/tiff | Converts PDF document (in request content) to TIFF format and uploads resulting file to storage.
 [**put_pdf_in_request_to_xls**](PdfApi.md#put_pdf_in_request_to_xls) | **PUT** /pdf/convert/xls | Converts PDF document (in request content) to XLS format and uploads resulting file to storage.
 [**put_pdf_in_request_to_xlsx**](PdfApi.md#put_pdf_in_request_to_xlsx) | **PUT** /pdf/convert/xlsx | Converts PDF document (in request content) to XLSX format and uploads resulting file to storage.
@@ -316,11 +319,12 @@ Method | HTTP request | Description
 [**put_pdf_in_storage_to_doc**](PdfApi.md#put_pdf_in_storage_to_doc) | **PUT** /pdf/\{name}/convert/doc | Converts PDF document (located on storage) to DOC format and uploads resulting file to storage
 [**put_pdf_in_storage_to_epub**](PdfApi.md#put_pdf_in_storage_to_epub) | **PUT** /pdf/\{name}/convert/epub | Converts PDF document (located on storage) to EPUB format and uploads resulting file to storage
 [**put_pdf_in_storage_to_html**](PdfApi.md#put_pdf_in_storage_to_html) | **PUT** /pdf/\{name}/convert/html | Converts PDF document (located on storage) to Html format and uploads resulting file to storage
-[**put_pdf_in_storage_to_la_te_x**](PdfApi.md#put_pdf_in_storage_to_la_te_x) | **PUT** /pdf/\{name}/convert/latex | Converts PDF document (located on storage) to LaTeX format and uploads resulting file to storage
+[**put_pdf_in_storage_to_la_te_x**](PdfApi.md#put_pdf_in_storage_to_la_te_x) | **PUT** /pdf/\{name}/convert/latex | Converts PDF document (located on storage) to TeX format and uploads resulting file to storage
 [**put_pdf_in_storage_to_mobi_xml**](PdfApi.md#put_pdf_in_storage_to_mobi_xml) | **PUT** /pdf/\{name}/convert/mobixml | Converts PDF document (located on storage) to MOBIXML format and uploads resulting file to storage
 [**put_pdf_in_storage_to_pdf_a**](PdfApi.md#put_pdf_in_storage_to_pdf_a) | **PUT** /pdf/\{name}/convert/pdfa | Converts PDF document (located on storage) to PdfA format and uploads resulting file to storage
 [**put_pdf_in_storage_to_pptx**](PdfApi.md#put_pdf_in_storage_to_pptx) | **PUT** /pdf/\{name}/convert/pptx | Converts PDF document (located on storage) to PPTX format and uploads resulting file to storage
 [**put_pdf_in_storage_to_svg**](PdfApi.md#put_pdf_in_storage_to_svg) | **PUT** /pdf/\{name}/convert/svg | Converts PDF document (located on storage) to SVG format and uploads resulting file to storage
+[**put_pdf_in_storage_to_te_x**](PdfApi.md#put_pdf_in_storage_to_te_x) | **PUT** /pdf/\{name}/convert/tex | Converts PDF document (located on storage) to TeX format and uploads resulting file to storage
 [**put_pdf_in_storage_to_tiff**](PdfApi.md#put_pdf_in_storage_to_tiff) | **PUT** /pdf/\{name}/convert/tiff | Converts PDF document (located on storage) to TIFF format and uploads resulting file to storage
 [**put_pdf_in_storage_to_xls**](PdfApi.md#put_pdf_in_storage_to_xls) | **PUT** /pdf/\{name}/convert/xls | Converts PDF document (located on storage) to XLS format and uploads resulting file to storage
 [**put_pdf_in_storage_to_xlsx**](PdfApi.md#put_pdf_in_storage_to_xlsx) | **PUT** /pdf/\{name}/convert/xlsx | Converts PDF document (located on storage) to XLSX format and uploads resulting file to storage
@@ -348,6 +352,7 @@ Method | HTTP request | Description
 [**put_strike_out_annotation**](PdfApi.md#put_strike_out_annotation) | **PUT** /pdf/\{name}/annotations/strikeout/\{annotationId} | Replace document StrikeOut annotation
 [**put_svg_in_storage_to_pdf**](PdfApi.md#put_svg_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/svg | Convert SVG file (located on storage) to PDF format and upload resulting file to storage. 
 [**put_table**](PdfApi.md#put_table) | **PUT** /pdf/\{name}/tables/\{tableId} | Replace document page table.
+[**put_te_x_in_storage_to_pdf**](PdfApi.md#put_te_x_in_storage_to_pdf) | **PUT** /pdf/\{name}/create/tex | Convert TeX file (located on storage) to PDF format and upload resulting file to storage. 
 [**put_text_annotation**](PdfApi.md#put_text_annotation) | **PUT** /pdf/\{name}/annotations/text/\{annotationId} | Replace document text annotation
 [**put_text_box_field**](PdfApi.md#put_text_box_field) | **PUT** /pdf/\{name}/fields/textbox/\{fieldName} | Replace document text box field
 [**put_underline_annotation**](PdfApi.md#put_underline_annotation) | **PUT** /pdf/\{name}/annotations/underline/\{annotationId} | Replace document underline annotation
@@ -2648,7 +2653,7 @@ Name | Type | Description  | Notes
 # **get_la_te_x_in_storage_to_pdf**
 > file get_la_te_x_in_storage_to_pdf(src_path, storage=storage)
 
-Convert LaTeX file (located on storage) to PDF format and return resulting file in response. 
+Convert TeX file (located on storage) to PDF format and return resulting file in response. 
 
 ### Parameters
 
@@ -3993,7 +3998,7 @@ Name | Type | Description  | Notes
 # **get_pdf_in_storage_to_la_te_x**
 > file get_pdf_in_storage_to_la_te_x(name, folder=folder, storage=storage)
 
-Converts PDF document (located on storage) to LaTeX format and returns resulting file in response content
+Converts PDF document (located on storage) to TeX format and returns resulting file in response content
 
 ### Parameters
 
@@ -4100,6 +4105,30 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **compress_output_to_zip_archive** | **bool**| Specifies whether output will be created as one zip-archive. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+
+### Return type
+
+**file**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_pdf_in_storage_to_te_x**
+> file get_pdf_in_storage_to_te_x(name, folder=folder, storage=storage)
+
+Converts PDF document (located on storage) to TeX format and returns resulting file in response content
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 
@@ -4708,6 +4737,29 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_te_x_in_storage_to_pdf**
+> file get_te_x_in_storage_to_pdf(src_path, storage=storage)
+
+Convert TeX file (located on storage) to PDF format and return resulting file in response. 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **src_path** | **str**| Full source filename (ex. /folder1/folder2/template.tex) | 
+ **storage** | **str**| The document storage. | [optional] 
+
+### Return type
+
+**file**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7476,7 +7528,7 @@ Name | Type | Description  | Notes
 # **put_la_te_x_in_storage_to_pdf**
 > AsposeResponse put_la_te_x_in_storage_to_pdf(name, src_path, dst_folder=dst_folder, storage=storage)
 
-Convert LaTeX file (located on storage) to PDF format and upload resulting file to storage. 
+Convert TeX file (located on storage) to PDF format and upload resulting file to storage. 
 
 ### Parameters
 
@@ -8035,7 +8087,7 @@ Name | Type | Description  | Notes
 # **put_pdf_in_request_to_la_te_x**
 > AsposeResponse put_pdf_in_request_to_la_te_x(out_path, storage=storage, file=file)
 
-Converts PDF document (in request content) to LaTeX format and uploads resulting file to storage.
+Converts PDF document (in request content) to TeX format and uploads resulting file to storage.
 
 ### Parameters
 
@@ -8141,6 +8193,30 @@ Converts PDF document (in request content) to SVG format and uploads resulting f
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **out_path** | **str**| Full resulting filename (ex. /folder1/folder2/result.svg) | 
+ **storage** | **str**| The document storage. | [optional] 
+ **file** | **file**| A file to be converted. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_pdf_in_request_to_te_x**
+> AsposeResponse put_pdf_in_request_to_te_x(out_path, storage=storage, file=file)
+
+Converts PDF document (in request content) to TeX format and uploads resulting file to storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **out_path** | **str**| Full resulting filename (ex. /folder1/folder2/result.tex) | 
  **storage** | **str**| The document storage. | [optional] 
  **file** | **file**| A file to be converted. | [optional] 
 
@@ -8414,7 +8490,7 @@ Name | Type | Description  | Notes
 # **put_pdf_in_storage_to_la_te_x**
 > AsposeResponse put_pdf_in_storage_to_la_te_x(name, out_path, folder=folder, storage=storage)
 
-Converts PDF document (located on storage) to LaTeX format and uploads resulting file to storage
+Converts PDF document (located on storage) to TeX format and uploads resulting file to storage
 
 ### Parameters
 
@@ -8525,6 +8601,31 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **out_path** | **str**| Full resulting filename (ex. /folder1/folder2/result.svg) | 
+ **folder** | **str**| The document folder. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_pdf_in_storage_to_te_x**
+> AsposeResponse put_pdf_in_storage_to_te_x(name, out_path, folder=folder, storage=storage)
+
+Converts PDF document (located on storage) to TeX format and uploads resulting file to storage
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **out_path** | **str**| Full resulting filename (ex. /folder1/folder2/result.tex) | 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 
@@ -9252,6 +9353,31 @@ Name | Type | Description  | Notes
  **table** | [**Table**](Table.md)| The table. | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_te_x_in_storage_to_pdf**
+> AsposeResponse put_te_x_in_storage_to_pdf(name, src_path, dst_folder=dst_folder, storage=storage)
+
+Convert TeX file (located on storage) to PDF format and upload resulting file to storage. 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **src_path** | **str**| Full source filename (ex. /folder1/folder2/template.tex) | 
+ **dst_folder** | **str**| The destination document folder. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
 
 ### Return type
 
