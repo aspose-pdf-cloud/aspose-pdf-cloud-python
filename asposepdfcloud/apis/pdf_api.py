@@ -36396,6 +36396,7 @@ class PdfApi(object):
         :param bool try_save_text_underlining_and_strikeouting_in_css: PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
         :param str storage: The document storage.
         :param bool flow_layout_paragraph_full_width: This attribute specifies full width paragraph text for Flow mode, FixedLayout = false.
+        :param str output_format: This parameter determines the type of result. The zip archive will be uploaded into the storage if the parameter is \"Zip\" or missed (default). In case of the \"Folder\", all resulting files and directories will be uploaded to the folder of the resulting HTML file.
         :param file file: A file to be converted.
         :return: AsposeResponse
                  If the method is called asynchronously,
@@ -36452,13 +36453,14 @@ class PdfApi(object):
         :param bool try_save_text_underlining_and_strikeouting_in_css: PDF itself does not contain underlining markers for texts. It emulated with line situated under text. This option allows converter try guess that this or that line is a text's underlining and put this info into CSS instead of drawing of underlining graphically.
         :param str storage: The document storage.
         :param bool flow_layout_paragraph_full_width: This attribute specifies full width paragraph text for Flow mode, FixedLayout = false.
+        :param str output_format: This parameter determines the type of result. The zip archive will be uploaded into the storage if the parameter is \"Zip\" or missed (default). In case of the \"Folder\", all resulting files and directories will be uploaded to the folder of the resulting HTML file.
         :param file file: A file to be converted.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['out_path', 'additional_margin_width_in_points', 'compress_svg_graphics_if_any', 'convert_marked_content_to_layers', 'default_font_name', 'document_type', 'fixed_layout', 'image_resolution', 'minimal_line_width', 'prevent_glyphs_grouping', 'split_css_into_pages', 'split_into_pages', 'use_z_order', 'antialiasing_processing', 'css_class_names_prefix', 'explicit_list_of_saved_pages', 'font_encoding_strategy', 'font_saving_mode', 'html_markup_generation_mode', 'letters_positioning_method', 'pages_flow_type_depends_on_viewers_screen_size', 'parts_embedding_mode', 'raster_images_saving_mode', 'remove_empty_areas_on_top_and_bottom', 'save_shadowed_texts_as_transparent_texts', 'save_transparent_texts', 'special_folder_for_all_images', 'special_folder_for_svg_images', 'try_save_text_underlining_and_strikeouting_in_css', 'storage', 'flow_layout_paragraph_full_width', 'file']
+        all_params = ['out_path', 'additional_margin_width_in_points', 'compress_svg_graphics_if_any', 'convert_marked_content_to_layers', 'default_font_name', 'document_type', 'fixed_layout', 'image_resolution', 'minimal_line_width', 'prevent_glyphs_grouping', 'split_css_into_pages', 'split_into_pages', 'use_z_order', 'antialiasing_processing', 'css_class_names_prefix', 'explicit_list_of_saved_pages', 'font_encoding_strategy', 'font_saving_mode', 'html_markup_generation_mode', 'letters_positioning_method', 'pages_flow_type_depends_on_viewers_screen_size', 'parts_embedding_mode', 'raster_images_saving_mode', 'remove_empty_areas_on_top_and_bottom', 'save_shadowed_texts_as_transparent_texts', 'save_transparent_texts', 'special_folder_for_all_images', 'special_folder_for_svg_images', 'try_save_text_underlining_and_strikeouting_in_css', 'storage', 'flow_layout_paragraph_full_width', 'output_format', 'file']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -36546,6 +36548,8 @@ class PdfApi(object):
             query_params.append(('storage', params['storage']))
         if 'flow_layout_paragraph_full_width' in params:
             query_params.append(('flowLayoutParagraphFullWidth', params['flow_layout_paragraph_full_width']))
+        if 'output_format' in params:
+            query_params.append(('outputFormat', params['output_format']))
 
         header_params = {}
 
@@ -38240,6 +38244,7 @@ class PdfApi(object):
         :param str folder: The document folder.
         :param str storage: The document storage.
         :param bool flow_layout_paragraph_full_width: This attribute specifies full width paragraph text for Flow mode, FixedLayout = false.
+        :param str output_format: This parameter determines the type of result. The zip archive will be uploaded into the storage if the parameter is \"Zip\" or missed (default). In case of the \"Folder\", all resulting files and directories will be uploaded to the folder of the resulting HTML file.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -38297,12 +38302,13 @@ class PdfApi(object):
         :param str folder: The document folder.
         :param str storage: The document storage.
         :param bool flow_layout_paragraph_full_width: This attribute specifies full width paragraph text for Flow mode, FixedLayout = false.
+        :param str output_format: This parameter determines the type of result. The zip archive will be uploaded into the storage if the parameter is \"Zip\" or missed (default). In case of the \"Folder\", all resulting files and directories will be uploaded to the folder of the resulting HTML file.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'out_path', 'additional_margin_width_in_points', 'compress_svg_graphics_if_any', 'convert_marked_content_to_layers', 'default_font_name', 'document_type', 'fixed_layout', 'image_resolution', 'minimal_line_width', 'prevent_glyphs_grouping', 'split_css_into_pages', 'split_into_pages', 'use_z_order', 'antialiasing_processing', 'css_class_names_prefix', 'explicit_list_of_saved_pages', 'font_encoding_strategy', 'font_saving_mode', 'html_markup_generation_mode', 'letters_positioning_method', 'pages_flow_type_depends_on_viewers_screen_size', 'parts_embedding_mode', 'raster_images_saving_mode', 'remove_empty_areas_on_top_and_bottom', 'save_shadowed_texts_as_transparent_texts', 'save_transparent_texts', 'special_folder_for_all_images', 'special_folder_for_svg_images', 'try_save_text_underlining_and_strikeouting_in_css', 'folder', 'storage', 'flow_layout_paragraph_full_width']
+        all_params = ['name', 'out_path', 'additional_margin_width_in_points', 'compress_svg_graphics_if_any', 'convert_marked_content_to_layers', 'default_font_name', 'document_type', 'fixed_layout', 'image_resolution', 'minimal_line_width', 'prevent_glyphs_grouping', 'split_css_into_pages', 'split_into_pages', 'use_z_order', 'antialiasing_processing', 'css_class_names_prefix', 'explicit_list_of_saved_pages', 'font_encoding_strategy', 'font_saving_mode', 'html_markup_generation_mode', 'letters_positioning_method', 'pages_flow_type_depends_on_viewers_screen_size', 'parts_embedding_mode', 'raster_images_saving_mode', 'remove_empty_areas_on_top_and_bottom', 'save_shadowed_texts_as_transparent_texts', 'save_transparent_texts', 'special_folder_for_all_images', 'special_folder_for_svg_images', 'try_save_text_underlining_and_strikeouting_in_css', 'folder', 'storage', 'flow_layout_paragraph_full_width', 'output_format']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -38397,6 +38403,8 @@ class PdfApi(object):
             query_params.append(('storage', params['storage']))
         if 'flow_layout_paragraph_full_width' in params:
             query_params.append(('flowLayoutParagraphFullWidth', params['flow_layout_paragraph_full_width']))
+        if 'output_format' in params:
+            query_params.append(('outputFormat', params['output_format']))
 
         header_params = {}
 

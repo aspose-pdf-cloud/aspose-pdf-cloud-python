@@ -2566,10 +2566,11 @@ class PdfTests(unittest.TestCase):
     def testPutPdfInStorageToHtml(self):
         file_name = '4pages.pdf'
         self.uploadFile(file_name)
-        result_file_name = "result.zip"
+        result_file_name = "result.html"
 
         opts = {
-              "folder" : self.temp_folder
+            "output_format" : asposepdfcloud.models.OutputFormat.FOLDER,
+            "folder" : self.temp_folder
         }
 
         response = self.pdf_api.put_pdf_in_storage_to_html(file_name, self.temp_folder + '/' + result_file_name, **opts)
