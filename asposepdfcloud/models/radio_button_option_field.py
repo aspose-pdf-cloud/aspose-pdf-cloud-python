@@ -50,6 +50,7 @@ class RadioButtonOptionField(object):
     swagger_types = {
         'links': 'list[Link]',
         'partial_name': 'str',
+        'full_name': 'str',
         'rect': 'Rectangle',
         'value': 'str',
         'page_index': 'int',
@@ -74,6 +75,7 @@ class RadioButtonOptionField(object):
     attribute_map = {
         'links': 'Links',
         'partial_name': 'PartialName',
+        'full_name': 'FullName',
         'rect': 'Rect',
         'value': 'Value',
         'page_index': 'PageIndex',
@@ -95,13 +97,14 @@ class RadioButtonOptionField(object):
         'style': 'Style'
     }
 
-    def __init__(self, links=None, partial_name=None, rect=None, value=None, page_index=None, height=None, width=None, z_index=None, is_group=None, parent=None, is_shared_field=None, flags=None, color=None, contents=None, margin=None, highlighting=None, horizontal_alignment=None, vertical_alignment=None, border=None, option_name=None, style=None):
+    def __init__(self, links=None, partial_name=None, full_name=None, rect=None, value=None, page_index=None, height=None, width=None, z_index=None, is_group=None, parent=None, is_shared_field=None, flags=None, color=None, contents=None, margin=None, highlighting=None, horizontal_alignment=None, vertical_alignment=None, border=None, option_name=None, style=None):
         """
         RadioButtonOptionField - a model defined in Swagger
         """
 
         self._links = None
         self._partial_name = None
+        self._full_name = None
         self._rect = None
         self._value = None
         self._page_index = None
@@ -126,6 +129,8 @@ class RadioButtonOptionField(object):
           self.links = links
         if partial_name is not None:
           self.partial_name = partial_name
+        if full_name is not None:
+          self.full_name = full_name
         if rect is not None:
           self.rect = rect
         if value is not None:
@@ -209,6 +214,29 @@ class RadioButtonOptionField(object):
         """
 
         self._partial_name = partial_name
+
+    @property
+    def full_name(self):
+        """
+        Gets the full_name of this RadioButtonOptionField.
+        Full Field name.
+
+        :return: The full_name of this RadioButtonOptionField.
+        :rtype: str
+        """
+        return self._full_name
+
+    @full_name.setter
+    def full_name(self, full_name):
+        """
+        Sets the full_name of this RadioButtonOptionField.
+        Full Field name.
+
+        :param full_name: The full_name of this RadioButtonOptionField.
+        :type: str
+        """
+
+        self._full_name = full_name
 
     @property
     def rect(self):
