@@ -54,7 +54,13 @@ class OptimizeOptions(object):
         'link_duplcate_streams': 'bool',
         'remove_unused_objects': 'bool',
         'remove_unused_streams': 'bool',
-        'unembed_fonts': 'bool'
+        'unembed_fonts': 'bool',
+        'resize_images': 'bool',
+        'max_resolution': 'int',
+        'subset_fonts': 'bool',
+        'remove_private_info': 'bool',
+        'image_encoding': 'ImageEncoding',
+        'image_compression_version': 'ImageCompressionVersion'
     }
 
     attribute_map = {
@@ -64,10 +70,16 @@ class OptimizeOptions(object):
         'link_duplcate_streams': 'LinkDuplcateStreams',
         'remove_unused_objects': 'RemoveUnusedObjects',
         'remove_unused_streams': 'RemoveUnusedStreams',
-        'unembed_fonts': 'UnembedFonts'
+        'unembed_fonts': 'UnembedFonts',
+        'resize_images': 'ResizeImages',
+        'max_resolution': 'MaxResolution',
+        'subset_fonts': 'SubsetFonts',
+        'remove_private_info': 'RemovePrivateInfo',
+        'image_encoding': 'ImageEncoding',
+        'image_compression_version': 'ImageCompressionVersion'
     }
 
-    def __init__(self, allow_reuse_page_content=None, compress_images=None, image_quality=None, link_duplcate_streams=None, remove_unused_objects=None, remove_unused_streams=None, unembed_fonts=None):
+    def __init__(self, allow_reuse_page_content=None, compress_images=None, image_quality=None, link_duplcate_streams=None, remove_unused_objects=None, remove_unused_streams=None, unembed_fonts=None, resize_images=None, max_resolution=None, subset_fonts=None, remove_private_info=None, image_encoding=None, image_compression_version=None):
         """
         OptimizeOptions - a model defined in Swagger
         """
@@ -79,14 +91,39 @@ class OptimizeOptions(object):
         self._remove_unused_objects = None
         self._remove_unused_streams = None
         self._unembed_fonts = None
+        self._resize_images = None
+        self._max_resolution = None
+        self._subset_fonts = None
+        self._remove_private_info = None
+        self._image_encoding = None
+        self._image_compression_version = None
 
-        self.allow_reuse_page_content = allow_reuse_page_content
-        self.compress_images = compress_images
-        self.image_quality = image_quality
-        self.link_duplcate_streams = link_duplcate_streams
-        self.remove_unused_objects = remove_unused_objects
-        self.remove_unused_streams = remove_unused_streams
-        self.unembed_fonts = unembed_fonts
+        if allow_reuse_page_content is not None:
+          self.allow_reuse_page_content = allow_reuse_page_content
+        if compress_images is not None:
+          self.compress_images = compress_images
+        if image_quality is not None:
+          self.image_quality = image_quality
+        if link_duplcate_streams is not None:
+          self.link_duplcate_streams = link_duplcate_streams
+        if remove_unused_objects is not None:
+          self.remove_unused_objects = remove_unused_objects
+        if remove_unused_streams is not None:
+          self.remove_unused_streams = remove_unused_streams
+        if unembed_fonts is not None:
+          self.unembed_fonts = unembed_fonts
+        if resize_images is not None:
+          self.resize_images = resize_images
+        if max_resolution is not None:
+          self.max_resolution = max_resolution
+        if subset_fonts is not None:
+          self.subset_fonts = subset_fonts
+        if remove_private_info is not None:
+          self.remove_private_info = remove_private_info
+        if image_encoding is not None:
+          self.image_encoding = image_encoding
+        if image_compression_version is not None:
+          self.image_compression_version = image_compression_version
 
     @property
     def allow_reuse_page_content(self):
@@ -108,8 +145,6 @@ class OptimizeOptions(object):
         :param allow_reuse_page_content: The allow_reuse_page_content of this OptimizeOptions.
         :type: bool
         """
-        if allow_reuse_page_content is None:
-            raise ValueError("Invalid value for `allow_reuse_page_content`, must not be `None`")
 
         self._allow_reuse_page_content = allow_reuse_page_content
 
@@ -117,7 +152,7 @@ class OptimizeOptions(object):
     def compress_images(self):
         """
         Gets the compress_images of this OptimizeOptions.
-        If this flag is set to true images will be compressed in the document. compression level is specfied with ImageQuality property.
+        If this flag is set to true images will be compressed in the document. Compression level is specified with ImageQuality property.
 
         :return: The compress_images of this OptimizeOptions.
         :rtype: bool
@@ -128,13 +163,11 @@ class OptimizeOptions(object):
     def compress_images(self, compress_images):
         """
         Sets the compress_images of this OptimizeOptions.
-        If this flag is set to true images will be compressed in the document. compression level is specfied with ImageQuality property.
+        If this flag is set to true images will be compressed in the document. Compression level is specified with ImageQuality property.
 
         :param compress_images: The compress_images of this OptimizeOptions.
         :type: bool
         """
-        if compress_images is None:
-            raise ValueError("Invalid value for `compress_images`, must not be `None`")
 
         self._compress_images = compress_images
 
@@ -142,7 +175,7 @@ class OptimizeOptions(object):
     def image_quality(self):
         """
         Gets the image_quality of this OptimizeOptions.
-        Specifie slevel of image compression when CompressIamges flag is used.
+        Specifies level of image compression when CompressImages flag is used.
 
         :return: The image_quality of this OptimizeOptions.
         :rtype: int
@@ -153,13 +186,11 @@ class OptimizeOptions(object):
     def image_quality(self, image_quality):
         """
         Sets the image_quality of this OptimizeOptions.
-        Specifie slevel of image compression when CompressIamges flag is used.
+        Specifies level of image compression when CompressImages flag is used.
 
         :param image_quality: The image_quality of this OptimizeOptions.
         :type: int
         """
-        if image_quality is None:
-            raise ValueError("Invalid value for `image_quality`, must not be `None`")
 
         self._image_quality = image_quality
 
@@ -167,7 +198,7 @@ class OptimizeOptions(object):
     def link_duplcate_streams(self):
         """
         Gets the link_duplcate_streams of this OptimizeOptions.
-        If this flag is set to true, Resource streams will be analyzed. If duplicate streams are found (i.e. if stream contents is equal), then thes streams will be stored as one object.  This allows to decrease document size in some cases (for example, when same document was concatenedted multiple times).
+        If this flag is set to true, Resource streams will be analyzed. If duplicate streams are found (i.e. if stream contents is equal), then thees streams will be stored as one object.  This allows to decrease document size in some cases (for example, when same document was concatenated multiple times).
 
         :return: The link_duplcate_streams of this OptimizeOptions.
         :rtype: bool
@@ -178,13 +209,11 @@ class OptimizeOptions(object):
     def link_duplcate_streams(self, link_duplcate_streams):
         """
         Sets the link_duplcate_streams of this OptimizeOptions.
-        If this flag is set to true, Resource streams will be analyzed. If duplicate streams are found (i.e. if stream contents is equal), then thes streams will be stored as one object.  This allows to decrease document size in some cases (for example, when same document was concatenedted multiple times).
+        If this flag is set to true, Resource streams will be analyzed. If duplicate streams are found (i.e. if stream contents is equal), then thees streams will be stored as one object.  This allows to decrease document size in some cases (for example, when same document was concatenated multiple times).
 
         :param link_duplcate_streams: The link_duplcate_streams of this OptimizeOptions.
         :type: bool
         """
-        if link_duplcate_streams is None:
-            raise ValueError("Invalid value for `link_duplcate_streams`, must not be `None`")
 
         self._link_duplcate_streams = link_duplcate_streams
 
@@ -208,8 +237,6 @@ class OptimizeOptions(object):
         :param remove_unused_objects: The remove_unused_objects of this OptimizeOptions.
         :type: bool
         """
-        if remove_unused_objects is None:
-            raise ValueError("Invalid value for `remove_unused_objects`, must not be `None`")
 
         self._remove_unused_objects = remove_unused_objects
 
@@ -233,8 +260,6 @@ class OptimizeOptions(object):
         :param remove_unused_streams: The remove_unused_streams of this OptimizeOptions.
         :type: bool
         """
-        if remove_unused_streams is None:
-            raise ValueError("Invalid value for `remove_unused_streams`, must not be `None`")
 
         self._remove_unused_streams = remove_unused_streams
 
@@ -258,10 +283,146 @@ class OptimizeOptions(object):
         :param unembed_fonts: The unembed_fonts of this OptimizeOptions.
         :type: bool
         """
-        if unembed_fonts is None:
-            raise ValueError("Invalid value for `unembed_fonts`, must not be `None`")
 
         self._unembed_fonts = unembed_fonts
+
+    @property
+    def resize_images(self):
+        """
+        Gets the resize_images of this OptimizeOptions.
+        If this flag set to true and CompressImages is true images will be resized if image resolution is greater then specified MaxResolution parameter.
+
+        :return: The resize_images of this OptimizeOptions.
+        :rtype: bool
+        """
+        return self._resize_images
+
+    @resize_images.setter
+    def resize_images(self, resize_images):
+        """
+        Sets the resize_images of this OptimizeOptions.
+        If this flag set to true and CompressImages is true images will be resized if image resolution is greater then specified MaxResolution parameter.
+
+        :param resize_images: The resize_images of this OptimizeOptions.
+        :type: bool
+        """
+
+        self._resize_images = resize_images
+
+    @property
+    def max_resolution(self):
+        """
+        Gets the max_resolution of this OptimizeOptions.
+        Specifies maximum resolution of images. If image has higher resolution it will be scaled.
+
+        :return: The max_resolution of this OptimizeOptions.
+        :rtype: int
+        """
+        return self._max_resolution
+
+    @max_resolution.setter
+    def max_resolution(self, max_resolution):
+        """
+        Sets the max_resolution of this OptimizeOptions.
+        Specifies maximum resolution of images. If image has higher resolution it will be scaled.
+
+        :param max_resolution: The max_resolution of this OptimizeOptions.
+        :type: int
+        """
+
+        self._max_resolution = max_resolution
+
+    @property
+    def subset_fonts(self):
+        """
+        Gets the subset_fonts of this OptimizeOptions.
+        Fonts will be converted into subsets if set to true.
+
+        :return: The subset_fonts of this OptimizeOptions.
+        :rtype: bool
+        """
+        return self._subset_fonts
+
+    @subset_fonts.setter
+    def subset_fonts(self, subset_fonts):
+        """
+        Sets the subset_fonts of this OptimizeOptions.
+        Fonts will be converted into subsets if set to true.
+
+        :param subset_fonts: The subset_fonts of this OptimizeOptions.
+        :type: bool
+        """
+
+        self._subset_fonts = subset_fonts
+
+    @property
+    def remove_private_info(self):
+        """
+        Gets the remove_private_info of this OptimizeOptions.
+        Remove private information (page piece info).
+
+        :return: The remove_private_info of this OptimizeOptions.
+        :rtype: bool
+        """
+        return self._remove_private_info
+
+    @remove_private_info.setter
+    def remove_private_info(self, remove_private_info):
+        """
+        Sets the remove_private_info of this OptimizeOptions.
+        Remove private information (page piece info).
+
+        :param remove_private_info: The remove_private_info of this OptimizeOptions.
+        :type: bool
+        """
+
+        self._remove_private_info = remove_private_info
+
+    @property
+    def image_encoding(self):
+        """
+        Gets the image_encoding of this OptimizeOptions.
+        Image encode which will be used.
+
+        :return: The image_encoding of this OptimizeOptions.
+        :rtype: ImageEncoding
+        """
+        return self._image_encoding
+
+    @image_encoding.setter
+    def image_encoding(self, image_encoding):
+        """
+        Sets the image_encoding of this OptimizeOptions.
+        Image encode which will be used.
+
+        :param image_encoding: The image_encoding of this OptimizeOptions.
+        :type: ImageEncoding
+        """
+
+        self._image_encoding = image_encoding
+
+    @property
+    def image_compression_version(self):
+        """
+        Gets the image_compression_version of this OptimizeOptions.
+        Version of compression algorithm. Possible values are: \"Standard\" - standard compression, \"Fast\" - fast (improved compression which is faster then standard but may be applicable not for all images), \"Mixed\" - mixed (standard compression is applied to images which can not be compressed by  faster algorithm, this may give best compression but more slow then \"Fast\" algorithm. Version \"Fast\" is not applicable for resizing images (standard method will be used). Default is \"Standard\".
+
+        :return: The image_compression_version of this OptimizeOptions.
+        :rtype: ImageCompressionVersion
+        """
+        return self._image_compression_version
+
+    @image_compression_version.setter
+    def image_compression_version(self, image_compression_version):
+        """
+        Sets the image_compression_version of this OptimizeOptions.
+        Version of compression algorithm. Possible values are: \"Standard\" - standard compression, \"Fast\" - fast (improved compression which is faster then standard but may be applicable not for all images), \"Mixed\" - mixed (standard compression is applied to images which can not be compressed by  faster algorithm, this may give best compression but more slow then \"Fast\" algorithm. Version \"Fast\" is not applicable for resizing images (standard method will be used). Default is \"Standard\".
+
+        :param image_compression_version: The image_compression_version of this OptimizeOptions.
+        :type: ImageCompressionVersion
+        """
+
+        self._image_compression_version = image_compression_version
 
     def to_dict(self):
         """

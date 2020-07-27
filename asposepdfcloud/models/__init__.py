@@ -35,6 +35,7 @@ from .annotation_flags import AnnotationFlags
 from .annotation_state import AnnotationState
 from .annotation_type import AnnotationType
 from .antialiasing_processing_type import AntialiasingProcessingType
+from .api_info import ApiInfo
 from .aspose_response import AsposeResponse
 from .border import Border
 from .border_corner_style import BorderCornerStyle
@@ -77,6 +78,8 @@ from .graph_info import GraphInfo
 from .horizontal_alignment import HorizontalAlignment
 from .html_document_type import HtmlDocumentType
 from .html_markup_generation_modes import HtmlMarkupGenerationModes
+from .image_compression_version import ImageCompressionVersion
+from .image_encoding import ImageEncoding
 from .image_fragment import ImageFragment
 from .image_src_type import ImageSrcType
 from .image_template import ImageTemplate
