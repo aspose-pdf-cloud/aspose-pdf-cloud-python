@@ -2962,6 +2962,100 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def get_api_info(self, **kwargs):
+        """
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_api_info(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :return: ApiInfo
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_api_info_with_http_info(**kwargs)
+        else:
+            (data) = self.get_api_info_with_http_info(**kwargs)
+            return data
+
+    def get_api_info_with_http_info(self, **kwargs):
+        """
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_api_info_with_http_info(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :return: ApiInfo
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_api_info" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/info', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='ApiInfo',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def get_bookmark(self, name, bookmark_path, **kwargs):
         """
         Read document bookmark.
@@ -3891,7 +3985,7 @@ class PdfApi(object):
 
     def get_document_annotations(self, name, **kwargs):
         """
-        Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
+        Read document page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -3918,7 +4012,7 @@ class PdfApi(object):
 
     def get_document_annotations_with_http_info(self, name, **kwargs):
         """
-        Read documant page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
+        Read document page annotations. Returns only FreeTextAnnotations, TextAnnotations, other annotations will implemented next releases.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -21630,7 +21724,7 @@ class PdfApi(object):
 
     def get_xfa_pdf_in_storage_to_acro_form(self, name, **kwargs):
         """
-        Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
+        Converts PDF document which contains XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -21657,7 +21751,7 @@ class PdfApi(object):
 
     def get_xfa_pdf_in_storage_to_acro_form_with_http_info(self, name, **kwargs):
         """
-        Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
+        Converts PDF document which contains XFA form (located on storage) to PDF with AcroForm and returns resulting file response content
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -26453,7 +26547,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param int page_number: The page number. (required)
-        :param list[LinkAnnotation] links: Array of link anotation. (required)
+        :param list[LinkAnnotation] links: Array of link annotation. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
         :return: AsposeResponse
@@ -26482,7 +26576,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param int page_number: The page number. (required)
-        :param list[LinkAnnotation] links: Array of link anotation. (required)
+        :param list[LinkAnnotation] links: Array of link annotation. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
         :return: AsposeResponse
@@ -30686,7 +30780,7 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.doc) (required)
         :param str password: The password (encrypted Base64). (required)
         :param str storage: The document storage.
-        :param file file: A file to be derypted.
+        :param file file: A file to be decrypted.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -30714,7 +30808,7 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.doc) (required)
         :param str password: The password (encrypted Base64). (required)
         :param str storage: The document storage.
-        :param file file: A file to be derypted.
+        :param file file: A file to be decrypted.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -34200,7 +34294,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str link_id: The link ID. (required)
-        :param LinkAnnotation link: Link anotation. (required)
+        :param LinkAnnotation link: Link annotation. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
         :return: LinkAnnotationResponse
@@ -34229,7 +34323,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str link_id: The link ID. (required)
-        :param LinkAnnotation link: Link anotation. (required)
+        :param LinkAnnotation link: Link annotation. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
         :return: LinkAnnotationResponse
@@ -34569,7 +34663,7 @@ class PdfApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str name: Resulting documen name. (required)
+        :param str name: Resulting document name. (required)
         :param MergeDocuments merge_documents: MergeDocuments with a list of documents. (required)
         :param str storage: Resulting document storage.
         :param str folder: Resulting document folder.
@@ -34597,7 +34691,7 @@ class PdfApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str name: Resulting documen name. (required)
+        :param str name: Resulting document name. (required)
         :param MergeDocuments merge_documents: MergeDocuments with a list of documents. (required)
         :param str storage: Resulting document storage.
         :param str folder: Resulting document folder.
@@ -43519,7 +43613,7 @@ class PdfApi(object):
 
     def put_xfa_pdf_in_request_to_acro_form(self, out_path, **kwargs):
         """
-        Converts PDF document which contatins XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
+        Converts PDF document which contains XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -43546,7 +43640,7 @@ class PdfApi(object):
 
     def put_xfa_pdf_in_request_to_acro_form_with_http_info(self, out_path, **kwargs):
         """
-        Converts PDF document which contatins XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
+        Converts PDF document which contains XFA form (in request content) to PDF with AcroForm and uploads resulting file to storage.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -43631,7 +43725,7 @@ class PdfApi(object):
 
     def put_xfa_pdf_in_storage_to_acro_form(self, name, out_path, **kwargs):
         """
-        Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
+        Converts PDF document which contains XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -43659,7 +43753,7 @@ class PdfApi(object):
 
     def put_xfa_pdf_in_storage_to_acro_form_with_http_info(self, name, out_path, **kwargs):
         """
-        Converts PDF document which contatins XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
+        Converts PDF document which contains XFA form (located on storage) to PDF with AcroForm and uploads resulting file to storage
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
