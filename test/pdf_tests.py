@@ -267,7 +267,7 @@ class PdfTests(unittest.TestCase):
 
         page_number = 1
 
-        text_state = asposepdfcloud.models.TextState(font_size=14, font_style=asposepdfcloud.models.FontStyles.REGULAR)
+        text_state = asposepdfcloud.models.TextState(font_size=14, font_style=asposepdfcloud.models.FontStyles.REGULAR, font='Arial')
 
         stamp = asposepdfcloud.models.TextStamp()
         stamp.background = True
@@ -5029,6 +5029,9 @@ class PdfTests(unittest.TestCase):
         file_name = '4pages.pdf'
         self.uploadFile(file_name)
 
+        font_file = 'Righteous-Regular.ttf'
+        self.uploadFile(font_file)
+
         page_number = 1
 
         rectangle = asposepdfcloud.models.Rectangle(100, 100, 300, 300)
@@ -5039,10 +5042,11 @@ class PdfTests(unittest.TestCase):
         
         text_state = asposepdfcloud.models.TextState(
                     font_size=10, 
-                    font='Arial', 
+                    font='Righteous', 
                     foreground_color=foreground_color,
                     background_color=background_color,
-                    font_style=asposepdfcloud.models.FontStyles.BOLD)
+                    font_style=asposepdfcloud.models.FontStyles.REGULAR,
+                    font_file=self.temp_folder + '/' + font_file)
 
         segment = asposepdfcloud.models.Segment(value='segment 1', text_state=text_state)
 

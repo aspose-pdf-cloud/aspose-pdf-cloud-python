@@ -52,7 +52,8 @@ class TextState(object):
         'font': 'str',
         'foreground_color': 'Color',
         'background_color': 'Color',
-        'font_style': 'FontStyles'
+        'font_style': 'FontStyles',
+        'font_file': 'str'
     }
 
     attribute_map = {
@@ -60,10 +61,11 @@ class TextState(object):
         'font': 'Font',
         'foreground_color': 'ForegroundColor',
         'background_color': 'BackgroundColor',
-        'font_style': 'FontStyle'
+        'font_style': 'FontStyle',
+        'font_file': 'FontFile'
     }
 
-    def __init__(self, font_size=None, font=None, foreground_color=None, background_color=None, font_style=None):
+    def __init__(self, font_size=None, font=None, foreground_color=None, background_color=None, font_style=None, font_file=None):
         """
         TextState - a model defined in Swagger
         """
@@ -73,6 +75,7 @@ class TextState(object):
         self._foreground_color = None
         self._background_color = None
         self._font_style = None
+        self._font_file = None
 
         self.font_size = font_size
         if font is not None:
@@ -82,6 +85,8 @@ class TextState(object):
         if background_color is not None:
           self.background_color = background_color
         self.font_style = font_style
+        if font_file is not None:
+          self.font_file = font_file
 
     @property
     def font_size(self):
@@ -112,7 +117,7 @@ class TextState(object):
     def font(self):
         """
         Gets the font of this TextState.
-        Gets or sets font of the text.
+        Gets or sets font name of the text.
 
         :return: The font of this TextState.
         :rtype: str
@@ -123,7 +128,7 @@ class TextState(object):
     def font(self, font):
         """
         Sets the font of this TextState.
-        Gets or sets font of the text.
+        Gets or sets font name of the text.
 
         :param font: The font of this TextState.
         :type: str
@@ -201,6 +206,29 @@ class TextState(object):
             raise ValueError("Invalid value for `font_style`, must not be `None`")
 
         self._font_style = font_style
+
+    @property
+    def font_file(self):
+        """
+        Gets the font_file of this TextState.
+        Sets path of font file in storage.
+
+        :return: The font_file of this TextState.
+        :rtype: str
+        """
+        return self._font_file
+
+    @font_file.setter
+    def font_file(self, font_file):
+        """
+        Sets the font_file of this TextState.
+        Sets path of font file in storage.
+
+        :param font_file: The font_file of this TextState.
+        :type: str
+        """
+
+        self._font_file = font_file
 
     def to_dict(self):
         """
