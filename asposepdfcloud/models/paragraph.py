@@ -169,7 +169,7 @@ class Paragraph(object):
     def horizontal_alignment(self):
         """
         Gets the horizontal_alignment of this Paragraph.
-        Horizontal alignment for the text inside paragrph's rectangle.
+        Horizontal alignment for the text inside paragraph's rectangle.
 
         :return: The horizontal_alignment of this Paragraph.
         :rtype: TextHorizontalAlignment
@@ -180,7 +180,7 @@ class Paragraph(object):
     def horizontal_alignment(self, horizontal_alignment):
         """
         Sets the horizontal_alignment of this Paragraph.
-        Horizontal alignment for the text inside paragrph's rectangle.
+        Horizontal alignment for the text inside paragraph's rectangle.
 
         :param horizontal_alignment: The horizontal_alignment of this Paragraph.
         :type: TextHorizontalAlignment
@@ -353,7 +353,7 @@ class Paragraph(object):
     def vertical_alignment(self):
         """
         Gets the vertical_alignment of this Paragraph.
-        Vertical alignment for the text inside paragrph's rectangle
+        Vertical alignment for the text inside paragraph's rectangle
 
         :return: The vertical_alignment of this Paragraph.
         :rtype: VerticalAlignment
@@ -364,7 +364,7 @@ class Paragraph(object):
     def vertical_alignment(self, vertical_alignment):
         """
         Sets the vertical_alignment of this Paragraph.
-        Vertical alignment for the text inside paragrph's rectangle
+        Vertical alignment for the text inside paragraph's rectangle
 
         :param vertical_alignment: The vertical_alignment of this Paragraph.
         :type: VerticalAlignment
