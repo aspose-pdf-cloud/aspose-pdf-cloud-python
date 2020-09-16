@@ -1,5 +1,5 @@
 ﻿# SignatureCustomAppearance
-An abstract class which represents signature custon appearance object.
+An abstract class which represents signature custom appearance object.
 
 ## Properties
 Name | Type | Description | Notes
