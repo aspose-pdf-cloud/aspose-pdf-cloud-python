@@ -6107,7 +6107,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_page_redaction_annotations**
-> AsposeResponse post_page_redaction_annotations(name, page_number, annotations, storage=storage, folder=folder)
+> AsposeResponse post_page_redaction_annotations(name, page_number, annotations, storage=storage, folder=folder, apply=apply)
 
 Add document page redaction annotations.
 
@@ -6120,6 +6120,7 @@ Name | Type | Description  | Notes
  **annotations** | [**list[RedactionAnnotation]**](RedactionAnnotation.md)| The array of annotation. | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
+ **apply** | **bool**| Apply redaction immediately after adding. | [optional] [default to false]
 
 ### Return type
 
@@ -8965,7 +8966,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_redaction_annotation**
-> RedactionAnnotationResponse put_redaction_annotation(name, annotation_id, annotation, storage=storage, folder=folder)
+> RedactionAnnotationResponse put_redaction_annotation(name, annotation_id, annotation, storage=storage, folder=folder, apply=apply)
 
 Replace document redaction annotation
 
@@ -8978,6 +8979,7 @@ Name | Type | Description  | Notes
  **annotation** | [**RedactionAnnotation**](RedactionAnnotation.md)| Annotation. | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
+ **apply** | **bool**| Apply redaction immediately after adding. | [optional] [default to false]
 
 ### Return type
 

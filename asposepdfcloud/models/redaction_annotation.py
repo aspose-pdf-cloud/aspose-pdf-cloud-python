@@ -523,7 +523,7 @@ class RedactionAnnotation(object):
     def repeat(self):
         """
         Gets the repeat of this RedactionAnnotation.
-        If true overlay text will be repated on the annotation. 
+        If true overlay text will be repeated on the annotation. 
 
         :return: The repeat of this RedactionAnnotation.
         :rtype: bool
@@ -534,7 +534,7 @@ class RedactionAnnotation(object):
     def repeat(self, repeat):
         """
         Sets the repeat of this RedactionAnnotation.
-        If true overlay text will be repated on the annotation. 
+        If true overlay text will be repeated on the annotation. 
 
         :param repeat: The repeat of this RedactionAnnotation.
         :type: bool

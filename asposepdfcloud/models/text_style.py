@@ -51,17 +51,19 @@ class TextStyle(object):
         'font_size': 'float',
         'font': 'str',
         'foreground_color': 'Color',
-        'background_color': 'Color'
+        'background_color': 'Color',
+        'font_file': 'str'
     }
 
     attribute_map = {
         'font_size': 'FontSize',
         'font': 'Font',
         'foreground_color': 'ForegroundColor',
-        'background_color': 'BackgroundColor'
+        'background_color': 'BackgroundColor',
+        'font_file': 'FontFile'
     }
 
-    def __init__(self, font_size=None, font=None, foreground_color=None, background_color=None):
+    def __init__(self, font_size=None, font=None, foreground_color=None, background_color=None, font_file=None):
         """
         TextStyle - a model defined in Swagger
         """
@@ -70,6 +72,7 @@ class TextStyle(object):
         self._font = None
         self._foreground_color = None
         self._background_color = None
+        self._font_file = None
 
         self.font_size = font_size
         if font is not None:
@@ -78,6 +81,8 @@ class TextStyle(object):
           self.foreground_color = foreground_color
         if background_color is not None:
           self.background_color = background_color
+        if font_file is not None:
+          self.font_file = font_file
 
     @property
     def font_size(self):
@@ -172,6 +177,29 @@ class TextStyle(object):
         """
 
         self._background_color = background_color
+
+    @property
+    def font_file(self):
+        """
+        Gets the font_file of this TextStyle.
+        Sets path of font file in storage.
+
+        :return: The font_file of this TextStyle.
+        :rtype: str
+        """
+        return self._font_file
+
+    @font_file.setter
+    def font_file(self, font_file):
+        """
+        Sets the font_file of this TextStyle.
+        Sets path of font file in storage.
+
+        :param font_file: The font_file of this TextStyle.
+        :type: str
+        """
+
+        self._font_file = font_file
 
     def to_dict(self):
         """

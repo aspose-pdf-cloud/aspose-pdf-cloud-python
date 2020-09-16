@@ -27180,6 +27180,7 @@ class PdfApi(object):
         :param list[RedactionAnnotation] annotations: The array of annotation. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param bool apply: Apply redaction immediately after adding.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -27209,12 +27210,13 @@ class PdfApi(object):
         :param list[RedactionAnnotation] annotations: The array of annotation. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param bool apply: Apply redaction immediately after adding.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'annotations', 'storage', 'folder']
+        all_params = ['name', 'page_number', 'annotations', 'storage', 'folder', 'apply']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -27253,6 +27255,8 @@ class PdfApi(object):
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'apply' in params:
+            query_params.append(('apply', params['apply']))
 
         header_params = {}
 
@@ -40708,6 +40712,7 @@ class PdfApi(object):
         :param RedactionAnnotation annotation: Annotation. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param bool apply: Apply redaction immediately after adding.
         :return: RedactionAnnotationResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -40737,12 +40742,13 @@ class PdfApi(object):
         :param RedactionAnnotation annotation: Annotation. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param bool apply: Apply redaction immediately after adding.
         :return: RedactionAnnotationResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'annotation_id', 'annotation', 'storage', 'folder']
+        all_params = ['name', 'annotation_id', 'annotation', 'storage', 'folder', 'apply']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -40781,6 +40787,8 @@ class PdfApi(object):
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'apply' in params:
+            query_params.append(('apply', params['apply']))
 
         header_params = {}
 
