@@ -84,8 +84,8 @@ All Aspose.PDF Cloud SDKs are licensed under [MIT License](LICENSE).
 
 ## Resources
 + [**Website**](https://www.aspose.cloud)
-+ [**Product Home**](https://products.aspose.cloud/pdf/cloud)
-+ [**Documentation**](https://docs.aspose.cloud/display/pdfcloud/Home)
++ [**Product Home**](https://products.aspose.cloud/pdf/python)
++ [**Documentation**](https://docs.aspose.cloud/pdf/)
 + [**Free Support Forum**](https://forum.aspose.cloud/c/pdf)
 + [**Paid Support Helpdesk**](https://helpdesk.aspose.cloud/)
 + [**Blog**](https://blog.aspose.cloud/category/aspose-products/aspose-pdf-product-family/)
