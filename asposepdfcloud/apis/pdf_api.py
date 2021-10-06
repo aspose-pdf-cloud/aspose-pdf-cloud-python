@@ -4,22 +4,22 @@
     Aspose.PDF Cloud API Reference
 
 
-   Copyright (c) 2020 Aspose.PDF Cloud
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all
- copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- SOFTWARE.
+Copyright (c) 2021 Aspose.PDF Cloud
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 
 
@@ -2955,100 +2955,6 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='file',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
-    def get_api_info(self, **kwargs):
-        """
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_api_info(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :return: ApiInfo
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.get_api_info_with_http_info(**kwargs)
-        else:
-            (data) = self.get_api_info_with_http_info(**kwargs)
-            return data
-
-    def get_api_info_with_http_info(self, **kwargs):
-        """
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_api_info_with_http_info(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :return: ApiInfo
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_api_info" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = ['JWT']
-
-        return self.api_client.call_api('/pdf/info', 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='ApiInfo',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -17242,121 +17148,9 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def get_pdf_in_storage_to_la_te_x(self, name, **kwargs):
-        """
-        Converts PDF document (located on storage) to TeX format and returns resulting file in response content
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_pdf_in_storage_to_la_te_x(name, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: The document name. (required)
-        :param str folder: The document folder.
-        :param str storage: The document storage.
-        :return: file
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.get_pdf_in_storage_to_la_te_x_with_http_info(name, **kwargs)
-        else:
-            (data) = self.get_pdf_in_storage_to_la_te_x_with_http_info(name, **kwargs)
-            return data
-
-    def get_pdf_in_storage_to_la_te_x_with_http_info(self, name, **kwargs):
-        """
-        Converts PDF document (located on storage) to TeX format and returns resulting file in response content
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_pdf_in_storage_to_la_te_x_with_http_info(name, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: The document name. (required)
-        :param str folder: The document folder.
-        :param str storage: The document storage.
-        :return: file
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['name', 'folder', 'storage']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_pdf_in_storage_to_la_te_x" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `get_pdf_in_storage_to_la_te_x`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'name' in params:
-            path_params['name'] = params['name']
-
-        query_params = []
-        if 'folder' in params:
-            query_params.append(('folder', params['folder']))
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['multipart/form-data'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = ['JWT']
-
-        return self.api_client.call_api('/pdf/{name}/convert/latex', 'GET',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='file',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
     def get_pdf_in_storage_to_mobi_xml(self, name, **kwargs):
         """
-        Converts PDF document (located on storage) to MOBIXML format and returns resulting file in response content
+        Converts PDF document (located on storage) to MOBIXML format and returns resulting ZIP archive file in response content.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -17383,7 +17177,7 @@ class PdfApi(object):
 
     def get_pdf_in_storage_to_mobi_xml_with_http_info(self, name, **kwargs):
         """
-        Converts PDF document (located on storage) to MOBIXML format and returns resulting file in response content
+        Converts PDF document (located on storage) to MOBIXML format and returns resulting ZIP archive file in response content.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -36683,121 +36477,9 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def put_pdf_in_request_to_la_te_x(self, out_path, **kwargs):
-        """
-        Converts PDF document (in request content) to TeX format and uploads resulting file to storage.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.put_pdf_in_request_to_la_te_x(out_path, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.tex) (required)
-        :param str storage: The document storage.
-        :param file file: A file to be converted.
-        :return: AsposeResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.put_pdf_in_request_to_la_te_x_with_http_info(out_path, **kwargs)
-        else:
-            (data) = self.put_pdf_in_request_to_la_te_x_with_http_info(out_path, **kwargs)
-            return data
-
-    def put_pdf_in_request_to_la_te_x_with_http_info(self, out_path, **kwargs):
-        """
-        Converts PDF document (in request content) to TeX format and uploads resulting file to storage.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.put_pdf_in_request_to_la_te_x_with_http_info(out_path, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.tex) (required)
-        :param str storage: The document storage.
-        :param file file: A file to be converted.
-        :return: AsposeResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['out_path', 'storage', 'file']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method put_pdf_in_request_to_la_te_x" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'out_path' is set
-        if ('out_path' not in params) or (params['out_path'] is None):
-            raise ValueError("Missing the required parameter `out_path` when calling `put_pdf_in_request_to_la_te_x`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'out_path' in params:
-            query_params.append(('outPath', params['out_path']))
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'file' in params:
-            local_var_files['file'] = params['file']
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['multipart/form-data'])
-
-        # Authentication setting
-        auth_settings = ['JWT']
-
-        return self.api_client.call_api('/pdf/convert/latex', 'PUT',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='AsposeResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
     def put_pdf_in_request_to_mobi_xml(self, out_path, **kwargs):
         """
-        Converts PDF document (in request content) to MOBIXML format and uploads resulting file to storage.
+        Converts PDF document (in request content) to MOBIXML format and uploads resulting ZIP archive file to storage.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -36824,7 +36506,7 @@ class PdfApi(object):
 
     def put_pdf_in_request_to_mobi_xml_with_http_info(self, out_path, **kwargs):
         """
-        Converts PDF document (in request content) to MOBIXML format and uploads resulting file to storage.
+        Converts PDF document (in request content) to MOBIXML format and uploads resulting ZIP archive file to storage.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -38536,128 +38218,9 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def put_pdf_in_storage_to_la_te_x(self, name, out_path, **kwargs):
-        """
-        Converts PDF document (located on storage) to TeX format and uploads resulting file to storage
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.put_pdf_in_storage_to_la_te_x(name, out_path, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: The document name. (required)
-        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.tex) (required)
-        :param str folder: The document folder.
-        :param str storage: The document storage.
-        :return: AsposeResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.put_pdf_in_storage_to_la_te_x_with_http_info(name, out_path, **kwargs)
-        else:
-            (data) = self.put_pdf_in_storage_to_la_te_x_with_http_info(name, out_path, **kwargs)
-            return data
-
-    def put_pdf_in_storage_to_la_te_x_with_http_info(self, name, out_path, **kwargs):
-        """
-        Converts PDF document (located on storage) to TeX format and uploads resulting file to storage
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.put_pdf_in_storage_to_la_te_x_with_http_info(name, out_path, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str name: The document name. (required)
-        :param str out_path: Full resulting filename (ex. /folder1/folder2/result.tex) (required)
-        :param str folder: The document folder.
-        :param str storage: The document storage.
-        :return: AsposeResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['name', 'out_path', 'folder', 'storage']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method put_pdf_in_storage_to_la_te_x" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if ('name' not in params) or (params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `put_pdf_in_storage_to_la_te_x`")
-        # verify the required parameter 'out_path' is set
-        if ('out_path' not in params) or (params['out_path'] is None):
-            raise ValueError("Missing the required parameter `out_path` when calling `put_pdf_in_storage_to_la_te_x`")
-
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'name' in params:
-            path_params['name'] = params['name']
-
-        query_params = []
-        if 'out_path' in params:
-            query_params.append(('outPath', params['out_path']))
-        if 'folder' in params:
-            query_params.append(('folder', params['folder']))
-        if 'storage' in params:
-            query_params.append(('storage', params['storage']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = ['JWT']
-
-        return self.api_client.call_api('/pdf/{name}/convert/latex', 'PUT',
-                                        path_params,
-                                        query_params,
-                                        header_params,
-                                        body=body_params,
-                                        post_params=form_params,
-                                        files=local_var_files,
-                                        response_type='AsposeResponse',
-                                        auth_settings=auth_settings,
-                                        callback=params.get('callback'),
-                                        _return_http_data_only=params.get('_return_http_data_only'),
-                                        _preload_content=params.get('_preload_content', True),
-                                        _request_timeout=params.get('_request_timeout'),
-                                        collection_formats=collection_formats)
-
     def put_pdf_in_storage_to_mobi_xml(self, name, out_path, **kwargs):
         """
-        Converts PDF document (located on storage) to MOBIXML format and uploads resulting file to storage
+        Converts PDF document (located on storage) to MOBIXML format and uploads resulting ZIP archive file to storage
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -38685,7 +38248,7 @@ class PdfApi(object):
 
     def put_pdf_in_storage_to_mobi_xml_with_http_info(self, name, out_path, **kwargs):
         """
-        Converts PDF document (located on storage) to MOBIXML format and uploads resulting file to storage
+        Converts PDF document (located on storage) to MOBIXML format and uploads resulting ZIP archive file to storage
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
