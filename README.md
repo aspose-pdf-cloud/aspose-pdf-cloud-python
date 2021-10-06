@@ -29,6 +29,9 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
+## Enhancements in Version 21.9
+- A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .Net.
+
 ## Enhancements in Version 20.12
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .Net.
 
