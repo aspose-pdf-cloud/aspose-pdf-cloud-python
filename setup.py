@@ -32,7 +32,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = "asposepdfcloud"
-VERSION = "21.10.0"
+VERSION = "21.11.0"
 # To install the library, run the following
 #
 # python setup.py install
@@ -46,7 +46,14 @@ setup(
     name=NAME,
     version=VERSION,
     description="Aspose.PDF Cloud",
-    long_description="New version of Aspose.PDF Cloud is a REST API for creating and editing PDF files. It can also be used to convert PDF files to different formats like DOC, HTML, XPS, TIFF and many more. Aspose.PDF Cloud gives you control: create PDFs from scratch or from HTML, XML, template, database, XPS or an image. Render PDFs to image formats such as JPEG, PNG, GIF, BMP, TIFF and many others.\nAspose.PDF Cloud helps you manipulate elements of a PDF file like text, annotations, watermarks, signatures, bookmarks, stamps and so on. Its REST API also allows you to manage PDF pages by using features like merging, splitting, and inserting. Add images to a PDF file or convert PDF pages to images.\nAspose.PDF Cloud is well documented to help you create your solutions on different platforms.\nhttps://products.aspose.cloud/pdf/family/\nRich Set of Features\nAspose.PDF Cloud features can be divided into three main areas:\nConversions: High quality conversions PDF to formats XLS, XLSX, PPTX, DOC, DOCX, EPUB, HTML, TeX, MobiXML, XML, XPS, FDF, XFDF, PDF/A\nRendering: Convert whole documents or pages to PDF, XPS or for server-side document generation. Also convert document pages to SVG, JPEG, EMF, PNG, BMP, GIF, TIFF images.\nDocument Object Model: Programmatic access through a rich API to all document elements allows to create, modify, extract, copy, split, join, and replace document content.\nAspose.PDF Cloud is designed to perform great. You can literally generate thousands of documents in minutes with Aspose.PDF Cloud and that involves opening a document, modifying content and formatting or populating it with data and saving it. Even most of the complex documents are opened and saved in fractions of a second.\nFree support for Aspose.PDF Cloud is provided on our support forum:\nhttps://forum.aspose.cloud/\nand on StackOverflow:\nhttps://stackoverflow.com/questions/tagged/aspose.pdf",
+    long_description='''Aspose.PDF Cloud is a REST API for creating and editing PDF files.
+ Most popular features proposed by Aspose.PDF Cloud: PDF to Word, Convert PDF to Image, Merge PDF, Split PDF, Add Images to PDF, Rotate PDF.
+ It can also be used to convert PDF files to different formats like DOC, HTML, XPS, TIFF and many more.
+ Aspose.PDF Cloud gives you control: create PDFs from scratch or from HTML, XML, template, database, XPS or an image.
+ Render PDFs to image formats such as JPEG, PNG, GIF, BMP, TIFF and many others.
+ Aspose.PDF Cloud helps you manipulate elements of a PDF file like text, annotations, watermarks, signatures, bookmarks, stamps and so on.
+ Its REST API also allows you to manage PDF pages by using features like merging, splitting, and inserting.
+ Add images to a PDF file or convert PDF pages to images.''',
     author_email="",
     url="https://products.aspose.cloud/pdf/cloud",
     author='Aspose PDF Cloud',
