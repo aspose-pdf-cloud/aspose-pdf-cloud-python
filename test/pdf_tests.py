@@ -46,17 +46,17 @@ from asposepdfcloud.rest import ApiException
 class PdfTests(unittest.TestCase):
 
     def setUp(self):
-        with open('test/setup.json') as json_file:
+        with open('../../Settings/servercreds.json') as json_file:
             data = json.load(json_file)
             
             self.pdf_api_client = asposepdfcloud.api_client.ApiClient(
-                                app_key=str(data['app_key']),
-                                app_sid=str(data['app_sid']),
-                                host=str(data['product_uri']))
+                                app_key=str(data['AppKey']),
+                                app_sid=str(data['AppSID']),
+                                host=str(data['ProductUri']))
 
             self.pdf_api = PdfApi(self.pdf_api_client)
 
-            self.output_path = str(data['output_location'])
+            self.output_path = str(data['OutputLocation'])
 
             self.temp_folder = 'TempPdfCloud'
             self.test_data_path = 'test_data/'
