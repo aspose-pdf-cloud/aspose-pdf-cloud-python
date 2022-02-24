@@ -106,7 +106,7 @@ class DocumentProperty(object):
     def name(self):
         """
         Gets the name of this DocumentProperty.
-        Pame of the property.
+        Name of the property.
 
         :return: The name of this DocumentProperty.
         :rtype: str
@@ -117,7 +117,7 @@ class DocumentProperty(object):
     def name(self, name):
         """
         Sets the name of this DocumentProperty.
-        Pame of the property.
+        Name of the property.
 
         :param name: The name of this DocumentProperty.
         :type: str

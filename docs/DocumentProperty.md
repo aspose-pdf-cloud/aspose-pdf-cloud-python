@@ -5,7 +5,7 @@ Pdf document property.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **links** | [**list[Link]**](Link.md) | Link to the document. | [optional] 
-**name** | **str** | Pame of the property. | [optional] 
+**name** | **str** | Name of the property. | [optional] 
 **value** | **str** | Property value. | [optional] 
 **built_in** | **bool** | Value indicating whether it is a built-in property. | 
 
