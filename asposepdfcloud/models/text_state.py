@@ -53,7 +53,11 @@ class TextState(object):
         'foreground_color': 'Color',
         'background_color': 'Color',
         'font_style': 'FontStyles',
-        'font_file': 'str'
+        'font_file': 'str',
+        'underline': 'bool',
+        'strike_out': 'bool',
+        'superscript': 'bool',
+        'subscript': 'bool'
     }
 
     attribute_map = {
@@ -62,10 +66,14 @@ class TextState(object):
         'foreground_color': 'ForegroundColor',
         'background_color': 'BackgroundColor',
         'font_style': 'FontStyle',
-        'font_file': 'FontFile'
+        'font_file': 'FontFile',
+        'underline': 'Underline',
+        'strike_out': 'StrikeOut',
+        'superscript': 'Superscript',
+        'subscript': 'Subscript'
     }
 
-    def __init__(self, font_size=None, font=None, foreground_color=None, background_color=None, font_style=None, font_file=None):
+    def __init__(self, font_size=None, font=None, foreground_color=None, background_color=None, font_style=None, font_file=None, underline=None, strike_out=None, superscript=None, subscript=None):
         """
         TextState - a model defined in Swagger
         """
@@ -76,6 +84,10 @@ class TextState(object):
         self._background_color = None
         self._font_style = None
         self._font_file = None
+        self._underline = None
+        self._strike_out = None
+        self._superscript = None
+        self._subscript = None
 
         self.font_size = font_size
         if font is not None:
@@ -87,6 +99,14 @@ class TextState(object):
         self.font_style = font_style
         if font_file is not None:
           self.font_file = font_file
+        if underline is not None:
+          self.underline = underline
+        if strike_out is not None:
+          self.strike_out = strike_out
+        if superscript is not None:
+          self.superscript = superscript
+        if subscript is not None:
+          self.subscript = subscript
 
     @property
     def font_size(self):
@@ -229,6 +249,98 @@ class TextState(object):
         """
 
         self._font_file = font_file
+
+    @property
+    def underline(self):
+        """
+        Gets the underline of this TextState.
+        Gets or sets underline of the text.
+
+        :return: The underline of this TextState.
+        :rtype: bool
+        """
+        return self._underline
+
+    @underline.setter
+    def underline(self, underline):
+        """
+        Sets the underline of this TextState.
+        Gets or sets underline of the text.
+
+        :param underline: The underline of this TextState.
+        :type: bool
+        """
+
+        self._underline = underline
+
+    @property
+    def strike_out(self):
+        """
+        Gets the strike_out of this TextState.
+        Gets or sets strikeout of the text.
+
+        :return: The strike_out of this TextState.
+        :rtype: bool
+        """
+        return self._strike_out
+
+    @strike_out.setter
+    def strike_out(self, strike_out):
+        """
+        Sets the strike_out of this TextState.
+        Gets or sets strikeout of the text.
+
+        :param strike_out: The strike_out of this TextState.
+        :type: bool
+        """
+
+        self._strike_out = strike_out
+
+    @property
+    def superscript(self):
+        """
+        Gets the superscript of this TextState.
+        Gets or sets superscript mode of the text.
+
+        :return: The superscript of this TextState.
+        :rtype: bool
+        """
+        return self._superscript
+
+    @superscript.setter
+    def superscript(self, superscript):
+        """
+        Sets the superscript of this TextState.
+        Gets or sets superscript mode of the text.
+
+        :param superscript: The superscript of this TextState.
+        :type: bool
+        """
+
+        self._superscript = superscript
+
+    @property
+    def subscript(self):
+        """
+        Gets the subscript of this TextState.
+        Gets or sets subscript mode of the text.
+
+        :return: The subscript of this TextState.
+        :rtype: bool
+        """
+        return self._subscript
+
+    @subscript.setter
+    def subscript(self, subscript):
+        """
+        Sets the subscript of this TextState.
+        Gets or sets subscript mode of the text.
+
+        :param subscript: The subscript of this TextState.
+        :type: bool
+        """
+
+        self._subscript = subscript
 
     def to_dict(self):
         """
