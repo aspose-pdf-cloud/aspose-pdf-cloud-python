@@ -30,14 +30,8 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 22.3
-- PDFCLOUD-2729: Add StrikeOut, Superscript, Subscript properties to TextState.
-- PDFCLOUD-2623: Underline property is missing in TextState.
+## Enhancements in Version 22.4
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
-
-## Bugs fixed in Version 22.3
-- PDFCLOUD-2714: GetFields API method not extracting PDF form fields.
-- PDFCLOUD-2641: PostSplitDocument returns wrong path.
 
 ## Requirements.
 Python 2.7 and 3.4+
@@ -72,8 +66,9 @@ import asposepdfcloud
 ## Get PDF Page Annotations in Python
 ```python
 	# Get your ClientId and ClientSecret from https://dashboard.aspose.cloud (free registration required).
+	pdf_api_client = asposepdfcloud.ApiClient('MY_CLIENT_ID', 'MY_CLIENT_SECRET')
 
-	pdf_api = asposepdfcloud.PdfApi('MY_CLIENT_ID', 'MY_CLIENT_SECRET')
+	pdf_api = asposepdfcloud.PdfApi(pdf_api_client)
 
 	file_name = 'PdfWithAnnotations.pdf'
 	page_number = 2
