@@ -83,7 +83,7 @@ class ApiClient(object):
         self.rest_client = RESTClientObject()
         self.default_headers = {}
         self.default_headers['x-aspose-client'] = 'python sdk'
-        self.default_headers['x-aspose-client-version'] = '22.8.0'
+        self.default_headers['x-aspose-client-version'] = '22.9.0'
         
         self.app_key = app_key
         self.app_sid = app_sid
@@ -245,10 +245,12 @@ class ApiClient(object):
         resource_path = "/connect/token"
 
         # request url
-        url = self.host.replace("/v3.0", "") + resource_path
+        print("host: " + self.host)
+        tokenUrl = self.host.replace("/v3.0", "") + resource_path
+        print("tokenUrl: " + tokenUrl)
 
         # perform request and return response
-        response_data = self.request(method, url,
+        response_data = self.request(method, tokenUrl,
                                      headers=header_params,
                                      post_params=post_params)
 
