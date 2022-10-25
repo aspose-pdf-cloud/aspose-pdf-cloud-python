@@ -145,7 +145,7 @@ Method | HTTP request | Description
 [**get_pages**](PdfApi.md#get_pages) | **GET** /pdf/\{name}/pages | Read document pages info.
 [**get_pcl_in_storage_to_pdf**](PdfApi.md#get_pcl_in_storage_to_pdf) | **GET** /pdf/create/pcl | Convert PCL file (located on storage) to PDF format and return resulting file in response. 
 [**get_pdf_a_in_storage_to_pdf**](PdfApi.md#get_pdf_a_in_storage_to_pdf) | **GET** /pdf/create/pdfa | Convert PDFA file (located on storage) to PDF format and return resulting file in response. 
-[**get_pdf_in_storage_to_doc**](PdfApi.md#get_pdf_in_storage_to_doc) | **GET** /pdf/\{name}/convert/doc | Converts PDF document (located on storage) to DOC format and returns resulting file in response content
+[**get_pdf_in_storage_to_doc**](PdfApi.md#get_pdf_in_storage_to_doc) | **GET** /pdf/\{name}/convert/doc | Converts PDF document (located on storage) to DOC format and returns resulting file in response content.
 [**get_pdf_in_storage_to_epub**](PdfApi.md#get_pdf_in_storage_to_epub) | **GET** /pdf/\{name}/convert/epub | Converts PDF document (located on storage) to EPUB format and returns resulting file in response content
 [**get_pdf_in_storage_to_html**](PdfApi.md#get_pdf_in_storage_to_html) | **GET** /pdf/\{name}/convert/html | Converts PDF document (located on storage) to Html format and returns resulting file in response content
 [**get_pdf_in_storage_to_mobi_xml**](PdfApi.md#get_pdf_in_storage_to_mobi_xml) | **GET** /pdf/\{name}/convert/mobixml | Converts PDF document (located on storage) to MOBIXML format and returns resulting ZIP archive file in response content.
@@ -246,6 +246,7 @@ Method | HTTP request | Description
 [**post_sign_page**](PdfApi.md#post_sign_page) | **POST** /pdf/\{name}/pages/\{pageNumber}/sign | Sign page.
 [**post_signature_field**](PdfApi.md#post_signature_field) | **POST** /pdf/\{name}/fields/signature | Add document signature field.
 [**post_split_document**](PdfApi.md#post_split_document) | **POST** /pdf/\{name}/split | Split document to parts.
+[**post_split_range_pdf_document**](PdfApi.md#post_split_range_pdf_document) | **POST** /pdf/\{name}/splitrangepdf | 
 [**post_text_box_fields**](PdfApi.md#post_text_box_fields) | **POST** /pdf/\{name}/fields/textbox | Add document text box fields.
 [**put_add_new_page**](PdfApi.md#put_add_new_page) | **PUT** /pdf/\{name}/pages | Add new page to end of the document.
 [**put_add_text**](PdfApi.md#put_add_text) | **PUT** /pdf/\{name}/pages/\{pageNumber}/text | Add text to PDF document page.
@@ -312,7 +313,7 @@ Method | HTTP request | Description
 [**put_pdf_in_request_to_xlsx**](PdfApi.md#put_pdf_in_request_to_xlsx) | **PUT** /pdf/convert/xlsx | Converts PDF document (in request content) to XLSX format and uploads resulting file to storage.
 [**put_pdf_in_request_to_xml**](PdfApi.md#put_pdf_in_request_to_xml) | **PUT** /pdf/convert/xml | Converts PDF document (in request content) to XML format and uploads resulting file to storage.
 [**put_pdf_in_request_to_xps**](PdfApi.md#put_pdf_in_request_to_xps) | **PUT** /pdf/convert/xps | Converts PDF document (in request content) to XPS format and uploads resulting file to storage.
-[**put_pdf_in_storage_to_doc**](PdfApi.md#put_pdf_in_storage_to_doc) | **PUT** /pdf/\{name}/convert/doc | Converts PDF document (located on storage) to DOC format and uploads resulting file to storage
+[**put_pdf_in_storage_to_doc**](PdfApi.md#put_pdf_in_storage_to_doc) | **PUT** /pdf/\{name}/convert/doc | Converts PDF document (located on storage) to DOC format and uploads resulting file to storage.
 [**put_pdf_in_storage_to_epub**](PdfApi.md#put_pdf_in_storage_to_epub) | **PUT** /pdf/\{name}/convert/epub | Converts PDF document (located on storage) to EPUB format and uploads resulting file to storage
 [**put_pdf_in_storage_to_html**](PdfApi.md#put_pdf_in_storage_to_html) | **PUT** /pdf/\{name}/convert/html | Converts PDF document (located on storage) to Html format and uploads resulting file to storage
 [**put_pdf_in_storage_to_mobi_xml**](PdfApi.md#put_pdf_in_storage_to_mobi_xml) | **PUT** /pdf/\{name}/convert/mobixml | Converts PDF document (located on storage) to MOBIXML format and uploads resulting ZIP archive file to storage
@@ -2942,7 +2943,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_page_convert_to_bmp**
-> file get_page_convert_to_bmp(name, page_number, width=width, height=height, folder=folder, storage=storage)
+> file get_page_convert_to_bmp(name, page_number, width=width, height=height, folder=folder, storage=storage, password=password)
 
 Convert document page to Bmp image and return resulting file in response.
 
@@ -2956,6 +2957,7 @@ Name | Type | Description  | Notes
  **height** | **int**| The converted image height. | [optional] [default to 0]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -2969,7 +2971,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_page_convert_to_emf**
-> file get_page_convert_to_emf(name, page_number, width=width, height=height, folder=folder, storage=storage)
+> file get_page_convert_to_emf(name, page_number, width=width, height=height, folder=folder, storage=storage, password=password)
 
 Convert document page to Emf image and return resulting file in response.
 
@@ -2983,6 +2985,7 @@ Name | Type | Description  | Notes
  **height** | **int**| The converted image height. | [optional] [default to 0]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -2996,7 +2999,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_page_convert_to_gif**
-> file get_page_convert_to_gif(name, page_number, width=width, height=height, folder=folder, storage=storage)
+> file get_page_convert_to_gif(name, page_number, width=width, height=height, folder=folder, storage=storage, password=password)
 
 Convert document page to Gif image and return resulting file in response.
 
@@ -3010,6 +3013,7 @@ Name | Type | Description  | Notes
  **height** | **int**| The converted image height. | [optional] [default to 0]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -3023,7 +3027,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_page_convert_to_jpeg**
-> file get_page_convert_to_jpeg(name, page_number, width=width, height=height, folder=folder, storage=storage)
+> file get_page_convert_to_jpeg(name, page_number, width=width, height=height, folder=folder, storage=storage, password=password)
 
 Convert document page to Jpeg image and return resulting file in response.
 
@@ -3037,6 +3041,7 @@ Name | Type | Description  | Notes
  **height** | **int**| The converted image height. | [optional] [default to 0]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -3050,7 +3055,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_page_convert_to_png**
-> file get_page_convert_to_png(name, page_number, width=width, height=height, folder=folder, storage=storage)
+> file get_page_convert_to_png(name, page_number, width=width, height=height, folder=folder, storage=storage, password=password)
 
 Convert document page to Png image and return resulting file in response.
 
@@ -3064,6 +3069,7 @@ Name | Type | Description  | Notes
  **height** | **int**| The converted image height. | [optional] [default to 0]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -3077,7 +3083,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_page_convert_to_tiff**
-> file get_page_convert_to_tiff(name, page_number, width=width, height=height, folder=folder, storage=storage)
+> file get_page_convert_to_tiff(name, page_number, width=width, height=height, folder=folder, storage=storage, password=password)
 
 Convert document page to Tiff image  and return resulting file in response.
 
@@ -3091,6 +3097,7 @@ Name | Type | Description  | Notes
  **height** | **int**| The converted image height. | [optional] [default to 0]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -3858,9 +3865,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_pdf_in_storage_to_doc**
-> file get_pdf_in_storage_to_doc(name, add_return_to_line_end=add_return_to_line_end, format=format, image_resolution_x=image_resolution_x, image_resolution_y=image_resolution_y, max_distance_between_text_lines=max_distance_between_text_lines, mode=mode, recognize_bullets=recognize_bullets, relative_horizontal_proximity=relative_horizontal_proximity, folder=folder, storage=storage)
+> file get_pdf_in_storage_to_doc(name, add_return_to_line_end=add_return_to_line_end, format=format, image_resolution_x=image_resolution_x, image_resolution_y=image_resolution_y, max_distance_between_text_lines=max_distance_between_text_lines, mode=mode, recognize_bullets=recognize_bullets, relative_horizontal_proximity=relative_horizontal_proximity, folder=folder, storage=storage, password=password)
 
-Converts PDF document (located on storage) to DOC format and returns resulting file in response content
+Converts PDF document (located on storage) to DOC format and returns resulting file in response content.
 
 ### Parameters
 
@@ -3877,6 +3884,7 @@ Name | Type | Description  | Notes
  **relative_horizontal_proximity** | **float**| Relative horizontal proximity. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -6501,6 +6509,31 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **post_split_range_pdf_document**
+> SplitResultResponse post_split_range_pdf_document(name, options, storage=storage, folder=folder)
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**|  | 
+ **options** | [**SplitRangePdfOptions**](SplitRangePdfOptions.md)|  | 
+ **storage** | **str**|  | [optional] 
+ **folder** | **str**|  | [optional] 
+
+### Return type
+
+[**SplitResultResponse**](SplitResultResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **post_text_box_fields**
 > AsposeResponse post_text_box_fields(name, fields, storage=storage, folder=folder)
 
@@ -7680,7 +7713,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_page_convert_to_bmp**
-> AsposeResponse put_page_convert_to_bmp(name, page_number, out_path, width=width, height=height, folder=folder, storage=storage)
+> AsposeResponse put_page_convert_to_bmp(name, page_number, out_path, width=width, height=height, folder=folder, storage=storage, password=password)
 
 Convert document page to bmp image and upload resulting file to storage.
 
@@ -7695,6 +7728,7 @@ Name | Type | Description  | Notes
  **height** | **int**| The converted image height. | [optional] [default to 0]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -7708,7 +7742,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_page_convert_to_emf**
-> AsposeResponse put_page_convert_to_emf(name, page_number, out_path, width=width, height=height, folder=folder, storage=storage)
+> AsposeResponse put_page_convert_to_emf(name, page_number, out_path, width=width, height=height, folder=folder, storage=storage, password=password)
 
 Convert document page to emf image and upload resulting file to storage.
 
@@ -7723,6 +7757,7 @@ Name | Type | Description  | Notes
  **height** | **int**| The converted image height. | [optional] [default to 0]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -7736,7 +7771,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_page_convert_to_gif**
-> AsposeResponse put_page_convert_to_gif(name, page_number, out_path, width=width, height=height, folder=folder, storage=storage)
+> AsposeResponse put_page_convert_to_gif(name, page_number, out_path, width=width, height=height, folder=folder, storage=storage, password=password)
 
 Convert document page to gif image and upload resulting file to storage.
 
@@ -7751,6 +7786,7 @@ Name | Type | Description  | Notes
  **height** | **int**| The converted image height. | [optional] [default to 0]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -7764,7 +7800,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_page_convert_to_jpeg**
-> AsposeResponse put_page_convert_to_jpeg(name, page_number, out_path, width=width, height=height, folder=folder, storage=storage)
+> AsposeResponse put_page_convert_to_jpeg(name, page_number, out_path, width=width, height=height, folder=folder, storage=storage, password=password)
 
 Convert document page to Jpeg image and upload resulting file to storage.
 
@@ -7779,6 +7815,7 @@ Name | Type | Description  | Notes
  **height** | **int**| The converted image height. | [optional] [default to 0]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -7792,7 +7829,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_page_convert_to_png**
-> AsposeResponse put_page_convert_to_png(name, page_number, out_path, width=width, height=height, folder=folder, storage=storage)
+> AsposeResponse put_page_convert_to_png(name, page_number, out_path, width=width, height=height, folder=folder, storage=storage, password=password)
 
 Convert document page to png image and upload resulting file to storage.
 
@@ -7807,6 +7844,7 @@ Name | Type | Description  | Notes
  **height** | **int**| The converted image height. | [optional] [default to 0]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -7820,7 +7858,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_page_convert_to_tiff**
-> AsposeResponse put_page_convert_to_tiff(name, page_number, out_path, width=width, height=height, folder=folder, storage=storage)
+> AsposeResponse put_page_convert_to_tiff(name, page_number, out_path, width=width, height=height, folder=folder, storage=storage, password=password)
 
 Convert document page to Tiff image and upload resulting file to storage.
 
@@ -7835,6 +7873,7 @@ Name | Type | Description  | Notes
  **height** | **int**| The converted image height. | [optional] [default to 0]
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -7899,7 +7938,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_pdf_in_request_to_doc**
-> AsposeResponse put_pdf_in_request_to_doc(out_path, add_return_to_line_end=add_return_to_line_end, format=format, image_resolution_x=image_resolution_x, image_resolution_y=image_resolution_y, max_distance_between_text_lines=max_distance_between_text_lines, mode=mode, recognize_bullets=recognize_bullets, relative_horizontal_proximity=relative_horizontal_proximity, storage=storage, file=file)
+> AsposeResponse put_pdf_in_request_to_doc(out_path, add_return_to_line_end=add_return_to_line_end, format=format, image_resolution_x=image_resolution_x, image_resolution_y=image_resolution_y, max_distance_between_text_lines=max_distance_between_text_lines, mode=mode, recognize_bullets=recognize_bullets, relative_horizontal_proximity=relative_horizontal_proximity, storage=storage, password=password, file=file)
 
 Converts PDF document (in request content) to DOC format and uploads resulting file to storage.
 
@@ -7917,6 +7956,7 @@ Name | Type | Description  | Notes
  **recognize_bullets** | **bool**| Recognize bullets. | [optional] 
  **relative_horizontal_proximity** | **float**| Relative horizontal proximity. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
  **file** | **file**| A file to be converted. | [optional] 
 
 ### Return type
@@ -8276,9 +8316,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_pdf_in_storage_to_doc**
-> AsposeResponse put_pdf_in_storage_to_doc(name, out_path, add_return_to_line_end=add_return_to_line_end, format=format, image_resolution_x=image_resolution_x, image_resolution_y=image_resolution_y, max_distance_between_text_lines=max_distance_between_text_lines, mode=mode, recognize_bullets=recognize_bullets, relative_horizontal_proximity=relative_horizontal_proximity, folder=folder, storage=storage)
+> AsposeResponse put_pdf_in_storage_to_doc(name, out_path, add_return_to_line_end=add_return_to_line_end, format=format, image_resolution_x=image_resolution_x, image_resolution_y=image_resolution_y, max_distance_between_text_lines=max_distance_between_text_lines, mode=mode, recognize_bullets=recognize_bullets, relative_horizontal_proximity=relative_horizontal_proximity, folder=folder, storage=storage, password=password)
 
-Converts PDF document (located on storage) to DOC format and uploads resulting file to storage
+Converts PDF document (located on storage) to DOC format and uploads resulting file to storage.
 
 ### Parameters
 
@@ -8296,6 +8336,7 @@ Name | Type | Description  | Notes
  **relative_horizontal_proximity** | **float**| Relative horizontal proximity. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 

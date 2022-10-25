@@ -12215,6 +12215,7 @@ class PdfApi(object):
         :param int height: The converted image height.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -12245,12 +12246,13 @@ class PdfApi(object):
         :param int height: The converted image height.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'width', 'height', 'folder', 'storage']
+        all_params = ['name', 'page_number', 'width', 'height', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -12290,6 +12292,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -12342,6 +12346,7 @@ class PdfApi(object):
         :param int height: The converted image height.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -12372,12 +12377,13 @@ class PdfApi(object):
         :param int height: The converted image height.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'width', 'height', 'folder', 'storage']
+        all_params = ['name', 'page_number', 'width', 'height', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -12417,6 +12423,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -12469,6 +12477,7 @@ class PdfApi(object):
         :param int height: The converted image height.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -12499,12 +12508,13 @@ class PdfApi(object):
         :param int height: The converted image height.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'width', 'height', 'folder', 'storage']
+        all_params = ['name', 'page_number', 'width', 'height', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -12544,6 +12554,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -12596,6 +12608,7 @@ class PdfApi(object):
         :param int height: The converted image height.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -12626,12 +12639,13 @@ class PdfApi(object):
         :param int height: The converted image height.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'width', 'height', 'folder', 'storage']
+        all_params = ['name', 'page_number', 'width', 'height', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -12671,6 +12685,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -12723,6 +12739,7 @@ class PdfApi(object):
         :param int height: The converted image height.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -12753,12 +12770,13 @@ class PdfApi(object):
         :param int height: The converted image height.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'width', 'height', 'folder', 'storage']
+        all_params = ['name', 'page_number', 'width', 'height', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -12798,6 +12816,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -12850,6 +12870,7 @@ class PdfApi(object):
         :param int height: The converted image height.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -12880,12 +12901,13 @@ class PdfApi(object):
         :param int height: The converted image height.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'width', 'height', 'folder', 'storage']
+        all_params = ['name', 'page_number', 'width', 'height', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -12925,6 +12947,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -16553,7 +16577,7 @@ class PdfApi(object):
 
     def get_pdf_in_storage_to_doc(self, name, **kwargs):
         """
-        Converts PDF document (located on storage) to DOC format and returns resulting file in response content
+        Converts PDF document (located on storage) to DOC format and returns resulting file in response content.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -16575,6 +16599,7 @@ class PdfApi(object):
         :param float relative_horizontal_proximity: Relative horizontal proximity.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -16588,7 +16613,7 @@ class PdfApi(object):
 
     def get_pdf_in_storage_to_doc_with_http_info(self, name, **kwargs):
         """
-        Converts PDF document (located on storage) to DOC format and returns resulting file in response content
+        Converts PDF document (located on storage) to DOC format and returns resulting file in response content.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -16610,12 +16635,13 @@ class PdfApi(object):
         :param float relative_horizontal_proximity: Relative horizontal proximity.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'add_return_to_line_end', 'format', 'image_resolution_x', 'image_resolution_y', 'max_distance_between_text_lines', 'mode', 'recognize_bullets', 'relative_horizontal_proximity', 'folder', 'storage']
+        all_params = ['name', 'add_return_to_line_end', 'format', 'image_resolution_x', 'image_resolution_y', 'max_distance_between_text_lines', 'mode', 'recognize_bullets', 'relative_horizontal_proximity', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -16662,6 +16688,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -29097,6 +29125,123 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def post_split_range_pdf_document(self, name, options, **kwargs):
+        """
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_split_range_pdf_document(name, options, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: (required)
+        :param SplitRangePdfOptions options: (required)
+        :param str storage:
+        :param str folder:
+        :return: SplitResultResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_split_range_pdf_document_with_http_info(name, options, **kwargs)
+        else:
+            (data) = self.post_split_range_pdf_document_with_http_info(name, options, **kwargs)
+            return data
+
+    def post_split_range_pdf_document_with_http_info(self, name, options, **kwargs):
+        """
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_split_range_pdf_document_with_http_info(name, options, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: (required)
+        :param SplitRangePdfOptions options: (required)
+        :param str storage:
+        :param str folder:
+        :return: SplitResultResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'options', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_split_range_pdf_document" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_split_range_pdf_document`")
+        # verify the required parameter 'options' is set
+        if ('options' not in params) or (params['options'] is None):
+            raise ValueError("Missing the required parameter `options` when calling `post_split_range_pdf_document`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'options' in params:
+            body_params = params['options']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/splitrangepdf', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='SplitResultResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def post_text_box_fields(self, name, fields, **kwargs):
         """
         Add document text box fields.
@@ -34731,6 +34876,7 @@ class PdfApi(object):
         :param int height: The converted image height.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -34762,12 +34908,13 @@ class PdfApi(object):
         :param int height: The converted image height.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'out_path', 'width', 'height', 'folder', 'storage']
+        all_params = ['name', 'page_number', 'out_path', 'width', 'height', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -34812,6 +34959,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -34865,6 +35014,7 @@ class PdfApi(object):
         :param int height: The converted image height.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -34896,12 +35046,13 @@ class PdfApi(object):
         :param int height: The converted image height.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'out_path', 'width', 'height', 'folder', 'storage']
+        all_params = ['name', 'page_number', 'out_path', 'width', 'height', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -34946,6 +35097,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -34999,6 +35152,7 @@ class PdfApi(object):
         :param int height: The converted image height.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -35030,12 +35184,13 @@ class PdfApi(object):
         :param int height: The converted image height.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'out_path', 'width', 'height', 'folder', 'storage']
+        all_params = ['name', 'page_number', 'out_path', 'width', 'height', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -35080,6 +35235,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -35133,6 +35290,7 @@ class PdfApi(object):
         :param int height: The converted image height.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -35164,12 +35322,13 @@ class PdfApi(object):
         :param int height: The converted image height.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'out_path', 'width', 'height', 'folder', 'storage']
+        all_params = ['name', 'page_number', 'out_path', 'width', 'height', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -35214,6 +35373,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -35267,6 +35428,7 @@ class PdfApi(object):
         :param int height: The converted image height.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -35298,12 +35460,13 @@ class PdfApi(object):
         :param int height: The converted image height.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'out_path', 'width', 'height', 'folder', 'storage']
+        all_params = ['name', 'page_number', 'out_path', 'width', 'height', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -35348,6 +35511,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -35401,6 +35566,7 @@ class PdfApi(object):
         :param int height: The converted image height.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -35432,12 +35598,13 @@ class PdfApi(object):
         :param int height: The converted image height.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'out_path', 'width', 'height', 'folder', 'storage']
+        all_params = ['name', 'page_number', 'out_path', 'width', 'height', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -35482,6 +35649,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -35780,6 +35949,7 @@ class PdfApi(object):
         :param bool recognize_bullets: Recognize bullets.
         :param float relative_horizontal_proximity: Relative horizontal proximity.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :param file file: A file to be converted.
         :return: AsposeResponse
                  If the method is called asynchronously,
@@ -35815,13 +35985,14 @@ class PdfApi(object):
         :param bool recognize_bullets: Recognize bullets.
         :param float relative_horizontal_proximity: Relative horizontal proximity.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :param file file: A file to be converted.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['out_path', 'add_return_to_line_end', 'format', 'image_resolution_x', 'image_resolution_y', 'max_distance_between_text_lines', 'mode', 'recognize_bullets', 'relative_horizontal_proximity', 'storage', 'file']
+        all_params = ['out_path', 'add_return_to_line_end', 'format', 'image_resolution_x', 'image_resolution_y', 'max_distance_between_text_lines', 'mode', 'recognize_bullets', 'relative_horizontal_proximity', 'storage', 'password', 'file']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -35866,6 +36037,8 @@ class PdfApi(object):
             query_params.append(('relativeHorizontalProximity', params['relative_horizontal_proximity']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -37479,7 +37652,7 @@ class PdfApi(object):
 
     def put_pdf_in_storage_to_doc(self, name, out_path, **kwargs):
         """
-        Converts PDF document (located on storage) to DOC format and uploads resulting file to storage
+        Converts PDF document (located on storage) to DOC format and uploads resulting file to storage.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -37502,6 +37675,7 @@ class PdfApi(object):
         :param float relative_horizontal_proximity: Relative horizontal proximity.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -37515,7 +37689,7 @@ class PdfApi(object):
 
     def put_pdf_in_storage_to_doc_with_http_info(self, name, out_path, **kwargs):
         """
-        Converts PDF document (located on storage) to DOC format and uploads resulting file to storage
+        Converts PDF document (located on storage) to DOC format and uploads resulting file to storage.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -37538,12 +37712,13 @@ class PdfApi(object):
         :param float relative_horizontal_proximity: Relative horizontal proximity.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'out_path', 'add_return_to_line_end', 'format', 'image_resolution_x', 'image_resolution_y', 'max_distance_between_text_lines', 'mode', 'recognize_bullets', 'relative_horizontal_proximity', 'folder', 'storage']
+        all_params = ['name', 'out_path', 'add_return_to_line_end', 'format', 'image_resolution_x', 'image_resolution_y', 'max_distance_between_text_lines', 'mode', 'recognize_bullets', 'relative_horizontal_proximity', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -37595,6 +37770,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 

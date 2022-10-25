@@ -3151,7 +3151,6 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.get_document(file_name, **opts)
         self.assertEqual(response.code, 200)
 
-
     def testPostOptimizeDocument(self):
         file_name = '4pages.pdf'
         self.uploadFile(file_name)
@@ -3163,36 +3162,52 @@ class PdfTests(unittest.TestCase):
                 link_duplcate_streams=True,
                 remove_unused_objects=True,
                 remove_unused_streams=True,            
-                unembed_fonts=True)
-        
+                unembed_fonts=True)        
         opts = {
             "options" : optimize_options,
             "folder" : self.temp_folder
         }
-
         response = self.pdf_api.post_optimize_document(file_name, **opts)
         self.assertEqual(response.code, 200)
-
-
 
     def testPostSplitDocument(self):
         file_name = '4pages.pdf'
         self.uploadFile(file_name)
-
         opts = {
               "folder" : self.temp_folder
         }
         response = self.pdf_api.post_split_document(file_name, **opts)
         self.assertEqual(response.code, 200)
 
+    def testPostSplitRangeDocument(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        range_options = asposepdfcloud.models.SplitRangePdfOptions(
+            page_ranges=[
+                asposepdfcloud.models.PageRange(
+                    to=2
+                ),
+                asposepdfcloud.models.PageRange(
+                    _from=3
+                ),
+                asposepdfcloud.models.PageRange(
+                    _from=2,
+                    to=3
+                )
+            ]
+        )
+        opts = {
+            "options" : range_options,
+            "folder" : self.temp_folder
+        }
+        response = self.pdf_api.post_split_range_pdf_document(file_name, **opts)
+        self.assertEqual(response.code, 200)
 
     def testPutCreateEmptyDocument(self):
         file_name = 'empty.pdf'
-
         opts = {
               "folder" : self.temp_folder
         }
-
         response = self.pdf_api.put_create_document(file_name, **opts)
         self.assertEqual(response.code, 200)
    

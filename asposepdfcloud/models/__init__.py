@@ -100,6 +100,7 @@ from .option import Option
 from .output_format import OutputFormat
 from .page_layout import PageLayout
 from .page_mode import PageMode
+from .page_range import PageRange
 from .page_word_count import PageWordCount
 from .paragraph import Paragraph
 from .parts_embedding_modes import PartsEmbeddingModes
@@ -120,6 +121,7 @@ from .signature_custom_appearance import SignatureCustomAppearance
 from .signature_type import SignatureType
 from .sound_encoding import SoundEncoding
 from .sound_icon import SoundIcon
+from .split_range_pdf_options import SplitRangePdfOptions
 from .split_result import SplitResult
 from .stamp import Stamp
 from .stamp_icon import StampIcon
