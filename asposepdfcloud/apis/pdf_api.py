@@ -29127,6 +29127,7 @@ class PdfApi(object):
 
     def post_split_range_pdf_document(self, name, options, **kwargs):
         """
+        Split document into ranges.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -29137,10 +29138,10 @@ class PdfApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str name: (required)
-        :param SplitRangePdfOptions options: (required)
-        :param str storage:
-        :param str folder:
+        :param str name: The document name. (required)
+        :param SplitRangePdfOptions options: The splitting options. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
         :return: SplitResultResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -29154,6 +29155,7 @@ class PdfApi(object):
 
     def post_split_range_pdf_document_with_http_info(self, name, options, **kwargs):
         """
+        Split document into ranges.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
         to be invoked when receiving the response.
@@ -29164,10 +29166,10 @@ class PdfApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str name: (required)
-        :param SplitRangePdfOptions options: (required)
-        :param str storage:
-        :param str folder:
+        :param str name: The document name. (required)
+        :param SplitRangePdfOptions options: The splitting options. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
         :return: SplitResultResponse
                  If the method is called asynchronously,
                  returns the request thread.
