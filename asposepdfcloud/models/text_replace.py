@@ -52,7 +52,8 @@ class TextReplace(object):
         'new_value': 'str',
         'regex': 'bool',
         'text_state': 'TextState',
-        'rect': 'Rectangle'
+        'rect': 'Rectangle',
+        'center_text_horizontally': 'bool'
     }
 
     attribute_map = {
@@ -60,10 +61,11 @@ class TextReplace(object):
         'new_value': 'NewValue',
         'regex': 'Regex',
         'text_state': 'TextState',
-        'rect': 'Rect'
+        'rect': 'Rect',
+        'center_text_horizontally': 'CenterTextHorizontally'
     }
 
-    def __init__(self, old_value=None, new_value=None, regex=None, text_state=None, rect=None):
+    def __init__(self, old_value=None, new_value=None, regex=None, text_state=None, rect=None, center_text_horizontally=None):
         """
         TextReplace - a model defined in Swagger
         """
@@ -73,6 +75,7 @@ class TextReplace(object):
         self._regex = None
         self._text_state = None
         self._rect = None
+        self._center_text_horizontally = None
 
         self.old_value = old_value
         if new_value is not None:
@@ -82,6 +85,8 @@ class TextReplace(object):
           self.text_state = text_state
         if rect is not None:
           self.rect = rect
+        if center_text_horizontally is not None:
+          self.center_text_horizontally = center_text_horizontally
 
     @property
     def old_value(self):
@@ -203,6 +208,29 @@ class TextReplace(object):
         """
 
         self._rect = rect
+
+    @property
+    def center_text_horizontally(self):
+        """
+        Gets the center_text_horizontally of this TextReplace.
+        The text after replacement is centered horizontally relative to the text being replaced.
+
+        :return: The center_text_horizontally of this TextReplace.
+        :rtype: bool
+        """
+        return self._center_text_horizontally
+
+    @center_text_horizontally.setter
+    def center_text_horizontally(self, center_text_horizontally):
+        """
+        Sets the center_text_horizontally of this TextReplace.
+        The text after replacement is centered horizontally relative to the text being replaced.
+
+        :param center_text_horizontally: The center_text_horizontally of this TextReplace.
+        :type: bool
+        """
+
+        self._center_text_horizontally = center_text_horizontally
 
     def to_dict(self):
         """
