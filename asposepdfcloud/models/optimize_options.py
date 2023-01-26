@@ -4,7 +4,7 @@
     Aspose.PDF Cloud API Reference
 
 
-Copyright (c) 2022 Aspose.PDF Cloud
+Copyright (c) 2023 Aspose.PDF Cloud
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -48,6 +48,7 @@ class OptimizeOptions(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'password': 'str',
         'allow_reuse_page_content': 'bool',
         'compress_images': 'bool',
         'image_quality': 'int',
@@ -64,6 +65,7 @@ class OptimizeOptions(object):
     }
 
     attribute_map = {
+        'password': 'Password',
         'allow_reuse_page_content': 'AllowReusePageContent',
         'compress_images': 'CompressImages',
         'image_quality': 'ImageQuality',
@@ -79,11 +81,12 @@ class OptimizeOptions(object):
         'image_compression_version': 'ImageCompressionVersion'
     }
 
-    def __init__(self, allow_reuse_page_content=None, compress_images=None, image_quality=None, link_duplcate_streams=None, remove_unused_objects=None, remove_unused_streams=None, unembed_fonts=None, resize_images=None, max_resolution=None, subset_fonts=None, remove_private_info=None, image_encoding=None, image_compression_version=None):
+    def __init__(self, password=None, allow_reuse_page_content=None, compress_images=None, image_quality=None, link_duplcate_streams=None, remove_unused_objects=None, remove_unused_streams=None, unembed_fonts=None, resize_images=None, max_resolution=None, subset_fonts=None, remove_private_info=None, image_encoding=None, image_compression_version=None):
         """
         OptimizeOptions - a model defined in Swagger
         """
 
+        self._password = None
         self._allow_reuse_page_content = None
         self._compress_images = None
         self._image_quality = None
@@ -98,6 +101,8 @@ class OptimizeOptions(object):
         self._image_encoding = None
         self._image_compression_version = None
 
+        if password is not None:
+          self.password = password
         if allow_reuse_page_content is not None:
           self.allow_reuse_page_content = allow_reuse_page_content
         if compress_images is not None:
@@ -124,6 +129,29 @@ class OptimizeOptions(object):
           self.image_encoding = image_encoding
         if image_compression_version is not None:
           self.image_compression_version = image_compression_version
+
+    @property
+    def password(self):
+        """
+        Gets the password of this OptimizeOptions.
+        Specifies document password (if any) encoded with base-64.
+
+        :return: The password of this OptimizeOptions.
+        :rtype: str
+        """
+        return self._password
+
+    @password.setter
+    def password(self, password):
+        """
+        Sets the password of this OptimizeOptions.
+        Specifies document password (if any) encoded with base-64.
+
+        :param password: The password of this OptimizeOptions.
+        :type: str
+        """
+
+        self._password = password
 
     @property
     def allow_reuse_page_content(self):

@@ -4,7 +4,7 @@
     Aspose.PDF Cloud API Reference
 
 
-Copyright (c) 2022 Aspose.PDF Cloud
+Copyright (c) 2023 Aspose.PDF Cloud
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -3156,6 +3156,25 @@ class PdfTests(unittest.TestCase):
         self.uploadFile(file_name)
 
         optimize_options = asposepdfcloud.models.OptimizeOptions(
+                allow_reuse_page_content=False,
+                compress_images=True,
+                image_quality=100,
+                link_duplcate_streams=True,
+                remove_unused_objects=True,
+                remove_unused_streams=True,            
+                unembed_fonts=True)        
+        opts = {
+            "options" : optimize_options,
+            "folder" : self.temp_folder
+        }
+        response = self.pdf_api.post_optimize_document(file_name, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testPostOptimizeDocumentWithPassword(self):
+        file_name = '4pagesEncrypted.pdf'
+        self.uploadFile(file_name)
+        optimize_options = asposepdfcloud.models.OptimizeOptions(
+                password=str(base64.b64encode(b'user $^Password!&'), "utf-8"),
                 allow_reuse_page_content=False,
                 compress_images=True,
                 image_quality=100,
