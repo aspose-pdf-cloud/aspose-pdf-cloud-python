@@ -30,8 +30,7 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 23.1
-- PDFCLOUD-2973 Add support to optimize password protected PDF using PostOptimizeDocument.
+## Enhancements in Version 23.2
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
 
 ## Requirements.
