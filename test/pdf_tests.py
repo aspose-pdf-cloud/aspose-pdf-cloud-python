@@ -3294,6 +3294,30 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.put_document_display_properties(file_name, display_properties, **opts)
         self.assertEqual(response.code, 200)
 
+    def testPostOrganizeDocument(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        opts = {
+            "folder" : self.temp_folder
+        }
+        response = self.pdf_api.post_organize_document(file_name, '1,4-2', self.temp_folder + '/' + file_name, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testPostOrganizeDocuments(self):
+        file_name1 = '4pages.pdf'
+        self.uploadFile(file_name1)
+        file_name2 = 'marketing.pdf'
+        self.uploadFile(file_name2)
+        request = asposepdfcloud.models.OrganizeDocumentRequest(
+            list=[
+            asposepdfcloud.models.OrganizeDocumentData(path=self.temp_folder + '/' + file_name1, pages='4-2'),
+            asposepdfcloud.models.OrganizeDocumentData(path=self.temp_folder + '/' + file_name2, pages='2'),
+            asposepdfcloud.models.OrganizeDocumentData(path=self.temp_folder + '/' + file_name1, pages='3,1'),
+            ],
+        )
+        response = self.pdf_api.post_organize_documents(request, self.temp_folder + '/OrganizeMany.pdf')
+        self.assertEqual(response.code, 200)
+
     # Fields Tests
 
     def testGetField(self):
