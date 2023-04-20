@@ -97,6 +97,8 @@ from .models.merge_documents import MergeDocuments
 from .models.object_exist import ObjectExist
 from .models.optimize_options import OptimizeOptions
 from .models.option import Option
+from .models.organize_document_data import OrganizeDocumentData
+from .models.organize_document_request import OrganizeDocumentRequest
 from .models.output_format import OutputFormat
 from .models.page_layout import PageLayout
 from .models.page_mode import PageMode

@@ -25105,6 +25105,253 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def post_organize_document(self, name, pages, out_path, **kwargs):
+        """
+        Merge selected pages of a document.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_organize_document(name, pages, out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The original document name. (required)
+        :param str pages: 1-based page numbers of the source document that make up the resulting document. (required)
+        :param str out_path: Full filename of the resulting document. (required)
+        :param str storage: The documents storage.
+        :param str folder: The source document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_organize_document_with_http_info(name, pages, out_path, **kwargs)
+        else:
+            (data) = self.post_organize_document_with_http_info(name, pages, out_path, **kwargs)
+            return data
+
+    def post_organize_document_with_http_info(self, name, pages, out_path, **kwargs):
+        """
+        Merge selected pages of a document.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_organize_document_with_http_info(name, pages, out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The original document name. (required)
+        :param str pages: 1-based page numbers of the source document that make up the resulting document. (required)
+        :param str out_path: Full filename of the resulting document. (required)
+        :param str storage: The documents storage.
+        :param str folder: The source document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'pages', 'out_path', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_organize_document" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_organize_document`")
+        # verify the required parameter 'pages' is set
+        if ('pages' not in params) or (params['pages'] is None):
+            raise ValueError("Missing the required parameter `pages` when calling `post_organize_document`")
+        # verify the required parameter 'out_path' is set
+        if ('out_path' not in params) or (params['out_path'] is None):
+            raise ValueError("Missing the required parameter `out_path` when calling `post_organize_document`")
+
+        if 'pages' in params and len(params['pages']) < 1:
+            raise ValueError("Invalid value for parameter `pages` when calling `post_organize_document`, length must be greater than or equal to `1`")
+        if 'out_path' in params and len(params['out_path']) < 1:
+            raise ValueError("Invalid value for parameter `out_path` when calling `post_organize_document`, length must be greater than or equal to `1`")
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'pages' in params:
+            query_params.append(('pages', params['pages']))
+        if 'out_path' in params:
+            query_params.append(('outPath', params['out_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/organize', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def post_organize_documents(self, organize_documents, out_path, **kwargs):
+        """
+        Merge selected pages of different documents.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_organize_documents(organize_documents, out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param OrganizeDocumentRequest organize_documents: Array of OrganizeDocumentData to make up the resulting document. (required)
+        :param str out_path: Full filename of the resulting document. (required)
+        :param str storage: The documents storage.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_organize_documents_with_http_info(organize_documents, out_path, **kwargs)
+        else:
+            (data) = self.post_organize_documents_with_http_info(organize_documents, out_path, **kwargs)
+            return data
+
+    def post_organize_documents_with_http_info(self, organize_documents, out_path, **kwargs):
+        """
+        Merge selected pages of different documents.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_organize_documents_with_http_info(organize_documents, out_path, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param OrganizeDocumentRequest organize_documents: Array of OrganizeDocumentData to make up the resulting document. (required)
+        :param str out_path: Full filename of the resulting document. (required)
+        :param str storage: The documents storage.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['organize_documents', 'out_path', 'storage']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_organize_documents" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'organize_documents' is set
+        if ('organize_documents' not in params) or (params['organize_documents'] is None):
+            raise ValueError("Missing the required parameter `organize_documents` when calling `post_organize_documents`")
+        # verify the required parameter 'out_path' is set
+        if ('out_path' not in params) or (params['out_path'] is None):
+            raise ValueError("Missing the required parameter `out_path` when calling `post_organize_documents`")
+
+        if 'out_path' in params and len(params['out_path']) < 1:
+            raise ValueError("Invalid value for parameter `out_path` when calling `post_organize_documents`, length must be greater than or equal to `1`")
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'out_path' in params:
+            query_params.append(('outPath', params['out_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'organize_documents' in params:
+            body_params = params['organize_documents']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/organize', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def post_page_caret_annotations(self, name, page_number, annotations, **kwargs):
         """
         Add document page caret annotations.
