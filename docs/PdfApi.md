@@ -4027,7 +4027,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_pdf_in_storage_to_pptx**
-> file get_pdf_in_storage_to_pptx(name, separate_images=separate_images, slides_as_images=slides_as_images, folder=folder, storage=storage)
+> file get_pdf_in_storage_to_pptx(name, separate_images=separate_images, slides_as_images=slides_as_images, folder=folder, storage=storage, password=password)
 
 Converts PDF document (located on storage) to PPTX format and returns resulting file in response content
 
@@ -4040,6 +4040,7 @@ Name | Type | Description  | Notes
  **slides_as_images** | **bool**| Slides as images. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| Base64 encoded password. | [optional] 
 
 ### Return type
 
@@ -8151,7 +8152,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_pdf_in_request_to_pptx**
-> AsposeResponse put_pdf_in_request_to_pptx(out_path, separate_images=separate_images, slides_as_images=slides_as_images, storage=storage, file=file)
+> AsposeResponse put_pdf_in_request_to_pptx(out_path, separate_images=separate_images, slides_as_images=slides_as_images, storage=storage, password=password, file=file)
 
 Converts PDF document (in request content) to PPTX format and uploads resulting file to storage.
 
@@ -8163,6 +8164,7 @@ Name | Type | Description  | Notes
  **separate_images** | **bool**| Separate images. | [optional] 
  **slides_as_images** | **bool**| Slides as images. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| Base64 encoded password. | [optional] 
  **file** | **file**| A file to be converted. | [optional] 
 
 ### Return type
@@ -8534,7 +8536,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_pdf_in_storage_to_pptx**
-> AsposeResponse put_pdf_in_storage_to_pptx(name, out_path, separate_images=separate_images, slides_as_images=slides_as_images, folder=folder, storage=storage)
+> AsposeResponse put_pdf_in_storage_to_pptx(name, out_path, separate_images=separate_images, slides_as_images=slides_as_images, folder=folder, storage=storage, password=password)
 
 Converts PDF document (located on storage) to PPTX format and uploads resulting file to storage
 
@@ -8548,6 +8550,7 @@ Name | Type | Description  | Notes
  **slides_as_images** | **bool**| Slides as images. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| Base64 encoded password. | [optional] 
 
 ### Return type
 

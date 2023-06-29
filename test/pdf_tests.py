@@ -2630,40 +2630,62 @@ class PdfTests(unittest.TestCase):
     # To PPTX
     def testGetPdfInStorageToPptx(self):
         file_name = '4pages.pdf'
-        self.uploadFile(file_name)
-        
+        self.uploadFile(file_name)        
         opts = {
               "folder" : self.temp_folder
         }
-
         response = self.pdf_api.get_pdf_in_storage_to_pptx(file_name, **opts)
         self.assertIsInstance(response, str)
 
+    def testGetPdfInStorageToPptxWithPassword(self):
+        file_name = '4pagesEncrypted.pdf'
+        self.uploadFile(file_name)        
+        opts = {
+              "folder" : self.temp_folder,
+              "password" : base64.b64encode(b'user $^Password!&')
+        }
+        response = self.pdf_api.get_pdf_in_storage_to_pptx(file_name, **opts)
+        self.assertIsInstance(response, str)
 
     def testPutPdfInStorageToPptx(self):
         file_name = '4pages.pdf'
         self.uploadFile(file_name)
         result_file_name = "result.pptx"
-
         opts = {
               "folder" : self.temp_folder
         }
-
         response = self.pdf_api.put_pdf_in_storage_to_pptx(file_name, self.temp_folder + '/' + result_file_name, **opts)
         self.assertEqual(response.code, 200)
 
+    def testPutPdfInStorageToPptxWithPassword(self):
+        file_name = '4pagesEncrypted.pdf'
+        self.uploadFile(file_name)
+        result_file_name = "result.pptx"
+        opts = {
+              "folder" : self.temp_folder,
+              "password" : base64.b64encode(b'user $^Password!&')
+        }
+        response = self.pdf_api.put_pdf_in_storage_to_pptx(file_name, self.temp_folder + '/' + result_file_name, **opts)
+        self.assertEqual(response.code, 200)
 
     def testPutPdfInRequestToPptx(self):
         file_name = '4pages.pdf'
         result_file_name = "result.pptx"
-
         opts = {
               "file" : self.test_data_path + file_name
         }
-
         response = self.pdf_api.put_pdf_in_request_to_pptx(self.temp_folder + '/' + result_file_name, **opts)
         self.assertEqual(response.code, 200)
 
+    def testPutPdfInRequestToPptxWithPassword(self):
+        file_name = '4pagesEncrypted.pdf'
+        result_file_name = "result.pptx"
+        opts = {
+              "file" : self.test_data_path + file_name,
+              "password" : base64.b64encode(b'user $^Password!&')
+        }
+        response = self.pdf_api.put_pdf_in_request_to_pptx(self.temp_folder + '/' + result_file_name, **opts)
+        self.assertEqual(response.code, 200)
 
     # To TeX
     def testGetPdfInStorageToTeX(self):
