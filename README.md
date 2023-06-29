@@ -30,8 +30,12 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 23.5
+## Enhancements in Version 23.6
+- Support to convert password protected PDF documents to PPTX.
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
+
+## Bugs fixed in Version 23.6
+- Text Replacement API constantly hitting 504 Gateway Timeout.
 
 ## Requirements.
 Python 2.7 and 3.4+
