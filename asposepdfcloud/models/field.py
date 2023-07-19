@@ -50,6 +50,7 @@ class Field(object):
     swagger_types = {
         'links': 'list[Link]',
         'name': 'str',
+        'mapping_name': 'str',
         'selected_items': 'list[int]',
         'type': 'FieldType',
         'rect': 'Rectangle',
@@ -59,19 +60,21 @@ class Field(object):
     attribute_map = {
         'links': 'Links',
         'name': 'Name',
+        'mapping_name': 'MappingName',
         'selected_items': 'SelectedItems',
         'type': 'Type',
         'rect': 'Rect',
         'values': 'Values'
     }
 
-    def __init__(self, links=None, name=None, selected_items=None, type=None, rect=None, values=None):
+    def __init__(self, links=None, name=None, mapping_name=None, selected_items=None, type=None, rect=None, values=None):
         """
         Field - a model defined in Swagger
         """
 
         self._links = None
         self._name = None
+        self._mapping_name = None
         self._selected_items = None
         self._type = None
         self._rect = None
@@ -81,6 +84,8 @@ class Field(object):
           self.links = links
         if name is not None:
           self.name = name
+        if mapping_name is not None:
+          self.mapping_name = mapping_name
         if selected_items is not None:
           self.selected_items = selected_items
         if type is not None:
@@ -134,6 +139,29 @@ class Field(object):
         """
 
         self._name = name
+
+    @property
+    def mapping_name(self):
+        """
+        Gets the mapping_name of this Field.
+        Mapping name.
+
+        :return: The mapping_name of this Field.
+        :rtype: str
+        """
+        return self._mapping_name
+
+    @mapping_name.setter
+    def mapping_name(self, mapping_name):
+        """
+        Sets the mapping_name of this Field.
+        Mapping name.
+
+        :param mapping_name: The mapping_name of this Field.
+        :type: str
+        """
+
+        self._mapping_name = mapping_name
 
     @property
     def selected_items(self):
