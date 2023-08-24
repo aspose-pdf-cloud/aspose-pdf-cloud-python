@@ -17843,6 +17843,7 @@ class PdfApi(object):
         :param bool uniform_worksheets: Uniform worksheets
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -17874,12 +17875,13 @@ class PdfApi(object):
         :param bool uniform_worksheets: Uniform worksheets
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'insert_blank_column_at_first', 'minimize_the_number_of_worksheets', 'scale_factor', 'uniform_worksheets', 'folder', 'storage']
+        all_params = ['name', 'insert_blank_column_at_first', 'minimize_the_number_of_worksheets', 'scale_factor', 'uniform_worksheets', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -17918,6 +17920,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -17971,6 +17975,7 @@ class PdfApi(object):
         :param bool uniform_worksheets: Uniform worksheets
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -18002,12 +18007,13 @@ class PdfApi(object):
         :param bool uniform_worksheets: Uniform worksheets
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'insert_blank_column_at_first', 'minimize_the_number_of_worksheets', 'scale_factor', 'uniform_worksheets', 'folder', 'storage']
+        all_params = ['name', 'insert_blank_column_at_first', 'minimize_the_number_of_worksheets', 'scale_factor', 'uniform_worksheets', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -18046,6 +18052,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -29271,6 +29279,7 @@ class PdfApi(object):
         :param int to: End page if defined.
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param str password: Base64 encoded password.
         :return: SplitResultResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -29301,12 +29310,13 @@ class PdfApi(object):
         :param int to: End page if defined.
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param str password: Base64 encoded password.
         :return: SplitResultResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'format', '_from', 'to', 'storage', 'folder']
+        all_params = ['name', 'format', '_from', 'to', 'storage', 'folder', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -29343,6 +29353,8 @@ class PdfApi(object):
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -29393,6 +29405,7 @@ class PdfApi(object):
         :param SplitRangePdfOptions options: The splitting options. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param str password: Base64 encoded password.
         :return: SplitResultResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -29421,12 +29434,13 @@ class PdfApi(object):
         :param SplitRangePdfOptions options: The splitting options. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param str password: Base64 encoded password.
         :return: SplitResultResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'options', 'storage', 'folder']
+        all_params = ['name', 'options', 'storage', 'folder', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -29460,6 +29474,8 @@ class PdfApi(object):
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -37446,6 +37462,7 @@ class PdfApi(object):
         :param float scale_factor: Scale factor (Obsolete)
         :param bool uniform_worksheets: Uniform worksheets
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :param file file: A file to be converted.
         :return: AsposeResponse
                  If the method is called asynchronously,
@@ -37477,13 +37494,14 @@ class PdfApi(object):
         :param float scale_factor: Scale factor (Obsolete)
         :param bool uniform_worksheets: Uniform worksheets
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :param file file: A file to be converted.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['out_path', 'insert_blank_column_at_first', 'minimize_the_number_of_worksheets', 'scale_factor', 'uniform_worksheets', 'storage', 'file']
+        all_params = ['out_path', 'insert_blank_column_at_first', 'minimize_the_number_of_worksheets', 'scale_factor', 'uniform_worksheets', 'storage', 'password', 'file']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -37520,6 +37538,8 @@ class PdfApi(object):
             query_params.append(('uniformWorksheets', params['uniform_worksheets']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -37574,6 +37594,7 @@ class PdfApi(object):
         :param float scale_factor: Scale factor (Obsolete)
         :param bool uniform_worksheets: Uniform worksheets
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :param file file: A file to be converted.
         :return: AsposeResponse
                  If the method is called asynchronously,
@@ -37605,13 +37626,14 @@ class PdfApi(object):
         :param float scale_factor: Scale factor (Obsolete)
         :param bool uniform_worksheets: Uniform worksheets
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :param file file: A file to be converted.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['out_path', 'insert_blank_column_at_first', 'minimize_the_number_of_worksheets', 'scale_factor', 'uniform_worksheets', 'storage', 'file']
+        all_params = ['out_path', 'insert_blank_column_at_first', 'minimize_the_number_of_worksheets', 'scale_factor', 'uniform_worksheets', 'storage', 'password', 'file']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -37648,6 +37670,8 @@ class PdfApi(object):
             query_params.append(('uniformWorksheets', params['uniform_worksheets']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -39239,6 +39263,7 @@ class PdfApi(object):
         :param bool uniform_worksheets: Uniform worksheets
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -39271,12 +39296,13 @@ class PdfApi(object):
         :param bool uniform_worksheets: Uniform worksheets
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'out_path', 'insert_blank_column_at_first', 'minimize_the_number_of_worksheets', 'scale_factor', 'uniform_worksheets', 'folder', 'storage']
+        all_params = ['name', 'out_path', 'insert_blank_column_at_first', 'minimize_the_number_of_worksheets', 'scale_factor', 'uniform_worksheets', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -39320,6 +39346,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -39374,6 +39402,7 @@ class PdfApi(object):
         :param bool uniform_worksheets: Uniform worksheets
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -39406,12 +39435,13 @@ class PdfApi(object):
         :param bool uniform_worksheets: Uniform worksheets
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'out_path', 'insert_blank_column_at_first', 'minimize_the_number_of_worksheets', 'scale_factor', 'uniform_worksheets', 'folder', 'storage']
+        all_params = ['name', 'out_path', 'insert_blank_column_at_first', 'minimize_the_number_of_worksheets', 'scale_factor', 'uniform_worksheets', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -39455,6 +39485,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -40718,6 +40750,134 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='ImageResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def put_replace_multiple_image(self, name, image_ids, **kwargs):
+        """
+        Replace document multiple image.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_replace_multiple_image(name, image_ids, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param list[str] image_ids: The image IDs. (required)
+        :param str image_file_path: Path to image file if specified. Request content is used otherwise.
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param file image: Image file.
+        :return: ImagesResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.put_replace_multiple_image_with_http_info(name, image_ids, **kwargs)
+        else:
+            (data) = self.put_replace_multiple_image_with_http_info(name, image_ids, **kwargs)
+            return data
+
+    def put_replace_multiple_image_with_http_info(self, name, image_ids, **kwargs):
+        """
+        Replace document multiple image.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.put_replace_multiple_image_with_http_info(name, image_ids, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param list[str] image_ids: The image IDs. (required)
+        :param str image_file_path: Path to image file if specified. Request content is used otherwise.
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param file image: Image file.
+        :return: ImagesResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'image_ids', 'image_file_path', 'storage', 'folder', 'image']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_replace_multiple_image" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `put_replace_multiple_image`")
+        # verify the required parameter 'image_ids' is set
+        if ('image_ids' not in params) or (params['image_ids'] is None):
+            raise ValueError("Missing the required parameter `image_ids` when calling `put_replace_multiple_image`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'image_ids' in params:
+            query_params.append(('imageIds', params['image_ids']))
+            collection_formats['imageIds'] = 'csv'
+        if 'image_file_path' in params:
+            query_params.append(('imageFilePath', params['image_file_path']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'image' in params:
+            local_var_files['image'] = params['image']
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['multipart/form-data'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/images/replace', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='ImagesResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
