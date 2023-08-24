@@ -3999,14 +3999,11 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.get_images(file_name, page_number, **opts)
         self.assertEqual(response.code, 200)
 
-
     def testPutReplaceImage(self):
         file_name = 'PdfWithImages2.pdf'
         self.uploadFile(file_name)
-
         image_file_name = 'Koala.jpg'
         self.uploadFile(image_file_name)
-
         opts = {
               "folder" : self.temp_folder
         }
@@ -4014,13 +4011,24 @@ class PdfTests(unittest.TestCase):
         responseImages = self.pdf_api.get_images(file_name, page_number, **opts)
         self.assertEqual(responseImages.code, 200)
         image_id = responseImages.images.list[0].id
-
         opts = {
               "image_file_path" : self.temp_folder + '/' + image_file_name,
               "folder" : self.temp_folder
         }
-
         response = self.pdf_api.put_replace_image(file_name, image_id, **opts)
+        self.assertEqual(response.code, 200)
+
+    def testPutReplaceMultipleImage(self):
+        file_name = 'PdfWithImages.pdf'
+        self.uploadFile(file_name)
+        image_file_name = 'butterfly.jpg'
+        self.uploadFile(image_file_name)
+        image_ids = ['GE5TENJVGQZTWMJYGQWDINRUFQ2DCMRMGY4TC', 'GE5TIMJSGY3TWMJXG4WDIMBZFQ2DCOJMGQ3DK']
+        opts = {
+              "image_file_path" : self.temp_folder + '/' + image_file_name,
+              "folder" : self.temp_folder
+        }
+        response = self.pdf_api.put_replace_multiple_image(file_name, image_ids, **opts)
         self.assertEqual(response.code, 200)
 
     def testPostInsertImage(self):

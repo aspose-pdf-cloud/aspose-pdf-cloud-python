@@ -336,6 +336,7 @@ Method | HTTP request | Description
 [**put_radio_button_field**](PdfApi.md#put_radio_button_field) | **PUT** /pdf/\{name}/fields/radiobutton/\{fieldName} | Replace document RadioButton field
 [**put_redaction_annotation**](PdfApi.md#put_redaction_annotation) | **PUT** /pdf/\{name}/annotations/redaction/\{annotationId} | Replace document redaction annotation
 [**put_replace_image**](PdfApi.md#put_replace_image) | **PUT** /pdf/\{name}/images/\{imageId} | Replace document image.
+[**put_replace_multiple_image**](PdfApi.md#put_replace_multiple_image) | **PUT** /pdf/\{name}/images/replace | Replace document multiple image.
 [**put_screen_annotation**](PdfApi.md#put_screen_annotation) | **PUT** /pdf/\{name}/annotations/screen/\{annotationId} | Replace document screen annotation
 [**put_screen_annotation_data_extract**](PdfApi.md#put_screen_annotation_data_extract) | **PUT** /pdf/\{name}/annotations/screen/\{annotationId}/data/extract | Extract document screen annotation content to storage
 [**put_searchable_document**](PdfApi.md#put_searchable_document) | **PUT** /pdf/\{name}/ocr | Create searchable PDF document. Generate OCR layer for images in input PDF document.
@@ -4142,7 +4143,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_pdf_in_storage_to_xls**
-> file get_pdf_in_storage_to_xls(name, insert_blank_column_at_first=insert_blank_column_at_first, minimize_the_number_of_worksheets=minimize_the_number_of_worksheets, scale_factor=scale_factor, uniform_worksheets=uniform_worksheets, folder=folder, storage=storage)
+> file get_pdf_in_storage_to_xls(name, insert_blank_column_at_first=insert_blank_column_at_first, minimize_the_number_of_worksheets=minimize_the_number_of_worksheets, scale_factor=scale_factor, uniform_worksheets=uniform_worksheets, folder=folder, storage=storage, password=password)
 
 Converts PDF document (located on storage) to XLS format and returns resulting file in response content
 
@@ -4157,6 +4158,7 @@ Name | Type | Description  | Notes
  **uniform_worksheets** | **bool**| Uniform worksheets | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -4170,7 +4172,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_pdf_in_storage_to_xlsx**
-> file get_pdf_in_storage_to_xlsx(name, insert_blank_column_at_first=insert_blank_column_at_first, minimize_the_number_of_worksheets=minimize_the_number_of_worksheets, scale_factor=scale_factor, uniform_worksheets=uniform_worksheets, folder=folder, storage=storage)
+> file get_pdf_in_storage_to_xlsx(name, insert_blank_column_at_first=insert_blank_column_at_first, minimize_the_number_of_worksheets=minimize_the_number_of_worksheets, scale_factor=scale_factor, uniform_worksheets=uniform_worksheets, folder=folder, storage=storage, password=password)
 
 Converts PDF document (located on storage) to XLSX format and returns resulting file in response content
 
@@ -4185,6 +4187,7 @@ Name | Type | Description  | Notes
  **uniform_worksheets** | **bool**| Uniform worksheets | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -6536,7 +6539,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_split_document**
-> SplitResultResponse post_split_document(name, format=format, _from=_from, to=to, storage=storage, folder=folder)
+> SplitResultResponse post_split_document(name, format=format, _from=_from, to=to, storage=storage, folder=folder, password=password)
 
 Split document to parts.
 
@@ -6550,6 +6553,7 @@ Name | Type | Description  | Notes
  **to** | **int**| End page if defined. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
+ **password** | **str**| Base64 encoded password. | [optional] 
 
 ### Return type
 
@@ -6563,7 +6567,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_split_range_pdf_document**
-> SplitResultResponse post_split_range_pdf_document(name, options, storage=storage, folder=folder)
+> SplitResultResponse post_split_range_pdf_document(name, options, storage=storage, folder=folder, password=password)
 
 Split document into ranges.
 
@@ -6575,6 +6579,7 @@ Name | Type | Description  | Notes
  **options** | [**SplitRangePdfOptions**](SplitRangePdfOptions.md)| The splitting options. | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
+ **password** | **str**| Base64 encoded password. | [optional] 
 
 ### Return type
 
@@ -8266,7 +8271,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_pdf_in_request_to_xls**
-> AsposeResponse put_pdf_in_request_to_xls(out_path, insert_blank_column_at_first=insert_blank_column_at_first, minimize_the_number_of_worksheets=minimize_the_number_of_worksheets, scale_factor=scale_factor, uniform_worksheets=uniform_worksheets, storage=storage, file=file)
+> AsposeResponse put_pdf_in_request_to_xls(out_path, insert_blank_column_at_first=insert_blank_column_at_first, minimize_the_number_of_worksheets=minimize_the_number_of_worksheets, scale_factor=scale_factor, uniform_worksheets=uniform_worksheets, storage=storage, password=password, file=file)
 
 Converts PDF document (in request content) to XLS format and uploads resulting file to storage.
 
@@ -8280,6 +8285,7 @@ Name | Type | Description  | Notes
  **scale_factor** | **float**| Scale factor (Obsolete) | [optional] 
  **uniform_worksheets** | **bool**| Uniform worksheets | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
  **file** | **file**| A file to be converted. | [optional] 
 
 ### Return type
@@ -8294,7 +8300,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_pdf_in_request_to_xlsx**
-> AsposeResponse put_pdf_in_request_to_xlsx(out_path, insert_blank_column_at_first=insert_blank_column_at_first, minimize_the_number_of_worksheets=minimize_the_number_of_worksheets, scale_factor=scale_factor, uniform_worksheets=uniform_worksheets, storage=storage, file=file)
+> AsposeResponse put_pdf_in_request_to_xlsx(out_path, insert_blank_column_at_first=insert_blank_column_at_first, minimize_the_number_of_worksheets=minimize_the_number_of_worksheets, scale_factor=scale_factor, uniform_worksheets=uniform_worksheets, storage=storage, password=password, file=file)
 
 Converts PDF document (in request content) to XLSX format and uploads resulting file to storage.
 
@@ -8308,6 +8314,7 @@ Name | Type | Description  | Notes
  **scale_factor** | **float**| Scale factor (Obsolete) | [optional] 
  **uniform_worksheets** | **bool**| Uniform worksheets | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
  **file** | **file**| A file to be converted. | [optional] 
 
 ### Return type
@@ -8654,7 +8661,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_pdf_in_storage_to_xls**
-> AsposeResponse put_pdf_in_storage_to_xls(name, out_path, insert_blank_column_at_first=insert_blank_column_at_first, minimize_the_number_of_worksheets=minimize_the_number_of_worksheets, scale_factor=scale_factor, uniform_worksheets=uniform_worksheets, folder=folder, storage=storage)
+> AsposeResponse put_pdf_in_storage_to_xls(name, out_path, insert_blank_column_at_first=insert_blank_column_at_first, minimize_the_number_of_worksheets=minimize_the_number_of_worksheets, scale_factor=scale_factor, uniform_worksheets=uniform_worksheets, folder=folder, storage=storage, password=password)
 
 Converts PDF document (located on storage) to XLS format and uploads resulting file to storage
 
@@ -8670,6 +8677,7 @@ Name | Type | Description  | Notes
  **uniform_worksheets** | **bool**| Uniform worksheets | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -8683,7 +8691,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_pdf_in_storage_to_xlsx**
-> AsposeResponse put_pdf_in_storage_to_xlsx(name, out_path, insert_blank_column_at_first=insert_blank_column_at_first, minimize_the_number_of_worksheets=minimize_the_number_of_worksheets, scale_factor=scale_factor, uniform_worksheets=uniform_worksheets, folder=folder, storage=storage)
+> AsposeResponse put_pdf_in_storage_to_xlsx(name, out_path, insert_blank_column_at_first=insert_blank_column_at_first, minimize_the_number_of_worksheets=minimize_the_number_of_worksheets, scale_factor=scale_factor, uniform_worksheets=uniform_worksheets, folder=folder, storage=storage, password=password)
 
 Converts PDF document (located on storage) to XLSX format and uploads resulting file to storage
 
@@ -8699,6 +8707,7 @@ Name | Type | Description  | Notes
  **uniform_worksheets** | **bool**| Uniform worksheets | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -8961,6 +8970,33 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ImageResponse**](ImageResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_replace_multiple_image**
+> ImagesResponse put_replace_multiple_image(name, image_ids, image_file_path=image_file_path, storage=storage, folder=folder, image=image)
+
+Replace document multiple image.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **image_ids** | **list[str]**| The image IDs. | 
+ **image_file_path** | **str**| Path to image file if specified. Request content is used otherwise. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+ **image** | **file**| Image file. | [optional] 
+
+### Return type
+
+[**ImagesResponse**](ImagesResponse.md)
 
 ### HTTP request headers
 
