@@ -4003,7 +4003,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_pdf_in_storage_to_pdf_a**
-> file get_pdf_in_storage_to_pdf_a(name, type, folder=folder, storage=storage)
+> file get_pdf_in_storage_to_pdf_a(name, type, folder=folder, storage=storage, password=password)
 
 Converts PDF document (located on storage) to PdfA format and returns resulting file in response content
 
@@ -4015,6 +4015,7 @@ Name | Type | Description  | Notes
  **type** | **str**| Type of PdfA format. | 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -8132,7 +8133,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_pdf_in_request_to_pdf_a**
-> AsposeResponse put_pdf_in_request_to_pdf_a(out_path, type, storage=storage, file=file)
+> AsposeResponse put_pdf_in_request_to_pdf_a(out_path, type, storage=storage, password=password, file=file)
 
 Converts PDF document (in request content) to PdfA format and uploads resulting file to storage.
 
@@ -8143,6 +8144,7 @@ Name | Type | Description  | Notes
  **out_path** | **str**| Full resulting filename (ex. /folder1/folder2/result.pdf) | 
  **type** | **str**| Type of PdfA format. | 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
  **file** | **file**| A file to be converted. | [optional] 
 
 ### Return type
@@ -8517,7 +8519,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_pdf_in_storage_to_pdf_a**
-> AsposeResponse put_pdf_in_storage_to_pdf_a(name, out_path, type, folder=folder, storage=storage)
+> AsposeResponse put_pdf_in_storage_to_pdf_a(name, out_path, type, folder=folder, storage=storage, password=password)
 
 Converts PDF document (located on storage) to PdfA format and uploads resulting file to storage
 
@@ -8530,6 +8532,7 @@ Name | Type | Description  | Notes
  **type** | **str**| Type of PdfA format. | 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 

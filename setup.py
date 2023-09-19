@@ -32,7 +32,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = "asposepdfcloud"
-VERSION = "23.8.0"
+VERSION = "23.9.0"
 # To install the library, run the following
 #
 # python setup.py install

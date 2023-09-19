@@ -17197,6 +17197,7 @@ class PdfApi(object):
         :param str type: Type of PdfA format. (required)
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -17225,12 +17226,13 @@ class PdfApi(object):
         :param str type: Type of PdfA format. (required)
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'type', 'folder', 'storage']
+        all_params = ['name', 'type', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -17266,6 +17268,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -36820,6 +36824,7 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
         :param str type: Type of PdfA format. (required)
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :param file file: A file to be converted.
         :return: AsposeResponse
                  If the method is called asynchronously,
@@ -36848,13 +36853,14 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
         :param str type: Type of PdfA format. (required)
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :param file file: A file to be converted.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['out_path', 'type', 'storage', 'file']
+        all_params = ['out_path', 'type', 'storage', 'password', 'file']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -36888,6 +36894,8 @@ class PdfApi(object):
             query_params.append(('type', params['type']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -38586,6 +38594,7 @@ class PdfApi(object):
         :param str type: Type of PdfA format. (required)
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -38615,12 +38624,13 @@ class PdfApi(object):
         :param str type: Type of PdfA format. (required)
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'out_path', 'type', 'folder', 'storage']
+        all_params = ['name', 'out_path', 'type', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -38661,6 +38671,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
