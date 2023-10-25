@@ -36,6 +36,7 @@ from .models.annotation_state import AnnotationState
 from .models.annotation_type import AnnotationType
 from .models.antialiasing_processing_type import AntialiasingProcessingType
 from .models.aspose_response import AsposeResponse
+from .models.attachment_info import AttachmentInfo
 from .models.border import Border
 from .models.border_corner_style import BorderCornerStyle
 from .models.border_effect import BorderEffect
