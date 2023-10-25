@@ -191,6 +191,7 @@ Method | HTTP request | Description
 [**move_file**](PdfApi.md#move_file) | **PUT** /pdf/storage/file/move/\{srcPath} | Move file
 [**move_folder**](PdfApi.md#move_folder) | **PUT** /pdf/storage/folder/move/\{srcPath} | Move folder
 [**object_exists**](PdfApi.md#object_exists) | **GET** /pdf/storage/exist/\{path} | Check if file or folder exists
+[**post_add_document_attachment**](PdfApi.md#post_add_document_attachment) | **POST** /pdf/\{name}/attachments | Adds a file attachment to the PDF document.
 [**post_append_document**](PdfApi.md#post_append_document) | **POST** /pdf/\{name}/appendDocument | Append document to existing one.
 [**post_bookmark**](PdfApi.md#post_bookmark) | **POST** /pdf/\{name}/bookmarks/bookmark/\{bookmarkPath} | Add document bookmarks.
 [**post_change_password_document_in_storage**](PdfApi.md#post_change_password_document_in_storage) | **POST** /pdf/\{name}/changepassword | Change document password in storage.
@@ -564,7 +565,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_document_stamps**
-> AsposeResponse delete_document_stamps(name, storage=storage, folder=folder)
+> AsposeResponse delete_document_stamps(name, storage=storage, folder=folder, password=password)
 
 Delete all stamps from the document
 
@@ -575,6 +576,7 @@ Name | Type | Description  | Notes
  **name** | **str**| The document name. | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
+ **password** | **str**| Base64 encoded password. | [optional] 
 
 ### Return type
 
@@ -810,7 +812,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_page_stamps**
-> AsposeResponse delete_page_stamps(name, page_number, storage=storage, folder=folder)
+> AsposeResponse delete_page_stamps(name, page_number, storage=storage, folder=folder, password=password)
 
 Delete all stamps from the page
 
@@ -822,6 +824,7 @@ Name | Type | Description  | Notes
  **page_number** | **int**| The page number. | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
+ **password** | **str**| Base64 encoded password. | [optional] 
 
 ### Return type
 
@@ -909,7 +912,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_stamp**
-> AsposeResponse delete_stamp(name, stamp_id, storage=storage, folder=folder)
+> AsposeResponse delete_stamp(name, stamp_id, storage=storage, folder=folder, password=password)
 
 Delete document stamp by ID
 
@@ -921,6 +924,7 @@ Name | Type | Description  | Notes
  **stamp_id** | **str**| The stamp ID. | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
+ **password** | **str**| Base64 encoded password. | [optional] 
 
 ### Return type
 
@@ -1155,7 +1159,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_document**
-> DocumentResponse get_document(name, storage=storage, folder=folder)
+> DocumentResponse get_document(name, storage=storage, folder=folder, password=password)
 
 Read common document info.
 
@@ -1166,6 +1170,7 @@ Name | Type | Description  | Notes
  **name** | **str**| The document name. | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
+ **password** | **str**| Base64 encoded password. | [optional] 
 
 ### Return type
 
@@ -3615,7 +3620,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_page_stamps**
-> StampsInfoResponse get_page_stamps(name, page_number, storage=storage, folder=folder)
+> StampsInfoResponse get_page_stamps(name, page_number, storage=storage, folder=folder, password=password)
 
 Read page document stamps.
 
@@ -3627,6 +3632,7 @@ Name | Type | Description  | Notes
  **page_number** | **int**| The page number. | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
+ **password** | **str**| Base64 encoded password. | [optional] 
 
 ### Return type
 
@@ -5080,6 +5086,31 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **post_add_document_attachment**
+> AttachmentsResponse post_add_document_attachment(name, attachment_info, storage=storage, folder=folder)
+
+Adds a file attachment to the PDF document.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **attachment_info** | [**AttachmentInfo**](AttachmentInfo.md)| AttachmentInfoAttachmentInfo instance. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AttachmentsResponse**](AttachmentsResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **post_append_document**
 > DocumentResponse post_append_document(name, append_file, start_page=start_page, end_page=end_page, storage=storage, folder=folder)
 
@@ -5341,7 +5372,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_document_page_number_stamps**
-> AsposeResponse post_document_page_number_stamps(name, stamp, start_page_number=start_page_number, end_page_number=end_page_number, storage=storage, folder=folder)
+> AsposeResponse post_document_page_number_stamps(name, stamp, start_page_number=start_page_number, end_page_number=end_page_number, storage=storage, folder=folder, password=password)
 
 Add document page number stamps.
 
@@ -5355,6 +5386,7 @@ Name | Type | Description  | Notes
  **end_page_number** | **int**| The end page number. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
+ **password** | **str**| Base64 encoded password. | [optional] 
 
 ### Return type
 
@@ -5892,7 +5924,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_page_image_stamps**
-> AsposeResponse post_page_image_stamps(name, page_number, stamps, storage=storage, folder=folder)
+> AsposeResponse post_page_image_stamps(name, page_number, stamps, storage=storage, folder=folder, password=password)
 
 Add document page image stamps.
 
@@ -5905,6 +5937,7 @@ Name | Type | Description  | Notes
  **stamps** | [**list[ImageStamp]**](ImageStamp.md)| The array of stamp. | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
+ **password** | **str**| Base64 encoded password. | [optional] 
 
 ### Return type
 
@@ -6022,7 +6055,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_page_pdf_page_stamps**
-> AsposeResponse post_page_pdf_page_stamps(name, page_number, stamps, storage=storage, folder=folder)
+> AsposeResponse post_page_pdf_page_stamps(name, page_number, stamps, storage=storage, folder=folder, password=password)
 
 Add document pdf page stamps.
 
@@ -6035,6 +6068,7 @@ Name | Type | Description  | Notes
  **stamps** | [**list[PdfPageStamp]**](PdfPageStamp.md)| The array of stamp. | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
+ **password** | **str**| Base64 encoded password. | [optional] 
 
 ### Return type
 
@@ -6361,7 +6395,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_page_text_stamps**
-> AsposeResponse post_page_text_stamps(name, page_number, stamps, storage=storage, folder=folder)
+> AsposeResponse post_page_text_stamps(name, page_number, stamps, storage=storage, folder=folder, password=password)
 
 Add document page text stamps.
 
@@ -6374,6 +6408,7 @@ Name | Type | Description  | Notes
  **stamps** | [**list[TextStamp]**](TextStamp.md)| The array of stamp. | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
+ **password** | **str**| Base64 encoded password. | [optional] 
 
 ### Return type
 

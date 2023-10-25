@@ -997,6 +997,7 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param str password: Base64 encoded password.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1024,12 +1025,13 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param str password: Base64 encoded password.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'storage', 'folder']
+        all_params = ['name', 'storage', 'folder', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1060,6 +1062,8 @@ class PdfApi(object):
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -2160,6 +2164,7 @@ class PdfApi(object):
         :param int page_number: The page number. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param str password: Base64 encoded password.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2188,12 +2193,13 @@ class PdfApi(object):
         :param int page_number: The page number. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param str password: Base64 encoded password.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'storage', 'folder']
+        all_params = ['name', 'page_number', 'storage', 'folder', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2229,6 +2235,8 @@ class PdfApi(object):
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -2629,6 +2637,7 @@ class PdfApi(object):
         :param str stamp_id: The stamp ID. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param str password: Base64 encoded password.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2657,12 +2666,13 @@ class PdfApi(object):
         :param str stamp_id: The stamp ID. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param str password: Base64 encoded password.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'stamp_id', 'storage', 'folder']
+        all_params = ['name', 'stamp_id', 'storage', 'folder', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2698,6 +2708,8 @@ class PdfApi(object):
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -3793,6 +3805,7 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param str password: Base64 encoded password.
         :return: DocumentResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3820,12 +3833,13 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param str password: Base64 encoded password.
         :return: DocumentResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'storage', 'folder']
+        all_params = ['name', 'storage', 'folder', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3856,6 +3870,8 @@ class PdfApi(object):
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -15386,6 +15402,7 @@ class PdfApi(object):
         :param int page_number: The page number. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param str password: Base64 encoded password.
         :return: StampsInfoResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -15414,12 +15431,13 @@ class PdfApi(object):
         :param int page_number: The page number. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param str password: Base64 encoded password.
         :return: StampsInfoResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'storage', 'folder']
+        all_params = ['name', 'page_number', 'storage', 'folder', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -15455,6 +15473,8 @@ class PdfApi(object):
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -22246,6 +22266,125 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def post_add_document_attachment(self, name, attachment_info, **kwargs):
+        """
+        Adds a file attachment to the PDF document.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_add_document_attachment(name, attachment_info, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param AttachmentInfo attachment_info: AttachmentInfoAttachmentInfo instance. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AttachmentsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_add_document_attachment_with_http_info(name, attachment_info, **kwargs)
+        else:
+            (data) = self.post_add_document_attachment_with_http_info(name, attachment_info, **kwargs)
+            return data
+
+    def post_add_document_attachment_with_http_info(self, name, attachment_info, **kwargs):
+        """
+        Adds a file attachment to the PDF document.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_add_document_attachment_with_http_info(name, attachment_info, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param AttachmentInfo attachment_info: AttachmentInfoAttachmentInfo instance. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :return: AttachmentsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'attachment_info', 'storage', 'folder']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_add_document_attachment" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_add_document_attachment`")
+        # verify the required parameter 'attachment_info' is set
+        if ('attachment_info' not in params) or (params['attachment_info'] is None):
+            raise ValueError("Missing the required parameter `attachment_info` when calling `post_add_document_attachment`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'attachment_info' in params:
+            body_params = params['attachment_info']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/attachments', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AttachmentsResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def post_append_document(self, name, append_file, **kwargs):
         """
         Append document to existing one.
@@ -23507,6 +23646,7 @@ class PdfApi(object):
         :param int end_page_number: The end page number.
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param str password: Base64 encoded password.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -23537,12 +23677,13 @@ class PdfApi(object):
         :param int end_page_number: The end page number.
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param str password: Base64 encoded password.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'stamp', 'start_page_number', 'end_page_number', 'storage', 'folder']
+        all_params = ['name', 'stamp', 'start_page_number', 'end_page_number', 'storage', 'folder', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -23580,6 +23721,8 @@ class PdfApi(object):
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -26149,6 +26292,7 @@ class PdfApi(object):
         :param list[ImageStamp] stamps: The array of stamp. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param str password: Base64 encoded password.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -26178,12 +26322,13 @@ class PdfApi(object):
         :param list[ImageStamp] stamps: The array of stamp. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param str password: Base64 encoded password.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'stamps', 'storage', 'folder']
+        all_params = ['name', 'page_number', 'stamps', 'storage', 'folder', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -26222,6 +26367,8 @@ class PdfApi(object):
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -26779,6 +26926,7 @@ class PdfApi(object):
         :param list[PdfPageStamp] stamps: The array of stamp. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param str password: Base64 encoded password.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -26808,12 +26956,13 @@ class PdfApi(object):
         :param list[PdfPageStamp] stamps: The array of stamp. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param str password: Base64 encoded password.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'stamps', 'storage', 'folder']
+        all_params = ['name', 'page_number', 'stamps', 'storage', 'folder', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -26852,6 +27001,8 @@ class PdfApi(object):
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -28421,6 +28572,7 @@ class PdfApi(object):
         :param list[TextStamp] stamps: The array of stamp. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param str password: Base64 encoded password.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -28450,12 +28602,13 @@ class PdfApi(object):
         :param list[TextStamp] stamps: The array of stamp. (required)
         :param str storage: The document storage.
         :param str folder: The document folder.
+        :param str password: Base64 encoded password.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'page_number', 'stamps', 'storage', 'folder']
+        all_params = ['name', 'page_number', 'stamps', 'storage', 'folder', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -28494,6 +28647,8 @@ class PdfApi(object):
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
