@@ -30,23 +30,9 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 23.10
-- Support of reading common info of password protected PDF in GetDocument API.
-- Support stamp password protected document using DeleteDocumentStamps API method.
-- Support stamp password protected document using DeleteStamp API method.
-- Support stamp password protected document using PostDocumentPageNumberStamps API method.
-- Support stamp password protected document using PostPageImageStamps API method.
-- Support stamp password protected document using PostPageTextStamps API method.
-- Support stamp password protected document using GetPageStamps API method.
-- Support stamp password protected document using GetDocumentStamps API method.
-- Support stamp password protected document using PostPagePdfPageStamps API method.
-- Support stamp password protected document using DeletePageStamps API method.
-- Develop a method to add an attachment file to a PDF document.
+## Enhancements in Version 23.11
+- Support to Convert Password Protected PDF Documents.
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
-
-## Bugs fixed in Version 23.10
-- Aspose.PDF Cloud PostFlattenDocument API Issue.
-- The GetPages API throws timeout error for PDF files larger than 10 Mb.
 
 ## Requirements.
 Python 2.7 and 3.4+
