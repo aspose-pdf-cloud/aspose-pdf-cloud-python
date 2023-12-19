@@ -543,6 +543,7 @@ class PdfApi(object):
         :param str bookmark_path: The bookmark path. (required)
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -571,12 +572,13 @@ class PdfApi(object):
         :param str bookmark_path: The bookmark path. (required)
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'bookmark_path', 'folder', 'storage']
+        all_params = ['name', 'bookmark_path', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -612,6 +614,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -773,6 +777,7 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -800,12 +805,13 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'folder', 'storage']
+        all_params = ['name', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -836,6 +842,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -2402,9 +2410,10 @@ class PdfApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str name: (required)
-        :param str storage:
-        :param str folder:
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2429,15 +2438,16 @@ class PdfApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str name: (required)
-        :param str storage:
-        :param str folder:
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'storage', 'folder']
+        all_params = ['name', 'storage', 'folder', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2468,6 +2478,8 @@ class PdfApi(object):
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -2514,10 +2526,11 @@ class PdfApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str name: (required)
-        :param str property_name: (required)
-        :param str storage:
-        :param str folder:
+        :param str name: The document name. (required)
+        :param str property_name: Property name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2542,16 +2555,17 @@ class PdfApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str name: (required)
-        :param str property_name: (required)
-        :param str storage:
-        :param str folder:
+        :param str name: The document name. (required)
+        :param str property_name: Property name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'property_name', 'storage', 'folder']
+        all_params = ['name', 'property_name', 'storage', 'folder', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2587,6 +2601,8 @@ class PdfApi(object):
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -2991,6 +3007,7 @@ class PdfApi(object):
         :param str bookmark_path: The bookmark path. (required)
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: BookmarkResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3019,12 +3036,13 @@ class PdfApi(object):
         :param str bookmark_path: The bookmark path. (required)
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: BookmarkResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'bookmark_path', 'folder', 'storage']
+        all_params = ['name', 'bookmark_path', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3060,6 +3078,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -3110,6 +3130,7 @@ class PdfApi(object):
         :param str bookmark_path: The bookmark path. (required)
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: BookmarksResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3138,12 +3159,13 @@ class PdfApi(object):
         :param str bookmark_path: The bookmark path. (required)
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: BookmarksResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'bookmark_path', 'folder', 'storage']
+        all_params = ['name', 'bookmark_path', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3179,6 +3201,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -4264,6 +4288,7 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: BookmarksResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4291,12 +4316,13 @@ class PdfApi(object):
         :param str name: The document name. (required)
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: BookmarksResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'folder', 'storage']
+        all_params = ['name', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4327,6 +4353,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -6172,9 +6200,10 @@ class PdfApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str name: (required)
-        :param str storage:
-        :param str folder:
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param str password: The password (Base64).
         :return: DocumentPropertiesResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -6199,15 +6228,16 @@ class PdfApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str name: (required)
-        :param str storage:
-        :param str folder:
+        :param str name: The document name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param str password: The password (Base64).
         :return: DocumentPropertiesResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'storage', 'folder']
+        all_params = ['name', 'storage', 'folder', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6238,6 +6268,8 @@ class PdfApi(object):
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -6284,10 +6316,11 @@ class PdfApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str name: (required)
-        :param str property_name: (required)
-        :param str storage:
-        :param str folder:
+        :param str name: The document name. (required)
+        :param str property_name: Property name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param str password: The password (Base64).
         :return: DocumentPropertyResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -6312,16 +6345,17 @@ class PdfApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str name: (required)
-        :param str property_name: (required)
-        :param str storage:
-        :param str folder:
+        :param str name: The document name. (required)
+        :param str property_name: Property name. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param str password: The password (Base64).
         :return: DocumentPropertyResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'property_name', 'storage', 'folder']
+        all_params = ['name', 'property_name', 'storage', 'folder', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6357,6 +6391,8 @@ class PdfApi(object):
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -22530,6 +22566,7 @@ class PdfApi(object):
         :param list[Bookmark] bookmarks: The array of bookmark. (required)
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: BookmarksResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -22559,12 +22596,13 @@ class PdfApi(object):
         :param list[Bookmark] bookmarks: The array of bookmark. (required)
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: BookmarksResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'bookmark_path', 'bookmarks', 'folder', 'storage']
+        all_params = ['name', 'bookmark_path', 'bookmarks', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -22603,6 +22641,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -30170,6 +30210,7 @@ class PdfApi(object):
         :param Bookmark bookmark: The bookmark. (required)
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: BookmarkResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -30199,12 +30240,13 @@ class PdfApi(object):
         :param Bookmark bookmark: The bookmark. (required)
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: BookmarkResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'bookmark_path', 'bookmark', 'folder', 'storage']
+        all_params = ['name', 'bookmark_path', 'bookmark', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -30243,6 +30285,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -41433,11 +41477,12 @@ class PdfApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str name: (required)
-        :param str property_name: (required)
-        :param str value: (required)
-        :param str storage:
-        :param str folder:
+        :param str name: The document name. (required)
+        :param str property_name: Property name. (required)
+        :param str value: Property value. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param str password: The password (Base64).
         :return: DocumentPropertyResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -41462,17 +41507,18 @@ class PdfApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str name: (required)
-        :param str property_name: (required)
-        :param str value: (required)
-        :param str storage:
-        :param str folder:
+        :param str name: The document name. (required)
+        :param str property_name: Property name. (required)
+        :param str value: Property value. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param str password: The password (Base64).
         :return: DocumentPropertyResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'property_name', 'value', 'storage', 'folder']
+        all_params = ['name', 'property_name', 'value', 'storage', 'folder', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -41513,6 +41559,8 @@ class PdfApi(object):
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
             query_params.append(('folder', params['folder']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 

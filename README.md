@@ -30,9 +30,18 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 23.11
-- Support to Convert Password Protected PDF Documents.
+## Enhancements in Version 23.12
+- Support to update bookmark in password protected PDF document.
+- Support to delete bookmarks from password protected PDF document.
+- Support to add bookmarks to password protected PDF document.
+- Support to delete properties of password protected PDF document.
+- Support to add properties of password protected PDF document.
+- Support to read properties of password protected PDF document.
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
+
+## Bugs fixed in Version 23.12
+- PDF to XLSX Conversion clubs data in one cell.
+- GetDocumentBookmarks does not get bookmarks from protected PDF.
 
 ## Requirements.
 Python 2.7 and 3.4+
