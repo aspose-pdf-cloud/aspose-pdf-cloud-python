@@ -468,7 +468,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_bookmark**
-> AsposeResponse delete_bookmark(name, bookmark_path, folder=folder, storage=storage)
+> AsposeResponse delete_bookmark(name, bookmark_path, folder=folder, storage=storage, password=password)
 
 Delete document bookmark by ID.
 
@@ -480,6 +480,7 @@ Name | Type | Description  | Notes
  **bookmark_path** | **str**| The bookmark path. | 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -517,7 +518,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_document_bookmarks**
-> AsposeResponse delete_document_bookmarks(name, folder=folder, storage=storage)
+> AsposeResponse delete_document_bookmarks(name, folder=folder, storage=storage, password=password)
 
 Delete all document bookmarks.
 
@@ -528,6 +529,7 @@ Name | Type | Description  | Notes
  **name** | **str**| The document name. | 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -863,7 +865,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_properties**
-> AsposeResponse delete_properties(name, storage=storage, folder=folder)
+> AsposeResponse delete_properties(name, storage=storage, folder=folder, password=password)
 
 Delete custom document properties.
 
@@ -871,9 +873,10 @@ Delete custom document properties.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**|  | 
- **storage** | **str**|  | [optional] 
- **folder** | **str**|  | [optional] 
+ **name** | **str**| The document name. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -887,7 +890,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_property**
-> AsposeResponse delete_property(name, property_name, storage=storage, folder=folder)
+> AsposeResponse delete_property(name, property_name, storage=storage, folder=folder, password=password)
 
 Delete document property.
 
@@ -895,10 +898,11 @@ Delete document property.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**|  | 
- **property_name** | **str**|  | 
- **storage** | **str**|  | [optional] 
- **folder** | **str**|  | [optional] 
+ **name** | **str**| The document name. | 
+ **property_name** | **str**| Property name. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -987,7 +991,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_bookmark**
-> BookmarkResponse get_bookmark(name, bookmark_path, folder=folder, storage=storage)
+> BookmarkResponse get_bookmark(name, bookmark_path, folder=folder, storage=storage, password=password)
 
 Read document bookmark.
 
@@ -999,6 +1003,7 @@ Name | Type | Description  | Notes
  **bookmark_path** | **str**| The bookmark path. | 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -1012,7 +1017,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_bookmarks**
-> BookmarksResponse get_bookmarks(name, bookmark_path, folder=folder, storage=storage)
+> BookmarksResponse get_bookmarks(name, bookmark_path, folder=folder, storage=storage, password=password)
 
 Read document bookmarks node list.
 
@@ -1024,6 +1029,7 @@ Name | Type | Description  | Notes
  **bookmark_path** | **str**| The bookmark path. | 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -1257,7 +1263,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_document_bookmarks**
-> BookmarksResponse get_document_bookmarks(name, folder=folder, storage=storage)
+> BookmarksResponse get_document_bookmarks(name, folder=folder, storage=storage, password=password)
 
 Read document bookmarks tree.
 
@@ -1268,6 +1274,7 @@ Name | Type | Description  | Notes
  **name** | **str**| The document name. | 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -1666,7 +1673,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_document_properties**
-> DocumentPropertiesResponse get_document_properties(name, storage=storage, folder=folder)
+> DocumentPropertiesResponse get_document_properties(name, storage=storage, folder=folder, password=password)
 
 Read document properties.
 
@@ -1674,9 +1681,10 @@ Read document properties.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**|  | 
- **storage** | **str**|  | [optional] 
- **folder** | **str**|  | [optional] 
+ **name** | **str**| The document name. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -1690,7 +1698,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_document_property**
-> DocumentPropertyResponse get_document_property(name, property_name, storage=storage, folder=folder)
+> DocumentPropertyResponse get_document_property(name, property_name, storage=storage, folder=folder, password=password)
 
 Read document property by name.
 
@@ -1698,10 +1706,11 @@ Read document property by name.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**|  | 
- **property_name** | **str**|  | 
- **storage** | **str**|  | [optional] 
- **folder** | **str**|  | [optional] 
+ **name** | **str**| The document name. | 
+ **property_name** | **str**| Property name. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -5139,7 +5148,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_bookmark**
-> BookmarksResponse post_bookmark(name, bookmark_path, bookmarks, folder=folder, storage=storage)
+> BookmarksResponse post_bookmark(name, bookmark_path, bookmarks, folder=folder, storage=storage, password=password)
 
 Add document bookmarks.
 
@@ -5152,6 +5161,7 @@ Name | Type | Description  | Notes
  **bookmarks** | [**list[Bookmark]**](Bookmark.md)| The array of bookmark. | 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -6731,7 +6741,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_bookmark**
-> BookmarkResponse put_bookmark(name, bookmark_path, bookmark, folder=folder, storage=storage)
+> BookmarkResponse put_bookmark(name, bookmark_path, bookmark, folder=folder, storage=storage, password=password)
 
 Update document bookmark.
 
@@ -6744,6 +6754,7 @@ Name | Type | Description  | Notes
  **bookmark** | [**Bookmark**](Bookmark.md)| The bookmark. | 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -9121,7 +9132,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_set_property**
-> DocumentPropertyResponse put_set_property(name, property_name, value, storage=storage, folder=folder)
+> DocumentPropertyResponse put_set_property(name, property_name, value, storage=storage, folder=folder, password=password)
 
 Add/update document property.
 
@@ -9129,11 +9140,12 @@ Add/update document property.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**|  | 
- **property_name** | **str**|  | 
- **value** | **str**|  | 
- **storage** | **str**|  | [optional] 
- **folder** | **str**|  | [optional] 
+ **name** | **str**| The document name. | 
+ **property_name** | **str**| Property name. | 
+ **value** | **str**| Property value. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
