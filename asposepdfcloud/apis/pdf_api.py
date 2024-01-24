@@ -4,7 +4,7 @@
     Aspose.PDF Cloud API Reference
 
 
-Copyright (c) 2023 Aspose.PDF Cloud
+Copyright (c) 2024 Aspose.PDF Cloud
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -17500,6 +17500,7 @@ class PdfApi(object):
         :param bool compress_output_to_zip_archive: Specifies whether output will be created as one zip-archive.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -17528,12 +17529,13 @@ class PdfApi(object):
         :param bool compress_output_to_zip_archive: Specifies whether output will be created as one zip-archive.
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'compress_output_to_zip_archive', 'folder', 'storage']
+        all_params = ['name', 'compress_output_to_zip_archive', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -17566,6 +17568,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -37269,6 +37273,7 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.svg) (required)
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :param file file: A file to be converted.
         :return: AsposeResponse
                  If the method is called asynchronously,
@@ -37296,13 +37301,14 @@ class PdfApi(object):
             for asynchronous request. (optional)
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.svg) (required)
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :param file file: A file to be converted.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['out_path', 'storage', 'file']
+        all_params = ['out_path', 'storage', 'password', 'file']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -37331,6 +37337,8 @@ class PdfApi(object):
             query_params.append(('outPath', params['out_path']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
@@ -39053,6 +39061,7 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.svg) (required)
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -39081,12 +39090,13 @@ class PdfApi(object):
         :param str out_path: Full resulting filename (ex. /folder1/folder2/result.svg) (required)
         :param str folder: The document folder.
         :param str storage: The document storage.
+        :param str password: The password (Base64).
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'out_path', 'folder', 'storage']
+        all_params = ['name', 'out_path', 'folder', 'storage', 'password']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -39122,6 +39132,8 @@ class PdfApi(object):
             query_params.append(('folder', params['folder']))
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
 
         header_params = {}
 
