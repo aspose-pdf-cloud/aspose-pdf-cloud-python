@@ -30,9 +30,8 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 24.1
-- Add support to convert password protected PDF to SVG in PutPdfInRequestToSvg API.
-- Add support to convert password protected PDF to SVG in PutPdfInStorageToSvg API.
+## Enhancements in Version 24.2
+- Memory leak when converting PDF to DOCX.
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
 
 ## Requirements.
