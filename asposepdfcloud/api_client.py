@@ -76,15 +76,16 @@ class ApiClient(object):
         'object': object,
     }
 
-    def __init__(self, app_key, app_sid, host=None):
+    def __init__(self, app_key, app_sid, host=None, self_host=False):
         """
         Constructor of the class.
         """
         self.rest_client = RESTClientObject()
         self.default_headers = {}
         self.default_headers['x-aspose-client'] = 'python sdk'
-        self.default_headers['x-aspose-client-version'] = '24.2.0'
+        self.default_headers['x-aspose-client-version'] = '24.3.0'
         
+        self.self_host = self_host
         self.app_key = app_key
         self.app_sid = app_sid
 
@@ -175,12 +176,11 @@ class ApiClient(object):
         # request url
         url = self.host + resource_path
 
-
-        # OAuth2.0 authentication
-        if Configuration().access_token == "":
-          self.__request_token()
-
-        self.__add_o_auth_token(header_params)
+        if not self.self_host:
+            # OAuth2.0 authentication
+            if Configuration().access_token == "":
+                self.__request_token()
+            self.__add_o_auth_token(header_params)
 
         response_data = None
 
@@ -194,9 +194,10 @@ class ApiClient(object):
                                          _request_timeout=_request_timeout)
         except ApiException as error:
             if error.status == 401:
-                self.__request_token()
-                self.__add_o_auth_token(header_params)
-                response_data = self.request(method, url,
+                if not self.self_host:
+                    self.__request_token()
+                    self.__add_o_auth_token(header_params)
+                    response_data = self.request(method, url,
                                          query_params=query_params,
                                          headers=header_params,
                                          post_params=post_params, body=body,

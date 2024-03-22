@@ -50,14 +50,14 @@ class PdfTests(unittest.TestCase):
             data = json.load(json_file)
             
             self.pdf_api_client = asposepdfcloud.api_client.ApiClient(
-                                app_key=str(data['AppKey']),
-                                app_sid=str(data['AppSID']),
-                                host=str(data['ProductUri']))
+                app_key=str(data.get('AppKey', '')),
+                app_sid=str(data.get('AppSID', '')),
+                host=str(data['ProductUri']),
+                self_host=bool(data.get('SelfHost', False)),
+                )
 
             self.pdf_api = PdfApi(self.pdf_api_client)
-
             self.output_path = str(data['OutputLocation'])
-
             self.temp_folder = 'TempPdfCloud'
             self.test_data_path = 'test_data/'
 
