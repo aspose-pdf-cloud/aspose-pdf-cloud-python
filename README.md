@@ -30,8 +30,7 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 24.2
-- Memory leak when converting PDF to DOCX.
+## Enhancements in Version 24.3
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
 
 ## Requirements.
@@ -68,13 +67,18 @@ import asposepdfcloud
 ```python
 	# Get your ClientId and ClientSecret from https://dashboard.aspose.cloud (free registration required).
 	pdf_api_client = asposepdfcloud.ApiClient('MY_CLIENT_ID', 'MY_CLIENT_SECRET')
-
 	pdf_api = asposepdfcloud.PdfApi(pdf_api_client)
-
 	file_name = 'PdfWithAnnotations.pdf'
 	page_number = 2
 	response = pdf_api.get_page_annotations(file_name, page_number, folder=temp_folder)
 ```
+
+## SelfHost Aspose.PDF Cloud
+Create **ApiClient** object without **app_key** and **app_sid** parameters, but with **host** parameter set to *url of SelfHost Aspose.PDF Cloud* and **self_host** parameter set to *True*:
+```python
+	pdf_api_client = asposepdfcloud.ApiClient('', '', 'MY_SELFHOST_URL', True)
+```
+
 ## Unit Tests
 Aspose PDF SDK includes a suite of unit tests within the "test" subdirectory. These Unit Tests also serves as examples of how to use the Aspose PDF SDK.
 
