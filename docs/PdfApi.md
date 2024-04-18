@@ -153,6 +153,7 @@ Method | HTTP request | Description
 [**get_pdf_in_storage_to_pptx**](PdfApi.md#get_pdf_in_storage_to_pptx) | **GET** /pdf/\{name}/convert/pptx | Converts PDF document (located on storage) to PPTX format and returns resulting file in response content
 [**get_pdf_in_storage_to_svg**](PdfApi.md#get_pdf_in_storage_to_svg) | **GET** /pdf/\{name}/convert/svg | Converts PDF document (located on storage) to SVG format and returns resulting file in response content
 [**get_pdf_in_storage_to_te_x**](PdfApi.md#get_pdf_in_storage_to_te_x) | **GET** /pdf/\{name}/convert/tex | Converts PDF document (located on storage) to TeX format and returns resulting file in response content
+[**get_pdf_in_storage_to_text**](PdfApi.md#get_pdf_in_storage_to_text) | **GET** /pdf/\{name}/convert/text | Converts PDF document (located on storage) to Text format and returns resulting file in response content
 [**get_pdf_in_storage_to_tiff**](PdfApi.md#get_pdf_in_storage_to_tiff) | **GET** /pdf/\{name}/convert/tiff | Converts PDF document (located on storage) to TIFF format and returns resulting file in response content
 [**get_pdf_in_storage_to_xls**](PdfApi.md#get_pdf_in_storage_to_xls) | **GET** /pdf/\{name}/convert/xls | Converts PDF document (located on storage) to XLS format and returns resulting file in response content
 [**get_pdf_in_storage_to_xlsx**](PdfApi.md#get_pdf_in_storage_to_xlsx) | **GET** /pdf/\{name}/convert/xlsx | Converts PDF document (located on storage) to XLSX format and returns resulting file in response content
@@ -243,6 +244,7 @@ Method | HTTP request | Description
 [**post_page_text_replace**](PdfApi.md#post_page_text_replace) | **POST** /pdf/\{name}/pages/\{pageNumber}/text/replace | Page&#39;s replace text method.
 [**post_page_text_stamps**](PdfApi.md#post_page_text_stamps) | **POST** /pdf/\{name}/pages/\{pageNumber}/stamps/text | Add document page text stamps.
 [**post_page_underline_annotations**](PdfApi.md#post_page_underline_annotations) | **POST** /pdf/\{name}/pages/\{pageNumber}/annotations/underline | Add document page underline annotations.
+[**post_pdf_to_xlsx**](PdfApi.md#post_pdf_to_xlsx) | **POST** /pdf/convert/xlsx | Converts PDF document (in request content) to XLSX format and uploads and returns resulting file in response content.
 [**post_popup_annotation**](PdfApi.md#post_popup_annotation) | **POST** /pdf/\{name}/annotations/\{annotationId}/popup | Add document popup annotations.
 [**post_radio_button_fields**](PdfApi.md#post_radio_button_fields) | **POST** /pdf/\{name}/fields/radiobutton | Add document RadioButton fields.
 [**post_sign_document**](PdfApi.md#post_sign_document) | **POST** /pdf/\{name}/sign | Sign document.
@@ -4120,6 +4122,30 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_pdf_in_storage_to_text**
+> file get_pdf_in_storage_to_text(name, folder=folder, storage=storage)
+
+Converts PDF document (located on storage) to Text format and returns resulting file in response content
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **folder** | **str**| The document folder. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+
+### Return type
+
+**file**
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: multipart/form-data
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_pdf_in_storage_to_tiff**
 > file get_pdf_in_storage_to_tiff(name, brightness=brightness, compression=compression, color_depth=color_depth, left_margin=left_margin, right_margin=right_margin, top_margin=top_margin, bottom_margin=bottom_margin, orientation=orientation, skip_blank_pages=skip_blank_pages, width=width, height=height, x_resolution=x_resolution, y_resolution=y_resolution, page_index=page_index, page_count=page_count, folder=folder, storage=storage)
 
@@ -6455,6 +6481,32 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_pdf_to_xlsx**
+> file post_pdf_to_xlsx(insert_blank_column_at_first=insert_blank_column_at_first, minimize_the_number_of_worksheets=minimize_the_number_of_worksheets, uniform_worksheets=uniform_worksheets, password=password, file=file)
+
+Converts PDF document (in request content) to XLSX format and uploads and returns resulting file in response content.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **insert_blank_column_at_first** | **bool**| Insert blank column at first | [optional] 
+ **minimize_the_number_of_worksheets** | **bool**| Minimize the number of worksheets | [optional] 
+ **uniform_worksheets** | **bool**| Uniform worksheets | [optional] 
+ **password** | **str**| The password (Base64). | [optional] 
+ **file** | **file**| A file to be converted. | [optional] 
+
+### Return type
+
+**file**
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: multipart/form-data
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

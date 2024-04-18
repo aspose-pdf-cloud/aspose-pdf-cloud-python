@@ -17715,6 +17715,118 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def get_pdf_in_storage_to_text(self, name, **kwargs):
+        """
+        Converts PDF document (located on storage) to Text format and returns resulting file in response content
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_pdf_in_storage_to_text(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str folder: The document folder.
+        :param str storage: The document storage.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_pdf_in_storage_to_text_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_pdf_in_storage_to_text_with_http_info(name, **kwargs)
+            return data
+
+    def get_pdf_in_storage_to_text_with_http_info(self, name, **kwargs):
+        """
+        Converts PDF document (located on storage) to Text format and returns resulting file in response content
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_pdf_in_storage_to_text_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str folder: The document folder.
+        :param str storage: The document storage.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'folder', 'storage']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_pdf_in_storage_to_text" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_pdf_in_storage_to_text`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/convert/text', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def get_pdf_in_storage_to_tiff(self, name, **kwargs):
         """
         Converts PDF document (located on storage) to TIFF format and returns resulting file in response content
@@ -28847,6 +28959,123 @@ class PdfApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def post_pdf_to_xlsx(self, **kwargs):
+        """
+        Converts PDF document (in request content) to XLSX format and uploads and returns resulting file in response content.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_pdf_to_xlsx(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param bool insert_blank_column_at_first: Insert blank column at first
+        :param bool minimize_the_number_of_worksheets: Minimize the number of worksheets
+        :param bool uniform_worksheets: Uniform worksheets
+        :param str password: The password (Base64).
+        :param file file: A file to be converted.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_pdf_to_xlsx_with_http_info(**kwargs)
+        else:
+            (data) = self.post_pdf_to_xlsx_with_http_info(**kwargs)
+            return data
+
+    def post_pdf_to_xlsx_with_http_info(self, **kwargs):
+        """
+        Converts PDF document (in request content) to XLSX format and uploads and returns resulting file in response content.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_pdf_to_xlsx_with_http_info(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param bool insert_blank_column_at_first: Insert blank column at first
+        :param bool minimize_the_number_of_worksheets: Minimize the number of worksheets
+        :param bool uniform_worksheets: Uniform worksheets
+        :param str password: The password (Base64).
+        :param file file: A file to be converted.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['insert_blank_column_at_first', 'minimize_the_number_of_worksheets', 'uniform_worksheets', 'password', 'file']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_pdf_to_xlsx" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'insert_blank_column_at_first' in params:
+            query_params.append(('insertBlankColumnAtFirst', params['insert_blank_column_at_first']))
+        if 'minimize_the_number_of_worksheets' in params:
+            query_params.append(('minimizeTheNumberOfWorksheets', params['minimize_the_number_of_worksheets']))
+        if 'uniform_worksheets' in params:
+            query_params.append(('uniformWorksheets', params['uniform_worksheets']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'file' in params:
+            local_var_files['file'] = params['file']
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['multipart/form-data'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/convert/xlsx', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
