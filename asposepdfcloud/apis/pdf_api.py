@@ -24553,6 +24553,135 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def post_html_to_pdf(self, **kwargs):
+        """
+        Convert HTML file (zip archive in request content) to PDF format and return resulting file in response. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_html_to_pdf(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str html_file_name: Name of HTML file in ZIP.
+        :param float height: Page height
+        :param float width: Page width
+        :param bool is_landscape: Is page landscaped
+        :param float margin_left: Page margin left
+        :param float margin_bottom: Page margin bottom
+        :param float margin_right: Page margin right
+        :param float margin_top: Page margin top
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_html_to_pdf_with_http_info(**kwargs)
+        else:
+            (data) = self.post_html_to_pdf_with_http_info(**kwargs)
+            return data
+
+    def post_html_to_pdf_with_http_info(self, **kwargs):
+        """
+        Convert HTML file (zip archive in request content) to PDF format and return resulting file in response. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_html_to_pdf_with_http_info(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str html_file_name: Name of HTML file in ZIP.
+        :param float height: Page height
+        :param float width: Page width
+        :param bool is_landscape: Is page landscaped
+        :param float margin_left: Page margin left
+        :param float margin_bottom: Page margin bottom
+        :param float margin_right: Page margin right
+        :param float margin_top: Page margin top
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['html_file_name', 'height', 'width', 'is_landscape', 'margin_left', 'margin_bottom', 'margin_right', 'margin_top']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_html_to_pdf" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'html_file_name' in params:
+            query_params.append(('htmlFileName', params['html_file_name']))
+        if 'height' in params:
+            query_params.append(('height', params['height']))
+        if 'width' in params:
+            query_params.append(('width', params['width']))
+        if 'is_landscape' in params:
+            query_params.append(('isLandscape', params['is_landscape']))
+        if 'margin_left' in params:
+            query_params.append(('marginLeft', params['margin_left']))
+        if 'margin_bottom' in params:
+            query_params.append(('marginBottom', params['margin_bottom']))
+        if 'margin_right' in params:
+            query_params.append(('marginRight', params['margin_right']))
+        if 'margin_top' in params:
+            query_params.append(('marginTop', params['margin_top']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['multipart/form-data'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/create/html', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def post_import_fields_from_fdf(self, name, **kwargs):
         """
         Update fields from FDF file in request.
