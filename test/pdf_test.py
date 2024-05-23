@@ -29,7 +29,7 @@ SOFTWARE.
 
 
 from __future__ import absolute_import
-from asposepdfcloud.models import text_style
+# from asposepdfcloud.models import text_style
 
 import os
 import sys
@@ -39,7 +39,7 @@ import base64
 
 import asposepdfcloud
 from asposepdfcloud.apis.pdf_api import PdfApi
-from asposepdfcloud.rest import ApiException
+# from asposepdfcloud.rest import ApiException
 #from asposepdfcloud.models.annotations_ import AnnotationInfoResponse
 
 

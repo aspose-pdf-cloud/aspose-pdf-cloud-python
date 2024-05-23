@@ -209,6 +209,7 @@ Method | HTTP request | Description
 [**post_document_text_replace**](PdfApi.md#post_document_text_replace) | **POST** /pdf/\{name}/text/replace | Document&#39;s replace text method.
 [**post_encrypt_document_in_storage**](PdfApi.md#post_encrypt_document_in_storage) | **POST** /pdf/\{name}/encrypt | Encrypt document in storage.
 [**post_flatten_document**](PdfApi.md#post_flatten_document) | **POST** /pdf/\{name}/flatten | Flatten the document.
+[**post_html_to_pdf**](PdfApi.md#post_html_to_pdf) | **POST** /pdf/create/html | Convert HTML file (zip archive in request content) to PDF format and return resulting file in response. 
 [**post_import_fields_from_fdf**](PdfApi.md#post_import_fields_from_fdf) | **POST** /pdf/\{name}/import/fdf | Update fields from FDF file in request.
 [**post_import_fields_from_xfdf**](PdfApi.md#post_import_fields_from_xfdf) | **POST** /pdf/\{name}/import/xfdf | Update fields from XFDF file in request.
 [**post_import_fields_from_xml**](PdfApi.md#post_import_fields_from_xml) | **POST** /pdf/\{name}/import/xml | Update fields from XML file in request.
@@ -5568,6 +5569,35 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_html_to_pdf**
+> file post_html_to_pdf(html_file_name=html_file_name, height=height, width=width, is_landscape=is_landscape, margin_left=margin_left, margin_bottom=margin_bottom, margin_right=margin_right, margin_top=margin_top)
+
+Convert HTML file (zip archive in request content) to PDF format and return resulting file in response. 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **html_file_name** | **str**| Name of HTML file in ZIP. | [optional] 
+ **height** | **float**| Page height | [optional] 
+ **width** | **float**| Page width | [optional] 
+ **is_landscape** | **bool**| Is page landscaped | [optional] 
+ **margin_left** | **float**| Page margin left | [optional] 
+ **margin_bottom** | **float**| Page margin bottom | [optional] 
+ **margin_right** | **float**| Page margin right | [optional] 
+ **margin_top** | **float**| Page margin top | [optional] 
+
+### Return type
+
+**file**
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: multipart/form-data
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -30,10 +30,11 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 24.4
-- Convert PDF to optimized Text.
-- Convert PDF to EXCEL without Cloud Storage.
+## Enhancements in Version 24.5
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
+
+## Bugs fixed in Version 24.5
+- Aspose.PDF Cloud Service Throws Bad Gateway Error intermittently.
 
 ## Requirements.
 Python 2.7 and 3.4+
