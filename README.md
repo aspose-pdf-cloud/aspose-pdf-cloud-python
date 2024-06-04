@@ -69,7 +69,7 @@ import asposepdfcloud
 ## Get PDF Page Annotations in Python
 ```python
 	# Get your ClientId and ClientSecret from https://dashboard.aspose.cloud (free registration required).
-	pdf_api_client = asposepdfcloud.ApiClient('MY_CLIENT_ID', 'MY_CLIENT_SECRET')
+	pdf_api_client = asposepdfcloud.ApiClient('MY_CLIENT_SECRET', 'MY_CLIENT_ID')
 	pdf_api = asposepdfcloud.PdfApi(pdf_api_client)
 	file_name = 'PdfWithAnnotations.pdf'
 	page_number = 2
