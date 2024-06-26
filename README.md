@@ -30,11 +30,8 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 24.5
+## Enhancements in Version 24.6
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
-
-## Bugs fixed in Version 24.5
-- Aspose.PDF Cloud Service Throws Bad Gateway Error intermittently.
 
 ## Requirements.
 Python 2.7 and 3.4+
@@ -69,7 +66,7 @@ import asposepdfcloud
 ## Get PDF Page Annotations in Python
 ```python
 	# Get your ClientId and ClientSecret from https://dashboard.aspose.cloud (free registration required).
-	pdf_api_client = asposepdfcloud.ApiClient('MY_CLIENT_ID', 'MY_CLIENT_SECRET')
+	pdf_api_client = asposepdfcloud.ApiClient('MY_CLIENT_SECRET', 'MY_CLIENT_ID')
 	pdf_api = asposepdfcloud.PdfApi(pdf_api_client)
 	file_name = 'PdfWithAnnotations.pdf'
 	page_number = 2
