@@ -30,8 +30,12 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 24.6
+## Enhancements in Version 24.7
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
+
+## Bugs fixed in Version 24.7
+- PutPsInStorageToPdf throws: Cannot find resource ‘Aspose.PDF.dependencies.ZapfDingbats.ttf.
+- Ocr method is not working.
 
 ## Requirements.
 Python 2.7 and 3.4+
