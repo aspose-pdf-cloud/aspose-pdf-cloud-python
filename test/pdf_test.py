@@ -290,6 +290,33 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.post_page_text_stamps(file_name, page_number, [stamp], folder=self.temp_folder)
         self.assertEqual(response.code, 200)
 
+    def testPostDocumentTextStamps(self):
+        file_name = 'PageNumberStamp.pdf'
+        self.uploadFile(file_name)
+
+        text_state = asposepdfcloud.models.TextState(font_size=14, font_style=asposepdfcloud.models.FontStyles.REGULAR, font='Arial')
+
+        stamp = asposepdfcloud.models.TextStamp()
+        stamp.background = True
+        stamp.left_margin = 1
+        stamp.right_margin = 2
+        stamp.top_margin = 3
+        stamp.bottom_margin = 4
+        stamp.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        stamp.vertical_alignment = asposepdfcloud.models.VerticalAlignment.CENTER
+        stamp.opacity = 1
+        stamp.rotate = asposepdfcloud.models.Rotation.NONE
+        stamp.rotate_angle = 0
+        stamp.x_indent = 0
+        stamp.y_indent = 0
+        stamp.zoom = 1
+        stamp.text_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        stamp.value = 'Text Stamp'
+        stamp.text_state = text_state
+
+        response = self.pdf_api.post_document_text_stamps(file_name, [stamp], folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
     def testPostPageImageStamps(self):
         file_name = 'PageNumberStamp.pdf'
         self.uploadFile(file_name)
@@ -316,6 +343,32 @@ class PdfTests(unittest.TestCase):
         stamp.file_name = self.temp_folder + '/' + image
 
         response = self.pdf_api.post_page_image_stamps(file_name, page_number, [stamp], folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+    def testPostDocumentImageStamps(self):
+        file_name = 'PageNumberStamp.pdf'
+        self.uploadFile(file_name)
+
+        image = 'Koala.jpg'
+        self.uploadFile(image)
+
+        stamp = asposepdfcloud.models.ImageStamp()
+        stamp.background = True
+        stamp.left_margin = 1
+        stamp.right_margin = 2
+        stamp.top_margin = 3
+        stamp.bottom_margin = 4
+        stamp.horizontal_alignment = asposepdfcloud.models.HorizontalAlignment.CENTER
+        stamp.vertical_alignment = asposepdfcloud.models.VerticalAlignment.CENTER
+        stamp.opacity = 1
+        stamp.rotate = asposepdfcloud.models.Rotation.NONE
+        stamp.rotate_angle = 0
+        stamp.x_indent = 0
+        stamp.y_indent = 0
+        stamp.zoom = 1
+        stamp.file_name = self.temp_folder + '/' + image
+
+        response = self.pdf_api.post_document_image_stamps(file_name, [stamp], folder=self.temp_folder)
         self.assertEqual(response.code, 200)
 
     def testPostPagePdfPageStamps(self):

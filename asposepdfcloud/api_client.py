@@ -83,7 +83,7 @@ class ApiClient(object):
         self.rest_client = RESTClientObject()
         self.default_headers = {}
         self.default_headers['x-aspose-client'] = 'python sdk'
-        self.default_headers['x-aspose-client-version'] = '24.7.0'
+        self.default_headers['x-aspose-client-version'] = '24.8.0'
         
         self.self_host = self_host
         self.app_key = app_key
@@ -250,14 +250,35 @@ class ApiClient(object):
         tokenUrl = self.host.replace("/v3.0", "") + resource_path
         print("tokenUrl: " + tokenUrl)
 
-        # perform request and return response
-        response_data = self.request(method, tokenUrl,
-                                     headers=header_params,
-                                     post_params=post_params)
+        try:
+            # perform request and return response
+            response_data = self.request(method, tokenUrl,
+                                        headers=header_params,
+                                        post_params=post_params)
+            if isinstance(response_data.data, bytes):
+                responseJson =  str(response_data.data, 'UTF-8')
+            else:
+                responseJson =  str(response_data.data)
+        except Exception as ex:
+            if (hasattr(ex, 'body')):
+                if isinstance(ex.body, bytes):
+                    responseJson =  str(ex.body, 'UTF-8')
+                else:
+                    responseJson =  str(response_data.data)
+            else:
+                raise ApiException(ex)
 
-        data = json.loads(str(response_data.data))
-        config.access_token = data['access_token']
+        try:
+            data = json.loads(responseJson)
+        except json.JSONDecodeError as ex:
+            if responseJson.strip():
+                raise ApiException(reason=responseJson)
+            else:
+                raise ApiException(reason="empty token ({0})".format(responseJson))
 
+        if 'access_token' not in data or not data['access_token'] or data['access_token'].strip() == "":
+            raise ApiException(reason="empty token ({0})".format(responseJson))
+        config.access_token = data['access_token']            
 
     def __add_o_auth_token(self, header_params):
         config = Configuration()

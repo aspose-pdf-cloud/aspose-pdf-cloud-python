@@ -157,7 +157,7 @@ class OptimizeOptions(object):
     def allow_reuse_page_content(self):
         """
         Gets the allow_reuse_page_content of this OptimizeOptions.
-        If true page contents will be reused when document is optimized for equal pages.
+        If true page contents will be reused when document is optimized for equal pages. LinkDuplcateStreams option must be set to true.
 
         :return: The allow_reuse_page_content of this OptimizeOptions.
         :rtype: bool
@@ -168,7 +168,7 @@ class OptimizeOptions(object):
     def allow_reuse_page_content(self, allow_reuse_page_content):
         """
         Sets the allow_reuse_page_content of this OptimizeOptions.
-        If true page contents will be reused when document is optimized for equal pages.
+        If true page contents will be reused when document is optimized for equal pages. LinkDuplcateStreams option must be set to true.
 
         :param allow_reuse_page_content: The allow_reuse_page_content of this OptimizeOptions.
         :type: bool
@@ -295,7 +295,7 @@ class OptimizeOptions(object):
     def unembed_fonts(self):
         """
         Gets the unembed_fonts of this OptimizeOptions.
-        Make fonts not embedded if set to true. 
+        Make fonts not embedded if set to true. Unembedding a font means removing the embedded byte stream data of the font included in a PDF document.
 
         :return: The unembed_fonts of this OptimizeOptions.
         :rtype: bool
@@ -306,7 +306,7 @@ class OptimizeOptions(object):
     def unembed_fonts(self, unembed_fonts):
         """
         Sets the unembed_fonts of this OptimizeOptions.
-        Make fonts not embedded if set to true. 
+        Make fonts not embedded if set to true. Unembedding a font means removing the embedded byte stream data of the font included in a PDF document.
 
         :param unembed_fonts: The unembed_fonts of this OptimizeOptions.
         :type: bool
@@ -364,7 +364,7 @@ class OptimizeOptions(object):
     def subset_fonts(self):
         """
         Gets the subset_fonts of this OptimizeOptions.
-        Fonts will be converted into subsets if set to true.
+        Fonts will be converted into subsets if set to true. Only those characters that are actually used in the layout are stored in the PDF. 
 
         :return: The subset_fonts of this OptimizeOptions.
         :rtype: bool
@@ -375,7 +375,7 @@ class OptimizeOptions(object):
     def subset_fonts(self, subset_fonts):
         """
         Sets the subset_fonts of this OptimizeOptions.
-        Fonts will be converted into subsets if set to true.
+        Fonts will be converted into subsets if set to true. Only those characters that are actually used in the layout are stored in the PDF. 
 
         :param subset_fonts: The subset_fonts of this OptimizeOptions.
         :type: bool
