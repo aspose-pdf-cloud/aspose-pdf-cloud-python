@@ -203,10 +203,12 @@ Method | HTTP request | Description
 [**post_decrypt_document_in_storage**](PdfApi.md#post_decrypt_document_in_storage) | **POST** /pdf/\{name}/decrypt | Decrypt document in storage.
 [**post_document_image_footer**](PdfApi.md#post_document_image_footer) | **POST** /pdf/\{name}/footer/image | Add document image footer.
 [**post_document_image_header**](PdfApi.md#post_document_image_header) | **POST** /pdf/\{name}/header/image | Add document image header.
+[**post_document_image_stamps**](PdfApi.md#post_document_image_stamps) | **POST** /pdf/\{name}/stamps/image | Add document pages image stamps.
 [**post_document_page_number_stamps**](PdfApi.md#post_document_page_number_stamps) | **POST** /pdf/\{name}/stamps/pagenumber | Add document page number stamps.
 [**post_document_text_footer**](PdfApi.md#post_document_text_footer) | **POST** /pdf/\{name}/footer/text | Add document text footer.
 [**post_document_text_header**](PdfApi.md#post_document_text_header) | **POST** /pdf/\{name}/header/text | Add document text header.
 [**post_document_text_replace**](PdfApi.md#post_document_text_replace) | **POST** /pdf/\{name}/text/replace | Document&#39;s replace text method.
+[**post_document_text_stamps**](PdfApi.md#post_document_text_stamps) | **POST** /pdf/\{name}/stamps/text | Add document pages text stamps.
 [**post_encrypt_document_in_storage**](PdfApi.md#post_encrypt_document_in_storage) | **POST** /pdf/\{name}/encrypt | Encrypt document in storage.
 [**post_flatten_document**](PdfApi.md#post_flatten_document) | **POST** /pdf/\{name}/flatten | Flatten the document.
 [**post_html_to_pdf**](PdfApi.md#post_html_to_pdf) | **POST** /pdf/create/html | Convert HTML file (zip archive in request content) to PDF format and return resulting file in response. 
@@ -5409,6 +5411,32 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **post_document_image_stamps**
+> AsposeResponse post_document_image_stamps(name, stamps, storage=storage, folder=folder, password=password)
+
+Add document pages image stamps.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **stamps** | [**list[ImageStamp]**](ImageStamp.md)| The array of stamp. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+ **password** | **str**| Base64 encoded password. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **post_document_page_number_stamps**
 > AsposeResponse post_document_page_number_stamps(name, stamp, start_page_number=start_page_number, end_page_number=end_page_number, storage=storage, folder=folder, password=password)
 
@@ -5508,6 +5536,32 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TextReplaceResponse**](TextReplaceResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_document_text_stamps**
+> AsposeResponse post_document_text_stamps(name, stamps, storage=storage, folder=folder, password=password)
+
+Add document pages text stamps.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **stamps** | [**list[TextStamp]**](TextStamp.md)| The array of stamp. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+ **password** | **str**| Base64 encoded password. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
 
 ### HTTP request headers
 
