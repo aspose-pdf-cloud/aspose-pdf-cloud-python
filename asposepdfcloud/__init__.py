@@ -61,6 +61,7 @@ from .models.doc_format import DocFormat
 from .models.doc_mdp_access_permission_type import DocMDPAccessPermissionType
 from .models.doc_recognition_mode import DocRecognitionMode
 from .models.document_config import DocumentConfig
+from .models.document_layers import DocumentLayers
 from .models.document_privilege import DocumentPrivilege
 from .models.epub_recognition_mode import EpubRecognitionMode
 from .models.error import Error
@@ -85,6 +86,7 @@ from .models.image_src_type import ImageSrcType
 from .models.image_template import ImageTemplate
 from .models.image_templates_request import ImageTemplatesRequest
 from .models.justification import Justification
+from .models.layer_info import LayerInfo
 from .models.letters_positioning_methods import LettersPositioningMethods
 from .models.line_ending import LineEnding
 from .models.line_intent import LineIntent

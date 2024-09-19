@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**delete_bookmark**](PdfApi.md#delete_bookmark) | **DELETE** /pdf/\{name}/bookmarks/bookmark/\{bookmarkPath} | Delete document bookmark by ID.
 [**delete_document_annotations**](PdfApi.md#delete_document_annotations) | **DELETE** /pdf/\{name}/annotations | Delete all annotations from the document
 [**delete_document_bookmarks**](PdfApi.md#delete_document_bookmarks) | **DELETE** /pdf/\{name}/bookmarks/tree | Delete all document bookmarks.
+[**delete_document_layer**](PdfApi.md#delete_document_layer) | **DELETE** /pdf/\{name}/layers | Remove document layer.
 [**delete_document_link_annotations**](PdfApi.md#delete_document_link_annotations) | **DELETE** /pdf/\{name}/links | Delete all link annotations from the document
 [**delete_document_stamps**](PdfApi.md#delete_document_stamps) | **DELETE** /pdf/\{name}/stamps | Delete all stamps from the document
 [**delete_document_tables**](PdfApi.md#delete_document_tables) | **DELETE** /pdf/\{name}/tables | Delete all tables from the document
@@ -50,6 +51,7 @@ Method | HTTP request | Description
 [**get_document_free_text_annotations**](PdfApi.md#get_document_free_text_annotations) | **GET** /pdf/\{name}/annotations/freetext | Read document free text annotations.
 [**get_document_highlight_annotations**](PdfApi.md#get_document_highlight_annotations) | **GET** /pdf/\{name}/annotations/highlight | Read document highlight annotations.
 [**get_document_ink_annotations**](PdfApi.md#get_document_ink_annotations) | **GET** /pdf/\{name}/annotations/ink | Read document ink annotations.
+[**get_document_layers**](PdfApi.md#get_document_layers) | **GET** /pdf/\{name}/layers | Gets document layers.
 [**get_document_line_annotations**](PdfApi.md#get_document_line_annotations) | **GET** /pdf/\{name}/annotations/line | Read document line annotations.
 [**get_document_list_box_fields**](PdfApi.md#get_document_list_box_fields) | **GET** /pdf/\{name}/fields/listbox | Read document listbox fields.
 [**get_document_movie_annotations**](PdfApi.md#get_document_movie_annotations) | **GET** /pdf/\{name}/annotations/movie | Read document movie annotations.
@@ -266,6 +268,7 @@ Method | HTTP request | Description
 [**put_circle_annotation**](PdfApi.md#put_circle_annotation) | **PUT** /pdf/\{name}/annotations/circle/\{annotationId} | Replace document circle annotation
 [**put_combo_box_field**](PdfApi.md#put_combo_box_field) | **PUT** /pdf/\{name}/fields/combobox/\{fieldName} | Replace document combobox field
 [**put_create_document**](PdfApi.md#put_create_document) | **PUT** /pdf/\{name} | Create empty document.
+[**put_create_pdf_from_layer**](PdfApi.md#put_create_pdf_from_layer) | **PUT** /pdf/\{name}/layers | Create a separate PDF from a PDF Layer and upload resulting file to storage.
 [**put_decrypt_document**](PdfApi.md#put_decrypt_document) | **PUT** /pdf/decrypt | Decrypt document from content.
 [**put_document_display_properties**](PdfApi.md#put_document_display_properties) | **PUT** /pdf/\{name}/displayproperties | Update document display properties.
 [**put_encrypt_document**](PdfApi.md#put_encrypt_document) | **PUT** /pdf/encrypt | Encrypt document from content.
@@ -535,6 +538,33 @@ Name | Type | Description  | Notes
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
  **password** | **str**| The password (Base64). | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_document_layer**
+> AsposeResponse delete_document_layer(name, page_number, layer_id, folder=folder, storage=storage, pass_base64=pass_base64)
+
+Remove document layer.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **page_number** | **int**| Layer page. | 
+ **layer_id** | **str**| Layer Id. | 
+ **folder** | **str**| The document folder. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+ **pass_base64** | **str**| The password (Base64). | [optional] 
 
 ### Return type
 
@@ -1500,6 +1530,31 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**InkAnnotationsResponse**](InkAnnotationsResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_document_layers**
+> DocumentLayers get_document_layers(name, folder=folder, storage=storage, pass_base64=pass_base64)
+
+Gets document layers.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **folder** | **str**| The document folder. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+ **pass_base64** | **str**| The password (Base64). | [optional] 
+
+### Return type
+
+[**DocumentLayers**](DocumentLayers.md)
 
 ### HTTP request headers
 
@@ -7051,6 +7106,34 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DocumentResponse**](DocumentResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_create_pdf_from_layer**
+> AsposeResponse put_create_pdf_from_layer(name, page_number, out_path, layer_id, folder=folder, storage=storage, pass_base64=pass_base64)
+
+Create a separate PDF from a PDF Layer and upload resulting file to storage.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **page_number** | **int**| The page number. | 
+ **out_path** | **str**| The out path of result image. | 
+ **layer_id** | **str**| Layer Id. | 
+ **folder** | **str**| The document folder. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+ **pass_base64** | **str**| The password (Base64). | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
 
 ### HTTP request headers
 
