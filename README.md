@@ -30,9 +30,10 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 24.8
-- Adding Text stamps to multiple pages.
-- Adding Image stamps to multiple pages.
+## Enhancements in Version 24.9
+- Develop DeleteDocumentLayer Method.
+- Develop GetDocumentLayers Method.
+- How to extract PDF layer elements and create a new PDF
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
 
 ## Requirements.

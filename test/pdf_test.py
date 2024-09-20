@@ -5583,6 +5583,32 @@ class PdfTests(unittest.TestCase):
 
         response = self.pdf_api.post_import_fields_from_xml(file_name, **opts)
         self.assertEqual(response.code, 200)
+    
+    # Annotations Tests
+
+    def testGetDocumentLayers(self):
+        file_name = 'PdfWithLayers.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.get_document_layers(file_name, folder=self.temp_folder)
+        self.assertEqual(len(response.layers), 2)
+
+    def testDeleteDocumentLayers(self):
+        file_name = 'PdfWithLayers.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.delete_document_layer(file_name, page_number=1, layer_id="oc1", folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+        response = self.pdf_api.get_document_layers(file_name, folder=self.temp_folder)
+        self.assertEqual(len(response.layers), 1)
+
+    def testPutCreatePdfFromLayer(self):
+        file_name = 'PdfWithLayers.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.put_create_pdf_from_layer(file_name, out_path = "output.pdf", page_number=1, layer_id="oc1", folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
 
 if __name__ == '__main__':
     unittest.main()
