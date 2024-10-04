@@ -16138,7 +16138,7 @@ class PdfApi(object):
         query_params = []
         if 'format' in params:
             query_params.append(('format', params['format']))
-            collection_formats['format'] = 'csv'
+            collection_formats['format'] = 'multi'
         if 'regex' in params:
             query_params.append(('regex', params['regex']))
         if 'split_rects' in params:
@@ -17304,7 +17304,7 @@ class PdfApi(object):
             query_params.append(('cssClassNamesPrefix', params['css_class_names_prefix']))
         if 'explicit_list_of_saved_pages' in params:
             query_params.append(('explicitListOfSavedPages', params['explicit_list_of_saved_pages']))
-            collection_formats['explicitListOfSavedPages'] = 'csv'
+            collection_formats['explicitListOfSavedPages'] = 'multi'
         if 'font_encoding_strategy' in params:
             query_params.append(('fontEncodingStrategy', params['font_encoding_strategy']))
         if 'font_saving_mode' in params:
@@ -21096,7 +21096,7 @@ class PdfApi(object):
         query_params = []
         if 'format' in params:
             query_params.append(('format', params['format']))
-            collection_formats['format'] = 'csv'
+            collection_formats['format'] = 'multi'
         if 'regex' in params:
             query_params.append(('regex', params['regex']))
         if 'split_rects' in params:
@@ -24881,7 +24881,7 @@ class PdfApi(object):
             query_params.append(('cryptoAlgorithm', params['crypto_algorithm']))
         if 'permissions_flags' in params:
             query_params.append(('permissionsFlags', params['permissions_flags']))
-            collection_formats['permissionsFlags'] = 'csv'
+            collection_formats['permissionsFlags'] = 'multi'
         if 'use_pdf20' in params:
             query_params.append(('usePdf20', params['use_pdf20']))
         if 'storage' in params:
@@ -31008,7 +31008,7 @@ class PdfApi(object):
             query_params.append(('endPage', params['end_page']))
         if 'annotation_types' in params:
             query_params.append(('annotationTypes', params['annotation_types']))
-            collection_formats['annotationTypes'] = 'csv'
+            collection_formats['annotationTypes'] = 'multi'
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
@@ -32402,7 +32402,7 @@ class PdfApi(object):
             query_params.append(('cryptoAlgorithm', params['crypto_algorithm']))
         if 'permissions_flags' in params:
             query_params.append(('permissionsFlags', params['permissions_flags']))
-            collection_formats['permissionsFlags'] = 'csv'
+            collection_formats['permissionsFlags'] = 'multi'
         if 'use_pdf20' in params:
             query_params.append(('usePdf20', params['use_pdf20']))
         if 'storage' in params:
@@ -37818,7 +37818,7 @@ class PdfApi(object):
             query_params.append(('cssClassNamesPrefix', params['css_class_names_prefix']))
         if 'explicit_list_of_saved_pages' in params:
             query_params.append(('explicitListOfSavedPages', params['explicit_list_of_saved_pages']))
-            collection_formats['explicitListOfSavedPages'] = 'csv'
+            collection_formats['explicitListOfSavedPages'] = 'multi'
         if 'font_encoding_strategy' in params:
             query_params.append(('fontEncodingStrategy', params['font_encoding_strategy']))
         if 'font_saving_mode' in params:
@@ -39583,7 +39583,7 @@ class PdfApi(object):
             query_params.append(('cssClassNamesPrefix', params['css_class_names_prefix']))
         if 'explicit_list_of_saved_pages' in params:
             query_params.append(('explicitListOfSavedPages', params['explicit_list_of_saved_pages']))
-            collection_formats['explicitListOfSavedPages'] = 'csv'
+            collection_formats['explicitListOfSavedPages'] = 'multi'
         if 'font_encoding_strategy' in params:
             query_params.append(('fontEncodingStrategy', params['font_encoding_strategy']))
         if 'font_saving_mode' in params:
@@ -42053,7 +42053,7 @@ class PdfApi(object):
         query_params = []
         if 'image_ids' in params:
             query_params.append(('imageIds', params['image_ids']))
-            collection_formats['imageIds'] = 'csv'
+            collection_formats['imageIds'] = 'multi'
         if 'image_file_path' in params:
             query_params.append(('imageFilePath', params['image_file_path']))
         if 'storage' in params:
