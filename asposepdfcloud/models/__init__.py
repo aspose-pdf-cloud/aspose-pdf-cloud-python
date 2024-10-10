@@ -147,6 +147,8 @@ from .timestamp_settings import TimestampSettings
 from .vertical_alignment import VerticalAlignment
 from .word_count import WordCount
 from .wrap_mode import WrapMode
+from .xmp_metadata import XmpMetadata
+from .xmp_metadata_property import XmpMetadataProperty
 from .annotation import Annotation
 from .annotations_info import AnnotationsInfo
 from .annotations_info_response import AnnotationsInfoResponse

@@ -5610,5 +5610,48 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.put_create_pdf_from_layer(file_name, out_path = "output.pdf", page_number=1, layer_id="oc1", folder=self.temp_folder)
         self.assertEqual(response.code, 200)
 
+    def testGetXmpMetadataJson(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.get_xmp_metadata_json(file_name, folder=self.temp_folder)
+        self.assertEqual(9, len(response.properties))
+
+    def testGetXmpMetadataXml(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+
+        response = self.pdf_api.get_xmp_metadata_xml(file_name, folder=self.temp_folder)
+        self.assertNotEqual(0, len(response))
+
+
+    def testPostXmpMetadata(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+
+        date = '2024-10-27T09:59:52+02:00'
+        metadata = asposepdfcloud.models.XmpMetadata(properties=[
+            # Modify Default property without prefix
+            asposepdfcloud.models.XmpMetadataProperty(key = "ModifyDate", value = date),
+            # Modify Default property with prefix
+            asposepdfcloud.models.XmpMetadataProperty(key = "xmp:CreateDate", value = date),
+            # Remove Default property
+            asposepdfcloud.models.XmpMetadataProperty(key = "CreatorTool"),
+            # Add Default property
+            asposepdfcloud.models.XmpMetadataProperty(key = "BaseURL", value = "http://www.somename.com/path"),
+            # Remove User defined property
+            asposepdfcloud.models.XmpMetadataProperty(key = "dc:title"),
+            # Update user defined property
+            asposepdfcloud.models.XmpMetadataProperty(key = "pdf:Producer", value = "Aspose.PDF Cloud", namespace_uri = "http://ns.adobe.com/pdf/1.3/"),
+            # Add user defined property
+            asposepdfcloud.models.XmpMetadataProperty(key = "pdf:Prop", value = "PropValue", namespace_uri = "http://ns.adobe.com/pdf/1.3/"),
+        ])
+
+        response = self.pdf_api.post_xmp_metadata(file_name, metadata, folder=self.temp_folder)
+        self.assertEqual(response.code, 200)
+
+        response = self.pdf_api.get_xmp_metadata_json(file_name, folder=self.temp_folder)
+        self.assertEqual(9, len(response.properties))
+
 if __name__ == '__main__':
     unittest.main()
