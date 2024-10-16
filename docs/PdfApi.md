@@ -1,4 +1,4 @@
-# swagger_client.PdfApi
+﻿# swagger_client.PdfApi
 
 All URIs are relative to *https://api.aspose.cloud/v3.0*
 

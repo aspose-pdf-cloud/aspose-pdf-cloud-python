@@ -83,7 +83,7 @@ class ApiClient(object):
         self.rest_client = RESTClientObject()
         self.default_headers = {}
         self.default_headers['x-aspose-client'] = 'python sdk'
-        self.default_headers['x-aspose-client-version'] = '24.9.0'
+        self.default_headers['x-aspose-client-version'] = '24.10.0'
         
         self.self_host = self_host
         self.app_key = app_key
