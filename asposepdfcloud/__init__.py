@@ -147,6 +147,8 @@ from .models.timestamp_settings import TimestampSettings
 from .models.vertical_alignment import VerticalAlignment
 from .models.word_count import WordCount
 from .models.wrap_mode import WrapMode
+from .models.xmp_metadata import XmpMetadata
+from .models.xmp_metadata_property import XmpMetadataProperty
 from .models.annotation import Annotation
 from .models.annotations_info import AnnotationsInfo
 from .models.annotations_info_response import AnnotationsInfoResponse

@@ -16138,7 +16138,7 @@ class PdfApi(object):
         query_params = []
         if 'format' in params:
             query_params.append(('format', params['format']))
-            collection_formats['format'] = 'csv'
+            collection_formats['format'] = 'multi'
         if 'regex' in params:
             query_params.append(('regex', params['regex']))
         if 'split_rects' in params:
@@ -17304,7 +17304,7 @@ class PdfApi(object):
             query_params.append(('cssClassNamesPrefix', params['css_class_names_prefix']))
         if 'explicit_list_of_saved_pages' in params:
             query_params.append(('explicitListOfSavedPages', params['explicit_list_of_saved_pages']))
-            collection_formats['explicitListOfSavedPages'] = 'csv'
+            collection_formats['explicitListOfSavedPages'] = 'multi'
         if 'font_encoding_strategy' in params:
             query_params.append(('fontEncodingStrategy', params['font_encoding_strategy']))
         if 'font_saving_mode' in params:
@@ -21096,7 +21096,7 @@ class PdfApi(object):
         query_params = []
         if 'format' in params:
             query_params.append(('format', params['format']))
-            collection_formats['format'] = 'csv'
+            collection_formats['format'] = 'multi'
         if 'regex' in params:
             query_params.append(('regex', params['regex']))
         if 'split_rects' in params:
@@ -22080,6 +22080,238 @@ class PdfApi(object):
         auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/create/xml', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='file',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_xmp_metadata_json(self, name, **kwargs):
+        """
+        Gets document XMP Metadata as JSON.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_xmp_metadata_json(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str folder: The document folder.
+        :param str storage: The document storage.
+        :param str pass_base64: The password (Base64).
+        :return: XmpMetadata
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_xmp_metadata_json_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_xmp_metadata_json_with_http_info(name, **kwargs)
+            return data
+
+    def get_xmp_metadata_json_with_http_info(self, name, **kwargs):
+        """
+        Gets document XMP Metadata as JSON.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_xmp_metadata_json_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str folder: The document folder.
+        :param str storage: The document storage.
+        :param str pass_base64: The password (Base64).
+        :return: XmpMetadata
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'folder', 'storage', 'pass_base64']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_xmp_metadata_json" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_xmp_metadata_json`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'pass_base64' in params:
+            query_params.append(('passBase64', params['pass_base64']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/xmpmetadata/json', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='XmpMetadata',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_xmp_metadata_xml(self, name, **kwargs):
+        """
+        Gets document XMP Metadata as XML file.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_xmp_metadata_xml(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str folder: The document folder.
+        :param str storage: The document storage.
+        :param str pass_base64: The password (Base64).
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_xmp_metadata_xml_with_http_info(name, **kwargs)
+        else:
+            (data) = self.get_xmp_metadata_xml_with_http_info(name, **kwargs)
+            return data
+
+    def get_xmp_metadata_xml_with_http_info(self, name, **kwargs):
+        """
+        Gets document XMP Metadata as XML file.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_xmp_metadata_xml_with_http_info(name, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str folder: The document folder.
+        :param str storage: The document storage.
+        :param str pass_base64: The password (Base64).
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'folder', 'storage', 'pass_base64']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_xmp_metadata_xml" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `get_xmp_metadata_xml`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'pass_base64' in params:
+            query_params.append(('passBase64', params['pass_base64']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['multipart/form-data'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/xmpmetadata/xml', 'GET',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -24881,7 +25113,7 @@ class PdfApi(object):
             query_params.append(('cryptoAlgorithm', params['crypto_algorithm']))
         if 'permissions_flags' in params:
             query_params.append(('permissionsFlags', params['permissions_flags']))
-            collection_formats['permissionsFlags'] = 'csv'
+            collection_formats['permissionsFlags'] = 'multi'
         if 'use_pdf20' in params:
             query_params.append(('usePdf20', params['use_pdf20']))
         if 'storage' in params:
@@ -30683,6 +30915,129 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def post_xmp_metadata(self, name, metadata, **kwargs):
+        """
+        Add or remove XMP Metadata properties.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_xmp_metadata(name, metadata, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param XmpMetadata metadata: XmpMetadata instance. (required)
+        :param str folder: The document folder.
+        :param str storage: The document storage.
+        :param str pass_base64: The password (Base64).
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_xmp_metadata_with_http_info(name, metadata, **kwargs)
+        else:
+            (data) = self.post_xmp_metadata_with_http_info(name, metadata, **kwargs)
+            return data
+
+    def post_xmp_metadata_with_http_info(self, name, metadata, **kwargs):
+        """
+        Add or remove XMP Metadata properties.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_xmp_metadata_with_http_info(name, metadata, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param XmpMetadata metadata: XmpMetadata instance. (required)
+        :param str folder: The document folder.
+        :param str storage: The document storage.
+        :param str pass_base64: The password (Base64).
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'metadata', 'folder', 'storage', 'pass_base64']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_xmp_metadata" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_xmp_metadata`")
+        # verify the required parameter 'metadata' is set
+        if ('metadata' not in params) or (params['metadata'] is None):
+            raise ValueError("Missing the required parameter `metadata` when calling `post_xmp_metadata`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'pass_base64' in params:
+            query_params.append(('passBase64', params['pass_base64']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'metadata' in params:
+            body_params = params['metadata']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/xmpmetadata', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def put_add_new_page(self, name, **kwargs):
         """
         Add new page to end of the document.
@@ -31008,7 +31363,7 @@ class PdfApi(object):
             query_params.append(('endPage', params['end_page']))
         if 'annotation_types' in params:
             query_params.append(('annotationTypes', params['annotation_types']))
-            collection_formats['annotationTypes'] = 'csv'
+            collection_formats['annotationTypes'] = 'multi'
         if 'storage' in params:
             query_params.append(('storage', params['storage']))
         if 'folder' in params:
@@ -32402,7 +32757,7 @@ class PdfApi(object):
             query_params.append(('cryptoAlgorithm', params['crypto_algorithm']))
         if 'permissions_flags' in params:
             query_params.append(('permissionsFlags', params['permissions_flags']))
-            collection_formats['permissionsFlags'] = 'csv'
+            collection_formats['permissionsFlags'] = 'multi'
         if 'use_pdf20' in params:
             query_params.append(('usePdf20', params['use_pdf20']))
         if 'storage' in params:
@@ -37818,7 +38173,7 @@ class PdfApi(object):
             query_params.append(('cssClassNamesPrefix', params['css_class_names_prefix']))
         if 'explicit_list_of_saved_pages' in params:
             query_params.append(('explicitListOfSavedPages', params['explicit_list_of_saved_pages']))
-            collection_formats['explicitListOfSavedPages'] = 'csv'
+            collection_formats['explicitListOfSavedPages'] = 'multi'
         if 'font_encoding_strategy' in params:
             query_params.append(('fontEncodingStrategy', params['font_encoding_strategy']))
         if 'font_saving_mode' in params:
@@ -39583,7 +39938,7 @@ class PdfApi(object):
             query_params.append(('cssClassNamesPrefix', params['css_class_names_prefix']))
         if 'explicit_list_of_saved_pages' in params:
             query_params.append(('explicitListOfSavedPages', params['explicit_list_of_saved_pages']))
-            collection_formats['explicitListOfSavedPages'] = 'csv'
+            collection_formats['explicitListOfSavedPages'] = 'multi'
         if 'font_encoding_strategy' in params:
             query_params.append(('fontEncodingStrategy', params['font_encoding_strategy']))
         if 'font_saving_mode' in params:
@@ -42053,7 +42408,7 @@ class PdfApi(object):
         query_params = []
         if 'image_ids' in params:
             query_params.append(('imageIds', params['image_ids']))
-            collection_formats['imageIds'] = 'csv'
+            collection_formats['imageIds'] = 'multi'
         if 'image_file_path' in params:
             query_params.append(('imageFilePath', params['image_file_path']))
         if 'storage' in params:
