@@ -95,6 +95,7 @@ Method | HTTP request | Description
 [**get_image_extract_as_png**](PdfApi.md#get_image_extract_as_png) | **GET** /pdf/\{name}/images/\{imageId}/extract/png | Extract document image in PNG format
 [**get_image_extract_as_tiff**](PdfApi.md#get_image_extract_as_tiff) | **GET** /pdf/\{name}/images/\{imageId}/extract/tiff | Extract document image in TIFF format
 [**get_images**](PdfApi.md#get_images) | **GET** /pdf/\{name}/pages/\{pageNumber}/images | Read document images.
+[**get_images_extract_svg**](PdfApi.md#get_images_extract_svg) | **GET** /pdf/\{name}/pages/\{pageNumber}/images/extract/svg | Extract SVG images from document page.
 [**get_import_fields_from_fdf_in_storage**](PdfApi.md#get_import_fields_from_fdf_in_storage) | **GET** /pdf/\{name}/import/fdf | Update fields from FDF file in storage.
 [**get_import_fields_from_xfdf_in_storage**](PdfApi.md#get_import_fields_from_xfdf_in_storage) | **GET** /pdf/\{name}/import/xfdf | Update fields from XFDF file in storage.
 [**get_import_fields_from_xml_in_storage**](PdfApi.md#get_import_fields_from_xml_in_storage) | **GET** /pdf/\{name}/import/xml | Import from XML file (located on storage) to PDF format and return resulting file in response. 
@@ -2618,6 +2619,32 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ImagesResponse**](ImagesResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_images_extract_svg**
+> SvgImages get_images_extract_svg(name, page_number, storage=storage, folder=folder, pass_base64=pass_base64)
+
+Extract SVG images from document page.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **page_number** | **int**| The page number. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+ **pass_base64** | **str**| The password (Base64). | [optional] 
+
+### Return type
+
+[**SvgImages**](SvgImages.md)
 
 ### HTTP request headers
 

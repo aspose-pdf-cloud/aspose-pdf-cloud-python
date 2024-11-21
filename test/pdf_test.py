@@ -4261,6 +4261,18 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.get_image_extract_as_png(name, image_id, **opts)
         self.assertIsInstance(response, str)
 
+    def testGetImageExtractAsSvg(self):
+        name = "Alfa.pdf"
+        self.uploadFile(name)
+        
+        opts = {
+              "folder" : self.temp_folder
+        }
+        page_number = 1
+
+        response = self.pdf_api.get_images_extract_svg(name, page_number, **opts)
+        self.assertLess(0, len(response.list))
+
 
     # Links Tests
 
