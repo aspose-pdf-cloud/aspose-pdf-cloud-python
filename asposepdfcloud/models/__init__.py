@@ -262,6 +262,7 @@ from .stamps_info_response import StampsInfoResponse
 from .strike_out_annotation_response import StrikeOutAnnotationResponse
 from .strike_out_annotations import StrikeOutAnnotations
 from .strike_out_annotations_response import StrikeOutAnnotationsResponse
+from .svg_images import SvgImages
 from .table import Table
 from .table_recognized import TableRecognized
 from .table_recognized_response import TableRecognizedResponse
