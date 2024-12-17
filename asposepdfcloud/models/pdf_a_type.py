@@ -45,6 +45,7 @@ class PdfAType(object):
     PDFA1A = "PDFA1A"
     PDFA1B = "PDFA1B"
     PDFA3A = "PDFA3A"
+    PDFA3B = "PDFA3B"
 
     """
     Attributes:
