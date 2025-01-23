@@ -3,7 +3,7 @@
     Aspose.PDF Cloud API Reference
 
 
-Copyright (c) 2024 Aspose.PDF Cloud
+Copyright (c) 2025 Aspose.PDF Cloud
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -83,7 +83,7 @@ class ApiClient(object):
         self.rest_client = RESTClientObject()
         self.default_headers = {}
         self.default_headers['x-aspose-client'] = 'python sdk'
-        self.default_headers['x-aspose-client-version'] = '24.12.0'
+        self.default_headers['x-aspose-client-version'] = '25.1.0'
         
         self.self_host = self_host
         self.app_key = app_key
