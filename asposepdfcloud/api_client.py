@@ -621,7 +621,7 @@ class ApiClient(object):
         content_disposition = response.getheader("Content-Disposition")
         if content_disposition and content_disposition != "attachment":
             filename = re.\
-                search(r'filename=[\'"]?([^\'"\s]+)[\'"]?', content_disposition).\
+                search(r'filename=[\'"]?([^\'"\s]+)[\'"]?;', content_disposition).\
                 group(1)
             path = os.path.join(os.path.dirname(path), filename)
 
