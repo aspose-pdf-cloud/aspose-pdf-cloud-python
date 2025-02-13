@@ -66,17 +66,6 @@ class PdfPages:
         except Exception as e:
             logging.error(f"download_result(): Failed to download file: {e}")
 
-    def delete_page(self):
-        """ Deletes a specific page from a PDF document. """
-        if not self._ensure_api_initialized():
-            return
-        
-        result = self.pdf_api.delete_page(Config.PDF_DOCUMENT_NAME, Config.PAGE_NUMBER)
-        if result.code == 200:
-            logging.info(f"Page #{Config.PAGE_NUMBER} deleted.")
-        else:
-            logging.error(f"Failed to delete page #{Config.PAGE_NUMBER}.")
-            
     def add_page_text_stamp(self):
         """ Adds a text stamp to a specific page in a PDF document. """
 
