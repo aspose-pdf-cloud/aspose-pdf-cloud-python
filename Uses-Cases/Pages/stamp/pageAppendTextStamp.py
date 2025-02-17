@@ -2,7 +2,7 @@ import shutil
 import json
 import logging
 from pathlib import Path
-from asposepdfcloud import ApiClient, PdfApi, Stamp, AsposeResponse
+from asposepdfcloud import ApiClient, PdfApi, Stamp, AsposeResponse, HorizontalAlignment, StampType
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -70,12 +70,12 @@ class PdfPages:
         """ Adds a text stamp to a specific page in a PDF document. """
 
         page_stamp: Stamp = Stamp(
-            type="Text",
-            background=True,
-            horizontal_alignment="Center",
-            text_alignment="Center",
-            value=Config.STAMP_TEXT,
-            page_index=Config.PAGE_NUMBER,
+            type = StampType.TEXT,
+            background = True,
+            horizontal_alignment = HorizontalAlignment.CENTER,
+            text_alignment = HorizontalAlignment.CENTER,
+            value = Config.STAMP_TEXT,
+            page_index = Config.PAGE_NUMBER,
         )
 
         response: AsposeResponse = self.pdf_api.put_page_add_stamp(Config.PDF_DOCUMENT_NAME, Config.PAGE_NUMBER, page_stamp)
