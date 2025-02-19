@@ -13,8 +13,7 @@ class Config:
     CREDENTIALS_FILE = Path(r"C:\\Projects\\ASPOSE\\Pdf.Cloud\\Credentials\\credentials.json")
     LOCAL_FOLDER = Path(r"C:\Samples")
     PDF_DOCUMENT_NAME = "sample_file_with_attachment.pdf"
-    LOCAL_RESULT_DOCUMENT_NAME = "output_sample.pdf"
-    ATTACHMENT_PATH = "/1"
+    ATTACHMENT_PATH = ""
 
 class PdfAttachments:
     """Class for managing PDF attachments using Aspose PDF Cloud API."""
@@ -62,6 +61,7 @@ class PdfAttachments:
             response : AttachmentsResponse = self.pdf_api.get_document_attachments(Config.PDF_DOCUMENT_NAME)
             if response.code == 200:
                 logging.info(f"get_attachmnets(): attachments '{response.attachments}' for the document '{Config.PDF_DOCUMENT_NAME}'.")
+                Config.ATTACHMENT_PATH = response.attachments.list[0].links[0].href;
             else:
                 logging.error(f"get_attachmnets(): Failed to get attachments to the document. Response code: {response.code}")
         except Exception as e:
