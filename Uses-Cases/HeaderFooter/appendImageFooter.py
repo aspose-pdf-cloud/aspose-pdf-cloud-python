@@ -64,9 +64,9 @@ class pdfHederFooter:
             return
 
         try:
-            file_path = self.pdf_api.download_file(Config.PDF_DOCUMENT_NAME)
+            temp_file = self.pdf_api.download_file(Config.PDF_DOCUMENT_NAME)
             local_path = Config.LOCAL_FOLDER / Config.LOCAL_RESULT_DOCUMENT_NAME
-            shutil.move(file_path, str(local_path))
+            shutil.move(temp_file, str(local_path))
             logging.info(f"download_result(): File successfully downloaded: {local_path}")
         except Exception as e:
             logging.error(f"download_result(): Failed to download file: {e}")
