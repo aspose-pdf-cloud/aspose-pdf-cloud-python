@@ -53,19 +53,6 @@ class PdfPages:
         except Exception as e:
             logging.error(f"upload_document(): Failed to upload file: {e}")
 
-    def download_result(self):
-        """ Download the processed PDF document from the Aspose Cloud server. """
-        if not self._ensure_api_initialized():
-            return
-
-        try:
-            file_path = self.pdf_api.download_file(Config.PDF_DOCUMENT_NAME)
-            local_path = Config.LOCAL_FOLDER / Config.LOCAL_RESULT_DOCUMENT_NAME
-            shutil.move(file_path, str(local_path))
-            logging.info(f"download_result(): File successfully downloaded: {local_path}")
-        except Exception as e:
-            logging.error(f"download_result(): Failed to download file: {e}")
-
     def get_page_info(self):
         """ Get page information of the PDF document. """
         if not self._ensure_api_initialized():
