@@ -11,8 +11,8 @@ class Config:
     PDF_DOCUMENT_NAME = "sample.pdf"
     LOCAL_RESULT_DOCUMENT_NAME = "output_sample.pdf"
     PAGE_NUMBER = 2
-    TEXT_SOURCE_FOR_REPLACE = "Вступ"
-    TEXT_NEW_VALUE = "Введение"
+    TEXT_SOURCE_FOR_REPLACE = "YOUR source text"
+    TEXT_NEW_VALUE = "YOUR new text"
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
