@@ -2,8 +2,7 @@ import shutil
 import json
 import logging
 from pathlib import Path
-from asposepdfcloud import ApiClient, PdfApi
-from asposepdfcloud.models import LinkAnnotation, Color, Link, Rectangle
+from asposepdfcloud import ApiClient, PdfApi, LinkAnnotation, LinkActionType, LinkHighlightingMode, Color, Link, Rectangle
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -63,9 +62,9 @@ class PdfLinks:
             return
 
         try:
-            temp_file = self.pdf_api.download_file(Config.PDF_DOCUMENT_NAME)
+            file_path = self.pdf_api.download_file(Config.PDF_DOCUMENT_NAME)
             local_path = Config.LOCAL_FOLDER / Config.LOCAL_RESULT_DOCUMENT_NAME
-            shutil.move(temp_file, str(local_path))
+            shutil.move(file_path, str(local_path))
             logging.info(f"download_result(): File successfully downloaded: {local_path}")
         except Exception as e:
             logging.error(f"download_result(): Failed to download file: {e}")
@@ -77,9 +76,9 @@ class PdfLinks:
 
         link_annotation = LinkAnnotation(
             links=[Link(href=Config.NEW_LINK_ACTION)],
-            action_type="GoToURIAction",
+            action_type= LinkActionType.GOTOURIACTION,
             action=Config.NEW_LINK_ACTION,
-            highlighting="Invert",
+            highlighting=LinkHighlightingMode.INVERT,
             color=Color(a=255, r=0, g=255, b=0),
             rect=Config.LINK_RECT,
         )
