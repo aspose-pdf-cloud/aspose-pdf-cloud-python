@@ -36,7 +36,7 @@ class PdfTables:
     def upload_document(self):
         """ Upload a PDF document to the Aspose Cloud server. """
         if not self.pdf_api:
-            logging.error("ensure_api_initialized(): PDF API is not initialized. Operation aborted.")
+            logging.error("upload_document(): PDF API is not initialized. Operation aborted.")
         else:
             file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
             try:
@@ -49,7 +49,7 @@ class PdfTables:
     def download_result(self):
         """ Download the processed PDF document from the Aspose Cloud server. """
         if not self.pdf_api:
-            logging.error("ensure_api_initialized(): PDF API is not initialized. Operation aborted.")
+            logging.error("download_result(): PDF API is not initialized. Operation aborted.")
         else:
             try:
                 file_path = self.pdf_api.download_file(Config.PDF_DOCUMENT_NAME)
@@ -69,38 +69,38 @@ class PdfTables:
 
     def get_all_tables(self, prefix):
         if not self.pdf_api:
-            logging.error("ensure_api_initialized(): PDF API is not initialized. Operation aborted.")
+            logging.error("get_all_tables(): PDF API is not initialized. Operation aborted.")
         else:
             resultTabs = self.pdf_api.get_document_tables(Config.PDF_DOCUMENT_NAME)
 
             if resultTabs.code == 200 and resultTabs.tables:
                 if not resultTabs.tables.list or len(resultTabs.tables.list) == 0:
-                    logging.error("Unexpected error : tables is null or empty!!!")
+                    logging.error("get_all_tables(): Unexpected error - tables is null or empty!!!")
                 self._show_tables_info(resultTabs.tables.list, prefix)
                 return resultTabs.tables.list
             else:
-                logging.error("Unexpected error : can't get links!!!")
+                logging.error("get_all_tables(): Unexpected error - can't get links!!!")
     
     def delete_table(self):
         if not self.pdf_api:
-            logging.error("ensure_api_initialized(): PDF API is not initialized. Operation aborted.")
+            logging.error("delete_table(): PDF API is not initialized. Operation aborted.")
         else:
             resultTabs = self.pdf_api.delete_table(Config.PDF_DOCUMENT_NAME, Config.TABLE_ID)
             if resultTabs.code == 200:
-                logging.info(f"Table #{Config.TABLE_ID} deleted!")
+                logging.info(f"delete_table(): Table #{Config.TABLE_ID} deleted!")
             else:
-                logging.error("Unexpected error : can't delete table!")
+                logging.error("delete_table(): Unexpected error - can't delete table!")
 
     def delete_tables(self):
         if not self.pdf_api:
-            logging.error("ensure_api_initialized(): PDF API is not initialized. Operation aborted.")
+            logging.error("delete_tables(): PDF API is not initialized. Operation aborted.")
         else:
             resultTabs = self.pdf_api.delete_page_tables(Config.PDF_DOCUMENT_NAME, Config.PAGE_NUMBER)
 
             if resultTabs.code == 200:
-                logging.info(f"Tables on page #{Config.PAGE_NUMBER} deleted!")
+                logging.info(f"delete_tables(): Tables on page #{Config.PAGE_NUMBER} deleted!")
             else:
-                raise TypeError("Unexpected error : can't get tables!!!")
+                raise TypeError("delete_tables(): Unexpected error - can't get tables!!!")
 
 if __name__ == "__main__":
     pdf_tables = PdfTables()
