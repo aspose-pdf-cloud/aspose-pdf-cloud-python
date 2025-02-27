@@ -35,9 +35,7 @@ class PdfTables:
 
     def upload_document(self):
         """ Upload a PDF document to the Aspose Cloud server. """
-        if not self.pdf_api:
-            logging.error("upload_document(): PDF API is not initialized. Operation aborted.")
-        else:
+        if self.pdf_api:
             file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
             try:
                 self.pdf_api.upload_file(Config.PDF_DOCUMENT_NAME, str(file_path))
@@ -53,9 +51,7 @@ class PdfTables:
             logging.error(f"showBoormarks() error: array of tables is empty!")
 
     def get_all_tables(self):
-        if not self.pdf_api:
-            logging.error("get_all_tables(): PDF API is not initialized. Operation aborted.")
-        else:
+        if self.pdf_api:
             resultTabs = self.pdf_api.get_document_tables(Config.PDF_DOCUMENT_NAME)
 
             if resultTabs.code == 200 and resultTabs.tables:
@@ -67,9 +63,7 @@ class PdfTables:
                 logging.error("get_all_tables(): Unexpected error - can't get links!!!")
     
     def get_table_by_id (self):
-        if not self.pdf_api:
-            logging.error("get_table_by_id(): PDF API is not initialized. Operation aborted.")
-        else:
+        if self.pdf_api:
             resultTabs =self.pdf_api.get_table(Config.PDF_DOCUMENT_NAME, Config.TABLE_ID)
 
             if resultTabs.code == 200 and resultTabs.table:
