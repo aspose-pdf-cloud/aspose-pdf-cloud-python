@@ -145,5 +145,5 @@ class PdfTables:
 if __name__ == "__main__":
     pdf_tables = PdfTables()
     pdf_tables.upload_document()
-    pdf_tables.addTableOnPage()
+    pdf_tables.add_table_on_page()
     pdf_tables.download_result()
