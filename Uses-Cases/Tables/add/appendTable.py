@@ -34,9 +34,7 @@ class PdfTables:
 
     def upload_document(self):
         """ Upload a PDF document to the Aspose Cloud server. """
-        if not self.pdf_api:
-            logging.error("upload_document(): PDF API is not initialized. Operation aborted.")
-        else:
+        if self.pdf_api:
             file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
             try:
                 self.pdf_api.upload_file(Config.PDF_DOCUMENT_NAME, str(file_path))
@@ -46,9 +44,7 @@ class PdfTables:
 
     def download_result(self):
         """ Download the processed PDF document from the Aspose Cloud server. """
-        if not self.pdf_api:
-            logging.error("download_result(): PDF API is not initialized. Operation aborted.")
-        else:
+        if self.pdf_api:
             try:
                 file_path = self.pdf_api.download_file(Config.PDF_DOCUMENT_NAME)
                 local_path = Config.LOCAL_FOLDER / Config.LOCAL_RESULT_DOCUMENT_NAME
@@ -75,21 +71,21 @@ class PdfTables:
             foreground_color = Color( a=255, r = 112, g = 112, b = 112 ),
             font_style=FontStyles.REGULAR
         )
-    
+
         col_widths = ""
         for col_index in range(0,num_of_cols):
             col_widths += " 70"
 
         table_rows = [];
-  
+
         border_table_border = GraphInfo(
             color = Color(a = 255, r = 0, g = 255, b = 0 ),
             line_width = 0.5
         )
-    
+
         for row_index in range(0, num_of_rows):
             row_cells = []
-    
+
             for col_index in range(0, num_of_cols):
                 cell = Cell( default_cell_text_state = common_text_state)
 
@@ -98,7 +94,7 @@ class PdfTables:
                     cell.default_cell_text_state = header_text_state
                 else:
                     cell.background_color = Color(a =255, r =255, g =255, b =255)
-              
+
                 text_rect = TextRect()
                 if row_index == 0:
                     text_rect.text = f"header #{col_index}"
@@ -113,7 +109,7 @@ class PdfTables:
             table_rows.append(row)
 
         table = Table(left=150,top=250, column_widths=col_widths, rows=table_rows)
-        
+
         table.default_cell_border = BorderInfo(
             top = border_table_border,
             right = border_table_border,
@@ -123,12 +119,10 @@ class PdfTables:
         )
 
         return table
-    
+
     def add_table_on_page (self):
         """ Append table to the PDF document page. """
-        if not self.pdf_api:
-            logging.error("add_table_on_page(): PDF API is not initialized. Operation aborted.")
-        else:
+        if self.pdf_api:
             try:
                 new_table = self._init_table()
 
@@ -140,7 +134,6 @@ class PdfTables:
                     logging.error(f"add_table_on_page(): Failed to add new table to the document '{Config.PDF_DOCUMENT_NAME}'.")
             except Exception as e:
                 logging.error(f"add_table_on_page(): Failed to append table: {e}")
-
 
 if __name__ == "__main__":
     pdf_tables = PdfTables()
