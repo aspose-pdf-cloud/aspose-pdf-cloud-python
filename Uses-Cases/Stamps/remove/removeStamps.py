@@ -35,57 +35,49 @@ class PdfStamps:
         except (FileNotFoundError, json.JSONDecodeError, ValueError) as e:
             logging.error(f"init_api(): Failed to load credentials: {e}")
 
-    def _ensure_api_initialized(self):
-        """ Check if the API is initialized before making API calls. """
-        if not self.pdf_api:
-            logging.error("ensure_api_initialized(): PDF API is not initialized. Operation aborted.")
-            return False
-        return True
-    
     def upload_document(self):
         """ Upload a PDF document to the Aspose Cloud server. """
-        if not self._ensure_api_initialized():
-            return
-
-        file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
-        try:
-            self.pdf_api.upload_file(Config.PDF_DOCUMENT_NAME, str(file_path))
-            logging.info(f"upload_document(): File {Config.PDF_DOCUMENT_NAME} uploaded successfully.")
-        except Exception as e:
-            logging.error(f"upload_document(): Failed to upload file: {e}")
+        if self.pdf_api:
+            file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
+            try:
+                self.pdf_api.upload_file(Config.PDF_DOCUMENT_NAME, str(file_path))
+                logging.info(f"upload_document(): File {Config.PDF_DOCUMENT_NAME} uploaded successfully.")
+            except Exception as e:
+                logging.error(f"upload_document(): Failed to upload file: {e}")
 
     def download_result(self):
         """ Download the processed PDF document from the Aspose Cloud server. """
-        if not self._ensure_api_initialized():
-            return
-
-        try:
-            temp_file = self.pdf_api.download_file(Config.PDF_DOCUMENT_NAME)
-            local_path = Config.LOCAL_FOLDER / Config.LOCAL_RESULT_DOCUMENT_NAME
-            shutil.move(temp_file, str(local_path))
-            logging.info(f"download_result(): File successfully downloaded: {local_path}")
-        except Exception as e:
-            logging.error(f"download_result(): Failed to download file: {e}")
+        if self.pdf_api:
+            try:
+                file_path = self.pdf_api.download_file(Config.PDF_DOCUMENT_NAME)
+                local_path = Config.LOCAL_FOLDER / Config.LOCAL_RESULT_DOCUMENT_NAME
+                shutil.move(file_path, str(local_path))
+                logging.info(f"download_result(): File successfully downloaded: {local_path}")
+            except Exception as e:
+                logging.error(f"download_result(): Failed to download file: {e}")
 
     def delete_page_stamps(self):
         """ Remove stamp in a specific page of the PDF document. """
-
-        response: AsposeResponse = self.pdf_api.delete_page_stamps(Config.PDF_DOCUMENT_NAME, Config.PAGE_NUMBER)
-        
-        if response.code == 200 :
-            logging.info(f"Stamps on page #{Config.PAGE_NUMBER} was deleted for the document '{Config.PDF_DOCUMENT_NAME}'.")
-        else:
-            logging.error(f"Failed to remove stamps on page #{Config.PAGE_NUMBER} for the document '{Config.PDF_DOCUMENT_NAME}'.")
+        if self.pdf_api:
+            response: AsposeResponse = self.pdf_api.delete_page_stamps(Config.PDF_DOCUMENT_NAME, Config.PAGE_NUMBER)
+            
+            if response.code == 200 :
+                logging.info(f"Stamps on page #{Config.PAGE_NUMBER} was deleted for the document '{Config.PDF_DOCUMENT_NAME}'.")
+            else:
+                logging.error(f"Failed to remove stamps on page #{Config.PAGE_NUMBER} for the document '{Config.PDF_DOCUMENT_NAME}'.")
 
     def delete_stamp_by_id(self):
         """ Remove stamp by Id in the PDF document. """
-
-        response: AsposeResponse = self.pdf_api.delete_stamp(Config.PDF_DOCUMENT_NAME, Config.STAMP_ID)
-        
-        if response.code == 200 :
-            logging.info(f"Stamps with Id '{Config.STAMP_ID}' was deleted for the document '{Config.PDF_DOCUMENT_NAME}'.")
-        else:
-            logging.error(f"Failed to remove stamp with Id '{Config.STAMP_ID}' for the document '{Config.PDF_DOCUMENT_NAME}'.")
+        if self.pdf_api:
+            try:
+                response: AsposeResponse = self.pdf_api.delete_stamp(Config.PDF_DOCUMENT_NAME, Config.STAMP_ID)
+                
+                if response.code == 200 :
+                    logging.info(f"Stamps with Id '{Config.STAMP_ID}' was deleted for the document '{Config.PDF_DOCUMENT_NAME}'.")
+                else:
+                    logging.error(f"Failed to remove stamp with Id '{Config.STAMP_ID}' for the document '{Config.PDF_DOCUMENT_NAME}'.")
+            except Exception as e:
+                logging.error(f"delete_stamp_by_id(): Failed to download file: {e}")
 
 if __name__ == "__main__":
     pdf_stamps = PdfStamps()
