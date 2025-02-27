@@ -36,7 +36,7 @@ class PdfTables:
     def upload_document(self):
         """ Upload a PDF document to the Aspose Cloud server. """
         if not self.pdf_api:
-            logging.error("ensure_api_initialized(): PDF API is not initialized. Operation aborted.")
+            logging.error("upload_document(): PDF API is not initialized. Operation aborted.")
         else:
             file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
             try:
@@ -52,34 +52,34 @@ class PdfTables:
         else:
             logging.error(f"showBoormarks() error: array of tables is empty!")
 
-    def getAllTables(self):
+    def get_all_tables(self):
         if not self.pdf_api:
-            logging.error("ensure_api_initialized(): PDF API is not initialized. Operation aborted.")
+            logging.error("get_all_tables(): PDF API is not initialized. Operation aborted.")
         else:
             resultTabs = self.pdf_api.get_document_tables(Config.PDF_DOCUMENT_NAME)
 
             if resultTabs.code == 200 and resultTabs.tables:
                 if not resultTabs.tables.list or len(resultTabs.tables.list) == 0:
-                    raise TypeError("Unexpected error : tables is null or empty!!!")
+                    logging.error("get_all_tables(): Unexpected error - tables is null or empty!!!")
                 self._show_tables_info(resultTabs.tables.list, "All tables")
                 return resultTabs.tables.list
             else:
-                logging.error("Unexpected error : can't get links!!!")
+                logging.error("get_all_tables(): Unexpected error - can't get links!!!")
     
-    def getTableById (self):
+    def get_table_by_id (self):
         if not self.pdf_api:
-            logging.error("ensure_api_initialized(): PDF API is not initialized. Operation aborted.")
+            logging.error("get_table_by_id(): PDF API is not initialized. Operation aborted.")
         else:
             resultTabs =self.pdf_api.get_table(Config.PDF_DOCUMENT_NAME, Config.TABLE_ID)
 
             if resultTabs.code == 200 and resultTabs.table:
-                self._show_tables_info( [ resultTabs.table ], "Table by Id");
+                self._show_tables_info( [ resultTabs.table ], "Table by Id")
                 return resultTabs.table
             else:
-                logging.error("Unexpected error : can't get links!!!")
+                logging.error("get_table_by_id(): Unexpected error - can't get links!!!")
 
 if __name__ == "__main__":
     pdf_tables = PdfTables()
     pdf_tables.upload_document()
-    pdf_tables.getAllTables()
-    pdf_tables.getTableById()
+    pdf_tables.get_all_tables()
+    pdf_tables.get_table_by_id()
