@@ -35,7 +35,7 @@ class PdfTables:
     def upload_document(self):
         """ Upload a PDF document to the Aspose Cloud server. """
         if not self.pdf_api:
-            logging.error("ensure_api_initialized(): PDF API is not initialized. Operation aborted.")
+            logging.error("upload_document(): PDF API is not initialized. Operation aborted.")
         else:
             file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
             try:
@@ -47,7 +47,7 @@ class PdfTables:
     def download_result(self):
         """ Download the processed PDF document from the Aspose Cloud server. """
         if not self.pdf_api:
-            logging.error("ensure_api_initialized(): PDF API is not initialized. Operation aborted.")
+            logging.error("download_result(): PDF API is not initialized. Operation aborted.")
         else:
             try:
                 file_path = self.pdf_api.download_file(Config.PDF_DOCUMENT_NAME)
@@ -57,7 +57,7 @@ class PdfTables:
             except Exception as e:
                 logging.error(f"download_result(): Failed to download file: {e}")
 
-    def _initTable (self):
+    def _init_table (self):
         """ Initialize new table """
         num_of_cols = 5
         num_of_rows = 5
@@ -124,22 +124,22 @@ class PdfTables:
 
         return table
     
-    def addTableOnPage (self):
+    def add_table_on_page (self):
         """ Append table to the PDF document page. """
         if not self.pdf_api:
-            logging.error("ensure_api_initialized(): PDF API is not initialized. Operation aborted.")
+            logging.error("add_table_on_page(): PDF API is not initialized. Operation aborted.")
         else:
             try:
-                new_table = self._initTable()
+                new_table = self._init_table()
 
                 resultTabs = self.pdf_api.post_page_tables( Config.PDF_DOCUMENT_NAME, Config.PAGE_NUMBER, [ new_table ])
 
                 if resultTabs.code == 200:
-                    logging.info(f"Table was appended to the document '{Config.PDF_DOCUMENT_NAME}' on page #'{Config.PAGE_NUMBER}'.")
+                    logging.info(f"add_table_on_page(): Table was appended to the document '{Config.PDF_DOCUMENT_NAME}' on page #'{Config.PAGE_NUMBER}'.")
                 else:
-                    logging.error(f"Failed to add new table to the document '{Config.PDF_DOCUMENT_NAME}'.")
+                    logging.error(f"add_table_on_page(): Failed to add new table to the document '{Config.PDF_DOCUMENT_NAME}'.")
             except Exception as e:
-                logging.error(f"addTableOnPage(): Failed to append table: {e}")
+                logging.error(f"add_table_on_page(): Failed to append table: {e}")
 
 
 if __name__ == "__main__":
