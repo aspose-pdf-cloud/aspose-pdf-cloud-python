@@ -34,9 +34,7 @@ class PdfTables:
 
     def upload_document(self):
         """ Upload a PDF document to the Aspose Cloud server. """
-        if not self.pdf_api:
-            logging.error("upload_document(): PDF API is not initialized. Operation aborted.")
-        else:
+        if self.pdf_api:
             file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
             try:
                 self.pdf_api.upload_file(Config.PDF_DOCUMENT_NAME, str(file_path))
@@ -46,9 +44,7 @@ class PdfTables:
 
     def download_result(self):
         """ Download the processed PDF document from the Aspose Cloud server. """
-        if not self.pdf_api:
-            logging.error("download_result(): PDF API is not initialized. Operation aborted.")
-        else:
+        if self.pdf_api:
             try:
                 file_path = self.pdf_api.download_file(Config.PDF_DOCUMENT_NAME)
                 local_path = Config.LOCAL_FOLDER / Config.LOCAL_RESULT_DOCUMENT_NAME
@@ -126,9 +122,7 @@ class PdfTables:
     
     def replace_table (self):
         """ Replace table in the PDF document page. """
-        if not self.pdf_api:
-            logging.error("replace_table(): PDF API is not initialized. Operation aborted.")
-        else:
+        if self.pdf_api:
             try:
                 new_table = self._init_table()
 
