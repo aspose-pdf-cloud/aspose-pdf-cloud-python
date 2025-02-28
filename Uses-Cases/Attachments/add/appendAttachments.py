@@ -36,24 +36,15 @@ class PdfAttachments:
         except (FileNotFoundError, json.JSONDecodeError, ValueError) as e:
             logging.error(f"init_api(): Failed to load credentials: {e}")
 
-    def _ensure_api_initialized(self):
-        """Check if the API is initialized before making API calls."""
-        if not self.pdf_api:
-            logging.error("ensure_api_initialized(): PDF API is not initialized. Operation aborted.")
-            return False
-        return True
-
     def upload_file(self, fileName: str):
         """ Upload a local fileName to the Aspose Cloud server. """
-        if not self._ensure_api_initialized():
-            return
-
-        file_path = Config.LOCAL_FOLDER / fileName
-        try:
-            self.pdf_api.upload_file(fileName, str(file_path))
-            logging.info(f"upload_file(): File '{fileName}' uploaded successfully.")
-        except Exception as e:
-            logging.error(f"upload_document(): Failed to upload file: {e}")
+        if self.pdf_api:
+            file_path = Config.LOCAL_FOLDER / fileName
+            try:
+                self.pdf_api.upload_file(fileName, str(file_path))
+                logging.info(f"upload_file(): File '{fileName}' uploaded successfully.")
+            except Exception as e:
+                logging.error(f"upload_document(): Failed to upload file: {e}")
 
     def upload_document(self):
         """ Upload a PDF document to the Aspose Cloud server. """
@@ -61,37 +52,33 @@ class PdfAttachments:
 
     def download_result(self):
         """ Download the processed PDF document from the Aspose Cloud server. """
-        if not self._ensure_api_initialized():
-            return
-
-        try:
-            file_path = self.pdf_api.download_file(Config.PDF_DOCUMENT_NAME)
-            local_path = Config.LOCAL_FOLDER / Config.LOCAL_RESULT_DOCUMENT_NAME
-            shutil.move(file_path, str(local_path))
-            logging.info(f"download_result(): File successfully downloaded: {local_path}")
-        except Exception as e:
-            logging.error(f"download_result(): Failed to download file: {e}")
+        if self.pdf_api:
+            try:
+                temp_file = self.pdf_api.download_file(Config.PDF_DOCUMENT_NAME)
+                local_path = Config.LOCAL_FOLDER / Config.LOCAL_RESULT_DOCUMENT_NAME
+                shutil.move(temp_file, str(local_path))
+                logging.info(f"download_result(): File successfully downloaded: {local_path}")
+            except Exception as e:
+                logging.error(f"download_result(): Failed to download file: {e}")
 
     def append_attachmnet(self):
         """Append a new attachment to the PDF document."""
-        if not self._ensure_api_initialized():
-            return
+        if self.pdf_api:
+            new_attachment = AttachmentInfo(
+                path = Config.NEW_ATTACHMENT_FILE,
+                description = 'This is a sample attachment',
+                mime_type = Config.NEW_ATTACHMENT_MIME,
+                name = Config.NEW_ATTACHMENT_FILE
+            )
 
-        new_attachment = AttachmentInfo(
-            path = Config.NEW_ATTACHMENT_FILE,
-            description = 'This is a sample attachment',
-            mime_type = Config.NEW_ATTACHMENT_MIME,
-            name = Config.NEW_ATTACHMENT_FILE
-        )
-
-        try:
-            response = self.pdf_api.post_add_document_attachment(Config.PDF_DOCUMENT_NAME, new_attachment)
-            if response.code == 200:
-                logging.info(f"append_attachment(): attachment '{Config.NEW_ATTACHMENT_FILE}' added to the document '{Config.PDF_DOCUMENT_NAME}'.")
-            else:
-                logging.error(f"append_attachment(): Failed to add attachment to the document. Response code: {response.code}")
-        except Exception as e:
-            logging.error(f"append_attachment(): Error while adding attachment: {e}")
+            try:
+                response = self.pdf_api.post_add_document_attachment(Config.PDF_DOCUMENT_NAME, new_attachment)
+                if response.code == 200:
+                    logging.info(f"append_attachment(): attachment '{Config.NEW_ATTACHMENT_FILE}' added to the document '{Config.PDF_DOCUMENT_NAME}'.")
+                else:
+                    logging.error(f"append_attachment(): Failed to add attachment to the document. Response code: {response.code}")
+            except Exception as e:
+                logging.error(f"append_attachment(): Error while adding attachment: {e}")
 
 
 if __name__ == "__main__":
