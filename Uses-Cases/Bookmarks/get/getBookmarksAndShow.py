@@ -2,7 +2,7 @@ import shutil
 import json
 import logging
 from pathlib import Path
-from asposepdfcloud import ApiClient, PdfApi, Bookmarks, BookmarksResponse
+from asposepdfcloud import ApiClient, PdfApi, BookmarksResponse
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -33,24 +33,15 @@ class PdfBookmarks:
         except (FileNotFoundError, json.JSONDecodeError, ValueError) as e:
             logging.error(f"Failed to load credentials: {e}")
 
-    def _ensure_api_initialized(self):
-        """Check if the API is initialized before making API calls."""
-        if not self.pdf_api:
-            logging.error("PDF API is not initialized. Operation aborted.")
-            return False
-        return True
-
     def upload_document(self):
         """Upload a PDF document to the Aspose Cloud server."""
-        if not self._ensure_api_initialized():
-            return
-
-        file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
-        try:
-            self.pdf_api.upload_file(Config.PDF_DOCUMENT_NAME, str(file_path))
-            logging.info(f"File {Config.PDF_DOCUMENT_NAME} uploaded successfully.")
-        except Exception as e:
-            logging.error(f"Failed to upload file: {e}")
+        if self.pdf_api:
+            file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
+            try:
+                self.pdf_api.upload_file(Config.PDF_DOCUMENT_NAME, str(file_path))
+                logging.info(f"File {Config.PDF_DOCUMENT_NAME} uploaded successfully.")
+            except Exception as e:
+                logging.error(f"Failed to upload file: {e}")
 
     def show_bookmarks_array(self, bookmarks, prefix):
         for item in bookmarks.list:
@@ -60,17 +51,15 @@ class PdfBookmarks:
 
     def get_all_bookmarks(self):
         """Get all bookmarks for a specific PDF document."""    
-        if not self._ensure_api_initialized():
-            return
-
-        try:
-            response : BookmarksResponse = self.pdf_api.get_document_bookmarks( Config.PDF_DOCUMENT_NAME)
-            if response.code == 200:
-                self.show_bookmarks_array(response.bookmarks, "All")
-            else:
-                logging.error(f"Failed to get bookmarks for the document. Response code: {response.code}")
-        except Exception as e:
-            logging.error(f"Error while retrieving bookmarks array: {e}")
+        if self.pdf_api:
+            try:
+                response : BookmarksResponse = self.pdf_api.get_document_bookmarks( Config.PDF_DOCUMENT_NAME)
+                if response.code == 200:
+                    self.show_bookmarks_array(response.bookmarks, "All")
+                else:
+                    logging.error(f"Failed to get bookmarks for the document. Response code: {response.code}")
+            except Exception as e:
+                logging.error(f"Error while retrieving bookmarks array: {e}")
 
 if __name__ == "__main__":
     pdf_bookmarks = PdfBookmarks()
