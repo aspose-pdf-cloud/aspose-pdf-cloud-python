@@ -34,50 +34,36 @@ class PdfPages:
         except (FileNotFoundError, json.JSONDecodeError, ValueError) as e:
             logging.error(f"init_api(): Failed to load credentials: {e}")
 
-    def _ensure_api_initialized(self):
-        """ Check if the API is initialized before making API calls. """
-        if not self.pdf_api:
-            logging.error("ensure_api_initialized(): PDF API is not initialized. Operation aborted.")
-            return False
-        return True
-
     def upload_document(self):
         """ Upload a PDF document to the Aspose Cloud server. """
-        if not self._ensure_api_initialized():
-            return
-
-        file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
-        try:
-            self.pdf_api.upload_file(Config.PDF_DOCUMENT_NAME, str(file_path))
-            logging.info(f"upload_document(): File {Config.PDF_DOCUMENT_NAME} uploaded successfully.")
-        except Exception as e:
-            logging.error(f"upload_document(): Failed to upload file: {e}")
+        if self.pdf_api:
+            file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
+            try:
+                self.pdf_api.upload_file(Config.PDF_DOCUMENT_NAME, str(file_path))
+                logging.info(f"upload_document(): File {Config.PDF_DOCUMENT_NAME} uploaded successfully.")
+            except Exception as e:
+                logging.error(f"upload_document(): Failed to upload file: {e}")
 
     def get_page_info(self):
         """ Get page information of the PDF document. """
-        if not self._ensure_api_initialized():
-            return
+        if self.pdf_api:
+            result_pages: DocumentPagesResponse = self.pdf_api.get_page(Config.PDF_DOCUMENT_NAME, Config.PAGE_NUMBER)
 
-        result_pages: DocumentPagesResponse = self.pdf_api.get_page(Config.PDF_DOCUMENT_NAME, Config.PAGE_NUMBER)
-
-        if result_pages.code == 200:
-            logging.info(f"Page #{Config.PAGE_NUMBER} information: {result_pages.page}")
-        else:
-            logging.error(f"Failed to get the page #{Config.PAGE_NUMBER}.")
+            if result_pages.code == 200:
+                logging.info(f"Page #{Config.PAGE_NUMBER} information: {result_pages.page}")
+            else:
+                logging.error(f"Failed to get the page #{Config.PAGE_NUMBER}.")
 
     def get_page_as_png(self):
         """ Get page information of the PDF document. """
-        if not self._ensure_api_initialized():
-            return
-
-        try:
-            result_pages = self.pdf_api.get_page_convert_to_png(Config.PDF_DOCUMENT_NAME, Config.PAGE_NUMBER)
-            local_path = Config.LOCAL_FOLDER / Config.LOCAL_RESULT_DOCUMENT_NAME
-            shutil.move(result_pages, str(local_path))
-            logging.info(f"download_result(): File successfully downloaded: {local_path}")
-        except Exception as e:
-            logging.error(f"download_result(): Failed to download file: {e}")
-
+        if self.pdf_api:
+            try:
+                result_pages = self.pdf_api.get_page_convert_to_png(Config.PDF_DOCUMENT_NAME, Config.PAGE_NUMBER)
+                local_path = Config.LOCAL_FOLDER / Config.LOCAL_RESULT_DOCUMENT_NAME
+                shutil.move(result_pages, str(local_path))
+                logging.info(f"download_result(): File successfully downloaded: {local_path}")
+            except Exception as e:
+                logging.error(f"download_result(): Failed to download file: {e}")
 
 if __name__ == "__main__":
     pdf_pages = PdfPages()
