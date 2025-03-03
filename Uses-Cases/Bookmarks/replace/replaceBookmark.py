@@ -10,7 +10,7 @@ class Config:
     LOCAL_FOLDER = Path(r"C:\\Samples")
     PDF_DOCUMENT_NAME = "sample.pdf"
     LOCAL_RESULT_DOCUMENT_NAME = "output_sample.pdf"
-    NEW_BOOKMARK_TITLE = "• Підвищення продуктивності: Автоматизація дозволяє виконувати багато завдань швидше та ефективніше, ніж це може зробити людина. Це особливо важливо в промислових галузях, де швидкість та точність відіграють вирішальну роль." #"• Productivity improvement"
+    NEW_BOOKMARK_TITLE = "• Increased performance." #"• Productivity improvement"
     BOOKMARK_PATH = "/5"
     NEW_BOOKMARK_PAGE_NUMBER = 3
 
