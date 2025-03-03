@@ -34,38 +34,27 @@ class PdfBookmarks:
         except (FileNotFoundError, json.JSONDecodeError, ValueError) as e:
             logging.error(f"Failed to load credentials: {e}")
 
-    def _ensure_api_initialized(self):
-        """Check if the API is initialized before making API calls."""
-        if not self.pdf_api:
-            logging.error("PDF API is not initialized. Operation aborted.")
-            return False
-        return True
-
     def upload_document(self):
         """Upload a PDF document to the Aspose Cloud server."""
-        if not self._ensure_api_initialized():
-            return
-
-        file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
-        try:
-            self.pdf_api.upload_file(Config.PDF_DOCUMENT_NAME, str(file_path))
-            logging.info(f"File {Config.PDF_DOCUMENT_NAME} uploaded successfully.")
-        except Exception as e:
-            logging.error(f"Failed to upload file: {e}")
+        if self.pdf_api:
+            file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
+            try:
+                self.pdf_api.upload_file(Config.PDF_DOCUMENT_NAME, str(file_path))
+                logging.info(f"File {Config.PDF_DOCUMENT_NAME} uploaded successfully.")
+            except Exception as e:
+                logging.error(f"Failed to upload file: {e}")
 
     def get_bookmark(self):
         """Get bookmark for a specific PDF document using bookmark path."""    
-        if not self._ensure_api_initialized():
-            return
-
-        try:
-            response : BookmarkResponse = self.pdf_api.get_bookmark( Config.PDF_DOCUMENT_NAME, Config.BOOKMARK_PATH)
-            if response.code == 200:
-                logging.info(f"Found bookmark => level: '{response.bookmark.level}' - action: '{response.bookmark.action}' - title: '{response.bookmark.title}'")
-            else:
-                logging.error(f"Failed to find bookmark for the document. Response code: {response.code}")
-        except Exception as e:
-            logging.error(f"Error while find bookmark: {e}")
+        if self.pdf_api:
+            try:
+                response : BookmarkResponse = self.pdf_api.get_bookmark( Config.PDF_DOCUMENT_NAME, Config.BOOKMARK_PATH)
+                if response.code == 200:
+                    logging.info(f"Found bookmark => level: '{response.bookmark.level}' - action: '{response.bookmark.action}' - title: '{response.bookmark.title}'")
+                else:
+                    logging.error(f"Failed to find bookmark for the document. Response code: {response.code}")
+            except Exception as e:
+                logging.error(f"Error while find bookmark: {e}")
 
 if __name__ == "__main__":
     pdf_bookmarks = PdfBookmarks()
