@@ -1,4 +1,4 @@
-import shutil
+    import shutil
 import json
 import logging
 from pathlib import Path
@@ -32,36 +32,25 @@ class PdfPages:
         except (FileNotFoundError, json.JSONDecodeError, ValueError) as e:
             logging.error(f"init_api(): Failed to load credentials: {e}")
 
-    def _ensure_api_initialized(self):
-        """ Check if the API is initialized before making API calls. """
-        if not self.pdf_api:
-            logging.error("ensure_api_initialized(): PDF API is not initialized. Operation aborted.")
-            return False
-        return True
-
     def upload_document(self):
         """ Upload a PDF document to the Aspose Cloud server. """
-        if not self._ensure_api_initialized():
-            return
-
-        file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
-        try:
-            self.pdf_api.upload_file(Config.PDF_DOCUMENT_NAME, str(file_path))
-            logging.info(f"upload_document(): File {Config.PDF_DOCUMENT_NAME} uploaded successfully.")
-        except Exception as e:
-            logging.error(f"upload_document(): Failed to upload file: {e}")
+        if self.pdf_api:
+            file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
+            try:
+                self.pdf_api.upload_file(Config.PDF_DOCUMENT_NAME, str(file_path))
+                logging.info(f"upload_document(): File {Config.PDF_DOCUMENT_NAME} uploaded successfully.")
+            except Exception as e:
+                logging.error(f"upload_document(): Failed to upload file: {e}")
 
     def get_document_words_count_on_pages(self):
         """ Retrieves the word count for each page in a PDF document. """
-        if not self._ensure_api_initialized():
-            return
-        
-        response: WordCountResponse = self.pdf_api.get_words_per_page(Config.PDF_DOCUMENT_NAME)
-        
-        if response.code == 200:
-            logging.info(response.words_per_page.list)
-        else:
-            logging.error("Failed to retrieve word count.")
+        if self.pdf_api:
+            response: WordCountResponse = self.pdf_api.get_words_per_page(Config.PDF_DOCUMENT_NAME)
+            
+            if response.code == 200:
+                logging.info(response.words_per_page.list)
+            else:
+                logging.error("Failed to retrieve word count.")
         return
     
 if __name__ == "__main__":
