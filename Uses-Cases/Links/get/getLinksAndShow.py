@@ -37,24 +37,15 @@ class PdfLinks:
         except (FileNotFoundError, json.JSONDecodeError, ValueError) as e:
             logging.error(f"Failed to load credentials: {e}")
 
-    def _ensure_api_initialized(self):
-        """Check if the API is initialized before making API calls."""
-        if not self.pdf_api:
-            logging.error("PDF API is not initialized. Operation aborted.")
-            return False
-        return True
-
     def upload_document(self):
         """Upload a PDF document to the Aspose Cloud server."""
-        if not self._ensure_api_initialized():
-            return
-
-        file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
-        try:
-            self.pdf_api.upload_file(Config.PDF_DOCUMENT_NAME, str(file_path))
-            logging.info(f"File {Config.PDF_DOCUMENT_NAME} uploaded successfully.")
-        except Exception as e:
-            logging.error(f"Failed to upload file: {e}")
+        if self.pdf_api:
+            file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
+            try:
+                self.pdf_api.upload_file(Config.PDF_DOCUMENT_NAME, str(file_path))
+                logging.info(f"File {Config.PDF_DOCUMENT_NAME} uploaded successfully.")
+            except Exception as e:
+                logging.error(f"Failed to upload file: {e}")
 
     def show_links_array(self, links, prefix):
         for item in links:
@@ -62,30 +53,25 @@ class PdfLinks:
 
     def get_all_links(self):
         """Get all hyperlink annotations for a specific PDF document."""
-        if not self._ensure_api_initialized():
-            return
-
-        try:
-            response = self.pdf_api.get_page_link_annotations( Config.PDF_DOCUMENT_NAME, Config.PAGE_NUMBER)
-            if response.code == 200:
-                self.show_links_array(response.links.list, "All: ")
-            else:
-                logging.error(f"Failed to add link to the page. Response code: {response.code}")
-        except Exception as e:
-            logging.error(f"Error while adding link: {e}")
+        if self.pdf_api:
+            try:
+                response = self.pdf_api.get_page_link_annotations( Config.PDF_DOCUMENT_NAME, Config.PAGE_NUMBER)
+                if response.code == 200:
+                    self.show_links_array(response.links.list, "All: ")
+                else:
+                    logging.error(f"Failed to add link to the page. Response code: {response.code}")
+            except Exception as e:
+                logging.error(f"Error while adding link: {e}")
 
     def get_link_by_id(self, link_id: str):
         """Get hyperlink annotation using the specific Id in PDF document."""
-        if not self._ensure_api_initialized():
-            return
-
-        try:
-            result_link = self.pdf_api.get_link_annotation(Config.PDF_DOCUMENT_NAME, link_id)
-            if result_link.code == 200:
-                self.show_links_array([result_link.link], "Find: ")
-        except Exception as e:
-            logging.error(f"Error while adding link: {e}")
-
+        if self.pdf_api:
+            try:
+                result_link = self.pdf_api.get_link_annotation(Config.PDF_DOCUMENT_NAME, link_id)
+                if result_link.code == 200:
+                    self.show_links_array([result_link.link], "Find: ")
+            except Exception as e:
+                logging.error(f"Error while adding link: {e}")
 
 if __name__ == "__main__":
     pdf_links = PdfLinks()
