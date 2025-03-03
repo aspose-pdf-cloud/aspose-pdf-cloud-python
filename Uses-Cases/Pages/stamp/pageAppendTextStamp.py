@@ -34,57 +34,45 @@ class PdfPages:
         except (FileNotFoundError, json.JSONDecodeError, ValueError) as e:
             logging.error(f"init_api(): Failed to load credentials: {e}")
 
-    def _ensure_api_initialized(self):
-        """ Check if the API is initialized before making API calls. """
-        if not self.pdf_api:
-            logging.error("ensure_api_initialized(): PDF API is not initialized. Operation aborted.")
-            return False
-        return True
-
     def upload_document(self):
         """ Upload a PDF document to the Aspose Cloud server. """
-        if not self._ensure_api_initialized():
-            return
-
-        file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
-        try:
-            self.pdf_api.upload_file(Config.PDF_DOCUMENT_NAME, str(file_path))
-            logging.info(f"upload_document(): File {Config.PDF_DOCUMENT_NAME} uploaded successfully.")
-        except Exception as e:
-            logging.error(f"upload_document(): Failed to upload file: {e}")
+        if self.pdf_api:
+            file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
+            try:
+                self.pdf_api.upload_file(Config.PDF_DOCUMENT_NAME, str(file_path))
+                logging.info(f"upload_document(): File {Config.PDF_DOCUMENT_NAME} uploaded successfully.")
+            except Exception as e:
+                logging.error(f"upload_document(): Failed to upload file: {e}")
 
     def download_result(self):
         """ Download the processed PDF document from the Aspose Cloud server. """
-        if not self._ensure_api_initialized():
-            return
-
-        try:
-            temp_file = self.pdf_api.download_file(Config.PDF_DOCUMENT_NAME)
-            local_path = Config.LOCAL_FOLDER / Config.LOCAL_RESULT_DOCUMENT_NAME
-            shutil.move(temp_file, str(local_path))
-            logging.info(f"download_result(): File successfully downloaded: {local_path}")
-        except Exception as e:
-            logging.error(f"download_result(): Failed to download file: {e}")
+        if self.pdf_api:
+            try:
+                temp_file = self.pdf_api.download_file(Config.PDF_DOCUMENT_NAME)
+                local_path = Config.LOCAL_FOLDER / Config.LOCAL_RESULT_DOCUMENT_NAME
+                shutil.move(temp_file, str(local_path))
+                logging.info(f"download_result(): File successfully downloaded: {local_path}")
+            except Exception as e:
+                logging.error(f"download_result(): Failed to download file: {e}")
 
     def add_page_text_stamp(self):
         """ Adds a text stamp to a specific page in a PDF document. """
+        if self.pdf_api:
+            page_stamp: Stamp = Stamp(
+                type = StampType.TEXT,
+                background = True,
+                horizontal_alignment = HorizontalAlignment.CENTER,
+                text_alignment = HorizontalAlignment.CENTER,
+                value = Config.STAMP_TEXT,
+                page_index = Config.PAGE_NUMBER,
+            )
 
-        page_stamp: Stamp = Stamp(
-            type = StampType.TEXT,
-            background = True,
-            horizontal_alignment = HorizontalAlignment.CENTER,
-            text_alignment = HorizontalAlignment.CENTER,
-            value = Config.STAMP_TEXT,
-            page_index = Config.PAGE_NUMBER,
-        )
+            response: AsposeResponse = self.pdf_api.put_page_add_stamp(Config.PDF_DOCUMENT_NAME, Config.PAGE_NUMBER, page_stamp)
 
-        response: AsposeResponse = self.pdf_api.put_page_add_stamp(Config.PDF_DOCUMENT_NAME, Config.PAGE_NUMBER, page_stamp)
-
-        if response.code == 200:
-            logging.info(f"Text stamp '{Config.STAMP_TEXT}' added to page #{Config.PAGE_NUMBER}.")
-        else:
-            logging.error(f"Failed to add text stamp '{Config.STAMP_TEXT}' to page #{Config.PAGE_NUMBER}.")
-        return
+            if response.code == 200:
+                logging.info(f"Text stamp '{Config.STAMP_TEXT}' added to page #{Config.PAGE_NUMBER}.")
+            else:
+                logging.error(f"Failed to add text stamp '{Config.STAMP_TEXT}' to page #{Config.PAGE_NUMBER}.")
 
 if __name__ == "__main__":
     pdf_pages = PdfPages()
