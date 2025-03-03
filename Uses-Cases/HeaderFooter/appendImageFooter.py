@@ -35,24 +35,15 @@ class pdfHederFooter:
         except (FileNotFoundError, json.JSONDecodeError, ValueError) as e:
             logging.error(f"init_api(): Failed to load credentials: {e}")
 
-    def _ensure_api_initialized(self):
-        """Check if the API is initialized before making API calls."""
-        if not self.pdf_api:
-            logging.error("ensure_api_initialized(): PDF API is not initialized. Operation aborted.")
-            return False
-        return True
-
     def upload_file(self, fileName: str):
         """ Upload a local fileName to the Aspose Cloud server. """
-        if not self._ensure_api_initialized():
-            return
-
-        file_path = Config.LOCAL_FOLDER / fileName
-        try:
-            self.pdf_api.upload_file(fileName, str(file_path))
-            logging.info(f"upload_file(): File '{fileName}' uploaded successfully.")
-        except Exception as e:
-            logging.error(f"upload_document(): Failed to upload file: {e}")
+        if self.pdf_api:
+            file_path = Config.LOCAL_FOLDER / fileName
+            try:
+                self.pdf_api.upload_file(fileName, str(file_path))
+                logging.info(f"upload_file(): File '{fileName}' uploaded successfully.")
+            except Exception as e:
+                logging.error(f"upload_document(): Failed to upload file: {e}")
 
     def upload_document(self):
         """ Upload a PDF document to the Aspose Cloud server. """
@@ -60,64 +51,58 @@ class pdfHederFooter:
 
     def download_result(self):
         """ Download the processed PDF document from the Aspose Cloud server. """
-        if not self._ensure_api_initialized():
-            return
-
-        try:
-            temp_file = self.pdf_api.download_file(Config.PDF_DOCUMENT_NAME)
-            local_path = Config.LOCAL_FOLDER / Config.LOCAL_RESULT_DOCUMENT_NAME
-            shutil.move(temp_file, str(local_path))
-            logging.info(f"download_result(): File successfully downloaded: {local_path}")
-        except Exception as e:
-            logging.error(f"download_result(): Failed to download file: {e}")
+        if self.pdf_api:
+            try:
+                temp_file = self.pdf_api.download_file(Config.PDF_DOCUMENT_NAME)
+                local_path = Config.LOCAL_FOLDER / Config.LOCAL_RESULT_DOCUMENT_NAME
+                shutil.move(temp_file, str(local_path))
+                logging.info(f"download_result(): File successfully downloaded: {local_path}")
+            except Exception as e:
+                logging.error(f"download_result(): Failed to download file: {e}")
 
     def append_image_footer(self):
         """Append a new image footer to the PDF document."""
-        if not self._ensure_api_initialized():
-            return
-
-        new_footer = ImageFooter(
-            background = True,
-            horizontal_alignment = HorizontalAlignment.CENTER,
-            file_name = Config.IMAGE_FOOTER_FILE,
-            width = 24,
-            height = 24
-        )
-
-        try:
-            response = self.pdf_api.post_document_image_footer(
-                Config.PDF_DOCUMENT_NAME, new_footer
+        if self.pdf_api:
+            new_footer = ImageFooter(
+                background = True,
+                horizontal_alignment = HorizontalAlignment.CENTER,
+                file_name = Config.IMAGE_FOOTER_FILE,
+                width = 24,
+                height = 24
             )
-            if response.code == 200:
-                logging.info(f"append_image_footer(): Footer '{new_footer.file_name}' added to the document #{Config.PDF_DOCUMENT_NAME}.")
-            else:
-                logging.error(f"append_image_footer(): Failed to add footer '{new_footer.file_name}' to the document #{Config.PDF_DOCUMENT_NAME}. Response code: {response.code}")
-        except Exception as e:
-            logging.error(f"append_image_footer(): Error while adding footer: {e}")
+
+            try:
+                response = self.pdf_api.post_document_image_footer(
+                    Config.PDF_DOCUMENT_NAME, new_footer
+                )
+                if response.code == 200:
+                    logging.info(f"append_image_footer(): Footer '{new_footer.file_name}' added to the document #{Config.PDF_DOCUMENT_NAME}.")
+                else:
+                    logging.error(f"append_image_footer(): Failed to add footer '{new_footer.file_name}' to the document #{Config.PDF_DOCUMENT_NAME}. Response code: {response.code}")
+            except Exception as e:
+                logging.error(f"append_image_footer(): Error while adding footer: {e}")
 
     def append_image_footer_page(self):
         """Append a new image footer on the page in PDF document."""
-        if not self._ensure_api_initialized():
-            return
-
-        new_footer = ImageFooter(
-            background = True,
-            horizontal_alignment = HorizontalAlignment.RIGHT,
-            file_name = Config.IMAGE_FOOTER_FILE,
-            width = 24,
-            height = 24
-        )
-
-        try:
-            response = self.pdf_api.post_document_image_footer(
-                Config.PDF_DOCUMENT_NAME, new_footer, start_page_number=Config.PAGE_NUMBER, end_page_number=Config.PAGE_NUMBER
+        if self.pdf_api:
+            new_footer = ImageFooter(
+                background = True,
+                horizontal_alignment = HorizontalAlignment.RIGHT,
+                file_name = Config.IMAGE_FOOTER_FILE,
+                width = 24,
+                height = 24
             )
-            if response.code == 200:
-                logging.info(f"append_image_footer_page(): Footer '{new_footer.file_name}' added to the page #{Config.PAGE_NUMBER}.")
-            else:
-                logging.error(f"append_image_footer_page(): Failed to add footer '{new_footer.file_name}' to the document #{Config.PAGE_NUMBER}. Response code: {response.code}")
-        except Exception as e:
-            logging.error(f"append_image_footer_page(): Error while adding footer: {e}")
+
+            try:
+                response = self.pdf_api.post_document_image_footer(
+                    Config.PDF_DOCUMENT_NAME, new_footer, start_page_number=Config.PAGE_NUMBER, end_page_number=Config.PAGE_NUMBER
+                )
+                if response.code == 200:
+                    logging.info(f"append_image_footer_page(): Footer '{new_footer.file_name}' added to the page #{Config.PAGE_NUMBER}.")
+                else:
+                    logging.error(f"append_image_footer_page(): Failed to add footer '{new_footer.file_name}' to the document #{Config.PAGE_NUMBER}. Response code: {response.code}")
+            except Exception as e:
+                logging.error(f"append_image_footer_page(): Error while adding footer: {e}")
 
 
 if __name__ == "__main__":
