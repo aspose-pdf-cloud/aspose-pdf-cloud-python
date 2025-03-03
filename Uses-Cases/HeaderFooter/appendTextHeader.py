@@ -34,83 +34,68 @@ class pdfHederFooter:
         except (FileNotFoundError, json.JSONDecodeError, ValueError) as e:
             logging.error(f"init_api(): Failed to load credentials: {e}")
 
-    def _ensure_api_initialized(self):
-        """Check if the API is initialized before making API calls."""
-        if not self.pdf_api:
-            logging.error("ensure_api_initialized(): PDF API is not initialized. Operation aborted.")
-            return False
-        return True
-
     def upload_document(self):
         """ Upload a PDF document to the Aspose Cloud server. """
-        if not self._ensure_api_initialized():
-            return
-
-        file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
-        try:
-            self.pdf_api.upload_file(Config.PDF_DOCUMENT_NAME, str(file_path))
-            logging.info(f"upload_document(): File {Config.PDF_DOCUMENT_NAME} uploaded successfully.")
-        except Exception as e:
-            logging.error(f"upload_document(): Failed to upload file: {e}")
+        if self.pdf_api:
+            file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
+            try:
+                self.pdf_api.upload_file(Config.PDF_DOCUMENT_NAME, str(file_path))
+                logging.info(f"upload_document(): File {Config.PDF_DOCUMENT_NAME} uploaded successfully.")
+            except Exception as e:
+                logging.error(f"upload_document(): Failed to upload file: {e}")
 
     def download_result(self):
         """ Download the processed PDF document from the Aspose Cloud server. """
-        if not self._ensure_api_initialized():
-            return
-
-        try:
-            temp_file = self.pdf_api.download_file(Config.PDF_DOCUMENT_NAME)
-            local_path = Config.LOCAL_FOLDER / Config.LOCAL_RESULT_DOCUMENT_NAME
-            shutil.move(temp_file, str(local_path))
-            logging.info(f"download_result(): File successfully downloaded: {local_path}")
-        except Exception as e:
-            logging.error(f"download_result(): Failed to download file: {e}")
+        if self.pdf_api:
+            try:
+                temp_file = self.pdf_api.download_file(Config.PDF_DOCUMENT_NAME)
+                local_path = Config.LOCAL_FOLDER / Config.LOCAL_RESULT_DOCUMENT_NAME
+                shutil.move(temp_file, str(local_path))
+                logging.info(f"download_result(): File successfully downloaded: {local_path}")
+            except Exception as e:
+                logging.error(f"download_result(): Failed to download file: {e}")
 
     def append_text_header(self):
         """Append a new text header to the PDF document."""
-        if not self._ensure_api_initialized():
-            return
-
-        new_header = TextHeader(
-            background = True,
-            horizontal_alignment = HorizontalAlignment.CENTER,
-            text_alignment = TextHorizontalAlignment.CENTER,
-            value = Config.HEADER_VALUE
-        )
-
-        try:
-            response = self.pdf_api.post_document_text_header(
-                Config.PDF_DOCUMENT_NAME, new_header
+        if self.pdf_api:
+            new_header = TextHeader(
+                background = True,
+                horizontal_alignment = HorizontalAlignment.CENTER,
+                text_alignment = TextHorizontalAlignment.CENTER,
+                value = Config.HEADER_VALUE
             )
-            if response.code == 200:
-                logging.info(f"append_text_header(): Header '{new_header.value}' added to the document '{Config.PDF_DOCUMENT_NAME}'.")
-            else:
-                logging.error(f"append_text_header(): Failed to add header '{new_header.value}' to the document '{Config.PDF_DOCUMENT_NAME}'. Response code: {response.code}")
-        except Exception as e:
-            logging.error(f"append_text_header(): Error while adding header: {e}")
+
+            try:
+                response = self.pdf_api.post_document_text_header(
+                    Config.PDF_DOCUMENT_NAME, new_header
+                )
+                if response.code == 200:
+                    logging.info(f"append_text_header(): Header '{new_header.value}' added to the document '{Config.PDF_DOCUMENT_NAME}'.")
+                else:
+                    logging.error(f"append_text_header(): Failed to add header '{new_header.value}' to the document '{Config.PDF_DOCUMENT_NAME}'. Response code: {response.code}")
+            except Exception as e:
+                logging.error(f"append_text_header(): Error while adding header: {e}")
 
     def append_text_header_page(self):
         """Append a new text footer to the page on PDF document."""
-        if not self._ensure_api_initialized():
-            return
-
-        new_header = TextHeader(
-            background = True,
-            horizontal_alignment = HorizontalAlignment.LEFT,
-            text_alignment = TextHorizontalAlignment.CENTER,
-            value = Config.HEADER_VALUE
-        )
-
-        try:
-            response = self.pdf_api.post_document_text_header(
-                Config.PDF_DOCUMENT_NAME, new_header, start_page_number=Config.PAGE_NUMBER, end_page_number=Config.PAGE_NUMBER
+        if self.pdf_api:
+            new_header = TextHeader(
+                background = True,
+                horizontal_alignment = HorizontalAlignment.LEFT,
+                text_alignment = TextHorizontalAlignment.CENTER,
+                value = Config.HEADER_VALUE
             )
-            if response.code == 200:
-                logging.info(f"append_text_header_page(): Header '{new_header.value}' added to the page #{Config.PAGE_NUMBER}.")
-            else:
-                logging.error(f"append_text_header_page(): Failed to add header '{new_header.value}' to the document #{Config.PAGE_NUMBER}. Response code: {response.code}")
-        except Exception as e:
-            logging.error(f"append_text_header_page(): Error while adding header: {e}")
+
+            try:
+                response = self.pdf_api.post_document_text_header(
+                    Config.PDF_DOCUMENT_NAME, new_header, start_page_number=Config.PAGE_NUMBER, end_page_number=Config.PAGE_NUMBER
+                )
+                if response.code == 200:
+                    logging.info(f"append_text_header_page(): Header '{new_header.value}' added to the page #{Config.PAGE_NUMBER}.")
+                else:
+                    logging.error(f"append_text_header_page(): Failed to add header '{new_header.value}' to the document #{Config.PAGE_NUMBER}. Response code: {response.code}")
+            except Exception as e:
+                logging.error(f"append_text_header_page(): Error while adding header: {e}")
 
 
 if __name__ == "__main__":
