@@ -33,49 +33,35 @@ class PdfPages:
         except (FileNotFoundError, json.JSONDecodeError, ValueError) as e:
             logging.error(f"init_api(): Failed to load credentials: {e}")
 
-    def _ensure_api_initialized(self):
-        """ Check if the API is initialized before making API calls. """
-        if not self.pdf_api:
-            logging.error("ensure_api_initialized(): PDF API is not initialized. Operation aborted.")
-            return False
-        return True
-
     def upload_document(self):
         """ Upload a PDF document to the Aspose Cloud server. """
-        if not self._ensure_api_initialized():
-            return
-
-        file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
-        try:
-            self.pdf_api.upload_file(Config.PDF_DOCUMENT_NAME, str(file_path))
-            logging.info(f"upload_document(): File {Config.PDF_DOCUMENT_NAME} uploaded successfully.")
-        except Exception as e:
-            logging.error(f"upload_document(): Failed to upload file: {e}")
+        if self.pdf_api:
+            file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
+            try:
+                self.pdf_api.upload_file(Config.PDF_DOCUMENT_NAME, str(file_path))
+                logging.info(f"upload_document(): File {Config.PDF_DOCUMENT_NAME} uploaded successfully.")
+            except Exception as e:
+                logging.error(f"upload_document(): Failed to upload file: {e}")
 
     def download_result(self):
         """ Download the processed PDF document from the Aspose Cloud server. """
-        if not self._ensure_api_initialized():
-            return
-
-        try:
-            temp_file = self.pdf_api.download_file(Config.PDF_DOCUMENT_NAME)
-            local_path = Config.LOCAL_FOLDER / Config.LOCAL_RESULT_DOCUMENT_NAME
-            shutil.move(temp_file, str(local_path))
-            logging.info(f"download_result(): File successfully downloaded: {local_path}")
-        except Exception as e:
-            logging.error(f"download_result(): Failed to download file: {e}")
+        if self.pdf_api:
+            try:
+                file_path = self.pdf_api.download_file(Config.PDF_DOCUMENT_NAME)
+                local_path = Config.LOCAL_FOLDER / Config.LOCAL_RESULT_DOCUMENT_NAME
+                shutil.move(file_path, str(local_path))
+                logging.info(f"download_result(): File successfully downloaded: {local_path}")
+            except Exception as e:
+                logging.error(f"download_result(): Failed to download file: {e}")
 
     def delete_page(self):
         """ Deletes a specific page from a PDF document. """
-        if not self._ensure_api_initialized():
-            return
-        
-        result = self.pdf_api.delete_page(Config.PDF_DOCUMENT_NAME, Config.PAGE_NUMBER)
-        if result.code == 200:
-            logging.info(f"Page #{Config.PAGE_NUMBER} deleted.")
-        else:
-            logging.error(f"Failed to delete page #{Config.PAGE_NUMBER}.")
-            
+        if self.pdf_api:
+            result = self.pdf_api.delete_page(Config.PDF_DOCUMENT_NAME, Config.PAGE_NUMBER)
+            if result.code == 200:
+                logging.info(f"Page #{Config.PAGE_NUMBER} deleted.")
+            else:
+                logging.error(f"Failed to delete page #{Config.PAGE_NUMBER}.")
 
 if __name__ == "__main__":
     pdf_pages = PdfPages()
