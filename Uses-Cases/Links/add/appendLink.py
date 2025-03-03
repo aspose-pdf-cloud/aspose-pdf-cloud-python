@@ -37,62 +37,49 @@ class PdfLinks:
         except (FileNotFoundError, json.JSONDecodeError, ValueError) as e:
             logging.error(f"init_api(): Failed to load credentials: {e}")
 
-    def _ensure_api_initialized(self):
-        """Check if the API is initialized before making API calls."""
-        if not self.pdf_api:
-            logging.error("ensure_api_initialized(): PDF API is not initialized. Operation aborted.")
-            return False
-        return True
-
     def upload_document(self):
         """Upload a PDF document to the Aspose Cloud server."""
-        if not self._ensure_api_initialized():
-            return
-
-        file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
-        try:
-            self.pdf_api.upload_file(Config.PDF_DOCUMENT_NAME, str(file_path))
-            logging.info(f"upload_document(): File {Config.PDF_DOCUMENT_NAME} uploaded successfully.")
-        except Exception as e:
-            logging.error(f"upload_document(): Failed to upload file: {e}")
+        if self.pdf_api:
+            file_path = Config.LOCAL_FOLDER / Config.PDF_DOCUMENT_NAME
+            try:
+                self.pdf_api.upload_file(Config.PDF_DOCUMENT_NAME, str(file_path))
+                logging.info(f"upload_document(): File {Config.PDF_DOCUMENT_NAME} uploaded successfully.")
+            except Exception as e:
+                logging.error(f"upload_document(): Failed to upload file: {e}")
 
     def download_result(self):
         """Download the processed PDF document from the Aspose Cloud server."""
-        if not self._ensure_api_initialized():
-            return
-
-        try:
-            file_path = self.pdf_api.download_file(Config.PDF_DOCUMENT_NAME)
-            local_path = Config.LOCAL_FOLDER / Config.LOCAL_RESULT_DOCUMENT_NAME
-            shutil.move(file_path, str(local_path))
-            logging.info(f"download_result(): File successfully downloaded: {local_path}")
-        except Exception as e:
-            logging.error(f"download_result(): Failed to download file: {e}")
+        if self.pdf_api:
+            try:
+                temp_file = self.pdf_api.download_file(Config.PDF_DOCUMENT_NAME)
+                local_path = Config.LOCAL_FOLDER / Config.LOCAL_RESULT_DOCUMENT_NAME
+                shutil.move(temp_file, str(local_path))
+                logging.info(f"download_result(): File successfully downloaded: {local_path}")
+            except Exception as e:
+                logging.error(f"download_result(): Failed to download file: {e}")
 
     def append_link(self):
         """Append a new hyperlink annotation to a specific page in the PDF document."""
-        if not self._ensure_api_initialized():
-            return
-
-        link_annotation = LinkAnnotation(
-            links=[Link(href=Config.NEW_LINK_ACTION)],
-            action_type= LinkActionType.GOTOURIACTION,
-            action=Config.NEW_LINK_ACTION,
-            highlighting=LinkHighlightingMode.INVERT,
-            color=Color(a=255, r=0, g=255, b=0),
-            rect=Config.LINK_RECT,
-        )
-
-        try:
-            response = self.pdf_api.post_page_link_annotations(
-                Config.PDF_DOCUMENT_NAME, Config.PAGE_NUMBER, [link_annotation]
+        if self.pdf_api:
+            link_annotation = LinkAnnotation(
+                links=[Link(href=Config.NEW_LINK_ACTION)],
+                action_type= LinkActionType.GOTOURIACTION,
+                action=Config.NEW_LINK_ACTION,
+                highlighting=LinkHighlightingMode.INVERT,
+                color=Color(a=255, r=0, g=255, b=0),
+                rect=Config.LINK_RECT,
             )
-            if response.code == 200:
-                logging.info(f"append_link(): Link '{Config.NEW_LINK_ACTION}' added to page #{Config.PAGE_NUMBER}.")
-            else:
-                logging.error(f"append_link(): Failed to add link to the page. Response code: {response.code}")
-        except Exception as e:
-            logging.error(f"append_link(): Error while adding link: {e}")
+
+            try:
+                response = self.pdf_api.post_page_link_annotations(
+                    Config.PDF_DOCUMENT_NAME, Config.PAGE_NUMBER, [link_annotation]
+                )
+                if response.code == 200:
+                    logging.info(f"append_link(): Link '{Config.NEW_LINK_ACTION}' added to page #{Config.PAGE_NUMBER}.")
+                else:
+                    logging.error(f"append_link(): Failed to add link to the page. Response code: {response.code}")
+            except Exception as e:
+                logging.error(f"append_link(): Error while adding link: {e}")
 
 
 if __name__ == "__main__":
