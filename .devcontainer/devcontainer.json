@@ -1,0 +1,17 @@
+{
+	"name": "Python 3",
+	"image": "mcr.microsoft.com/devcontainers/python:1-3.12-bullseye",
+	"postCreateCommand": "pip install -r requirements.txt",
+	"workspaceFolder": "/SDKs/Python",
+	"workspaceMount": "source=${localWorkspaceFolder},target=/SDKs/Python,type=bind,consistency=cached",
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"python.testing.unittestEnabled": true
+			}
+		}
+	},
+	"mounts": [
+		"source=${localWorkspaceFolder}/../../Settings,target=/Settings,type=bind,consistency=cached"
+	]
+}

@@ -4262,7 +4262,7 @@ class PdfTests(unittest.TestCase):
         self.assertIsInstance(response, str)
 
     def testGetImageExtractAsSvg(self):
-        name = "Alfa.pdf"
+        name = "alfa.pdf"
         self.uploadFile(name)
         
         opts = {
