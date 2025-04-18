@@ -305,6 +305,7 @@ from .models.common_figure_annotation import CommonFigureAnnotation
 from .models.file_attachment_annotation import FileAttachmentAnnotation
 from .models.free_text_annotation import FreeTextAnnotation
 from .models.highlight_annotation import HighlightAnnotation
+from .models.image_stamp_page_specified import ImageStampPageSpecified
 from .models.ink_annotation import InkAnnotation
 from .models.line_annotation import LineAnnotation
 from .models.list_box_field import ListBoxField
@@ -316,6 +317,7 @@ from .models.squiggly_annotation import SquigglyAnnotation
 from .models.stamp_annotation import StampAnnotation
 from .models.strike_out_annotation import StrikeOutAnnotation
 from .models.text_annotation import TextAnnotation
+from .models.text_stamp_page_specified import TextStampPageSpecified
 from .models.underline_annotation import UnderlineAnnotation
 from .models.circle_annotation import CircleAnnotation
 from .models.poly_line_annotation import PolyLineAnnotation

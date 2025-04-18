@@ -24507,6 +24507,129 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def post_document_image_stamps_page_specified(self, name, stamps, **kwargs):
+        """
+        Add document image stamps to specified pages.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_document_image_stamps_page_specified(name, stamps, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param list[ImageStampPageSpecified] stamps: The array of stamps. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param str password: Base64 encoded password.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_document_image_stamps_page_specified_with_http_info(name, stamps, **kwargs)
+        else:
+            (data) = self.post_document_image_stamps_page_specified_with_http_info(name, stamps, **kwargs)
+            return data
+
+    def post_document_image_stamps_page_specified_with_http_info(self, name, stamps, **kwargs):
+        """
+        Add document image stamps to specified pages.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_document_image_stamps_page_specified_with_http_info(name, stamps, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param list[ImageStampPageSpecified] stamps: The array of stamps. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param str password: Base64 encoded password.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'stamps', 'storage', 'folder', 'password']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_document_image_stamps_page_specified" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_document_image_stamps_page_specified`")
+        # verify the required parameter 'stamps' is set
+        if ('stamps' not in params) or (params['stamps'] is None):
+            raise ValueError("Missing the required parameter `stamps` when calling `post_document_image_stamps_page_specified`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'stamps' in params:
+            body_params = params['stamps']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/stamps/image/pagespecified', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def post_document_page_number_stamps(self, name, stamp, **kwargs):
         """
         Add document page number stamps.
@@ -25120,6 +25243,129 @@ class PdfApi(object):
         auth_settings = ['JWT']
 
         return self.api_client.call_api('/pdf/{name}/stamps/text', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def post_document_text_stamps_page_specified(self, name, stamps, **kwargs):
+        """
+        Add document text stamps to specified pages.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_document_text_stamps_page_specified(name, stamps, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param list[TextStampPageSpecified] stamps: The array of stamps. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param str password: Base64 encoded password.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_document_text_stamps_page_specified_with_http_info(name, stamps, **kwargs)
+        else:
+            (data) = self.post_document_text_stamps_page_specified_with_http_info(name, stamps, **kwargs)
+            return data
+
+    def post_document_text_stamps_page_specified_with_http_info(self, name, stamps, **kwargs):
+        """
+        Add document text stamps to specified pages.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_document_text_stamps_page_specified_with_http_info(name, stamps, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param list[TextStampPageSpecified] stamps: The array of stamps. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param str password: Base64 encoded password.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'stamps', 'storage', 'folder', 'password']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_document_text_stamps_page_specified" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_document_text_stamps_page_specified`")
+        # verify the required parameter 'stamps' is set
+        if ('stamps' not in params) or (params['stamps'] is None):
+            raise ValueError("Missing the required parameter `stamps` when calling `post_document_text_stamps_page_specified`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'stamps' in params:
+            body_params = params['stamps']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/stamps/text/pagespecified', 'POST',
                                         path_params,
                                         query_params,
                                         header_params,
