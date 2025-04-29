@@ -8,7 +8,6 @@ from asposepdfcloud import ApiClient, PdfApi, Direction, PageMode, PageLayout, D
 # Configure logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
-
 class Config:
     """Configuration parameters."""
     CREDENTIALS_FILE = pathlib.Path(r"C:\\Projects\\ASPOSE\\Pdf.Cloud\\Credentials\\credentials.json")
