@@ -203,6 +203,7 @@ Method | HTTP request | Description
 [**post_change_password_document_in_storage**](PdfApi.md#post_change_password_document_in_storage) | **POST** /pdf/\{name}/changepassword | Change document password in storage.
 [**post_check_box_fields**](PdfApi.md#post_check_box_fields) | **POST** /pdf/\{name}/fields/checkbox | Add document checkbox fields.
 [**post_combo_box_fields**](PdfApi.md#post_combo_box_fields) | **POST** /pdf/\{name}/fields/combobox | Add document combobox fields.
+[**post_compare_pdf**](PdfApi.md#post_compare_pdf) | **POST** /pdf/compare | Compare two PDF documents.
 [**post_create_document**](PdfApi.md#post_create_document) | **POST** /pdf/\{name} | Create empty document.
 [**post_create_field**](PdfApi.md#post_create_field) | **POST** /pdf/\{name}/fields | Create field.
 [**post_decrypt_document_in_storage**](PdfApi.md#post_decrypt_document_in_storage) | **POST** /pdf/\{name}/decrypt | Decrypt document in storage.
@@ -2854,7 +2855,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_mht_in_storage_to_pdf**
-> file get_mht_in_storage_to_pdf(src_path, storage=storage)
+> file get_mht_in_storage_to_pdf(src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, storage=storage)
 
 Convert MHT file (located on storage) to PDF format and return resulting file in response. 
 
@@ -2863,6 +2864,12 @@ Convert MHT file (located on storage) to PDF format and return resulting file in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **src_path** | **str**| Full source filename (ex. /folder1/folder2/template.mht) | 
+ **height** | **float**| Page height | 
+ **width** | **float**| Page width | 
+ **margin_left** | **float**| Page margin left | 
+ **margin_bottom** | **float**| Page margin bottom | 
+ **margin_right** | **float**| Page margin right | 
+ **margin_top** | **float**| Page margin top | 
  **storage** | **str**| The document storage. | [optional] 
 
 ### Return type
@@ -5406,6 +5413,31 @@ Name | Type | Description  | Notes
  **fields** | [**list[ComboBoxField]**](ComboBoxField.md)| The array of field. | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_compare_pdf**
+> AsposeResponse post_compare_pdf(path1, path2, out_path, storage=storage)
+
+Compare two PDF documents.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path1** | **str**| Path to first PDF document. | 
+ **path2** | **str**| Path to second PDF document. | 
+ **out_path** | **str**| Full filename of the resulting document. | 
+ **storage** | **str**| The documents storage. | [optional] 
 
 ### Return type
 
@@ -8121,7 +8153,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_mht_in_storage_to_pdf**
-> AsposeResponse put_mht_in_storage_to_pdf(name, src_path, dst_folder=dst_folder, storage=storage)
+> AsposeResponse put_mht_in_storage_to_pdf(name, src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, dst_folder=dst_folder, storage=storage)
 
 Convert MHT file (located on storage) to PDF format and upload resulting file to storage. 
 
@@ -8131,6 +8163,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **src_path** | **str**| Full source filename (ex. /folder1/folder2/template.mht) | 
+ **height** | **float**| Page height | 
+ **width** | **float**| Page width | 
+ **margin_left** | **float**| Page margin left | 
+ **margin_bottom** | **float**| Page margin bottom | 
+ **margin_right** | **float**| Page margin right | 
+ **margin_top** | **float**| Page margin top | 
  **dst_folder** | **str**| The destination document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 
