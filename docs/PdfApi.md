@@ -2855,7 +2855,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_mht_in_storage_to_pdf**
-> file get_mht_in_storage_to_pdf(src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, storage=storage)
+> file get_mht_in_storage_to_pdf(src_path, height=height, width=width, margin_left=margin_left, margin_bottom=margin_bottom, margin_right=margin_right, margin_top=margin_top, storage=storage)
 
 Convert MHT file (located on storage) to PDF format and return resulting file in response. 
 
@@ -2864,12 +2864,12 @@ Convert MHT file (located on storage) to PDF format and return resulting file in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **src_path** | **str**| Full source filename (ex. /folder1/folder2/template.mht) | 
- **height** | **float**| Page height | 
- **width** | **float**| Page width | 
- **margin_left** | **float**| Page margin left | 
- **margin_bottom** | **float**| Page margin bottom | 
- **margin_right** | **float**| Page margin right | 
- **margin_top** | **float**| Page margin top | 
+ **height** | **float**| Page height | [optional] 
+ **width** | **float**| Page width | [optional] 
+ **margin_left** | **float**| Page margin left | [optional] 
+ **margin_bottom** | **float**| Page margin bottom | [optional] 
+ **margin_right** | **float**| Page margin right | [optional] 
+ **margin_top** | **float**| Page margin top | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 
 ### Return type
@@ -8153,7 +8153,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_mht_in_storage_to_pdf**
-> AsposeResponse put_mht_in_storage_to_pdf(name, src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, dst_folder=dst_folder, storage=storage)
+> AsposeResponse put_mht_in_storage_to_pdf(name, src_path, height=height, width=width, margin_left=margin_left, margin_bottom=margin_bottom, margin_right=margin_right, margin_top=margin_top, dst_folder=dst_folder, storage=storage)
 
 Convert MHT file (located on storage) to PDF format and upload resulting file to storage. 
 
@@ -8163,12 +8163,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The document name. | 
  **src_path** | **str**| Full source filename (ex. /folder1/folder2/template.mht) | 
- **height** | **float**| Page height | 
- **width** | **float**| Page width | 
- **margin_left** | **float**| Page margin left | 
- **margin_bottom** | **float**| Page margin bottom | 
- **margin_right** | **float**| Page margin right | 
- **margin_top** | **float**| Page margin top | 
+ **height** | **float**| Page height | [optional] 
+ **width** | **float**| Page width | [optional] 
+ **margin_left** | **float**| Page margin left | [optional] 
+ **margin_bottom** | **float**| Page margin bottom | [optional] 
+ **margin_right** | **float**| Page margin right | [optional] 
+ **margin_top** | **float**| Page margin top | [optional] 
  **dst_folder** | **str**| The destination document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
 

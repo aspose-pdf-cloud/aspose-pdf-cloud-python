@@ -11676,7 +11676,7 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def get_mht_in_storage_to_pdf(self, src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, **kwargs):
+    def get_mht_in_storage_to_pdf(self, src_path, **kwargs):
         """
         Convert MHT file (located on storage) to PDF format and return resulting file in response. 
         This method makes a synchronous HTTP request by default. To make an
@@ -11685,17 +11685,17 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get_mht_in_storage_to_pdf(src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, callback=callback_function)
+        >>> thread = api.get_mht_in_storage_to_pdf(src_path, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.mht) (required)
-        :param float height: Page height (required)
-        :param float width: Page width (required)
-        :param float margin_left: Page margin left (required)
-        :param float margin_bottom: Page margin bottom (required)
-        :param float margin_right: Page margin right (required)
-        :param float margin_top: Page margin top (required)
+        :param float height: Page height
+        :param float width: Page width
+        :param float margin_left: Page margin left
+        :param float margin_bottom: Page margin bottom
+        :param float margin_right: Page margin right
+        :param float margin_top: Page margin top
         :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
@@ -11703,12 +11703,12 @@ class PdfApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.get_mht_in_storage_to_pdf_with_http_info(src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, **kwargs)
+            return self.get_mht_in_storage_to_pdf_with_http_info(src_path, **kwargs)
         else:
-            (data) = self.get_mht_in_storage_to_pdf_with_http_info(src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, **kwargs)
+            (data) = self.get_mht_in_storage_to_pdf_with_http_info(src_path, **kwargs)
             return data
 
-    def get_mht_in_storage_to_pdf_with_http_info(self, src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, **kwargs):
+    def get_mht_in_storage_to_pdf_with_http_info(self, src_path, **kwargs):
         """
         Convert MHT file (located on storage) to PDF format and return resulting file in response. 
         This method makes a synchronous HTTP request by default. To make an
@@ -11717,17 +11717,17 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get_mht_in_storage_to_pdf_with_http_info(src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, callback=callback_function)
+        >>> thread = api.get_mht_in_storage_to_pdf_with_http_info(src_path, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.mht) (required)
-        :param float height: Page height (required)
-        :param float width: Page width (required)
-        :param float margin_left: Page margin left (required)
-        :param float margin_bottom: Page margin bottom (required)
-        :param float margin_right: Page margin right (required)
-        :param float margin_top: Page margin top (required)
+        :param float height: Page height
+        :param float width: Page width
+        :param float margin_left: Page margin left
+        :param float margin_bottom: Page margin bottom
+        :param float margin_right: Page margin right
+        :param float margin_top: Page margin top
         :param str storage: The document storage.
         :return: file
                  If the method is called asynchronously,
@@ -11752,24 +11752,6 @@ class PdfApi(object):
         # verify the required parameter 'src_path' is set
         if ('src_path' not in params) or (params['src_path'] is None):
             raise ValueError("Missing the required parameter `src_path` when calling `get_mht_in_storage_to_pdf`")
-        # verify the required parameter 'height' is set
-        if ('height' not in params) or (params['height'] is None):
-            raise ValueError("Missing the required parameter `height` when calling `get_mht_in_storage_to_pdf`")
-        # verify the required parameter 'width' is set
-        if ('width' not in params) or (params['width'] is None):
-            raise ValueError("Missing the required parameter `width` when calling `get_mht_in_storage_to_pdf`")
-        # verify the required parameter 'margin_left' is set
-        if ('margin_left' not in params) or (params['margin_left'] is None):
-            raise ValueError("Missing the required parameter `margin_left` when calling `get_mht_in_storage_to_pdf`")
-        # verify the required parameter 'margin_bottom' is set
-        if ('margin_bottom' not in params) or (params['margin_bottom'] is None):
-            raise ValueError("Missing the required parameter `margin_bottom` when calling `get_mht_in_storage_to_pdf`")
-        # verify the required parameter 'margin_right' is set
-        if ('margin_right' not in params) or (params['margin_right'] is None):
-            raise ValueError("Missing the required parameter `margin_right` when calling `get_mht_in_storage_to_pdf`")
-        # verify the required parameter 'margin_top' is set
-        if ('margin_top' not in params) or (params['margin_top'] is None):
-            raise ValueError("Missing the required parameter `margin_top` when calling `get_mht_in_storage_to_pdf`")
 
 
         collection_formats = {}
@@ -36836,7 +36818,7 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
-    def put_mht_in_storage_to_pdf(self, name, src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, **kwargs):
+    def put_mht_in_storage_to_pdf(self, name, src_path, **kwargs):
         """
         Convert MHT file (located on storage) to PDF format and upload resulting file to storage. 
         This method makes a synchronous HTTP request by default. To make an
@@ -36845,18 +36827,18 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.put_mht_in_storage_to_pdf(name, src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, callback=callback_function)
+        >>> thread = api.put_mht_in_storage_to_pdf(name, src_path, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.mht) (required)
-        :param float height: Page height (required)
-        :param float width: Page width (required)
-        :param float margin_left: Page margin left (required)
-        :param float margin_bottom: Page margin bottom (required)
-        :param float margin_right: Page margin right (required)
-        :param float margin_top: Page margin top (required)
+        :param float height: Page height
+        :param float width: Page width
+        :param float margin_left: Page margin left
+        :param float margin_bottom: Page margin bottom
+        :param float margin_right: Page margin right
+        :param float margin_top: Page margin top
         :param str dst_folder: The destination document folder.
         :param str storage: The document storage.
         :return: AsposeResponse
@@ -36865,12 +36847,12 @@ class PdfApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.put_mht_in_storage_to_pdf_with_http_info(name, src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, **kwargs)
+            return self.put_mht_in_storage_to_pdf_with_http_info(name, src_path, **kwargs)
         else:
-            (data) = self.put_mht_in_storage_to_pdf_with_http_info(name, src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, **kwargs)
+            (data) = self.put_mht_in_storage_to_pdf_with_http_info(name, src_path, **kwargs)
             return data
 
-    def put_mht_in_storage_to_pdf_with_http_info(self, name, src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, **kwargs):
+    def put_mht_in_storage_to_pdf_with_http_info(self, name, src_path, **kwargs):
         """
         Convert MHT file (located on storage) to PDF format and upload resulting file to storage. 
         This method makes a synchronous HTTP request by default. To make an
@@ -36879,18 +36861,18 @@ class PdfApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.put_mht_in_storage_to_pdf_with_http_info(name, src_path, height, width, margin_left, margin_bottom, margin_right, margin_top, callback=callback_function)
+        >>> thread = api.put_mht_in_storage_to_pdf_with_http_info(name, src_path, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str name: The document name. (required)
         :param str src_path: Full source filename (ex. /folder1/folder2/template.mht) (required)
-        :param float height: Page height (required)
-        :param float width: Page width (required)
-        :param float margin_left: Page margin left (required)
-        :param float margin_bottom: Page margin bottom (required)
-        :param float margin_right: Page margin right (required)
-        :param float margin_top: Page margin top (required)
+        :param float height: Page height
+        :param float width: Page width
+        :param float margin_left: Page margin left
+        :param float margin_bottom: Page margin bottom
+        :param float margin_right: Page margin right
+        :param float margin_top: Page margin top
         :param str dst_folder: The destination document folder.
         :param str storage: The document storage.
         :return: AsposeResponse
@@ -36919,24 +36901,6 @@ class PdfApi(object):
         # verify the required parameter 'src_path' is set
         if ('src_path' not in params) or (params['src_path'] is None):
             raise ValueError("Missing the required parameter `src_path` when calling `put_mht_in_storage_to_pdf`")
-        # verify the required parameter 'height' is set
-        if ('height' not in params) or (params['height'] is None):
-            raise ValueError("Missing the required parameter `height` when calling `put_mht_in_storage_to_pdf`")
-        # verify the required parameter 'width' is set
-        if ('width' not in params) or (params['width'] is None):
-            raise ValueError("Missing the required parameter `width` when calling `put_mht_in_storage_to_pdf`")
-        # verify the required parameter 'margin_left' is set
-        if ('margin_left' not in params) or (params['margin_left'] is None):
-            raise ValueError("Missing the required parameter `margin_left` when calling `put_mht_in_storage_to_pdf`")
-        # verify the required parameter 'margin_bottom' is set
-        if ('margin_bottom' not in params) or (params['margin_bottom'] is None):
-            raise ValueError("Missing the required parameter `margin_bottom` when calling `put_mht_in_storage_to_pdf`")
-        # verify the required parameter 'margin_right' is set
-        if ('margin_right' not in params) or (params['margin_right'] is None):
-            raise ValueError("Missing the required parameter `margin_right` when calling `put_mht_in_storage_to_pdf`")
-        # verify the required parameter 'margin_top' is set
-        if ('margin_top' not in params) or (params['margin_top'] is None):
-            raise ValueError("Missing the required parameter `margin_top` when calling `put_mht_in_storage_to_pdf`")
 
 
         collection_formats = {}
