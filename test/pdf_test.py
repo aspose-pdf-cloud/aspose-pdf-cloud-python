@@ -5752,5 +5752,15 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.get_xmp_metadata_json(file_name, folder=self.temp_folder)
         self.assertEqual(9, len(response.properties))
 
+    def testPostComparePdf(self):
+        file_name_1 = '4pages.pdf'
+        self.uploadFile(file_name_1)
+        file_name_2 = '4pagesPdfA.pdf'
+        self.uploadFile(file_name_2)
+        output = 'output.pdf'
+        
+        response = self.pdf_api.post_compare_pdf(self.temp_folder + '/' + file_name_1, self.temp_folder + '/' + file_name_2, output)
+        self.assertEqual(response.code, 200)
+
 if __name__ == '__main__':
     unittest.main()
