@@ -1,5 +1,4 @@
 import logging
-import os
 from pathlib import Path
 from asposepdfcloud import PdfApi
 from compares_helper import CompareMain
