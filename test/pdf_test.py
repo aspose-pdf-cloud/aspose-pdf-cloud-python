@@ -3444,6 +3444,15 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.post_organize_documents(request, self.temp_folder + '/OrganizeMany.pdf')
         self.assertEqual(response.code, 200)
 
+    def testPostDocumentPagesRotate(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        opts = {
+            "folder" : self.temp_folder
+        }
+        response = self.pdf_api.post_document_pages_rotate(file_name, asposepdfcloud.models.Rotation.ON90, '2-3', **opts)
+        self.assertEqual(response.code, 200)
+
     # Fields Tests
 
     def testGetField(self):
@@ -4123,11 +4132,23 @@ class PdfTests(unittest.TestCase):
         self.uploadFile(file_name)
         image_file_name = 'butterfly.jpg'
         self.uploadFile(image_file_name)
-        image_ids = ['GE5TENJVGQZTWMJYGQWDINRUFQ2DCMRMGY4TC', 'GE5TIMJSGY3TWMJXG4WDIMBZFQ2DCOJMGQ3DK']
+
+        opts1 = {
+              "folder" : self.temp_folder
+        }
+        responseImages1 = self.pdf_api.get_images(file_name, 1, **opts1)
+        self.assertEqual(responseImages1.code, 200)
+        image_id1 = responseImages1.images.list[0].id
+        responseImages2 = self.pdf_api.get_images(file_name, 16, **opts1)
+        self.assertEqual(responseImages2.code, 200)
+        image_id2 = responseImages2.images.list[0].id
+
+
         opts = {
               "image_file_path" : self.temp_folder + '/' + image_file_name,
               "folder" : self.temp_folder
         }
+        image_ids = [image_id1, image_id2]
         response = self.pdf_api.put_replace_multiple_image(file_name, image_ids, **opts)
         self.assertEqual(response.code, 200)
 
