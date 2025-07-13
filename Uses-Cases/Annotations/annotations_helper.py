@@ -11,7 +11,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 
 class Config:
     """Configuration parameters."""
-    CREDENTIALS_FILE = Path(r"C:\\Projects\\ASPOSE\\Pdf.Cloud\\Credentials\\credentials.json")
+    CREDENTIALS_FILE = Path(r".\credentials.json")
     LOCAL_FOLDER = Path(r"C:\Samples")
     REMOTE_FOLDER = "Your_Temp_Pdf_Cloud"
     PDF_DOCUMENT_NAME = "sample.pdf"
