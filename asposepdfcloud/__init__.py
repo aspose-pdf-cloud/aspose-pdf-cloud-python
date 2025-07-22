@@ -123,6 +123,7 @@ from .models.segment import Segment
 from .models.shape_type import ShapeType
 from .models.signature import Signature
 from .models.signature_custom_appearance import SignatureCustomAppearance
+from .models.signature_subject_name_elements import SignatureSubjectNameElements
 from .models.signature_type import SignatureType
 from .models.sound_encoding import SoundEncoding
 from .models.sound_icon import SoundIcon
