@@ -30,9 +30,12 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 25.6
-- Develop Rotate Document Pages method.
+## Enhancements in Version 25.7
+- Add possibility to hide subject field in signature appearance.
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
+
+## Bugs fixed in Version 25.7
+- PostDeleteStamps removing stamps from PDF page is incorrect.
 
 ## Requirements.
 Python 2.7 and 3.4+

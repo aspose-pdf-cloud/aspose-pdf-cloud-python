@@ -50,6 +50,7 @@ class SignatureCustomAppearance(object):
     swagger_types = {
         'font_family_name': 'str',
         'font_size': 'float',
+        'rotation': 'Rotation',
         'show_contact_info': 'bool',
         'show_reason': 'bool',
         'show_location': 'bool',
@@ -59,12 +60,17 @@ class SignatureCustomAppearance(object):
         'digital_signed_label': 'str',
         'date_signed_at_label': 'str',
         'date_time_local_format': 'str',
-        'date_time_format': 'str'
+        'date_time_format': 'str',
+        'background_color': 'Color',
+        'foreground_color': 'Color',
+        'use_digital_subject_format': 'bool',
+        'digital_subject_format': 'list[SignatureSubjectNameElements]'
     }
 
     attribute_map = {
         'font_family_name': 'FontFamilyName',
         'font_size': 'FontSize',
+        'rotation': 'Rotation',
         'show_contact_info': 'ShowContactInfo',
         'show_reason': 'ShowReason',
         'show_location': 'ShowLocation',
@@ -74,16 +80,21 @@ class SignatureCustomAppearance(object):
         'digital_signed_label': 'DigitalSignedLabel',
         'date_signed_at_label': 'DateSignedAtLabel',
         'date_time_local_format': 'DateTimeLocalFormat',
-        'date_time_format': 'DateTimeFormat'
+        'date_time_format': 'DateTimeFormat',
+        'background_color': 'BackgroundColor',
+        'foreground_color': 'ForegroundColor',
+        'use_digital_subject_format': 'UseDigitalSubjectFormat',
+        'digital_subject_format': 'DigitalSubjectFormat'
     }
 
-    def __init__(self, font_family_name=None, font_size=None, show_contact_info=None, show_reason=None, show_location=None, contact_info_label=None, reason_label=None, location_label=None, digital_signed_label=None, date_signed_at_label=None, date_time_local_format=None, date_time_format=None):
+    def __init__(self, font_family_name=None, font_size=None, rotation=None, show_contact_info=None, show_reason=None, show_location=None, contact_info_label=None, reason_label=None, location_label=None, digital_signed_label=None, date_signed_at_label=None, date_time_local_format=None, date_time_format=None, background_color=None, foreground_color=None, use_digital_subject_format=None, digital_subject_format=None):
         """
         SignatureCustomAppearance - a model defined in Swagger
         """
 
         self._font_family_name = None
         self._font_size = None
+        self._rotation = None
         self._show_contact_info = None
         self._show_reason = None
         self._show_location = None
@@ -94,10 +105,16 @@ class SignatureCustomAppearance(object):
         self._date_signed_at_label = None
         self._date_time_local_format = None
         self._date_time_format = None
+        self._background_color = None
+        self._foreground_color = None
+        self._use_digital_subject_format = None
+        self._digital_subject_format = None
 
         if font_family_name is not None:
           self.font_family_name = font_family_name
-        self.font_size = font_size
+        if font_size is not None:
+          self.font_size = font_size
+        self.rotation = rotation
         self.show_contact_info = show_contact_info
         self.show_reason = show_reason
         self.show_location = show_location
@@ -115,6 +132,13 @@ class SignatureCustomAppearance(object):
           self.date_time_local_format = date_time_local_format
         if date_time_format is not None:
           self.date_time_format = date_time_format
+        if background_color is not None:
+          self.background_color = background_color
+        if foreground_color is not None:
+          self.foreground_color = foreground_color
+        self.use_digital_subject_format = use_digital_subject_format
+        if digital_subject_format is not None:
+          self.digital_subject_format = digital_subject_format
 
     @property
     def font_family_name(self):
@@ -159,10 +183,33 @@ class SignatureCustomAppearance(object):
         :param font_size: The font_size of this SignatureCustomAppearance.
         :type: float
         """
-        if font_size is None:
-            raise ValueError("Invalid value for `font_size`, must not be `None`")
 
         self._font_size = font_size
+
+    @property
+    def rotation(self):
+        """
+        Gets the rotation of this SignatureCustomAppearance.
+        Gets or sets signature rotation.
+
+        :return: The rotation of this SignatureCustomAppearance.
+        :rtype: Rotation
+        """
+        return self._rotation
+
+    @rotation.setter
+    def rotation(self, rotation):
+        """
+        Sets the rotation of this SignatureCustomAppearance.
+        Gets or sets signature rotation.
+
+        :param rotation: The rotation of this SignatureCustomAppearance.
+        :type: Rotation
+        """
+        if rotation is None:
+            raise ValueError("Invalid value for `rotation`, must not be `None`")
+
+        self._rotation = rotation
 
     @property
     def show_contact_info(self):
@@ -399,6 +446,100 @@ class SignatureCustomAppearance(object):
         """
 
         self._date_time_format = date_time_format
+
+    @property
+    def background_color(self):
+        """
+        Gets the background_color of this SignatureCustomAppearance.
+        Gets/sets background color.
+
+        :return: The background_color of this SignatureCustomAppearance.
+        :rtype: Color
+        """
+        return self._background_color
+
+    @background_color.setter
+    def background_color(self, background_color):
+        """
+        Sets the background_color of this SignatureCustomAppearance.
+        Gets/sets background color.
+
+        :param background_color: The background_color of this SignatureCustomAppearance.
+        :type: Color
+        """
+
+        self._background_color = background_color
+
+    @property
+    def foreground_color(self):
+        """
+        Gets the foreground_color of this SignatureCustomAppearance.
+        Gets/sets foreground color.
+
+        :return: The foreground_color of this SignatureCustomAppearance.
+        :rtype: Color
+        """
+        return self._foreground_color
+
+    @foreground_color.setter
+    def foreground_color(self, foreground_color):
+        """
+        Sets the foreground_color of this SignatureCustomAppearance.
+        Gets/sets foreground color.
+
+        :param foreground_color: The foreground_color of this SignatureCustomAppearance.
+        :type: Color
+        """
+
+        self._foreground_color = foreground_color
+
+    @property
+    def use_digital_subject_format(self):
+        """
+        Gets the use_digital_subject_format of this SignatureCustomAppearance.
+        Gets/sets subject format usage.
+
+        :return: The use_digital_subject_format of this SignatureCustomAppearance.
+        :rtype: bool
+        """
+        return self._use_digital_subject_format
+
+    @use_digital_subject_format.setter
+    def use_digital_subject_format(self, use_digital_subject_format):
+        """
+        Sets the use_digital_subject_format of this SignatureCustomAppearance.
+        Gets/sets subject format usage.
+
+        :param use_digital_subject_format: The use_digital_subject_format of this SignatureCustomAppearance.
+        :type: bool
+        """
+        if use_digital_subject_format is None:
+            raise ValueError("Invalid value for `use_digital_subject_format`, must not be `None`")
+
+        self._use_digital_subject_format = use_digital_subject_format
+
+    @property
+    def digital_subject_format(self):
+        """
+        Gets the digital_subject_format of this SignatureCustomAppearance.
+        Gets/sets subject format.
+
+        :return: The digital_subject_format of this SignatureCustomAppearance.
+        :rtype: list[SignatureSubjectNameElements]
+        """
+        return self._digital_subject_format
+
+    @digital_subject_format.setter
+    def digital_subject_format(self, digital_subject_format):
+        """
+        Sets the digital_subject_format of this SignatureCustomAppearance.
+        Gets/sets subject format.
+
+        :param digital_subject_format: The digital_subject_format of this SignatureCustomAppearance.
+        :type: list[SignatureSubjectNameElements]
+        """
+
+        self._digital_subject_format = digital_subject_format
 
     def to_dict(self):
         """
