@@ -3,7 +3,7 @@ import json
 import logging
 from pathlib import Path
 import base64
-from asposepdfcloud import ApiClient, PdfApi, CryptoAlgorithm
+from asposepdfcloud import ApiClient, PdfApi
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -80,3 +80,4 @@ if __name__ == "__main__":
     pdf_encoder.upload_document()
     pdf_encoder.change_passwords()
     pdf_encoder.download_result()
+
