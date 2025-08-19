@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 
 class Config:
     """Configuration parameters."""
-    CREDENTIALS_FILE = Path(r"..\\credentials.json")
+    CREDENTIALS_FILE = Path(r"C:\\Projects\\ASPOSE\\Pdf.Cloud\\Credentials\\credentials.json")
     LOCAL_FOLDER = Path(r"C:\Samples")
     PDF_DOCUMENT_NAME = "sample_encrypted.pdf"
     LOCAL_RESULT_DOCUMENT_NAME = "output_sample.pdf"
@@ -18,7 +18,7 @@ class Config:
     NEW_USER_PASSWORD = "NEW-User-Password"
     NEW_OWNER_PASSWORD = "NEW-Owner-Password"
     
-class pdfPasswordModify:
+class pdfEncoder:
     """Class for replacing password in PDF encrypted document using Aspose PDF Cloud API."""
     def __init__(self, credentials_file: Path = Config.CREDENTIALS_FILE):
         self.pdf_api = None
@@ -58,7 +58,7 @@ class pdfPasswordModify:
                 logging.error(f"download_result(): Failed to download file: {e}")
 
     def change_passwords(self):
-        """Change passwords in the PDF document."""
+        """Decrypt the PDF document."""
         if self.pdf_api:
             try:
                 password_encoded = base64.b64encode(bytes(Config.DOCUMENT_PASSWORD, encoding='utf-8'))
@@ -76,7 +76,7 @@ class pdfPasswordModify:
 
 
 if __name__ == "__main__":
-    pdf_pwd_upd = pdfPasswordModify()
-    pdf_pwd_upd.upload_document()
-    pdf_pwd_upd.change_passwords()
-    pdf_pwd_upd.download_result()
+    pdf_encoder = pdfEncoder()
+    pdf_encoder.upload_document()
+    pdf_encoder.change_passwords()
+    pdf_encoder.download_result()
