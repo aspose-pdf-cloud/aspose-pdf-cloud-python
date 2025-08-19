@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 
 class Config:
     """Configuration parameters."""
-    CREDENTIALS_FILE = Path(r"C:\\Projects\\ASPOSE\\Pdf.Cloud\\Credentials\\credentials.json")
+    CREDENTIALS_FILE = Path(r"..\\credentials.json")
     LOCAL_FOLDER = Path(r"C:\Samples")
     PDF_DOCUMENT_NAME = "sample_encrypted.pdf"
     LOCAL_RESULT_DOCUMENT_NAME = "output_sample.pdf"
@@ -58,7 +58,7 @@ class pdfPasswordModify:
                 logging.error(f"download_result(): Failed to download file: {e}")
 
     def change_passwords(self):
-        """Decrypt the PDF document."""
+        """Change passwords in the PDF document."""
         if self.pdf_api:
             try:
                 password_encoded = base64.b64encode(bytes(Config.DOCUMENT_PASSWORD, encoding='utf-8'))
