@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 
 class Config:
     """Configuration parameters."""
-    CREDENTIALS_FILE = Path(r"C:\\Projects\\ASPOSE\\Pdf.Cloud\\Credentials\\credentials.json")
+    CREDENTIALS_FILE = Path(r"..\\credentials.json")
     LOCAL_FOLDER = Path(r"C:\Samples")
     PDF_DOCUMENT_NAME = "sample_encrypted.pdf"
     LOCAL_RESULT_DOCUMENT_NAME = "output_sample.pdf"
@@ -80,4 +80,5 @@ if __name__ == "__main__":
     pdf_encoder.upload_document()
     pdf_encoder.change_passwords()
     pdf_encoder.download_result()
+
 
