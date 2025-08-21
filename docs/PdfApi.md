@@ -212,6 +212,7 @@ Method | HTTP request | Description
 [**post_document_image_stamps**](PdfApi.md#post_document_image_stamps) | **POST** /pdf/\{name}/stamps/image | Add document pages image stamps.
 [**post_document_image_stamps_page_specified**](PdfApi.md#post_document_image_stamps_page_specified) | **POST** /pdf/\{name}/stamps/image/pagespecified | Add document image stamps to specified pages.
 [**post_document_page_number_stamps**](PdfApi.md#post_document_page_number_stamps) | **POST** /pdf/\{name}/stamps/pagenumber | Add document page number stamps.
+[**post_document_pages_resize**](PdfApi.md#post_document_pages_resize) | **POST** /pdf/\{name}/resize | Rsize PDF document.
 [**post_document_pages_rotate**](PdfApi.md#post_document_pages_rotate) | **POST** /pdf/\{name}/rotate | Rotate PDF document.
 [**post_document_text_footer**](PdfApi.md#post_document_text_footer) | **POST** /pdf/\{name}/footer/text | Add document text footer.
 [**post_document_text_header**](PdfApi.md#post_document_text_header) | **POST** /pdf/\{name}/header/text | Add document text header.
@@ -5646,6 +5647,34 @@ Name | Type | Description  | Notes
  **stamp** | [**PageNumberStamp**](PageNumberStamp.md)| The stamp. | 
  **start_page_number** | **int**| The start page number. | [optional] 
  **end_page_number** | **int**| The end page number. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+ **password** | **str**| Base64 encoded password. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_document_pages_resize**
+> AsposeResponse post_document_pages_resize(name, height, width, pages, storage=storage, folder=folder, password=password)
+
+Rsize PDF document.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The document name. | 
+ **height** | **float**| Page Height | 
+ **width** | **float**| Page width | 
+ **pages** | **str**| Comma separated list of pages and page ranges. (Example: 1,3-5,8) | 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **password** | **str**| Base64 encoded password. | [optional] 
