@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 
 class Config:
     """Configuration parameters."""
-    CREDENTIALS_FILE = Path(r"C:\\Projects\\ASPOSE\\Pdf.Cloud\\Credentials\\credentials.json")
+    CREDENTIALS_FILE = Path(r"..s\\credentials.json")
     LOCAL_FOLDER = Path(r"C:\Samples")
     REMOTE_TEMP_FOLDER  = "TempPdfCloud"
     PDF_DOCUMENT_NAME = "sample.pdf"
@@ -63,3 +63,4 @@ class ParesrHelper:
                 logging.info(f"download_result(): File successfully downloaded: {local_path}")
             except Exception as e:
                 logging.error(f"download_result(): Failed to download file: {e}")
+
