@@ -30,12 +30,9 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 25.8
-- Implement document page resize functionality using the Pdf.Cloud API library.
+## Enhancements in Version 25.9
+- Implement PDF document page crop functionality using the Pdf.Cloud API library.
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
-
-## Bugs fixed in Version 25.8
-- Implement delete watermark from PDF document using the Pdf.Cloud API library.
 
 ## Requirements.
 Python 2.7 and 3.4+
