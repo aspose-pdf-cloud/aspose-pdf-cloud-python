@@ -3462,6 +3462,18 @@ class PdfTests(unittest.TestCase):
         response = self.pdf_api.post_document_pages_resize(file_name, 100, 200, '2-3', **opts)
         self.assertEqual(response.code, 200)
 
+    def testPostDocumentPagesCrop(self):
+        file_name = '4pages.pdf'
+        self.uploadFile(file_name)
+        opts = {
+            "folder" : self.temp_folder
+        }
+
+        rectangle = asposepdfcloud.models.Rectangle(0, 0, 400, 800)
+
+        response = self.pdf_api.post_document_pages_crop(file_name, '2-3', rectangle, **opts)
+        self.assertEqual(response.code, 200)
+
     # Fields Tests
 
     def testGetField(self):
