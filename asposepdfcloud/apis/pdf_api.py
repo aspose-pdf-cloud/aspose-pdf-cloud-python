@@ -24907,6 +24907,136 @@ class PdfApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def post_document_pages_crop(self, name, pages, rect, **kwargs):
+        """
+        Crop PDF document pages.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_document_pages_crop(name, pages, rect, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str pages: Comma separated list of pages and page ranges. (Example: 1,3-5,8) (required)
+        :param Rectangle rect: Rectangle of document area. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param str password: Base64 encoded password.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.post_document_pages_crop_with_http_info(name, pages, rect, **kwargs)
+        else:
+            (data) = self.post_document_pages_crop_with_http_info(name, pages, rect, **kwargs)
+            return data
+
+    def post_document_pages_crop_with_http_info(self, name, pages, rect, **kwargs):
+        """
+        Crop PDF document pages.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.post_document_pages_crop_with_http_info(name, pages, rect, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str name: The document name. (required)
+        :param str pages: Comma separated list of pages and page ranges. (Example: 1,3-5,8) (required)
+        :param Rectangle rect: Rectangle of document area. (required)
+        :param str storage: The document storage.
+        :param str folder: The document folder.
+        :param str password: Base64 encoded password.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'pages', 'rect', 'storage', 'folder', 'password']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_document_pages_crop" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params) or (params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `post_document_pages_crop`")
+        # verify the required parameter 'pages' is set
+        if ('pages' not in params) or (params['pages'] is None):
+            raise ValueError("Missing the required parameter `pages` when calling `post_document_pages_crop`")
+        # verify the required parameter 'rect' is set
+        if ('rect' not in params) or (params['rect'] is None):
+            raise ValueError("Missing the required parameter `rect` when calling `post_document_pages_crop`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']
+
+        query_params = []
+        if 'pages' in params:
+            query_params.append(('pages', params['pages']))
+        if 'storage' in params:
+            query_params.append(('storage', params['storage']))
+        if 'folder' in params:
+            query_params.append(('folder', params['folder']))
+        if 'password' in params:
+            query_params.append(('password', params['password']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'rect' in params:
+            body_params = params['rect']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['JWT']
+
+        return self.api_client.call_api('/pdf/{name}/crop', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='AsposeResponse',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def post_document_pages_resize(self, name, height, width, pages, **kwargs):
         """
         Rsize PDF document.
