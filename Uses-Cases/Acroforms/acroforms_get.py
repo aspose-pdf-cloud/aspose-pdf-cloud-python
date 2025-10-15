@@ -5,7 +5,7 @@ from acroforms_helper import Config, PdfAcroformsHelper, logging
 from asposepdfcloud import ApiClient, PdfApi, FieldsResponse, Field
 
 class PdfAcroformsGet:
-    """ Clas for extracting form field from PDF document"""
+    """ Class for extracting form field from PDF document"""
     def __init__(self, pdf_api: PdfApi, helper: PdfAcroformsHelper):
         self.pdfApi = pdf_api
         self.helper = helper
@@ -23,3 +23,4 @@ class PdfAcroformsGet:
         except Exception as e:
 
             logging.error(f"PdfAcroformsGet(): Error while extracting form field: {e}")
+
