@@ -5,7 +5,7 @@ from acroforms_helper import Config, PdfAcroformsHelper, logging
 from asposepdfcloud import ApiClient, PdfApi, Field, FieldType
 
 class PdfAcroformsSetter:
-    """ Clas for writing form field values to PDF document"""
+    """ Class for writing new form field values to PDF document"""
     def __init__(self, pdf_api: PdfApi, helper: PdfAcroformsHelper):
         self.pdfApi = pdf_api
         self.helper = helper
@@ -28,3 +28,4 @@ class PdfAcroformsSetter:
         except Exception as e:
 
             logging.error(f"PdfAcroformsReplace(): Error while updating form field: {e}")
+
