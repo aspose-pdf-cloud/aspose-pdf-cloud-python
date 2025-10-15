@@ -11,7 +11,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 
 class Config:
 	"""Configuration parameters."""
-	CREDENTIALS_FILE = Path(r"c:\Projects\ASPOSE\Pdf.Cloud\Credentials\credentials.json")
+	CREDENTIALS_FILE = Path(r"..\credentials.json") # Your Credentials path
 	LOCAL_FOLDER = Path(r"C:\Samples")
 	REMOTE_FOLDER = "Your_Temp_Pdf_Cloud"
 	PDF_DOCUMENT_NAME = "sample.pdf"
@@ -55,4 +55,5 @@ class PdfAcroformsHelper:
 				shutil.move(temp_file, str(local_path))
 				logging.info(f"download_result(): File successfully downloaded: {local_path}")
 			except Exception as e:
+
 				logging.error(f"download_result(): Failed to download file: {e}")
