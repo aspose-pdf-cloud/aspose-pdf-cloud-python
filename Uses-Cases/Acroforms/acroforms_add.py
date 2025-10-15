@@ -5,7 +5,7 @@ from acroforms_helper import Config, PdfAcroformsHelper, logging
 from asposepdfcloud import ApiClient, PdfApi, TextBoxField, Rectangle, Border, Dash
 
 class PdfAcroformsAdd:
-	""" Clas for adding form field to PDF document"""
+	""" Class for adding form field to PDF document"""
     def __init__(self, pdf_api: PdfApi, helper: PdfAcroformsHelper):
         self.pdfApi = pdf_api
         self.helper = helper
@@ -33,3 +33,4 @@ class PdfAcroformsAdd:
         except Exception as e:
 
             logging.error(f"PdfAcroformsAdd(): Error while adding form field: {e}")
+
