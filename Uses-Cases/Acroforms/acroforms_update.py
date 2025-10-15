@@ -5,6 +5,7 @@ from acroforms_helper import Config, PdfAcroformsHelper, logging
 from asposepdfcloud import ApiClient, PdfApi, Field, Fields, FieldType, Rectangle
 
 class PdfAcroformsUpdate:
+    """ Class for updating form fields in PDF document"""
     def __init__(self, pdf_api: PdfApi, helper: PdfAcroformsHelper):
         self.pdfApi = pdf_api
         self.helper = helper
@@ -29,4 +30,5 @@ class PdfAcroformsUpdate:
             else:
                 logging.error(f"PdfAcroformsUpdate(): Failed to update fileds in the document. Response code: {response.code}")
         except Exception as e:
+
             logging.error(f"PdfAcroformsUpdate(): Error while updating form field: {e}")
