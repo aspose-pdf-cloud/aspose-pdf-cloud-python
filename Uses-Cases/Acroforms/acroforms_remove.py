@@ -5,6 +5,7 @@ from acroforms_helper import Config, PdfAcroformsHelper, logging
 from asposepdfcloud import ApiClient, PdfApi, TextBoxField, Rectangle, Border, Dash
 
 class PdfAcroformsDel:
+    """ Clas for deleting form field from PDF document"""
     def __init__(self, pdf_api: PdfApi, helper: PdfAcroformsHelper):
         self.pdfApi = pdf_api
         self.helper = helper
@@ -20,4 +21,5 @@ class PdfAcroformsDel:
             else:
                 logging.error(f"PdfAcroformsDel(): Failed to reomve filed '{fieldName}' from document. Response code: {response.code}")
         except Exception as e:
+
             logging.error(f"PdfAcroformsDel(): Error while deleting form field: {e}")
