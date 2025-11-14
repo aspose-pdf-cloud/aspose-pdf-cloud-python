@@ -30,9 +30,12 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 25.9
-- Implement PDF document page crop functionality using the Pdf.Cloud API library.
+## Enhancements in Version 25.10
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
+
+## Bugs fixed in Version 25.10
+- Method PutBookmark does not change bookmark color.
+- TextReplace shows hidden text in the output file.
 
 ## Requirements.
 Python 2.7 and 3.4+
