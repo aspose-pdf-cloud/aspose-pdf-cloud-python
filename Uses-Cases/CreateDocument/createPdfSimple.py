@@ -7,8 +7,8 @@ from asposepdfcloud import ApiClient, PdfApi
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
-credentials_file = Path( os.path.join(os.path.dirname(os.path.realpath('__file__')), "..\Credentials\credentials.json"))
-local_folder = Path(r"C:\Samples")
+credentials_file = Path("Settings/credentials.json")
+local_folder = Path(r"test_data")
 pdf_document = "output_sample.pdf"
 
 pdf_api = None
@@ -17,7 +17,7 @@ try:
     """ Load credentials and create PDF Rest API object """
     with credentials_file.open("r", encoding="utf-8") as file:
         credentials = json.load(file)
-        api_key, app_id = credentials.get("key"), credentials.get("id")
+        api_key, app_id = credentials.get("client_secret"), credentials.get("client_id")
         if not api_key or not app_id:
             raise ValueError("init_api(): Error: Missing API keys in the credentials file.")
         pdf_api = PdfApi(ApiClient(api_key, app_id))
