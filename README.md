@@ -1,5 +1,22 @@
-﻿![](https://img.shields.io/badge/api-v3.0-lightgrey) ![PyPI](https://img.shields.io/pypi/v/aspose-pdf-cloud) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/aspose-pdf-cloud) ![PyPI - Implementation](https://img.shields.io/pypi/implementation/aspose-pdf-cloud) [![GitHub license](https://img.shields.io/github/license/aspose-pdf-cloud/aspose-pdf-cloud-python)](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-python/blob/master/LICENSE)
+﻿![](https://img.shields.io/badge/api-v3.0-lightgrey) ![PyPI](https://img.shields.io/pypi/v/asposepdfcloud) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/asposepdfcloud) ![PyPI - Implementation](https://img.shields.io/pypi/implementation/asposepdfcloud) [![GitHub license](https://img.shields.io/github/license/aspose-pdf-cloud/aspose-pdf-cloud-python)](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-python/blob/master/LICENSE)
 
+# ⚠️ Deprecated Package: `asposepdfcloud`
+
+> **This package is deprecated and no longer maintained.**
+
+The ***[asposepdfcloud](https://pypi.org/project/asposepdfcloud/)*** Python package has been **deprecated** in favor of the new unified **[aspose-pdf-cloud](https://pypi.org/project/aspose-pdf-cloud/)** package.
+
+## 🚀 What You Should Do
+
+**Please migrate to the new package immediately:**
+
+```bash
+# Uninstall the old package
+pip uninstall asposepdfcloud
+
+# Install the new, actively maintained package
+pip install aspose-pdf-cloud
+```
 # Python REST API to Process PDF in Cloud
 [Aspose.PDF Cloud](https://products.aspose.cloud/pdf) is a true REST API that enables you to perform a wide range of document processing operations including creation, manipulation, conversion and rendering of PDF documents in the cloud.
 
