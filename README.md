@@ -1,5 +1,22 @@
 ﻿![](https://img.shields.io/badge/api-v3.0-lightgrey) ![PyPI](https://img.shields.io/pypi/v/asposepdfcloud) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/asposepdfcloud) ![PyPI - Implementation](https://img.shields.io/pypi/implementation/asposepdfcloud) [![GitHub license](https://img.shields.io/github/license/aspose-pdf-cloud/aspose-pdf-cloud-python)](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-python/blob/master/LICENSE)
 
+# ⚠️ Deprecated Package: `asposepdfcloud`
+
+> **This package is deprecated and no longer maintained.**
+
+The ***[asposepdfcloud](https://pypi.org/project/asposepdfcloud/)*** Python package has been **deprecated** in favor of the new unified **[aspose-pdf-cloud](https://pypi.org/project/aspose-pdf-cloud/)** package.
+
+## 🚀 What You Should Do
+
+**Please migrate to the new package immediately:**
+
+```bash
+# Uninstall the old package
+pip uninstall asposepdfcloud
+
+# Install the new, actively maintained package
+pip install aspose-pdf-cloud
+```
 # Python REST API to Process PDF in Cloud
 [Aspose.PDF Cloud](https://products.aspose.cloud/pdf) is a true REST API that enables you to perform a wide range of document processing operations including creation, manipulation, conversion and rendering of PDF documents in the cloud.
 
@@ -30,21 +47,40 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Enhancements in Version 25.9
-- Implement PDF document page crop functionality using the Pdf.Cloud API library.
+## Breaking Changes in Version 25.10
+**Authentication Parameter Changes**:
+
+    AppId → ClientId
+
+    AppSecret → ClientSecret
+
+## Enhancements in Version 25.10
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
 
+## Bugs fixed in Version 25.10
+- Method PutBookmark does not change bookmark color.
+- TextReplace shows hidden text in the output file.
 ## Requirements.
 Python 2.7 and 3.4+
 
-## Installation & Usage
-### pip install
+## Platform Independence
+
+Aspose.Pdf Cloud's platform independent document manipulation API is a true REST API that can be used from any platform. You can use it with any language or platform that supports REST, be it the web, desktop, mobile, or the cloud. The API integrates with other cloud services to provide you the flexibility you require for processing documents. It is suitable for the most types of businesses, documents, or content.
+
+## Getting Started with Aspose.Pdf Cloud SDK for Python
+
+Firstly, create an account at [Aspose for Cloud](https://dashboard.aspose.cloud/#/apps) to get your application information and free quota to use the API.
+Now execute from the command line command to fetch the SDK. 
+```sh
+pip install asposepdfcloud
+```
+
 If the python package is hosted on Github, you can install directly from Github
 
 ```sh
 pip install git+https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-python.git
 ```
-(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-python.git`)
+
 
 Then import the package:
 ```python
@@ -69,19 +105,36 @@ import asposepdfcloud
 	# Get your ClientId and ClientSecret from https://dashboard.aspose.cloud (free registration required).
 	pdf_api_client = asposepdfcloud.ApiClient('MY_CLIENT_SECRET', 'MY_CLIENT_ID')
 	pdf_api = asposepdfcloud.PdfApi(pdf_api_client)
-	file_name = 'PdfWithAnnotations.pdf'
-	page_number = 2
+	file_name = 'sample.pdf'
+	page_number = 1
 	response = pdf_api.get_page_annotations(file_name, page_number, folder=temp_folder)
 ```
 
 ## SelfHost Aspose.PDF Cloud
-Create **ApiClient** object without **app_key** and **app_sid** parameters, but with **host** parameter set to *url of SelfHost Aspose.PDF Cloud* and **self_host** parameter set to *True*:
+Create **ApiClient** object without **client_secret** and **client_id** parameters, but with **host** parameter set to *url of [SelfHost Aspose.PDF Cloud](https://hub.docker.com/r/aspose/pdf-cloud)* and **self_host** parameter set to *True*:
 ```python
 	pdf_api_client = asposepdfcloud.ApiClient('', '', 'MY_SELFHOST_URL', True)
 ```
 
+## Use cases
+
+The Aspose.PDF Cloud SDK includes a set of ready-to-run use cases in the "[Uses-Cases](Uses-Cases)" directory. These examples illustrate common operations such as managing annotations, attachments, text, and more.
+
+1. Add your API credentials **client_id** and **client_secret** into [settings/credentials.json](settings/credentials.json):
+
+```
+{
+  "client_secret": "YOUR_CLIENT_SECRET",
+  "client_id": "YOUR_CLIENT_ID"
+}
+```
+2. Launch use case:
+```
+python Uses-Cases/Annotations/annotations_launch.py
+```
+
 ## Unit Tests
-Aspose PDF SDK includes a suite of unit tests within the "test" subdirectory. These Unit Tests also serves as examples of how to use the Aspose PDF SDK.
+Aspose PDF SDK includes a suite of unit tests. These Unit Tests also serves as examples of how to use the Aspose PDF SDK.
 
 ## Licensing
 All Aspose.PDF Cloud SDKs are licensed under [MIT License](LICENSE).

@@ -5,11 +5,11 @@ from compares_helper import CompareMain
 
 class Config:
     """Configuration parameters."""
-    CREDENTIALS_FILE = Path(r"credentials.json")
-    LOCAL_FOLDER = Path(r"C:\Samples")
+    CREDENTIALS_FILE = Path(r"settings/credentials.json")
+    LOCAL_FOLDER = Path(r"test_data")
     REMOTE_FOLDER = "Your_Temp_Pdf_Cloud"
-    PDF_DOCUMENT_1 = "sample_compare_1.pdf"
-    PDF_DOCUMENT_2 = "sample_compare_2.pdf"
+    PDF_DOCUMENT_1 = "sample.pdf"
+    PDF_DOCUMENT_2 = "sample_edited.pdf"
     PDF_OUTPUT     = "output_compare.pdf"
 
 class ComparePdfDocuments:

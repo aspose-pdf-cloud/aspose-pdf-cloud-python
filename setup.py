@@ -32,7 +32,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = "asposepdfcloud"
-VERSION = "25.9.0"
+VERSION = "25.10.0"
 # To install the library, run the following
 #
 # python setup.py install
@@ -46,14 +46,8 @@ setup(
     name=NAME,
     version=VERSION,
     description="Aspose.PDF Cloud",
-    long_description='''Aspose.PDF Cloud is a REST API for creating and editing PDF files.
- Most popular features proposed by Aspose.PDF Cloud: PDF to Word, Convert PDF to Image, Merge PDF, Split PDF, Add Images to PDF, Rotate PDF.
- It can also be used to convert PDF files to different formats like DOC, HTML, XPS, TIFF and many more.
- Aspose.PDF Cloud gives you control: create PDFs from scratch or from HTML, XML, template, database, XPS or an image.
- Render PDFs to image formats such as JPEG, PNG, GIF, BMP, TIFF and many others.
- Aspose.PDF Cloud helps you manipulate elements of a PDF file like text, annotations, watermarks, signatures, bookmarks, stamps and so on.
- Its REST API also allows you to manage PDF pages by using features like merging, splitting, and inserting.
- Add images to a PDF file or convert PDF pages to images.''',
+    long_description=open("README.md", encoding='utf-8').read(),
+    long_description_content_type="text/markdown",
     author_email="",
     url="https://products.aspose.cloud/pdf/cloud",
     author='Aspose PDF Cloud',

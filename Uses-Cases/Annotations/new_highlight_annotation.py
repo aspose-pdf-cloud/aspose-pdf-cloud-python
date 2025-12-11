@@ -29,10 +29,10 @@ class PdfAddHighlightAnnotations:
                 z_index = 1,
                 color=Color(a=0xFF, r=0, g=0xFF, b=0),
                 quad_points = [
-                    Point(10, 10),
-                    Point(20, 10),
-                    Point(10, 20),
-                    Point(10, 10)
+                    Point(100, 350),
+                    Point(450, 350),
+                    Point(100, 400),
+                    Point(100, 350)
                 ],
                 modified = '03/27/2025 00:00:00.000 AM',
             )

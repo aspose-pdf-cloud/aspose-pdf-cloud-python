@@ -76,18 +76,18 @@ class ApiClient(object):
         'object': object,
     }
 
-    def __init__(self, app_key, app_sid, host=None, self_host=False):
+    def __init__(self, client_secret, client_id, host=None, self_host=False):
         """
         Constructor of the class.
         """
         self.rest_client = RESTClientObject()
         self.default_headers = {}
         self.default_headers['x-aspose-client'] = 'python sdk'
-        self.default_headers['x-aspose-client-version'] = '25.9.0'
+        self.default_headers['x-aspose-client-version'] = '25.10.0'
         
         self.self_host = self_host
-        self.app_key = app_key
-        self.app_sid = app_sid
+        self.client_secret = client_secret
+        self.client_id = client_id
 
         if host is None:
             self.host = Configuration().host
@@ -238,8 +238,8 @@ class ApiClient(object):
         # post params
         post_params = {
                     "grant_type" : "client_credentials",
-                    "client_id" : self.app_sid,
-                    "client_secret" : self.app_key
+                    "client_id" : self.client_id,
+                    "client_secret" : self.client_secret
                     }
 
         # resource path

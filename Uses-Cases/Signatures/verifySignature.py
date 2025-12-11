@@ -10,10 +10,10 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 
 class Config:
     """Configuration parameters."""
-    CREDENTIALS_FILE = Path(r"C:\\Projects\\ASPOSE\\Pdf.Cloud\\Credentials\\credentials.json")
-    LOCAL_FOLDER = Path(r"C:\Samples")
-    PDF_DOCUMENT_NAME = "sample-signed.pdf"
-    SIGNATURE_FORM_FIELD = 'sign1'
+    CREDENTIALS_FILE = Path(r"settings/credentials.json")
+    LOCAL_FOLDER = Path(r"test_data")
+    PDF_DOCUMENT_NAME = "adbe.x509.rsa_sha1.valid.pdf"
+    SIGNATURE_FORM_FIELD = 'Signature1'
 
 
 class PdfSignatures:
@@ -27,7 +27,7 @@ class PdfSignatures:
         try:
             with credentials_file.open("r", encoding="utf-8") as file:
                 credentials = json.load(file)
-                api_key, app_id = credentials.get("key"), credentials.get("id")
+                api_key, app_id = credentials.get("client_secret"), credentials.get("client_id")
                 if not api_key or not app_id:
                     raise ValueError("init_api(): Error: Missing API keys in the credentials file.")
                 self.pdf_api = PdfApi(ApiClient(api_key, app_id))
