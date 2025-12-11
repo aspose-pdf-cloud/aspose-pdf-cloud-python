@@ -47,6 +47,13 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
+## Breaking Changes in Version 25.10
+**Authentication Parameter Changes**:
+
+    AppId → ClientId
+
+    AppSecret → ClientSecret
+
 ## Enhancements in Version 25.10
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
 
@@ -65,7 +72,7 @@ Aspose.Pdf Cloud's platform independent document manipulation API is a true REST
 Firstly, create an account at [Aspose for Cloud](https://dashboard.aspose.cloud/#/apps) to get your application information and free quota to use the API.
 Now execute from the command line command to fetch the SDK. 
 ```sh
-pip install aspose-pdf-cloud
+pip install asposepdfcloud
 ```
 
 If the python package is hosted on Github, you can install directly from Github
