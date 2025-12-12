@@ -1,22 +1,5 @@
-﻿![](https://img.shields.io/badge/api-v3.0-lightgrey) ![PyPI](https://img.shields.io/pypi/v/asposepdfcloud) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/asposepdfcloud) ![PyPI - Implementation](https://img.shields.io/pypi/implementation/asposepdfcloud) [![GitHub license](https://img.shields.io/github/license/aspose-pdf-cloud/aspose-pdf-cloud-python)](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-python/blob/master/LICENSE)
+﻿![](https://img.shields.io/badge/api-v3.0-lightgrey) ![PyPI](https://img.shields.io/pypi/v/aspose-pdf-cloud) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/aspose-pdf-cloud) ![PyPI - Implementation](https://img.shields.io/pypi/implementation/aspose-pdf-cloud) [![GitHub license](https://img.shields.io/github/license/aspose-pdf-cloud/aspose-pdf-cloud-python)](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-python/blob/master/LICENSE)
 
-# ⚠️ Deprecated Package: `asposepdfcloud`
-
-> **This package is deprecated and no longer maintained.**
-
-The ***[asposepdfcloud](https://pypi.org/project/asposepdfcloud/)*** Python package has been **deprecated** in favor of the new unified **[aspose-pdf-cloud](https://pypi.org/project/aspose-pdf-cloud/)** package.
-
-## 🚀 What You Should Do
-
-**Please migrate to the new package immediately:**
-
-```bash
-# Uninstall the old package
-pip uninstall asposepdfcloud
-
-# Install the new, actively maintained package
-pip install aspose-pdf-cloud
-```
 # Python REST API to Process PDF in Cloud
 [Aspose.PDF Cloud](https://products.aspose.cloud/pdf) is a true REST API that enables you to perform a wide range of document processing operations including creation, manipulation, conversion and rendering of PDF documents in the cloud.
 
@@ -47,19 +30,8 @@ XLS, XLSX, PPTX, DOC, DOCX, MobiXML, JPEG, EMF, PNG, BMP, GIF, TIFF, Text
 ## Read PDF Formats
 MHT, PCL, PS, XSLFO, MD
 
-## Breaking Changes in Version 25.10
-**Authentication Parameter Changes**:
-
-    AppId → ClientId
-
-    AppSecret → ClientSecret
-
-## Enhancements in Version 25.10
+## Enhancements in Version 25.11
 - A new version of Aspose.PDF Cloud was prepared using the latest version of Aspose.PDF for .NET.
-
-## Bugs fixed in Version 25.10
-- Method PutBookmark does not change bookmark color.
-- TextReplace shows hidden text in the output file.
 ## Requirements.
 Python 2.7 and 3.4+
 
@@ -72,7 +44,7 @@ Aspose.Pdf Cloud's platform independent document manipulation API is a true REST
 Firstly, create an account at [Aspose for Cloud](https://dashboard.aspose.cloud/#/apps) to get your application information and free quota to use the API.
 Now execute from the command line command to fetch the SDK. 
 ```sh
-pip install asposepdfcloud
+pip install aspose-pdf-cloud
 ```
 
 If the python package is hosted on Github, you can install directly from Github
@@ -118,9 +90,9 @@ Create **ApiClient** object without **client_secret** and **client_id** paramete
 
 ## Use cases
 
-The Aspose.PDF Cloud SDK includes a set of ready-to-run use cases in the "[Uses-Cases](Uses-Cases)" directory. These examples illustrate common operations such as managing annotations, attachments, text, and more.
+The Aspose.PDF Cloud SDK includes a set of ready-to-run use cases in the "[Uses-Cases](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-python/tree/master/Uses-Cases)" directory. These examples illustrate common operations such as managing annotations, attachments, text, and more.
 
-1. Add your API credentials **client_id** and **client_secret** into [settings/credentials.json](settings/credentials.json):
+1. Add your API credentials **client_id** and **client_secret** into [settings/credentials.json](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-python/tree/master/settings/credentials.json):
 
 ```
 {
