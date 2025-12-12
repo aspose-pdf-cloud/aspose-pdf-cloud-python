@@ -30,13 +30,6 @@ SOFTWARE.
 
 from __future__ import absolute_import
 
-import warnings
-warnings.warn(
-    "Package 'asposepdfcloud' is deprecated. Please install 'aspose-pdf-cloud' instead.",
-    FutureWarning,
-    stacklevel=2
-)
-
 # import models into sdk package
 from .models.annotation_flags import AnnotationFlags
 from .models.annotation_state import AnnotationState
