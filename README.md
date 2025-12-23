@@ -1,4 +1,4 @@
-﻿![](https://img.shields.io/badge/api-v3.0-lightgrey) ![PyPI](https://img.shields.io/pypi/v/aspose-pdf-cloud) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/aspose-pdf-cloud) ![PyPI - Implementation](https://img.shields.io/pypi/implementation/aspose-pdf-cloud) [![GitHub license](https://img.shields.io/github/license/aspose-pdf-cloud/aspose-pdf-cloud-python)](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-python/blob/master/LICENSE)
+﻿![](https://img.shields.io/badge/api-v3.0-lightgrey) ![PyPI](https://img.shields.io/pypi/v/asposepdfcloud) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/asposepdfcloud) ![PyPI - Implementation](https://img.shields.io/pypi/implementation/asposepdfcloud) [![GitHub license](https://img.shields.io/github/license/aspose-pdf-cloud/aspose-pdf-cloud-python)](https://github.com/asposepdfcloud/aspose-pdf-cloud-python/blob/master/LICENSE)
 
 # Python REST API to Process PDF in Cloud
 [Aspose.PDF Cloud](https://products.aspose.cloud/pdf) is a true REST API that enables you to perform a wide range of document processing operations including creation, manipulation, conversion and rendering of PDF documents in the cloud.
@@ -44,7 +44,7 @@ Aspose.Pdf Cloud's platform independent document manipulation API is a true REST
 Firstly, create an account at [Aspose for Cloud](https://dashboard.aspose.cloud/#/apps) to get your application information and free quota to use the API.
 Now execute from the command line command to fetch the SDK. 
 ```sh
-pip install aspose-pdf-cloud
+pip install asposepdfcloud
 ```
 
 If the python package is hosted on Github, you can install directly from Github
