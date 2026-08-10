@@ -1,7 +1,7 @@
 # Aspose.PDF Cloud SDK for Python — Agent Analysis
 
 > **Repository:** [aspose-pdf-cloud/aspose-pdf-cloud-python](https://github.com/aspose-pdf-cloud/aspose-pdf-cloud-python)  
-> **Version:** 26.4.0 | **Package:** `asposepdfcloud`  
+> **Version:** 26.7.0 | **Package:** `asposepdfcloud`  
 > **License:** MIT | **Python Version:** 2.7 and 3.4+  
 > **API Version:** v3.0
 
