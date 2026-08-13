@@ -5147,7 +5147,7 @@ class PdfTests(unittest.TestCase):
 
         out_path = self.temp_folder + '/' + file_name
         user_password_encoded = base64.b64encode(b'user $^Password!&')
-        owner_password_encoded = base64.b64encode(b'owner\//? $12^Password!&')
+        owner_password_encoded = base64.b64encode(b'owner\\//? $12^Password!&')
 
         opts = {
             "file" : self.test_data_path + file_name
@@ -5162,7 +5162,7 @@ class PdfTests(unittest.TestCase):
         self.uploadFile(file_name)
 
         user_password_encoded = base64.b64encode(b'user $^Password!&')
-        owner_password_encoded = base64.b64encode(b'owner\//? $12^Password!&')
+        owner_password_encoded = base64.b64encode(b'owner\\//? $12^Password!&')
 
         opts = {
             "folder" : self.temp_folder
@@ -5204,9 +5204,9 @@ class PdfTests(unittest.TestCase):
         self.uploadFile(file_name)
 
         out_path = self.temp_folder + '/' + file_name
-        owner_password_encoded = base64.b64encode(b'owner\//? $12^Password!&')
-        new_user_password_encoded = base64.b64encode(b'user new\//? $12^Password!&')
-        new_owner_password_encoded = base64.b64encode(b'owner new\//? $12^Password!&')
+        owner_password_encoded = base64.b64encode(b'owner\\//? $12^Password!&')
+        new_user_password_encoded = base64.b64encode(b'user new\\//? $12^Password!&')
+        new_owner_password_encoded = base64.b64encode(b'owner new\\//? $12^Password!&')
 
         opts = {
             "file" : self.test_data_path + file_name
@@ -5220,9 +5220,9 @@ class PdfTests(unittest.TestCase):
         file_name = '4pagesEncrypted.pdf'
         self.uploadFile(file_name)
 
-        owner_password_encoded = base64.b64encode(b'owner\//? $12^Password!&')
-        new_user_password_encoded = base64.b64encode(b'user new\//? $12^Password!&')
-        new_owner_password_encoded = base64.b64encode(b'owner new\//? $12^Password!&')
+        owner_password_encoded = base64.b64encode(b'owner\\//? $12^Password!&')
+        new_user_password_encoded = base64.b64encode(b'user new\\//? $12^Password!&')
+        new_owner_password_encoded = base64.b64encode(b'owner new\\//? $12^Password!&')
 
         opts = {
             "folder" : self.temp_folder

@@ -40,7 +40,7 @@ VERSION = "26.6.0"
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 
-REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi >= 14.05.14", "python-dateutil >= 2.5.3", "setuptools >= 21.0.0"]
+REQUIRES = ["urllib3 >= 1.26.0", "six >= 1.16.0", "certifi >= 2023.7.22", "python-dateutil >= 2.8.2", "setuptools >= 21.0.0"]
 
 setup(
     name=NAME,
@@ -168,10 +168,7 @@ setup(
     extras_require={ 
         'test': ["requests >= 2.18.4",
                 "coverage >= 4.0.3",
-                "nose >= 1.3.7",
-                "pluggy >= 0.3.1",
-                "py >= 1.4.31",
-                "randomize >= 0.13"],
+                "pytest >= 7.0.0"],
     },
     packages=find_packages(exclude=['test']),
     project_urls={ 
